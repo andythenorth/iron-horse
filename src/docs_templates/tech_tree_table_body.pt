@@ -198,11 +198,11 @@
                                                                         ${model_type.name}
                                                                     </span>
                                                                     <img src="static/img/${model_type.id}_${vehicle_cc}.png"
-                                                                         width="${2 * doc_helper.docs_sprite_width(model_type)}"
+                                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=model_type.catalogue_entry.catalogue)}"
                                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
                                                                         <small>
-                                                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(model_type)">
+                                                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(model_type.catalogue_entry.catalogue)">
                                                                                 <span style="display:block">${power_string}</span>
                                                                             </tal:power>
                                                                         </small>
@@ -210,10 +210,10 @@
                                                                             this is a lolz JFDI hack to provide equal height spacing when there are 1 or 2 power sources
                                                                             this will fail with more than 2 power sources, but deal with that later by adding more conditions
                                                                         -->
-                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(model_type)) == 1) and (model_type.lgv_capable == False)">
+                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(model_type.catalogue_entry.catalogue)) == 1) and (model_type.lgv_capable == False)">
                                                                             <br />
                                                                         </tal:linebreak>
-                                                                        <small>${doc_helper.speed_formatted_for_docs(model_type)}</small>
+                                                                        <small>${doc_helper.speed_formatted_for_docs(model_type.catalogue_entry.catalogue)}</small>
 
                                                                         <small>${model_type.power_speed_ratio}i</small>
                                                                         <tal:branch condition="model_type.roster.id != 'pony'">

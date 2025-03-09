@@ -18,7 +18,12 @@ class DocHelper(object):
     def __init__(self, lang_strings):
         self.lang_strings = lang_strings
 
-    def docs_sprite_width(self, model_variant):
+    def docs_sprite_width(self, catalogue=None, model_variant=None):
+        # generally use catalogue for this
+        # but fetching the default_model_variant from the roster fails in multiprocessing
+        # therefore have the option to pass in a model_variant directly for that case
+        if model_variant is None:
+            model_variant = catalogue.default_model_variant_from_roster
         if not model_variant.dual_headed:
             # +1 for the buffers etc
             return min((model_variant.buy_menu_width + 1), self.docs_sprite_max_width)
@@ -26,21 +31,24 @@ class DocHelper(object):
         if model_variant.dual_headed:
             return min((2 * 4 * model_variant.length) + 1, self.docs_sprite_max_width)
 
-    def get_default_model_variants_by_subclass(self, consists, filter_subclasses_by_name=None):
+    def get_default_model_variants_by_subclass(
+        self, model_variants, filter_subclasses_by_name=None
+    ):
+        # CABBAGE SHOULD BE CATALOGUE BASED - THEN WE ALSO KNOW THE SUBCLASS ETC
         # first find all the subclasses + their vehicles
         model_variants_by_subclass = {}
-        for consist in consists:
-            if not consist.is_default_model_variant:
+        for model_variant in model_variants:
+            if not model_variant.is_default_model_variant:
                 continue
-            subclass = type(consist)
+            subclass = type(model_variant)
             if (
                 filter_subclasses_by_name == None
                 or subclass.__name__ in filter_subclasses_by_name
             ):
                 if subclass in model_variants_by_subclass:
-                    model_variants_by_subclass[subclass].append(consist)
+                    model_variants_by_subclass[subclass].append(model_variant)
                 else:
-                    model_variants_by_subclass[subclass] = [consist]
+                    model_variants_by_subclass[subclass] = [model_variant]
         # reformat to a list we can then sort so order is consistent
         result = [
             {
@@ -53,37 +61,49 @@ class DocHelper(object):
         ]
         return sorted(result, key=lambda subclass: subclass["name"])
 
-    def get_default_engines_by_roster_and_base_track_type(self, roster, base_track_type_name):
+    def get_engine_catalogues_by_roster_and_base_track_type(
+        self, roster, base_track_type_name
+    ):
         result = []
-        for consist in roster.engine_consists:
-            if not consist.is_default_model_variant:
+        for catalogue in roster.engine_catalogues:
+            if (
+                not catalogue.default_model_variant_from_roster.base_track_type_name
+                == base_track_type_name
+            ):
                 continue
-            if not consist.base_track_type_name == base_track_type_name:
+            if catalogue.factory.model_def.cloned_from_model_def is not None:
+                # exclude cloned models
                 continue
-            if consist.is_clone:
-                continue
-            result.append(consist)
+            result.append(catalogue)
         return result
 
-    def get_default_wagons_by_roster_and_base_track_type(self, roster, base_track_type_name):
+    def get_wagon_catalogues_by_roster_and_base_track_type(
+        self, roster, base_track_type_name
+    ):
+        # CABBAGE SHOULD BE CATALOGUE BASED
         result = []
-        for consist in roster.wagon_consists:
-            if not consist.is_default_model_variant:
+        for catalogue in roster.wagon_catalogues:
+            if (
+                not catalogue.default_model_variant_from_roster.base_track_type_name
+                == base_track_type_name
+            ):
                 continue
-            if not consist.base_track_type_name == base_track_type_name:
+            if catalogue.factory.model_def.cloned_from_model_def is not None:
+                # exclude cloned models
                 continue
-            result.append(consist)
+            result.append(catalogue)
         return result
 
-    def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
+    def engines_as_tech_tree(self, roster, model_variants, simplified_gameplay):
         # structure
         # |- base_track_type_name
         #    |- role
         #       |- subrole
         #          |- subrole child_branch
         #             |- generation
-        #                |- engine consist
-        # if there's no engine consist matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
+        #                |- engine model
+        # if there's no engine model matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
+        # CABBAGE - THIS SHOULD BE DRIVEN FROM CATALOGUES SURELY?
         result = {}
         # much nested loops
         for base_track_type_and_label in self.base_track_type_names_and_labels:
@@ -91,7 +111,7 @@ class DocHelper(object):
                 for subrole in global_constants.role_subrole_mapping[role]:
                     subrole_child_branches = {}
                     for subrole_child_branch in self.get_subrole_child_branches(
-                        consists, base_track_type_and_label[0], subrole
+                        model_variants, base_track_type_and_label[0], subrole
                     ):
                         # special case to drop anything that shouldn't be in tech tree
                         # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
@@ -112,25 +132,29 @@ class DocHelper(object):
                             ):
                                 subrole_child_branches[subrole_child_branch][gen] = None
                     # get the engines matching this subrole and track type, and place them into the child branches
-                    for consist in consists:
-                        if not consist.is_default_model_variant:
+                    for model_variant in model_variants:
+                        if not model_variant.is_default_model_variant:
                             continue
                         # special case to drop anything that shouldn't be in tech tree
                         # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
                         if (
-                            (consist.subrole_child_branch_num == 0)
-                            or (consist.subrole_child_branch_num > 999)
-                            or (consist.subrole_child_branch_num < -999)
+                            (model_variant.subrole_child_branch_num == 0)
+                            or (model_variant.subrole_child_branch_num > 999)
+                            or (model_variant.subrole_child_branch_num < -999)
                         ):
                             continue
-                        if simplified_gameplay and consist.subrole_child_branch_num < 0:
+                        if (
+                            simplified_gameplay
+                            and model_variant.subrole_child_branch_num < 0
+                        ):
                             continue
                         if (
-                            consist.base_track_type_name == base_track_type_and_label[0]
-                        ) and (consist.subrole == subrole):
-                            subrole_child_branches[consist.subrole_child_branch_num][
-                                consist.gen
-                            ] = consist
+                            model_variant.base_track_type_name
+                            == base_track_type_and_label[0]
+                        ) and (model_variant.subrole == subrole):
+                            subrole_child_branches[
+                                model_variant.subrole_child_branch_num
+                            ][model_variant.gen] = model_variant
                     # only add subrole to tree for this track type if there are actual vehicles in it
                     if len(subrole_child_branches) > 0:
                         result.setdefault(base_track_type_and_label, {})
@@ -149,23 +173,24 @@ class DocHelper(object):
         # - powered wagons for TGVs
         # - powered cabooses for propelling
         # - anything with a variant group parent is just a sub-variant of some sort
+        # CABBAGE SHOULD BE CATALOGUE BASED
         really_engines = []
         not_really_engines = []
-        for consist in roster.engine_consists:
-            if not consist.is_default_model_variant:
+        for model_variant in roster.engine_consists:
+            if not model_variant.is_default_model_variant:
                 continue
-            if consist.is_clone:
+            if model_variant.is_clone:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                consist.role in ["driving_cab", "gronk", "lolz", "metro"]
-                or consist.wagons_add_power
+                model_variant.role in ["driving_cab", "gronk", "lolz", "metro"]
+                or model_variant.wagons_add_power
                 # CABBAGE - THIS IS OFF BY 5 - PROBABLY THE RAILBUS VARIANTS? - MIGHT BE THAT _buyable_variant_group_id is not set correctly?
-                or consist._buyable_variant_group_id is not None
+                or model_variant._buyable_variant_group_id is not None
             ):
-                not_really_engines.append(consist)
+                not_really_engines.append(model_variant)
             else:
-                really_engines.append(consist)
+                really_engines.append(model_variant)
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
@@ -178,16 +203,17 @@ class DocHelper(object):
     def wagon_model_counts(self, roster):
         # some wagons aren't really wagons
         # - randomised wagons, which just compose a set of choices from other wagons
+        # CABBAGE SHOULD BE CATALOGUE BASED
         really_wagons = []
         not_really_wagons = []
-        for consist in roster.wagon_consists:
-            if not consist.is_default_model_variant:
+        for model_variant in roster.wagon_consists:
+            if not model_variant.is_default_model_variant:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
-            if getattr(consist.gestalt_graphics, "random_vehicle_map_type", None):
-                not_really_wagons.append(consist)
+            if getattr(model_variant.gestalt_graphics, "random_vehicle_map_type", None):
+                not_really_wagons.append(model_variant)
             else:
-                really_wagons.append(consist)
+                really_wagons.append(model_variant)
         really_wagons_count = len(really_wagons)
         not_really_wagons_count = len(not_really_wagons)
         total_count = really_wagons_count + not_really_wagons_count
@@ -243,103 +269,35 @@ class DocHelper(object):
             "COLOUR_WHITE": "White",
         }
 
-    def cabbage_get_docs_livery_variants(self, catalogue):
-        # CABBAGE - SHOULD BE REMOVABLE - consumers can be refactored
-        # dark blue / dark blue and red / white are defaults
-        variants_config = []
-
-        if catalogue.factory.model_type_cls.is_wagon_for_docs:
-            print(catalogue.default_entry)
-
-        """
-        if consist.is_wagon_for_docs:
-            # optimise output by only generating one livery image for wagons, as we had 13k images in static dir, many of them empty images for wagon variants
-            buyable_variants_for_docs = consist.cabbage_buyable_variants[0:1]
-        else:
-            buyable_variants_for_docs = consist.cabbage_buyable_variants
-
-        for buyable_variant in buyable_variants_for_docs:
-            # CABBAGE SHIM - THIS DOESN'T WORK, NEED TO REFACTOR buyable_variants_for_docs and work from factory and catalogue
-            livery_def = consist.catalogue_entry.livery_def
-
-            if isinstance(livery_def, dict):
-                # CABBAGE REFACTORING SHIM
-                livery = livery_def
-            else:
-                livery = {"docs_image_input_cc": livery_def.docs_image_input_cc, "colour_set": livery_def.colour_set}
-
-            # docs_image_input_cc is mandatory for each livery, fail if it's not present
-            if "docs_image_input_cc" not in livery.keys():
-                raise KeyError(consist + livery)
-            docs_image_input_cc = livery["docs_image_input_cc"].copy()
-            # as of Dec 2022 only the default livery has per-vehicle extendable colour combos
-            # all other liveries have the examples baked into the livery
-            # CABBAGE - WE SHOULD BE ABLE TO DROP THIS??
-            if consist.is_default_model_variant:
-                docs_image_input_cc.extend(
-                    getattr(
-                        consist.gestalt_graphics,
-                        "default_livery_extra_docs_examples",
-                        [],
-                    )
-                )
-            for cc_remap_pair in docs_image_input_cc:
-                result = {}
-                livery_name = (
-                    "variant_"
-                    + str(consist.catalogue_entry.index)
-                    + "_"
-                    + self.get_livery_file_substr(cc_remap_pair)
-                )
-                result["livery_name"] = livery_name
-                # handle possible remap of CC1
-                if livery.get("remap_to_cc", None) is not None:
-                    CC1_remap = livery["remap_to_cc"]["company_colour1"]
-                    CC2_remap = livery["remap_to_cc"]["company_colour2"]
-                    if CC1_remap == "company_colour1":
-                        CC1_remap = cc_remap_pair[0]
-                    if CC1_remap == "company_colour2":
-                        CC1_remap = cc_remap_pair[1]
-                    if CC2_remap == "company_colour1":
-                        CC2_remap = cc_remap_pair[0]
-                    if CC2_remap == "company_colour2":
-                        CC2_remap = cc_remap_pair[1]
-                else:
-                    CC1_remap = cc_remap_pair[0]
-                    CC2_remap = cc_remap_pair[1]
-                result["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
-                result["docs_image_input_cc"] = cc_remap_pair
-                result["buyable_variant"] = buyable_variant
-                variants_config.append(result)
-        """
-        return variants_config
-
     def get_livery_file_substr(self, cc_pair):
         result = []
         for colour_name in cc_pair:
             result.append(colour_name.split("COLOUR_")[1])
         return ("_").join(result).lower()
 
-    def get_subrole_child_branches(self, consists, base_track_type_name, role):
+    def get_subrole_child_branches(self, model_variants, base_track_type_name, role):
         result = []
-        for consist in consists:
-            if consist.base_track_type_name == base_track_type_name:
-                if consist.subrole is not None and consist.subrole == role:
-                    result.append(consist.subrole_child_branch_num)
+        for model_variant in model_variants:
+            if model_variant.base_track_type_name == base_track_type_name:
+                if model_variant.subrole is not None and model_variant.subrole == role:
+                    result.append(model_variant.subrole_child_branch_num)
         return set(result)
 
-    def filter_out_randomised_wagon_consists(self, wagon_consists):
+    def filter_out_randomised_wagon_model_variants(self, wagon_model_variants):
+        # CABBAGE ONLY ONE CALLER - JUST INLINE IT?
         result = []
-        for wagon_consist in wagon_consists:
+        for wagon_model_variant in wagon_model_variants:
             # extensible excludes as needed
-            if wagon_consist.gestalt_graphics.__class__.__name__ not in [
+            if wagon_model_variant.gestalt_graphics.__class__.__name__ in [
                 "GestaltGraphicsRandomisedWagon",
                 "GestaltGraphicsCaboose",
             ]:
-                result.append(wagon_consist)
+                continue
+            result.append(wagon_model_variant)
         return result
 
     def get_vehicle_images_json(self, roster):
+        # CABBAGE, SHOULD BE ON CATALOGUES
         # returns json formatted in various ways for randomising images according to various criteria
         # does not sort by roster as of July 2020
         result = {
@@ -356,9 +314,9 @@ class DocHelper(object):
             ] = defaultdict(list)
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
-        # parse the engine and wagon consists into a consistent structure
+        # parse the engine and wagon model variants into a consistent structure
         engines = ("engines", roster.engine_consists_excluding_clones)
-        wagon_consists = self.filter_out_randomised_wagon_consists(
+        wagon_consists = self.filter_out_randomised_wagon_model_variants(
             roster.wagon_consists
         )
         wagons = ("wagons", wagon_consists)
@@ -366,13 +324,13 @@ class DocHelper(object):
         # this code repeats for both engines and wagons, but with different source lists
         for vehicle_type, vehicle_consists in [engines, wagons]:
             for consist in vehicle_consists:
-                # CABBAGE JFDI FILTER OUT NON-DEFAULT.  MIGHT BE NICE THOUGH TO INCLUDE ENGINE LIVERIES?
+                # CABBAGE JFDI FILTER OUT NON-DEFAULT.  CONVERT ALL OF THIS TO USE CATALOGUES?
                 if not consist.is_default_model_variant:
                     continue
                 vehicle_data = [
                     consist.model_id,
                     consist.id,
-                    str(self.docs_sprite_width(consist)),
+                    str(self.docs_sprite_width(consist.catalogue_entry.catalogue)),
                     consist.base_numeric_id,
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
@@ -403,12 +361,13 @@ class DocHelper(object):
         result["subclass_props"].append(prop_name)
         return result
 
-    def unpack_name_string(self, consist):
+    def unpack_name_string(self, catalogue):
+        default_model_variant = catalogue.default_model_variant_from_roster
         # engines have an untranslated name defined via name, wagons use a translated string
-        if consist.name is not None:
-            return consist.name
+        if default_model_variant.name is not None:
+            return default_model_variant.name
         else:
-            name_parts = consist.get_name_parts(context="docs")
+            name_parts = default_model_variant.get_name_parts(context="docs")
             result = []
             for name_part in name_parts:
                 if name_part is not None:
@@ -420,65 +379,91 @@ class DocHelper(object):
         # remove any additional hint text (assumes a fixed format of 'role{BLACK} - optional hint text'
         return role_string.split("{BLACK}")[0]
 
-    def get_role_string_for_consist(self, consist, badge_manager):
-        role_string_name = badge_manager.get_badge_by_label(consist.role_badge).name
+    def get_role_string_from_catalogue(self, catalogue, badge_manager):
+        role_string_name = badge_manager.get_badge_by_label(
+            catalogue.default_model_variant_from_roster.role_badge
+        ).name
         return self.clean_role_string(self.lang_strings[role_string_name])
 
     def get_role_string_from_subrole(self, subrole, badge_manager):
-        # used in docs for headers, no consist available
+        # used in docs for headers, no model variant available
         for role, subroles in global_constants.role_subrole_mapping.items():
             if subrole in subroles:
                 role_string_name = badge_manager.get_badge_by_label("role/" + role).name
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
-    def get_replaced_by_name(self, replacement_model_id, consists):
-        for consist in consists:
-            if consist.id == replacement_model_id:
-                return self.unpack_name_string(consist)
+    def get_replaced_by_name(self, replacement_model_id, model_variants):
+        # CABBAGE - REPLACED BY IS CATALOGUE? OR INTERPOLATED
+        for model_variant in model_variants:
+            if model_variant.id == replacement_model_id:
+                return self.unpack_name_string(model_variant.catalogue_entry.catalogue)
 
-    def consist_has_direct_replacment(self, consist):
-        if consist.replacement_consist.subrole != consist.subrole:
+    def consist_has_direct_replacment(self, model_variant):
+        if model_variant.replacement_consist.subrole != model_variant.subrole:
             return False
         elif (
-            consist.replacement_consist.subrole_child_branch_num
-            != consist.subrole_child_branch_num
+            model_variant.replacement_consist.subrole_child_branch_num
+            != model_variant.subrole_child_branch_num
         ):
             return False
-        elif consist.replacement_consist.gen != consist.gen + 1:
+        elif model_variant.replacement_consist.gen != model_variant.gen + 1:
             return False
         else:
             return True
 
-    def power_formatted_for_docs(self, consist):
-        if consist.wagons_add_power:
-            return [str(consist.cab_power) + " hp"]
-        elif consist.power_by_power_source is not None:
+    def power_formatted_for_docs(self, catalogue):
+        default_model_variant = catalogue.default_model_variant_from_roster
+        if default_model_variant.wagons_add_power:
+            return [str(default_model_variant.cab_power) + " hp"]
+        elif default_model_variant.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             # !! could be global_constants.power_source
             result = []
-            for power_data in consist.vehicle_power_source_tree:
+            for power_data in default_model_variant.vehicle_power_source_tree:
                 power_source_name = self.lang_strings[
                     "STR_POWER_SOURCE_" + power_data[0]
                 ]
-                power_value = str(consist.power_by_power_source[power_data[0]]) + " hp"
+                power_value = (
+                    str(default_model_variant.power_by_power_source[power_data[0]])
+                    + " hp"
+                )
                 result.append(power_source_name + " " + power_value)
             return result
         else:
-            return [str(consist.power) + " hp"]
+            return [str(default_model_variant.power) + " hp"]
 
-    def speed_formatted_for_docs(self, consist):
-        result = [str(consist.speed) + " mph"]
-        if consist.lgv_capable:
-            result.append(str(consist.speed_on_lgv) + " mph (LGV)")
+    def speed_formatted_for_docs(self, catalogue):
+        default_model_variant = catalogue.default_model_variant_from_roster
+        if default_model_variant.speed == None:
+            # unlimited speed
+            return "No limit"
+        result = [str(default_model_variant.speed) + " mph"]
+        if default_model_variant.lgv_capable:
+            result.append(str(default_model_variant.speed_on_lgv) + " mph (LGV)")
         return " / ".join(result)
+
+    def capacity_formatted_for_docs(self, catalogue):
+        default_model_variant = catalogue.default_model_variant_from_roster
+        capacity = sum(
+            [
+                unit.default_cargo_capacity
+                for unit in catalogue.default_model_variant_from_roster.units
+            ]
+        )
+        # CABBAGE - we could attempt to find better units from the model type subclass?  At least for pax and mail?
+        # default to t for tonnes, although this doesn't work for liquids, passengers etc
+        return f"{capacity} t"
 
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
+        # CABBAGE 'vehicle' or 'model'?
         for vehicle in subclass["vehicles"]:
             result = {"vehicle": {}, "subclass_props": []}
             result = self.fetch_prop(
-                result, "Vehicle Name", self.unpack_name_string(vehicle)
+                result,
+                "Vehicle Name",
+                self.unpack_name_string(vehicle.catalogue_entry.catalogue),
             )
             result = self.fetch_prop(result, "Gen", vehicle.gen)
             if vehicle.subrole is not None:
@@ -503,6 +488,7 @@ class DocHelper(object):
         return props_to_print
 
     def get_base_numeric_id(self, consist):
+        # used for a lambda sort function
         return consist.base_numeric_id
 
     def get_active_nav(self, doc_name, nav_link):

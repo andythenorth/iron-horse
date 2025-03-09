@@ -108,7 +108,7 @@ def render_docs_vehicle_details(
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.id
-        consists = roster.consists_by_catalogue[catalogue.id]['consists']
+        consists = roster.consists_by_catalogue[catalogue.id]["consists"]
 
         doc = template(
             roster=roster,
@@ -156,12 +156,14 @@ def render_docs_images(
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
             # we *do* want docs images for all trailer model variants
             # CABBAGE cab consist stuff isn't working right yet - see Blaze is broken (should be more trailers)
-            if (not consist.is_default_model_variant) and (consist.model_def.cab_id is None):
+            if (not consist.is_default_model_variant) and (
+                consist.model_def.cab_id is None
+            ):
                 continue
 
         intermediate_image = Image.new(
             "P",
-            (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
+            (doc_helper.docs_sprite_width(model_variant=consist), doc_helper.docs_sprite_height),
             255,
         )
         intermediate_image.putpalette(dos_palette)
@@ -182,14 +184,14 @@ def render_docs_images(
             box=(
                 consist.buy_menu_x_loc,
                 10 + y_offset,
-                consist.buy_menu_x_loc + doc_helper.docs_sprite_width(consist),
+                consist.buy_menu_x_loc + doc_helper.docs_sprite_width(model_variant=consist),
                 10 + y_offset + doc_helper.docs_sprite_height,
             )
         )
         crop_box_dest = (
             0,
             0,
-            doc_helper.docs_sprite_width(consist),
+            doc_helper.docs_sprite_width(model_variant=consist),
             doc_helper.docs_sprite_height,
         )
         intermediate_image.paste(
@@ -376,7 +378,7 @@ def main():
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
-    # note we remove any consists that are clones, we don't need them in docs
+    # note we remove any model variants that are clones, we don't need them in docs
     consists = [
         consist
         for consist in roster.consists_in_buy_menu_order

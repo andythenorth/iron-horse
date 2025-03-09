@@ -1,4 +1,4 @@
-<tal:title define="global title python: doc_helper.unpack_name_string(default_model_variant) + ' - ' + roster.str_grf_name" />
+<tal:title define="global title python: doc_helper.unpack_name_string(catalogue) + ' - ' + roster.str_grf_name" />
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
 <!--! this page uses a catalogue as main context, and a default_model_variant is also in scope as needed -->
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="span10 offset1">
                 <h2>
-                    ${doc_helper.unpack_name_string(default_model_variant)}
+                    ${doc_helper.unpack_name_string(catalogue)}
                     ${'(' + doc_helper.lang_strings[default_model_variant.str_name_suffix] + ')' if default_model_variant.str_name_suffix is not None else None}
                     <small>Vehicle Info</small>
                 </h2>
@@ -30,7 +30,7 @@
                                 style="width:${2 * doc_helper.docs_sprite_max_width};
                                        display:inline-block;">
                                 <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                     width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                     width="${2 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                      height="${2 * doc_helper.docs_sprite_height}" />
                             </div>
                         </tal:cc_recolour>
@@ -42,7 +42,7 @@
                                 style="width:${4 * doc_helper.docs_sprite_max_width};
                                        display:inline-block;">
                                 <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                     width="${4 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                     width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                      height="${4 * doc_helper.docs_sprite_height}" />
                             </div>
                         </tal:cc_recolour>
@@ -129,19 +129,19 @@
                     <tbody>
                         <tr>
                             <th>Role</th>
-                            <td>${doc_helper.get_role_string_for_consist(default_model_variant, iron_horse.badge_manager)}</td>
+                            <td>${doc_helper.get_role_string_from_catalogue(catalogue, iron_horse.badge_manager)}</td>
                         </tr>
                         <tr>
                             <th>Intro year / Designed</th>
-                            <td>${default_model_variant.intro_year}</td>
+                            <td>${catalogue.factory.intro_year}</td>
                         </tr>
                         <tr>
                             <th>Max. Speed</th>
-                            <td>${doc_helper.speed_formatted_for_docs(default_model_variant)}</td>
+                            <td>${doc_helper.speed_formatted_for_docs(catalogue)}</td>
                         </tr>
                         <tr>
                             <th>Power</th>
-                            <td>${" / ".join(doc_helper.power_formatted_for_docs(default_model_variant))}</td>
+                            <td>${" / ".join(doc_helper.power_formatted_for_docs(catalogue))}</td>
                         </tr>
                         <tr>
                             <th>Weight</th>
@@ -214,7 +214,7 @@
                                         <div class="vehicle-image"
                                             style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
                                             <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                 width="${3 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                                 width="${3 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                                  height="${3 * doc_helper.docs_sprite_height}" />
                                         </div>
                                         <div style="display:block;">
@@ -245,7 +245,7 @@
                             <tr>
                                 <th class="livery-or-trailers-table-first-col">
                                     CABBAGE broken name
-                                    <!--!<div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_model_variant)}</div>-->
+                                    <!--!<div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue_consist_mapping['catalogue'])}</div>-->
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
                                     <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_consist_mapping['consists']">
@@ -255,7 +255,7 @@
                                                     style="width:${2 * doc_helper.docs_sprite_max_width};
                                                            display:inline-block;">
                                                     <img src="static/img/${trailer_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                         width="${2 * doc_helper.docs_sprite_width(trailer_model_variant)}"
+                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_consist_mapping['catalogue'])}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
                                             </tal:livery_examples>
@@ -289,7 +289,7 @@
                                             <a href="${replaced_consist.model_id}.html">
                                                 <div class="vehicle-image">
                                                     <img src="static/img/${replaced_consist.id}_variant_0_red_white.png"
-                                                         width="${2 * doc_helper.docs_sprite_width(replaced_consist)}"
+                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=replaced_consist.catalogue_entry.catalogue)}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
                                                  ${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}
@@ -305,10 +305,10 @@
                             <td style="text-align:center; vertical-align:middle;">
                                 <div class="vehicle-image">
                                     <img src="static/img/${default_model_variant.id}_variant_0_red_white.png"
-                                         width="${4 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                         width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                          height="${4 * doc_helper.docs_sprite_height}" />
                                 </div>
-                                ${doc_helper.unpack_name_string(default_model_variant)}
+                                ${doc_helper.unpack_name_string(catalogue)}
                                 <br />
                                 <a href="tech_tree_table_red.html#${default_model_variant.id}">See in Tech Tree</a>
                             </td>
@@ -319,7 +319,7 @@
                                         <a href="${default_model_variant.replacement_consist.model_id}.html">
                                             <div class="vehicle-image">
                                                 <img src="static/img/${default_model_variant.replacement_consist.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(default_model_variant.replacement_consist)}"
+                                                     width="${2* doc_helper.docs_sprite_width(catalogue=default_model_variant.replacement_consist.catalogue_entry.catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
                                              ${doc_helper.get_replaced_by_name(default_model_variant.replacement_consist.id, consists)}
@@ -342,7 +342,7 @@
                                         <a href="${similar_default_model_variant.id}.html">
                                             <div class="vehicle-image">
                                                 <img src="static/img/${similar_default_model_variant.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(similar_default_model_variant)}"
+                                                     width="${2* doc_helper.docs_sprite_width(catalogue=similar_default_model_variant.catalogue_entry.catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
                                              ${doc_helper.get_replaced_by_name(similar_default_model_variant.id, consists)}
