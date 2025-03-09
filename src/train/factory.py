@@ -205,10 +205,6 @@ class ModelVariantFactory:
             factory=self,
             catalogue_entry=catalogue_entry,
         )
-        # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
-        self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
-            self.model_def.unit_defs
-        )
 
         # orchestrate addition of units
         for counter, unit_def in enumerate(self.model_def.unit_defs):
