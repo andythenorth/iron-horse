@@ -28,7 +28,7 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     <!--! there is some faffy optimisation of colour mapping via a lookup table to reduce parameterised procedure calls (which are expensive in grf size) -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, ${unit.id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-            ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.unit.consist.get_wagon_recolour_colour_set_num()};
+            ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.unit.model_variant.get_wagon_recolour_colour_set_num()};
         </tal:randomisation_candidates>
     }
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant, 0) {
@@ -37,7 +37,7 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     <!--! purchase colour mapping is just taken from first candidate -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_purchase, 0) {
         return switch_wagon_recolour_sets(
-            ${randomisation_candidates[0].unit.consist.get_wagon_recolour_colour_set_num(context="purchase")}
+            ${randomisation_candidates[0].unit.model_variant.get_wagon_recolour_colour_set_num(context="purchase")}
         );
     }
 </tal:optimise_wagon_randomisation_candidates>

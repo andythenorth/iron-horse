@@ -631,4 +631,4 @@ class BuyableVariantGroup(object):
     @property
     def parent_consist(self):
         # convenience function, note also parent_vehicle, which is often what we want
-        return self.parent_vehicle.consist
+        return self.parent_vehicle.model_variant

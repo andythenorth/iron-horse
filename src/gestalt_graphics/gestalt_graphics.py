@@ -182,8 +182,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             "wagon_randomisation_candidates"
         ][0]:
             # ^^^ !! picking the first item off is hax
-            if unit_variant.unit.consist not in candidate_consists:
-                candidate_consists.append(unit_variant.unit.consist)
+            if unit_variant.unit.model_variant not in candidate_consists:
+                candidate_consists.append(unit_variant.unit.model_variant)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022

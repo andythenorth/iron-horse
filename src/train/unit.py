@@ -14,23 +14,21 @@ class UnitBase(object):
     Base class for all types of units
     """
 
-    def __init__(self, *, consist, unit_def, id, numeric_id):
-        # unit def is private, the public interface shouldn't use it, wrap @property methods around it as needed
+    def __init__(self, *, model_variant, unit_def, id, numeric_id):
         self.unit_def = unit_def
-        self.consist = consist
+        self.model_variant = model_variant
         self.id = id
         self.numeric_id = numeric_id
-        # print(numeric_id)
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
-        if len(self.consist.unique_units) == 0:
+        if len(self.model_variant.unique_units) == 0:
             self.cabbage_numeric_id = 0
         else:
-            self.cabbage_numeric_id = len(self.consist.unique_units)
+            self.cabbage_numeric_id = len(self.model_variant.unique_units)
         # CABBAGE
-        # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated vehicles in Iron Horse 1
+        # !! the need to copy cargo refits from the model_variant is legacy from the default multi-unit articulated vehicles in Iron Horse 1
         # !! could likely be refactored !!
-        self.label_refits_allowed = self.consist.label_refits_allowed
-        self.label_refits_disallowed = self.consist.label_refits_disallowed
+        self.label_refits_allowed = self.model_variant.label_refits_allowed
+        self.label_refits_disallowed = self.model_variant.label_refits_disallowed
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = "ENGINE_CLASS_STEAM"
@@ -45,7 +43,7 @@ class UnitBase(object):
 
     @property
     def cabbage_unit_id_from_model_type(self):
-        return self.consist.model_id + "_unit_" + str(self.cabbage_numeric_id)
+        return self.model_variant.model_id + "_unit_" + str(self.cabbage_numeric_id)
 
     @property
     def tail_light(self):
@@ -85,7 +83,7 @@ class UnitBase(object):
             ]
         except:
             raise Exception(
-                "get_capacity_variations" + " " + self.id + " " + self.consist.id
+                "get_capacity_variations" + " " + self.id + " " + self.model_variant.id
             )
         return result
 
@@ -106,13 +104,13 @@ class UnitBase(object):
 
     def get_pax_car_capacity(self):
         # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
+        base_capacity = self.model_variant.roster.pax_car_capacity_per_unit_length[
+            self.model_variant.base_track_type_name
+        ][self.model_variant.gen - 1]
         result = int(
             self.vehicle_length
             * base_capacity
-            * self.consist.pax_car_capacity_type["multiplier"]
+            * self.model_variant.pax_car_capacity_type["multiplier"]
         )
         return result
 
@@ -124,9 +122,9 @@ class UnitBase(object):
 
     def get_freight_car_capacity(self):
         # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
+        base_capacity = self.model_variant.roster.freight_car_capacity_per_unit_length[
+            self.model_variant.base_track_type_name
+        ][self.model_variant.gen - 1]
         result = int(self.vehicle_length * base_capacity)
         return result
 
@@ -144,12 +142,12 @@ class UnitBase(object):
             and self.unit_def.chassis is not None
         ):
             utils.echo_message(
-                self.consist.id
+                self.model_variant.id
                 + " has units with both chassis and length properties set"
             )
         if self.unit_def.vehicle_length is None and self.unit_def.chassis is None:
             utils.echo_message(
-                self.consist.id
+                self.model_variant.id
                 + " has units with neither chassis nor length properties set"
             )
 
@@ -164,7 +162,7 @@ class UnitBase(object):
 
     @property
     def availability(self):
-        # only show vehicle in buy menu if it is first vehicle in consist
+        # only show vehicle in buy menu if it is first vehicle in model_variant
         if self.is_lead_unit_of_consist:
             return "ALL_CLIMATES"
         else:
@@ -172,7 +170,7 @@ class UnitBase(object):
 
     @property
     def is_lead_unit_of_consist(self):
-        if self.consist.units.index(self) == 0:
+        if self.model_variant.units.index(self) == 0:
             return True
         else:
             return False
@@ -188,7 +186,7 @@ class UnitBase(object):
             "asymmetric",
         ], "symmetry_type '%s' is invalid in %s" % (
             symmetry_type,
-            self.consist.id,
+            self.model_variant.id,
         )
         return symmetry_type
 
@@ -198,19 +196,19 @@ class UnitBase(object):
         misc_flags = ["TRAIN_FLAG_2CC", "TRAIN_FLAG_SPRITE_STACK"]
         if self.autorefit:
             misc_flags.append("TRAIN_FLAG_AUTOREFIT")
-        if self.consist.tilt_bonus:
+        if self.model_variant.tilt_bonus:
             misc_flags.append("TRAIN_FLAG_TILT")
-        if self.consist.train_flag_mu:
+        if self.model_variant.train_flag_mu:
             misc_flags.append("TRAIN_FLAG_MU")
         return ",".join(misc_flags)
 
     def get_extra_flags(self):
-        # CABBAGE - should this be a consist or unit method??
+        # CABBAGE - should this be a model_variant or unit method??
         extra_flags = []
-        if self.consist.buyable_variant_group is not None:
+        if self.model_variant.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
-            if self.consist.get_variant_group_parent_vehicle_id() is not None:
+            if self.model_variant.get_variant_group_parent_vehicle_id() is not None:
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
                 extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
@@ -221,11 +219,11 @@ class UnitBase(object):
         result = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
         if hasattr(self, "articulated_unit_different_class_refit_groups"):
-            # in *rare* cases an articulated unit might need different refit classes to its parent consist
+            # in *rare* cases an articulated unit might need different refit classes to its parent model_variant
             class_refit_groups = self.articulated_unit_different_class_refit_groups
         else:
-            # by default get the refit classes from the consist
-            class_refit_groups = self.consist.class_refit_groups
+            # by default get the refit classes from the model_variant
+            class_refit_groups = self.model_variant.class_refit_groups
         for class_refit_group in class_refit_groups:
             for cargo_class in global_constants.base_refits_by_class[class_refit_group][
                 allow_disallow_key
@@ -239,7 +237,7 @@ class UnitBase(object):
     def loading_speed(self):
         # ottd vehicles load at different rates depending on type, train default is 5
         # Iron Horse uses 5 as default, with some vehicle types adjusting that up or down
-        return int(5 * self.consist.loading_speed_multiplier)
+        return int(5 * self.model_variant.loading_speed_multiplier)
 
     @property
     def running_cost_base(self):
@@ -251,8 +249,8 @@ class UnitBase(object):
     @property
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
-        if self.consist.roof_type is not None:
-            if self.consist.base_track_type_name == "NG":
+        if self.model_variant.roof_type is not None:
+            if self.model_variant.base_track_type_name == "NG":
                 ng_prefix = "ng_"
             else:
                 ng_prefix = ""
@@ -260,7 +258,7 @@ class UnitBase(object):
                 str(4 * self.vehicle_length)
                 + "px_"
                 + ng_prefix
-                + self.consist.roof_type
+                + self.model_variant.roof_type
             )
         else:
             return None
@@ -268,13 +266,13 @@ class UnitBase(object):
     @property
     def requires_colour_mapping_cb(self):
         # bit weird and janky, various conditions to consider eh
-        if getattr(self.consist, "use_colour_randomisation_strategies", False):
+        if getattr(self.model_variant, "use_colour_randomisation_strategies", False):
             return "use_colour_randomisation_strategies"
         elif (
-            getattr(self.consist.gestalt_graphics, "colour_mapping_switch", None)
+            getattr(self.model_variant.gestalt_graphics, "colour_mapping_switch", None)
             is not None
         ):
-            if self.consist.gestalt_graphics.colour_mapping_with_purchase:
+            if self.model_variant.gestalt_graphics.colour_mapping_with_purchase:
                 return "colour_mapping_switch_with_purchase"
         else:
             return None
@@ -299,7 +297,7 @@ class UnitBase(object):
         else:
             effect_offsets = self.default_effect_offsets
 
-        if self.consist.id == "toaster":
+        if self.model_variant.id == "toaster":
             print("TOASTER", effect_offsets)
 
         # z offset is handled independently to x, y for simplicity, option to override z offset default per vehicle
@@ -355,7 +353,7 @@ class UnitBase(object):
             ]
         )
         anim_flag = (
-            "ANIM" if self.consist.suppress_animated_pixel_warnings else "NOANIM"
+            "ANIM" if self.model_variant.suppress_animated_pixel_warnings else "NOANIM"
         )
         args = ",".join([str(y), anim_flag])
         return template_name + "(" + args + ")"
@@ -373,16 +371,16 @@ class UnitBase(object):
 
     def assert_random_reverse(self):
         # some templates don't support the random_reverse (by design, they're symmetrical sprites, and reversing bloats the template)
-        if self.consist.random_reverse:
-            if hasattr(self.consist, "gestalt_graphics"):
+        if self.model_variant.random_reverse:
+            if hasattr(self.model_variant, "gestalt_graphics"):
                 for nml_template in [
                     "vehicle_box_car_with_opening_doors.pynml",
                     "vehicle_with_cargo_specific_liveries.pynml",
                     "vehicle_consist_position_dependent.pynml",
                 ]:
-                    assert self.consist.gestalt_graphics.nml_template != nml_template, (
+                    assert self.model_variant.gestalt_graphics.nml_template != nml_template, (
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s"
-                        % (self.consist.id, nml_template)
+                        % (self.model_variant.id, nml_template)
                     )
 
     def assert_cargo_labels(self, cargo_labels):
@@ -402,19 +400,19 @@ class UnitBase(object):
         self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()
         # test interpolated gen and intro_year
-        assert self.consist.gen, (
-            "%s consist.gen is None, which is invalid.  Set gen or intro_year" % self.id
+        assert self.model_variant.gen, (
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
-        assert self.consist.intro_year, (
-            "%s consist.gen is None, which is invalid.  Set gen or intro_year" % self.id
+        assert self.model_variant.intro_year, (
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
         # templating
-        template_name = self.consist.gestalt_graphics.nml_template
+        template_name = self.model_variant.gestalt_graphics.nml_template
         template = templates[template_name]
         nml_result = template(
             unit=self,
-            consist=self.consist,
-            catalogue_entry=self.consist.catalogue_entry,
+            consist=self.model_variant,
+            catalogue_entry=self.model_variant.catalogue_entry,
             global_constants=global_constants,
             utils=utils,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
@@ -480,12 +478,12 @@ class CabControlPaxCarUnit(UnitBase):
 
 class CombineUnitMailBase(UnitBase):
     """
-    Mail unit for a combine vehicle (articulated consist with mail + pax capacity)
+    Mail unit for a combine vehicle (articulated vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # usually refit classes come from consist, but we special case to the unit for this combine coach
+        # usually refit classes come from model_variant, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = [
             "mail"
         ]  # note mail only, no other express cargos
@@ -498,12 +496,12 @@ class CombineUnitMailBase(UnitBase):
 
 class CombineUnitPaxBase(UnitBase):
     """
-    Pax unit for a combine vehicle (articulated consist with mail + pax capacity)
+    Pax unit for a combine vehicle (articulated vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # usually refit classes come from consist, but we special case to the unit for this combine coach
+        # usually refit classes come from model_variant, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ["pax"]
 
     @property
@@ -513,7 +511,7 @@ class CombineUnitPaxBase(UnitBase):
 
 class AutoCoachCombineUnitMail(CombineUnitMailBase):
     """
-    Mail unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    Mail unit for a combine auto coach (articulated driving cab vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
@@ -528,7 +526,7 @@ class AutoCoachCombineUnitMail(CombineUnitMailBase):
 
 class AutoCoachCombineUnitPax(CombineUnitPaxBase):
     """
-    Pax unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    Pax unit for a combine auto coach (articulated driving cab vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
@@ -543,7 +541,7 @@ class AutoCoachCombineUnitPax(CombineUnitPaxBase):
 
 class DieselRailcarCombineUnitMail(CombineUnitMailBase):
     """
-    Mail unit for a combine diesel railcar (articulated consist with mail + pax capacity)
+    Mail unit for a combine diesel railcar (articulated vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
@@ -558,7 +556,7 @@ class DieselRailcarCombineUnitMail(CombineUnitMailBase):
 
 class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
     """
-    Pax unit for a combine diesel railcar (articulated consist with mail + pax capacity)
+    Pax unit for a combine diesel railcar (articulated vehicle with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
@@ -723,7 +721,7 @@ class ElectroDieselEngineUnit(UnitBase):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
         # electro-diesels are complex eh?
-        self.consist.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
+        self.model_variant.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
         # almost all electro-diesel engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
@@ -744,7 +742,7 @@ class ElectroDieselRailcarBaseUnit(UnitBase):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
         # electro-diesels are complex eh?
-        self.consist.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
+        self.model_variant.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
 
@@ -937,7 +935,6 @@ class CarUnitBase(UnitBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist = kwargs["consist"]
         # most wagons are symmetric, override per vehicle or subclass as needed
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
 
@@ -956,11 +953,11 @@ class CarUnitBase(UnitBase):
 
     @property
     def weight(self):
-        # set weight based on capacity  * a multiplier from consist * roster gen factor
+        # set weight based on capacity  * a multiplier from model_variant * roster gen factor
         return int(
-            self.consist.weight_factor
+            self.model_variant.weight_factor
             * self.default_cargo_capacity
-            * self.consist.roster.train_car_weight_factors[self.consist.gen - 1]
+            * self.model_variant.roster.train_car_weight_factors[self.model_variant.gen - 1]
         )
 
 
@@ -987,7 +984,7 @@ class CabooseCarUnit(CarUnitBase):
     @property
     def weight(self):
         # special handling of weight
-        weight_factor = 3 if self.consist.base_track_type_name == "NG" else 5
+        weight_factor = 3 if self.model_variant.base_track_type_name == "NG" else 5
         return weight_factor * self.vehicle_length
 
     @property
@@ -1023,7 +1020,7 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
             self.unit_def.tail_light is not None
-        ), "%s consist has a unit without tail_light set, which is required for %s" % (
+        ), "%s model_variant has a unit without tail_light set, which is required for %s" % (
             self.id,
             self.__class__.__name__,
         )
@@ -1041,7 +1038,7 @@ class PaxRestaurantCarUnit(PaxCarUnit):
     @property
     def weight(self):
         # special handling of weight - let's just use 37 + gen for Pony, split that later for other rosters if needed
-        return 37 + self.consist.gen
+        return 37 + self.model_variant.gen
 
 
 class ExpressCarUnit(CarUnitBase):
@@ -1068,7 +1065,7 @@ class ExpressIntermodalCarUnit(ExpressCarUnit):
         self._symmetry_type = "asymmetric"
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
-            + self.consist.spritelayer_cargo_layers[0]
+            + self.model_variant.spritelayer_cargo_layers[0]
         )
 
 
@@ -1097,7 +1094,7 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
             self.unit_def.tail_light is not None
-        ), "%s consist has a unit without tail_light set, which is required for %s" % (
+        ), "%s model_variant has a unit without tail_light set, which is required for %s" % (
             self.id,
             self.__class__.__name__,
         )
@@ -1116,11 +1113,11 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         self._symmetry_type = "asymmetric"
         utils.echo_message(
             "AutomobileCarAsymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-            + self.consist.id
+            + self.model_variant.id
         )
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
-            + self.consist.spritelayer_cargo_layers[0]
+            + self.model_variant.spritelayer_cargo_layers[0]
         )
 
 
@@ -1136,11 +1133,11 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         self._symmetry_type = "symmetric"
         utils.echo_message(
             "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-            + self.consist.id
+            + self.model_variant.id
         )
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
-            + self.consist.spritelayer_cargo_layers[0]
+            + self.model_variant.spritelayer_cargo_layers[0]
         )
 
 
@@ -1156,15 +1153,15 @@ class FreightCarUnit(CarUnitBase):
     def capacity(self):
         if self.unit_def.capacity is not None:
             print(
-                self.consist.id,
+                self.model_variant.id,
                 self.id,
                 " has a capacity set in init - possibly incorrect",
                 self.unit_def.capacity,
             )
         # magic to set freight car capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
+        base_capacity = self.model_variant.roster.freight_car_capacity_per_unit_length[
+            self.model_variant.base_track_type_name
+        ][self.model_variant.gen - 1]
         return self.vehicle_length * base_capacity
 
 
@@ -1245,7 +1242,7 @@ class IntermodalCarUnit(FreightCarUnit):
         self._symmetry_type = "asymmetric"
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
-            + self.consist.spritelayer_cargo_layers[0]
+            + self.model_variant.spritelayer_cargo_layers[0]
         )
 
 

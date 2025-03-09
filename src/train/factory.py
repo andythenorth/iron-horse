@@ -225,7 +225,7 @@ class ModelVariantFactory:
             # print(unit_cls, unit)
             # now add the units
             unit = unit_cls(
-                consist=model_variant,
+                model_variant=model_variant,
                 unit_def=unit_def,
                 id=catalogue_entry.unit_variant_ids[counter],
                 numeric_id=catalogue_entry.unit_numeric_ids[counter],
