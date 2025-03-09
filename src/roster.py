@@ -104,16 +104,6 @@ class Roster(object):
         ]
 
     @property
-    def engine_model_variants_excluding_clones(self):
-        # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
-        # this is a convenience wrapper to knock out any clones from engine list
-        return [
-            engine_model_variant
-            for engine_model_variant in self.engine_model_variants
-            if engine_model_variant.is_clone == False
-        ]
-
-    @property
     def wagon_model_variants_by_base_id(self):
         result = {}
         for wagon_model_variant in self.wagon_model_variants:
@@ -560,18 +550,6 @@ class Roster(object):
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:
                     buyable_variant_group.parent_group = candidate_parent_group
-
-    def cabbage_get_buyable_variants_in_buy_menu_order(self):
-        # relies on the buyable variant group order already being sorted when it's constructed from model_variants_in_buy_menu_order
-        # as a convenience, this flattens that order to a list that's easy to iterate over in template
-        result = []
-        for (
-            buyable_variant_group_id,
-            buyable_variant_group,
-        ) in self.buyable_variant_groups.items():
-            for buyable_variant in buyable_variant_group.buyable_variants:
-                result.append(buyable_variant)
-        return result
 
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
