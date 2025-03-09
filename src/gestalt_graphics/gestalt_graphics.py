@@ -23,7 +23,7 @@ class GestaltGraphics(object):
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.render_pass_num = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
-        # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
+        # set directly by the model variant self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
         self.add_masked_overlay = False
         self.buy_menu_width_addition = 0
         # override this in subclasses as needed

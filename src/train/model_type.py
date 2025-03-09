@@ -535,11 +535,12 @@ class ModelTypeBase(object):
         # option exists to force a replacement model, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
+        # CABBAGE THIS SHOULD WORK ON CATALOGUES?  OR DEFAULT MODEL VARIANTS ONLY
         if self.model_def.replacement_model_id is not None:
-            for consist in self.roster.engine_model_variants:
+            for model_variant in self.roster.engine_model_variants:
                 # CABBAGE model_id will over-detect here as multiple variants have the same model_id
-                if consist.model_id == self.model_def.replacement_model_id:
-                    return consist
+                if model_variant.model_id == self.model_def.replacement_model_id:
+                    return model_variant
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
                 "replacement model id "
@@ -550,21 +551,21 @@ class ModelTypeBase(object):
         else:
             similar_consists = []
             replacement_consist = None
-            for consist in self.roster.engine_model_variants:
+            for model_variant in self.roster.engine_model_variants:
                 if (
-                    (consist.subrole == self.subrole)
+                    (model_variant.subrole == self.subrole)
                     and (
-                        consist.subrole_child_branch_num
+                        model_variant.subrole_child_branch_num
                         == self.subrole_child_branch_num
                     )
-                    and (consist.base_track_type_name == self.base_track_type_name)
+                    and (model_variant.base_track_type_name == self.base_track_type_name)
                 ):
-                    similar_consists.append(consist)
-            for consist in sorted(
-                similar_consists, key=lambda consist: consist.intro_year
+                    similar_consists.append(model_variant)
+            for model_variant in sorted(
+                similar_consists, key=lambda model_variant: model_variant.intro_year
             ):
-                if consist.intro_year > self.intro_year:
-                    replacement_consist = consist
+                if model_variant.intro_year > self.intro_year:
+                    replacement_consist = model_variant
                     break
             return replacement_consist
 
@@ -573,31 +574,31 @@ class ModelTypeBase(object):
         # note that this depends on replacement_consist property in other model defs, and may not work in all cases
         # a model can replace more than one other model
         result = []
-        for consist in self.roster.engine_model_variants:
-            if consist.replacement_consist is not None:
+        for model_variant in self.roster.engine_model_variants:
+            if model_variant.replacement_consist is not None:
                 # CABBAGE - THIS WILL OVER-DETECT as model_id is used by more than one model variant
-                if consist.replacement_consist.model_id == self.model_id:
-                    result.append(consist)
+                if model_variant.replacement_consist.model_id == self.model_id:
+                    result.append(model_variant)
         return result
 
     @property
     def similar_consists(self):
         # quite a crude guess at similar engines by subrole
         result = []
-        for consist in self.roster.engine_model_variants:
+        for model_variant in self.roster.engine_model_variants:
             if (
-                (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.gen == self.gen)
-                and (consist != self)
-                and (consist.model_def.cloned_from_model_def is None)
-                and (getattr(consist, "cab_id", None) is None)
+                (model_variant.base_track_type_name == self.base_track_type_name)
+                and (model_variant.gen == self.gen)
+                and (model_variant != self)
+                and (model_variant.model_def.cloned_from_model_def is None)
+                and (getattr(model_variant, "cab_id", None) is None)
             ):
                 if (
-                    (consist.subrole == self.subrole)
-                    or (0 <= (consist.power - self.power) < 500)
-                    or (0 <= (self.power - consist.power) < 500)
+                    (model_variant.subrole == self.subrole)
+                    or (0 <= (model_variant.power - self.power) < 500)
+                    or (0 <= (self.power - model_variant.power) < 500)
                 ):
-                    result.append(consist)
+                    result.append(model_variant)
         return result
 
     @property
@@ -1994,7 +1995,7 @@ class MailEngineExpressRailcar(MailEngineBase):
         else:
             self.roof_type = "pax_mail_smooth"
         # position variants
-        # * unit with two cabs (will never be used if the specific consist is articulated)
+        # * unit with two cabs (will never be used if the specific vehicle is articulated)
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
@@ -8668,7 +8669,7 @@ class BuyableVariant(object):
     Simple class to hold buyable variants LEGACY CABBAGE.
     """
 
-    def __init__(self, consist):
-        self.consist = consist
+    def __init__(self, model_variant):
+        self.model_variant = model_variant
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order

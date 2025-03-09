@@ -151,48 +151,47 @@ def render_docs_images(
 
     docs_image_variants = []
 
-    for consist in consist_catalogue_mapping["model_variants"]:
-        if consist.is_wagon_for_docs:
+    for model_variant in consist_catalogue_mapping["model_variants"]:
+        if model_variant.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
             # we *do* want docs images for all trailer model variants
-            # CABBAGE cab consist stuff isn't working right yet - see Blaze is broken (should be more trailers)
-            if (not consist.is_default_model_variant) and (
-                consist.model_def.cab_id is None
+            if (not model_variant.is_default_model_variant) and (
+                model_variant.cab_id is None
             ):
                 continue
 
         intermediate_image = Image.new(
             "P",
-            (doc_helper.docs_sprite_width(model_variant=consist), doc_helper.docs_sprite_height),
+            (doc_helper.docs_sprite_width(model_variant=model_variant), doc_helper.docs_sprite_height),
             255,
         )
         intermediate_image.putpalette(dos_palette)
 
-        if consist.model_def.docs_image_spriterow is not None:
-            y_offset = 30 * consist.model_def.docs_image_spriterow
+        if model_variant.model_def.docs_image_spriterow is not None:
+            y_offset = 30 * model_variant.model_def.docs_image_spriterow
         # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
-        elif consist.requires_custom_buy_menu_sprite:
-            y_offset = 30 * consist.catalogue_entry.livery_def.relative_spriterow_num
+        elif model_variant.requires_custom_buy_menu_sprite:
+            y_offset = 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
         else:
             y_offset = (
                 30
-                * consist.catalogue_entry.livery_def.relative_spriterow_num
-                * consist.gestalt_graphics.num_load_state_or_similar_spriterows
+                * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+                * model_variant.gestalt_graphics.num_load_state_or_similar_spriterows
             )
         # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
         source_vehicle_image_tmp = vehicle_spritesheet.crop(
             box=(
-                consist.buy_menu_x_loc,
+                model_variant.buy_menu_x_loc,
                 10 + y_offset,
-                consist.buy_menu_x_loc + doc_helper.docs_sprite_width(model_variant=consist),
+                model_variant.buy_menu_x_loc + doc_helper.docs_sprite_width(model_variant=model_variant),
                 10 + y_offset + doc_helper.docs_sprite_height,
             )
         )
         crop_box_dest = (
             0,
             0,
-            doc_helper.docs_sprite_width(model_variant=consist),
+            doc_helper.docs_sprite_width(model_variant=model_variant),
             doc_helper.docs_sprite_height,
         )
         intermediate_image.paste(
@@ -200,22 +199,22 @@ def render_docs_images(
         )
 
         # add pantographs if needed
-        if consist.pantograph_type is not None:
+        if model_variant.pantograph_type is not None:
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(
                 os.path.join(
                     generated_graphics_path, catalogue.id + "_pantographs_up.png"
                 )
             )
-            pan_crop_width = consist.buy_menu_width
+            pan_crop_width = model_variant.buy_menu_width
             # dual_headed is never anything but special casing to handle the OpenTTD magical behaviour eh? :)
-            if consist.dual_headed:
+            if model_variant.dual_headed:
                 pan_crop_width = pan_crop_width * 2
             pantographs_image = pantographs_spritesheet.crop(
                 box=(
-                    consist.buy_menu_x_loc,
+                    model_variant.buy_menu_x_loc,
                     10,
-                    consist.buy_menu_x_loc + pan_crop_width,
+                    model_variant.buy_menu_x_loc + pan_crop_width,
                     10 + doc_helper.docs_sprite_height,
                 )
             )
@@ -231,13 +230,13 @@ def render_docs_images(
                 pantographs_mask.crop(crop_box_dest),
             )
 
-        for cc_remap_pair in consist.catalogue_entry.livery_def.docs_image_input_cc:
+        for cc_remap_pair in model_variant.catalogue_entry.livery_def.docs_image_input_cc:
             # handle possible remap of CC1
-            if consist.catalogue_entry.livery_def.remap_to_cc is not None:
-                CC1_remap = consist.catalogue_entry.livery_def.remap_to_cc[
+            if model_variant.catalogue_entry.livery_def.remap_to_cc is not None:
+                CC1_remap = model_variant.catalogue_entry.livery_def.remap_to_cc[
                     "company_colour1"
                 ]
-                CC2_remap = consist.catalogue_entry.livery_def.remap_to_cc[
+                CC2_remap = model_variant.catalogue_entry.livery_def.remap_to_cc[
                     "company_colour2"
                 ]
                 if CC1_remap == "company_colour1":
@@ -272,7 +271,7 @@ def render_docs_images(
             output_path = os.path.join(
                 static_dir_dst,
                 "img",
-                consist.id + "_" + remap_name + ".png",
+                model_variant.id + "_" + remap_name + ".png",
             )
             dest_image.save(output_path, optimize=True, transparency=0)
             dest_image.close()
@@ -469,7 +468,7 @@ def main():
                 doc_helper,
             )
     else:
-        # Would this go faster if the pipelines from each consist were placed in MP pool, not just the catalogue?
+        # Would this go faster if the pipelines from each model were placed in MP pool, not just the catalogue?
         # probably potato / potato tbh
         pool = multiprocessing.Pool(processes=num_pool_workers)
         pool.starmap(
@@ -495,15 +494,7 @@ def main():
         utils.string_format_compile_time_deltas(start, time()),
     )
 
-    # CABBAGE MIGRATION REPORT
-    cabbage_2_buyable_variants = {}
-    for consist in consists:
-        if len(consist.cabbage_buyable_variants) > 1:
-            cabbage_2_buyable_variants[consist.id] = consist.cabbage_buyable_variants
-    print(
-        "Consists with > 1 buyable variants:",
-        str(len(cabbage_2_buyable_variants.keys())),
-    )
+    # CABBAGE - THIS IS USED TO HANDLE VISIBLE CARGO ONLY SUPPORTING ONE UNIT?
     """
     for consist in consists:
         if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":

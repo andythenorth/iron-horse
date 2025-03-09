@@ -160,7 +160,7 @@ class RosterManager(list):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
         # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consist in self.active_roster.engine_model_variants:
+        for model_variant in self.active_roster.engine_model_variants:
             # check for express-type roles, which are determined by multiple role groups
             for role in [
                 "express",
@@ -169,8 +169,8 @@ class RosterManager(list):
                 "high_power_railcar",
             ]:
                 subroles = global_constants.role_subrole_mapping[role]
-                if consist.subrole in subroles:
-                    express_engine_ids.append(consist.catalogue_entry.unit_variant_ids[0])
+                if model_variant.subrole in subroles:
+                    express_engine_ids.append(model_variant.catalogue_entry.unit_variant_ids[0])
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 
     @property
@@ -180,10 +180,10 @@ class RosterManager(list):
         # used to switch wagon company colours
         result = []
         # if we wanted cross-grf cargo sprinters then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consist in self.active_roster.engine_model_variants:
+        for model_variant in self.active_roster.engine_model_variants:
             # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
-            if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
-                result.append(consist.id)
+            if "cargo_sprinter" in getattr(model_variant, "spritelayer_cargo_layers", []):
+                result.append(model_variant.id)
         if len(result) > 255:
             raise BaseException(
                 "action 2 switch is limited to 255 values, cargo_sprinter_ids exceeds this - needs split across multiple switches"
@@ -249,9 +249,10 @@ def main():
             name="STR_BADGE_POWER_SOURCE_" + power_source,
         )
 
+    # CABBAGE - CATALOGUES THOUGH?
     for roster in roster_manager:
-        for consist in roster.model_variants_in_buy_menu_order:
-            if consist.vehicle_family_badge is not None:
+        for model_variant in roster.model_variants_in_buy_menu_order:
+            if model_variant.vehicle_family_badge is not None:
                 badge_manager.add_badge(
-                    label=consist.vehicle_family_badge,
+                    label=model_variant.vehicle_family_badge,
                 )

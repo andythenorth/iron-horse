@@ -307,19 +307,19 @@ class DocHelper(object):
 
         # this code repeats for both engines and wagons, but with different source lists
         for vehicle_type, vehicle_consists in [engines, wagons]:
-            for consist in vehicle_consists:
+            for model_variant in vehicle_consists:
                 # CABBAGE JFDI FILTER OUT NON-DEFAULT.  CONVERT ALL OF THIS TO USE CATALOGUES?
-                if not consist.is_default_model_variant:
+                if not model_variant.is_default_model_variant:
                     continue
                 vehicle_data = [
-                    consist.model_id,
-                    consist.id,
-                    str(self.docs_sprite_width(consist.catalogue_entry.catalogue)),
-                    consist.base_numeric_id,
+                    model_variant.model_id,
+                    model_variant.id,
+                    str(self.docs_sprite_width(model_variant.catalogue_entry.catalogue)),
+                    model_variant.base_numeric_id,
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
-                    consist.base_track_type_name
+                    model_variant.base_track_type_name
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
@@ -459,10 +459,6 @@ class DocHelper(object):
                 ', '.join([str(unit.loading_speed) for unit in default_model_variant.units])
             )
         return result
-
-    def get_base_numeric_id(self, consist):
-        # used for a lambda sort function
-        return consist.base_numeric_id
 
     def get_active_nav(self, doc_name, nav_link):
         return ("", "active")[doc_name == nav_link]

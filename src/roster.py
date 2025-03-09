@@ -244,20 +244,20 @@ class Roster(object):
                 matched_results = []
                 for unit_variant in unit_variants_cabbage:
                     if (
-                        unit_variant.buyable_variant.consist.cabbage_livery[
+                        unit_variant.buyable_variant.model_variant.cabbage_livery[
                             "colour_set"
                         ]
-                        == buyable_variant.consist.cabbage_livery["colour_set"]
+                        == buyable_variant.model_variant.cabbage_livery["colour_set"]
                     ):
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
                     for unit_variant in unit_variants_cabbage:
                         if (
-                            unit_variant.buyable_variant.consist.cabbage_livery[
+                            unit_variant.buyable_variant.model_variant.cabbage_livery[
                                 "colour_set"
                             ]
                             in global_constants.wagon_livery_mixes[
-                                buyable_variant.consist.cabbage_livery["colour_set"]
+                                buyable_variant.model_variant.cabbage_livery["colour_set"]
                             ]
                         ):
                             matched_results.append(unit_variant)
@@ -272,7 +272,7 @@ class Roster(object):
             raise BaseException(
                 randomisation_model_variant.id
                 + " colour set "
-                + buyable_variant.consist.cabbage_livery["colour_set"]
+                + buyable_variant.model_variant.cabbage_livery["colour_set"]
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                 + randomisation_model_variant.id
                 + " or check that randomisation candidates provide this colour set"
@@ -497,16 +497,16 @@ class Roster(object):
         for model_variant in self.model_variants_in_buy_menu_order:
             for buyable_variant in model_variant.cabbage_buyable_variants:
                 if (
-                    not buyable_variant.consist.buyable_variant_group_id
+                    not buyable_variant.model_variant.buyable_variant_group_id
                     in self.buyable_variant_groups
                 ):
                     self.buyable_variant_groups[
-                        buyable_variant.consist.buyable_variant_group_id
+                        buyable_variant.model_variant.buyable_variant_group_id
                     ] = BuyableVariantGroup(
-                        id=buyable_variant.consist.buyable_variant_group_id,
+                        id=buyable_variant.model_variant.buyable_variant_group_id,
                     )
                 self.buyable_variant_groups[
-                    buyable_variant.consist.buyable_variant_group_id
+                    buyable_variant.model_variant.buyable_variant_group_id
                 ].add_buyable_variant(buyable_variant)
         # now deal with nested groups
         # we do this after creating all the groups, as some groups need to reference other groups
@@ -635,7 +635,7 @@ class BuyableVariantGroup(object):
     @property
     def parent_vehicle(self):
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self.buyable_variants[0].consist.units[0]
+        return self.buyable_variants[0].model_variant.units[0]
 
     @property
     def parent_consist(self):

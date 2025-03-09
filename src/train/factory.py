@@ -293,7 +293,7 @@ class ModelVariantFactory:
 
     @property
     def intro_year(self):
-        # automatic intro_year, but can override by passing in kwargs for consist
+        # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
@@ -323,17 +323,16 @@ class ModelVariantFactory:
                 self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def
             )
         else:
-            # handle cloned cases by referring to the original consist factory for the path
+            # handle cloned cases by referring to the original factory for the path
             if self.model_def.cloned_from_model_def is not None:
-                # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
                     self.model_def.cloned_from_model_def.model_id
                 )
             else:
                 input_spritesheet_name_stem = self.model_id
 
-        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
-        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
+        # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
+        # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
         input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
             self.roster_id, self.roster_id_providing_module
         )
@@ -341,7 +340,7 @@ class ModelVariantFactory:
 
     @property
     def cite(self):
-        # this assumes that NG and Metro always return the same, irrespective of consist cite
+        # this assumes that NG and Metro always return the same, irrespective of model type cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
         # don't like how much content (text) is in code here, but eh
         if self.model_def.base_track_type_name == "NG":

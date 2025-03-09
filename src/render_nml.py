@@ -114,8 +114,8 @@ def main():
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
-    for consist in roster.model_variants_in_order_optimised_for_action_2_ids:
-        grf_nml.write(render_item_nml(consist, graphics_path))
+    for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
+        grf_nml.write(render_item_nml(model_variant, graphics_path))
 
     grf_nml.close()
 
