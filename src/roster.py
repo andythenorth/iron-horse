@@ -61,15 +61,24 @@ class Roster(object):
     def model_variants_by_catalogue(self):
         # With unique keys across engine and wagon dictionaries,
         # simply merge them using dictionary unpacking.
-        return {**self.engine_model_variants_by_catalogue, **self.wagon_model_variants_by_catalogue}
+        return {
+            **self.engine_model_variants_by_catalogue,
+            **self.wagon_model_variants_by_catalogue,
+        }
 
     @property
     def engine_catalogues(self):
-        return [catalogue_entry['catalogue'] for catalogue_entry in self.engine_model_variants_by_catalogue.values()]
+        return [
+            catalogue_entry["catalogue"]
+            for catalogue_entry in self.engine_model_variants_by_catalogue.values()
+        ]
 
     @property
     def wagon_catalogues(self):
-        return [catalogue_entry['catalogue'] for catalogue_entry in self.wagon_model_variants_by_catalogue.values()]
+        return [
+            catalogue_entry["catalogue"]
+            for catalogue_entry in self.wagon_model_variants_by_catalogue.values()
+        ]
 
     @property
     def catalogues(self):
@@ -82,7 +91,7 @@ class Roster(object):
         return [
             model_variant
             for catalogue_entry in self.engine_model_variants_by_catalogue.values()
-            for model_variant in catalogue_entry['model_variants']
+            for model_variant in catalogue_entry["model_variants"]
         ]
 
     @property
@@ -91,7 +100,7 @@ class Roster(object):
         return [
             model_variant
             for catalogue_entry in self.wagon_model_variants_by_catalogue.values()
-            for model_variant in catalogue_entry['model_variants']
+            for model_variant in catalogue_entry["model_variants"]
         ]
 
     @property
@@ -113,7 +122,7 @@ class Roster(object):
         return result
 
     @property
-    def consists_in_buy_menu_order(self):
+    def model_variants_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_model_variants)
         for base_track_type_name in ["RAIL", "NG", "METRO"]:
@@ -121,7 +130,9 @@ class Roster(object):
             for base_id in self.wagon_model_variants_by_base_id.keys():
                 wagon_model_variants = [
                     wagon_model_variant
-                    for wagon_model_variant in self.wagon_model_variants_by_base_id[base_id]
+                    for wagon_model_variant in self.wagon_model_variants_by_base_id[
+                        base_id
+                    ]
                     if wagon_model_variant.base_track_type_name == base_track_type_name
                 ]
                 result.extend(
@@ -148,12 +159,12 @@ class Roster(object):
         return result
 
     @property
-    def consists_in_order_optimised_for_action_2_ids(self):
+    def model_variants_in_order_optimised_for_action_2_ids(self):
         # the base sort order for model variants is for the buy menu, but this isn't effective for order in nml output
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
         # this isn't infallible, but reduces the extent to which the randomised wagons consume action 2 IDs
-        model_variants = self.consists_in_buy_menu_order
+        model_variants = self.model_variants_in_buy_menu_order
         result = []
         randomised_wagons_by_track_gen_length_power = {}
 
@@ -212,7 +223,10 @@ class Roster(object):
                     continue
                 if randomisation_model_variant.subtype != wagon_model_variant.subtype:
                     continue
-                if randomisation_model_variant.model_id_root == wagon_model_variant.model_id_root:
+                if (
+                    randomisation_model_variant.model_id_root
+                    == wagon_model_variant.model_id_root
+                ):
                     continue
                 if (
                     randomisation_model_variant.model_id_root
@@ -224,7 +238,9 @@ class Roster(object):
                 # otherwise append all the variants
                 # CABBAGE - NONE OF THIS WILL WORK NOW AS EXPECTED, AS WE DON'T HAVE UNIT VARIANTS
                 # WE NEED TO FIND THE OTHER MODEL VARIANTS FROM THE SAME FACTORY
-                unit_variants_cabbage = wagon_model_variant.units[0].unit_variants_cabbage
+                unit_variants_cabbage = wagon_model_variant.units[
+                    0
+                ].unit_variants_cabbage
                 matched_results = []
                 for unit_variant in unit_variants_cabbage:
                     if (
@@ -307,66 +323,57 @@ class Roster(object):
         return result
 
     def validate_vehicles(self, numeric_id_defender):
-        # has to be explicitly called after all vehicles and vehicle units are registered to the roster
+        # has to be explicitly called after all model variants and units are registered to the roster
 
         # this structure is used to test for duplicate ids
-        consist_ids = [consist.id for consist in self.consists_in_buy_menu_order]
+        model_variant_ids = [model_variant.id for model_variant in self.model_variants_in_buy_menu_order]
 
-        for consist in self.consists_in_buy_menu_order:
-            if consist_ids.count(consist.id) > 1:
+        for model_variant in self.model_variants_in_buy_menu_order:
+            if model_variant_ids.count(model_variant.id) > 1:
                 raise BaseException(
-                    "Error: vehicle id '"
-                    + consist.id
-                    + "' is defined more than once - to fix, search src for the duplicate"
+                    f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
+                    f"The catalogue for one of them is:"
+                    f"{model_variant.catalogue_entry.catalogue}"
                 )
-            if len(consist.units) == 0:
-                raise BaseException("Error: " + consist.id + " has no units defined")
-            elif len(consist.units) == 1:
-                if consist.base_numeric_id <= global_constants.max_articulated_id:
-                    # se
+            if len(model_variant.units) == 0:
+                raise BaseException(f"Error: {model_variant.id} has no units defined")
+            elif len(model_variant.units) == 1:
+                if model_variant.base_numeric_id <= global_constants.max_articulated_id:
                     raise BaseException(
-                        "Error: "
-                        + consist.id
-                        + " with base_numeric_id "
-                        + str(consist.base_numeric_id)
-                        + " needs a base_numeric_id larger than 16383 as the range below 16383 is reserved for articulated vehicles"
+                        f"Error: {model_variant.id} with base_numeric_id {model_variant.base_numeric_id} needs a base_numeric_id larger than 16383 "
+                        f"as the range below 16383 is reserved for articulated vehicles.\n"
+                        f"{model_variant.units}"
                     )
-                    # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
-                    # utils.echo_message(str(consist.base_numeric_id))
-            elif len(consist.units) > 1:
-                for numeric_id in consist.unique_numeric_ids:
+            elif len(model_variant.units) > 1:
+                for numeric_id in model_variant.unique_numeric_ids:
                     if numeric_id > global_constants.max_articulated_id:
                         raise BaseException(
-                            "Error: "
-                            + consist.id
-                            + " has a unit variant with numeric_id "
-                            + str(numeric_id)
-                            + " which is part of an articulated vehicle, and needs a numeric_id smaller than "
-                            + str(global_constants.max_articulated_id)
-                            + "\nUse a lower consist base_numeric_id\n"
-                            + str(consist.units)
+                            f"Error: {model_variant.id} has a unit variant with numeric_id {numeric_id} which is part of an articulated vehicle "
+                            f"and needs a numeric_id smaller than {global_constants.max_articulated_id}.\n"
+                            f"Use a lower base_numeric_id in the model_def.\n"
+                            f"{model_variant.units}"
                         )
-            for numeric_id in consist.unique_numeric_ids:
+            for numeric_id in model_variant.unique_numeric_ids:
                 if numeric_id in numeric_id_defender:
-                    colliding_consist = numeric_id_defender[numeric_id]
+                    colliding_model_variant = numeric_id_defender[numeric_id]
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
                     # if base_id matches both model variants have been instantiated from the same source module...
-                    if hasattr(consist, "model_id_root"):
+                    if hasattr(model_variant, "model_id_root"):
                         if (
-                            getattr(colliding_consist, "model_id_root", None)
-                            == consist.model_id_root
+                            getattr(colliding_model_variant, "model_id_root", None)
+                            == model_variant.model_id_root
                         ):
-                            # it's fine if both consists are then in different rosters, as they will not conflict
-                            if colliding_consist.roster.id != consist.roster.id:
+                            # it's fine if both model variants are then in different rosters, as they will not conflict
+                            if colliding_model_variant.roster.id != model_variant.roster.id:
                                 continue
                     raise ValueError(
-                        f"Error: consist {consist.id} has a unit variant with a numeric_id that collides "
-                        f"({numeric_id}) with a numeric_id of a unit variant in consist {colliding_consist.id}\n"
-                        f"{[unit.unit_variants_cabbage for unit in consist.units]}\n"
-                        f"{consist.catalogue_entry.catalogue}\n"
+                        f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
+                        f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
+                        f"{[unit for unit in model_variant.units]}\n"
+                        f"{model_variant.catalogue_entry.catalogue}\n"
                     )
                 else:
-                    numeric_id_defender[numeric_id] = consist
+                    numeric_id_defender[numeric_id] = model_variant
         # no return value needed
 
     def produce_engines(self):
@@ -391,9 +398,9 @@ class Roster(object):
                     }
                 for catalogue_entry in catalogue:
                     consist = factory.produce(catalogue_entry=catalogue_entry)
-                    self.engine_model_variants_by_catalogue[catalogue_id]["model_variants"].append(
-                        consist
-                    )
+                    self.engine_model_variants_by_catalogue[catalogue_id][
+                        "model_variants"
+                    ].append(consist)
 
     def produce_wagons(self):
         # Iterate over wagon module name stems and warn if not in global_constants
@@ -403,7 +410,9 @@ class Roster(object):
                     f"Warning: ({self.id}) {wagon_module_name_stem} not found in global_constants.wagon_module_name_stems"
                 )
 
-        self.wagon_model_variants_by_catalogue = {}  # Reset or initialize the grouping dict
+        self.wagon_model_variants_by_catalogue = (
+            {}
+        )  # Reset or initialize the grouping dict
 
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if "_randomised" in wagon_module_name_stem:
@@ -485,7 +494,7 @@ class Roster(object):
         # for every buyable variant for every consist
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
-        for consist in self.consists_in_buy_menu_order:
+        for consist in self.model_variants_in_buy_menu_order:
             for buyable_variant in consist.cabbage_buyable_variants:
                 if (
                     not buyable_variant.consist.buyable_variant_group_id
@@ -553,7 +562,7 @@ class Roster(object):
                     buyable_variant_group.parent_group = candidate_parent_group
 
     def cabbage_get_buyable_variants_in_buy_menu_order(self):
-        # relies on the buyable variant group order already being sorted when it's constructed from consists_in_buy_menu_order
+        # relies on the buyable variant group order already being sorted when it's constructed from model_variants_in_buy_menu_order
         # as a convenience, this flattens that order to a list that's easy to iterate over in template
         result = []
         for (
@@ -601,7 +610,7 @@ class Roster(object):
                 else:
                     lang_strings[node_name] = node_value["base"]
 
-        for consist in self.consists_in_buy_menu_order:
+        for consist in self.model_variants_in_buy_menu_order:
             if consist.name is not None and consist.is_default_model_variant:
                 lang_strings["STR_NAME_" + consist.model_id.upper()] = consist.name
 

@@ -381,7 +381,7 @@ def main():
     # note we remove any model variants that are clones, we don't need them in docs
     consists = [
         consist
-        for consist in roster.consists_in_buy_menu_order
+        for consist in roster.model_variants_in_buy_menu_order
         if consist.is_clone == False
     ]
     # default sort for docs is by intro year

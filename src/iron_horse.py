@@ -250,7 +250,7 @@ def main():
         )
 
     for roster in roster_manager:
-        for consist in roster.consists_in_buy_menu_order:
+        for consist in roster.model_variants_in_buy_menu_order:
             if consist.vehicle_family_badge is not None:
                 badge_manager.add_badge(
                     label=consist.vehicle_family_badge,
