@@ -34,7 +34,7 @@ def render_docs(
     file_type,
     docs_output_path,
     iron_horse,
-    consists,
+    model_variants,
     doc_helper,
     use_markdown=False,
     source_is_repo_root=False,
@@ -58,7 +58,7 @@ def render_docs(
         doc = template(
             roster=roster,
             catalogues=roster.catalogues,
-            consists=consists,
+            model_variants=model_variants,
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
@@ -76,7 +76,7 @@ def render_docs(
             doc = markdown_wrapper(
                 content=markdown.markdown(doc),
                 roster=roster,
-                consists=consists,
+                model_variants=model_variants,
                 global_constants=global_constants,
                 command_line_args=command_line_args,
                 git_info=git_info,
@@ -109,12 +109,12 @@ def render_docs_vehicle_details(
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.id
-        consists = roster.model_variants_by_catalogue[catalogue.id]["model_variants"]
+        model_variants = roster.model_variants_by_catalogue[catalogue.id]["model_variants"]
 
         doc = template(
             roster=roster,
             catalogue=catalogue,
-            consists=consists,
+            model_variants=model_variants,
             default_model_variant=catalogue.default_model_variant_from_roster,
             dedicated_trailer_catalogue_model_variant_mappings=catalogue.dedicated_trailer_catalogue_model_variant_mappings,
             iron_horse=iron_horse,
@@ -282,7 +282,7 @@ def export_roster_to_json(roster, output_dir="docs"):
     Exports a roster to JSON for documentation and data interchange.
 
     Args:
-        roster (Roster): The roster object containing engine and wagon consists.
+        roster (Roster): The roster object containing engines and wagons.
         output_dir (str): Directory to save the JSON file.
     """
     data = {
@@ -379,14 +379,14 @@ def main():
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # note we remove any model variants that are clones, we don't need them in docs
-    consists = [
-        consist
-        for consist in roster.model_variants_in_buy_menu_order
-        if consist.is_clone == False
+    model_variants = [
+        model_variant
+        for model_variant in roster.model_variants_in_buy_menu_order
+        if model_variant.is_clone == False
     ]
     # default sort for docs is by intro year
-    consists = sorted(consists, key=lambda consist: consist.intro_year)
-    dates = sorted([i.intro_year for i in consists])
+    model_variants = sorted(model_variants, key=lambda model_variant: model_variant.intro_year)
+    dates = sorted([i.intro_year for i in model_variants])
     metadata["dates"] = (dates[0], dates[-1])
 
     # render standard docs from a list
@@ -408,28 +408,28 @@ def main():
     render_docs_start = time()
     export_roster_to_json(roster)
     render_docs(
-        html_docs, "html", html_docs_output_path, iron_horse, consists, doc_helper
+        html_docs, "html", html_docs_output_path, iron_horse, model_variants, doc_helper
     )
-    render_docs(txt_docs, "txt", docs_output_path, iron_horse, consists, doc_helper)
+    render_docs(txt_docs, "txt", docs_output_path, iron_horse, model_variants, doc_helper)
     render_docs(
         license_docs,
         "txt",
         docs_output_path,
         iron_horse,
-        consists,
+        model_variants,
         doc_helper,
         source_is_repo_root=True,
     )
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(
-        markdown_docs, "txt", docs_output_path, iron_horse, consists, doc_helper
+        markdown_docs, "txt", docs_output_path, iron_horse, model_variants, doc_helper
     )
     render_docs(
         markdown_docs,
         "html",
         html_docs_output_path,
         iron_horse,
-        consists,
+        model_variants,
         doc_helper,
         use_markdown=True,
     )
@@ -496,10 +496,10 @@ def main():
 
     # CABBAGE - THIS IS USED TO HANDLE VISIBLE CARGO ONLY SUPPORTING ONE UNIT?
     """
-    for consist in consists:
-        if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":
-            if len(set(consist.units)) > 1:
-                raise Exception(consist.id)
+    for model_variant in model_variants:
+        if model_variant.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":
+            if len(set(model_variant.units)) > 1:
+                raise Exception(model_variant.id)
     """
 
 

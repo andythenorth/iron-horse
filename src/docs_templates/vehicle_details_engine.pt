@@ -291,7 +291,7 @@
                                                          width="${2 * doc_helper.docs_sprite_width(catalogue=replaced_consist.catalogue_entry.catalogue)}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
-                                                 ${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}
+                                                 ${doc_helper.get_replaced_by_name(replaced_consist.id, model_variants)}
                                             </a>
                                         </div>
                                      </tal:replaced_consist>
@@ -321,7 +321,7 @@
                                                      width="${2* doc_helper.docs_sprite_width(catalogue=default_model_variant.replacement_consist.catalogue_entry.catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(default_model_variant.replacement_consist.id, consists)}
+                                             ${doc_helper.get_replaced_by_name(default_model_variant.replacement_consist.id, model_variants)}
                                         </a>
                                     </div>
                                 </tal:replacement>
@@ -344,7 +344,7 @@
                                                      width="${2* doc_helper.docs_sprite_width(catalogue=similar_default_model_variant.catalogue_entry.catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(similar_default_model_variant.id, consists)}
+                                             ${doc_helper.get_replaced_by_name(similar_default_model_variant.id, model_variants)}
                                         </a>
                                     </div>
                                 </tal:similar_default_model_variants>

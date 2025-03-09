@@ -15,7 +15,7 @@
                 |
                 <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
-            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, consists, simplified_gameplay)">
+            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, model_variants, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
                     <h3>${base_track_type_and_label[1]}</h3>
                     <tal:roles define="intro_years roster.intro_years[base_track_type_and_label[0]]"
@@ -227,7 +227,7 @@
                                                                         <a href="${model_type.replacement_consist.model_id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                                Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_consist.id, consists)}
+                                                                                Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_consist.id, model_variants)}
                                                                             </div>
                                                                         </a>
                                                                     </div>
