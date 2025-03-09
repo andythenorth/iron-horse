@@ -472,15 +472,15 @@ class DocHelper(object):
         # list of pairs, need consistent order so can't use dict
         return [("RAIL", "Standard Gauge"), ("NG", "Narrow Gauge"), ("METRO", "Metro")]
 
-    def get_og_tags_content(self, doc_name, optional_consist):
+    def get_og_tags_content(self, doc_name, optional_model_variant):
         description = "CABBAGE"
         # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by get_docs_base_url()
         # as of July 2024, utils.get_docs_base_url() relies on detecting git tags, read that to understand what it's doing
         base_url = utils.get_docs_base_url()
 
         # generic or vehicle-specific image
-        if optional_consist is not None:
-            image_filename = optional_consist.id + "_variant_0_red_white.png"
+        if optional_model_variant is not None:
+            image_filename = optional_model_variant.id + "_red_white.png"
         else:
             image_filename = "og_tags_default.png"
 
