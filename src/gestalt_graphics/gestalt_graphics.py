@@ -83,7 +83,6 @@ class GestaltGraphics(object):
                     ]
                 )
 
-            # buyable_variant_counter maps to spriterow_num_dest
             # the spritesheet has buy menu sprites in their own descending vertical order corresponding to buyable variants
             # the custom buy menu sprites don't align vertically with any specific vehicle spriterow and have dedicated nml templating
             row_config = {

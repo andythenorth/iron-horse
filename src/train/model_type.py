@@ -48,7 +48,7 @@ class ModelTypeBase(object):
         # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. track type, gen etc
         # or implicitly inferred later from rules for e.g. livery variants
         self._buyable_variant_group_id = self.model_def.buyable_variant_group_id
-        self.use_named_buyable_variant_group = None
+        self.use_named_purchase_variant_group = None
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
@@ -963,8 +963,8 @@ class ModelTypeBase(object):
             # explicitly defined group id
             id = self._buyable_variant_group_id
         elif self.group_as_wagon:
-            if self.use_named_buyable_variant_group is not None:
-                group_id_base = self.use_named_buyable_variant_group
+            if self.use_named_purchase_variant_group is not None:
+                group_id_base = self.use_named_purchase_variant_group
             else:
                 group_id_base = self.model_id
             if not self.uses_random_livery:
@@ -2662,10 +2662,10 @@ class CarModelTypeBase(ModelTypeBase):
         elif context in ["default_name", "purchase_level_1", "purchase_level_2"]:
             result = default_result
         elif context == "purchase_level_0":
-            if self.use_named_buyable_variant_group != None:
+            if self.use_named_purchase_variant_group != None:
                 try:
                     result = [
-                        "STR_" + self.use_named_buyable_variant_group.upper(),
+                        "STR_" + self.use_named_purchase_variant_group.upper(),
                     ]
                 except:
                     raise BaseException(self.id)
@@ -2804,7 +2804,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
+        self.use_named_purchase_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
 
     @property
@@ -2856,7 +2856,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
+        self.use_named_purchase_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
 
     @property
@@ -2894,7 +2894,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         self.default_cargos = ["VEHI"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
+        self.use_named_purchase_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
         # Graphics configuration
         if self.gen in [3]:
@@ -2944,7 +2944,7 @@ class BolsterCarBase(CarModelTypeBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
+        self.use_named_purchase_variant_group = "wagon_group_bolster_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -2985,7 +2985,7 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
+        self.use_named_purchase_variant_group = "wagon_group_bolster_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3048,7 +3048,7 @@ class BoxCarType1(BoxCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        self.use_named_purchase_variant_group = "wagon_group_box_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -3084,7 +3084,7 @@ class BoxCarType2(BoxCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        self.use_named_purchase_variant_group = "wagon_group_box_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3133,7 +3133,7 @@ class BoxCarCurtainSide(BoxCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        self.use_named_purchase_variant_group = "wagon_group_box_cars"
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -3216,7 +3216,7 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        self.use_named_purchase_variant_group = "wagon_group_box_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -3242,7 +3242,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
+        self.use_named_purchase_variant_group = "wagon_group_sliding_wall_cars"
         self._joker = True
 
 
@@ -3360,7 +3360,7 @@ class BoxCarVehicleParts(BoxCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
+        self.use_named_purchase_variant_group = "wagon_group_sliding_wall_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -3426,7 +3426,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_bulk_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_aggregate_bulk_open_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3564,7 +3564,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_mineral_bulk_open_cars"
         self._joker = True
 
 
@@ -3614,7 +3614,7 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
         self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_mineral_bulk_open_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3654,7 +3654,7 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_scrap_metal_cars"
+        self.use_named_purchase_variant_group = "wagon_group_scrap_metal_cars"
         self._joker = True
 
 
@@ -3737,7 +3737,7 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_tippler_bulk_open_cars"
 
 
 class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
@@ -3788,7 +3788,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
         self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_tippler_bulk_open_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3817,7 +3817,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
+        self.use_named_purchase_variant_group = "wagon_group_bulk_cars_randomised"
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
@@ -3845,7 +3845,7 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
+        self.use_named_purchase_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -3875,7 +3875,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
+        self.use_named_purchase_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -4101,7 +4101,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self.use_named_purchase_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4147,7 +4147,7 @@ class CoilCarCovered(CoilCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self.use_named_purchase_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
@@ -4186,7 +4186,7 @@ class CoilCarTarpaulin(CoilCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self.use_named_purchase_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4227,7 +4227,7 @@ class CoilCarUncovered(CoilCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self.use_named_purchase_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -4253,7 +4253,7 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self.use_named_purchase_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -4331,7 +4331,7 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_covered_hopper_cars"
 
 
 class CoveredHopperCarType2(CoveredHopperCarBase):
@@ -4347,7 +4347,7 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_covered_hopper_cars"
         self._joker = True
 
 
@@ -4364,7 +4364,7 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_covered_hopper_cars"
         self._joker = True
 
 
@@ -4389,7 +4389,7 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_covered_hopper_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
@@ -4566,7 +4566,7 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_food_express_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_food_express_tank_cars"
         # Graphics configuration
         # Graphics configuration
         weathered_variants = {
@@ -4691,7 +4691,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_farm_product_box_cars"
+        self.use_named_purchase_variant_group = "wagon_group_farm_product_box_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -4773,7 +4773,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_farm_product_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_farm_product_hopper_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4844,7 +4844,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_food_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_food_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.refrigerated_livery_recolour_map,
@@ -4973,7 +4973,7 @@ class FlatCarBulkheadBase(FlatCarBase):
         self.randomised_candidate_groups = ["bulkhead_flat_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_bulkhead_flat_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -5044,7 +5044,7 @@ class FlatCarDropEnd(FlatCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_flat_cars"
         self._joker = True
 
 
@@ -5069,7 +5069,7 @@ class FlatCarDropSide(FlatCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_flat_cars"
         self._joker = True
 
 
@@ -5087,7 +5087,7 @@ class FlatCar(FlatCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_flat_cars"
 
 
 class FlatCarHeavyDuty(FlatCarBase):
@@ -5139,7 +5139,7 @@ class FlatCarMillBase(FlatCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mill_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_mill_flat_cars"
         self._joker = True
 
 
@@ -5196,7 +5196,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self.use_named_purchase_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -5247,7 +5247,7 @@ class GasTankCarPressure(GasTankCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_pressure_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_pressure_tank_cars"
 
 
 class GasTankCarCryo(GasTankCarBase):
@@ -5261,7 +5261,7 @@ class GasTankCarCryo(GasTankCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_pressure_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_pressure_tank_cars"
         self._joker = True
 
 
@@ -5328,7 +5328,7 @@ class HopperCarAggregateBase(HopperCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_aggregate_hopper_cars"
 
 
 class HopperCarAggregateType1(HopperCarAggregateBase):
@@ -5474,7 +5474,7 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_aggregate_hopper_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -5500,7 +5500,7 @@ class HopperCar(HopperCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_hopper_cars"
 
 
 class HopperCarHighSide(HopperCarBase):
@@ -5520,7 +5520,7 @@ class HopperCarHighSide(HopperCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_hopper_cars"
         self._joker = True
 
 
@@ -5551,7 +5551,7 @@ class HopperCarMGRBase(HopperCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mgr_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_mgr_hopper_cars"
         self._joker = True
         # adjust default liveries set by the base class
         weathered_variants = {
@@ -5612,7 +5612,7 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
         self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_hopper_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -5800,7 +5800,7 @@ class IntermodalCarUnit(IntermodalCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_intermodal_cars"
+        self.use_named_purchase_variant_group = "wagon_group_intermodal_cars"
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
@@ -5823,7 +5823,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_intermodal_cars"
+        self.use_named_purchase_variant_group = "wagon_group_intermodal_cars"
         self._joker = True
 
     @property
@@ -6259,7 +6259,7 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         # because the asymmetric covered wagons can reverse
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
+        self.use_named_purchase_variant_group = (
             "wagon_group_metal_product_cars_randomised"
         )
         # Graphics configuration
@@ -6385,7 +6385,7 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_lime_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_lime_covered_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.lime_hopper_car_livery_recolour_map,
@@ -6525,7 +6525,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_roller_roof_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_roller_roof_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
@@ -6619,7 +6619,7 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_salt_covered_hopper_cars"
+        self.use_named_purchase_variant_group = "wagon_group_salt_covered_hopper_cars"
         self._joker = True
         # Graphics configuration
         # the weathering is baked in to the sprite on these so no weathered remap
@@ -6725,7 +6725,7 @@ class OpenCar(OpenCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_open_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -6760,7 +6760,7 @@ class OpenCarHood(OpenCarBase):
         self.randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_open_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -6796,7 +6796,7 @@ class OpenCarHighEnd(OpenCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_open_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -6869,7 +6869,7 @@ class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self.use_named_purchase_variant_group = "wagon_group_open_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -6994,7 +6994,7 @@ class PanoramicCar(PassengerCarBase):
         # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
+        self.use_named_purchase_variant_group = "wagon_group_passenger_cars"
         """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
@@ -7037,7 +7037,7 @@ class PassengerCar(PassengerCarBase):
         # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
+        self.use_named_purchase_variant_group = "wagon_group_passenger_cars"
         """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
@@ -7454,7 +7454,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_piece_goods_cars_randomised"
+        self.use_named_purchase_variant_group = "wagon_group_piece_goods_cars_randomised"
         self._joker = True
 
 
@@ -7613,7 +7613,7 @@ class ReeferCarType1(ReeferCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+        self.use_named_purchase_variant_group = "wagon_group_reefer_cars"
 
 
 class ReeferCarType2(ReeferCarBase):
@@ -7627,7 +7627,7 @@ class ReeferCarType2(ReeferCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+        self.use_named_purchase_variant_group = "wagon_group_reefer_cars"
         self._joker = True
 
 
@@ -7642,7 +7642,7 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+        self.use_named_purchase_variant_group = "wagon_group_reefer_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -7730,7 +7730,7 @@ class SiloCarType1(SiloCarBase):
         self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_silo_cars"
 
 
 class SiloCarType2(SiloCarBase):
@@ -7746,7 +7746,7 @@ class SiloCarType2(SiloCarBase):
         self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_silo_cars"
 
 
 class SiloCarType3(SiloCarBase):
@@ -7762,7 +7762,7 @@ class SiloCarType3(SiloCarBase):
         self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_silo_cars"
 
 
 class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
@@ -7786,7 +7786,7 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_silo_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -7811,7 +7811,7 @@ class SiloCarCementType1(SiloCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.cement_silo_livery_recolour_map,
@@ -7839,7 +7839,7 @@ class SiloCarCementType2(SiloCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.cement_silo_livery_recolour_map,
@@ -7867,7 +7867,7 @@ class SiloCarCementType3(SiloCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.cement_silo_livery_recolour_map,
@@ -7894,7 +7894,7 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        self.use_named_purchase_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -8102,7 +8102,7 @@ class TankCarAcidBase(TankCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_acid_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_acid_tank_cars"
         self._joker = True
         # Graphics configuration
         # empty, set in subclasses
@@ -8233,7 +8233,7 @@ class TankCarProductBase(TankCarBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_product_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_product_tank_cars"
         self._joker = True
         # Graphics configuration
         # set in variant subclasses
@@ -8321,7 +8321,7 @@ class TankCarStandardBase(TankCarBase):
         self.randomised_candidate_groups = ["tank_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_tank_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.tank_car_livery_recolour_map
@@ -8418,7 +8418,7 @@ class TankCarVolatilesBase(TankCarBase):
         """
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_volatiles_tank_cars"
+        self.use_named_purchase_variant_group = "wagon_group_volatiles_tank_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
@@ -8483,7 +8483,7 @@ class TarpaulinCarBase(BoxCarBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tarpaulin_cars"
+        self.use_named_purchase_variant_group = "wagon_group_tarpaulin_cars"
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         # ruby before bauxite to ensure it appears in buy menu order for mixed version

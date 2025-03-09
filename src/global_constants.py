@@ -300,7 +300,7 @@ intro_month_offsets_by_role = {
 
 # shared across all rosters, keep alphabetised, order not significant
 # only needed for groups composing more than one model type
-buyable_variant_group_base_model_ids_by_group_name = {
+purchase_variant_group_base_model_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
     "wagon_group_aggregate_bulk_open_cars": "aggregate_bulk_open_car_type_1",
