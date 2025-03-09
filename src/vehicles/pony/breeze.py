@@ -17,8 +17,11 @@ def main(**kwargs):
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=5,
+        # introduce early by design
+        intro_year_offset=-3,
+        # this railcar type specifies liveries per model_def for flexibility
+        livery_group_name="suburban_pax_liveries",
         sprites_complete=True,
-        intro_year_offset=-3,  # introduce early by design
     )
 
     model_def.add_unit_def(

@@ -30,7 +30,7 @@ class LiverySupplier(dict):
             # CABBAGE - FIGURE OUT LATER WHETHER TO ALLOW REDEFINING BY ROSTERS, OR WHETHER TO FORCE A COMMON LIVERY SET
             if livery_name in ["VANILLA", "SWOOSH", "FOO", "TGV_LA_POSTE"]:
                 print(
-                    f"LiverySupplier.add_livery: a roster tried to add {livery_name} when it already exists"
+                    f"LiverySupplier.add_livery: a roster tried to add {livery_name} when it already exists - figure out what to do about that later"
                 )
             else:
                 raise ValueError(

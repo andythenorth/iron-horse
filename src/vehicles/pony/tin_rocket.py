@@ -15,9 +15,11 @@ def main(**kwargs):
             "DIESEL": 400,
         },
         gen=5,
-        sprites_complete=True,
         # introduce early by design
         intro_year_offset=-5,
+        # this railcar type specifies liveries per model_def for flexibility
+        livery_group_name="default_pax_liveries",
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

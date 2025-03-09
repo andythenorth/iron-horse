@@ -15,9 +15,12 @@ def main(**kwargs):
             "DIESEL": 280,
         },
         gen=3,
-        sprites_complete=True,
+        # introduce early by design
         intro_year_offset=-5,
-    )  # introduce early by design
+        # this railcar type specifies liveries per model_def for flexibility
+        livery_group_name="diesel_railcar_mail_liveries",
+        sprites_complete=True,
+    )
 
     model_def.add_unit_def(
         class_name="DieselRailcarMailUnit",

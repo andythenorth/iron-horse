@@ -1874,8 +1874,6 @@ class MailEngineRailcar(MailEngineBase):
     """
     Mail railcar.
     """
-
-    livery_group_name = "diesel_railcar_mail_liveries"
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -1883,6 +1881,9 @@ class MailEngineRailcar(MailEngineBase):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # this class requires livery group name set in model def
+        if self.model_def.livery_group_name is None:
+            raise ValueError(f"no livery_group_name defined for ${self.id}")
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -1914,21 +1915,6 @@ class MailEngineRailcar(MailEngineBase):
                 "last": 2,
                 "special": 3,
             }
-        # this will be fragile, it's dedicated to pony roster, but eh
-        # for special cases, these vehicles could just use the livery keyword on init, but it would be over-ridden by this conditional block currently
-        print(
-            "CABBAGE 993 - railcar liveries need handled via model_def, not model type"
-        )
-        """
-        if self.subrole_child_branch_num in [2] or self.base_track_type_name == "NG":
-            liveries = self.roster.get_pax_mail_liveries(
-                "diesel_railcar_mail_liveries", self.model_def
-            )
-        else:
-            liveries = self.roster.get_pax_mail_liveries(
-                "electric_railcar_mail_liveries", self.model_def
-            )
-        """
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
@@ -2265,7 +2251,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
     High-capacity pax railcar (single unit, combinable).
     """
 
-    livery_group_name = "default_pax_liveries"
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -2273,6 +2258,9 @@ class PassengerEngineRailcar(PassengerEngineBase):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # this class requires livery group name set in model def
+        if self.model_def.livery_group_name is None:
+            raise ValueError(f"no livery_group_name defined for ${self.id}")
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -2285,19 +2273,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        print(
-            "CABBAGE 992 - needs livery group override moved to model_def, not model type"
-        )
-        """
-        if self.subrole_child_branch_num in [2]:
-            liveries = self.roster.get_pax_mail_liveries(
-                "suburban_pax_liveries", self.model_def
-            )
-        else:
-            liveries = self.roster.get_pax_mail_liveries(
-                "default_pax_liveries", self.model_def
-            )
-        """
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",

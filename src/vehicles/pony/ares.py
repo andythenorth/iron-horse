@@ -17,9 +17,12 @@ def main(**kwargs):
         pantograph_type="diamond-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=3,
-        sprites_complete=True,
+        # introduce early by design
         intro_year_offset=-3,
-    )  # introduce early by design
+        # this railcar type specifies liveries per model_def for flexibility
+        livery_group_name="electric_railcar_mail_liveries",
+        sprites_complete=True,
+    )
 
     model_def.add_unit_def(
         class_name="ElectricRailcarMailUnit",

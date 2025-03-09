@@ -17,9 +17,9 @@ def main(**kwargs):
         pantograph_type="diamond-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=2,
-        liveries=["VANILLA"],
+        # this railcar type specifies liveries per model_def for flexibility
+        livery_group_name="suburban_pax_liveries",
         sprites_complete=False,
-        # intro_year_offset=-3,
     )
 
     model_def.add_unit_def(
