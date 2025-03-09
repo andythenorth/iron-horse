@@ -64,7 +64,6 @@ class DocHelper(object):
     def get_wagon_catalogues_by_roster_and_base_track_type(
         self, roster, base_track_type_name
     ):
-        # CABBAGE SHOULD BE CATALOGUE BASED
         result = []
         for catalogue in roster.wagon_catalogues:
             if (
@@ -88,6 +87,7 @@ class DocHelper(object):
         #                |- engine model
         # if there's no engine model matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
         # CABBAGE - THIS SHOULD BE DRIVEN FROM CATALOGUES SURELY?
+        # PFFF I DON'T FANCY UNPICKING THIS :|
         result = {}
         # much nested loops
         for base_track_type_and_label in self.base_track_type_names_and_labels:
@@ -157,24 +157,23 @@ class DocHelper(object):
         # - powered wagons for TGVs
         # - powered cabooses for propelling
         # - anything with a variant group parent is just a sub-variant of some sort
-        # CABBAGE SHOULD BE CATALOGUE BASED
         really_engines = []
         not_really_engines = []
-        for model_variant in roster.engine_model_variants:
-            if not model_variant.is_default_model_variant:
-                continue
-            if model_variant.is_clone:
+        for catalogue in roster.engine_catalogues:
+            default_model_variant = catalogue.default_model_variant_from_roster
+            if default_model_variant.is_clone:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                model_variant.role in ["driving_cab", "gronk", "lolz", "metro"]
-                or model_variant.wagons_add_power
-                # CABBAGE - THIS IS OFF BY 5 - PROBABLY THE RAILBUS VARIANTS? - MIGHT BE THAT _buyable_variant_group_id is not set correctly?
-                or model_variant._buyable_variant_group_id is not None
+                default_model_variant.role in ["driving_cab", "gronk", "lolz", "metro"]
+                or default_model_variant.wagons_add_power
+                # CABBAGE SEEMS ALL ENGINES HAVE _buyable_variant_group_id set currently HMMM
+                    # CABBAGE - THIS IS OFF BY 5 - PROBABLY THE RAILBUS VARIANTS? - MIGHT BE THAT _buyable_variant_group_id is not set correctly?
+                or default_model_variant._buyable_variant_group_id is not None
             ):
-                not_really_engines.append(model_variant)
+                not_really_engines.append(catalogue)
             else:
-                really_engines.append(model_variant)
+                really_engines.append(catalogue)
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
@@ -187,17 +186,14 @@ class DocHelper(object):
     def wagon_model_counts(self, roster):
         # some wagons aren't really wagons
         # - randomised wagons, which just compose a set of choices from other wagons
-        # CABBAGE SHOULD BE CATALOGUE BASED
         really_wagons = []
         not_really_wagons = []
-        for model_variant in roster.wagon_model_variants:
-            if not model_variant.is_default_model_variant:
-                continue
-            # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
-            if getattr(model_variant.gestalt_graphics, "random_vehicle_map_type", None):
-                not_really_wagons.append(model_variant)
+        for catalogue in roster.wagon_catalogues:
+            default_model_variant = catalogue.default_model_variant_from_roster
+            if default_model_variant.is_randomised_wagon_type:
+                not_really_wagons.append(catalogue)
             else:
-                really_wagons.append(model_variant)
+                really_wagons.append(catalogue)
         really_wagons_count = len(really_wagons)
         not_really_wagons_count = len(not_really_wagons)
         total_count = really_wagons_count + not_really_wagons_count
@@ -267,22 +263,7 @@ class DocHelper(object):
                     result.append(model_variant.subrole_child_branch_num)
         return set(result)
 
-    def filter_out_randomised_wagon_model_variants(self, wagon_model_variants):
-        # CABBAGE ONLY ONE CALLER - JUST INLINE IT?
-        result = []
-        for wagon_model_variant in wagon_model_variants:
-            # extensible excludes as needed
-            if wagon_model_variant.gestalt_graphics.__class__.__name__ in [
-                "GestaltGraphicsRandomisedWagon",
-                "GestaltGraphicsCaboose",
-            ]:
-                continue
-            result.append(wagon_model_variant)
-        return result
-
     def get_vehicle_images_json(self, roster):
-        # CABBAGE, SHOULD BE ON CATALOGUES
-        # returns json formatted in various ways for randomising images according to various criteria
         # does not sort by roster as of July 2020
         result = {
             "sorted_by_vehicle_type": defaultdict(list),
@@ -298,27 +279,29 @@ class DocHelper(object):
             ] = defaultdict(list)
 
         # parse the engine and wagon model variants into a consistent structure
-        engines = ("engines", roster.engine_model_variants_excluding_clones)
-        wagon_model_variants = self.filter_out_randomised_wagon_model_variants(
-            roster.wagon_model_variants
-        )
-        wagons = ("wagons", wagon_model_variants)
+        engines = ("engines", roster.engine_catalogues)
+        wagon_catalogues = []
+        for catalogue in roster.wagon_catalogues:
+            # extensible excludes as needed
+            if catalogue.default_model_variant_from_roster.is_randomised_wagon_type:
+                continue
+            if catalogue.default_model_variant_from_roster.is_caboose:
+                continue
+            wagon_catalogues.append(catalogue)
+        wagons = ("wagons", wagon_catalogues)
 
         # this code repeats for both engines and wagons, but with different source lists
-        for vehicle_type, vehicle_model_variants in [engines, wagons]:
-            for model_variant in vehicle_model_variants:
-                # CABBAGE JFDI FILTER OUT NON-DEFAULT.  CONVERT ALL OF THIS TO USE CATALOGUES?
-                if not model_variant.is_default_model_variant:
-                    continue
+        for vehicle_type, catalogues in [engines, wagons]:
+            for catalogue in catalogues:
                 vehicle_data = [
-                    model_variant.model_id,
-                    model_variant.id,
-                    str(self.docs_sprite_width(model_variant.catalogue_entry.catalogue)),
-                    model_variant.base_numeric_id,
+                    catalogue.id,
+                    catalogue.default_entry.model_variant_id,
+                    str(self.docs_sprite_width(catalogue)),
+                    catalogue.factory.model_def.base_numeric_id,
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
-                    model_variant.base_track_type_name
+                    catalogue.default_model_variant_from_roster.base_track_type_name
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
@@ -326,13 +309,13 @@ class DocHelper(object):
             base_track_type_name,
             base_track_label,
         ) in self.base_track_type_names_and_labels:
-            vehicle_model_variants = result["sorted_by_base_track_type_and_vehicle_type"][
+            vehicles = result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ]
             for vehicle_type in ["engines", "wagons"]:
-                if len(vehicle_model_variants[vehicle_type]) == 0:
-                    del vehicle_model_variants[vehicle_type]
-            if len(vehicle_model_variants.keys()) == 0:
+                if len(vehicles[vehicle_type]) == 0:
+                    del vehicles[vehicle_type]
+            if len(vehicles.keys()) == 0:
                 del result["sorted_by_base_track_type_and_vehicle_type"][
                     base_track_type_name
                 ]
