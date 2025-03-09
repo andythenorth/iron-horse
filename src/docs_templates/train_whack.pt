@@ -22,12 +22,12 @@
                     result = new Array;
                     // json parsing is inside the function to avoid the function trying the var before the json parse is complete
                     // inefficient as it will parse json n times, not 1, but easier than figuring out doing it onload
-                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json(roster)}');
+                    var all_vehicles_grouped=JSON.parse('${doc_helper.get_vehicle_images_json(roster)}');
 
                     var engines_weighting = [1, 1, 1, 1, 2, 2, 3];
                     var wagons_weighting = [3, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 11, 12];
 
-                    var base_track_type_keys = Object.keys(all_consists_grouped['sorted_by_base_track_type_and_vehicle_type']);
+                    var base_track_type_keys = Object.keys(all_vehicles_grouped['sorted_by_base_track_type_and_vehicle_type']);
 
                     // there is an optional query parameter to force consists to use same base track type
                     // when that isn't used, alternate simpler engine / wagon lists are used without walking the track types, as it gets better random results
@@ -51,19 +51,19 @@
                         }
                         // note use of weighted keys to prevent too much metro when same base_track_type_name is enforced
                         var base_track_type_key = base_track_type_keys_weighted[Math.floor(Math.random()*base_track_type_keys_weighted.length)];
-                        consists = all_consists_grouped['sorted_by_base_track_type_and_vehicle_type'][base_track_type_key];
+                        vehicles_by_vehicle_type = all_vehicles_grouped['sorted_by_base_track_type_and_vehicle_type'][base_track_type_key];
                         // metro jank, override weightings if metro, as there are no wagons and so more engines than usual are needed
                         if (base_track_type_key == 'METRO') {
                             engines_weighting = [1, 2, 2, 3, 3, 3, 3, 4, 4, 5, 6];
                         }
                     }
                     else {
-                        consists = all_consists_grouped['sorted_by_vehicle_type'];
+                        vehicles_by_vehicle_type = all_vehicles_grouped['sorted_by_vehicle_type'];
                     }
 
                     // get the images and write into page
-                    result = extend_result(consists['engines'], engines_weighting, result);
-                    result = extend_result(consists['wagons'], wagons_weighting, result);
+                    result = extend_result(vehicles_by_vehicle_type['engines'], engines_weighting, result);
+                    result = extend_result(vehicles_by_vehicle_type['wagons'], wagons_weighting, result);
                     document.write(result.toString());
 
                     // arbitrary high score crap
@@ -77,16 +77,16 @@
                     return true;
                 }
 
-                function extend_result(consists, weighting, result) {
+                function extend_result(vehicles, weighting, result) {
                     // note the guard here against vehicles not existing (e.g. metro wagons)
-                    if (consists != undefined) {
+                    if (vehicles != undefined) {
                         const num_vehicles_to_draw = weighting[Math.floor(Math.random()*weighting.length)];
                         if (get_query_param('boring_mode') == 'true') {
-                            var random_image = get_random_image(consists);
+                            var random_image = get_random_image(vehicles);
                         }
                         for (i = 0; i < num_vehicles_to_draw; i++) {
                             if (get_query_param('boring_mode') != 'true') {
-                                random_image = get_random_image(consists);
+                                random_image = get_random_image(vehicles);
                             }
                             result.push(get_image_html(random_image));
                         };
