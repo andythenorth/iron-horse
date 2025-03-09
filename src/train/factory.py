@@ -58,6 +58,7 @@ class ModelDef:
     formation_ruleset: Optional[str] = None
     docs_image_spriterow: Optional[int] = None
     livery_group_name: Optional[Any] = None
+    quacks_like_a_clone: bool = False
     requires_high_clearance: bool = False
     show_decor_in_purchase_for_variants: List[Any] = None
     spriterow_labels: Optional[Any] = None

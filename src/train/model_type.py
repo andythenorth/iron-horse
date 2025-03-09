@@ -158,9 +158,14 @@ class ModelTypeBase(object):
         return self.catalogue_entry.catalogue.is_default_model_variant(self)
 
     @property
-    def is_clone(self):
-        # convenience boolean to avoid checking implementation details of cloning in callers
-        return self.model_def.cloned_from_model_def is not None
+    def quacks_like_a_clone(self):
+        # convenience boolean for things that either are clones, or can be treated like clones for docs etc
+        if self.model_def.cloned_from_model_def is not None:
+            return True
+        if self.model_def.quacks_like_a_clone:
+            return True
+        else:
+            return False
 
     @property
     def cloned_from_model_type(self):
@@ -1621,7 +1626,7 @@ class EngineModelTypeBase(ModelTypeBase):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.is_clone:
+        if self.quacks_like_a_clone:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0

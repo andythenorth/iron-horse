@@ -57,7 +57,10 @@ def main(**kwargs):
         gen=4,
         # introduce early by design
         intro_year_offset=-4,
-        buyable_variant_group_id="clipper",  # for pony, specifically force variant group (parent) to equivalent twin-unit railbus id
+        # force variant group (parent) to equivalent twin-unit railbus id
+        buyable_variant_group_id="clipper",
+        # it's too complex to clone these from the twin unit, but treat the result like a clone
+        quacks_like_a_clone=True,
         sprites_complete=True,
     )
 

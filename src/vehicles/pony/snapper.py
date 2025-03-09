@@ -57,7 +57,10 @@ def main(**kwargs):
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        buyable_variant_group_id="snapper",  # for pony, specifically force variant group (parent) to equivalent twin-unit railbus id
+        # force variant group (parent) to equivalent twin-unit railbus id
+        buyable_variant_group_id="snapper",
+        # it's too complex to clone these from the twin unit, but treat the result like a clone
+        quacks_like_a_clone=True,
         sprites_complete=True,
     )
 

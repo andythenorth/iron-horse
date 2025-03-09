@@ -160,7 +160,7 @@ class DocHelper(object):
         not_really_engines = []
         for catalogue in roster.engine_catalogues:
             default_model_variant = catalogue.default_model_variant_from_roster
-            if default_model_variant.is_clone:
+            if default_model_variant.quacks_like_a_clone:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (

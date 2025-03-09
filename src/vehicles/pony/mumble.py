@@ -16,7 +16,8 @@ def main(**kwargs):
             "DIESEL": 400,
         },
         gen=3,
-        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
+        # extended vehicle life for all this generation of NG eh
+        extended_vehicle_life=True,
         pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
@@ -56,8 +57,12 @@ def main(**kwargs):
             "DIESEL": 250,
         },
         gen=3,
-        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        buyable_variant_group_id="mumble",  # for pony, specifically force variant group (parent) to equivalent twin-unit railbus id
+        # extended vehicle life for all this generation of NG eh
+        extended_vehicle_life=True,
+        # force variant group (parent) to equivalent twin-unit railbus id
+        buyable_variant_group_id="mumble",
+        # it's too complex to clone these from the twin unit, but treat the result like a clone
+        quacks_like_a_clone=True,
         sprites_complete=True,
     )
 
