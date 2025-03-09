@@ -154,13 +154,22 @@ class ModelTypeBase(object):
         return self.model_def.name
 
     @property
+    def is_default_model_variant(self):
+        return self.catalogue_entry.catalogue.is_default_model_variant(self)
+
+    @property
     def is_clone(self):
         # convenience boolean to avoid checking implementation details of cloning in callers
         return self.model_def.cloned_from_model_def is not None
 
     @property
-    def is_default_model_variant(self):
-        return self.catalogue_entry.catalogue.is_default_model_variant(self)
+    def cloned_from_model_type(self):
+        # possibly expensive, but not often required option to get the default model a clone was sourced from
+        if self.model_def.cloned_from_model_def is not None:
+            for catalogue in self.roster.catalogues:
+                if catalogue.factory.model_def == self.model_def.cloned_from_model_def:
+                    return catalogue.default_model_variant_from_roster
+        raise Exception(f"cloned_from_model_type not found for {self.id}")
 
     def resolve_buyable_variants(self):
         # CABBAGE - this should be removable
@@ -1496,20 +1505,8 @@ class EngineModelTypeBase(ModelTypeBase):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            # we have to instantiate an actual model variant, temporarily, as the factory doesn't know the calculated cost directly
-            # CABBAGE - CAN FETCH CLONE FACTORY FROM THE ROSTER NOW?
-            from train.factory import ModelVariantFactory
-
-            factory = ModelVariantFactory(
-                self.model_def.cloned_from_model_def,
-                self.roster_id,
-                self.roster_id_providing_module,
-            )
-            temp_model_type = factory.produce(
-                catalogue_entry=factory.catalogue.default_entry
-            )
             return int(
-                temp_model_type.buy_cost * self.model_def.clone_stats_adjustment_factor
+                self.cloned_from_model_type.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1556,21 +1553,11 @@ class EngineModelTypeBase(ModelTypeBase):
 
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
+        # first check if this is a clone, because then we just take the costs from the clone source
+        # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            # CABBAGE - CAN FETCH CLONE FACTORY FROM THE ROSTER NOW?
-            # we have to instantiate an actual model variant, temporarily, as the factory doesn't know the calculated cost directly
-            from train.factory import ModelVariantFactory
-
-            factory = ModelVariantFactory(
-                self.model_def.cloned_from_model_def,
-                self.roster_id,
-                self.roster_id_providing_module,
-            )
-            temp_model_type = factory.produce(
-                catalogue_entry=factory.catalogue.default_entry
-            )
             return int(
-                temp_model_type.running_cost * self.model_def.clone_stats_adjustment_factor
+                self.cloned_from_model_type.running_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
