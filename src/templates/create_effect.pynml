@@ -4,7 +4,7 @@
 -->
 <tal:spawn_model_varies_by_power_source switch="unit.effects_vary_by_power_source">
     <tal:effects_vary_by_power_source case="True">
-        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_effect_spawn_model_and_powered, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_effect_spawn_model_and_powered, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
             1: return ${unit.effects['electrified'][0]};
             return ${unit.effects['default'][0]};
         }
@@ -28,7 +28,7 @@
 
 <tal:effect_type_varies_by_power_source switch="unit.effects_vary_by_power_source">
     <tal:effects_vary_by_power_source case="True">
-        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_create_effect_check_railtype, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_create_effect_check_railtype, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
             <!--! assumes just 2 effects, default and electrified, deal with that later if it's a problem later -->
             1: return ${unit.id}_switch_create_effect_electrified;
             return ${unit.id}_switch_create_effect_default;

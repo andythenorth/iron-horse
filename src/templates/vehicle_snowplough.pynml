@@ -1,10 +1,10 @@
 <!--! this is the template for snowploughs -->
 
 // default graphics chain
-spriteset(${unit.id}_ss_unreversed, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_unreversed, "${graphics_path}${model_variant.model_id}.png") {
     ${unit.get_spriteset_template_name('unreversed', 10)}
 }
-spriteset(${unit.id}_ss_reversed, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_reversed, "${graphics_path}${model_variant.model_id}.png") {
     ${unit.get_spriteset_template_name('reversed', 10)}
 }
 
@@ -19,8 +19,8 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, num_vehs_in_consi
 
 
 // buy menu graphics chain
-spriteset(${unit.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
-    ${consist.get_nml_for_spriteset_template(y_offset=0)}
+spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
+    ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
 }
 
 <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics -->

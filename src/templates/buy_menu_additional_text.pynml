@@ -1,8 +1,8 @@
-<tal:block switch="consist.get_buy_menu_additional_text_format()">
+<tal:block switch="model_variant.get_buy_menu_additional_text_format()">
     <tal:variable_power case="'variable_power'">
         <!--! for variable power, we need to stuff the text stack with the values for power -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
-            <tal:power_by_power_source repeat="power_source_data consist.power_by_power_source.items()">
+            <tal:power_by_power_source repeat="power_source_data model_variant.power_by_power_source.items()">
                 STORE_TEMP(
                     string(STR_POWER_SOURCE_${power_source_data[0]})
                     | (${power_source_data[1]} << 16),
@@ -10,7 +10,7 @@
                 ),
             </tal:power_by_power_source>
         ]) {
-            return string(${consist.get_buy_menu_additional_text()});
+            return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:variable_power>
     <tal:variable_power_and_lgv_capable case="'variable_power_and_lgv_capable'">
@@ -19,7 +19,7 @@
                  - we need a proper tree, similar to get_name_parts
                  - this works as it stands, but won't absorb any more cases, will need refactoring -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
-            <tal:power_by_power_source repeat="power_source_data consist.power_by_power_source.items()">
+            <tal:power_by_power_source repeat="power_source_data model_variant.power_by_power_source.items()">
                 STORE_TEMP(
                     string(STR_POWER_SOURCE_${power_source_data[0]})
                     | (${power_source_data[1]} << 16),
@@ -27,44 +27,44 @@
                 ),
             </tal:power_by_power_source>
             STORE_TEMP(
-                ${int(1.60934 * consist.speed_on_lgv)}
-                | (${int(1.60934 * consist.speed)} << 16),
+                ${int(1.60934 * model_variant.speed_on_lgv)}
+                | (${int(1.60934 * model_variant.speed)} << 16),
                 0x102 <!--! this will absolutely break on wrong register number if there are more than two power sources -->
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text()});
+            return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:variable_power_and_lgv_capable>
     <tal:lgv_capable case="'lgv_capable'">
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
             STORE_TEMP(
-                ${int(1.60934 * consist.speed_on_lgv)}
-                | (${int(1.60934 * consist.speed)} << 16),
+                ${int(1.60934 * model_variant.speed_on_lgv)}
+                | (${int(1.60934 * model_variant.speed)} << 16),
                 0x100
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text()});
+            return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:lgv_capable>
     <tal:lgv_capable_and_wagons_add_power case="'lgv_capable_and_wagons_add_power'">
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
             STORE_TEMP(
-                ${int(1.60934 * consist.speed_on_lgv)}
-                | (${int(1.60934 * consist.speed)} << 16),
+                ${int(1.60934 * model_variant.speed_on_lgv)}
+                | (${int(1.60934 * model_variant.speed)} << 16),
                 0x100
             ),
             STORE_TEMP(
                 <!--! the parentheses look odd here, would be more readable around the shift, but it apparently works so leaving it be - May 2023 -->
-                (${consist.buy_menu_distributed_power_hp_value} | string(${consist.buy_menu_distributed_power_name_substring}) << 16),
+                (${model_variant.buy_menu_distributed_power_hp_value} | string(${model_variant.buy_menu_distributed_power_name_substring}) << 16),
                 0x101
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text()});
+            return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:lgv_capable_and_wagons_add_power>
     <tal:livery_variants case="'livery_variants'">
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
-            <tal:text_stack repeat="value_pair consist.get_buy_menu_hint_livery_variant_text_stack()">
+            <tal:text_stack repeat="value_pair model_variant.get_buy_menu_hint_livery_variant_text_stack()">
                 STORE_TEMP(
                     (${value_pair[0]})
                     | ((${value_pair[1]}) << 16),
@@ -72,7 +72,7 @@
                 ),
             </tal:text_stack>
         ]) {
-            return string(${consist.get_buy_menu_additional_text()});
+            return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:livery_variants>
 </tal:block>

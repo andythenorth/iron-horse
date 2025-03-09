@@ -1,12 +1,12 @@
 <!--! this is the template for caboose cars -->
 
-<tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
-    spriteset(${unit.id}_ss_${caboose_variant}, "${graphics_path}${consist.model_id}.png") {
+<tal:caboose_variants repeat="caboose_variant model_variant.gestalt_graphics.spriterow_labels">
+    spriteset(${unit.id}_ss_${caboose_variant}, "${graphics_path}${model_variant.model_id}.png") {
         ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
     }
 </tal:caboose_variants>
 
-<tal:caboose_families repeat="caboose_family consist.gestalt_graphics.caboose_families.items()">
+<tal:caboose_families repeat="caboose_family model_variant.gestalt_graphics.caboose_families.items()">
     // ${caboose_family}
     random_switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
@@ -16,7 +16,7 @@
 </tal:caboose_families>
 
 switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_default_fallback, current_year) {
-    <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
+    <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
         ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_switch_graphics_caboose_family_default_${variant_date_range[0] + 1};
     </tal:caboose_variants>
 
@@ -27,7 +27,7 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
       or repeat over families, and provide the engine IDs matching each family -->
     <!--!
     CABBAGE - NERFED OFF BECAUSE RANGES EXCEED DUE TO CHANGING FROM BUYABLE VARIANTS TO MODEL VARIANTS
-    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type_name == consist.base_track_type_name]">
+    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in model_variant.roster.engine_consists if engine_consist.base_track_type_name == model_variant.base_track_type_name]">
         ${engine_consist.base_numeric_id}..${engine_consist.base_numeric_id + len(engine_consist.cabbage_buyable_variants)}: return ${unit.id}_switch_graphics_caboose_family_${engine_consist.caboose_family};
     </tal:engine_consists>
     -->
@@ -36,13 +36,13 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
 
 // buy menu graphics chain
 <!--! this uses buy_menu_sprite_pairs *only* to get the count of buy menu sprites, the actual data from buy_menu_sprite_pairs isn't used -->
-<tal:caboose_variants repeat="buy_menu_sprite_pair consist.gestalt_graphics.buy_menu_sprite_pairs">
-    spriteset(${unit.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${consist.model_id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=repeat.buy_menu_sprite_pair.index * 30)}
+<tal:caboose_variants repeat="buy_menu_sprite_pair model_variant.gestalt_graphics.buy_menu_sprite_pairs">
+    spriteset(${unit.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${model_variant.model_id}.png") {
+        ${model_variant.get_nml_for_spriteset_template(y_offset=repeat.buy_menu_sprite_pair.index * 30)}
     }
 </tal:caboose_variants>
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, current_year) {
-    <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
+    <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
         ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_ss_purchase_${variant_date_range[0]};
     </tal:caboose_variants>
 }

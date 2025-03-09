@@ -6,7 +6,7 @@
             not particularly tested for balance as of April 2021, 'rough is good enough'
              value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
         -->
-        0: return ${consist.running_cost};
+        0: return ${model_variant.running_cost};
         return 0;
     }
 </tal:running_cost_factor>

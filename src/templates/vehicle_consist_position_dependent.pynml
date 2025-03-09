@@ -1,4 +1,4 @@
-<!--! Appearance that changes depending on position in consist.
+<!--! Appearance that changes depending on position in formation.
       Intended for pax and mail cars, possibly limited other types.
       - loaded and empty state are same, but loading state is provided (for opening doors at stations)
       - open doors are comped in by the graphics processor
@@ -6,22 +6,22 @@
  -->
 
 // default graphics chain
-<tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-    spriteset(${unit.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 60))}
+<tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
+    spriteset(${unit.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60))}
     }
-    spriteset(${unit.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
+    spriteset(${unit.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
     }
     <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
-    <tal:pantographs condition="consist.pantograph_type is not None">
+    <tal:pantographs condition="model_variant.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${unit.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${consist.model_id}_pantographs_${pantograph_state}.png") {
+            spriteset(${unit.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${model_variant.model_id}_pantographs_${pantograph_state}.png") {
                 ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * 30))}
             }
         </tal:pantographs>
-        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs_state_${position_variant_num}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs_state_${position_variant_num}, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
             1: return ${unit.id}_ss_pantographs_up_${position_variant_num};
             return ${unit.id}_ss_pantographs_down_${position_variant_num};
         }
@@ -30,11 +30,11 @@
         switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_pantographs_${position_variant_num},
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
-                ${int(not consist.suppress_pantograph_if_no_engine_attached)}
+                ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
                 <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS -->
                 <tal:has_cab_consist condition="getattr(consist, 'cab_consist', None) is not None">
                     ||
-                    count_veh_id(${consist.cab_consist.units[0].id}) > 0
+                    count_veh_id(${model_variant.cab_consist.units[0].id}) > 0
                 </tal:has_cab_consist>
             ]
         ) {
@@ -53,13 +53,13 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
             (1 * switch_graphics_opening_doors())
         ]
     ) {
-    <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
+    <tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
         ${position_variant_num}0: return ${unit.id}_ss_doors_closed_position_variant_${position_variant_num};
         ${position_variant_num}1: return ${unit.id}_ss_doors_open_position_variant_${position_variant_num};
     </tal:consist_position_variants>
 }
 
-<tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
+<tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_layers_${position_variant_num},
             [
                 STORE_TEMP(${position_variant_num}, ${temp_storage_ids.consist_specific_position_variant_num}),
@@ -67,7 +67,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
             ]
         ){
         0: return ${unit.id}_switch_graphics_vehicle_check_engine_and_doors;
-        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+        <tal:conditional_pantograph condition="model_variant.pantograph_type is not None">
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
             1: return ${unit.id}_switch_graphics_pantographs_${position_variant_num};
@@ -76,8 +76,8 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 
 </tal:consist_position_variants>
 
-<tal:vars define="position_variants consist.gestalt_graphics.spriterow_group_mappings">
-    <tal:switch_position_ruleset switch="consist.gestalt_graphics.formation_ruleset">
+<tal:vars define="position_variants model_variant.gestalt_graphics.spriterow_group_mappings">
+    <tal:switch_position_ruleset switch="model_variant.gestalt_graphics.formation_ruleset">
         <!--! rulesets must comply with the position names in gestalt_graphics
               these could be extended or made arbitrary, but that's unwanted complexity -->
         <tal:position_ruleset case="'pax_cars'">
@@ -166,24 +166,24 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
-    <tal:fill_temp_storage condition="consist.vehicle_family_badge is not None">switch_initialise_var_41_but_badges_not_ids(badgetype("${consist.vehicle_family_badge}"))</tal:fill_temp_storage>
-    <tal:no_fill_temp_storage condition="consist.vehicle_family_badge is None">1</tal:no_fill_temp_storage>
+    <tal:fill_temp_storage condition="model_variant.vehicle_family_badge is not None">switch_initialise_var_41_but_badges_not_ids(badgetype("${model_variant.vehicle_family_badge}"))</tal:fill_temp_storage>
+    <tal:no_fill_temp_storage condition="model_variant.vehicle_family_badge is None">1</tal:no_fill_temp_storage>
     ) {
     return ${unit.id}_switch_graphics_position_in_consist_entry_point;
 }
 
 // buy menu graphics chain
-spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
     <!--! note the weird jank to handle articulated the y position of buy menu sprites
           it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->
-    <tal:buy_menu_sprite_switch_case switch="consist.requires_custom_buy_menu_sprite">
+    <tal:buy_menu_sprite_switch_case switch="model_variant.requires_custom_buy_menu_sprite">
         <tal:case case="True">
             <!--! custom buy menu sprites are generated in the order required for the variants in buy menu, and are in consecutive spriterows -->
-            ${consist.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 30)}
+            ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 30)}
         </tal:case>
         <tal:case case="False">
             <!--! non-custom buy menu sprites use a specific relative_spriterow_num and need to skip a row to account for door states -->
-            ${consist.get_nml_for_spriteset_template(y_offset=consist.catalogue_entry.livery_def.relative_spriterow_num * 60)}
+            ${model_variant.get_nml_for_spriteset_template(y_offset=model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60)}
         </tal:case>
     </tal:buy_menu_sprite_switch_case>
 }
@@ -192,11 +192,11 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_purchase, vehicle_
     ${unit.numeric_id}: return ${unit.id}_ss_vehicle_purchase;
     <!--! no default, by design all variants should be explicitly found -->
 }
-<tal:conditional_pantographs switch="(consist.pantograph_type is not None) and (not consist.suppress_pantograph_if_no_engine_attached)">
+<tal:conditional_pantographs switch="(model_variant.pantograph_type is not None) and (not model_variant.suppress_pantograph_if_no_engine_attached)">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${unit.id}_ss_pantograph_purchase, "${graphics_path}${consist.model_id}_pantographs_down.png") {
-            ${consist.get_nml_for_spriteset_template(y_offset=0)}
+        spriteset(${unit.id}_ss_pantograph_purchase, "${graphics_path}${model_variant.model_id}_pantographs_down.png") {
+            ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
         }
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
             return ${unit.id}_switch_graphics_vehicle_purchase;
@@ -224,9 +224,9 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_purchase, vehicle_
 -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
     <!--! CABBAGE SHIM-->
-    <tal:forced_remap switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
+    <tal:forced_remap switch="getattr(model_variant.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
         <tal:remap case="True">
-            ${unit.numeric_id}: return base_sprite_2cc + 16 * ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
+            ${unit.numeric_id}: return base_sprite_2cc + 16 * ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
         </tal:remap>
         <tal:no_remap case="False">
             ${unit.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

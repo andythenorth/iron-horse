@@ -2,10 +2,10 @@
       support for pantographs and opening doors *is* included
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 
-spriteset(${unit.id}_ss_doors_closed, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_doors_closed, "${graphics_path}${model_variant.model_id}.png") {
     ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
 }
-spriteset(${unit.id}_ss_doors_open, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_doors_open, "${graphics_path}${model_variant.model_id}.png") {
     ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
 }
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors, switch_graphics_opening_doors()) {
@@ -18,40 +18,40 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_livery, vehicle_type_id) {
     <!--! no default, by design all variants should be explicitly found -->
 }
 
-<tal:pantographs condition="consist.pantograph_type is not None">
+<tal:pantographs condition="model_variant.pantograph_type is not None">
     <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
     <tal:pantographs repeat="pantograph_state ['down', 'up']">
-        spriteset(${unit.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+        spriteset(${unit.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${model_variant.id}_pantographs_${pantograph_state}.png") {
             ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 60))}
         }
     </tal:pantographs>
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
         1: return ${unit.id}_ss_pantographs_up;
         return ${unit.id}_ss_pantographs_down;
     }
 </tal:pantographs>
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
+    <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names[1:]">
         ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_${extra_sprite_layer[1]};
     </tal:extra_sprite_layers>
     return ${unit.id}_switch_graphics_livery;
 }
 
 // buy menu graphics chain
-spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
-    <!--! CABBAGE --> // ${consist.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
-    ${consist.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
+spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
+    <!--! CABBAGE --> // ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
+    ${model_variant.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
 }
 
-<tal:conditional_pantographs condition="consist.pantograph_type is not None">
+<tal:conditional_pantographs condition="model_variant.pantograph_type is not None">
     <!--! purchase sprites for case where pantograph layer is needed -->
-    spriteset(${unit.id}_ss_pantographs_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=0)}
+    spriteset(${unit.id}_ss_pantographs_purchase, "${graphics_path}${model_variant.id}_pantographs_down.png") {
+        ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
     }
 </tal:conditional_pantographs>
 
-<tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+<tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
         STORE_TEMP(
             <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
@@ -73,7 +73,7 @@ spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.p
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
     <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
-    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+    <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
         ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
     </tal:extra_sprite_layers>
 }
@@ -83,7 +83,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, getbits(extra_ca
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-    <tal:livery define="livery_cabbage consist.catalogue_entry.livery_def">
+    <tal:livery define="livery_cabbage model_variant.catalogue_entry.livery_def">
         <tal:optional_forced_recolour switch="getattr(livery_cabbage, 'remap_to_cc', None) is not None">
             <tal:block case="True">
                 <!--! recolour CC2 to arbitrary other CC as defined by livery -->
