@@ -31,7 +31,6 @@ class DocHelper(object):
         if model_variant.dual_headed:
             return min((2 * 4 * model_variant.length) + 1, self.docs_sprite_max_width)
 
-
     def get_catalogues_by_model_type_cls(self, catalogues):
         result = defaultdict(lambda: {"model_type_cls": None, "catalogues": []})
 
@@ -165,11 +164,13 @@ class DocHelper(object):
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                default_model_variant.role in ["driving_cab", "gronk", "lolz", "metro"]
-                or default_model_variant.wagons_add_power
-                # CABBAGE SEEMS ALL ENGINES HAVE _buyable_variant_group_id set currently HMMM
-                    # CABBAGE - THIS IS OFF BY 5 - PROBABLY THE RAILBUS VARIANTS? - MIGHT BE THAT _buyable_variant_group_id is not set correctly?
-                or default_model_variant._buyable_variant_group_id is not None
+                default_model_variant.wagons_add_power
+                or (
+                    default_model_variant.role
+                    in ["driving_cab", "gronk", "lolz", "metro"]
+                )
+                or (default_model_variant.subrole_child_branch_num > 999)
+                or (default_model_variant.subrole_child_branch_num < -999)
             ):
                 not_really_engines.append(catalogue)
             else:
@@ -430,7 +431,11 @@ class DocHelper(object):
             self.fetch_prop(result, "HP", int(default_model_variant.power))
             self.fetch_prop(result, "Speed (mph)", default_model_variant.speed)
             self.fetch_prop(result, "Weight (t)", default_model_variant.weight)
-            self.fetch_prop(result, "TE coefficient", default_model_variant.tractive_effort_coefficient)
+            self.fetch_prop(
+                result,
+                "TE coefficient",
+                default_model_variant.tractive_effort_coefficient,
+            )
             self.fetch_prop(result, "Intro Year", default_model_variant.intro_year)
             self.fetch_prop(result, "Vehicle Life", default_model_variant.vehicle_life)
             self.fetch_prop(result, "Buy Cost", default_model_variant.buy_cost)
@@ -438,7 +443,9 @@ class DocHelper(object):
             self.fetch_prop(
                 result,
                 "Loading Speed",
-                ', '.join([str(unit.loading_speed) for unit in default_model_variant.units])
+                ", ".join(
+                    [str(unit.loading_speed) for unit in default_model_variant.units]
+                ),
             )
         return result
 
