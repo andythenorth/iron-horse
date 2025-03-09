@@ -8,7 +8,7 @@
     - spriteset first - 1 row
     - spritesets middle - 3 rows, empty / loading / loaded states
     - spriteset last - 1st row, reversed
-    - switch for position in articulated consist
+    - switch for position in articulated vehicle
         - var position_in_articulated_veh
     - switch for empty / loading / loaded if middle unit
     - purchase menu sprite (hand-drawn, or make a gestalt for this that uses buy menu sprite generator??)

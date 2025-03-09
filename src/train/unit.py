@@ -412,7 +412,6 @@ class UnitBase(object):
         nml_result = template(
             unit=self,
             model_variant=self.model_variant,
-            consist=self.model_variant, # CABBAGE SHIM
             catalogue_entry=self.model_variant.catalogue_entry,
             global_constants=global_constants,
             utils=utils,

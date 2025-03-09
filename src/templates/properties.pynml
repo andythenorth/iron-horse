@@ -20,7 +20,7 @@
     <tal:include metal:use-macro="load: speed.pynml" />
 </tal:lgv_capable_speed_bonus>
 
-<tal:running_cost_factor condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and unit.is_lead_unit_of_consist">
+<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_lead_unit_of_consist">
     <tal:include metal:use-macro="load: cost.pynml" />
 </tal:running_cost_factor>
 
@@ -98,7 +98,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             name:                           ${model_variant.id}_switch_name;
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
             cost_factor:                    ${model_variant.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
-            <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
+            <tal:running_cost_factor switch="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False)">
                 // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
                 <tal:block case="True">
                     running_cost_factor:            ${unit.id}_switch_running_cost_factor;
@@ -121,7 +121,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             </tal:add_articulated_parts>
             <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
             <tal:buy_menu_additional_text condition="model_variant.uses_buy_menu_additional_text">
-                additional_text:                ${unit.id}_switch_buy_menu_additional_text; <!--! CABBAGE we don't need this per unit, per consist would do -->
+                additional_text:                ${unit.id}_switch_buy_menu_additional_text; <!--! CABBAGE we don't need this per unit, per model_variant would do -->
             </tal:buy_menu_additional_text>
         </tal:lead_unit_of_consist_only>
         <tal:conditional_random_trigger condition="unit.random_trigger_switch is not None">
@@ -145,7 +145,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             loading_speed:                  ${unit.loading_speed};
         </tal:optional_capacity_switches>
         <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
-        <tal:optional_cargo_subtype condition="getattr(consist, 'use_cargo_subytpes_VEHI', False)">
+        <tal:optional_cargo_subtype condition="getattr(model_variant, 'use_cargo_subytpes_VEHI', False)">
             cargo_subtype_text: switch_cargo_subtype_text();
         </tal:optional_cargo_subtype>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
@@ -163,7 +163,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
 <tal:rosters condition="unit.is_lead_unit_of_consist">
     <!--! constructing combinatorial 'if' expressions is too complicated, just turn the unit on or off in a cascading way that will probably go wrong eh? -->
 
-    <!--! first default to 'on' if lead unit of a consist (we don't want trailing parts -->
+    <!--! first default to 'on' if lead unit of an articulated vehicle (we don't want trailing parts) -->
     item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         property {
             climates_available:             ALL_CLIMATES;

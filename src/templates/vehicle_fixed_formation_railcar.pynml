@@ -1,4 +1,4 @@
-<!--! fixed formation railcar that *is not* composable from multiple consist-dependent vehicles and *does not* use configurable consist rulesets
+<!--! fixed formation railcar that *is not* composable from multiple formation-dependent vehicles and *does not* use configurable formation rulesets
       support for pantographs and opening doors *is* included
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 

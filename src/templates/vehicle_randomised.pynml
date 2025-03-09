@@ -4,7 +4,7 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png
     ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
 }
 
-<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates model_variant.roster.get_wagon_randomisation_candidates(consist);">
+<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates model_variant.roster.get_wagon_randomisation_candidates(model_variant);">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant_choose_randomised_wagon, [
                                 pseudo_random_value_from_deterministic_random_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
