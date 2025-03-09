@@ -397,10 +397,10 @@ class Roster(object):
                         "model_variants": [],
                     }
                 for catalogue_entry in catalogue:
-                    consist = factory.produce(catalogue_entry=catalogue_entry)
+                    model_variant = factory.produce(catalogue_entry=catalogue_entry)
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
-                    ].append(consist)
+                    ].append(model_variant)
 
     def produce_wagons(self):
         # Iterate over wagon module name stems and warn if not in global_constants
@@ -450,10 +450,10 @@ class Roster(object):
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
-                            consist = factory.produce(catalogue_entry=catalogue_entry)
+                            model_variant = factory.produce(catalogue_entry=catalogue_entry)
                             self.wagon_model_variants_by_catalogue[catalogue_id][
                                 "model_variants"
-                            ].append(consist)
+                            ].append(model_variant)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         f"{wagon_module_name} in {package_name} as defined by {self.id}.wagon_module_names_with_roster_ids"
@@ -470,11 +470,11 @@ class Roster(object):
         # therefore we can provide a compile-time lookup table, and index into it using a procedure call with a single parameter
         # this does not have the same cost in nml or grf filesize
         seen_params = []
-        for wagon_consist in self.wagon_model_variants:
-            if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
-                seen_params.append(wagon_consist.get_wagon_recolour_strategy_params())
+        for wagon_model_variant in self.wagon_model_variants:
+            if getattr(wagon_model_variant, "use_colour_randomisation_strategies", False):
+                seen_params.append(wagon_model_variant.get_wagon_recolour_strategy_params())
                 seen_params.append(
-                    wagon_consist.get_wagon_recolour_strategy_params(context="purchase")
+                    wagon_model_variant.get_wagon_recolour_strategy_params(context="purchase")
                 )
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
@@ -491,11 +491,11 @@ class Roster(object):
 
         self.buyable_variant_groups = {}
 
-        # for every buyable variant for every consist
+        # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
-        for consist in self.model_variants_in_buy_menu_order:
-            for buyable_variant in consist.cabbage_buyable_variants:
+        for model_variant in self.model_variants_in_buy_menu_order:
+            for buyable_variant in model_variant.cabbage_buyable_variants:
                 if (
                     not buyable_variant.consist.buyable_variant_group_id
                     in self.buyable_variant_groups
@@ -537,22 +537,22 @@ class Roster(object):
                             + ".wagon_module_names_with_roster_ids as the module name may be incorrect there"
                         )
                         raise BaseException(error_message)
-                    for consist in self.wagon_model_variants_by_base_id[
+                    for model_variant in self.wagon_model_variants_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
-                        if consist.model_id_root == base_id_for_target_parent_consist:
+                        if model_variant.model_id_root == base_id_for_target_parent_consist:
                             match_failed = False
                             if (
-                                consist.base_track_type_name
+                                model_variant.base_track_type_name
                                 != parent_consist.base_track_type_name
                             ):
                                 match_failed = True
-                            if consist.gen != parent_consist.gen:
+                            if model_variant.gen != parent_consist.gen:
                                 match_failed = True
-                            if consist.subtype != parent_consist.subtype:
+                            if model_variant.subtype != parent_consist.subtype:
                                 match_failed = True
                             if not match_failed:
-                                candidate_parent_group = consist.buyable_variant_group
+                                candidate_parent_group = model_variant.buyable_variant_group
                                 break
                 else:
                     candidate_parent_group = parent_consist.buyable_variant_group
@@ -610,9 +610,9 @@ class Roster(object):
                 else:
                     lang_strings[node_name] = node_value["base"]
 
-        for consist in self.model_variants_in_buy_menu_order:
-            if consist.name is not None and consist.is_default_model_variant:
-                lang_strings["STR_NAME_" + consist.model_id.upper()] = consist.name
+        for model_variant in self.model_variants_in_buy_menu_order:
+            if model_variant.name is not None and model_variant.is_default_model_variant:
+                lang_strings["STR_NAME_" + model_variant.model_id.upper()] = model_variant.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
@@ -621,7 +621,7 @@ class BuyableVariantGroup(object):
     """
     Simple class to hold groups of buyable variants.
     These provide the variant_group in nml.
-    A group may comprise buyable variants for a single consist, or implement other rules.
+    A group may comprise buyable variants for a single model type, or implement other rules to group multiple model types.
     """
 
     def __init__(self, id):
