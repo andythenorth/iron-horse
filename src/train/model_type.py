@@ -39,13 +39,13 @@ class ModelTypeBase(object):
     def __init__(self, **kwargs):
         # mandatory, fail if missing
         self.catalogue_entry = kwargs["catalogue_entry"]
-        # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
+        # create a structure to hold buyable variants - the method can be over-ridden in model type subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
         self.cabbage_buyable_variants = []
         # variant group id options are set in subclasses; supported methods are cascading:
-        # set explicitly to a named group matching a consist id
-        # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. consist track type, gen etc
+        # set explicitly to a named group matching a model_variant id
+        # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. track type, gen etc
         # or implicitly inferred later from rules for e.g. livery variants
         self._buyable_variant_group_id = self.model_def.buyable_variant_group_id
         self.use_named_buyable_variant_group = None
@@ -90,7 +90,7 @@ class ModelTypeBase(object):
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, override in subclasses as needed
         self.floating_run_cost_multiplier = 1
-        # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
+        # one default cargo for the whole vehicle, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         self.class_refit_groups = []
         self.label_refits_allowed = []
@@ -99,7 +99,7 @@ class ModelTypeBase(object):
         self.gestalt_graphics = GestaltGraphics(
             catalogue_entry=self.catalogue_entry,
         )
-        # option to provide automatic roof for all units in the consist, leave as None for no generation
+        # option to provide automatic roof for all units in the model type, leave as None for no generation
         self.roof_type = None
         # optionally suppress nmlc warnings about animated pixels for vehicle models where they're intentional
         # CABBAGE model_def?
@@ -164,7 +164,7 @@ class ModelTypeBase(object):
 
     def resolve_buyable_variants(self):
         # CABBAGE - this should be removable
-        # this method can be over-ridden per consist subclass as needed
+        # this method can be over-ridden per model type subclass as needed
         # the basic form of buyable variants is driven by liveries
         self.cabbage_buyable_variants.append(BuyableVariant(self))
 
@@ -177,7 +177,7 @@ class ModelTypeBase(object):
 
     @property
     def unique_units(self):
-        # units may be repeated in the consist, sometimes we need an ordered list of unique units
+        # units may be repeated in the model type, sometimes we need an ordered list of unique units
         # set() doesn't preserve list order, which matters, so do it the hard way
         unique_units = []
         for unit in self.units:
@@ -358,7 +358,7 @@ class ModelTypeBase(object):
     def get_badges(self):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
-        # - badges arising implicitly from consist type or properties
+        # - badges arising implicitly from model type or properties
         result = list(set(self._badges))
         # power source badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_power_source_badges)
@@ -532,9 +532,9 @@ class ModelTypeBase(object):
 
     @property
     def replacement_consist(self):
-        # option exists to force a replacement consist, this is used to merge tech tree branches
+        # option exists to force a replacement model, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
-        # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
+        # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
         if self.model_def.replacement_model_id is not None:
             for consist in self.roster.engine_consists:
                 # CABBAGE model_id will over-detect here as multiple variants have the same model_id
@@ -542,9 +542,9 @@ class ModelTypeBase(object):
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
-                "replacement consist id "
+                "replacement model id "
                 + self.model_def.replacement_model_id
-                + " not found for consist "
+                + " not found for model variant "
                 + self.id
             )
         else:
@@ -571,7 +571,7 @@ class ModelTypeBase(object):
     @property
     def replaces_consists(self):
         # note that this depends on replacement_consist property in other model defs, and may not work in all cases
-        # a consist can replace more than one other consist
+        # a model can replace more than one other model
         result = []
         for consist in self.roster.engine_consists:
             if consist.replacement_consist is not None:
@@ -774,7 +774,7 @@ class ModelTypeBase(object):
                 )
 
     def get_speed_by_class(self, speed_class):
-        # automatic speed, but can override by passing in kwargs for consist
+        # automatic speed, but can override via the model def
         speeds_by_track_type = self.roster.speeds[self.base_track_type_name]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
@@ -799,7 +799,7 @@ class ModelTypeBase(object):
                 if self.subrole in subroles:
                     return self.get_speed_by_class("express")
             # then check other specific roles
-            # !! this would be better determined by setting self.speed_class appropriately in the consist subclasses
+            # !! this would be better determined by setting self.speed_class appropriately in the model type subclasses
             if self.subrole in ["mail_railcar", "pax_railcar", "pax_railbus"]:
                 return self.get_speed_by_class("suburban")
             elif self.subrole in ["hst"]:
@@ -854,7 +854,7 @@ class ModelTypeBase(object):
 
     @property
     def length(self):
-        # total length of the consist
+        # total length of the (articulated) vehicle
         return sum([unit.vehicle_length for unit in self.units])
 
     @property
@@ -926,7 +926,7 @@ class ModelTypeBase(object):
                             + "()"
                         )
         else:
-            # otherwise use the electrification type already known by the consist
+            # otherwise use the electrification type already known by the model type
             result.append(
                 "tile_powers_track_type_name_"
                 + self.base_track_type_name
@@ -961,7 +961,7 @@ class ModelTypeBase(object):
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"
             else:
-                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
+                # everything else goes into one group, either on the model group, or a named parent group which composes multiple model variants
                 fixed_mixed_suffix = None
             id = self.compose_variant_group_id(group_id_base, fixed_mixed_suffix)
         else:
@@ -970,7 +970,7 @@ class ModelTypeBase(object):
         return id
 
     def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
-        # composes a group id from a group name, and some properties from the consist
+        # composes a group id from a group name, and some properties from the model type
         return "{a}_{b}_gen_{c}{d}_{e}".format(
             a=group_name,
             b=self.base_track_type_name.lower(),
@@ -1311,7 +1311,7 @@ class ModelTypeBase(object):
                 raise BaseException(
                     +self.model_id + " defines unsupported number of power sources"
                 )
-        # optional string if consist is lgv-capable
+        # optional string if model type is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
         # optional string if dedicated wagons add power
@@ -1463,7 +1463,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
-        # how to handle grouping this consist type
+        # how to handle grouping this model type
         self.group_as_wagon = False
         # Graphics configuration only as required
         # (pantographs can also be generated by other gestalts as needed, this isn't the exclusive gestalt for it)
@@ -1495,7 +1495,8 @@ class EngineModelTypeBase(ModelTypeBase):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
+            # we have to instantiate an actual model variant, temporarily, as the factory doesn't know the calculated cost directly
+            # CABBAGE - CAN FETCH CLONE FACTORY FROM THE ROSTER NOW?
             from train.factory import ModelVariantFactory
 
             factory = ModelVariantFactory(
@@ -1555,7 +1556,8 @@ class EngineModelTypeBase(ModelTypeBase):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
+            # CABBAGE - CAN FETCH CLONE FACTORY FROM THE ROSTER NOW?
+            # we have to instantiate an actual model variant, temporarily, as the factory doesn't know the calculated cost directly
             from train.factory import ModelVariantFactory
 
             factory = ModelVariantFactory(
@@ -1704,7 +1706,7 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
 class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
     """
     Fixed formation articulated railcar combine (mail + pax).
-    This *does* not use consist-dependent position sprite rulesets; the formation is fixed.
+    This *does* not use formation-dependent position sprite rulesets; the formation is fixed.
     """
 
     liveries = ["VANILLA"]
@@ -1769,13 +1771,12 @@ class MailEngineCabbageDVT(MailEngineBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # report mail cab cars as pax cars for consist rulesets
+        # report mail cab cars as pax cars for formation rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
         # Graphics configuration
-        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
@@ -1905,7 +1906,6 @@ class MailEngineRailcar(MailEngineBase):
         # * unit with driving cab rear end
         # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
         # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
-        # CABBAGE THIS SHOULD BE CONSIST RULESET
         if self.model_def.formation_ruleset is not None:
             formation_ruleset = self.model_def.formation_ruleset
         else:
@@ -2068,13 +2068,12 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # report cab cars as pax cars for consist rulesets
+        # report cab cars as pax cars for formation rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
         # Graphics configuration
-        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
@@ -2152,7 +2151,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             len(self.catalogue_entry.catalogue) * 60,
             30,
         ]
-        # various rulesets are supported, per consist, (or could be extended to checks per roster)
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
         if self.model_def.formation_ruleset is not None:
             formation_ruleset = self.model_def.formation_ruleset
@@ -2578,7 +2577,7 @@ class CarModelTypeBase(ModelTypeBase):
         ]
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
-        # how to handle grouping this consist type
+        # how to handle grouping this model type
         self.group_as_wagon = True
 
     @property
@@ -2630,7 +2629,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def model_life(self):
-        # allow this to be delegated to the consist if necessary
+        # allow this to be delegated to the model def if necessary
         if self._model_life is not None:
             return self._model_life
         # automatically span wagon model life across gap to next generation
@@ -2762,7 +2761,7 @@ class RandomisedCarMixin(object):
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
-        # need to turn off colour randomisation on the random consist, it's handled explicitly by the template
+        # need to turn off colour randomisation on the random model type, it's handled explicitly by the template
         self.use_colour_randomisation_strategies = False
 
     @property
@@ -3535,7 +3534,7 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
 
 class BulkOpenCarHeavyDuty(BulkOpenCarBase):
     """
-    Heavy duty dump car, higher capacity, reduced speed (set in vehicle class, not consist)
+    Heavy duty dump car, higher capacity, reduced speed.
     """
 
     liveries = [
@@ -4055,7 +4054,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    # note does NOT subclass CoilCarBase - different type of consist
+    # note does NOT subclass CoilCarBase - different model type
     model_id_root = "coil_buggy_car"
 
     def __init__(self, **kwargs):
@@ -5130,7 +5129,7 @@ class FlatCar(FlatCarBase):
 
 class FlatCarHeavyDuty(FlatCarBase):
     """
-    Heavy duty flat car, higher capacity, reduced speed (set in vehicle class, not consist)
+    Heavy duty flat car, higher capacity, reduced speed.
     """
 
     liveries = [
@@ -5815,7 +5814,7 @@ class IntermodalCarBase(CarModelTypeBase):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
-        # various rulesets are supported, per consist, (or could be extended to checks per roster)
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
         if self.model_def.formation_ruleset is not None:
             formation_ruleset = self.model_def.formation_ruleset
@@ -6105,12 +6104,11 @@ class MailCar(MailCarBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
-        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # * solid block can be used, but looks like freight cars, so duotone liveries are preferred (see caboose cars for inspiration)
         # position based variants
-        # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
+        # longer mail cars get an additional sprite option in the formation ruleset; shorter mail cars don't as it's TMWFTLB
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         brake_car_sprites = 1 if self.subtype in ["B", "C"] else 0
         bonus_sprites = 2 if self.subtype in ["C"] else 0
@@ -6203,7 +6201,6 @@ class MailHighSpeedCar(MailCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # Graphics configuration
-        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
@@ -6249,7 +6246,6 @@ class MailHSTCar(MailCarBase):
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
@@ -7086,7 +7082,6 @@ class PassengerCar(PassengerCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
@@ -7133,7 +7128,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
@@ -7225,7 +7219,6 @@ class PassengerHSTCar(PassengerCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
         # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
@@ -7418,7 +7411,6 @@ class PassengerSuburbanCar(PassengerCarBase):
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         self._joker = True
         # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
