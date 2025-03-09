@@ -31,35 +31,19 @@ class DocHelper(object):
         if model_variant.dual_headed:
             return min((2 * 4 * model_variant.length) + 1, self.docs_sprite_max_width)
 
-    def get_default_model_variants_by_subclass(
-        self, model_variants, filter_subclasses_by_name=None
-    ):
-        # CABBAGE SHOULD BE CATALOGUE BASED - THEN WE ALSO KNOW THE SUBCLASS ETC
-        # first find all the subclasses + their vehicles
-        model_variants_by_subclass = {}
-        for model_variant in model_variants:
-            if not model_variant.is_default_model_variant:
-                continue
-            subclass = type(model_variant)
-            if (
-                filter_subclasses_by_name == None
-                or subclass.__name__ in filter_subclasses_by_name
-            ):
-                if subclass in model_variants_by_subclass:
-                    model_variants_by_subclass[subclass].append(model_variant)
-                else:
-                    model_variants_by_subclass[subclass] = [model_variant]
-        # reformat to a list we can then sort so order is consistent
-        result = [
-            {
-                "name": i.__name__,
-                "doc": i.__doc__,
-                "class_obj": subclass,
-                "vehicles": model_variants_by_subclass[i],
-            }
-            for i in model_variants_by_subclass
-        ]
-        return sorted(result, key=lambda subclass: subclass["name"])
+
+    def get_catalogues_by_model_type_cls(self, catalogues):
+        result = defaultdict(lambda: {"model_type_cls": None, "catalogues": []})
+
+        for catalogue in catalogues:
+            model_type_cls = catalogue.factory.model_type_cls
+            key = model_type_cls.__name__
+            if result[key]["model_type_cls"] is None:
+                result[key]["model_type_cls"] = model_type_cls
+            result[key]["catalogues"].append(catalogue)
+
+        # Return a list of dicts sorted by the model type class name
+        return sorted(result.values(), key=lambda x: x["model_type_cls"].__name__)
 
     def get_engine_catalogues_by_roster_and_base_track_type(
         self, roster, base_track_type_name
@@ -356,11 +340,6 @@ class DocHelper(object):
 
         return json.dumps(result)
 
-    def fetch_prop(self, result, prop_name, value):
-        result["vehicle"][prop_name] = value
-        result["subclass_props"].append(prop_name)
-        return result
-
     def unpack_name_string(self, catalogue):
         default_model_variant = catalogue.default_model_variant_from_roster
         # engines have an untranslated name defined via name, wagons use a translated string
@@ -455,37 +434,31 @@ class DocHelper(object):
         # default to t for tonnes, although this doesn't work for liquids, passengers etc
         return f"{capacity} t"
 
-    def get_props_to_print_in_code_reference(self, subclass):
-        props_to_print = {}
-        # CABBAGE 'vehicle' or 'model'?
-        for vehicle in subclass["vehicles"]:
-            result = {"vehicle": {}, "subclass_props": []}
-            result = self.fetch_prop(
-                result,
-                "Vehicle Name",
-                self.unpack_name_string(vehicle.catalogue_entry.catalogue),
-            )
-            result = self.fetch_prop(result, "Gen", vehicle.gen)
-            if vehicle.subrole is not None:
-                result = self.fetch_prop(result, "Subrole", vehicle.subrole)
-            result = self.fetch_prop(result, "Railtype", vehicle.track_type)
-            result = self.fetch_prop(result, "HP", int(vehicle.power))
-            result = self.fetch_prop(result, "Speed (mph)", vehicle.speed)
-            result = self.fetch_prop(result, "Weight (t)", vehicle.weight)
-            result = self.fetch_prop(
-                result, "TE coefficient", vehicle.tractive_effort_coefficient
-            )
-            result = self.fetch_prop(result, "Intro Year", vehicle.intro_year)
-            result = self.fetch_prop(result, "Vehicle Life", vehicle.vehicle_life)
-            result = self.fetch_prop(result, "Buy Cost", vehicle.buy_cost)
-            result = self.fetch_prop(result, "Running Cost", vehicle.running_cost)
-            result = self.fetch_prop(
-                result, "Loading Speed", [unit.loading_speed for unit in vehicle.units]
-            )
+    def fetch_prop(self, result, prop_name, value):
+        result[prop_name].append(value)
 
-            props_to_print[vehicle] = result["vehicle"]
-            props_to_print[subclass["name"]] = result["subclass_props"]
-        return props_to_print
+    def get_props_to_print_in_code_reference(self, catalogues):
+        result = defaultdict(list)
+        for catalogue in catalogues:
+            # we print _mostly_ from default_model_variant here, not catalogue or model_def, to see what actually gets determined
+            default_model_variant = catalogue.default_model_variant_from_roster
+            self.fetch_prop(result, "Vehicle Name", self.unpack_name_string(catalogue))
+            self.fetch_prop(result, "Gen", default_model_variant.gen)
+            self.fetch_prop(result, "Railtype", default_model_variant.track_type)
+            self.fetch_prop(result, "HP", int(default_model_variant.power))
+            self.fetch_prop(result, "Speed (mph)", default_model_variant.speed)
+            self.fetch_prop(result, "Weight (t)", default_model_variant.weight)
+            self.fetch_prop(result, "TE coefficient", default_model_variant.tractive_effort_coefficient)
+            self.fetch_prop(result, "Intro Year", default_model_variant.intro_year)
+            self.fetch_prop(result, "Vehicle Life", default_model_variant.vehicle_life)
+            self.fetch_prop(result, "Buy Cost", default_model_variant.buy_cost)
+            self.fetch_prop(result, "Running Cost", default_model_variant.running_cost)
+            self.fetch_prop(
+                result,
+                "Loading Speed",
+                ', '.join([str(unit.loading_speed) for unit in default_model_variant.units])
+            )
+        return result
 
     def get_base_numeric_id(self, consist):
         # used for a lambda sort function

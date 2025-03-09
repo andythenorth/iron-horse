@@ -39,9 +39,6 @@ def render_docs(
     use_markdown=False,
     source_is_repo_root=False,
 ):
-    roster = iron_horse.roster_manager.active_roster
-    # expect Exception failures if there is no active roster, don't bother explicitly handling that case
-
     if source_is_repo_root:
         doc_path = os.path.join(currentdir)
     else:
@@ -52,11 +49,15 @@ def render_docs(
 
     docs_templates = PageTemplateLoader(doc_path, format="text")
 
+    roster = iron_horse.roster_manager.active_roster
+    # expect Exception failures if there is no active roster, don't bother explicitly handling that case
+
     for doc_name in doc_list:
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + ".pt"]
         doc = template(
             roster=roster,
+            catalogues=roster.catalogues,
             consists=consists,
             iron_horse=iron_horse,
             global_constants=global_constants,
