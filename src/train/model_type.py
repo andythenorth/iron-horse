@@ -2431,7 +2431,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     """
     Mixin for an intermediate motor unit for very high speed train (TGV etc).
     When added to the correct cab engine, this vehicle will cause cab power to increase.
-    Add as additional class for e.g. pax or mail engine consist.
+    Add as additional class for e.g. pax or mail engine model type.
     """
 
     def __init__(self, **kwargs):
@@ -8673,7 +8673,7 @@ class TorpedoCarUnit(CarModelTypeBase):
 
 class BuyableVariant(object):
     """
-    Simple class to hold buyable variants of the consist.
+    Simple class to hold buyable variants LEGACY CABBAGE.
     """
 
     def __init__(self, consist):
