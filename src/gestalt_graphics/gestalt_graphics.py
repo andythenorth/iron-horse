@@ -949,7 +949,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
     @property
     def nml_template(self):
         # override in subclasses as needed
-        return "vehicle_consist_position_dependent.pynml"
+        return "vehicle_formation_position_dependent.pynml"
 
     def get_output_row_types(self):
         return ["pax_mail_cars_with_doors"]

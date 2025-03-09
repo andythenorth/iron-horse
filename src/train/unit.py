@@ -381,7 +381,7 @@ class UnitBase(object):
                 for nml_template in [
                     "vehicle_box_car_with_opening_doors.pynml",
                     "vehicle_with_cargo_specific_liveries.pynml",
-                    "vehicle_consist_position_dependent.pynml",
+                    "vehicle_formation_position_dependent.pynml",
                 ]:
                     assert self.model_variant.gestalt_graphics.nml_template != nml_template, (
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s"
