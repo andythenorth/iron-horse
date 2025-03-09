@@ -297,17 +297,16 @@ class DocHelper(object):
                 base_track_type_name
             ] = defaultdict(list)
 
-        # for vehicle_type, vehicle_consists in [engines, wagons]:
         # parse the engine and wagon model variants into a consistent structure
         engines = ("engines", roster.engine_model_variants_excluding_clones)
-        wagon_consists = self.filter_out_randomised_wagon_model_variants(
+        wagon_model_variants = self.filter_out_randomised_wagon_model_variants(
             roster.wagon_model_variants
         )
-        wagons = ("wagons", wagon_consists)
+        wagons = ("wagons", wagon_model_variants)
 
         # this code repeats for both engines and wagons, but with different source lists
-        for vehicle_type, vehicle_consists in [engines, wagons]:
-            for model_variant in vehicle_consists:
+        for vehicle_type, vehicle_model_variants in [engines, wagons]:
+            for model_variant in vehicle_model_variants:
                 # CABBAGE JFDI FILTER OUT NON-DEFAULT.  CONVERT ALL OF THIS TO USE CATALOGUES?
                 if not model_variant.is_default_model_variant:
                     continue
@@ -327,13 +326,13 @@ class DocHelper(object):
             base_track_type_name,
             base_track_label,
         ) in self.base_track_type_names_and_labels:
-            vehicle_consists = result["sorted_by_base_track_type_and_vehicle_type"][
+            vehicle_model_variants = result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ]
             for vehicle_type in ["engines", "wagons"]:
-                if len(vehicle_consists[vehicle_type]) == 0:
-                    del vehicle_consists[vehicle_type]
-            if len(vehicle_consists.keys()) == 0:
+                if len(vehicle_model_variants[vehicle_type]) == 0:
+                    del vehicle_model_variants[vehicle_type]
+            if len(vehicle_model_variants.keys()) == 0:
                 del result["sorted_by_base_track_type_and_vehicle_type"][
                     base_track_type_name
                 ]
@@ -377,15 +376,15 @@ class DocHelper(object):
             if model_variant.id == replacement_model_id:
                 return self.unpack_name_string(model_variant.catalogue_entry.catalogue)
 
-    def consist_has_direct_replacment(self, model_variant):
-        if model_variant.replacement_consist.subrole != model_variant.subrole:
+    def model_cabbage_has_direct_replacment(self, model_variant):
+        if model_variant.replacement_model_variant.subrole != model_variant.subrole:
             return False
         elif (
-            model_variant.replacement_consist.subrole_child_branch_num
+            model_variant.replacement_model_variant.subrole_child_branch_num
             != model_variant.subrole_child_branch_num
         ):
             return False
-        elif model_variant.replacement_consist.gen != model_variant.gen + 1:
+        elif model_variant.replacement_model_variant.gen != model_variant.gen + 1:
             return False
         else:
             return True

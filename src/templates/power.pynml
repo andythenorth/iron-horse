@@ -17,7 +17,7 @@
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS -->
     switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_power_0, [
-            count_veh_id(${model_variant.cab_consist.units[0].id}) > 0
+            count_veh_id(${model_variant.cab_engine.units[0].id}) > 0
         ]) {
         1: return ${model_variant.cab_power};
         return 0;

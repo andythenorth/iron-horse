@@ -176,14 +176,14 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
-        candidate_consists = []
+        candidate_cabbage_models = []
         # DEFINITE CABBAGE
         for unit_variant in pipeline.default_model_variant.frozen_roster_items[
             "wagon_randomisation_candidates"
         ][0]:
             # ^^^ !! picking the first item off is hax
-            if unit_variant.unit.model_variant not in candidate_consists:
-                candidate_consists.append(unit_variant.unit.model_variant)
+            if unit_variant.unit.model_variant not in candidate_cabbage_models:
+                candidate_cabbage_models.append(unit_variant.unit.model_variant)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
@@ -191,11 +191,11 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             # vehicle unit, y offset (num spriterows) to buy menu input row
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             (
-                list(candidate_consists)[0].units[0],
+                list(candidate_cabbage_models)[0].units[0],
                 0,
             ),
             (
-                list(candidate_consists)[1].units[0],
+                list(candidate_cabbage_models)[1].units[0],
                 0,
             ),
         ]

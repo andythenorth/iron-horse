@@ -134,7 +134,7 @@ def render_docs_vehicle_details(
 
 
 def render_docs_images(
-    consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
+    model_variant_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
 ):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
@@ -142,7 +142,7 @@ def render_docs_images(
     # vehicles: assumes render_graphics has been run and generated dir has correct content
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
-    catalogue = consist_catalogue_mapping["catalogue"]
+    catalogue = model_variant_catalogue_mapping["catalogue"]
 
     vehicle_spritesheet = Image.open(
         os.path.join(generated_graphics_path, catalogue.id + ".png")
@@ -151,7 +151,7 @@ def render_docs_images(
 
     docs_image_variants = []
 
-    for model_variant in consist_catalogue_mapping["model_variants"]:
+    for model_variant in model_variant_catalogue_mapping["model_variants"]:
         if model_variant.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
@@ -460,9 +460,9 @@ def main():
     render_docs_images_start = time()
 
     if use_multiprocessing == False:
-        for consist_catalogue_mapping in roster.model_variants_by_catalogue.values():
+        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
             render_docs_images(
-                consist_catalogue_mapping,
+                model_variant_catalogue_mapping,
                 static_dir_dst,
                 generated_graphics_path,
                 doc_helper,

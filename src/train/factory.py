@@ -552,10 +552,10 @@ class Catalogue(list):
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
-        for catalogue_id, catalogue_consist_mapping in self.factory.roster.model_variants_by_catalogue.items():
-            catalogue = catalogue_consist_mapping['catalogue']
+        for catalogue_id, catalogue_model_variant_mapping in self.factory.roster.model_variants_by_catalogue.items():
+            catalogue = catalogue_model_variant_mapping['catalogue']
             if catalogue.factory.model_def.cab_id == self.id:
-                result.append(catalogue_consist_mapping)
+                result.append(catalogue_model_variant_mapping)
         return result
 
 

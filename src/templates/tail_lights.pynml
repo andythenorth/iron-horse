@@ -23,7 +23,7 @@
         </tal:block>
     </tal:auto_lengths>
 
-    <tal:engine_consists repeat="engine [('hst_32px_1', 8), ('metro_32px_1', 8), ('metro_32px_2', 8), ('metro_32px_3', 8),
+    <tal:engine_models repeat="engine [('hst_32px_1', 8), ('metro_32px_1', 8), ('metro_32px_2', 8), ('metro_32px_3', 8),
                                          ('railcar_20px_1', 5), ('railcar_20px_2', 5), ('railcar_20px_3', 5), ('railcar_20px_4', 5),
                                          ('railcar_24px_1', 6),
                                          ('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8), ('railcar_32px_4', 8), ('railcar_32px_5', 8), ('railcar_32px_6', 8),
@@ -41,7 +41,7 @@
               spriteset_tail_light_${engine[0]}_${flipped_state}(10)
             }
         </tal:block>
-    </tal:engine_consists>
+    </tal:engine_models>
 </tal:flipped_state>
 
 spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png") {

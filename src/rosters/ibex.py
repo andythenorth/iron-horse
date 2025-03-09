@@ -264,7 +264,7 @@ def main():
                 "loading_speed_multiplier": 1.75,
             },
             # very specifically tuned multiplier against a single pony vehicle
-            "combine_consist_mail_pax": {
+            "autocoach_combine": {
                 "multiplier": 2.7,
                 "loading_speed_multiplier": 1.75,
             },

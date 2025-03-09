@@ -386,7 +386,7 @@ class ModelTypeBase(object):
     def engine_varies_power_by_power_source(self):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (self.power_by_power_source is not None) and (
-            getattr(self, "cab_consist", None) is None
+            getattr(self, "cab_engine", None) is None
         ):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
@@ -460,7 +460,7 @@ class ModelTypeBase(object):
     @property
     def cab_id(self):
         # cab_id if required must be set in model_def
-        # CABBAGE - WE MIGHT NOT NEED THIS, WE HAVE cab_consist and can get cab_factory at all times?
+        # CABBAGE - WE MIGHT NOT NEED THIS, WE HAVE cab_engine and can get cab_factory at all times?
         return self.model_def.cab_id
 
     @property
@@ -531,7 +531,7 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def replacement_consist(self):
+    def replacement_model_variant(self):
         # option exists to force a replacement model, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
@@ -549,8 +549,8 @@ class ModelTypeBase(object):
                 + self.id
             )
         else:
-            similar_consists = []
-            replacement_consist = None
+            similar_model_variants = []
+            replacement_model_variant = None
             for model_variant in self.roster.engine_model_variants:
                 if (
                     (model_variant.subrole == self.subrole)
@@ -560,29 +560,29 @@ class ModelTypeBase(object):
                     )
                     and (model_variant.base_track_type_name == self.base_track_type_name)
                 ):
-                    similar_consists.append(model_variant)
+                    similar_model_variants.append(model_variant)
             for model_variant in sorted(
-                similar_consists, key=lambda model_variant: model_variant.intro_year
+                similar_model_variants, key=lambda model_variant: model_variant.intro_year
             ):
                 if model_variant.intro_year > self.intro_year:
-                    replacement_consist = model_variant
+                    replacement_model_variant = model_variant
                     break
-            return replacement_consist
+            return replacement_model_variant
 
     @property
-    def replaces_consists(self):
-        # note that this depends on replacement_consist property in other model defs, and may not work in all cases
+    def replaces_model_variants(self):
+        # note that this depends on replacement_model_variant property in other model defs, and may not work in all cases
         # a model can replace more than one other model
         result = []
         for model_variant in self.roster.engine_model_variants:
-            if model_variant.replacement_consist is not None:
+            if model_variant.replacement_model_variant is not None:
                 # CABBAGE - THIS WILL OVER-DETECT as model_id is used by more than one model variant
-                if model_variant.replacement_consist.model_id == self.model_id:
+                if model_variant.replacement_model_variant.model_id == self.model_id:
                     result.append(model_variant)
         return result
 
     @property
-    def similar_consists(self):
+    def similar_model_variants(self):
         # quite a crude guess at similar engines by subrole
         result = []
         for model_variant in self.roster.engine_model_variants:
@@ -602,7 +602,7 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def cab_consist(self):
+    def cab_engine(self):
         # fetch the default model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
         return (
@@ -623,8 +623,8 @@ class ModelTypeBase(object):
             lifespan = 60
         else:
             lifespan = 40
-        if self.replacement_consist is not None:
-            time_to_replacement = self.replacement_consist.intro_year - self.intro_year
+        if self.replacement_model_variant is not None:
+            time_to_replacement = self.replacement_model_variant.intro_year - self.intro_year
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
                 return time_to_replacement - (time_to_replacement % 10) + 10
@@ -636,10 +636,10 @@ class ModelTypeBase(object):
 
     @property
     def model_life(self):
-        if self.replacement_consist is None:
+        if self.replacement_model_variant is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.replacement_consist.intro_year - self.intro_year
+            return self.replacement_model_variant.intro_year - self.intro_year
 
     @property
     def retire_early(self):
@@ -1505,11 +1505,11 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(
+            temp_model_type = factory.produce(
                 catalogue_entry=factory.catalogue.default_entry
             )
             return int(
-                temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
+                temp_model_type.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1566,11 +1566,11 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(
+            temp_model_type = factory.produce(
                 catalogue_entry=factory.catalogue.default_entry
             )
             return int(
-                temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
+                temp_model_type.running_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -2445,8 +2445,8 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         # prop left in place in case that ever gets changed :P
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
-        self._model_life = self.cab_consist.model_life
-        self._vehicle_life = self.cab_consist.vehicle_life
+        self._model_life = self.cab_engine.model_life
+        self._vehicle_life = self.cab_engine.vehicle_life
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # position variants
@@ -2458,7 +2458,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="tgv",
-            default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
+            default_livery_extra_docs_examples=self.cab_engine.gestalt_graphics.default_livery_extra_docs_examples,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -2466,7 +2466,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     @property
     def cab_power(self):
         # match middle engine power to cab engine power
-        return self.cab_consist.power
+        return self.cab_engine.power
 
     @property
     def buy_cost(self):
@@ -2475,13 +2475,13 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         # !! this does not account for wagon costs currently, just engine
         # 6.25 is a magic number, 2 is to double the factor for each base cost adjustment step
         adjustment_factor = 6.25 * 2 * abs(global_constants.PR_BUILD_VEHICLE_TRAIN)
-        return int(self.cab_consist.buy_cost * adjustment_factor)
+        return int(self.cab_engine.buy_cost * adjustment_factor)
 
     @property
     def running_cost(self):
         # take 49% of cab engine running cost as running cost
         # this is to prevent horrible scaling up of costs with each unit added, but could assume the cab has more cost due to driver, equipment etc
-        return int(0.49 * self.cab_consist.running_cost)
+        return int(0.49 * self.cab_engine.running_cost)
 
     @property
     def buy_menu_additional_text_distributed_power_substring(self):
@@ -2493,12 +2493,12 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     @property
     def buy_menu_distributed_power_hp_value(self):
-        return self.cab_consist.power
+        return self.cab_engine.power
 
     @property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
-        return self.cab_consist.intro_year_offset
+        return self.cab_engine.intro_year_offset
 
     @property
     def vehicle_family_badge(self):
@@ -2525,11 +2525,11 @@ class TGVMiddleMailEngine(TGVMiddleEngineMixin, MailEngineBase):
     def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
-        if self.cab_consist.subrole_child_branch_num < 0:
+        if self.cab_engine.subrole_child_branch_num < 0:
             offset = -2000
         else:
             offset = 2000
-        return offset + self.cab_consist.subrole_child_branch_num
+        return offset + self.cab_engine.subrole_child_branch_num
 
 
 class TGVMiddlePassengerEngine(TGVMiddleEngineMixin, PassengerEngineBase):
@@ -2544,11 +2544,11 @@ class TGVMiddlePassengerEngine(TGVMiddleEngineMixin, PassengerEngineBase):
     def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
-        if self.cab_consist.subrole_child_branch_num < 0:
+        if self.cab_engine.subrole_child_branch_num < 0:
             offset = -1000
         else:
             offset = 1000
-        return offset + self.cab_consist.subrole_child_branch_num
+        return offset + self.cab_engine.subrole_child_branch_num
 
 
 class CarModelTypeBase(ModelTypeBase):
@@ -6044,29 +6044,29 @@ class MailRailcarTrailerCarBase(MailCarBase):
         # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
-        self._model_life = self.cab_consist.model_life
-        self._vehicle_life = self.cab_consist.vehicle_life
+        self._model_life = self.cab_engine.model_life
+        self._vehicle_life = self.cab_engine.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
-        self._frozen_pantograph_type = self.cab_consist.pantograph_type
+        self._frozen_pantograph_type = self.cab_engine.pantograph_type
 
     @property
     def subrole(self):
-        return self.cab_consist.subrole
+        return self.cab_engine.subrole
 
     @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
+        return {key: 0 for key in self.cab_engine.power_by_power_source.keys()}
 
     @property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
-        return self.cab_consist.intro_year_offset
+        return self.cab_engine.intro_year_offset
 
     @property
     def pantograph_type(self):
@@ -6244,8 +6244,8 @@ class MailHSTCar(MailCarBase):
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "hst"
         self.buy_cost_adjustment_factor = 1.66
-        self._model_life = self.cab_consist.model_life
-        self._vehicle_life = self.cab_consist.vehicle_life
+        self._model_life = self.cab_engine.model_life
+        self._vehicle_life = self.cab_engine.vehicle_life
         # Graphics configuration
         # position based variants:
         #   * standard coach
@@ -6261,12 +6261,12 @@ class MailHSTCar(MailCarBase):
 
     @property
     def subrole(self):
-        return self.cab_consist.subrole
+        return self.cab_engine.subrole
 
     @property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
-        return self.cab_consist.intro_year_offset
+        return self.cab_engine.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -6969,24 +6969,24 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
-        self._model_life = self.cab_consist.model_life
-        self._vehicle_life = self.cab_consist.vehicle_life
+        self._model_life = self.cab_engine.model_life
+        self._vehicle_life = self.cab_engine.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
-        self._frozen_pantograph_type = self.cab_consist.pantograph_type
+        self._frozen_pantograph_type = self.cab_engine.pantograph_type
 
     @property
     def subrole(self):
-        return self.cab_consist.subrole
+        return self.cab_engine.subrole
 
     @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
+        return {key: 0 for key in self.cab_engine.power_by_power_source.keys()}
 
     @property
     def pantograph_type(self):
@@ -6995,7 +6995,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     @property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
-        return self.cab_consist.intro_year_offset
+        return self.cab_engine.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -7215,8 +7215,8 @@ class PassengerHSTCar(PassengerCarBase):
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
-        self._model_life = self.cab_consist.model_life
-        self._vehicle_life = self.cab_consist.vehicle_life
+        self._model_life = self.cab_engine.model_life
+        self._vehicle_life = self.cab_engine.vehicle_life
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
         # Graphics configuration
@@ -7234,12 +7234,12 @@ class PassengerHSTCar(PassengerCarBase):
 
     @property
     def subrole(self):
-        return self.cab_consist.subrole
+        return self.cab_engine.subrole
 
     @property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
-        return self.cab_consist.intro_year_offset
+        return self.cab_engine.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name

@@ -9,7 +9,7 @@
 </tal:spritesets>
 
 <tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name model_variant.gestalt_graphics.vehicle_spritelayer_names">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_formation_entry_point,
         [
             10 + switch_graphics_automobile_transporter_ruleset_${model_variant.gestalt_graphics.formation_ruleset}()
         ]
@@ -37,10 +37,10 @@
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${unit.id}_switch_graphics_base_platform_position_in_consist_entry_point;
+    0: return ${unit.id}_switch_graphics_base_platform_position_in_formation_entry_point;
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
     <tal:optional_masked_overlay condition="model_variant.gestalt_graphics.add_masked_overlay">
-        2: return ${unit.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
+        2: return ${unit.id}_switch_graphics_masked_overlay_position_in_formation_entry_point;
     </tal:optional_masked_overlay>
     <tal:optional_upper_deck condition="len(model_variant.spritelayer_cargo_layers) == 2">
         3: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[1]};

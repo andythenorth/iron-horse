@@ -515,19 +515,19 @@ class Roster(object):
             buyable_variant_group,
         ) in self.buyable_variant_groups.items():
             # we're only interested in nesting wagons as of May 2023
-            parent_consist = buyable_variant_group.parent_consist
-            if parent_consist.group_as_wagon:
-                if parent_consist.use_named_buyable_variant_group is not None:
-                    base_id_for_target_parent_consist = global_constants.buyable_variant_group_consist_base_ids_by_group_name[
-                        parent_consist.use_named_buyable_variant_group
+            parent_model_variant = buyable_variant_group.parent_model_variant
+            if parent_model_variant.group_as_wagon:
+                if parent_model_variant.use_named_buyable_variant_group is not None:
+                    base_id_for_target_parent_model_variant = global_constants.buyable_variant_group_base_model_ids_by_group_name[
+                        parent_model_variant.use_named_buyable_variant_group
                     ]
                     candidate_parent_group = None
                     if (
-                        base_id_for_target_parent_consist
+                        base_id_for_target_parent_model_variant
                         not in self.wagon_model_variants_by_base_id
                     ):
                         error_message = (
-                            base_id_for_target_parent_consist
+                            base_id_for_target_parent_model_variant
                             + " not found in roster "
                             + self.id
                         )
@@ -538,24 +538,24 @@ class Roster(object):
                         )
                         raise BaseException(error_message)
                     for model_variant in self.wagon_model_variants_by_base_id[
-                        base_id_for_target_parent_consist
+                        base_id_for_target_parent_model_variant
                     ]:
-                        if model_variant.model_id_root == base_id_for_target_parent_consist:
+                        if model_variant.model_id_root == base_id_for_target_parent_model_variant:
                             match_failed = False
                             if (
                                 model_variant.base_track_type_name
-                                != parent_consist.base_track_type_name
+                                != parent_model_variant.base_track_type_name
                             ):
                                 match_failed = True
-                            if model_variant.gen != parent_consist.gen:
+                            if model_variant.gen != parent_model_variant.gen:
                                 match_failed = True
-                            if model_variant.subtype != parent_consist.subtype:
+                            if model_variant.subtype != parent_model_variant.subtype:
                                 match_failed = True
                             if not match_failed:
                                 candidate_parent_group = model_variant.buyable_variant_group
                                 break
                 else:
-                    candidate_parent_group = parent_consist.buyable_variant_group
+                    candidate_parent_group = parent_model_variant.buyable_variant_group
 
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:
@@ -638,6 +638,6 @@ class BuyableVariantGroup(object):
         return self.buyable_variants[0].model_variant.units[0]
 
     @property
-    def parent_consist(self):
+    def parent_model_variant(self):
         # convenience function, note also parent_vehicle, which is often what we want
         return self.parent_vehicle.model_variant
