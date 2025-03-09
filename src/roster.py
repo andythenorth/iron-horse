@@ -33,8 +33,8 @@ class Roster(object):
         self.wagon_module_names_with_roster_ids = kwargs.get(
             "wagon_module_names_with_roster_ids"
         )
-        self.engine_consists_by_catalogue = defaultdict(list)
-        self.wagon_consists_by_catalogue = defaultdict(list)
+        self.engine_model_variants_by_catalogue = defaultdict(list)
+        self.wagon_model_variants_by_catalogue = defaultdict(list)
         # create a structure to hold (buyable) variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all model variants are inited
         self.buyable_variant_groups = None
@@ -58,18 +58,18 @@ class Roster(object):
         self.wagon_recolour_colour_sets = []
 
     @property
-    def consists_by_catalogue(self):
+    def model_variants_by_catalogue(self):
         # With unique keys across engine and wagon dictionaries,
         # simply merge them using dictionary unpacking.
-        return {**self.engine_consists_by_catalogue, **self.wagon_consists_by_catalogue}
+        return {**self.engine_model_variants_by_catalogue, **self.wagon_model_variants_by_catalogue}
 
     @property
     def engine_catalogues(self):
-        return [catalogue_entry['catalogue'] for catalogue_entry in self.engine_consists_by_catalogue.values()]
+        return [catalogue_entry['catalogue'] for catalogue_entry in self.engine_model_variants_by_catalogue.values()]
 
     @property
     def wagon_catalogues(self):
-        return [catalogue_entry['catalogue'] for catalogue_entry in self.wagon_consists_by_catalogue.values()]
+        return [catalogue_entry['catalogue'] for catalogue_entry in self.wagon_model_variants_by_catalogue.values()]
 
     @property
     def catalogues(self):
@@ -77,73 +77,73 @@ class Roster(object):
         return self.engine_catalogues + self.wagon_catalogues
 
     @property
-    def engine_consists(self):
+    def engine_model_variants(self):
         # Flatten the list of engine model variants from the nested dict
         return [
-            consist
-            for catalogue_entry in self.engine_consists_by_catalogue.values()
-            for consist in catalogue_entry['consists']
+            model_variant
+            for catalogue_entry in self.engine_model_variants_by_catalogue.values()
+            for model_variant in catalogue_entry['model_variants']
         ]
 
     @property
-    def wagon_consists(self):
+    def wagon_model_variants(self):
         # Flatten the list of wagon model variants from the nested dict
         return [
-            consist
-            for catalogue_entry in self.wagon_consists_by_catalogue.values()
-            for consist in catalogue_entry['consists']
+            model_variant
+            for catalogue_entry in self.wagon_model_variants_by_catalogue.values()
+            for model_variant in catalogue_entry['model_variants']
         ]
 
     @property
-    def engine_consists_excluding_clones(self):
+    def engine_model_variants_excluding_clones(self):
         # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
         # this is a convenience wrapper to knock out any clones from engine list
         return [
-            engine_consist
-            for engine_consist in self.engine_consists
-            if engine_consist.is_clone == False
+            engine_model_variant
+            for engine_model_variant in self.engine_model_variants
+            if engine_model_variant.is_clone == False
         ]
 
     @property
-    def wagon_consists_by_base_id(self):
+    def wagon_model_variants_by_base_id(self):
         result = {}
-        for wagon_consist in self.wagon_consists:
-            result.setdefault(wagon_consist.model_id_root, [])
-            result[wagon_consist.model_id_root].append(wagon_consist)
+        for wagon_model_variant in self.wagon_model_variants:
+            result.setdefault(wagon_model_variant.model_id_root, [])
+            result[wagon_model_variant.model_id_root].append(wagon_model_variant)
         return result
 
     @property
     def consists_in_buy_menu_order(self):
         result = []
-        result.extend(self.engine_consists)
+        result.extend(self.engine_model_variants)
         for base_track_type_name in ["RAIL", "NG", "METRO"]:
             # CABBAGE refactor to model_id not base_id
-            for base_id in self.wagon_consists_by_base_id.keys():
-                wagon_consists = [
-                    wagon_consist
-                    for wagon_consist in self.wagon_consists_by_base_id[base_id]
-                    if wagon_consist.base_track_type_name == base_track_type_name
+            for base_id in self.wagon_model_variants_by_base_id.keys():
+                wagon_model_variants = [
+                    wagon_model_variant
+                    for wagon_model_variant in self.wagon_model_variants_by_base_id[base_id]
+                    if wagon_model_variant.base_track_type_name == base_track_type_name
                 ]
                 result.extend(
                     # note that we want the sort order to be U, A, B, C, D so special handling
                     # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
                     sorted(
-                        wagon_consists,
-                        key=lambda wagon_consist: {
+                        wagon_model_variants,
+                        key=lambda wagon_model_variant: {
                             "U": 1,
                             "A": 2,
                             "B": 3,
                             "C": 4,
                             "D": 5,
-                        }[wagon_consist.subtype],
+                        }[wagon_model_variant.subtype],
                     )
                 )
-        for consist in result:
-            # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
+        for model_variant in result:
+            # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:
-                pickle.dumps(consist)
+                pickle.dumps(model_variant)
             except:
-                print("Pickling failed for consist:", consist.id)
+                print("Pickling failed for model_variant:", model_variant.id)
                 raise
         return result
 
@@ -153,16 +153,16 @@ class Roster(object):
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
         # this isn't infallible, but reduces the extent to which the randomised wagons consume action 2 IDs
-        consists = self.consists_in_buy_menu_order
+        model_variants = self.consists_in_buy_menu_order
         result = []
         randomised_wagons_by_track_gen_length_power = {}
 
         # Categorize model variants by generation, length, track type, and speed
-        for consist in consists:
-            gen = consist.gen
-            track_type = consist.base_track_type_name
-            power = consist.power
-            length = consist.length
+        for model_variant in model_variants:
+            gen = model_variant.gen
+            track_type = model_variant.base_track_type_name
+            power = model_variant.power
+            length = model_variant.length
 
             key = (track_type, gen, length, power)
 
@@ -172,13 +172,13 @@ class Roster(object):
                     "randomised": [],
                 }
 
-            if consist.is_randomised_wagon_type:
+            if model_variant.is_randomised_wagon_type:
                 randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
-                    consist
+                    model_variant
                 )
             else:
                 randomised_wagons_by_track_gen_length_power[key]["candidates"].append(
-                    consist
+                    model_variant
                 )
 
         # Process each group based on the combined key
@@ -196,35 +196,35 @@ class Roster(object):
 
         return result
 
-    def get_wagon_randomisation_candidates(self, randomisation_consist):
+    def get_wagon_randomisation_candidates(self, randomisation_model_variant):
         raise Exception(
             "get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage"
         )
         result = []
-        for base_id, wagons in self.wagon_consists_by_base_id.items():
-            for wagon_consist in wagons:
-                if randomisation_consist.gen != wagon_consist.gen:
+        for base_id, wagons in self.wagon_model_variants_by_base_id.items():
+            for wagon_model_variant in wagons:
+                if randomisation_model_variant.gen != wagon_model_variant.gen:
                     continue
                 if (
-                    randomisation_consist.base_track_type_name
-                    != wagon_consist.base_track_type_name
+                    randomisation_model_variant.base_track_type_name
+                    != wagon_model_variant.base_track_type_name
                 ):
                     continue
-                if randomisation_consist.subtype != wagon_consist.subtype:
+                if randomisation_model_variant.subtype != wagon_model_variant.subtype:
                     continue
-                if randomisation_consist.model_id_root == wagon_consist.model_id_root:
+                if randomisation_model_variant.model_id_root == wagon_model_variant.model_id_root:
                     continue
                 if (
-                    randomisation_consist.model_id_root
-                    not in wagon_consist.randomised_candidate_groups
+                    randomisation_model_variant.model_id_root
+                    not in wagon_model_variant.randomised_candidate_groups
                 ):
                     continue
                 # if there are buyable variants that have random livery
                 # then we want to only append those as it's more direct and leads to shorter candidate lists
                 # otherwise append all the variants
                 # CABBAGE - NONE OF THIS WILL WORK NOW AS EXPECTED, AS WE DON'T HAVE UNIT VARIANTS
-                # WE NEED TO FIND THE OTHER CONSISTS FROM THE SAME FACTORY
-                unit_variants_cabbage = wagon_consist.units[0].unit_variants_cabbage
+                # WE NEED TO FIND THE OTHER MODEL VARIANTS FROM THE SAME FACTORY
+                unit_variants_cabbage = wagon_model_variant.units[0].unit_variants_cabbage
                 matched_results = []
                 for unit_variant in unit_variants_cabbage:
                     if (
@@ -248,24 +248,24 @@ class Roster(object):
                 result.extend(matched_results)
         if len(result) == 0:
             raise BaseException(
-                randomisation_consist.id
+                randomisation_model_variant.id
                 + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
             )
         if len(result) == 1:
             print(result)
             raise BaseException(
-                randomisation_consist.id
+                randomisation_model_variant.id
                 + " colour set "
                 + buyable_variant.consist.cabbage_livery["colour_set"]
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
-                + randomisation_consist.id
+                + randomisation_model_variant.id
                 + " or check that randomisation candidates provide this colour set"
             )
         if len(result) > 64:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
             # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
             raise BaseException(
-                randomisation_consist.id
+                randomisation_model_variant.id
                 + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
             )
         return result
@@ -283,7 +283,7 @@ class Roster(object):
 
     def get_pax_mail_liveries(self, default_livery_group_name, model_def):
         result = []
-        # we can optionally specify liveries per consist via the model_def, otherwise use the default for this consist subclass
+        # we can optionally specify liveries per model_variant via the model_def, otherwise use the default for the model type subclass
         if model_def.livery_group_name is not None:
             livery_group_name = model_def.livery_group_name
         else:
@@ -370,7 +370,7 @@ class Roster(object):
         # no return value needed
 
     def produce_engines(self):
-        self.engine_consists_by_catalogue = {}
+        self.engine_model_variants_by_catalogue = {}
         package_name = "vehicles." + self.id
         roster_id_providing_module = self.id
         for engine_module_name in self.engine_module_names:
@@ -384,14 +384,14 @@ class Roster(object):
                 catalogue = factory.catalogue
                 # Use the convenience property `id` on Catalogue
                 catalogue_id = catalogue.id
-                if catalogue_id not in self.engine_consists_by_catalogue:
-                    self.engine_consists_by_catalogue[catalogue_id] = {
+                if catalogue_id not in self.engine_model_variants_by_catalogue:
+                    self.engine_model_variants_by_catalogue[catalogue_id] = {
                         "catalogue": catalogue,
-                        "consists": [],
+                        "model_variants": [],
                     }
                 for catalogue_entry in catalogue:
                     consist = factory.produce(catalogue_entry=catalogue_entry)
-                    self.engine_consists_by_catalogue[catalogue_id]["consists"].append(
+                    self.engine_model_variants_by_catalogue[catalogue_id]["model_variants"].append(
                         consist
                     )
 
@@ -403,7 +403,7 @@ class Roster(object):
                     f"Warning: ({self.id}) {wagon_module_name_stem} not found in global_constants.wagon_module_name_stems"
                 )
 
-        self.wagon_consists_by_catalogue = {}  # Reset or initialize the grouping dict
+        self.wagon_model_variants_by_catalogue = {}  # Reset or initialize the grouping dict
 
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if "_randomised" in wagon_module_name_stem:
@@ -435,15 +435,15 @@ class Roster(object):
                         catalogue_id = (
                             catalogue.id
                         )  # Using the convenience property 'id'
-                        if catalogue_id not in self.wagon_consists_by_catalogue:
-                            self.wagon_consists_by_catalogue[catalogue_id] = {
+                        if catalogue_id not in self.wagon_model_variants_by_catalogue:
+                            self.wagon_model_variants_by_catalogue[catalogue_id] = {
                                 "catalogue": catalogue,
-                                "consists": [],
+                                "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
                             consist = factory.produce(catalogue_entry=catalogue_entry)
-                            self.wagon_consists_by_catalogue[catalogue_id][
-                                "consists"
+                            self.wagon_model_variants_by_catalogue[catalogue_id][
+                                "model_variants"
                             ].append(consist)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
@@ -461,7 +461,7 @@ class Roster(object):
         # therefore we can provide a compile-time lookup table, and index into it using a procedure call with a single parameter
         # this does not have the same cost in nml or grf filesize
         seen_params = []
-        for wagon_consist in self.wagon_consists:
+        for wagon_consist in self.wagon_model_variants:
             if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
                 seen_params.append(wagon_consist.get_wagon_recolour_strategy_params())
                 seen_params.append(
@@ -515,7 +515,7 @@ class Roster(object):
                     candidate_parent_group = None
                     if (
                         base_id_for_target_parent_consist
-                        not in self.wagon_consists_by_base_id
+                        not in self.wagon_model_variants_by_base_id
                     ):
                         error_message = (
                             base_id_for_target_parent_consist
@@ -528,7 +528,7 @@ class Roster(object):
                             + ".wagon_module_names_with_roster_ids as the module name may be incorrect there"
                         )
                         raise BaseException(error_message)
-                    for consist in self.wagon_consists_by_base_id[
+                    for consist in self.wagon_model_variants_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
                         if consist.model_id_root == base_id_for_target_parent_consist:

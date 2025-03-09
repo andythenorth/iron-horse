@@ -536,7 +536,7 @@ class ModelTypeBase(object):
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
         if self.model_def.replacement_model_id is not None:
-            for consist in self.roster.engine_consists:
+            for consist in self.roster.engine_model_variants:
                 # CABBAGE model_id will over-detect here as multiple variants have the same model_id
                 if consist.model_id == self.model_def.replacement_model_id:
                     return consist
@@ -550,7 +550,7 @@ class ModelTypeBase(object):
         else:
             similar_consists = []
             replacement_consist = None
-            for consist in self.roster.engine_consists:
+            for consist in self.roster.engine_model_variants:
                 if (
                     (consist.subrole == self.subrole)
                     and (
@@ -573,7 +573,7 @@ class ModelTypeBase(object):
         # note that this depends on replacement_consist property in other model defs, and may not work in all cases
         # a model can replace more than one other model
         result = []
-        for consist in self.roster.engine_consists:
+        for consist in self.roster.engine_model_variants:
             if consist.replacement_consist is not None:
                 # CABBAGE - THIS WILL OVER-DETECT as model_id is used by more than one model variant
                 if consist.replacement_consist.model_id == self.model_id:
@@ -584,7 +584,7 @@ class ModelTypeBase(object):
     def similar_consists(self):
         # quite a crude guess at similar engines by subrole
         result = []
-        for consist in self.roster.engine_consists:
+        for consist in self.roster.engine_model_variants:
             if (
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
@@ -2640,7 +2640,7 @@ class CarModelTypeBase(ModelTypeBase):
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
         tree_permissive = []
         tree_strict = []
-        for wagon in self.roster.wagon_consists_by_base_id[self.model_id_root]:
+        for wagon in self.roster.wagon_model_variants_by_base_id[self.model_id_root]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:

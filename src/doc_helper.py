@@ -176,7 +176,7 @@ class DocHelper(object):
         # CABBAGE SHOULD BE CATALOGUE BASED
         really_engines = []
         not_really_engines = []
-        for model_variant in roster.engine_consists:
+        for model_variant in roster.engine_model_variants:
             if not model_variant.is_default_model_variant:
                 continue
             if model_variant.is_clone:
@@ -206,7 +206,7 @@ class DocHelper(object):
         # CABBAGE SHOULD BE CATALOGUE BASED
         really_wagons = []
         not_really_wagons = []
-        for model_variant in roster.wagon_consists:
+        for model_variant in roster.wagon_model_variants:
             if not model_variant.is_default_model_variant:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
@@ -315,9 +315,9 @@ class DocHelper(object):
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
         # parse the engine and wagon model variants into a consistent structure
-        engines = ("engines", roster.engine_consists_excluding_clones)
+        engines = ("engines", roster.engine_model_variants_excluding_clones)
         wagon_consists = self.filter_out_randomised_wagon_model_variants(
-            roster.wagon_consists
+            roster.wagon_model_variants
         )
         wagons = ("wagons", wagon_consists)
 

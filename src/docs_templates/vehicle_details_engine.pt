@@ -247,7 +247,7 @@
                                     <div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue_model_variant_mapping['catalogue'])}</div>
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
-                                    <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_model_variant_mapping['consists']">
+                                    <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_model_variant_mapping['model_variants']">
                                         <div>
                                             <tal:livery_examples repeat="cc_remap_pair trailer_model_variant.catalogue_entry.livery_def.docs_image_input_cc">
                                                 <div class="vehicle-image"

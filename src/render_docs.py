@@ -108,7 +108,7 @@ def render_docs_vehicle_details(
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.id
-        consists = roster.consists_by_catalogue[catalogue.id]["consists"]
+        consists = roster.model_variants_by_catalogue[catalogue.id]["model_variants"]
 
         doc = template(
             roster=roster,
@@ -150,7 +150,7 @@ def render_docs_images(
 
     docs_image_variants = []
 
-    for consist in consist_catalogue_mapping["consists"]:
+    for consist in consist_catalogue_mapping["model_variants"]:
         if consist.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
@@ -292,7 +292,7 @@ def export_roster_to_json(roster, output_dir="docs"):
     }
 
     # Extract engine properties
-    for engine in roster.engine_consists:
+    for engine in roster.engine_model_variants:
         engine_data = {
             "id": getattr(engine, "id", "N/A"),
             "name": getattr(
@@ -304,7 +304,7 @@ def export_roster_to_json(roster, output_dir="docs"):
         data["engines"].append(engine_data)
 
     # Extract wagon properties
-    for wagon in roster.wagon_consists:
+    for wagon in roster.wagon_model_variants:
         wagon_data = {
             "id": getattr(wagon, "id", "N/A"),
             "name": getattr(wagon, "id", "Unnamed Wagon"),
@@ -460,7 +460,7 @@ def main():
     render_docs_images_start = time()
 
     if use_multiprocessing == False:
-        for consist_catalogue_mapping in roster.consists_by_catalogue.values():
+        for consist_catalogue_mapping in roster.model_variants_by_catalogue.values():
             render_docs_images(
                 consist_catalogue_mapping,
                 static_dir_dst,
@@ -474,7 +474,7 @@ def main():
         pool.starmap(
             render_docs_images,
             zip(
-                roster.consists_by_catalogue.values(),
+                roster.model_variants_by_catalogue.values(),
                 repeat(static_dir_dst),
                 repeat(generated_graphics_path),
                 repeat(doc_helper),

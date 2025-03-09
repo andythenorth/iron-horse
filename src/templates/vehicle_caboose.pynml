@@ -27,7 +27,7 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
       or repeat over families, and provide the engine IDs matching each family -->
     <!--!
     CABBAGE - NERFED OFF BECAUSE RANGES EXCEED DUE TO CHANGING FROM BUYABLE VARIANTS TO MODEL VARIANTS
-    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in model_variant.roster.engine_consists if engine_consist.base_track_type_name == model_variant.base_track_type_name]">
+    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in model_variant.roster.engine_model_variants if engine_consist.base_track_type_name == model_variant.base_track_type_name]">
         ${engine_consist.base_numeric_id}..${engine_consist.base_numeric_id + len(engine_consist.cabbage_buyable_variants)}: return ${unit.id}_switch_graphics_caboose_family_${engine_consist.caboose_family};
     </tal:engine_consists>
     -->

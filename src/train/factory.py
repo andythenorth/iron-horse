@@ -291,7 +291,7 @@ class ModelVariantFactory:
     def cab_factory(self):
         # convenience way to get cab factory
         if self.model_def.cab_id is not None:
-            return self.roster.consists_by_catalogue[self.model_def.cab_id]['catalogue'].factory
+            return self.roster.model_variants_by_catalogue[self.model_def.cab_id]['catalogue'].factory
         else:
             return None
 
@@ -548,7 +548,7 @@ class Catalogue(list):
     @property
     def default_model_variant_from_roster(self):
         # requires that the factory produce() method has been called
-        model_variants = self.factory.roster.consists_by_catalogue[self.id]['consists']
+        model_variants = self.factory.roster.model_variants_by_catalogue[self.id]['model_variants']
         for model_variant in model_variants:
             if model_variant.is_default_model_variant:
                 return model_variant
@@ -557,7 +557,7 @@ class Catalogue(list):
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
-        for catalogue_id, catalogue_consist_mapping in self.factory.roster.consists_by_catalogue.items():
+        for catalogue_id, catalogue_consist_mapping in self.factory.roster.model_variants_by_catalogue.items():
             catalogue = catalogue_consist_mapping['catalogue']
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_consist_mapping)

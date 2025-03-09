@@ -160,7 +160,7 @@ class RosterManager(list):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
         # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consist in self.active_roster.engine_consists:
+        for consist in self.active_roster.engine_model_variants:
             # check for express-type roles, which are determined by multiple role groups
             for role in [
                 "express",
@@ -180,7 +180,7 @@ class RosterManager(list):
         # used to switch wagon company colours
         result = []
         # if we wanted cross-grf cargo sprinters then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consist in self.active_roster.engine_consists:
+        for consist in self.active_roster.engine_model_variants:
             # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
             if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
                 result.append(consist.id)
