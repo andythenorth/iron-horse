@@ -535,8 +535,8 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR": {
-        "colour_set": "random_from_consist_liveries_complement_company_colour",
+    "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR": {
+        "colour_set": "random_liveries_complement_company_colour",
         "purchase": "company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -544,8 +544,8 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY": {
-        "colour_set": "random_from_consist_liveries_variety",
+    "RANDOM_LIVERIES_VARIETY": {
+        "colour_set": "random_liveries_variety",
         "purchase": "complement_company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -553,104 +553,104 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE": {
-        "colour_set": "random_from_consist_liveries_bauxite_grey_nightshade",
+    "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE": {
+        "colour_set": "random_liveries_bauxite_grey_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET": {
-        "colour_set": "random_from_consist_liveries_teal_violet",
+    "RANDOM_LIVERIES_TEAL_VIOLET": {
+        "colour_set": "random_liveries_teal_violet",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER": {
-        "colour_set": "random_from_consist_liveries_silver_pewter",
+    "RANDOM_LIVERIES_SILVER_PEWTER": {
+        "colour_set": "random_liveries_silver_pewter",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE": {
-        "colour_set": "random_from_consist_liveries_sulphur_ochre",
+    "RANDOM_LIVERIES_SULPHUR_OCHRE": {
+        "colour_set": "random_liveries_sulphur_ochre",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_RED_RUBY": {
-        "colour_set": "random_from_consist_liveries_red_ruby",
+    "RANDOM_LIVERIES_RED_RUBY": {
+        "colour_set": "random_liveries_red_ruby",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE": {
-        "colour_set": "random_from_consist_liveries_ruby_bauxite",
+    "RANDOM_LIVERIES_RUBY_BAUXITE": {
+        "colour_set": "random_liveries_ruby_bauxite",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE": {
-        "colour_set": "random_from_consist_liveries_oil_black_nightshade",
+    "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE": {
+        "colour_set": "random_liveries_oil_black_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND": {
-        "colour_set": "random_from_consist_liveries_ochre_sand",
+    "RANDOM_LIVERIES_OCHRE_SAND": {
+        "colour_set": "random_liveries_ochre_sand",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER": {
-        "colour_set": "random_from_consist_liveries_gremlin_green_silver",
+    "RANDOM_LIVERIES_GREMLIN_GREEN_SILVER": {
+        "colour_set": "random_liveries_gremlin_green_silver",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_STRAW": {
-        "colour_set": "random_from_consist_liveries_sulphur_straw",
+    "RANDOM_LIVERIES_SULPHUR_STRAW": {
+        "colour_set": "random_liveries_sulphur_straw",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE": {
-        "colour_set": "random_from_consist_liveries_teal_nightshade",
+    "RANDOM_LIVERIES_TEAL_NIGHTSHADE": {
+        "colour_set": "random_liveries_teal_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER": {
-        "colour_set": "random_from_consist_liveries_teal_pewter",
+    "RANDOM_LIVERIES_TEAL_PEWTER": {
+        "colour_set": "random_liveries_teal_pewter",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_GREY_PEWTER": {
-        "colour_set": "random_from_consist_liveries_grey_pewter",
+    "RANDOM_LIVERIES_GREY_PEWTER": {
+        "colour_set": "random_liveries_grey_pewter",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -822,12 +822,12 @@ freight_wagon_liveries = {
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
     # company colour + 1
-    "random_from_consist_liveries_complement_company_colour": [
+    "random_liveries_complement_company_colour": [
         "complement_company_colour",
         "company_colour",
     ],
     # most everything (but explicit add, so not *everything*)
-    "random_from_consist_liveries_variety": [
+    "random_liveries_variety": [
         "company_colour",
         "complement_company_colour",
         "freight_bauxite",
@@ -838,44 +838,44 @@ wagon_livery_mixes = {
         "freight_violet",
     ],
     # rust belt
-    "random_from_consist_liveries_bauxite_grey_nightshade": [
+    "random_liveries_bauxite_grey_nightshade": [
         "freight_bauxite",
         "freight_grey",
         "freight_nightshade",
     ],
     # chemical powder
-    "random_from_consist_liveries_teal_violet": ["freight_teal", "freight_violet"],
+    "random_liveries_teal_violet": ["freight_teal", "freight_violet"],
     # silver-ish
-    "random_from_consist_liveries_silver_pewter": ["freight_silver", "freight_pewter"],
+    "random_liveries_silver_pewter": ["freight_silver", "freight_pewter"],
     # yellow / ochre
-    "random_from_consist_liveries_sulphur_ochre": ["freight_sulphur", "freight_ochre"],
+    "random_liveries_sulphur_ochre": ["freight_sulphur", "freight_ochre"],
     # red / ruby
-    "random_from_consist_liveries_red_ruby": ["red", "freight_ruby"],
+    "random_liveries_red_ruby": ["red", "freight_ruby"],
     # rust / ruby
-    "random_from_consist_liveries_ruby_bauxite": ["freight_ruby", "freight_bauxite"],
+    "random_liveries_ruby_bauxite": ["freight_ruby", "freight_bauxite"],
     # black
-    "random_from_consist_liveries_oil_black_nightshade": [
+    "random_liveries_oil_black_nightshade": [
         "freight_oil_black",
         "freight_nightshade",
     ],
     # ochre / sand
-    "random_from_consist_liveries_ochre_sand": ["freight_ochre", "freight_sand"],
+    "random_liveries_ochre_sand": ["freight_ochre", "freight_sand"],
     # moss /
-    "random_from_consist_liveries_gremlin_green_silver": [
+    "random_liveries_gremlin_green_silver": [
         "freight_gremlin_green",
         "freight_silver",
     ],
     # yellow / faded
-    "random_from_consist_liveries_sulphur_straw": ["freight_sulphur", "freight_straw"],
+    "random_liveries_sulphur_straw": ["freight_sulphur", "freight_straw"],
     # teal / dark grey
-    "random_from_consist_liveries_teal_pewter": ["freight_teal", "freight_pewter"],
+    "random_liveries_teal_pewter": ["freight_teal", "freight_pewter"],
     # teal / near-black
-    "random_from_consist_liveries_teal_nightshade": [
+    "random_liveries_teal_nightshade": [
         "freight_teal",
         "freight_nightshade",
     ],
     # grey / dark grey
-    "random_from_consist_liveries_grey_pewter": ["freight_grey", "freight_pewter"],
+    "random_liveries_grey_pewter": ["freight_grey", "freight_pewter"],
 }
 
 # badges can be predefined here, or created dynamically for specific vehicle models etc as needed

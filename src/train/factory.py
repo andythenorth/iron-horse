@@ -397,7 +397,7 @@ class Catalogue(list):
     def create(cls, factory):
         instance = cls(factory)
         for livery_counter, livery_def in enumerate(instance.livery_defs):
-            if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_def.livery_name:
+            if "RANDOM_LIVERIES_" in livery_def.livery_name:
                 continue
             model_variant_id = f"{instance.factory.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
