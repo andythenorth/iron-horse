@@ -29,13 +29,11 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 generated_files_path = iron_horse.generated_files_path
 
-
-def render_header_item_nml(header_item, roster, consists, graphics_path, pseudo_random_vehicle_maps):
+def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
             roster=roster,
-            consists=consists,
             global_constants=global_constants,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
@@ -81,7 +79,6 @@ def main():
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos
-    consists = roster.model_variants_in_buy_menu_order
 
     header_items = [
         "header",
@@ -108,7 +105,7 @@ def main():
     ]
     for header_item in header_items:
         grf_nml.write(
-            render_header_item_nml(header_item, roster, consists, graphics_path, pseudo_random_vehicle_maps)
+            render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps)
         )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
