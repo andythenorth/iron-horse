@@ -294,12 +294,14 @@ def export_roster_to_json(roster, output_dir="docs"):
     # Extract engine properties
     for engine in roster.engine_model_variants:
         engine_data = {
+            "model_id": getattr(engine, "model_id", "N/A"),
             "id": getattr(engine, "id", "N/A"),
             "name": getattr(
-                engine, "id", "Unnamed Engine"
+                engine, "name", "Unnamed Engine"
             ),  # Using 'id' as a placeholder
             "power": getattr(engine, "power", 0),
             "max_speed": getattr(engine, "speed", 0),
+            "generation": getattr(engine, "gen"),
         }
         data["engines"].append(engine_data)
 
@@ -311,6 +313,7 @@ def export_roster_to_json(roster, output_dir="docs"):
             "cargo_types": getattr(
                 wagon, "cargo_types", []
             ),  # Empty list if not available
+            "generation": getattr(wagon, "gen"),
         }
         data["wagons"].append(wagon_data)
 
