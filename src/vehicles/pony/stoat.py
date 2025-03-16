@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21480,
         name="Stoat",
         subrole="branch_freight",
-        subrole_child_branch_num=-3,
+        subrole_child_branch_num=-4,
         power_by_power_source={
             "AC": 1050,
         },

@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21770,
         name="Zest",
         subrole="branch_freight",
-        subrole_child_branch_num=-3,
+        subrole_child_branch_num=-4,
         power_by_power_source={
             "AC": 1600,
         },

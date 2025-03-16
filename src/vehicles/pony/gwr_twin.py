@@ -6,30 +6,29 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineExpressRailcar",
-        model_id="high_flyer",
-        base_numeric_id=4120,
-        name="High Flyer",
+        model_id="gwr_twin",
+        base_numeric_id=5250,
+        name="Kraken",
         subrole="express_pax_railcar",
-        subrole_child_branch_num=-2,  # joker to hide them from simplified mode
+        subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "AC": 1600,
+            "DIESEL": 920,
         },
-        pantograph_type="diamond-single-with-base",
         gen=3,
         intro_year_offset=2,  # introduce later by design
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        class_name="ElectricExpressRailcarPaxUnit",
-        weight=48,
+        class_name="DieselExpressRailcarPaxUnit",
+        weight=50,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
         repeat=2,
     )
 
-    model_def.define_description("""All Pullman Electric Express.""")
-    model_def.define_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
+    model_def.define_description("""""")
+    model_def.define_foamer_facts("""GWR twin railcars""")
 
     result.append(model_def)
 

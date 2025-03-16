@@ -6,42 +6,39 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="lemon",
-        base_numeric_id=270,
-        name="4-8-0 Lemon",
+        model_id="trainnage",
+        base_numeric_id=15200,
+        name="2-10-0 TRAINNAGE",
         subrole="super_heavy_freight",
-        subrole_child_branch_num=1,
+        subrole_child_branch_num=-2,
+        replacement_model_id="lion",
         power_by_power_source={
             "STEAM": 2400,
         },
-        speed=75,  # for lolz
         tractive_effort_coefficient=0.29,
         gen=3,
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "FREIGHT_BLACK"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
         class_name="SteamEnginePoweredUnit",
-        weight=115,
+        weight=110,
         vehicle_length=8,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit",
-        weight=50,
-        vehicle_length=4,
-        rel_spriterow_index=1,
+        class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, rel_spriterow_index=1
     )
 
     model_def.define_description(
-        """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
+        """"""
     )
     model_def.define_foamer_facts(
-        """proposed LMS 'Lemon 4-8-0' freight locomotive, BR Standard Class 9F"""
+        """BR Standard Class 9F"""
     )
 
     result.append(model_def)
