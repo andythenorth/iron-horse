@@ -820,6 +820,8 @@ freight_wagon_liveries = {
 }
 
 # for wagons with mixed livery, the permitted liveries for that specific mix type
+# CABBAGE - CAN THIS JUST BE FOLDED INTO LIVERY DEFS?  SO LIVERY DEFINES THE GROUPS?
+# ALSO THE BUY MENU SHOULD TAKE THE FIRST ITEM HERE?  OR AN EXPLICIT VALUE?
 wagon_livery_mixes = {
     # company colour + 1
     "random_liveries_complement_company_colour": [

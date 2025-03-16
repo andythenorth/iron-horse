@@ -1121,6 +1121,8 @@ class ModelTypeBase(object):
 
     @property
     def uses_random_livery(self):
+        # CABBAGE RANDOM SHOULD ACTUALLY BE A FLAG ON THE LIVERY_DEF?
+        # RATHER THAN INFERRING FROM STRINGS?
         colour_set = self.catalogue_entry.livery_def.colour_set
         if colour_set is not None:
             return colour_set.find("random_liveries") != -1
@@ -1128,6 +1130,13 @@ class ModelTypeBase(object):
         return False
 
     def get_wagon_recolour_strategy_num(self, livery, context=None):
+        # CABBAGE THIS IS COMPLETELY STUPID
+        # THE COLOUR SET WILL BE ON THE LIVERY (tuple?)
+        # THE NUMBERS ONLY NEED TO BE INTERNALLY CONSISTENT AND CAN VARY BETWEEN COMPILES
+        # MOREOVER, CAN WE JUST USE BADGES?
+        # - GENERATE COLOUR BADGES FROM THE colour_set
+        # - BUT ALSO GENERATE COLOUR_SET BADGES
+        # - USE COLOUR_SET BADGES TO SWITCH ON
         # > 103 = strategy num will be randomised to one of the other strategy nums
         # 101 = use colour set complementary to player company colour
         # 100 = use colour set from player company colour
@@ -1182,6 +1191,7 @@ class ModelTypeBase(object):
             return list(global_constants.colour_sets.keys()).index(colour_set)
 
     def get_wagon_recolour_strategy_params(self, context=None):
+        # CABBAGE - THIS RETURNS PARAMS WHICH ARE THEN COMPRESSED TO AN INDEX AND EXPANDED LATER (FOR NML PERFORMANCE REASONS)
         wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
             self.cabbage_livery
         )
@@ -1220,10 +1230,17 @@ class ModelTypeBase(object):
         return ", ".join(str(int(i)) for i in params_numeric)
 
     def get_wagon_recolour_colour_set_num(self, context=None):
+        # CABBAGE THIS IS USED BY THE ENTRY POINT FROM properties.pynml
+        # RETURNS A SINGLE NUM (INDEX) TO THE PREDEFINED RECOLOUR STRATEGIES
+        # WE REVERSE MAP FROM THE PARAMS TO THE INDEX VIA THE ROSTER
         params = self.get_wagon_recolour_strategy_params(context)
         return self.roster.wagon_recolour_colour_sets.index(params)
 
     def get_candidate_liveries_for_randomised_strategy(self, livery):
+        # CABBAGE - THIS WALKS A RANDOMISED LIVERY, AND SELECTS ONLY THOSE REMAPS WHICH THE VEHICLE ACTUALLY USES IN NON-RANDOMISED LIVERIES
+        # DO WE CARE ABOUT PRESERVING THAT BEHAVIOUR?  OR IS RANDOM LITERALLY JUST RANDOM FROM A LIST?
+        # HMM
+        # RANDOM_LIVERIES_VARIETY *DOES* DEPEND ON THE OTHER LIVERIES FOR THE CANDIDATES - CHANGE? DELETE?
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
         result = []
         for cabbage_candidate_livery in self.catalogue_entry.catalogue:
@@ -1256,6 +1273,7 @@ class ModelTypeBase(object):
 
     @property
     def all_candidate_livery_colour_sets_for_variant(self):
+        # CABBAGE - DOCS ONLY, ONE CALLER - get_buy_menu_additional_text
         # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
         # therefore we need to get the possible liveries across all possible variants
         unit_variants = []
@@ -1273,6 +1291,10 @@ class ModelTypeBase(object):
         ]
         variant_colour_set = []
         # CABBAGE SHIM
+        # THIS APPEARS TO BUILD A SET OF ALL THE COLOURS IN ALL THE SOURCE VARIANTS...
+        # BUT
+        # THE SOURCE VARIANTS MIGHT BE RANDOMISED WAGONS
+        # OR JUST A SINGLE VARIANT, WITH RANDOM COLOUR CHOICE
         for unit_variant in unit_variants:
             for cabbage_candidate_livery in catalogue_entry.catalogue:
                 if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
@@ -2227,6 +2249,9 @@ class PassengerEngineRailbus(PassengerEngineBase):
 
     @property
     def subrole(self):
+        # CABBAGE - IS THIS INTENDED?  IT'S MESSING UP THE TECH TREE
+        # IS IT RELATED TO SETTING SPEEDS?  OR IS IT BUY MENU TEXT?
+        # CHANGING IT WILL ALSO CHANGE ENGINE COUNTS IN DOCS
         if self.base_track_type_name == "NG":
             # pony NG jank
             if self.gen == 4:
@@ -2429,6 +2454,11 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
+
+    @property
+    def quacks_like_a_clone(self):
+        # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
+        return True
 
     @property
     def cab_power(self):

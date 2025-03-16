@@ -54,8 +54,8 @@ class DocHelper(object):
                 == base_track_type_name
             ):
                 continue
-            if catalogue.factory.model_def.cloned_from_model_def is not None:
-                # exclude cloned models
+            if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+                # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
         return result
@@ -70,8 +70,8 @@ class DocHelper(object):
                 == base_track_type_name
             ):
                 continue
-            if catalogue.factory.model_def.cloned_from_model_def is not None:
-                # exclude cloned models
+            if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+                # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
         return result
