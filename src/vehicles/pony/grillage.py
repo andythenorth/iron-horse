@@ -6,19 +6,20 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="haullage",
+        model_id="grillage",
         base_numeric_id=39930,
-        name="HAULLAGE",
+        name="Grillage",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-3,
         power_by_power_source={
             "DIESEL": 3650,
         },
+        speed=87, # these don't *have* to be replaced at game end
         random_reverse=True,
         gen=4,
-        intro_year_offset=10,  # let's be later for this one
+        intro_year_offset=12,  # let's be later for this one
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE", "SWOOSH"],
+        liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=False,
     )
 
@@ -31,7 +32,7 @@ def main(**kwargs):
 
     model_def.define_description("""""")
     model_def.define_foamer_facts(
-        """"""
+        """Proposed BR high-horsepower freight locomotives of the 1960s and 1970s"""
     )
 
     result.append(model_def)

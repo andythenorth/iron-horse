@@ -33,7 +33,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""""")
-    model_def.define_foamer_facts("""""")
+    model_def.define_foamer_facts("""CIÉ (Irish Transport System) 141 Class and 181 Class""")
 
     result.append(model_def)
 
