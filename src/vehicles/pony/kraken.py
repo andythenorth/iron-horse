@@ -6,17 +6,17 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineExpressRailcar",
-        model_id="swindon_124",
-        base_numeric_id=5240,
-        name="Turbulent",
+        model_id="kraken",
+        base_numeric_id=5250,
+        name="Kraken",
         subrole="express_pax_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "DIESEL": 1120,
+            "DIESEL": 920,
         },
-        gen=4,
-        intro_year_offset=1,  # introduce later by design
-        sprites_complete=True,
+        gen=3,
+        intro_year_offset=2,  # introduce later by design
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -27,10 +27,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """"""
-    )
-    model_def.define_foamer_facts("""BR Class 124 DMU, using turbine from SNCF Class T 1000 ETG Turbotrain""")
+    model_def.define_description("""""")
+    model_def.define_foamer_facts("""GWR twin railcars""")
 
     result.append(model_def)
 

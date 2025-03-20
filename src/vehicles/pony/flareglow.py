@@ -6,9 +6,9 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="duallage",
+        model_id="flareglow",
         base_numeric_id=15220,
-        name="DUALLAGE",
+        name="Flareglow",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
@@ -25,7 +25,7 @@ def main(**kwargs):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(

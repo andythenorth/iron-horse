@@ -6,18 +6,18 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="chuffage",
-        base_numeric_id=39920,
-        name="CHUFFAGE",
+        model_id="gwynt",
+        base_numeric_id=39910,
+        name="0-4-0+0-4-0 Gwynt",
         subrole="branch_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "STEAM": 800,
+            "STEAM": 1000,
         },
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,
         random_reverse=True,
-        gen=2,
+        gen=3,
         intro_year_offset=0,
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],

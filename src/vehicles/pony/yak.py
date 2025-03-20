@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21260,
         name="0-8-2 Yak",
         subrole="branch_freight",
-        subrole_child_branch_num=-2,
+        subrole_child_branch_num=-3,
         power_by_power_source={
             "STEAM": 1000,
         },

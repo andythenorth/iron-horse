@@ -6,9 +6,9 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="g2000",
+        model_id="wildfire",
         base_numeric_id=39890,
-        name="G2000",
+        name="Wildfire",
         subrole="branch_express",
         subrole_child_branch_num=-1,
         power_by_power_source={
