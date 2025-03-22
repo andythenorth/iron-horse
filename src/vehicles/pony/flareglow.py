@@ -14,13 +14,14 @@ def main(**kwargs):
         power_by_power_source={
             "DIESEL": 2900,
         },
+        random_reverse=True,
         gen=4,
         extended_vehicle_life=True,
         speed=87,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE", "SWOOSH"],
+        liveries=["VANILLA", "BANGER_BLUE", "FREIGHT_BLACK", "RAILFREIGHT_RED_STRIPE", "LARGE_LOGO"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
@@ -37,14 +38,10 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    """
-    model_def_clone = model_def.begin_clone(base_numeric_id=34900, unit_repeats=[1])
-
-    # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    model_def_clone.random_reverse = True
+    model_def_clone = model_def.begin_clone(base_numeric_id=39960, unit_repeats=[1])
 
     model_def = model_def_clone.complete_clone()
 
     result.append(model_def)
-    """
+
     return result

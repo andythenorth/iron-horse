@@ -12,15 +12,16 @@ def main(**kwargs):
         subrole="branch_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "STEAM": 1000,
+            "STEAM": 800,
         },
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,
+        speed=60,
         random_reverse=True,
-        gen=3,
-        intro_year_offset=0,
+        gen=2,
+        intro_year_offset=15,
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "SWOOSH", "INDUSTRIAL_YELLOW"],
         sprites_complete=False,
     )
 
