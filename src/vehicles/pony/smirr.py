@@ -38,7 +38,7 @@ def main(**kwargs):
         """"""
     )
     model_def.define_foamer_facts(
-        """BR Standard Class 9F"""
+        """LMS Stanier 8F, WD Austerity 2-10-0"""
     )
 
     result.append(model_def)

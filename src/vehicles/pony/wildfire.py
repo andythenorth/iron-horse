@@ -30,24 +30,14 @@ def main(**kwargs):
     model_def.define_description(
         """"""
     )
-    model_def.define_foamer_facts("""Vossloh G2000""")
+    model_def.define_foamer_facts("""Indonesian Railways Co. GE CM20EMP, Vossloh G2000 BB""")
 
     result.append(model_def)
 
-    """
-
-    model_def_clone = model_def.begin_clone(base_numeric_id=820, unit_repeats=[1])
-
-    # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
-    model_def_clone.add_unit_def(
-        class_name="DieselEngineUnit", weight=72, vehicle_length=6, rel_spriterow_index=1
-    )
-
-    # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
-    model_def_clone.random_reverse = False
+    model_def_clone = model_def.begin_clone(base_numeric_id=15240, unit_repeats=[2])
 
     model_def = model_def_clone.complete_clone()
 
     result.append(model_def)
-    """
+
     return result
