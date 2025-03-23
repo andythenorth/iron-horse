@@ -12,10 +12,11 @@ def main(**kwargs):
         subrole="express_pax_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "DIESEL": 1120,
+            "DIESEL": 1200,
         },
         gen=4,
         intro_year_offset=1,  # introduce later by design
+        livery_group_name="CABBAGE_RAILCAR",  # override default liveries from gestalt
         sprites_complete=False,
     )
 

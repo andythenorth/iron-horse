@@ -756,6 +756,10 @@ def main():
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
             ],
+            "CABBAGE_RAILCAR": [
+                ("VANILLA", 1),
+                ("VANILLA", 0),
+            ],
             "suburban_pax_liveries": [
                 ("VANILLA", 1),
                 ("VANILLA", 0),

@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="express_pax_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "DIESEL": 1320,
+            "DIESEL": 1400,
         },
         gen=5,
         intro_year_offset=1,  # introduce later by design

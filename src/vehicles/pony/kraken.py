@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="express_pax_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "DIESEL": 920,
+            "DIESEL": 840,
         },
         gen=3,
         intro_year_offset=2,  # introduce later by design
@@ -24,6 +24,7 @@ def main(**kwargs):
         weight=50,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
+        suppress_roof_sprite=True,
         repeat=2,
     )
 
