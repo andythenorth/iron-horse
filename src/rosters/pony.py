@@ -66,9 +66,9 @@ engine_module_names = [
     "sizzler",
     # branch freight
     "buffalo",
+    "gwynt",
     "ox",
     "saxon",
-    "gwynt",
     "yak",
     "little_bear",
     "captain_steel",
