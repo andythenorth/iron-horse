@@ -1,6 +1,6 @@
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing -->
 
-<tal:only_default_model_variant condition="model_variant.is_default_model_variant">
+<tal:model_common condition="model_variant.is_default_model_variant">
     <tal:spritesets repeat="spriteset_data model_variant.gestalt_graphics.get_unique_spritesets(unit)">
         <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
               so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
@@ -81,7 +81,7 @@
         ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_variant;
     }
     </tal:weathered_variant>
-</tal:only_default_model_variant>
+</tal:model_common>
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     <!--! masked overlay is JFDI hard-coded for now -->
