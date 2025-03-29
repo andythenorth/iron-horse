@@ -15,17 +15,17 @@ from polar_fox import git_info
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-# chameleon used in most template cases
-from chameleon import PageTemplateLoader
-
-# setup the places we look for templates
-templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
-
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
+chameleon_cache_path = os.path.join(
+    currentdir, global_constants.chameleon_cache_dir
+)
 # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
 os.makedirs(chameleon_cache_path, exist_ok=True)
 os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
+
+# setup the places we look for templates
+from chameleon import PageTemplateLoader
+templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), format="text")
 
 generated_files_path = iron_horse.generated_files_path
 
@@ -50,11 +50,13 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
 def render_item_nml(item, graphics_path):
     result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
+    """
     item_nml = codecs.open(
         os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
     )
     item_nml.write(result)
     item_nml.close()
+    """
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 
