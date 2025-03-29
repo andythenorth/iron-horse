@@ -1470,6 +1470,13 @@ class ModelTypeBase(object):
     def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
+        # test interpolated gen and intro_year
+        assert self.gen, (
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
+        )
+        assert self.intro_year, (
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
+        )
         # templating
         for unit in self.unique_units:
             unit.validate()

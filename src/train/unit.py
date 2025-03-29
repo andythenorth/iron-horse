@@ -403,13 +403,6 @@ class UnitBase(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()
-        # test interpolated gen and intro_year
-        assert self.model_variant.gen, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
-        )
-        assert self.model_variant.intro_year, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
-        )
 
 class BatteryHybridEngineUnit(UnitBase):
     """
