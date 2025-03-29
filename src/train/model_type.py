@@ -28,7 +28,6 @@ from gestalt_graphics.gestalt_graphics import (
 import gestalt_graphics.graphics_constants as graphics_constants
 
 import iron_horse
-import spritelayer_cargos
 
 
 class ModelTypeBase(object):
@@ -1463,23 +1462,12 @@ class ModelTypeBase(object):
             if "." in self.model_def.foamer_facts:
                 utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
 
-    def render(self, templates, graphics_path):
+    def validate(self):
         self.assert_speed()
         self.assert_power()
         # templating
         for unit in self.unique_units:
             unit.validate()
-        template = templates["catalogue_entry_point.pynml"]
-        nml_result = template(
-            model_variant=self,
-            catalogue_entry=self.catalogue_entry,
-            global_constants=global_constants,
-            utils=utils,
-            temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
-            graphics_path=graphics_path,
-            spritelayer_cargos=spritelayer_cargos,
-        )
-        return nml_result
 
 class EngineModelTypeBase(ModelTypeBase):
     """

@@ -14,8 +14,10 @@ from typing import Any, Dict, List, Optional
 from train import model_type as model_type_module
 from train import unit as unit_module
 
+import global_constants
 import iron_horse
-
+import spritelayer_cargos
+import utils
 
 @dataclass
 class ModelDef:
@@ -570,6 +572,19 @@ class Catalogue(list):
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_model_variant_mapping)
         return result
+
+    def render(self, templates, graphics_path, model_variants):
+        template = templates["catalogue_entry_point.pynml"]
+        nml_result = template(
+            model_variants=model_variants,
+            catalogue=self,
+            global_constants=global_constants,
+            utils=utils,
+            temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
+            graphics_path=graphics_path,
+            spritelayer_cargos=spritelayer_cargos,
+        )
+        return nml_result
 
 
 class ModelDefCloner:

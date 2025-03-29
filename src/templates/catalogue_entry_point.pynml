@@ -1,107 +1,109 @@
-<tal:units repeat="unit model_variant.unique_units">
+<tal:model_variants repeat="model_variant model_variants">
+    <tal:units repeat="unit model_variant.unique_units">
 
-    <!--! Conditional -->
+        <!--! Conditional -->
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_visible_cargo.pynml'">
-      <tal:include metal:use-macro="load: vehicle_with_visible_cargo.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_visible_cargo.pynml'">
+          <tal:include metal:use-macro="load: vehicle_with_visible_cargo.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_autocoach.pynml'">
-      <tal:include metal:use-macro="load: vehicle_autocoach.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_autocoach.pynml'">
+          <tal:include metal:use-macro="load: vehicle_autocoach.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_automobile_car.pynml'">
-      <tal:include metal:use-macro="load: vehicle_automobile_car.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_automobile_car.pynml'">
+          <tal:include metal:use-macro="load: vehicle_automobile_car.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_box_car_with_opening_doors.pynml'">
-      <tal:include metal:use-macro="load: vehicle_box_car_with_opening_doors.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_box_car_with_opening_doors.pynml'">
+          <tal:include metal:use-macro="load: vehicle_box_car_with_opening_doors.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_caboose.pynml'">
-      <tal:include metal:use-macro="load: vehicle_caboose.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_caboose.pynml'">
+          <tal:include metal:use-macro="load: vehicle_caboose.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_cargo_sprinter.pynml'">
-      <tal:include metal:use-macro="load: vehicle_cargo_sprinter.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_cargo_sprinter.pynml'">
+          <tal:include metal:use-macro="load: vehicle_cargo_sprinter.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_engine.pynml'">
-      <tal:include metal:use-macro="load: vehicle_engine.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_engine.pynml'">
+          <tal:include metal:use-macro="load: vehicle_engine.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_fixed_formation_railcar.pynml'">
-      <tal:include metal:use-macro="load: vehicle_fixed_formation_railcar.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_fixed_formation_railcar.pynml'">
+          <tal:include metal:use-macro="load: vehicle_fixed_formation_railcar.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_formation_position_dependent.pynml'">
-      <tal:include metal:use-macro="load: vehicle_formation_position_dependent.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_formation_position_dependent.pynml'">
+          <tal:include metal:use-macro="load: vehicle_formation_position_dependent.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_intermodal.pynml'">
-      <tal:include metal:use-macro="load: vehicle_intermodal.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_intermodal.pynml'">
+          <tal:include metal:use-macro="load: vehicle_intermodal.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised.pynml'">
-      <tal:include metal:use-macro="load: vehicle_randomised.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised.pynml'">
+          <tal:include metal:use-macro="load: vehicle_randomised.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_snowplough.pynml'">
-      <tal:include metal:use-macro="load: vehicle_snowplough.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_snowplough.pynml'">
+          <tal:include metal:use-macro="load: vehicle_snowplough.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_torpedo_car.pynml'">
-      <tal:include metal:use-macro="load: vehicle_torpedo_car.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_torpedo_car.pynml'">
+          <tal:include metal:use-macro="load: vehicle_torpedo_car.pynml" />
+        </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_simple_body_colour_remaps.pynml'">
-      <tal:include metal:use-macro="load: vehicle_with_simple_body_colour_remaps.pynml" />
-    </tal:block>
+        <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_simple_body_colour_remaps.pynml'">
+          <tal:include metal:use-macro="load: vehicle_with_simple_body_colour_remaps.pynml" />
+        </tal:block>
 
-    <!--! Common -->
+        <!--! Common -->
 
-    <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
+        <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-    <tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: capacity.pynml" />
-    </tal:optional_capacity_switches>
+        <tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: capacity.pynml" />
+        </tal:optional_capacity_switches>
 
-    <tal:create_effect condition="len(unit.effects) > 0">
-        <tal:include metal:use-macro="load: create_effect.pynml" />
-    </tal:create_effect>
+        <tal:create_effect condition="len(unit.effects) > 0">
+            <tal:include metal:use-macro="load: create_effect.pynml" />
+        </tal:create_effect>
 
-    <tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: power.pynml" />
-    </tal:railtype_varies_power>
+        <tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: power.pynml" />
+        </tal:railtype_varies_power>
 
-    <tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: power.pynml" />
-    </tal:wagons_add_power>
+        <tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: power.pynml" />
+        </tal:wagons_add_power>
 
-    <tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: speed.pynml" />
-    </tal:easter_egg_haulage_speed_bonus>
+        <tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: speed.pynml" />
+        </tal:easter_egg_haulage_speed_bonus>
 
-    <tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: speed.pynml" />
-    </tal:lgv_capable_speed_bonus>
+        <tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: speed.pynml" />
+        </tal:lgv_capable_speed_bonus>
 
-    <tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
-        <tal:include metal:use-macro="load: cost.pynml" />
-    </tal:running_cost_factor>
+        <tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
+            <tal:include metal:use-macro="load: cost.pynml" />
+        </tal:running_cost_factor>
 
-    <tal:articulated_parts condition="unit.is_not_trailing_part and len(model_variant.units) > 1">
-        <tal:include metal:use-macro="load: articulated_parts.pynml" />
-    </tal:articulated_parts>
+        <tal:articulated_parts condition="unit.is_not_trailing_part and len(model_variant.units) > 1">
+            <tal:include metal:use-macro="load: articulated_parts.pynml" />
+        </tal:articulated_parts>
 
-    <tal:name condition="unit.is_not_trailing_part">
-        <tal:include metal:use-macro="load: name.pynml" />
-    </tal:name>
+        <tal:name condition="unit.is_not_trailing_part">
+            <tal:include metal:use-macro="load: name.pynml" />
+        </tal:name>
 
-    <tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
-    </tal:buy_menu_additional_text>
+        <tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text and model_variant.is_default_model_variant">
+            <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
+        </tal:buy_menu_additional_text>
 
-    <tal:include metal:use-macro="load: properties.pynml" />
+        <tal:include metal:use-macro="load: properties.pynml" />
 
-</tal:units>
+    </tal:units>
+</tal:model_variants>

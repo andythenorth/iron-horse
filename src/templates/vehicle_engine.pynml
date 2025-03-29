@@ -56,7 +56,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
         }
         <!--! CABBAGE possibly this switch is spurious, it just made for easier refactoring to keep it in place from legacy method -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_purchase_decor, 1) {
-            <tal:show_decor_in_purchase_menu switch="catalogue_entry.index in model_variant.show_decor_in_purchase_for_variants">
+            <tal:show_decor_in_purchase_menu switch="model_variant.catalogue_entry.index in model_variant.show_decor_in_purchase_for_variants">
                 <tal:block case="True">
                     return ${unit.id}_ss_decor_purchase;
                 </tal:block>

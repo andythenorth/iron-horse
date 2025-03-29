@@ -180,7 +180,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
         <tal:buy_menu_sprite_switch_case switch="model_variant.requires_custom_buy_menu_sprite">
             <tal:case case="True">
                 <!--! custom buy menu sprites are generated in the order required for the variants in buy menu, and are in consecutive spriterows -->
-                ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 30)}
+                ${model_variant.get_nml_for_spriteset_template(y_offset=model_variant.catalogue_entry.index * 30)}
             </tal:case>
             <tal:case case="False">
                 <!--! non-custom buy menu sprites use a specific relative_spriterow_num and need to skip a row to account for door states -->

@@ -46,20 +46,27 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
         )
     )
 
-
 def render_item_nml(item, graphics_path):
     result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
-    """
     item_nml = codecs.open(
         os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
     )
     item_nml.write(result)
     item_nml.close()
-    """
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 
+def render_catalogue_nml(catalogue, model_variants, graphics_path):
+    result = utils.unescape_chameleon_output(catalogue.render(templates, graphics_path, model_variants))
+    # write the nml per item to disk, it aids debugging
+    catalogue_nml = codecs.open(
+        os.path.join(generated_files_path, "nml", catalogue.id + ".nml"), "w", "utf8"
+    )
+    catalogue_nml.write(result)
+    catalogue_nml.close()
+    # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
+    return result
 
 def main():
     print("[RENDER NML]", " ".join(sys.argv))
@@ -115,13 +122,15 @@ def main():
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
 
-    model_variant_timings = []
-    for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
+    catalogue_timings = []
+    for entry in roster.model_variants_by_catalogue.values():
+        catalogue = entry['catalogue']
+        model_variants = entry['model_variants']
         start_time = time()
-        rendered_nml = render_item_nml(model_variant, graphics_path)
+        rendered_nml = render_catalogue_nml(catalogue, model_variants, graphics_path)
         end_time = time()
         elapsed_time = end_time - start_time
-        model_variant_timings.append((model_variant, elapsed_time))
+        catalogue_timings.append((catalogue.id, elapsed_time))
         grf_nml.write(rendered_nml)
 
     """

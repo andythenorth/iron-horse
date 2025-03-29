@@ -242,6 +242,9 @@ class Roster(object):
         ]
 
         for model_variant in self.model_variants_in_buy_menu_order:
+            # for legacy reasons, model_variant has some validation methods encapsulated, and some on the roster, as of March 2025
+            # this could be cleaned up, but eh, it's doing no harm
+            model_variant.validate()
             if model_variant_ids.count(model_variant.id) > 1:
                 raise BaseException(
                     f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
