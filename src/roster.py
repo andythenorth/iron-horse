@@ -583,10 +583,10 @@ class Roster(object):
                 else:
                     lang_strings[node_name] = node_value["base"]
 
-        for model_variant in self.model_variants_in_buy_menu_order:
+        for catalogue in self.catalogues:
+            model_variant = catalogue.default_model_variant_from_roster
             if (
                 model_variant.name is not None
-                and model_variant.is_default_model_variant
             ):
                 lang_strings["STR_NAME_" + model_variant.model_id.upper()] = (
                     model_variant.name

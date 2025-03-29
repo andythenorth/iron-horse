@@ -1,7 +1,3 @@
-import iron_horse
-import utils
-from polar_fox import git_info
-
 import shutil
 import os
 
@@ -14,11 +10,22 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 
 import codecs  # used for writing files - more unicode friendly than standard open() module
 
-# chameleon used in most template cases
-from chameleon import PageTemplateLoader
+import iron_horse
+import global_constants
+import utils
+from polar_fox import git_info
+
+# setting up a cache for compiled chameleon templates can significantly speed up template rendering
+chameleon_cache_path = os.path.join(
+    currentdir, global_constants.chameleon_cache_dir
+)
+# exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+os.makedirs(chameleon_cache_path, exist_ok=True)
+os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 # setup the places we look for templates
-templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
+from chameleon import PageTemplateLoader
+templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), format="text")
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
