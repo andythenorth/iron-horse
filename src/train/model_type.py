@@ -631,6 +631,8 @@ class ModelTypeBase(object):
 
     @property
     def vehicle_life(self):
+        # CABBAGE 8888 vehicle_life is slow? NERFED BY EARLY RETURN - FIX?
+        return 60
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want
             return self._vehicle_life
@@ -651,6 +653,8 @@ class ModelTypeBase(object):
 
     @property
     def model_life(self):
+        # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX?
+        return "VEHICLE_NEVER_EXPIRES"
         if self.replacement_model_variant is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
@@ -1469,7 +1473,7 @@ class ModelTypeBase(object):
         # templating
         for unit in self.unique_units:
             unit.validate()
-        template = templates["catalogue_entry_point.pynml"]
+        template = templates["model_variant_entry_point.pynml"]
         nml_result = template(
             model_variant=self,
             catalogue_entry=self.catalogue_entry,
@@ -2621,6 +2625,9 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def model_life(self):
+        # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX
+        return "VEHICLE_NEVER_EXPIRES"
+
         # allow this to be delegated to the model def if necessary
         if self._model_life is not None:
             return self._model_life
@@ -2630,14 +2637,15 @@ class CarModelTypeBase(ModelTypeBase):
         # - subtype that is the end of the tree for that type and should always be available
         # - subtype that ends but *should* be replaced by another subtype that continues the tree
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
+
         tree_permissive = []
         tree_strict = []
+
         for wagon in self.roster.wagon_model_variants_by_base_id[self.model_id_root]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
                     tree_strict.append(wagon.gen)
-
         tree_permissive = sorted(set(tree_permissive))
         tree_strict = sorted(set(tree_strict))
 

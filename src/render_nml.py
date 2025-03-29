@@ -50,13 +50,11 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
 def render_item_nml(item, graphics_path):
     result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
-    """
     item_nml = codecs.open(
         os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
     )
     item_nml.write(result)
     item_nml.close()
-    """
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 

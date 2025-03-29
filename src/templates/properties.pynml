@@ -170,3 +170,4 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         }
     </tal:vehicle_availability_wagons>
 </tal:rosters>
+
