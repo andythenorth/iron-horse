@@ -47,14 +47,15 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
     </tal:optional_upper_deck>
 }
 
-
-// buy menu graphics chain
-spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
-    ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
-}
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
-    0: return ${unit.id}_ss_vehicle_purchase;
-}
+<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+    // buy menu graphics chain
+    spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
+        ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
+    }
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
+        0: return ${unit.id}_ss_vehicle_purchase;
+    }
+</tal:buy_menu_lead_unit_only>
 
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 

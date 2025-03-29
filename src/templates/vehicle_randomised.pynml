@@ -1,4 +1,7 @@
 <!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
+<!--! CABBAGE OPTIMISATION?
+    <tal:model_common condition="model_variant.is_default_model_variant">
+-->
 // buy menu graphics chain
 spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
     ${model_variant.get_nml_for_spriteset_template(y_offset=0)}

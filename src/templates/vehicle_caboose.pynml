@@ -41,11 +41,15 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
         ${model_variant.get_nml_for_spriteset_template(y_offset=repeat.buy_menu_sprite_pair.index * 30)}
     }
 </tal:caboose_variants>
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, current_year) {
-    <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
-        ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_ss_purchase_${variant_date_range[0]};
-    </tal:caboose_variants>
-}
+
+<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, current_year) {
+        <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
+            ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_ss_purchase_${variant_date_range[0]};
+        </tal:caboose_variants>
+    }
+</tal:buy_menu_lead_unit_only>
+
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <tal:optional_capacity_switches condition="unit.has_cargo_capacity">
