@@ -219,7 +219,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
     </tal:conditional_pantographs>
 </tal:buy_menu_lead_unit_only>
 
-<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <!--!
     dedicated colour remapping for CC, as defined by the livery, no flip support
@@ -236,9 +235,4 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
     </tal:forced_remap
 }
 
-<tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
-    <tal:include metal:use-macro="load: capacity.pynml" />
-</tal:optional_capacity_switches>
-
-<tal:include metal:use-macro="load: properties.pynml" />
 

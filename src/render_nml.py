@@ -112,9 +112,24 @@ def main():
     # also multiprocessing failed on fiddly internal deps as of March 2025
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
-    for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
-        grf_nml.write(render_item_nml(model_variant, graphics_path))
 
+    model_variant_timings = []
+    for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
+        start_time = time()
+        rendered_nml = render_item_nml(model_variant, graphics_path)
+        end_time = time()
+        elapsed_time = end_time - start_time
+        model_variant_timings.append((model_variant, elapsed_time))
+        grf_nml.write(rendered_nml)
+
+    """
+    # Sort timings by elapsed time in descending order (longest first)
+    timings_sorted = sorted(model_variant_timings, key=lambda x: x[1], reverse=True)
+    # Dump all timing information to a file after the loop
+    with open('render_timings.txt', 'w') as f:
+        for variant, duration in timings_sorted:
+            f.write(f"{variant} | {variant.id}: {duration:.4f} seconds\n")
+    """
     grf_nml.close()
 
     print(

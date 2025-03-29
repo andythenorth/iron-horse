@@ -5,7 +5,6 @@ from string import Template
 
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
-import spritelayer_cargos
 import utils
 
 
@@ -399,7 +398,7 @@ class UnitBase(object):
                     + " which is not defined in the cargo table"
                 )
 
-    def render(self, templates, graphics_path):
+    def validate(self):
         # integrity tests
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
@@ -411,21 +410,6 @@ class UnitBase(object):
         assert self.model_variant.intro_year, (
             "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
-        # templating
-        template_name = self.model_variant.gestalt_graphics.nml_template
-        template = templates[template_name]
-        nml_result = template(
-            unit=self,
-            model_variant=self.model_variant,
-            catalogue_entry=self.model_variant.catalogue_entry,
-            global_constants=global_constants,
-            utils=utils,
-            temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
-            graphics_path=graphics_path,
-            spritelayer_cargos=spritelayer_cargos,
-        )
-        return nml_result
-
 
 class BatteryHybridEngineUnit(UnitBase):
     """

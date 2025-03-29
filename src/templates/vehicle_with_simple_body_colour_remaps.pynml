@@ -27,7 +27,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, param_wagon_colou
     ${model_variant.model_id}_switch_graphics_vehicle_choose_weathered_variant;
 }
 
-<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
     <tal:model_common condition="model_variant.is_default_model_variant">
@@ -44,8 +43,3 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, param_wagon_colou
     }
 </tal:buy_menu_lead_unit_only>
 
-<tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
-    <tal:include metal:use-macro="load: capacity.pynml" />
-</tal:optional_capacity_switches>
-
-<tal:include metal:use-macro="load: properties.pynml" />
