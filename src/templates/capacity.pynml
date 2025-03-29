@@ -1,13 +1,16 @@
 <!--! capacity determined according to specific labels that might need to be handled, and otherwise cargo class -->
 
 <!--! stuff all values into registers as constants, don't mess about with doing multipliers in varact 2, integer maths causes rounding errors -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_cargo_capacity,
-        [
-         STORE_TEMP(${unit.capacities[0]}, 0),
-         STORE_TEMP(${unit.capacities[1]}, 1),
-         STORE_TEMP(${unit.capacities[2]}, 2),
-         STORE_TEMP(${unit.capacities[3]}, 3),
-         STORE_TEMP(${unit.capacities[4]}, 4)
-        ]) {
-    return switch_cargo_capacity();
-}
+<tal:model_common condition="model_variant.is_default_model_variant">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_cargo_capacity,
+            [
+             STORE_TEMP(${unit.capacities[0]}, 0),
+             STORE_TEMP(${unit.capacities[1]}, 1),
+             STORE_TEMP(${unit.capacities[2]}, 2),
+             STORE_TEMP(${unit.capacities[3]}, 3),
+             STORE_TEMP(${unit.capacities[4]}, 4)
+            ]) {
+        return switch_cargo_capacity();
+    }
+</tal:model_common>
+
