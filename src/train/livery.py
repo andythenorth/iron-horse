@@ -25,20 +25,16 @@ class LiverySupplier(dict):
     """
 
     def add_livery(self, livery_name: str, **kwargs):
-        # if not a duplicate, add the livery
+        livery = LiveryDef(livery_name, **kwargs)
+        # liveries can be defined in multiple rosters, for simplicity, if they're exact duplicates we allow that
+        # otherwise the liveries need de-duplicated by changing one of their names
         if livery_name in self:
-            # CABBAGE - FIGURE OUT LATER WHETHER TO ALLOW REDEFINING BY ROSTERS, OR WHETHER TO FORCE A COMMON LIVERY SET
-            if livery_name in ["VANILLA", "SWOOSH", "FOO", "TGV_LA_POSTE"]:
-                print(
-                    f"LiverySupplier.add_livery: a roster tried to add {livery_name} when it already exists - figure out what to do about that later"
-                )
-            else:
+            if self[livery_name].__dict__ != livery.__dict__:
                 raise ValueError(
-                    f"LiverySupplier.add_livery: a roster tried to add {livery_name} when it already exists"
+                    f"LiverySupplier.add_livery: a roster tried to change the values for {livery_name}, which has already been defined.\n"
+                    f"Liveries with the same name can be added by multiple rosters, but only if they have identical values."
                 )
-        else:
-            # note we store livery_name in LiveryDef, but we also use it as the dict key for easy access, this is duplication, but fine, livery names are immutable by convention
-            self[livery_name] = LiveryDef(livery_name, **kwargs)
+        self[livery_name] = livery
         # no return as of now, not needed
 
     def deliver(self, livery_name: str, relative_spriterow_num: int):

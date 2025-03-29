@@ -150,10 +150,11 @@ def main():
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         engine_and_pax_mail_car_liveries={
             "SWOOSH": {
-                # this is just a fallback for some special cases, such as snowploughs
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
             "FOO": {
