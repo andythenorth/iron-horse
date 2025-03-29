@@ -115,3 +115,38 @@ def grfid_to_dword(grfid: str) -> str:
     dword = (byte_values[0] << 24) | (byte_values[1] << 16) | (byte_values[2] << 8) | byte_values[3]
     # Return as hexadecimal string
     return f"{dword:08X}"
+
+# move logger to Polar Fox?
+
+import logging
+import os
+import sys
+
+def get_logger(module_name):
+    """Return a logger configured to write to a file named after the module (with timestamp and level)
+    and to stdout (with plain message)."""
+    logger = logging.getLogger(module_name)
+    if not logger.handlers:  # Prevent duplicate handlers if the logger is already configured
+        logger.setLevel(logging.DEBUG)
+
+        # Ensure the log directory exists
+        os.makedirs("build_logs", exist_ok=True)
+        log_filename = os.path.join("build_logs", os.path.basename(module_name) + ".log")
+
+        # File handler: timestamp truncated to seconds and log level included
+        file_handler = logging.FileHandler(log_filename, mode="a", encoding="utf-8")
+        file_handler.setLevel(logging.DEBUG)
+        file_formatter = logging.Formatter(
+            '%(asctime)s [%(levelname)s] %(message)s', datefmt="%Y-%m-%d %H:%M:%S"
+        )
+        file_handler.setFormatter(file_formatter)
+        logger.addHandler(file_handler)
+
+        # Console handler: plain message only
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setLevel(logging.INFO)
+        console_formatter = logging.Formatter('%(message)s')
+        console_handler.setFormatter(console_formatter)
+        logger.addHandler(console_handler)
+
+    return logger

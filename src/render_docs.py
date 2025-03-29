@@ -285,6 +285,8 @@ def export_roster_to_json(roster, output_dir="docs"):
         roster (Roster): The roster object containing engines and wagons.
         output_dir (str): Directory to save the JSON file.
     """
+    json_start = time()
+
     data = {
         "name": roster.grf_name,
         "engines": [],
@@ -324,14 +326,17 @@ def export_roster_to_json(roster, output_dir="docs"):
     file_path = os.path.join(output_dir, f"{roster.grf_name}.json")
     with open(file_path, "w", encoding="utf-8") as json_file:
         json.dump(data, json_file, indent=4)
-    print(f"Roster exported to {file_path}")
-
+    logger.info(
+        f"Roster exported to {file_path} "
+        f"{utils.string_format_compile_time_deltas(json_start, time())}"
+    )
 
 def main():
+    globals()['logger'] = utils.get_logger(__file__)
     if command_line_args.suppress_docs:
-        print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
+        logger.info("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
-    print("[RENDER DOCS]", " ".join(sys.argv))
+    logger.info("[RENDER DOCS] " + " ".join(sys.argv))
     start = time()
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
@@ -347,13 +352,13 @@ def main():
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message
-        print("Multiprocessing disabled: (PW=0)")
+        logger.info("Multiprocessing disabled: (PW=0)")
     else:
         use_multiprocessing = True
         # logger = multiprocessing.log_to_stderr()
         # logger.setLevel(25)
         # just print, no need for a coloured echo_message
-        print("Multiprocessing enabled: (PW=" + str(num_pool_workers) + ")")
+        logger.info(f"Multiprocessing enabled: (PW={str(num_pool_workers)})")
 
     # setting up a cache for compiled chameleon templates can significantly speed up template rendering
     chameleon_cache_path = os.path.join(
@@ -436,9 +441,9 @@ def main():
         doc_helper,
         use_markdown=True,
     )
-    print(
-        "render_docs (base files)",
-        utils.string_format_compile_time_deltas(render_docs_start, time()),
+    logger.info(
+        f"render_docs (base files) "
+        f"{utils.string_format_compile_time_deltas(render_docs_start, time())}"
     )
 
     # render vehicle details
@@ -450,9 +455,9 @@ def main():
         catalogues=roster.engine_catalogues,
         template_name="vehicle_details_engine",
     )
-    print(
-        "render_docs_vehicle_details",
-        utils.string_format_compile_time_deltas(render_vehicle_details_start, time()),
+    logger.info(
+        f"render_docs_vehicle_details "
+        f"{utils.string_format_compile_time_deltas(render_vehicle_details_start, time())}"
     )
 
     # process images for use in docs
@@ -485,16 +490,15 @@ def main():
         )
         pool.close()
         pool.join()
-    print(
-        "render_docs_images",
-        utils.string_format_compile_time_deltas(render_docs_images_start, time()),
+    logger.info(
+        f"render_docs_images "
+        f"{utils.string_format_compile_time_deltas(render_docs_images_start, time())}"
     )
 
-    print(
-        "[RENDER DOCS]",
-        command_line_args.grf_name,
-        "- complete",
-        utils.string_format_compile_time_deltas(start, time()),
+    logger.info(
+        f"[RENDER DOCS] "
+        f"{command_line_args.grf_name} - complete "
+        f"{utils.string_format_compile_time_deltas(start, time())}"
     )
 
     # CABBAGE - THIS IS USED TO HANDLE VISIBLE CARGO ONLY SUPPORTING ONE UNIT?
