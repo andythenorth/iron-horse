@@ -38,7 +38,7 @@ def main(**kwargs):
     model_def.define_description(
         """"""
     )
-    model_def.define_foamer_facts("""NER Class C 0-6-0 (LNER J21)""")
+    model_def.define_foamer_facts("""NER Class C 0-6-0 (LNER J21)""") # ACTUALLY GWR 2251 CABBAGE, LNER J36 (NBR Class C)
 
     result.append(model_def)
 

@@ -28,7 +28,7 @@ def main(**kwargs):
 
     model_def.define_description("""""")
     model_def.define_foamer_facts(
-        """English Electric Australian exports""" #https://en.wikipedia.org/wiki/WAGR_R_class_(diesel)
+        """English Electric locomotives for Queensland and Western Australia, Baldwin DRS-6-4-660NA"""
     )
 
     result.append(model_def)
