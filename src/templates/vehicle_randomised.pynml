@@ -75,6 +75,8 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_purchase, vehicle_ty
 <!--! note that graphics_entry_switches.pynml shouldn't be called as a macro here
       randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
 
-<tal:include metal:use-macro="load: capacity.pynml" />
+<tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
+    <tal:include metal:use-macro="load: capacity.pynml" />
+</tal:optional_capacity_switches>
 
 <tal:include metal:use-macro="load: properties.pynml" />

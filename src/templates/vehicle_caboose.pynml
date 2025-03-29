@@ -52,7 +52,7 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
 
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-<tal:optional_capacity_switches condition="unit.has_cargo_capacity">
+<tal:optional_capacity_switches condition="unit.has_cargo_capacity and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 

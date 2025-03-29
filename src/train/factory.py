@@ -398,7 +398,6 @@ class Catalogue(list):
         instance = cls(factory)
         for livery_counter, livery_def in enumerate(instance.livery_defs):
             if "RANDOM_LIVERIES_" in livery_def.livery_name:
-                # ALSO CABBAGE
                 continue
                 # CABBAGE
                 livery_def = iron_horse.livery_supplier.deliver(
