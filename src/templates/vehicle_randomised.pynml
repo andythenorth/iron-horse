@@ -4,28 +4,29 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png
     ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
 }
 
-<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates model_variant.roster.get_wagon_randomisation_candidates(model_variant);">
+<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates model_variant.wagon_randomisation_candidates;">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant_choose_randomised_wagon, [
                                 pseudo_random_value_from_deterministic_random_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                 %
-                                ${len(model_variant.roster.get_wagon_randomisation_candidates(model_variant))}
+                                ${len(model_variant.wagon_randomisation_candidates)}
         ]) {
         <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
             ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
         </tal:randomisation_candidates>
     }
     <!--! note that the random chain is used by both graphics and colour mapping chains -->
-
+    <!--! CABBAGE
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant, ${unit.id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
             ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics;
         </tal:randomisation_candidates>
     }
-
+    -->
     <!--! handle colour mapping which can vary per buyable variant
           note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
     <!--! there is some faffy optimisation of colour mapping via a lookup table to reduce parameterised procedure calls (which are expensive in grf size) -->
+    <!--! CABBAGE
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, ${unit.id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
             ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.unit.model_variant.get_wagon_recolour_colour_set_num()};
@@ -34,14 +35,18 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant, 0) {
         return switch_wagon_recolour_sets(${unit.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
     }
+    -->
     <!--! purchase colour mapping is just taken from first candidate -->
+    <!--! CABBAGE
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_purchase, 0) {
         return switch_wagon_recolour_sets(
             ${randomisation_candidates[0].unit.model_variant.get_wagon_recolour_colour_set_num(context="purchase")}
         );
     }
+    -->
 </tal:optimise_wagon_randomisation_candidates>
 
+<tal:hide replace="nothing">
 <!--! note that we provide '_switch_graphics' not '_switch_graphics_vehicle' as there are no precursor graphics entry switches for randomised wagons
       we'll ultimately chain instead to the selected candidate's graphics entry switch -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics, vehicle_type_id) {
@@ -63,7 +68,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_purchase, vehicle_ty
     ${unit.numeric_id}: ${unit.id}_switch_colour_mapping_variant_purchase;
     <!--! no default, by design all variants should be explicitly found -->
 }
-
+</tal:hide>
 <!--! note that graphics_entry_switches.pynml shouldn't be called as a macro here
       randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
 

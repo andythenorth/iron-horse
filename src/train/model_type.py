@@ -1278,9 +1278,8 @@ class ModelTypeBase(object):
         # therefore we need to get the possible liveries across all possible variants
         unit_variants = []
         if self.is_randomised_wagon_type:
-            for unit_variant in self.roster.get_wagon_randomisation_candidates(
-                self  # CABBAGE
-            ):
+            # CABBAGE - NOT unit_variant
+            for unit_variant in self.wagon_randomisation_candidates:
                 unit_variants.append(unit_variant)
         else:
             # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
@@ -1416,20 +1415,6 @@ class ModelTypeBase(object):
         if self.uses_random_livery:
             return True
         return False
-
-    def freeze_cross_roster_lookups(self):
-        # graphics processing can't depend on roster object reliably, as it blows up multiprocessing (can't pickle roster), for reasons I never figured out
-        # this freezes any necessary roster items in place
-        self.frozen_roster_items = {}
-        if self.is_randomised_wagon_type:
-            wagon_randomisation_candidates = []
-            wagon_randomisation_candidates.append(
-                self.roster.get_wagon_randomisation_candidates(self)
-            )
-            self.frozen_roster_items["wagon_randomisation_candidates"] = (
-                wagon_randomisation_candidates
-            )
-        # no return
 
     def assert_buyable_variant_groups(self):
         # can't use buyable variant groups until they've been inited, which depends on model variants being inited prior, so guard for that case
@@ -2757,6 +2742,7 @@ class RandomisedCarMixin(object):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.wagon_randomisation_candidates = []
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # need to turn off colour randomisation on the random model type, it's handled explicitly by the template
@@ -6301,6 +6287,7 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -6487,6 +6474,7 @@ class MineralCoveredHopperCarLimeRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6525,6 +6513,7 @@ class MineralCoveredHopperCarRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6614,6 +6603,7 @@ class MineralCoveredHopperCarRollerRoofRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6709,6 +6699,7 @@ class MineralCoveredHopperCarSaltRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6909,6 +6900,7 @@ class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
         )
 
 

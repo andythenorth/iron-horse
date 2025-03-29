@@ -158,7 +158,7 @@ class Roster(object):
         result = []
         randomised_wagons_by_track_gen_length_power = {}
 
-        # Categorize model variants by generation, length, track type, and speed
+        # Categorize model variants by generation, length, track type, and power
         for model_variant in model_variants:
             gen = model_variant.gen
             track_type = model_variant.base_track_type_name
@@ -195,85 +195,6 @@ class Roster(object):
             # Append randomised wagons after their candidates
             result.extend(randomised_wagons)
 
-        return result
-
-    def get_wagon_randomisation_candidates(self, randomisation_model_variant):
-        raise Exception(
-            "get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage"
-        )
-        result = []
-        for base_id, wagons in self.wagon_model_variants_by_base_id.items():
-            for wagon_model_variant in wagons:
-                if randomisation_model_variant.gen != wagon_model_variant.gen:
-                    continue
-                if (
-                    randomisation_model_variant.base_track_type_name
-                    != wagon_model_variant.base_track_type_name
-                ):
-                    continue
-                if randomisation_model_variant.subtype != wagon_model_variant.subtype:
-                    continue
-                if (
-                    randomisation_model_variant.model_id_root
-                    == wagon_model_variant.model_id_root
-                ):
-                    continue
-                if (
-                    randomisation_model_variant.model_id_root
-                    not in wagon_model_variant.randomised_candidate_groups
-                ):
-                    continue
-                # if there are buyable variants that have random livery
-                # then we want to only append those as it's more direct and leads to shorter candidate lists
-                # otherwise append all the variants
-                # CABBAGE - NONE OF THIS WILL WORK NOW AS EXPECTED, AS WE DON'T HAVE UNIT VARIANTS
-                # WE NEED TO FIND THE OTHER MODEL VARIANTS FROM THE SAME FACTORY
-                unit_variants_cabbage = wagon_model_variant.units[
-                    0
-                ].unit_variants_cabbage
-                matched_results = []
-                for unit_variant in unit_variants_cabbage:
-                    if (
-                        unit_variant.buyable_variant.model_variant.cabbage_livery[
-                            "colour_set"
-                        ]
-                        == buyable_variant.model_variant.cabbage_livery["colour_set"]
-                    ):
-                        matched_results.append(unit_variant)
-                if len(matched_results) == 0:
-                    for unit_variant in unit_variants_cabbage:
-                        if (
-                            unit_variant.buyable_variant.model_variant.cabbage_livery[
-                                "colour_set"
-                            ]
-                            in global_constants.wagon_livery_mixes[
-                                buyable_variant.model_variant.cabbage_livery["colour_set"]
-                            ]
-                        ):
-                            matched_results.append(unit_variant)
-                result.extend(matched_results)
-        if len(result) == 0:
-            raise BaseException(
-                randomisation_model_variant.id
-                + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
-            )
-        if len(result) == 1:
-            print(result)
-            raise BaseException(
-                randomisation_model_variant.id
-                + " colour set "
-                + buyable_variant.model_variant.cabbage_livery["colour_set"]
-                + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
-                + randomisation_model_variant.id
-                + " or check that randomisation candidates provide this colour set"
-            )
-        if len(result) > 64:
-            # we have a limited number of random bits, and we need to use them independently of company colour choices
-            # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
-            raise BaseException(
-                randomisation_model_variant.id
-                + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
-            )
         return result
 
     @property
@@ -316,7 +237,9 @@ class Roster(object):
         # has to be explicitly called after all model variants and units are registered to the roster
 
         # this structure is used to test for duplicate ids
-        model_variant_ids = [model_variant.id for model_variant in self.model_variants_in_buy_menu_order]
+        model_variant_ids = [
+            model_variant.id for model_variant in self.model_variants_in_buy_menu_order
+        ]
 
         for model_variant in self.model_variants_in_buy_menu_order:
             if model_variant_ids.count(model_variant.id) > 1:
@@ -354,7 +277,10 @@ class Roster(object):
                             == model_variant.model_id_root
                         ):
                             # it's fine if both model variants are then in different rosters, as they will not conflict
-                            if colliding_model_variant.roster.id != model_variant.roster.id:
+                            if (
+                                colliding_model_variant.roster.id
+                                != model_variant.roster.id
+                            ):
                                 continue
                     raise ValueError(
                         f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
@@ -404,11 +330,13 @@ class Roster(object):
             {}
         )  # Reset or initialize the grouping dict
 
-        for wagon_module_name_stem in global_constants.wagon_module_name_stems:
-            if "_randomised" in wagon_module_name_stem:
-                # CABBAGE: SKIP RANDOMISED WAGONS FOR NOW
-                continue
+        # temp book-keeping of randomised_wagons
+        randomised_wagons_tmp = {}
 
+        for wagon_module_name_stem in global_constants.wagon_module_name_stems:
+            # CABBAGE NERFED OFF TO ENSURE IT COMPILES
+            if '_randomised' in wagon_module_name_stem:
+                continue
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids:
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
                     wagon_module_name_stem
@@ -426,10 +354,6 @@ class Roster(object):
                         factory = ModelVariantFactory(
                             model_def, self.id, roster_id_providing_module
                         )
-                        if "Randomised" in model_def.class_name:
-                            # CABBAGE: SKIP RANDOMISED WAGONS FOR NOW
-                            continue
-
                         catalogue = factory.catalogue
                         catalogue_id = (
                             catalogue.id
@@ -440,16 +364,73 @@ class Roster(object):
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
-                            model_variant = factory.produce(catalogue_entry=catalogue_entry)
+                            model_variant = factory.produce(
+                                catalogue_entry=catalogue_entry
+                            )
                             self.wagon_model_variants_by_catalogue[catalogue_id][
                                 "model_variants"
                             ].append(model_variant)
+                            if model_variant.is_randomised_wagon_type:
+                                randomised_wagons_tmp[
+                                    self.get_tmp_unique_key_for_random_wagon_type_model_variant(
+                                        model_variant.model_id_root, model_variant
+                                    )
+                                ] = model_variant
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         f"{wagon_module_name} in {package_name} as defined by {self.id}.wagon_module_names_with_roster_ids"
                     )
                 except Exception:
                     raise
+
+        # we have to provision wagon randomisation candidates after initialising all wagon model variants
+        for model_variant in self.wagon_model_variants:
+            for model_id_root in model_variant.randomised_candidate_groups:
+                unique_key = (
+                    self.get_tmp_unique_key_for_random_wagon_type_model_variant(
+                        model_id_root, model_variant
+                    )
+                )
+                # it's ok that there might be no randomised wagons for a specific generation, track type etc
+                if unique_key in randomised_wagons_tmp:
+                    dest_model_variant = randomised_wagons_tmp[unique_key]
+                    dest_model_variant.wagon_randomisation_candidates.append(
+                        model_variant
+                    )
+        for model_variant in randomised_wagons_tmp.values():
+            print(model_variant.__class__.__name__, model_variant.wagon_randomisation_candidates)
+            if len(model_variant.wagon_randomisation_candidates) == 0:
+                raise BaseException(
+                    f"{model_variant.id}"
+                    f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
+                )
+            if len(model_variant.wagon_randomisation_candidates) == 1:
+                print(model_variant.wagon_randomisation_candidates)
+                raise BaseException(
+                    f"{model_variant.id}"
+                    f" colour set "
+                    f"{model_variant.catalogue_entry.livery_def.colour_set}"
+                    f" has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
+                    f"{model_variant.id}"
+                    f" or check that randomisation candidates provide this colour set"
+                )
+            if len(model_variant.wagon_randomisation_candidates) > 64:
+                # CABBAGE TEMP
+                model_variant.wagon_randomisation_candidates = model_variant.wagon_randomisation_candidates[0:8]
+                continue
+                # we have a limited number of random bits, and we need to use them independently of company colour choices
+                # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
+                raise BaseException(
+                    f"{model_variant.id}"
+                    f" has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates\n"
+                    f"{model_variant.wagon_randomisation_candidates}"
+                )
+
+    def get_tmp_unique_key_for_random_wagon_type_model_variant(
+        self, model_id_root, model_variant
+    ):
+        # convenience method for a key, only used for accessing a temp structure
+        return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
 
     def compute_wagon_recolour_sets(self):
         # wagon recolour liveries can be randomised across multiple colour sets
@@ -459,12 +440,20 @@ class Roster(object):
         # there are however a finite number of combinations that are actually needed (only 125 as of Sept 2024)
         # therefore we can provide a compile-time lookup table, and index into it using a procedure call with a single parameter
         # this does not have the same cost in nml or grf filesize
+        # CABBAGE CAN THIS BE DERIVED FROM LIVERIES NOW?
+        # WHAT ARE THE PARAMS?  - COLOURS, WEATHERING?
         seen_params = []
         for wagon_model_variant in self.wagon_model_variants:
-            if getattr(wagon_model_variant, "use_colour_randomisation_strategies", False):
-                seen_params.append(wagon_model_variant.get_wagon_recolour_strategy_params())
+            if getattr(
+                wagon_model_variant, "use_colour_randomisation_strategies", False
+            ):
                 seen_params.append(
-                    wagon_model_variant.get_wagon_recolour_strategy_params(context="purchase")
+                    wagon_model_variant.get_wagon_recolour_strategy_params()
+                )
+                seen_params.append(
+                    wagon_model_variant.get_wagon_recolour_strategy_params(
+                        context="purchase"
+                    )
                 )
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
@@ -530,7 +519,10 @@ class Roster(object):
                     for model_variant in self.wagon_model_variants_by_base_id[
                         base_id_for_target_parent_model_variant
                     ]:
-                        if model_variant.model_id_root == base_id_for_target_parent_model_variant:
+                        if (
+                            model_variant.model_id_root
+                            == base_id_for_target_parent_model_variant
+                        ):
                             match_failed = False
                             if (
                                 model_variant.base_track_type_name
@@ -542,7 +534,9 @@ class Roster(object):
                             if model_variant.subtype != parent_model_variant.subtype:
                                 match_failed = True
                             if not match_failed:
-                                candidate_parent_group = model_variant.buyable_variant_group
+                                candidate_parent_group = (
+                                    model_variant.buyable_variant_group
+                                )
                                 break
                 else:
                     candidate_parent_group = parent_model_variant.buyable_variant_group
@@ -589,8 +583,13 @@ class Roster(object):
                     lang_strings[node_name] = node_value["base"]
 
         for model_variant in self.model_variants_in_buy_menu_order:
-            if model_variant.name is not None and model_variant.is_default_model_variant:
-                lang_strings["STR_NAME_" + model_variant.model_id.upper()] = model_variant.name
+            if (
+                model_variant.name is not None
+                and model_variant.is_default_model_variant
+            ):
+                lang_strings["STR_NAME_" + model_variant.model_id.upper()] = (
+                    model_variant.name
+                )
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 

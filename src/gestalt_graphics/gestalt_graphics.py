@@ -94,6 +94,7 @@ class GestaltGraphics(object):
 
     def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         # override in subclasses as needed
+        # CABBAGE - unit_variant_row_num is legacy name?
         unit_variant_row_num = (
             unit.rel_spriterow_index
             * len(pipeline.catalogue)
@@ -175,14 +176,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
-        candidate_cabbage_models = []
-        # DEFINITE CABBAGE
-        for unit_variant in pipeline.default_model_variant.frozen_roster_items[
-            "wagon_randomisation_candidates"
-        ][0]:
-            # ^^^ !! picking the first item off is hax
-            if unit_variant.unit.model_variant not in candidate_cabbage_models:
-                candidate_cabbage_models.append(unit_variant.unit.model_variant)
+        wagon_randomisation_candidates = pipeline.default_model_variant.wagon_randomisation_candidates
+        print(pipeline.default_model_variant, wagon_randomisation_candidates)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
@@ -190,11 +185,11 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             # vehicle unit, y offset (num spriterows) to buy menu input row
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             (
-                list(candidate_cabbage_models)[0].units[0],
+                wagon_randomisation_candidates[0].units[0],
                 0,
             ),
             (
-                list(candidate_cabbage_models)[1].units[0],
+                wagon_randomisation_candidates[1].units[0],
                 0,
             ),
         ]
@@ -432,7 +427,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         return None
 
     def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
-
+        # CABBAGE - unit_variant_row_num is legacy name?
         unit_variant_row_num = unit.rel_spriterow_index + (
             (
                 catalogue_entry.livery_def.relative_spriterow_num
@@ -1015,6 +1010,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 # JFDI jank
                 if unit_counter == 1:
                     position_variant_offset = self.spriterow_group_mappings["special"]
+                    # CABBAGE - unit_variant_row_num is legacy name?
                     unit_variant_row_num = (
                         self.num_spritesheet_liveries_per_position_variant
                         * position_variant_offset
@@ -1036,6 +1032,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         else:
             position_variant_offset = self.spriterow_group_mappings["last"]
         if pipeline.is_pantographs_pipeline:
+            # CABBAGE - unit_variant_row_num is legacy name?
             unit_variant_row_num = position_variant_offset
         else:
             unit_variant_row_num = (

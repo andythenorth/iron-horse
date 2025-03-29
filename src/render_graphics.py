@@ -124,9 +124,6 @@ def main():
     render_pass_targets = {1: [], 2: []}
     for catalogue in roster.catalogues:
         default_model_variant = catalogue.default_model_variant_from_roster
-        # rosters won't pickle reliably, and blow up multiprocessing, never figured out why
-        # work around that by freezing anything for graphics processing that depends on roster lookups
-        default_model_variant.freeze_cross_roster_lookups()
         target_config = {
             "catalogue": catalogue,
             "default_model_variant": default_model_variant,

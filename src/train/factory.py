@@ -398,7 +398,12 @@ class Catalogue(list):
         instance = cls(factory)
         for livery_counter, livery_def in enumerate(instance.livery_defs):
             if "RANDOM_LIVERIES_" in livery_def.livery_name:
+                # ALSO CABBAGE
                 continue
+                # CABBAGE
+                livery_def = iron_horse.livery_supplier.deliver(
+                    "FREIGHT_SWOOSH", relative_spriterow_num=0
+                )
             model_variant_id = f"{instance.factory.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
@@ -454,14 +459,13 @@ class Catalogue(list):
         #      a. model_def.liveries (per-vehicle override)
         #      b. model_type_cls.liveries (default)
 
-        # 1. Unpack liveries from livery groups (2-tuples: (livery_name, index))
-
         if self.factory.cab_factory is not None:
             # if there's a valid cab factory, we want the liveries from that
             target_factory = self.factory.cab_factory
         else:
             target_factory = self.factory
 
+        # liveries as group from per-vehicle override
         if target_factory.model_def.livery_group_name is not None:
             result = []
             for (
@@ -475,8 +479,11 @@ class Catalogue(list):
                         livery_name, relative_spriterow_num=index
                     )
                 )
+            if len(result) == 0:
+                raise ValueError(f"no liveries found for {self.factory.model_id}")
             return result
 
+        # liveries as group from class livery_group_name (default)
         if hasattr(target_factory.model_type_cls, "livery_group_name"):
             result = []
             for (
@@ -490,9 +497,11 @@ class Catalogue(list):
                         livery_name, relative_spriterow_num=index
                     )
                 )
+            if len(result) == 0:
+                raise ValueError(f"no liveries found for {self.factory.model_id}")
             return result
 
-        # 2. Get liveries directly from model_def (simple list)
+        # liveries directly from model_def (simple list)
         if target_factory.model_def.liveries is not None:
             result = []
             for index, name in enumerate(target_factory.model_def.liveries):
@@ -501,9 +510,11 @@ class Catalogue(list):
                         name, relative_spriterow_num=index
                     )
                 )
+            if len(result) == 0:
+                raise ValueError(f"no liveries found for {self.factory.model_id}")
             return result
 
-        # Then try to get liveries directly from model_type_cls
+        # liveries directly from model_type_cls
         if hasattr(target_factory.model_type_cls, "liveries"):
             result = []
             for index, name in enumerate(target_factory.model_type_cls.liveries):
@@ -519,6 +530,8 @@ class Catalogue(list):
                         name, relative_spriterow_num=relative_spriterow_num
                     )
                 )
+            if len(result) == 0:
+                raise ValueError(f"no liveries found for {self.factory.model_id}")
             return result
 
         # If no valid source is found, raise an error.
