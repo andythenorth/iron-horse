@@ -4,23 +4,23 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part">
+<tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part">
+<tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:wagons_add_power>
 
-<tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part">
+<tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: speed.pynml" />
 </tal:easter_egg_haulage_speed_bonus>
 
-<tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part">
+<tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: speed.pynml" />
 </tal:lgv_capable_speed_bonus>
 
-<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_not_trailing_part">
+<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: cost.pynml" />
 </tal:running_cost_factor>
 
@@ -32,7 +32,7 @@
     <tal:include metal:use-macro="load: name.pynml" />
 </tal:name>
 
-<tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text">
+<tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text and model_variant.is_default_model_variant">
     <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
 </tal:buy_menu_additional_text>
 
@@ -101,7 +101,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             <tal:running_cost_factor switch="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False)">
                 // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
                 <tal:block case="True">
-                    running_cost_factor:            ${unit.id}_switch_running_cost_factor;
+                    running_cost_factor:            ${model_variant.model_id}_switch_running_cost_factor;
                 </tal:block
                 <tal:block case="False">
                     running_cost_factor: ${model_variant.running_cost};
@@ -109,11 +109,11 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             </tal:running_cost_factor>
             purchase_running_cost_factor:   ${model_variant.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
             <tal:variable_power condition="model_variant.engine_varies_power_by_power_source or model_variant.wagons_add_power">
-                power:                          ${unit.id}_switch_power_0;
+                power:                          ${model_variant.model_id}_switch_power_0;
                 purchase_power:                 ${model_variant.power};
             </tal:variable_power>
             <tal:speed_is_optional condition="model_variant.easter_egg_haulage_speed_bonus or model_variant.lgv_capable">
-                speed:                          ${unit.id}_switch_speed;
+                speed:                          ${model_variant.model_id}_switch_speed;
                 purchase_speed:                 ${int(1.60934 * model_variant.speed)};
             </tal:speed_is_optional>
             <tal:add_articulated_parts condition="len(model_variant.units) > 1">
@@ -121,7 +121,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             </tal:add_articulated_parts>
             <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
             <tal:buy_menu_additional_text condition="model_variant.uses_buy_menu_additional_text">
-                additional_text:                ${unit.id}_switch_buy_menu_additional_text; <!--! CABBAGE we don't need this per unit, per model_variant would do -->
+                additional_text:                ${model_variant.model_id}_switch_buy_menu_additional_text;
             </tal:buy_menu_additional_text>
         </tal:not_trailing_parts>
         <tal:conditional_random_trigger condition="unit.random_trigger_switch is not None">
