@@ -109,6 +109,7 @@ def main():
         )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
+    # also multiprocessing failed on fiddly internal deps as of March 2025
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
     for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
