@@ -355,8 +355,8 @@ def main():
         logger.info("Multiprocessing disabled: (PW=0)")
     else:
         use_multiprocessing = True
-        # logger = multiprocessing.log_to_stderr()
-        # logger.setLevel(25)
+        # mp_logger = multiprocessing.log_to_stderr()
+        # mp_logger.setLevel(25)
         # just print, no need for a coloured echo_message
         logger.info(f"Multiprocessing enabled: (PW={str(num_pool_workers)})")
 
