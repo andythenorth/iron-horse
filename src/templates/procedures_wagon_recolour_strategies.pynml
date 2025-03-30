@@ -29,18 +29,21 @@ switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits
 }
 
 <!--! convenience switch to define how to pick a colour -->
-switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, [
-            <!--! CABBAGE NOT NEEDED -> BUT WE NEED TO RESTORE USE OF flag_context_is_purchase -->
+switch(FEAT_TRAINS, SELF, switch_get_colour_set_index, [
+            switch_get_random_from_available_liveries()
+            <!--! CABBAGE REST OF THIS NOT NEEDED, BUT IT DOES SHOW HOW OLD PURCHASE HANDLING WAS DONE, AND THAT'S MISSING CURRENTLY -->
             <!--! stacked ternary to (1) check if in purchase and force the result if so (2) switch to random livery or fixed, per strategy -->
-            LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
+            <!--!LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
                 ? LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num_purchase})
                 : (
                     LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
                     ? switch_get_random_from_available_liveries()
                     : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
-                )
+                )-->
             ]
         ) {
+    100: return company_colour1;
+    101: return switch_get_complement_to_company_colour();
     return; <!--! just return the recolour strategy number -->
 }
 
@@ -53,7 +56,7 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, [
       ¿ however as of August 2022 type D (articulated) wagons appear to use this so eh, maybe it got extended? -->
 
 switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_1cc_to_1cc,
-                    switch_get_random_from_available_liveries()
+                    switch_get_colour_set_index()
                 ) {
     <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
         <!--! this relies on order matching the order of company colours per nml / openttd constants;
@@ -62,8 +65,6 @@ switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_1cc_to_1cc,
         <!--! // debug: ${colour_set[1][0]}, ${colour_set[1][1]} -->
         ${repeat.colour_set.index}: switch_colour_set_${colour_set[0]}_1cc;
     </tal:colour_sets>
-    100: return company_colour1;
-    101: return switch_get_complement_to_company_colour();
 }
 
 switch (FEAT_TRAINS, SELF, switch_colour_mapping,
