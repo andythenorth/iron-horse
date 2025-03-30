@@ -544,6 +544,7 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    # CABBAGE what does RANDOM_LIVERIES_VARIETY actually do?  It's a pre-defined colour_set?
     "RANDOM_LIVERIES_VARIETY": {
         "colour_set": "random_liveries_variety",
         "purchase": "complement_company_colour",
