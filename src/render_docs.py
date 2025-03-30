@@ -386,6 +386,43 @@ def main():
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
+    # process images for use in docs
+    # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
+    generated_graphics_path = os.path.join(
+        iron_horse.generated_files_path, "graphics", roster.grf_name
+    )
+    render_docs_images_start = time()
+
+    if not use_multiprocessing:
+        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
+            render_docs_images(
+                model_variant_catalogue_mapping,
+                static_dir_dst,
+                generated_graphics_path,
+                doc_helper,
+            )
+    else:
+        pool = multiprocessing.Pool(processes=num_pool_workers)
+        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
+            pool.apply_async(
+                render_docs_images,
+                args=(
+                    model_variant_catalogue_mapping,
+                    static_dir_dst,
+                    generated_graphics_path,
+                    doc_helper,
+                ),
+            )
+
+        pool.close()
+        # omit pool.join() if fire-and-forget is acceptable
+        # pool.join()
+    # note that we can't trivially get the time to actually render the docs images due to async
+    logger.info(
+        f"docs images *dispatched* via async: "
+        f"{utils.string_format_compile_time_deltas(render_docs_images_start, time())}"
+    )
+
     # note we remove any model variants that are clones, we don't need them in docs
     model_variants = [
         model_variant
@@ -413,8 +450,7 @@ def main():
     license_docs = ["license"]
     markdown_docs = ["changelog"]
 
-    render_docs_start = time()
-    export_roster_to_json(roster)
+    render_base_files_start = time()
     render_docs(
         html_docs, "html", html_docs_output_path, iron_horse, model_variants, doc_helper
     )
@@ -443,7 +479,7 @@ def main():
     )
     logger.info(
         f"render_docs (base files) "
-        f"{utils.string_format_compile_time_deltas(render_docs_start, time())}"
+        f"{utils.string_format_compile_time_deltas(render_base_files_start, time())}"
     )
 
     # render vehicle details
@@ -460,40 +496,7 @@ def main():
         f"{utils.string_format_compile_time_deltas(render_vehicle_details_start, time())}"
     )
 
-    # process images for use in docs
-    # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
-    generated_graphics_path = os.path.join(
-        iron_horse.generated_files_path, "graphics", roster.grf_name
-    )
-    render_docs_images_start = time()
-
-    if use_multiprocessing == False:
-        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
-            render_docs_images(
-                model_variant_catalogue_mapping,
-                static_dir_dst,
-                generated_graphics_path,
-                doc_helper,
-            )
-    else:
-        # Would this go faster if the pipelines from each model were placed in MP pool, not just the catalogue?
-        # probably potato / potato tbh
-        pool = multiprocessing.Pool(processes=num_pool_workers)
-        pool.starmap(
-            render_docs_images,
-            zip(
-                roster.model_variants_by_catalogue.values(),
-                repeat(static_dir_dst),
-                repeat(generated_graphics_path),
-                repeat(doc_helper),
-            ),
-        )
-        pool.close()
-        pool.join()
-    logger.info(
-        f"render_docs_images "
-        f"{utils.string_format_compile_time_deltas(render_docs_images_start, time())}"
-    )
+    export_roster_to_json(roster)
 
     logger.info(
         f"[RENDER DOCS] "
