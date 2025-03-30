@@ -1229,11 +1229,7 @@ class ModelTypeBase(object):
         return ", ".join(str(int(i)) for i in params_numeric)
 
     def get_wagon_recolour_colour_set_num(self, context=None):
-        # CABBAGE THIS IS USED BY THE ENTRY POINT FROM properties.pynml
-        # RETURNS A SINGLE NUM (INDEX) TO THE PREDEFINED RECOLOUR STRATEGIES
-        # WE REVERSE MAP FROM THE PARAMS TO THE INDEX VIA THE ROSTER
-        params = self.get_wagon_recolour_strategy_params(context)
-        return self.roster.wagon_recolour_colour_sets.index(params)
+        return list(global_constants.freight_wagon_liveries).index(self.catalogue_entry.livery_def.livery_name)
 
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # CABBAGE - THIS WALKS A RANDOMISED LIVERY, AND SELECTS ONLY THOSE REMAPS WHICH THE VEHICLE ACTUALLY USES IN NON-RANDOMISED LIVERIES

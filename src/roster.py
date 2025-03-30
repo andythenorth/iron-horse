@@ -452,6 +452,11 @@ class Roster(object):
         # this does not have the same cost in nml or grf filesize
         # CABBAGE CAN THIS BE DERIVED FROM LIVERIES NOW?
         # WHAT ARE THE PARAMS?  - COLOURS, WEATHERING?
+        print("len(freight_wagon_liveries)", len(global_constants.freight_wagon_liveries))
+        # CABBAGE JUST MAP DIRECTLY TO THE LIVERIES from global_constants.freight_wagon_liveries
+        # THE LU TABLE HAS THE PARAMS?
+        # AND WE JUST NEED THE LIVERY NUMBER?
+        # freight_wagon_liveries is a dict, but just rely on key position, probably fine?
         seen_params = []
         for wagon_model_variant in self.wagon_model_variants:
             if getattr(
