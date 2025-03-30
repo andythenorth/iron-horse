@@ -7,7 +7,7 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
-from badge import Badge
+from badge import BadgeManager
 from train.livery import LiverySupplier
 from railtype import RailTypeManager
 import global_constants
@@ -45,25 +45,6 @@ roster_module_names = [
     "pony",
 ]
 
-
-class BadgeManager(list):
-    """
-    It's convenient to have a structure for working with badges.
-    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
-    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
-    """
-
-    def add_badge(self, label, **kwargs):
-        # if not a duplicate, add the badge
-        if self.get_badge_by_label(label) is None:
-            self.append(Badge(label, **kwargs))
-        # no return as of now, not needed
-
-    def get_badge_by_label(self, label):
-        for badge in self:
-            if badge.label == label:
-                return badge
-        return None
 
 class RosterManager(list):
     """
