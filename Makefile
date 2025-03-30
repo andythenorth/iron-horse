@@ -67,7 +67,7 @@ BUNDLE_DIR = bundle_dir
 
 # Build rules
 .PHONY: default graphics lang nml grf zip bundle_zip clean copy_docs_to_grf_farm release
-default: html_docs grf
+default: id_report html_docs grf
 bundle_zip: zip
 graphics: $(GRAPHICS_TARGETS)
 lang: $(LANG_FILES)
@@ -97,7 +97,12 @@ $(HTML_DOCS): $(GRAPHICS_TARGETS) $(shell $(FIND_FILES) --ext=.py --ext=.pynml -
 	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /index.html,,$(subst docs/,,$@))
 
 html_docs: $(HTML_DOCS)
+
+id_report:
 	$(_V) $(PYTHON3) src/id_report.py -gn=id-report-only
+
+# docs target
+docs: html_docs id_report
 
 $(NML_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(PY_GLOBAL_ARGS) --grf-name=$(subst .nml,,$(subst generated/,,$@))
