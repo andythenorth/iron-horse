@@ -3,15 +3,15 @@ import codecs  # used for writing files - more unicode friendly than standard op
 import shutil
 import sys
 import os
-
 currentdir = os.curdir
+
 from multiprocessing import Pool
 import multiprocessing
-
-logger = multiprocessing.log_to_stderr()
-logger.setLevel(25)
-from time import time
+mp_logger = multiprocessing.log_to_stderr()
+mp_logger.setLevel(25)
 from itertools import repeat
+
+from time import time
 
 import iron_horse
 import utils
@@ -47,7 +47,7 @@ def report_sprites_complete(catalogues):
     )
     percent_complete = int(100 * (complete_count / total))
 
-    print(
+    logger.info(
         f"Sprites complete for {complete_count} vehicles; "
         f"incomplete for {total - complete_count} vehicles; {percent_complete}%"
     )
@@ -59,12 +59,13 @@ def report_sprites_complete(catalogues):
             incomplete_by_track_type.setdefault(track_type, []).append(catalogue)
 
     for track_type, group in incomplete_by_track_type.items():
-        print(f"  * {track_type} {len(group)}")
+        logger.info(f"  * {track_type} {len(group)}")
 
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
-    print("[RENDER GRAPHICS]", " ".join(sys.argv))
+    globals()['logger'] = utils.get_logger(__file__)
+    logger.info("[RENDER GRAPHICS]" + " ".join(sys.argv))
     start = time()
     iron_horse.main()
     # get args passed by makefile
@@ -74,11 +75,11 @@ def main():
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message
-        print("Multiprocessing disabled: (PW=0)")
+        logger.info("Multiprocessing disabled: (PW=0)")
     else:
         use_multiprocessing = True
         # just print, no need for a coloured echo_message
-        print("Multiprocessing enabled: (PW=" + str(num_pool_workers) + ")")
+        logger.info("Multiprocessing enabled: (PW={str(num_pool_workers)})")
 
     roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case
@@ -174,11 +175,10 @@ def main():
             shutil.rmtree(dest_path)
         shutil.copytree(target_path, dest_path)
 
-    print(
-        "[RENDER GRAPHICS]",
-        command_line_args.grf_name,
-        "- complete",
-        utils.string_format_compile_time_deltas(start, time()),
+    logger.info(
+        f"[RENDER GRAPHICS]"
+        f"{command_line_args.grf_name} - complete "
+        f"{utils.string_format_compile_time_deltas(start, time())}"
     )
 
 

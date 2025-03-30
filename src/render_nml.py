@@ -60,7 +60,8 @@ def render_item_nml(item, graphics_path):
 
 
 def main():
-    print("[RENDER NML]", " ".join(sys.argv))
+    globals()['logger'] = utils.get_logger(__file__)
+    logger.info("[RENDER NML]" + " ".join(sys.argv))
     start = time()
     iron_horse.main()
 
@@ -103,6 +104,7 @@ def main():
         "procedures_wagon_recolour_strategies",
         "pseudo_random_vehicle_maps",
     ]
+
     for header_item in header_items:
         grf_nml.write(
             render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps)
@@ -117,11 +119,10 @@ def main():
     for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
         start_time = time()
         rendered_nml = render_item_nml(model_variant, graphics_path)
+        grf_nml.write(rendered_nml)
         end_time = time()
         elapsed_time = end_time - start_time
         model_variant_timings.append((model_variant, elapsed_time))
-        grf_nml.write(rendered_nml)
-
     """
     # Sort timings by elapsed time in descending order (longest first)
     timings_sorted = sorted(model_variant_timings, key=lambda x: x[1], reverse=True)
@@ -130,13 +131,13 @@ def main():
         for variant, duration in timings_sorted:
             f.write(f"{variant} | {variant.id}: {duration:.4f} seconds\n")
     """
+
     grf_nml.close()
 
-    print(
-        "[RENDER NML]",
-        command_line_args.grf_name,
-        "- complete",
-        utils.string_format_compile_time_deltas(start, time()),
+    logger.info(
+        f"[RENDER NML]"
+        f"{command_line_args.grf_name} - complete "
+        f"{utils.string_format_compile_time_deltas(start, time())}"
     )
 
 

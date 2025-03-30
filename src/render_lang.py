@@ -67,7 +67,8 @@ def render_lang(roster, lang_name, lang_dst):
 
 
 def main():
-    print("[RENDER LANG]", " ".join(sys.argv))
+    globals()['logger'] = utils.get_logger(__file__)
+    logger.info("[RENDER LANG]" + " ".join(sys.argv))
     start = time()
     iron_horse.main()
 
@@ -99,11 +100,10 @@ def main():
             lang_name = file_name.split(".")[0]
             render_lang(roster, lang_name, lang_dst)
 
-    print(
-        "[RENDER LANG]",
-        command_line_args.grf_name,
-        "- complete",
-        utils.string_format_compile_time_deltas(start, time()),
+    logger.info(
+        f"[RENDER LANG]"
+        f"{command_line_args.grf_name} - complete "
+        f"{utils.string_format_compile_time_deltas(start, time())}"
     )
 
 
