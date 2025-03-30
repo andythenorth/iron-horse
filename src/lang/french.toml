@@ -697,10 +697,6 @@ base = "Puissance (distribuée){NBSP}: {GOLD}{POWER} par {STRING} voiture ou fou
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "Puissance (distribuée): {GOLD}{POWER} quand attaché à une locomotive {STRING}"
 
-# other buy menu hints
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
-base = "{}{BLACK}Nuances de couleur{NBSP}: {GOLD}{STRING}"
-
 # project management
 [STR_SPRITES_COMPLETE]
 base = "{}Sprites terminés: {GOLD}Ouaip"

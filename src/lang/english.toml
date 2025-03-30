@@ -1047,11 +1047,6 @@ base = "{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} passenger or mail
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine"
 
-# other buy menu hints
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
-base = "{}{BLACK}Colour mix: {GOLD}{STRING}"
-
 # project management
 [STR_SPRITES_COMPLETE]
 base = "{}Sprites Complete: {GOLD}Yup"

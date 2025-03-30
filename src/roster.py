@@ -58,7 +58,6 @@ class Roster(object):
             "engine_and_pax_mail_car_liveries", []
         )
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
-        self.wagon_recolour_colour_sets = []
 
     @property
     def model_variants_by_catalogue(self):
@@ -419,7 +418,7 @@ class Roster(object):
                 raise BaseException(
                     f"{model_variant.id}"
                     f" colour set "
-                    f"{model_variant.catalogue_entry.livery_def.colour_set}"
+                    f"{model_variant.catalogue_entry.livery_def.colour_set_names}"
                     f" has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                     f"{model_variant.id}"
                     f" or check that randomisation candidates provide this colour set"
@@ -441,37 +440,6 @@ class Roster(object):
     ):
         # convenience method for a key, only used for accessing a temp structure
         return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
-
-    def compute_wagon_recolour_sets(self):
-        # wagon recolour liveries can be randomised across multiple colour sets
-        # this is a run-time randomisation, relying on a procedure that takes parameters for the candidate livery numbers
-        # however there are 10 parameters, and calls to the procedure are needed thousands of times per grf,
-        # testing proved that generating thousands of procedure calls with 10 params directly in the nml was expensive in file size, both nml and grf
-        # there are however a finite number of combinations that are actually needed (only 125 as of Sept 2024)
-        # therefore we can provide a compile-time lookup table, and index into it using a procedure call with a single parameter
-        # this does not have the same cost in nml or grf filesize
-        # CABBAGE CAN THIS BE DERIVED FROM LIVERIES NOW?
-        # WHAT ARE THE PARAMS?  - COLOURS, WEATHERING?
-        print("len(freight_wagon_liveries)", len(global_constants.freight_wagon_liveries))
-        # CABBAGE JUST MAP DIRECTLY TO THE LIVERIES from global_constants.freight_wagon_liveries
-        # THE LU TABLE HAS THE PARAMS?
-        # AND WE JUST NEED THE LIVERY NUMBER?
-        # freight_wagon_liveries is a dict, but just rely on key position, probably fine?
-        seen_params = []
-        for wagon_model_variant in self.wagon_model_variants:
-            if getattr(
-                wagon_model_variant, "use_colour_randomisation_strategies", False
-            ):
-                seen_params.append(
-                    wagon_model_variant.get_wagon_recolour_strategy_params()
-                )
-                seen_params.append(
-                    wagon_model_variant.get_wagon_recolour_strategy_params(
-                        context="purchase"
-                    )
-                )
-
-        self.wagon_recolour_colour_sets = list(set(seen_params))
 
     @timing
     def add_buyable_variant_groups(self):

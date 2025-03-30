@@ -37,6 +37,7 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
             global_constants=global_constants,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
+            livery_supplier=iron_horse.livery_supplier,
             badge_manager=iron_horse.badge_manager,
             railtype_manager=iron_horse.railtype_manager,
             roster_manager=iron_horse.roster_manager,

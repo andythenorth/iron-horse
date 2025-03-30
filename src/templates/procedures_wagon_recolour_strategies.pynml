@@ -87,11 +87,11 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping,
 
 <!--! switch as lookup table for combinations of colour set params
       this is to avoid defining parameterised procedure calls 8300 times for Horse random liveries, as this appears to bloat the grf from 43 MB to 89 MB
-      see roster.wagon_recolour_colour_sets for more info
       -->
+
 switch(FEAT_TRAINS, SELF, switch_wagon_recolour_sets, wagon_recolour_colour_set_num, wagon_recolour_colour_set_num) {
-    <tal:wagon_recolour_set repeat="wagon_recolour_set roster.wagon_recolour_colour_sets">
-        ${repeat.wagon_recolour_set.index}: return switch_colour_mapping(${wagon_recolour_set});
+    <tal:wagon_recolour_set repeat="livery_serialized livery_supplier.freight_wagon_livery_serialized_params">
+        ${livery_serialized.livery_index}: return switch_colour_mapping(${livery_serialized.serialized_params}); // ${livery_serialized.livery_name}
     </tal:wagon_recolour_set>
 }
 

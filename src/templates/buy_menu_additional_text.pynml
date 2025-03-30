@@ -62,17 +62,4 @@
             return string(${model_variant.get_buy_menu_additional_text()});
         }
     </tal:lgv_capable_and_wagons_add_power>
-    <tal:livery_variants case="'livery_variants'">
-        switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_buy_menu_additional_text, [
-            <tal:text_stack repeat="value_pair model_variant.get_buy_menu_hint_livery_variant_text_stack()">
-                STORE_TEMP(
-                    (${value_pair[0]})
-                    | ((${value_pair[1]}) << 16),
-                    ${'0x10' + str(repeat.value_pair.index)}
-                ),
-            </tal:text_stack>
-        ]) {
-            return string(${model_variant.get_buy_menu_additional_text()});
-        }
-    </tal:livery_variants>
 </tal:block>

@@ -603,9 +603,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_NAME_SUFFIX_VOLATILES_TANK_CAR_TYPE_1]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1]
-suppressed_rosters = ["horse", "moose", "ibex"]
-
 [STR_COLOUR_NAME_COLOUR_DARK_BLUE]
 suppressed_rosters = ["moose"]
 
@@ -918,30 +915,8 @@ suppressed_rosters = ["moose"]
 [STR_WAGONS_ADD_POWER_MIDDLE]
 suppressed_rosters = ["moose"]
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
-suppressed_rosters = ["moose"]
-
 [STR_EMPTY]
 suppressed_rosters = ["moose"]
 
 [STR_NAME_CONTAINER_2]
 suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2]
-suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3]
-suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4]
-suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5]
-suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6]
-suppressed_rosters = ["moose"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7]
-suppressed_rosters = ["moose"]
-

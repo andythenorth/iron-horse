@@ -1120,215 +1120,23 @@ class ModelTypeBase(object):
 
     @property
     def uses_random_livery(self):
+        # NOT EVEN SURE WHAT THIS IS FOR - THE CALLERS ARE PRETTY LIMITED
         # CABBAGE RANDOM SHOULD ACTUALLY BE A FLAG ON THE LIVERY_DEF?
         # RATHER THAN INFERRING FROM STRINGS?
-        colour_set = self.catalogue_entry.livery_def.colour_set
-        if colour_set is not None:
-            return colour_set.find("random_liveries") != -1
-        # fall through to default
-        return False
-
-    def get_wagon_recolour_strategy_num(self, livery, context=None):
-        # CABBAGE THIS IS COMPLETELY STUPID
-        # THE COLOUR SET WILL BE ON THE LIVERY (tuple?)
-        # THE NUMBERS ONLY NEED TO BE INTERNALLY CONSISTENT AND CAN VARY BETWEEN COMPILES
-        # MOREOVER, CAN WE JUST USE BADGES?
-        # - GENERATE COLOUR BADGES FROM THE colour_set
-        # - BUT ALSO GENERATE COLOUR_SET BADGES
-        # - USE COLOUR_SET BADGES TO SWITCH ON
-        # > 103 = strategy num will be randomised to one of the other strategy nums
-        # 101 = use colour set complementary to player company colour
-        # 100 = use colour set from player company colour
-        # 0..99 = use colour set number directly (look up by name)
-        if context == "purchase":
-            colour_set = livery.purchase
+        # CABBAGE SHOULD BE FROM COUNTING BADGES OR SOMETHING?
+        if self.catalogue_entry.livery_def.colour_set_names is None:
+            return False
+        if not isinstance(self.catalogue_entry.livery_def.colour_set_names, list):
+            # CABBAGE shim
+            print(self.catalogue_entry.livery_def.livery_name, "colour_set_names is not a list")
+            return False
         else:
-            # CABBAGE LEGACY HANDLING WITH try/execpt, REMOVE
-            try:
-                colour_set = livery["colour_set"]
-            except:
-                colour_set = livery.colour_set
-
-        # !!! this is lolz, so many ifs just to get a string -> number mapping
-        # !!! it's infrequently changed, but should just be some lookup table of some kind
-        if "random_liveries_grey_pewter" in colour_set:
-            return 117
-        elif "random_liveries_red_ruby" in colour_set:
-            return 116
-        elif "random_liveries_teal_nightshade" in colour_set:
-            return 115
-        elif "random_liveries_teal_pewter" in colour_set:
-            return 114
-        elif "random_liveries_sulphur_straw" in colour_set:
-            return 113
-        elif "random_liveries_gremlin_green_silver" in colour_set:
-            return 112
-        elif "random_liveries_ochre_sand" in colour_set:
-            return 111
-        elif "random_liveries_oil_black_nightshade" in colour_set:
-            return 110
-        elif "random_liveries_ruby_bauxite" in colour_set:
-            return 109
-        elif "random_liveries_sulphur_ochre" in colour_set:
-            return 108
-        elif "random_liveries_silver_pewter" in colour_set:
-            return 107
-        elif "random_liveries_teal_violet" in colour_set:
-            return 106
-        elif "random_liveries_bauxite_grey_nightshade" in colour_set:
-            return 105
-        elif "random_liveries_variety" in colour_set:
-            return 104
-        elif "random_liveries_complement_company_colour" in colour_set:
-            return 103
-        # 102 left empty for legacy reasons as of May 2023, should be refactored really
-        elif "complement_company_colour" in colour_set:
-            return 101
-        elif "company_colour" in colour_set:
-            return 100
-        else:
-            return list(global_constants.colour_sets.keys()).index(colour_set)
-
-    def get_wagon_recolour_strategy_params(self, context=None):
-        # CABBAGE - THIS RETURNS PARAMS WHICH ARE THEN COMPRESSED TO AN INDEX AND EXPANDED LATER (FOR NML PERFORMANCE REASONS)
-        wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
-            self.catalogue_entry.livery_def
-        )
-
-        if self.uses_random_livery:
-            available_liveries = self.get_candidate_liveries_for_randomised_strategy(
-                self.catalogue_entry.livery_def
-            )
-            if self.catalogue_entry.livery_def.purchase is not None:
-                wagon_recolour_strategy_num_purchase = (
-                    self.get_wagon_recolour_strategy_num(
-                        self.catalogue_entry.livery_def, context="purchase"
-                    )
-                )
-            else:
-                wagon_recolour_strategy_num_purchase = available_liveries[0]
-        else:
-            # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
-            available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
-            # purchase strategy will be same as non-purchase
-            wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
-
-        flag_use_weathering = self.catalogue_entry.livery_def.use_weathering
-        flag_context_is_purchase = True if context == "purchase" else False
-
-        params_numeric = [
-            flag_use_weathering,
-            flag_context_is_purchase,
-            wagon_recolour_strategy_num,
-            wagon_recolour_strategy_num_purchase,
-        ]
-
-        params_numeric.extend(available_liveries)
-
-        # int used to convert False|True bools to 0|1 values for nml
-        return ", ".join(str(int(i)) for i in params_numeric)
+            # if it's more than one entry then it's randomised
+            return len(self.catalogue_entry.livery_def.colour_set_names) > 1
 
     def get_wagon_recolour_colour_set_num(self, context=None):
-        return list(global_constants.freight_wagon_liveries).index(self.catalogue_entry.livery_def.livery_name)
-
-    def get_candidate_liveries_for_randomised_strategy(self, livery):
-        # CABBAGE - THIS WALKS A RANDOMISED LIVERY, AND SELECTS ONLY THOSE REMAPS WHICH THE VEHICLE ACTUALLY USES IN NON-RANDOMISED LIVERIES
-        # DO WE CARE ABOUT PRESERVING THAT BEHAVIOUR?  OR IS RANDOM LITERALLY JUST RANDOM FROM A LIST?
-        # HMM
-        # RANDOM_LIVERIES_VARIETY *DOES* DEPEND ON THE OTHER LIVERIES FOR THE CANDIDATES - CHANGE? DELETE?
-        # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
-        result = []
-        for cabbage_candidate_livery in self.catalogue_entry.catalogue:
-            if (
-                cabbage_candidate_livery.livery_def.colour_set
-                in global_constants.wagon_livery_mixes[livery.colour_set]
-            ):
-                candidate_livery_strategy_num = self.get_wagon_recolour_strategy_num(
-                    cabbage_candidate_livery.livery_def
-                )
-                result.append(candidate_livery_strategy_num)
-        # length of result *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
-        # this just crudely extends the list, repeating values as needed
-        extension = result[0 : 8 - len(result)]
-        if len(extension) == 0:
-            raise BaseException(
-                self.id
-                + " get_candidate_liveries_for_randomised_strategy: extension list too short "
-                + str(extension)
-                + "; \n this is probably because we're slicing 8, and have more than 8 colours defined; which will fail;"
-                + "; \n there are now more random bits available for OpenTTD 14 so this might be solvable"
-            )
-        # !! it's possible this doesn't close
-        while len(result) < 8:
-            result.extend(extension)
-        # yes, I'm sure we could avoid over-extending and then slicing the list, but eh, life is short
-        if (len(result)) > 8:
-            result = result[0:8]
-        return result
-
-    @property
-    def all_candidate_livery_colour_sets_for_variant(self):
-        # CABBAGE - DOCS ONLY, ONE CALLER - get_buy_menu_additional_text
-        # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
-        # therefore we need to get the possible liveries across all possible variants
-        unit_variants = []
-        if self.is_randomised_wagon_type:
-            # CABBAGE - NOT unit_variant
-            for unit_variant in self.wagon_randomisation_candidates:
-                unit_variants.append(unit_variant)
-        else:
-            # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
-            unit_variants.append(self.units[0])  # CABBAGE HAX - why units?
-
-        eligible_colours = global_constants.wagon_livery_mixes[
-            self.catalogue_entry.livery_def.colour_set
-        ]
-        variant_colour_set = []
-        # CABBAGE SHIM
-        # THIS APPEARS TO BUILD A SET OF ALL THE COLOURS IN ALL THE SOURCE VARIANTS...
-        # BUT
-        # THE SOURCE VARIANTS MIGHT BE RANDOMISED WAGONS
-        # OR JUST A SINGLE VARIANT, WITH RANDOM COLOUR CHOICE
-        for unit_variant in unit_variants:
-            for cabbage_candidate_livery in self.catalogue_entry.catalogue:
-                if cabbage_candidate_livery.livery_def.colour_set not in variant_colour_set:
-                    if cabbage_candidate_livery.livery_def.colour_set in eligible_colours:
-                        variant_colour_set.append(
-                            cabbage_candidate_livery.livery_def.colour_set
-                        )
-
-        if len(variant_colour_set) == 0:
-            raise BaseException(
-                self.id
-                + " has variant_colour_set length 0, which won't work - check what livery colour_set it's using"
-            )
-
-        return variant_colour_set
-
-    def get_buy_menu_hint_livery_variant_text_stack(self):
-        # CABBAGE
-        variant_colour_set = self.all_candidate_livery_colour_sets_for_variant
-
-        stack_values = []
-        stack_values.append(
-            "string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_"
-            + str(len(variant_colour_set))
-            + ")"
-        )
-
-        # note the OR with 0xD000 to get correct string range
-        for colour_name in variant_colour_set:
-            if colour_name == "company_colour":
-                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
-            elif colour_name == "complement_company_colour":
-                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
-            else:
-                stack_values.append(
-                    "switch_get_colour_name("
-                    + str(list(global_constants.colour_sets.keys()).index(colour_name))
-                    + ") | 0xD000"
-                )
-        return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
+        livery_name = self.catalogue_entry.livery_def.livery_name
+        return iron_horse.livery_supplier.freight_wagon_livery_index(livery_name=livery_name, context=None)
 
     def get_buy_menu_additional_text(self):
         result = []
@@ -1349,14 +1157,6 @@ class ModelTypeBase(object):
         if self.buy_menu_additional_text_hint_wagons_add_power:
             result.append(self.buy_menu_additional_text_distributed_power_substring)
 
-        # livery variants comes after role string
-        # CABBAGE - commented out as unit_variant_cabbage is no longer in scope - this will be replaced by badges??
-        """
-        if unit_variant_cabbage is not None:
-            # as of May 2023 get_buy_menu_additional_text is never called with a variant in scope unless the variant requires this string
-            # so no conditional checks needed - this may change
-            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
-        """
         if len(result) == 1:
             return (
                 "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string("
@@ -1397,11 +1197,6 @@ class ModelTypeBase(object):
                 return "lgv_capable"
         else:
             return None
-        """
-        # CABBAGE NERFED OUT - USE BADGES
-        elif self.uses_random_livery:
-            return "livery_variants"
-        """
 
     @property
     def uses_buy_menu_additional_text(self):
@@ -3315,8 +3110,6 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
             "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
             "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3354,8 +3147,6 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3401,8 +3192,6 @@ class BoxCarVehicleParts(BoxCarBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -4348,8 +4137,6 @@ class CoveredHopperCarBase(CarModelTypeBase):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -4469,8 +4256,6 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -5592,8 +5377,6 @@ class HopperCarMGRBase(HopperCarBase):
             "unweathered": graphics_constants.mgr_hopper_body_recolour_map,
             "weathered": graphics_constants.mgr_hopper_body_recolour_map_weathered,
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # player choice, various others tried, not needed
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -5940,8 +5723,6 @@ class LivestockCar(CarModelTypeBase):
         weathered_variants = {
             "unweathered": graphics_constants.livestock_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -6382,8 +6163,6 @@ class MineralCoveredHopperCarBase(CarModelTypeBase):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -6520,8 +6299,6 @@ class MineralCoveredHopperCarRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
@@ -6567,8 +6344,6 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
             "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
             "weathered": graphics_constants.roller_roof_hopper_body_recolour_map_weathered,
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -6663,8 +6438,6 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         weathered_variants = {
             "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -7748,8 +7521,6 @@ class SiloCarBase(CarModelTypeBase):
         weathered_variants = {
             "unweathered": graphics_constants.v_barrel_silo_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -8147,8 +7918,6 @@ class TankCarAcidBase(TankCarBase):
         # Graphics configuration
         # empty, set in subclasses
         weathered_variants = {}
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8280,8 +8049,6 @@ class TankCarProductBase(TankCarBase):
         weathered_variants = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8366,8 +8133,6 @@ class TankCarStandardBase(TankCarBase):
         weathered_variants = {
             "unweathered": graphics_constants.tank_car_livery_recolour_map
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8464,8 +8229,6 @@ class TankCarVolatilesBase(TankCarBase):
             "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
             "weathered": graphics_constants.silver_grey_tank_car_livery_recolour_map_weathered,
         }
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             catalogue_entry=self.catalogue_entry,
@@ -8526,8 +8289,6 @@ class TarpaulinCarBase(BoxCarBase):
         self.use_named_purchase_variant_group = "wagon_group_tarpaulin_cars"
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
-        # ruby before bauxite to ensure it appears in buy menu order for mixed version
-        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",

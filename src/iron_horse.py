@@ -137,8 +137,6 @@ class RosterManager(list):
         # now complete any post validation steps
         # can be quite expensive, so only called if flagged
         if run_post_validation_steps:
-            for roster in self:
-                roster.compute_wagon_recolour_sets()
             self.active_roster.add_buyable_variant_groups()
 
     @property
@@ -213,7 +211,7 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
 
     # liveries
     for livery_name, livery_def in global_constants.freight_wagon_liveries.items():
-        livery_supplier.add_livery(livery_name, **livery_def)
+        livery_supplier.add_livery(livery_name, is_freight_wagon_livery=True, **livery_def)
 
     # rosters
     roster_manager.add_rosters(roster_module_names, validate_vehicle_ids, run_post_validation_steps)
