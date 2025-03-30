@@ -45,6 +45,11 @@ class UnitBase(object):
         return self.model_variant.model_id + "_unit_" + str(self.cabbage_numeric_id)
 
     @property
+    def cabbage_unit_id_from_default_model_variant(self):
+        # convenience method when we have shared switch chains, and we want to target a specific unit in the default variant
+        return f"{self.model_variant.catalogue_entry.catalogue.default_model_variant_from_roster.id}_unit_{self.model_variant.units.index(self)}"
+
+    @property
     def tail_light(self):
         # optional - some engine units need to set explicit tail light spritesheets
         # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
@@ -166,7 +171,6 @@ class UnitBase(object):
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
-
 
     @property
     def is_not_trailing_part(self):
