@@ -54,9 +54,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
     }
     graphics {
-        default:                        ${unit.id}_switch_graphics;
+        default:                        ${unit.graphics_switch_entry_point_cabbage}_switch_graphics;
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
-            purchase:                       ${unit.id}_switch_graphics_purchase;
+            purchase:                       ${unit.graphics_switch_entry_point_cabbage}_switch_graphics_purchase;
             name:                           ${model_variant.id}_switch_name;
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
             cost_factor:                    ${model_variant.buy_cost}; // CB used as it is capped to max 32k, prop is only 255

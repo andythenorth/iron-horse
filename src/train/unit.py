@@ -350,6 +350,10 @@ class UnitBase(object):
         )
         return expression_template.substitute(unit_offset=unit_offset)
 
+    @property
+    def graphics_switch_entry_point_cabbage(self):
+        return self.id
+
     def get_spriteset_template_name(self, reversed, y):
         template_name = "_".join(
             [
