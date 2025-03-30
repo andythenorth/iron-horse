@@ -94,7 +94,7 @@
         <tal:include metal:use-macro="load: articulated_parts.pynml" />
     </tal:articulated_parts>
 
-    <tal:name condition="unit.is_not_trailing_part">
+    <tal:name condition="unit.is_not_trailing_part and model_variant.is_default_model_variant">
         <tal:include metal:use-macro="load: name.pynml" />
     </tal:name>
 
