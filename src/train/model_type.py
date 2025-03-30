@@ -118,13 +118,6 @@ class ModelTypeBase(object):
         return cls._doc_flag
 
     @property
-    def cabbage_livery(self):
-        return {
-            "docs_image_input_cc": self.catalogue_entry.livery_def.docs_image_input_cc,
-            "colour_set": self.catalogue_entry.livery_def.colour_set,
-        }
-
-    @property
     def id(self):
         return self.catalogue_entry.model_variant_id
 
@@ -1148,14 +1141,14 @@ class ModelTypeBase(object):
         # 100 = use colour set from player company colour
         # 0..99 = use colour set number directly (look up by name)
         if context == "purchase":
-            colour_set = livery["purchase"]
+            colour_set = livery.purchase
         else:
+            # CABBAGE LEGACY HANDLING WITH try/execpt, REMOVE
             try:
                 colour_set = livery["colour_set"]
             except:
-                raise Exception(
-                    self.id + " | " + self.__class__.__name__ + " | " + str(livery)
-                )
+                colour_set = livery.colour_set
+
         # !!! this is lolz, so many ifs just to get a string -> number mapping
         # !!! it's infrequently changed, but should just be some lookup table of some kind
         if "random_liveries_grey_pewter" in colour_set:
@@ -1199,17 +1192,17 @@ class ModelTypeBase(object):
     def get_wagon_recolour_strategy_params(self, context=None):
         # CABBAGE - THIS RETURNS PARAMS WHICH ARE THEN COMPRESSED TO AN INDEX AND EXPANDED LATER (FOR NML PERFORMANCE REASONS)
         wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
-            self.cabbage_livery
+            self.catalogue_entry.livery_def
         )
 
         if self.uses_random_livery:
             available_liveries = self.get_candidate_liveries_for_randomised_strategy(
-                self.cabbage_livery
+                self.catalogue_entry.livery_def
             )
-            if self.cabbage_livery.get("purchase", None) is not None:
+            if self.catalogue_entry.livery_def.purchase is not None:
                 wagon_recolour_strategy_num_purchase = (
                     self.get_wagon_recolour_strategy_num(
-                        self.cabbage_livery, context="purchase"
+                        self.catalogue_entry.livery_def, context="purchase"
                     )
                 )
             else:
@@ -1220,7 +1213,7 @@ class ModelTypeBase(object):
             # purchase strategy will be same as non-purchase
             wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
 
-        flag_use_weathering = self.cabbage_livery.get("use_weathering", False)
+        flag_use_weathering = self.catalogue_entry.livery_def.use_weathering
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
@@ -1252,7 +1245,7 @@ class ModelTypeBase(object):
         for cabbage_candidate_livery in self.catalogue_entry.catalogue:
             if (
                 cabbage_candidate_livery.livery_def.colour_set
-                in global_constants.wagon_livery_mixes[livery["colour_set"]]
+                in global_constants.wagon_livery_mixes[livery.colour_set]
             ):
                 candidate_livery_strategy_num = self.get_wagon_recolour_strategy_num(
                     cabbage_candidate_livery.livery_def
@@ -1289,10 +1282,10 @@ class ModelTypeBase(object):
                 unit_variants.append(unit_variant)
         else:
             # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
-            unit_variants.append(self.units.unit_variant[0])  # CABBAGE
+            unit_variants.append(self.units[0])  # CABBAGE HAX - why units?
 
         eligible_colours = global_constants.wagon_livery_mixes[
-            self.cabbage_livery["colour_set"]  # CABBAGE
+            self.catalogue_entry.livery_def.colour_set
         ]
         variant_colour_set = []
         # CABBAGE SHIM
@@ -1301,11 +1294,11 @@ class ModelTypeBase(object):
         # THE SOURCE VARIANTS MIGHT BE RANDOMISED WAGONS
         # OR JUST A SINGLE VARIANT, WITH RANDOM COLOUR CHOICE
         for unit_variant in unit_variants:
-            for cabbage_candidate_livery in catalogue_entry.catalogue:
-                if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
-                    if cabbage_candidate_livery["colour_set"] in eligible_colours:
+            for cabbage_candidate_livery in self.catalogue_entry.catalogue:
+                if cabbage_candidate_livery.livery_def.colour_set not in variant_colour_set:
+                    if cabbage_candidate_livery.livery_def.colour_set in eligible_colours:
                         variant_colour_set.append(
-                            cabbage_candidate_livery["colour_set"]
+                            cabbage_candidate_livery.livery_def.colour_set
                         )
 
         if len(variant_colour_set) == 0:
@@ -1406,10 +1399,13 @@ class ModelTypeBase(object):
                 return "lgv_capable_and_wagons_add_power"
             else:
                 return "lgv_capable"
-        elif self.uses_random_livery:
-            return "livery_variants"
         else:
             return None
+        """
+        # CABBAGE NERFED OUT - USE BADGES
+        elif self.uses_random_livery:
+            return "livery_variants"
+        """
 
     @property
     def uses_buy_menu_additional_text(self):
