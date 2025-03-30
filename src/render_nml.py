@@ -63,7 +63,7 @@ def main():
     globals()['logger'] = utils.get_logger(__file__)
     logger.info(f"[RENDER NML] {' '.join(sys.argv)}")
     start = time()
-    iron_horse.main()
+    iron_horse.main(run_post_validation_steps=True)
 
     roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case

@@ -11,6 +11,7 @@ import math
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
 import utils
+from utils import timing
 
 from gestalt_graphics.gestalt_graphics import (
     GestaltGraphics,

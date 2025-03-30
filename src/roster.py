@@ -3,12 +3,15 @@ import importlib
 import os
 import pickle
 import tomllib
-from collections import defaultdict
+from collections import defaultdict, Counter
+from functools import cached_property
+import time
 
 currentdir = os.curdir
 
 import global_constants
 import utils
+from utils import timing
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
@@ -104,6 +107,11 @@ class Roster(object):
         ]
 
     @property
+    def model_variants(self):
+        # join both engine and wagon variants
+        return self.engine_model_variants + self.wagon_model_variants
+
+    @property
     def wagon_model_variants_by_base_id(self):
         result = {}
         for wagon_model_variant in self.wagon_model_variants:
@@ -112,6 +120,7 @@ class Roster(object):
         return result
 
     @property
+    @timing
     def model_variants_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_model_variants)
@@ -147,12 +156,11 @@ class Roster(object):
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
         # this isn't infallible, but reduces the extent to which the randomised wagons consume action 2 IDs
-        model_variants = self.model_variants_in_buy_menu_order
         result = []
         randomised_wagons_by_track_gen_length_power = {}
 
         # Categorize model variants by generation, length, track type, and power
-        for model_variant in model_variants:
+        for model_variant in self.model_variants:
             gen = model_variant.gen
             track_type = model_variant.base_track_type_name
             power = model_variant.power
@@ -226,15 +234,14 @@ class Roster(object):
         result.reverse()
         return result
 
+    @timing
     def validate_vehicle_ids(self, numeric_id_defender):
         # has to be explicitly called after all model variants and units are registered to the roster
 
         # this structure is used to test for duplicate ids
-        model_variant_ids = [
-            model_variant.id for model_variant in self.model_variants_in_buy_menu_order
-        ]
+        model_variant_id_counts = Counter(self.model_variants)
 
-        for model_variant in self.model_variants_in_buy_menu_order:
+        for model_variant in self.model_variants:
             """
             # CABBAGE - nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
             # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
@@ -244,7 +251,7 @@ class Roster(object):
                 print("Pickling failed for model_variant:", model_variant.id)
                 raise
             """
-            if model_variant_ids.count(model_variant.id) > 1:
+            if model_variant_id_counts[model_variant.id] > 1:
                 raise BaseException(
                     f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
                     f"The catalogue for one of them is:"
@@ -320,6 +327,7 @@ class Roster(object):
                         "model_variants"
                     ].append(model_variant)
 
+    @timing
     def produce_wagons(self):
         # Iterate over wagon module name stems and warn if not in global_constants
         for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
@@ -460,6 +468,7 @@ class Roster(object):
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
 
+    @timing
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* model variants are inited
 
@@ -475,7 +484,7 @@ class Roster(object):
         # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
-        for model_variant in self.model_variants_in_buy_menu_order:
+        for model_variant in self.model_variants:
             for buyable_variant in model_variant.cabbage_buyable_variants:
                 if (
                     not buyable_variant.model_variant.buyable_variant_group_id

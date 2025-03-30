@@ -117,7 +117,6 @@ def grfid_to_dword(grfid: str) -> str:
     return f"{dword:08X}"
 
 # move logger to Polar Fox?
-
 import logging
 import os
 import sys
@@ -150,3 +149,18 @@ def get_logger(module_name):
         logger.addHandler(console_handler)
 
     return logger
+
+# move timing decorator to Polar Fox?
+import time
+import functools
+
+def timing(func):
+    """Decorator that reports the execution time of the wrapped function."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+        print(f"{func.__name__} took {end - start:.4f} seconds")
+        return result
+    return wrapper

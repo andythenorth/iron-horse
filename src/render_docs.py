@@ -358,7 +358,7 @@ def main():
         # mp_logger = multiprocessing.log_to_stderr()
         # mp_logger.setLevel(25)
         # just print, no need for a coloured echo_message
-        logger.info(f"Multiprocessing enabled: (PW={str(num_pool_workers)})")
+        logger.info(f"Multiprocessing enabled: (PW={num_pool_workers})")
 
     # setting up a cache for compiled chameleon templates can significantly speed up template rendering
     chameleon_cache_path = os.path.join(
@@ -426,7 +426,7 @@ def main():
     # note we remove any model variants that are clones, we don't need them in docs
     model_variants = [
         model_variant
-        for model_variant in roster.model_variants_in_buy_menu_order
+        for model_variant in roster.model_variants
         if model_variant.quacks_like_a_clone == False
     ]
     # default sort for docs is by intro year

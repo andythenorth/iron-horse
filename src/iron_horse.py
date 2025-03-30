@@ -11,6 +11,7 @@ from badge import Badge
 from train.livery import LiverySupplier
 import global_constants
 import utils
+from utils import timing
 
 command_line_args = utils.get_command_line_args()
 
@@ -105,7 +106,8 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    def add_rosters(self, roster_module_names, validate_vehicle_ids):
+    @timing
+    def add_rosters(self, roster_module_names, validate_vehicle_ids=False, run_post_validation_steps=False):
         for roster_module_name in roster_module_names:
             roster_module = importlib.import_module(
                 "." + roster_module_name, package="rosters"
@@ -127,14 +129,17 @@ class RosterManager(list):
             # now validate as we have all the vehicles in all rosters
             # validation will also populate numeric_id_defender which can be re-used for ID reporting
             # actual validation is delegated to the roster
+            # quite expensive, so only called if flagged
             self.numeric_id_defender = {}
             for roster in self:
                 roster.validate_vehicle_ids(self.numeric_id_defender)
 
         # now complete any post validation steps
-        for roster in self:
-            roster.compute_wagon_recolour_sets()
-            roster.add_buyable_variant_groups()
+        # can be quite expensive, so only called if flagged
+        if run_post_validation_steps:
+            for roster in self:
+                roster.compute_wagon_recolour_sets()
+            self.active_roster.add_buyable_variant_groups()
 
     @property
     def active_roster(self):
@@ -192,7 +197,8 @@ class RosterManager(list):
         return result
 
 
-def main(validate_vehicle_ids=False):
+@timing
+def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_files_path, exist_ok=True)
 
@@ -210,7 +216,7 @@ def main(validate_vehicle_ids=False):
         livery_supplier.add_livery(livery_name, **livery_def)
 
     # rosters
-    roster_manager.add_rosters(roster_module_names, validate_vehicle_ids)
+    roster_manager.add_rosters(roster_module_names, validate_vehicle_ids, run_post_validation_steps)
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
@@ -251,9 +257,11 @@ def main(validate_vehicle_ids=False):
         )
 
     # CABBAGE - CATALOGUES THOUGH?
+    # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
     for roster in roster_manager:
-        for model_variant in roster.model_variants_in_buy_menu_order:
+        for model_variant in roster.model_variants:
             if model_variant.vehicle_family_badge is not None:
                 badge_manager.add_badge(
                     label=model_variant.vehicle_family_badge,
                 )
+

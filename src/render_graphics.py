@@ -75,11 +75,11 @@ def main():
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message
-        logger.info("Multiprocessing disabled: (PW=0)")
+        logger.info(f"Multiprocessing disabled: (PW=0)")
     else:
         use_multiprocessing = True
         # just print, no need for a coloured echo_message
-        logger.info("Multiprocessing enabled: (PW={str(num_pool_workers)})")
+        logger.info(f"Multiprocessing enabled: (PW={num_pool_workers})")
 
     roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case
