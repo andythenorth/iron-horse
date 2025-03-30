@@ -9,6 +9,7 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 
 from badge import Badge
 from train.livery import LiverySupplier
+from railtype import RailTypeManager
 import global_constants
 import utils
 from utils import timing
@@ -63,41 +64,6 @@ class BadgeManager(list):
             if badge.label == label:
                 return badge
         return None
-
-
-class RailTypeManager(list):
-    """
-    It's convenient to have a structure for working with railtypes.
-    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
-    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
-    """
-
-    def add_railtypes(self, railtype_modules):
-        for railtype_module_name in railtype_module_names:
-            railtype_module = importlib.import_module(
-                "." + railtype_module_name, package="railtypes"
-            )
-            railtype = railtype_module.main(disabled=False)
-            self.append(railtype)
-
-    @property
-    def railtype_labels_for_railtypetable(self):
-        # the railtypetable needs both lists of fallbacks by track_type_name, and all of the labels from each list so we can refer to them in e.g. tile checks
-        # note that this is using the nml fallbacks for *vehicle* track_type NOT the compatible or powered powered properties for the railtypes
-        # this is strictly not the scope of RailTypeManager, but it's a convenient place to add globally accessible railtype specific methods
-        result = {}
-        for (
-            labels
-        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
-            result[labels[0]] = labels
-        for (
-            labels
-        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
-            for label in labels:
-                if label not in result.keys():
-                    result[label] = None
-        return result
-
 
 class RosterManager(list):
     """
@@ -224,6 +190,9 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
         spritelayer_cargo_module.main()
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
+
+    # CABBAGE - CABBADGE
+    # !! badge_manager needs to be encapsulated, it's doing too much here
 
     if roster_manager.active_roster is not None:
         badge_manager.add_badge(
