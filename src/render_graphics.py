@@ -142,7 +142,10 @@ def main():
             for target_config in render_pass_targets[render_pass_num]:
                 run_vehicle_pipelines(target_config, graphics_output_path)
     else:
+        # we only need to create the pool once
         pool = Pool(processes=num_pool_workers)
+        # vehicle pool jobs are organised into passes so that some vehicles can depend on generated sprites from others
+        # starmap is blocking not async, which is what we want here
         pool.starmap(
             run_spritelayer_cargo_set_pipelines,
             zip(
@@ -150,12 +153,7 @@ def main():
                 repeat(graphics_output_path),
             ),
         )
-        pool.close()
-        pool.join()
-        # wait for first pool job to finish before starting further pool jobs
-        # vehicle pool jobs are repeated so that some vehicles can depend on generated sprites from others
         for render_pass in [1, 2]:
-            pool = Pool(processes=num_pool_workers)
             pool.starmap(
                 run_vehicle_pipelines,
                 zip(
@@ -163,8 +161,8 @@ def main():
                     repeat(graphics_output_path),
                 ),
             )
-            pool.close()
-            pool.join()
+        pool.close()
+        pool.join()
 
     report_sprites_complete(roster.catalogues)
 
