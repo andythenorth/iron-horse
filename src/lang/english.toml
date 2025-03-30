@@ -87,137 +87,106 @@ base = "Iron Horse now includes the railtypes from Termite. Please remove Termit
 ibex = "Iron Ibex includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks."
 moose = "Iron Moose includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks."
 
-# default colours - reuses the constants for the company colour names, so 'COLOUR_' is repeated again in the trailing part of some string names
-[STR_COLOUR_NAME_COLOUR_DARK_BLUE]
+# colour set badges (sprite recolour liveries)
+
+[STR_BADGE_COLOUR_SET_NAME]
+base = "Colour Mix"
+
+[STR_BADGE_COLOUR_SET_NAME_COMPANY_COLOUR]
+base = "Company Colour"
+
+[STR_BADGE_COLOUR_SET_NAME_COMPLEMENT_COMPANY_COLOUR]
+base = "Complementary Company Colour"
+
+[STR_BADGE_COLOUR_SET_NAME_DARK_BLUE]
 base = "Dark Blue"
 
-[STR_COLOUR_NAME_COLOUR_PALE_GREEN]
+[STR_BADGE_COLOUR_SET_NAME_PALE_GREEN]
 base = "Pale Green"
 
-[STR_COLOUR_NAME_COLOUR_PINK]
+[STR_BADGE_COLOUR_SET_NAME_PINK]
 base = "Pink"
 
-[STR_COLOUR_NAME_COLOUR_YELLOW]
+[STR_BADGE_COLOUR_SET_NAME_YELLOW]
 base = "Yellow"
 
-[STR_COLOUR_NAME_COLOUR_RED]
+[STR_BADGE_COLOUR_SET_NAME_RED]
 base = "Red"
 
-[STR_COLOUR_NAME_COLOUR_LIGHT_BLUE]
+[STR_BADGE_COLOUR_SET_NAME_LIGHT_BLUE]
 base = "Light Blue"
 
-[STR_COLOUR_NAME_COLOUR_GREEN]
+[STR_BADGE_COLOUR_SET_NAME_GREEN]
 base = "Green"
 
-[STR_COLOUR_NAME_COLOUR_DARK_GREEN]
+[STR_BADGE_COLOUR_SET_NAME_DARK_GREEN]
 base = "Dark Green"
 
-[STR_COLOUR_NAME_COLOUR_BLUE]
+[STR_BADGE_COLOUR_SET_NAME_BLUE]
 base = "Blue"
 
-[STR_COLOUR_NAME_COLOUR_CREAM]
+[STR_BADGE_COLOUR_SET_NAME_CREAM]
 base = "Cream"
 
-[STR_COLOUR_NAME_COLOUR_MAUVE]
+[STR_BADGE_COLOUR_SET_NAME_MAUVE]
 base = "Mauve"
 
-[STR_COLOUR_NAME_COLOUR_PURPLE]
+[STR_BADGE_COLOUR_SET_NAME_PURPLE]
 base = "Purple"
 
-[STR_COLOUR_NAME_COLOUR_ORANGE]
+[STR_BADGE_COLOUR_SET_NAME_ORANGE]
 base = "Orange"
 
-[STR_COLOUR_NAME_COLOUR_BROWN]
+[STR_BADGE_COLOUR_SET_NAME_BROWN]
 base = "Brown"
 
-[STR_COLOUR_NAME_COLOUR_GREY]
+[STR_BADGE_COLOUR_SET_NAME_GREY]
 base = "Grey"
 
-[STR_COLOUR_NAME_COLOUR_WHITE]
+[STR_BADGE_COLOUR_SET_NAME_WHITE]
 base = "White"
 
-# custom colours - avoid metaphor/narrative names for the colours, they confuse people, stick to actual real colours
-[STR_COLOUR_NAME_CUSTOM_BAUXITE]
-base = "Brown"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_BAUXITE]
+base = "Rust"
 
-[STR_COLOUR_NAME_CUSTOM_DARK_GREY]
-base = "Grey"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_GREY]
+base = "Shale"
 
-[STR_COLOUR_NAME_CUSTOM_GREMLIN_GREEN]
-base = "Green"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_GREMLIN_GREEN]
+base = "Moss"
 
-[STR_COLOUR_NAME_CUSTOM_NIGHTSHADE]
-base = "Black"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_NIGHTSHADE]
+base = "Nightshade"
 
-[STR_COLOUR_NAME_CUSTOM_OCHRE]
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_OCHRE]
 base = "Ochre"
 
-[STR_COLOUR_NAME_CUSTOM_OIL_BLACK]
-base = "Oil Black"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_OIL_BLACK]
+base = "Obsidian"
 
-[STR_COLOUR_NAME_CUSTOM_PEWTER]
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_PEWTER]
 base = "Pewter"
 
-[STR_COLOUR_NAME_CUSTOM_RUBY]
-base = "Dark Red"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_RUBY]
+base = "Ruby"
 
-[STR_COLOUR_NAME_CUSTOM_SILVER]
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_SAND]
+base = "Sand"
+
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_SILVER]
 base = "Silver"
 
-[STR_COLOUR_NAME_CUSTOM_SULPHUR]
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_STRAW]
+base = "Straw"
+
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_SULPHUR]
 base = "Mustard"
 
-[STR_COLOUR_NAME_CUSTOM_TEAL]
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_TEAL]
 base = "Teal"
 
-[STR_COLOUR_NAME_CUSTOM_VIOLET]
-base = "Violet"
-
-# livery name suffixes - fancy names are better here, as there can be more than 2 colours, so the names give a flavour
-[STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR]
-base = "{STRING}/{STRING}"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_VARIETY]
-base = "Variety"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_BAUXITE_GREY_NIGHTSHADE]
-base = "Rust/Shale"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_TEAL_NIGHTSHADE]
-base = "Teal/Nightshade"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_TEAL_VIOLET]
-base = "Amethyst/Seafoam"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SILVER_PEWTER]
-base = "Silver/Pewter"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_OCHRE]
-base = "Mustard/Ochre"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_RED_RUBY]
-base = "Red/Ruby"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_RUBY_BAUXITE]
-base = "Ruby/Rust"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_OIL_BLACK_NIGHTSHADE]
-base = "Obsidian/Nightshade"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_OCHRE_SAND]
-base = "Ochre/Straw"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_GREMLIN_GREEN_SILVER]
-base = "Moss/Silver"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_GREY_PEWTER]
-base = "Grey/Pewter"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW]
-base = "Mustard/Straw"
-
-[STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER]
-base = "Teal/Pewter"
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_VIOLET]
+base = "Amethyst"
 
 # role badges
 

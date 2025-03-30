@@ -335,7 +335,7 @@ class ModelTypeBase(object):
                 # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
                 if power_source in ["NULL"]:
                     continue
-                result.append("power_source/" + power_source.lower())
+                result.append(f"power_source/{power_source.lower()}")
             # special cases
             if (
                 "DIESEL" in self.power_by_power_source.keys()
@@ -353,6 +353,9 @@ class ModelTypeBase(object):
     def cabbage_colour_mix_badges(self):
         # note returns multiple badges, as vehicles support multiple colours
         result = []
+        if self.catalogue_entry.livery_def.colour_set_names is not None:
+            for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
+                result.append(f"freight_livery_colour_set_name/{colour_set_name}")
         return result
 
     def get_cabbage_variant_handling_badges(self):

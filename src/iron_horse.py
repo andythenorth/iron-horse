@@ -171,45 +171,6 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
         spritelayer_cargo_module.main()
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
-
     # CABBAGE - CABBADGE
-    # !! badge_manager needs to be encapsulated, it's doing too much here
-
-    if roster_manager.active_roster is not None:
-        badge_manager.add_badge(
-            "newgrf/" + utils.grfid_to_dword(roster_manager.active_roster.grfid)
-        )
-
-    for (
-        badge_class_label,
-        badge_class_properties,
-    ) in global_constants.static_badges.items():
-        # first create a badge for the class
-        badge_manager.add_badge(
-            label=badge_class_label,
-            name=badge_class_properties.get("name", None),
-        )
-        # then create the badges for the class
-        for sublabel, sublabel_properties in badge_class_properties.get(
-            "sublabels", {}
-        ).items():
-            badge_manager.add_badge(
-                label=badge_class_label + "/" + sublabel,
-                name=sublabel_properties.get("name", None),
-            )
-
-    for power_source in global_constants.power_sources.keys():
-        badge_manager.add_badge(
-            label="power_source/" + power_source.lower(),
-            name="STR_BADGE_POWER_SOURCE_" + power_source,
-        )
-
-    # CABBAGE - CATALOGUES THOUGH?
-    # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
-    for roster in roster_manager:
-        for model_variant in roster.model_variants:
-            if model_variant.vehicle_family_badge is not None:
-                badge_manager.add_badge(
-                    label=model_variant.vehicle_family_badge,
-                )
-
+    badge_manager.cabbage_init_badges_1()
+    badge_manager.cabbage_init_badges_2(roster_manager=roster_manager, livery_supplier=livery_supplier)

@@ -63,6 +63,16 @@ class LiverySupplier(dict):
         return list(self.freight_wagon_liveries).index(livery_name)
 
     @property
+    def cabbage_valid_freight_livery_colour_set_names_and_nums(self):
+        result = {
+            "company_colour": 100,
+            "complement_company_colour": 101,
+        }
+        for index, colour_set_name in enumerate(list(global_constants.colour_sets)):
+            result[colour_set_name] = index
+        return result
+
+    @property
     def freight_wagon_livery_serialized_params(self):
         result = []
         for livery_name, livery in self.freight_wagon_liveries.items():
@@ -84,15 +94,11 @@ class LiverySupplier(dict):
             ]
             colour_set_indexes = []
             for colour_set_name in livery.colour_set_names:
-                match colour_set_name:
-                    case "company_colour":
-                        colour_set_indexes.append(100)
-                    case "complement_company_colour":
-                        colour_set_indexes.append(101)
-                    case _:
-                        colour_set_indexes.append(
-                            list(global_constants.colour_sets).index(colour_set_name)
-                        )
+                colour_set_indexes.append(
+                    self.cabbage_valid_freight_livery_colour_set_names_and_nums[
+                        colour_set_name
+                    ]
+                )
             # length of colour_set_indexes *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
             colour_set_indexes = list(islice(cycle(colour_set_indexes), 8))
             livery_result.extend(colour_set_indexes)
