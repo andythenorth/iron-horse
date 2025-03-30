@@ -68,7 +68,7 @@ def render_lang(roster, lang_name, lang_dst):
 
 def main():
     globals()['logger'] = utils.get_logger(__file__)
-    logger.info("[RENDER LANG]" + " ".join(sys.argv))
+    logger.info(f"[RENDER LANG] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main()
 

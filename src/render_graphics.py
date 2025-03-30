@@ -65,7 +65,7 @@ def report_sprites_complete(catalogues):
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
     globals()['logger'] = utils.get_logger(__file__)
-    logger.info("[RENDER GRAPHICS]" + " ".join(sys.argv))
+    logger.info(f"[RENDER GRAPHICS] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main()
     # get args passed by makefile

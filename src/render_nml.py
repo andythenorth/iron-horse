@@ -61,7 +61,7 @@ def render_item_nml(item, graphics_path):
 
 def main():
     globals()['logger'] = utils.get_logger(__file__)
-    logger.info("[RENDER NML]" + " ".join(sys.argv))
+    logger.info(f"[RENDER NML] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main()
 

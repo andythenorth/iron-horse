@@ -1,5 +1,12 @@
+import sys
+from time import time
+
 import global_constants
 import iron_horse
+import utils
+
+# get args passed by makefile
+command_line_args = utils.get_command_line_args()
 
 
 def find_vacant_id_runs(numeric_id_defender, lower_bound, upper_bound):
@@ -36,6 +43,9 @@ def find_vacant_id_runs(numeric_id_defender, lower_bound, upper_bound):
 
 
 def main():
+    globals()["logger"] = utils.get_logger(__file__)
+    logger.info("[ID REPORT] " + " ".join(sys.argv))
+    start = time()
     iron_horse.main(validate_vehicle_ids=True)
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
@@ -51,7 +61,6 @@ def main():
         # yolo 65k why not
         65000,
     )
-    report_content = ""
     for label, id_runs in {
         "Articulated IDs": id_gaps_articulated,
         "Non-Articulated IDs": id_gaps_non_articulated,
@@ -64,9 +73,12 @@ def main():
             else:
                 # range of ids
                 id_gaps.append(" to ".join([str(id) for id in id_run]))
-        report_content += "Vacant " + label + ":\n" + ", ".join(id_gaps) + "\n"
-    # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    print(report_content)
+        logger.info(f"\n" f"Vacant {label}:\n" f"{', '.join(id_gaps)})")
+    logger.info(
+        f"[ID REPORT] "
+        f"{command_line_args.grf_name} - complete "
+        f"{utils.string_format_compile_time_deltas(start, time())}"
+    )
 
 
 if __name__ == "__main__":
