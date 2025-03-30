@@ -232,7 +232,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
         <tal:no_remap case="False">
             ${unit.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:no_remap>
-    </tal:forced_remap
+    </tal:forced_remap>
 }
 
 
