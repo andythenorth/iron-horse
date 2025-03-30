@@ -42,7 +42,7 @@ class UnitBase(object):
 
     @property
     def cabbage_unit_id_from_model_type(self):
-        return self.model_variant.model_id + "_unit_" + str(self.cabbage_numeric_id)
+        return f"{self.model_variant.model_id}_unit_{self.cabbage_numeric_id}"
 
     @property
     def cabbage_unit_id_from_default_model_variant(self):
@@ -352,7 +352,10 @@ class UnitBase(object):
 
     @property
     def graphics_switch_entry_point_cabbage(self):
-        return self.id
+        if self.model_variant.gestalt_graphics.cabbage_common_graphics_target:
+            return self.cabbage_unit_id_from_model_type
+        else:
+            return self.id
 
     def get_spriteset_template_name(self, reversed, y):
         template_name = "_".join(

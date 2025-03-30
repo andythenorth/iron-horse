@@ -4090,6 +4090,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
+            cabbage_common_graphics_target=True,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -5787,6 +5788,7 @@ class IngotCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
+            cabbage_common_graphics_target=True,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -8088,6 +8090,7 @@ class SlagLadleCarUnit(CarModelTypeBase):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
+            cabbage_common_graphics_target=True,
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[

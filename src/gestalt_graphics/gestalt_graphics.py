@@ -42,6 +42,10 @@ class GestaltGraphics(object):
         # return a pnml file name, e.g. `return 'vehicle_default.pynml'`
         return None
 
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
+
     def get_output_row_types(self):
         # stub, for compatibility reasons
         return ["single_row"]
@@ -140,6 +144,10 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def nml_template(self):
         return "vehicle_engine.pynml"
 
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
+
     # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
 
 
@@ -172,6 +180,10 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     @property
     def nml_template(self):
         return "vehicle_randomised.pynml"
+
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
 
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
@@ -252,6 +264,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     @property
     def nml_template(self):
         return "vehicle_with_visible_cargo.pynml"
+
+    @property
+    def cabbage_common_graphics_target(self):
+        return True
 
     def get_output_row_types(self):
         # note that this is *types* of rows, in order, not counts - counts are delegated elsehwere
@@ -416,6 +432,11 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def nml_template(self):
         return "vehicle_box_car_with_opening_doors.pynml"
 
+    @property
+    def cabbage_common_graphics_target(self):
+        # !! could be common, but template looks to use unit.foo as of March 2025?
+        return False
+
     def get_output_row_types(self):
         return ["box_car_with_opening_doors_spriterows"]
 
@@ -481,6 +502,10 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     @property
     def nml_template(self):
         return "vehicle_caboose.pynml"
+
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
 
     def get_output_row_types(self):
         return ["caboose_spriterows"]
@@ -654,6 +679,9 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         # override in subclasses as needed
         return "vehicle_intermodal.pynml"
 
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
 
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     """
@@ -827,6 +855,9 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # override in subclasses as needed
         return "vehicle_automobile_car.pynml"
 
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
@@ -862,6 +893,10 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     @property
     def nml_template(self):
         return "vehicle_with_simple_body_colour_remaps.pynml"
+
+    @property
+    def cabbage_common_graphics_target(self):
+        return True
 
     def get_output_row_types(self):
         return ["simple_recolour_spriterows"]
@@ -944,6 +979,10 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
     def nml_template(self):
         # override in subclasses as needed
         return "vehicle_formation_position_dependent.pynml"
+
+    @property
+    def cabbage_common_graphics_target(self):
+        return False
 
     def get_output_row_types(self):
         return ["pax_mail_cars_with_doors"]
@@ -1059,6 +1098,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
     def __init__(
         self,
         _nml_template,
+        cabbage_common_graphics_target=None,
         cargo_row_map=None,
         generic_rows=None,
         unique_spritesets=None,
@@ -1070,6 +1110,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
         self._nml_template = _nml_template
+        self._cabbage_common_graphics_target = cabbage_common_graphics_target
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
@@ -1088,6 +1129,13 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def nml_template(self):
         return self._nml_template
+
+    @property
+    def cabbage_common_graphics_target(self):
+        if self._cabbage_common_graphics_target is not None:
+            return self._cabbage_common_graphics_target
+        else:
+            return False
 
     def get_output_row_types(self):
         return ["custom_cargo"]
