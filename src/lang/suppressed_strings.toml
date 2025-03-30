@@ -99,13 +99,7 @@ suppressed_rosters = ["pony", "ibex", "moose"]
 [STR_NAME_SUFFIX_LIVERY_MIX_RED_RUBY]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_NAME_SUFFIX_LIVERY_MIX_GREMLIN_GREEN_SILVER]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_NAME_SUFFIX_LIVERY_MIX_GREY_PEWTER]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_NAME_SUFFIX_TRAILER]
@@ -603,118 +597,7 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_NAME_SUFFIX_VOLATILES_TANK_CAR_TYPE_1]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_COLOUR_NAME_COLOUR_DARK_BLUE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_PALE_GREEN]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_PINK]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_YELLOW]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_RED]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_LIGHT_BLUE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_GREEN]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_DARK_GREEN]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_BLUE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_CREAM]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_MAUVE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_PURPLE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_ORANGE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_BROWN]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_GREY]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_COLOUR_WHITE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_BAUXITE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_DARK_GREY]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_GREMLIN_GREEN]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_NIGHTSHADE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_OCHRE]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_OIL_BLACK]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_PEWTER]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_RUBY]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_SILVER]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_SULPHUR]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_TEAL]
-suppressed_rosters = ["moose"]
-
-[STR_COLOUR_NAME_CUSTOM_VIOLET]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_VARIETY]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_BAUXITE_GREY_NIGHTSHADE]
-suppressed_rosters = ["moose"]
-
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_NIGHTSHADE]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_TEAL_VIOLET]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SILVER_PEWTER]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_OCHRE]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_RUBY_BAUXITE]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_OIL_BLACK_NIGHTSHADE]
-suppressed_rosters = ["moose"]
-
-[STR_NAME_SUFFIX_LIVERY_MIX_OCHRE_SAND]
 suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER]
