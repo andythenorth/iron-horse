@@ -1002,7 +1002,8 @@ class ModelTypeBase(object):
             if self.buyable_variant_group.parent_group is None:
                 return None
             else:
-                return self.buyable_variant_group.parent_group.parent_vehicle.unit.id
+                # JFDI CABBAGE MAKE IT WORK TEMP
+                return self.buyable_variant_group.parent_group.parent_vehicle.id
         else:
             return self.buyable_variant_group.parent_vehicle.id
 
@@ -1204,8 +1205,6 @@ class ModelTypeBase(object):
             if len(self.power_by_power_source) > 1:
                 return True
         if self.buy_menu_additional_text_hint_wagons_add_power:
-            return True
-        if self.uses_random_livery:
             return True
         return False
 

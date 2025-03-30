@@ -397,12 +397,6 @@ class Catalogue(list):
     def create(cls, factory):
         instance = cls(factory)
         for livery_counter, livery_def in enumerate(instance.livery_defs):
-            if "RANDOM_LIVERIES_" in livery_def.livery_name:
-                continue
-                # CABBAGE
-                livery_def = iron_horse.livery_supplier.deliver(
-                    "FREIGHT_SWOOSH", relative_spriterow_num=0
-                )
             model_variant_id = f"{instance.factory.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"

@@ -84,16 +84,15 @@ class LiverySupplier(dict):
             ]
             colour_set_indexes = []
             for colour_set_name in livery.colour_set_names:
-                try:
-                    colour_set_indexes.append(
-                        list(global_constants.colour_sets).index(colour_set_name)
-                    )
-                except:
-                    print(
-                        "colour_set_name not found in global_constants:",
-                        colour_set_name,
-                    )
-                    colour_set_indexes.append(0)
+                match colour_set_name:
+                    case "company_colour":
+                        colour_set_indexes.append(100)
+                    case "complement_company_colour":
+                        colour_set_indexes.append(101)
+                    case _:
+                        colour_set_indexes.append(
+                            list(global_constants.colour_sets).index(colour_set_name)
+                        )
             # length of colour_set_indexes *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
             colour_set_indexes = list(islice(cycle(colour_set_indexes), 8))
             livery_result.extend(colour_set_indexes)
@@ -112,9 +111,6 @@ class LiverySupplier(dict):
     """
     def get_wagon_recolour_strategy_params(self, context=None):
         # CABBAGE - THIS RETURNS PARAMS WHICH ARE THEN COMPRESSED TO AN INDEX AND EXPANDED LATER (FOR NML PERFORMANCE REASONS)
-        wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
-            self.catalogue_entry.livery_def
-        )
 
         if self.uses_random_livery:
             # CABBAGE get_candidate_liveries_for_randomised_strategy is deleted - just get liveries from colour_set_names, stop arsing around
@@ -223,60 +219,3 @@ class LiverySupplier(dict):
         return result
 
     """
-
-    def get_wagon_recolour_strategy_num(self, livery, context=None):
-        # CABBAGE THIS IS COMPLETELY STUPID
-        # THE COLOUR SET WILL BE ON THE LIVERY (tuple?)
-        # THE NUMBERS ONLY NEED TO BE INTERNALLY CONSISTENT AND CAN VARY BETWEEN COMPILES
-        # MOREOVER, CAN WE JUST USE BADGES?
-        # - GENERATE COLOUR BADGES FROM THE colour_set_names
-        # - BUT ALSO GENERATE COLOUR_SET BADGES
-        # - USE COLOUR_SET BADGES TO SWITCH ON
-        # > 103 = strategy num will be randomised to one of the other strategy nums
-        # 101 = use colour set complementary to player company colour
-        # 100 = use colour set from player company colour
-        # 0..99 = use colour set number directly (look up by name)
-        if context == "purchase":
-            colour_set_names = livery.purchase_colour_set_names
-        else:
-            colour_set_names = livery.colour_set_names
-
-        # !!! this is lolz, so many ifs just to get a string -> number mapping
-        # !!! it's infrequently changed, but should just be some lookup table of some kind
-        if "random_liveries_grey_pewter" in colour_set_names:
-            return 117
-        elif "random_liveries_red_ruby" in colour_set_names:
-            return 116
-        elif "random_liveries_teal_nightshade" in colour_set_names:
-            return 115
-        elif "random_liveries_teal_pewter" in colour_set_names:
-            return 114
-        elif "random_liveries_sulphur_straw" in colour_set_names:
-            return 113
-        elif "random_liveries_gremlin_green_silver" in colour_set_names:
-            return 112
-        elif "random_liveries_ochre_sand" in colour_set_names:
-            return 111
-        elif "random_liveries_oil_black_nightshade" in colour_set_names:
-            return 110
-        elif "random_liveries_ruby_bauxite" in colour_set_names:
-            return 109
-        elif "random_liveries_sulphur_ochre" in colour_set_names:
-            return 108
-        elif "random_liveries_silver_pewter" in colour_set_names:
-            return 107
-        elif "random_liveries_teal_violet" in colour_set_names:
-            return 106
-        elif "random_liveries_bauxite_grey_nightshade" in colour_set_names:
-            return 105
-        elif "random_liveries_variety" in colour_set_names:
-            return 104
-        elif "random_liveries_complement_company_colour" in colour_set_names:
-            return 103
-        # 102 left empty for legacy reasons as of May 2023, should be refactored really
-        elif "complement_company_colour" in colour_set_names:
-            return 101
-        elif "company_colour" in colour_set_names:
-            return 100
-        else:
-            return list(global_constants.colour_sets.keys()).index(colour_set_names)
