@@ -139,13 +139,6 @@ class Roster(object):
                         }[wagon_model_variant.subtype],
                     )
                 )
-        for model_variant in result:
-            # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
-            try:
-                pickle.dumps(model_variant)
-            except:
-                print("Pickling failed for model_variant:", model_variant.id)
-                raise
         return result
 
     @property
@@ -242,6 +235,15 @@ class Roster(object):
         ]
 
         for model_variant in self.model_variants_in_buy_menu_order:
+            """
+            # CABBAGE - nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
+            # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
+            try:
+                pickle.dumps(model_variant)
+            except:
+                print("Pickling failed for model_variant:", model_variant.id)
+                raise
+            """
             if model_variant_ids.count(model_variant.id) > 1:
                 raise BaseException(
                     f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
