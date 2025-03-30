@@ -233,8 +233,7 @@ class Roster(object):
         result.reverse()
         return result
 
-    def validate_vehicles(self, numeric_id_defender):
-        # CABBAGE 7722 validate_vehicles is slow?  seems to add 1s or so and is called multiple times for different entry points
+    def validate_vehicle_ids(self, numeric_id_defender):
         # has to be explicitly called after all model variants and units are registered to the roster
 
         # this structure is used to test for duplicate ids

@@ -36,7 +36,7 @@ def find_vacant_id_runs(numeric_id_defender, lower_bound, upper_bound):
 
 
 def main():
-    iron_horse.main()
+    iron_horse.main(validate_vehicle_ids=True)
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
 

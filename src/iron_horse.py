@@ -105,7 +105,7 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    def add_rosters(self, roster_module_names):
+    def add_rosters(self, roster_module_names, validate_vehicle_ids):
         for roster_module_name in roster_module_names:
             roster_module = importlib.import_module(
                 "." + roster_module_name, package="rosters"
@@ -123,12 +123,13 @@ class RosterManager(list):
             roster.produce_engines()
             roster.produce_wagons()
 
-        # now validate as we have all the vehicles in all rosters
-        # validation will also populate numeric_id_defender which can be re-used for ID reporting
-        # actual validation is delegated to the roster
-        self.numeric_id_defender = {}
-        for roster in self:
-            roster.validate_vehicles(self.numeric_id_defender)
+        if validate_vehicle_ids:
+            # now validate as we have all the vehicles in all rosters
+            # validation will also populate numeric_id_defender which can be re-used for ID reporting
+            # actual validation is delegated to the roster
+            self.numeric_id_defender = {}
+            for roster in self:
+                roster.validate_vehicle_ids(self.numeric_id_defender)
 
         # now complete any post validation steps
         for roster in self:
@@ -191,7 +192,7 @@ class RosterManager(list):
         return result
 
 
-def main():
+def main(validate_vehicle_ids=False):
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_files_path, exist_ok=True)
 
@@ -209,7 +210,7 @@ def main():
         livery_supplier.add_livery(livery_name, **livery_def)
 
     # rosters
-    roster_manager.add_rosters(roster_module_names)
+    roster_manager.add_rosters(roster_module_names, validate_vehicle_ids)
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
