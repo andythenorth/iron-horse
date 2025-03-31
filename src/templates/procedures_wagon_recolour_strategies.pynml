@@ -31,19 +31,7 @@ switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_random_livery_from_candidates
 }
 
 <!--! convenience switch to define how to pick a colour -->
-switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_get_colour_set_index, [
-            switch_freight_wagon_get_random_livery_from_candidates()
-            <!--! CABBAGE REST OF THIS NOT NEEDED, BUT IT DOES SHOW HOW OLD PURCHASE HANDLING WAS DONE, AND THAT'S MISSING CURRENTLY -->
-            <!--! stacked ternary to (1) check if in purchase and force the result if so (2) switch to random livery or fixed, per strategy -->
-            <!--!LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
-                ? LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num_purchase})
-                : (
-                    LOAD_TEMP(${temp_storage_ids.CABBAGE}) >= 103
-                    ? switch_freight_wagon_get_random_livery_from_candidates()
-                    : LOAD_TEMP(${temp_storage_ids.CABBAGE})
-                )-->
-            ]
-        ) {
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_get_colour_set_index, switch_freight_wagon_get_random_livery_from_candidates()) {
     <!--! special cases for liveries using company colour,
           we'll need to remap the randomly selected livery index to an index based on current company colour in game -->
     100: return company_colour1;
@@ -71,14 +59,12 @@ switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_select_colour_set,
 switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_set_params,
         flag_use_weathering,
         flag_context_is_purchase,
-        wagon_recolour_strategy_num_purchase,
         <tal:available_liveries repeat="livery_num range(8)">
             wagon_recolour_livery_num_${livery_num},
         </tal:available_liveries>
                 [
                  STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
                  STORE_TEMP(flag_context_is_purchase, ${temp_storage_ids.flag_context_is_purchase}),
-                 STORE_TEMP(wagon_recolour_strategy_num_purchase, ${temp_storage_ids.wagon_recolour_strategy_num_purchase}),
                  <tal:available_liveries repeat="livery_num range(8)">
                      STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
                  </tal:available_liveries>

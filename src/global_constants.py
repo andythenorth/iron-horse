@@ -537,7 +537,7 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR": {
         "colour_set_names": ["complement_company_colour", "company_colour"],
-        "purchase_colour_set_names": ["company_colour"],
+        "purchase_colour_set_name": "company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -555,7 +555,7 @@ freight_wagon_liveries = {
             "freight_teal",
             "freight_violet",
         ],
-        "purchase_colour_set_names": ["complement_company_colour"],
+        "purchase_colour_set_name": "complement_company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -886,7 +886,7 @@ temp_storage_ids = dict(
     wagon_recolour_livery_num_6=31,  # used in procedures_wagon_recolour_strategies
     wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
     flag_context_is_purchase=33,  # used in procedures_wagon_recolour_strategies
-    wagon_recolour_strategy_num_purchase=34,  # used in procedures_wagon_recolour_strategies
+    # deprecated=34,  # no longer used
     position_in_vehid_chain_base_offset=35,  # used in position rulesets, an offset into position_in_vehid_chain_multiple_ids
     position_in_vehid_chain_multiple_ids_with_base_offset_applied=36,  # position_in_vehid_chain_multiple_ids, with a base offset applied
     name_string_default_name=37,  # name substring

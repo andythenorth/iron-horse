@@ -10,8 +10,8 @@ class LiveryDef:
     # CABBAGE SPARSE CLASS
     livery_name: str
     # alphabetised optional attrs
-    colour_set_names: Optional[str] = None
-    purchase_colour_set_names: Optional[str] = None
+    colour_set_names: Optional[List] = None
+    purchase_colour_set_name: Optional[str] = None
     docs_image_input_cc: Optional[List] = None
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
@@ -60,7 +60,11 @@ class LiverySupplier(dict):
 
     def freight_wagon_livery_index(self, livery_name, context=None):
         # look up the index of a livery in the subset of freight wagon liveries
-        return list(self.freight_wagon_liveries).index(livery_name)
+        livery_index = list(self.freight_wagon_liveries).index(livery_name)
+        if context == "purchase":
+            # purchase livery indexes are appended after the list of non-purchase liveries, so offset appropriately
+            livery_index = len(self.freight_wagon_liveries) + livery_index
+        return livery_index
 
     @property
     def cabbage_valid_freight_livery_colour_set_names_and_nums(self):
@@ -72,24 +76,28 @@ class LiverySupplier(dict):
             result[colour_set_name] = index
         return result
 
+    def serialize_livery_params(
+        self, flag_use_weathering, flag_context_is_purchase, colour_set_indexes
+    ):
+        # flatten to numeric params for nml templating
+        livery_result = [
+            flag_use_weathering,
+            flag_context_is_purchase,
+        ]
+        # length of colour_set_indexes *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
+        colour_set_indexes = list(islice(cycle(colour_set_indexes), 8))
+        livery_result.extend(colour_set_indexes)
+        # we flatten to string for ease of rendering in nml template
+        # int used to convert False|True bools to 0|1 values for nml
+        serialized_params = ", ".join(str(int(i)) for i in livery_result)
+        return serialized_params
+
     @property
     def freight_wagon_livery_serialized_params(self):
+        # we need to serialize liveries to numeric params for nml, we do this once and create a lookup table
         result = []
+        # first append all the actual liveries, serialized for nml params, with index for access
         for livery_name, livery in self.freight_wagon_liveries.items():
-            if not isinstance(livery.colour_set_names, list):
-                raise ValueError(livery)
-            flag_use_weathering = livery.use_weathering
-            # CABBAGE
-            # flag_context_is_purchase = True if context == "purchase" else False
-            # MAYBE add 100 to livery num if context purchase?
-            flag_context_is_purchase = False  # SHIM
-            wagon_recolour_strategy_num_purchase = 104  # CABBAGE SHIM
-
-            livery_result = [
-                flag_use_weathering,
-                flag_context_is_purchase,
-                wagon_recolour_strategy_num_purchase,
-            ]
             colour_set_indexes = []
             for colour_set_name in livery.colour_set_names:
                 colour_set_indexes.append(
@@ -97,16 +105,44 @@ class LiverySupplier(dict):
                         colour_set_name
                     ]
                 )
-            # length of colour_set_indexes *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
-            colour_set_indexes = list(islice(cycle(colour_set_indexes), 8))
-            livery_result.extend(colour_set_indexes)
-            # int used to convert False|True bools to 0|1 values for nml
-            serialized_params = ", ".join(str(int(i)) for i in livery_result)
-            # we could do this without the index, and set it in the templating loop, but this is just cleaner
+            serialized_params = self.serialize_livery_params(
+                flag_use_weathering=livery.use_weathering,
+                flag_context_is_purchase=False,
+                colour_set_indexes=colour_set_indexes,
+            )
+            livery_index = self.freight_wagon_livery_index(livery_name)
             result.append(
                 {
                     "livery_name": livery_name,  # for convenient debugging
-                    "livery_index": self.freight_wagon_livery_index(livery_name),
+                    "livery_index": livery_index,
+                    "serialized_params": serialized_params,
+                }
+            )
+        # then append purchase variants of each livery, in same order
+        for livery_name, livery in self.freight_wagon_liveries.items():
+            if livery.purchase_colour_set_name is not None:
+                colour_set_name = livery.purchase_colour_set_name
+            else:
+                # otherwise take the first colour set as default for purchase
+                colour_set_name = livery.colour_set_names[0]
+            purchase_livery_index = (
+                self.cabbage_valid_freight_livery_colour_set_names_and_nums[
+                    colour_set_name
+                ]
+            )
+            # we still use the list of colour set indexes, but one entry is enough for purchase, the entries will be auto-repeated by the serializer
+            colour_set_indexes = [purchase_livery_index]
+            serialized_params = self.serialize_livery_params(
+                flag_use_weathering=False,
+                flag_context_is_purchase=True,
+                colour_set_indexes=colour_set_indexes,
+            )
+            # purchase livery indexes are appended after the list of non-purchase liveries, so offset appropriately
+            livery_index = len(self.freight_wagon_liveries) + self.freight_wagon_livery_index(livery_name)
+            result.append(
+                {
+                    "livery_name": f"Purchase - {livery_name}",  # for convenient debugging
+                    "livery_index": livery_index,
                     "serialized_params": serialized_params,
                 }
             )
@@ -122,13 +158,13 @@ class LiverySupplier(dict):
                 self.catalogue_entry.livery_def
             )
             if self.catalogue_entry.livery_def.purchase is not None:
-                wagon_recolour_strategy_num_purchase = (
+                CABBAGE = (
                     self.get_wagon_recolour_strategy_num(
                         self.catalogue_entry.livery_def, context="purchase"
                     )
                 )
             else:
-                wagon_recolour_strategy_num_purchase = available_liveries[0]
+                CABBAGE = available_liveries[0]
         else:
             # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
             available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -141,7 +177,7 @@ class LiverySupplier(dict):
         params_numeric = [
             flag_use_weathering,
             flag_context_is_purchase,
-            wagon_recolour_strategy_num_purchase,
+            CABBAGE,
         ]
 
         params_numeric.extend(available_liveries)
