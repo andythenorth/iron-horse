@@ -4,6 +4,7 @@ currentdir = os.curdir
 
 import filecmp
 from PIL import Image, ImageOps
+from functools import cached_property
 
 import polar_fox
 from polar_fox.graphics_units import (
@@ -31,7 +32,7 @@ class Pipeline(object):
         # actually, there's nothing to do eh :P
         pass
 
-    @property
+    @cached_property
     def vehicle_source_input_path(self):
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
         # the catalogue resolves what the spritesheet should be used as vehicle models can delegate to other vehicle models if required
@@ -45,7 +46,7 @@ class Pipeline(object):
             self.catalogue.factory.input_spritesheet_name_stem + ".png",
         )
 
-    @property
+    @cached_property
     def chassis_input_path(self):
         # convenience method to get the path for the chassis image
         return os.path.join(
@@ -56,7 +57,7 @@ class Pipeline(object):
             self.vehicle_unit.unit_def.chassis + ".png",
         )
 
-    @property
+    @cached_property
     def roof_input_path(self):
         # convenience method to get the path for the roof image
         return os.path.join(

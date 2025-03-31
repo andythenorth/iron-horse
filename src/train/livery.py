@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional
 from itertools import cycle, islice
+from functools import cached_property
 
 import global_constants
 
@@ -50,7 +51,7 @@ class LiverySupplier(dict):
             raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier")
         return replace(livery_def, relative_spriterow_num=relative_spriterow_num)
 
-    @property
+    @cached_property
     def freight_wagon_liveries(self):
         return {
             livery_name: livery
@@ -66,7 +67,7 @@ class LiverySupplier(dict):
             livery_index = len(self.freight_wagon_liveries) + livery_index
         return livery_index
 
-    @property
+    @cached_property
     def cabbage_valid_freight_livery_colour_set_names_and_nums(self):
         result = {
             "company_colour": 100,

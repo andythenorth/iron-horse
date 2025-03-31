@@ -149,11 +149,11 @@ class ModelTypeBase(object):
     def name(self):
         return self.model_def.name
 
-    @property
+    @cached_property
     def is_default_model_variant(self):
         return self.catalogue_entry.catalogue.is_default_model_variant(self)
 
-    @property
+    @cached_property
     def quacks_like_a_clone(self):
         # convenience boolean for things that either are clones, or can be treated like clones for docs etc
         if self.model_def.cloned_from_model_def is not None:
@@ -163,7 +163,7 @@ class ModelTypeBase(object):
         else:
             return False
 
-    @property
+    @cached_property
     def cloned_from_model_type(self):
         # possibly expensive, but not often required option to get the default model a clone was sourced from
         if self.model_def.cloned_from_model_def is not None:
@@ -209,19 +209,6 @@ class ModelTypeBase(object):
     def base_track_type_name(self):
         # just a pass through for convenience
         return self.catalogue_entry.base_track_type_name
-
-    @property
-    def unique_spriterow_nums(self):
-        # find the unique spriterow numbers, used in graphics generation
-        result = []
-        for unit in set([unit.rel_spriterow_index for unit in self.units]):
-            result.append(unit)
-            # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_additional_liveries, unit_2_default, unit_2_additional_liveries if present
-            # !! this is suspect, it's not counting the actual number of liveries
-            # CABBAGE SHIM - ALTHOUGH THIS MAKES NO SENSE TO ME
-            if len(self.cataloge_entry.catalogue) > 1:
-                result.append(unit + 1)
-        return result
 
     @property
     def str_name_suffix(self):
@@ -302,7 +289,7 @@ class ModelTypeBase(object):
         else:
             return None
 
-    @property
+    @cached_property
     def role(self):
         # returns first matched, assumption is vehicle models only have one valid subrole
         for role, subroles in global_constants.role_subrole_mapping.items():
@@ -327,7 +314,7 @@ class ModelTypeBase(object):
         # stub only, over-ride in subclasses as appropriate
         return None
 
-    @property
+    @cached_property
     def cabbage_power_source_badges(self):
         # note returns multiple badges, as engines support multiple power sources
         result = []
@@ -350,7 +337,7 @@ class ModelTypeBase(object):
                 result.append("power_source_cabbage/dual_voltage")
         return result
 
-    @property
+    @cached_property
     def cabbage_colour_mix_badges(self):
         # note returns multiple badges, as vehicles support multiple colours
         result = []
@@ -395,7 +382,7 @@ class ModelTypeBase(object):
     def get_badges_for_nml(self):
         return "[" + ",".join(f'"{badge}"' for badge in self.get_badges()) + "]"
 
-    @property
+    @cached_property
     def engine_varies_power_by_power_source(self):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (self.power_by_power_source is not None) and (
@@ -507,16 +494,16 @@ class ModelTypeBase(object):
         else:
             return 0.3
 
-    @property
+    @cached_property
     def intro_year(self):
         return self.catalogue_entry.intro_year
 
-    @property
+    @cached_property
     def intro_year_offset(self):
         # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
         return self.model_def.intro_year_offset
 
-    @property
+    @cached_property
     def intro_date_months_offset(self):
         # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
@@ -543,7 +530,7 @@ class ModelTypeBase(object):
                 result = min(result + 6, 11)
         return result
 
-    @property
+    @cached_property
     def replacement_model_variant(self):
         # option exists to force a replacement model, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
@@ -582,7 +569,7 @@ class ModelTypeBase(object):
                     break
             return replacement_model_variant
 
-    @property
+    @cached_property
     def replaces_model_variants(self):
         # note that this depends on replacement_model_variant property in other model defs, and may not work in all cases
         # a model can replace more than one other model
@@ -594,7 +581,7 @@ class ModelTypeBase(object):
                     result.append(model_variant)
         return result
 
-    @property
+    @cached_property
     def similar_model_variants(self):
         # quite a crude guess at similar engines by subrole
         result = []
@@ -630,6 +617,7 @@ class ModelTypeBase(object):
     @property
     def vehicle_life(self):
         # CABBAGE 8888 vehicle_life is slow? NERFED BY EARLY RETURN - FIX?
+        # ¿¿ cached_property??
         return 60
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want
@@ -652,6 +640,7 @@ class ModelTypeBase(object):
     @property
     def model_life(self):
         # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX?
+        # ¿¿ cached_property??
         return "VEHICLE_NEVER_EXPIRES"
         if self.replacement_model_variant is None:
             return "VEHICLE_NEVER_EXPIRES"
@@ -675,7 +664,7 @@ class ModelTypeBase(object):
             result = self.base_track_type_name
         return result
 
-    @property
+    @cached_property
     def track_type(self):
         # are you sure you don't want base_track_type_name instead? (generally you do want base_track_type_name)
         # track_type maps base_track_type_name and modifiers to an actual railtype label
@@ -702,7 +691,7 @@ class ModelTypeBase(object):
         result = result[0:3] + modifier
         return result
 
-    @property
+    @cached_property
     def vehicle_power_source_tree(self):
         # return a structure for easy rendering of the variable power switch chain
         result = []
@@ -731,7 +720,7 @@ class ModelTypeBase(object):
         result.reverse()
         return result
 
-    @property
+    @cached_property
     def requires_electric_rails(self):
         if self.power_by_power_source is None:
             return False
@@ -758,7 +747,7 @@ class ModelTypeBase(object):
                 + " - is it an electrified vehicle?"
             )
 
-    @property
+    @cached_property
     def power(self):
         if self.power_by_power_source == None:
             # probably a wagon eh?
@@ -796,7 +785,7 @@ class ModelTypeBase(object):
         speeds_by_track_type = self.roster.speeds[self.base_track_type_name]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
-    @property
+    @cached_property
     def speed(self):
         if self.model_def.speed is not None:
             return self.model_def.speed
@@ -830,7 +819,7 @@ class ModelTypeBase(object):
             # assume no speed limit
             return None
 
-    @property
+    @cached_property
     def speed_on_lgv(self):
         if not self.lgv_capable:
             raise Exception(
@@ -866,11 +855,11 @@ class ModelTypeBase(object):
         else:
             return int(self.power / self.speed)
 
-    @property
+    @cached_property
     def weight(self):
         return sum([getattr(unit, "weight", 0) for unit in self.units])
 
-    @property
+    @cached_property
     def length(self):
         # total length of the (articulated) vehicle
         return sum([unit.vehicle_length for unit in self.units])
@@ -893,14 +882,14 @@ class ModelTypeBase(object):
         else:
             return True
 
-    @property
+    @cached_property
     def is_randomised_wagon_type(self):
         # this shorthand to avoid looking up the classname directly for a couple of special cases
         return (
             self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
         )
 
-    @property
+    @cached_property
     def is_caboose(self):
         # this shorthand to avoid looking up the classname directly for a couple of special cases
         return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
@@ -956,7 +945,7 @@ class ModelTypeBase(object):
         result = "[" + result + "]"
         return result
 
-    @property
+    @cached_property
     def buyable_variant_group(self):
         self.assert_buyable_variant_groups()
         variant_group = self.roster.buyable_variant_groups[
@@ -964,7 +953,7 @@ class ModelTypeBase(object):
         ]
         return variant_group
 
-    @property
+    @cached_property
     def buyable_variant_group_id(self):
         self.assert_buyable_variant_groups()
         if self._buyable_variant_group_id is not None:
@@ -1011,7 +1000,7 @@ class ModelTypeBase(object):
         else:
             return self.buyable_variant_group.parent_vehicle.id
 
-    @property
+    @cached_property
     def requires_custom_buy_menu_sprite(self):
         # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
         if len(self.units) > 1:
@@ -1035,7 +1024,7 @@ class ModelTypeBase(object):
                 0
             ]
 
-    @property
+    @cached_property
     def buy_menu_width(self):
         # max sensible width in buy menu is 64px
         # the +1 for buffers etc is added in the template
@@ -1047,7 +1036,7 @@ class ModelTypeBase(object):
         else:
             return 64
 
-    @property
+    @cached_property
     def engine_sprite_layers_with_layer_names(self):
         result = []
         counter = 0
@@ -1075,7 +1064,7 @@ class ModelTypeBase(object):
             result.append((counter, "pantographs"))
         return result
 
-    @property
+    @cached_property
     def num_sprite_layers(self):
         # always at least one layer
         result = 1
@@ -1323,7 +1312,7 @@ class EngineModelTypeBase(ModelTypeBase):
         else:
             return "default_" + str(self.gen)
 
-    @property
+    @cached_property
     def buy_cost(self):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
@@ -1369,7 +1358,7 @@ class EngineModelTypeBase(ModelTypeBase):
         else:
             return 180
 
-    @property
+    @cached_property
     def running_cost(self):
         # algorithmic calculation of engine run costs
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
@@ -1440,7 +1429,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # cap to int for nml
         return int(run_cost)
 
-    @property
+    @cached_property
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
@@ -1836,7 +1825,7 @@ class PassengerEngineBase(EngineModelTypeBase):
         # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
 
-    @property
+    @cached_property
     def pax_car_capacity_type(self):
         # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         if self.model_def.pax_car_capacity_type is not None:
@@ -2314,7 +2303,7 @@ class TGVMiddleMailEngine(TGVMiddleEngineMixin, MailEngineBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
@@ -2333,7 +2322,7 @@ class TGVMiddlePassengerEngine(TGVMiddleEngineMixin, PassengerEngineBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
@@ -2379,7 +2368,7 @@ class CarModelTypeBase(ModelTypeBase):
         # just a passthrough for convenience
         return self.model_def.subtype
 
-    @property
+    @cached_property
     def buy_cost(self):
         if self.speed is not None:
             speed_cost_points = self.speed
@@ -2396,7 +2385,7 @@ class CarModelTypeBase(ModelTypeBase):
         # int for nml
         return int(buy_cost_points)
 
-    @property
+    @cached_property
     def running_cost(self):
         if self.speed is not None:
             speed_cost_points = self.speed
@@ -2424,6 +2413,7 @@ class CarModelTypeBase(ModelTypeBase):
     @property
     def model_life(self):
         # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX
+        # ¿¿cached_property??
         return "VEHICLE_NEVER_EXPIRES"
 
         # allow this to be delegated to the model def if necessary
@@ -2526,7 +2516,7 @@ class CarModelTypeBase(ModelTypeBase):
         # rules can be over-ridden per subclass, for special handling of jokers for e.g. narrow gauge pax cars etc
         return None
 
-    @property
+    @cached_property
     def joker(self):
         # jokers are excluded in simplified game mode
         # order is significant here; this is fall through, it's deliberately not else-if
@@ -3717,7 +3707,7 @@ class CabooseCarUnit(CarModelTypeBase):
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
+    @cached_property
     def buy_menu_variants_by_date(self):
         # map buy menu variants and date ranges to show them for
         result = []
@@ -5731,11 +5721,11 @@ class MailRailcarTrailerCarBase(MailCarBase):
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_engine.pantograph_type
 
-    @property
+    @cached_property
     def subrole(self):
         return self.cab_engine.subrole
 
-    @property
+    @cached_property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
         return {key: 0 for key in self.cab_engine.power_by_power_source.keys()}
@@ -5936,11 +5926,11 @@ class MailHSTCar(MailCarBase):
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
+    @cached_property
     def subrole(self):
         return self.cab_engine.subrole
 
-    @property
+    @cached_property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
         return self.cab_engine.intro_year_offset
@@ -6654,11 +6644,11 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_engine.pantograph_type
 
-    @property
+    @cached_property
     def subrole(self):
         return self.cab_engine.subrole
 
-    @property
+    @cached_property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
         return {key: 0 for key in self.cab_engine.power_by_power_source.keys()}
@@ -6667,7 +6657,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     def pantograph_type(self):
         return self._frozen_pantograph_type
 
-    @property
+    @cached_property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
         return self.cab_engine.intro_year_offset
@@ -6907,11 +6897,11 @@ class PassengerHSTCar(PassengerCarBase):
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
+    @cached_property
     def subrole(self):
         return self.cab_engine.subrole
 
-    @property
+    @cached_property
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
         return self.cab_engine.intro_year_offset

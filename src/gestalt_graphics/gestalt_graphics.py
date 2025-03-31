@@ -1,3 +1,5 @@
+from functools import cached_property
+
 import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
@@ -310,7 +312,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             )
         return result
 
-    @property
+    @cached_property
     def cargo_row_map(self):
         result = {}
         counter = 0
@@ -635,7 +637,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         # default to allowing, most cargos aren't contested
         return True
 
-    @property
+    @cached_property
     def cargo_label_mapping(self):
         result = {}
         for (
@@ -662,7 +664,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
                     result[cargo_label] = ("stake_flatrack", cargo_label)
         return result
 
-    @property
+    @cached_property
     def position_variants(self):
         # used in spriteset templating
         if self.formation_ruleset == "1_unit_sets":
@@ -834,7 +836,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
 
-    @property
+    @cached_property
     def position_variants(self):
         # used in spriteset templating
         if self.formation_ruleset == "articulated_permanent_twin_sets":
@@ -987,7 +989,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
     def get_output_row_types(self):
         return ["pax_mail_cars_with_doors"]
 
-    @property
+    @cached_property
     def num_spritesheet_liveries_per_position_variant(self):
         # this counts liveries in the spritesheet, the actual number of liveries may be higher due to sprite reuse with recolouring
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
@@ -1001,7 +1003,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 spriterow_nums_seen.append(livery_def.relative_spriterow_num)
         return len(set(spriterow_nums_seen))
 
-    @property
+    @cached_property
     def total_spriterow_count(self):
         # n unique liveries * 2 states for doors open/closed * number of position variants defined
         return (
@@ -1010,12 +1012,12 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             * self.total_position_variants
         )
 
-    @property
+    @cached_property
     def total_position_variants(self):
         # rows can be reused across multiple position variant labels, so find uniques
         return len(set(list(self.spriterow_group_mappings.values())))
 
-    @property
+    @cached_property
     def asymmetric_row_map(self):
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
         # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]

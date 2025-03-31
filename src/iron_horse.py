@@ -7,6 +7,8 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
+from functools import cached_property
+
 from badge import BadgeManager
 from train.livery import LiverySupplier
 from railtype import RailTypeManager
@@ -86,7 +88,7 @@ class RosterManager(list):
         if run_post_validation_steps:
             self.active_roster.add_buyable_variant_groups()
 
-    @property
+    @cached_property
     def active_roster(self):
         # special case if we only want the id report, which does not require an active roster
         if command_line_args.grf_name == "id-report-only":
@@ -105,7 +107,7 @@ class RosterManager(list):
         else:
             raise Exception("RosterManager: no roster found for ", roster_id)
 
-    @property
+    @cached_property
     def haulage_bonus_engine_id_tree(self):
         # CABBAGE - JUST USE BADGES
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
@@ -123,24 +125,6 @@ class RosterManager(list):
                 if model_variant.subrole in subroles:
                     express_engine_ids.append(model_variant.catalogue_entry.unit_variant_ids[0])
         return [(count, id) for count, id in enumerate(express_engine_ids)]
-
-    @property
-    def cargo_sprinter_ids(self):
-        # CABBAGE - JUST USE BADGES
-        # find cargo_sprinters
-        # used to switch wagon company colours
-        result = []
-        # if we wanted cross-grf cargo sprinters then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for model_variant in self.active_roster.engine_model_variants:
-            # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
-            if "cargo_sprinter" in getattr(model_variant, "spritelayer_cargo_layers", []):
-                result.append(model_variant.id)
-        if len(result) > 255:
-            raise BaseException(
-                "action 2 switch is limited to 255 values, cargo_sprinter_ids exceeds this - needs split across multiple switches"
-            )
-        return result
-
 
 @timing
 def main(validate_vehicle_ids=False, run_post_validation_steps=False):
