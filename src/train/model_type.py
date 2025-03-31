@@ -7,6 +7,7 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import math
+from functools import cached_property
 
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
@@ -613,7 +614,7 @@ class ModelTypeBase(object):
                     result.append(model_variant)
         return result
 
-    @property
+    @cached_property
     def cab_engine(self):
         # fetch the default model variant for the cab, if relevant
         # only applies if cab_id is set in model_def

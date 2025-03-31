@@ -68,26 +68,30 @@ class Roster(object):
             **self.wagon_model_variants_by_catalogue,
         }
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def engine_catalogues(self):
         return [
             catalogue_entry["catalogue"]
             for catalogue_entry in self.engine_model_variants_by_catalogue.values()
         ]
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def wagon_catalogues(self):
         return [
             catalogue_entry["catalogue"]
             for catalogue_entry in self.wagon_model_variants_by_catalogue.values()
         ]
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def catalogues(self):
         # Gather catalogue instances from both engines and wagons
         return self.engine_catalogues + self.wagon_catalogues
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def engine_model_variants(self):
         # Flatten the list of engine model variants from the nested dict
         return [
@@ -96,7 +100,8 @@ class Roster(object):
             for model_variant in catalogue_entry["model_variants"]
         ]
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def wagon_model_variants(self):
         # Flatten the list of wagon model variants from the nested dict
         return [
@@ -105,12 +110,14 @@ class Roster(object):
             for model_variant in catalogue_entry["model_variants"]
         ]
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def model_variants(self):
         # join both engine and wagon variants
         return self.engine_model_variants + self.wagon_model_variants
 
-    @property
+    # should be safe to cache this one
+    @cached_property
     def wagon_model_variants_by_base_id(self):
         result = {}
         for wagon_model_variant in self.wagon_model_variants:

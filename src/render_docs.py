@@ -14,6 +14,7 @@ import json
 
 import iron_horse
 import utils
+from utils import timing
 import global_constants
 from polar_fox import git_info
 from doc_helper import DocHelper
@@ -30,6 +31,7 @@ palette = utils.dos_palette_to_rgb()
 
 
 def render_docs(
+    PageTemplateLoader,
     doc_list,
     file_type,
     docs_output_path,
@@ -43,9 +45,6 @@ def render_docs(
         doc_path = os.path.join(currentdir)
     else:
         doc_path = docs_src
-    # imports inside functions are generally avoided
-    # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
-    from chameleon import PageTemplateLoader
 
     docs_templates = PageTemplateLoader(doc_path, format="text")
 
@@ -96,11 +95,8 @@ def render_docs(
 
 
 def render_docs_vehicle_details(
-    docs_output_path, doc_helper, catalogues, template_name
+    PageTemplateLoader, docs_output_path, doc_helper, catalogues, template_name
 ):
-    # imports inside functions are generally avoided
-    # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
-    from chameleon import PageTemplateLoader
 
     docs_templates = PageTemplateLoader(docs_src, format="text")
     template = docs_templates[template_name + ".pt"]
@@ -109,7 +105,9 @@ def render_docs_vehicle_details(
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.id
-        model_variants = roster.model_variants_by_catalogue[catalogue.id]["model_variants"]
+        model_variants = roster.model_variants_by_catalogue[catalogue.id][
+            "model_variants"
+        ]
 
         doc = template(
             roster=roster,
@@ -163,7 +161,10 @@ def render_docs_images(
 
         intermediate_image = Image.new(
             "P",
-            (doc_helper.docs_sprite_width(model_variant=model_variant), doc_helper.docs_sprite_height),
+            (
+                doc_helper.docs_sprite_width(model_variant=model_variant),
+                doc_helper.docs_sprite_height,
+            ),
             255,
         )
         intermediate_image.putpalette(dos_palette)
@@ -172,7 +173,9 @@ def render_docs_images(
             y_offset = 30 * model_variant.model_def.docs_image_spriterow
         # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
-            y_offset = 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            y_offset = (
+                30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            )
         else:
             y_offset = (
                 30
@@ -184,7 +187,8 @@ def render_docs_images(
             box=(
                 model_variant.buy_menu_x_loc,
                 10 + y_offset,
-                model_variant.buy_menu_x_loc + doc_helper.docs_sprite_width(model_variant=model_variant),
+                model_variant.buy_menu_x_loc
+                + doc_helper.docs_sprite_width(model_variant=model_variant),
                 10 + y_offset + doc_helper.docs_sprite_height,
             )
         )
@@ -230,7 +234,9 @@ def render_docs_images(
                 pantographs_mask.crop(crop_box_dest),
             )
 
-        for cc_remap_pair in model_variant.catalogue_entry.livery_def.docs_image_input_cc:
+        for (
+            cc_remap_pair
+        ) in model_variant.catalogue_entry.livery_def.docs_image_input_cc:
             # handle possible remap of CC1
             if model_variant.catalogue_entry.livery_def.remap_to_cc is not None:
                 CC1_remap = model_variant.catalogue_entry.livery_def.remap_to_cc[
@@ -331,8 +337,9 @@ def export_roster_to_json(roster, output_dir="docs"):
         f"{utils.string_format_compile_time_deltas(json_start, time())}"
     )
 
+
 def main():
-    globals()['logger'] = utils.get_logger(__file__)
+    globals()["logger"] = utils.get_logger(__file__)
     if command_line_args.suppress_docs:
         logger.info("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
@@ -342,9 +349,16 @@ def main():
     iron_horse.main()
 
     roster = iron_horse.roster_manager.active_roster
+
+    # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by get_docs_base_url()
+    # as of July 2024, utils.get_docs_base_url() relies on detecting git tags, read that to understand what it's doing
+    # this is quite expensive to compute due to git use, so get it once here
+    docs_base_url = utils.get_docs_base_url()
+
     # can't pass roster in to DocHelper at init, multiprocessing fails as it can't pickle the roster object
     doc_helper = DocHelper(
-        lang_strings=roster.get_lang_data("english", context="docs")["lang_strings"]
+        lang_strings=roster.get_lang_data("english", context="docs")["lang_strings"],
+        docs_base_url = docs_base_url,
     )
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
@@ -367,6 +381,10 @@ def main():
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(chameleon_cache_path, exist_ok=True)
     os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
+
+    # imports inside functions are generally avoided
+    # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
+    from chameleon import PageTemplateLoader
 
     docs_output_path = os.path.join(currentdir, "docs", command_line_args.grf_name)
     html_docs_output_path = os.path.join(docs_output_path, "html")
@@ -394,7 +412,9 @@ def main():
     render_docs_images_start = time()
 
     if not use_multiprocessing:
-        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
+        for (
+            model_variant_catalogue_mapping
+        ) in roster.model_variants_by_catalogue.values():
             render_docs_images(
                 model_variant_catalogue_mapping,
                 static_dir_dst,
@@ -403,7 +423,9 @@ def main():
             )
     else:
         pool = multiprocessing.Pool(processes=num_pool_workers)
-        for model_variant_catalogue_mapping in roster.model_variants_by_catalogue.values():
+        for (
+            model_variant_catalogue_mapping
+        ) in roster.model_variants_by_catalogue.values():
             pool.apply_async(
                 render_docs_images,
                 args=(
@@ -430,21 +452,23 @@ def main():
         if model_variant.quacks_like_a_clone == False
     ]
     # default sort for docs is by intro year
-    model_variants = sorted(model_variants, key=lambda model_variant: model_variant.intro_year)
+    model_variants = sorted(
+        model_variants, key=lambda model_variant: model_variant.intro_year
+    )
     dates = sorted([i.intro_year for i in model_variants])
     metadata["dates"] = (dates[0], dates[-1])
 
     # render standard docs from a list
     html_docs = [
-        "code_reference",
-        "get_started",
-        "translations",
-        "tech_tree_table_blue",
-        "tech_tree_table_red",
-        "tech_tree_table_blue_simplified",
-        "tech_tree_table_red_simplified",
-        "train_whack",
-        "trains",
+        "code_reference",  # 0.45 s?
+        "get_started",  # 0.39 s?
+        "translations",  # 0.40 s?
+        "tech_tree_table_blue",  # 0.82 s?
+        "tech_tree_table_red",  # 0.84 s?
+        "tech_tree_table_blue_simplified",  # 0.81 s?
+        "tech_tree_table_red_simplified",  #  0.84 s?
+        "train_whack",  # 0.35 s?
+        "trains",  #  0.71 s?
     ]
     txt_docs = ["readme"]
     license_docs = ["license"]
@@ -452,10 +476,25 @@ def main():
 
     render_base_files_start = time()
     render_docs(
-        html_docs, "html", html_docs_output_path, iron_horse, model_variants, doc_helper
+        PageTemplateLoader,
+        html_docs,
+        "html",
+        html_docs_output_path,
+        iron_horse,
+        model_variants,
+        doc_helper,
     )
-    render_docs(txt_docs, "txt", docs_output_path, iron_horse, model_variants, doc_helper)
     render_docs(
+        PageTemplateLoader,
+        txt_docs,
+        "txt",
+        docs_output_path,
+        iron_horse,
+        model_variants,
+        doc_helper,
+    )
+    render_docs(
+        PageTemplateLoader,
         license_docs,
         "txt",
         docs_output_path,
@@ -466,9 +505,16 @@ def main():
     )
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(
-        markdown_docs, "txt", docs_output_path, iron_horse, model_variants, doc_helper
+        PageTemplateLoader,
+        markdown_docs,
+        "txt",
+        docs_output_path,
+        iron_horse,
+        model_variants,
+        doc_helper,
     )
     render_docs(
+        PageTemplateLoader,
         markdown_docs,
         "html",
         html_docs_output_path,
@@ -486,6 +532,7 @@ def main():
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
     render_vehicle_details_start = time()
     render_docs_vehicle_details(
+        PageTemplateLoader,
         html_docs_output_path,
         doc_helper,
         catalogues=roster.engine_catalogues,

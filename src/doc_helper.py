@@ -5,6 +5,7 @@ import json
 
 import global_constants
 import utils
+from utils import timing
 
 
 class DocHelper(object):
@@ -15,8 +16,12 @@ class DocHelper(object):
     docs_sprite_max_width = 65  # up to 2 units eh
     docs_sprite_height = 16
 
-    def __init__(self, lang_strings):
+    def __init__(self, lang_strings, docs_base_url):
         self.lang_strings = lang_strings
+        self.docs_base_url = docs_base_url
+        # temp CABBAGE
+        self.cached_tech_tree = None
+        self.cached_tech_tree_simplified = None
 
     def docs_sprite_width(self, catalogue=None, model_variant=None):
         # generally use catalogue for this
@@ -76,6 +81,7 @@ class DocHelper(object):
             result.append(catalogue)
         return result
 
+    @timing
     def engines_as_tech_tree(self, roster, model_variants, simplified_gameplay):
         # structure
         # |- base_track_type_name
@@ -87,6 +93,16 @@ class DocHelper(object):
         # if there's no engine model matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
         # CABBAGE - THIS SHOULD BE DRIVEN FROM CATALOGUES SURELY?
         # PFFF I DON'T FANCY UNPICKING THIS :|
+
+        # CABBAGE temp caching as these take 0.35 seconds each to build
+        # CABBAGE - could further improve this by filtering out simplified from the final result, probably faster than walking model_variants repeatedly
+        if not simplified_gameplay:
+            if self.cached_tech_tree is not None:
+                return self.cached_tech_tree
+        if simplified_gameplay:
+            if self.cached_tech_tree_simplified is not None:
+                return self.cached_tech_tree_simplified
+
         result = {}
         # much nested loops
         for base_track_type_and_label in self.base_track_type_names_and_labels:
@@ -146,6 +162,15 @@ class DocHelper(object):
                         result[base_track_type_and_label][role][
                             subrole
                         ] = subrole_child_branches
+
+        # CABBAGE temp caching
+        if not simplified_gameplay:
+            if self.cached_tech_tree is None:
+                self.cached_tech_tree = result
+        if simplified_gameplay:
+            if self.cached_tech_tree_simplified is None:
+                self.cached_tech_tree_simplified = result
+
         return result
 
     def engine_model_counts(self, roster):
@@ -175,8 +200,8 @@ class DocHelper(object):
                 not_really_engines.append(catalogue)
             else:
                 really_engines.append(catalogue)
-        #print("really_engines", [catalogue.id for catalogue in really_engines])
-        #print("not_really_engines", [catalogue.id for catalogue in not_really_engines])
+        # print("really_engines", [catalogue.id for catalogue in really_engines])
+        # print("not_really_engines", [catalogue.id for catalogue in not_really_engines])
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
@@ -462,8 +487,7 @@ class DocHelper(object):
     def get_og_tags_content(self, doc_name, optional_model_variant):
         description = "CABBAGE"
         # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by get_docs_base_url()
-        # as of July 2024, utils.get_docs_base_url() relies on detecting git tags, read that to understand what it's doing
-        base_url = utils.get_docs_base_url()
+        base_url = self.docs_base_url
 
         # generic or vehicle-specific image
         if optional_model_variant is not None:

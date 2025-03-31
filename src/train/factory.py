@@ -10,6 +10,7 @@ import random
 import copy
 from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional
+from functools import cached_property
 
 from train import model_type as model_type_module
 from train import unit as unit_module
@@ -234,7 +235,7 @@ class ModelVariantFactory:
 
         return model_variant
 
-    @property
+    @cached_property
     def model_type_cls(self):
         # get the class for the model type, uninstantiated
         return getattr(model_type_module, self.class_name)
@@ -251,7 +252,7 @@ class ModelVariantFactory:
             self.roster_id_providing_module
         )
 
-    @property
+    @cached_property
     def model_id(self):
         # figures out where a model variant is getting a base id from
         # must be either defined on model_def or in the model variant class attrs
@@ -292,7 +293,7 @@ class ModelVariantFactory:
         else:
             return None
 
-    @property
+    @cached_property
     def intro_year(self):
         # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
@@ -312,7 +313,7 @@ class ModelVariantFactory:
         else:
             return "RAIL"
 
-    @property
+    @cached_property
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
@@ -547,7 +548,7 @@ class Catalogue(list):
     def is_default_model_variant(self, model_variant):
         return model_variant.catalogue_entry == self.default_entry
 
-    @property
+    @cached_property
     def default_model_variant_from_roster(self):
         # requires that the factory produce() method has been called
         model_variants = self.factory.roster.model_variants_by_catalogue[self.id]['model_variants']
@@ -555,7 +556,7 @@ class Catalogue(list):
             if model_variant.is_default_model_variant:
                 return model_variant
 
-    @property
+    @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
