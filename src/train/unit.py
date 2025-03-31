@@ -1,4 +1,5 @@
 import math
+from functools import cached_property
 
 # python builtin templater might be used in some utility cases
 from string import Template
@@ -63,14 +64,14 @@ class UnitBase(object):
         # empty by default, set in subtypes as needed
         return {}
 
-    @property
+    @cached_property
     def rel_spriterow_index(self):
         if self.unit_def.rel_spriterow_index is not None:
             return self.unit_def.rel_spriterow_index
         else:
             return 0
 
-    @property
+    @cached_property
     def capacity(self):
         if self.unit_def.capacity is not None:
             return self.unit_def.capacity
@@ -91,15 +92,15 @@ class UnitBase(object):
             )
         return result
 
-    @property
+    @cached_property
     def capacities(self):
         return self.get_capacity_variations(self.capacity)
 
-    @property
+    @cached_property
     def default_cargo_capacity(self):
         return self.capacities[2]
 
-    @property
+    @cached_property
     def has_cargo_capacity(self):
         if self.default_cargo_capacity != 0:
             return True
@@ -132,12 +133,12 @@ class UnitBase(object):
         result = int(self.vehicle_length * base_capacity)
         return result
 
-    @property
+    @cached_property
     def weight(self):
         # weight can be set explicitly via unit_def or by methods on subclasses
         return self.unit_def.weight
 
-    @property
+    @cached_property
     def vehicle_length(self):
         # length of this unit, either derived from from chassis length, or set explicitly via keyword
         # first guard that one and only one of these props is set
@@ -172,11 +173,11 @@ class UnitBase(object):
         else:
             return "NO_CLIMATE"
 
-    @property
+    @cached_property
     def is_not_trailing_part(self):
         return not self.is_trailing_part
 
-    @property
+    @cached_property
     def is_trailing_part(self):
         if self.model_variant.units.index(self) == 0:
             return False
@@ -271,7 +272,7 @@ class UnitBase(object):
         else:
             return None
 
-    @property
+    @cached_property
     def requires_colour_mapping_cb(self):
         # bit weird and janky, various conditions to consider eh
         if getattr(self.model_variant, "use_colour_randomisation_strategies", False):
@@ -445,7 +446,7 @@ class CabbageDVTUnit(UnitBase):
     def effects(self):
         return {}
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -464,7 +465,7 @@ class CabControlPaxCarUnit(UnitBase):
     def effects(self):
         return {}
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -481,7 +482,7 @@ class CombineUnitMailBase(UnitBase):
             "mail"
         ]  # note mail only, no other express cargos
 
-    @property
+    @cached_property
     def capacity(self):
         # 0.75 is to account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
         return 0.75 * self.get_mail_car_capacity()
@@ -497,7 +498,7 @@ class CombineUnitPaxBase(UnitBase):
         # usually refit classes come from model_variant, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ["pax"]
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -604,7 +605,7 @@ class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
     def effects(self):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -617,7 +618,7 @@ class DieselRailcarMailUnit(DieselRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -630,7 +631,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -686,7 +687,7 @@ class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -699,7 +700,7 @@ class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # this won't work with double deck high speed in future, extend a class for that then if needed
         return self.get_pax_car_capacity()
@@ -755,7 +756,7 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -777,7 +778,7 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -806,7 +807,7 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -819,7 +820,7 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -832,7 +833,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -855,7 +856,7 @@ class MetroUnit(UnitBase):
     def effects(self):
         return {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]}
 
-    @property
+    @cached_property
     def capacity(self):
         if self.unit_def.capacity is not None:
             return self.unit_def.capacity
@@ -877,7 +878,7 @@ class SnowploughUnit(UnitBase):
     def effects(self):
         return {}
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -944,7 +945,7 @@ class CarUnitBase(UnitBase):
         # engines will all use RUNNING_COST_STEAM
         return "RUNNING_COST_DIESEL"
 
-    @property
+    @cached_property
     def weight(self):
         # set weight based on capacity  * a multiplier from model_variant * roster gen factor
         return int(
@@ -974,7 +975,7 @@ class CabooseCarUnit(CarUnitBase):
         # caboose cars may be asymmetric, they are also user-flippable as of August 2022
         self._symmetry_type = "asymmetric"
 
-    @property
+    @cached_property
     def weight(self):
         # special handling of weight
         weight_factor = 3 if self.model_variant.base_track_type_name == "NG" else 5
@@ -995,7 +996,7 @@ class PaxCarUnit(CarUnitBase):
         # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_pax_car_capacity()
 
@@ -1028,7 +1029,7 @@ class PaxRestaurantCarUnit(PaxCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def weight(self):
         # special handling of weight - let's just use 37 + gen for Pony, split that later for other rosters if needed
         return 37 + self.model_variant.gen
@@ -1042,7 +1043,7 @@ class ExpressCarUnit(CarUnitBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         return self.get_mail_car_capacity()
 
@@ -1143,7 +1144,7 @@ class FreightCarUnit(CarUnitBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         if self.unit_def.capacity is not None:
             print(
@@ -1167,7 +1168,7 @@ class BinCarUnit(FreightCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
@@ -1181,7 +1182,7 @@ class CoilBuggyCarUnit(FreightCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
@@ -1205,7 +1206,7 @@ class HeavyDutyCarUnit(FreightCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
@@ -1219,7 +1220,7 @@ class IngotCarUnit(FreightCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
@@ -1258,7 +1259,7 @@ class SlagLadleCarUnit(FreightCarUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
+    @cached_property
     def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
@@ -1273,7 +1274,7 @@ class TorpedoCarUnit(FreightCarUnit):
         super().__init__(**kwargs)
         self._symmetry_type = "asymmetric"
 
-    @property
+    @cached_property
     def capacity(self):
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         # just multiply whatever is set by the init, what could go wrong? :)
