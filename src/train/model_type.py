@@ -1138,7 +1138,7 @@ class ModelTypeBase(object):
             # if it's more than one entry then it's randomised
             return len(self.catalogue_entry.livery_def.colour_set_names) > 1
 
-    def get_wagon_recolour_colour_set_num(self, context=None):
+    def get_freight_wagon_livery_index(self, context=None):
         livery_name = self.catalogue_entry.livery_def.livery_name
         return iron_horse.livery_supplier.freight_wagon_livery_index(livery_name=livery_name, context=None)
 

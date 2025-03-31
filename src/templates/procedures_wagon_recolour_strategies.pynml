@@ -21,42 +21,43 @@ switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, company_colou
     </tal:complements_to_company_colours>
 }
 
+<!--! * Strategies for random recolouring of freight wagons * -->
+
 <!--! up to 8 random liveries (all 8 must be passed as params when initing the wagon chain -->
-switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits_wagon_random_remap_livery()) {
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_random_livery_from_candidates, random_bits_wagon_random_remap_livery()) {
      <tal:available_liveries repeat="livery_num range(8)">
          ${livery_num}: return LOAD_TEMP(${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))});
      </tal:available_liveries>
 }
 
 <!--! convenience switch to define how to pick a colour -->
-switch(FEAT_TRAINS, SELF, switch_get_colour_set_index, [
-            switch_get_random_from_available_liveries()
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_get_colour_set_index, [
+            switch_freight_wagon_get_random_livery_from_candidates()
             <!--! CABBAGE REST OF THIS NOT NEEDED, BUT IT DOES SHOW HOW OLD PURCHASE HANDLING WAS DONE, AND THAT'S MISSING CURRENTLY -->
             <!--! stacked ternary to (1) check if in purchase and force the result if so (2) switch to random livery or fixed, per strategy -->
             <!--!LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
                 ? LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num_purchase})
                 : (
-                    LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
-                    ? switch_get_random_from_available_liveries()
-                    : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
+                    LOAD_TEMP(${temp_storage_ids.CABBAGE}) >= 103
+                    ? switch_freight_wagon_get_random_livery_from_candidates()
+                    : LOAD_TEMP(${temp_storage_ids.CABBAGE})
                 )-->
             ]
         ) {
+    <!--! special cases for liveries using company colour,
+          we'll need to remap the randomly selected livery index to an index based on current company colour in game -->
     100: return company_colour1;
     101: return switch_get_complement_to_company_colour();
-    return; <!--! just return the recolour strategy number -->
+    return; <!--! by default just return the randomly selected livery index -->
 }
 
 <!--! * Strategies for random recolouring of wagons *
-    1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
-    2. magic may or may not get added for engine-specific or cargo-specific colours
+    1. strategies branch to one or more colour sets (choice is random if there is more than one colour set in the list)
+    2. colour sets apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
 -->
 
-<!--! as of Dec 2019 this was not used with articulated vehicles,
-      ¿ however as of August 2022 type D (articulated) wagons appear to use this so eh, maybe it got extended? -->
-
-switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_1cc_to_1cc,
-                    switch_get_colour_set_index()
+switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_select_colour_set,
+                    switch_freight_wagon_livery_get_colour_set_index()
                 ) {
     <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
         <!--! this relies on order matching the order of company colours per nml / openttd constants;
@@ -67,10 +68,9 @@ switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_1cc_to_1cc,
     </tal:colour_sets>
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping,
+switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_set_params,
         flag_use_weathering,
         flag_context_is_purchase,
-        wagon_recolour_strategy_num,
         wagon_recolour_strategy_num_purchase,
         <tal:available_liveries repeat="livery_num range(8)">
             wagon_recolour_livery_num_${livery_num},
@@ -78,22 +78,21 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping,
                 [
                  STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
                  STORE_TEMP(flag_context_is_purchase, ${temp_storage_ids.flag_context_is_purchase}),
-                 STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
                  STORE_TEMP(wagon_recolour_strategy_num_purchase, ${temp_storage_ids.wagon_recolour_strategy_num_purchase}),
                  <tal:available_liveries repeat="livery_num range(8)">
                      STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
                  </tal:available_liveries>
                 ]) {
-    switch_colour_set_use_weathering_1cc_to_1cc;
+    switch_freight_wagon_livery_select_colour_set;
 }
 
 <!--! switch as lookup table for combinations of colour set params
       this is to avoid defining parameterised procedure calls 8300 times for Horse random liveries, as this appears to bloat the grf from 43 MB to 89 MB
       -->
 
-switch(FEAT_TRAINS, SELF, switch_wagon_recolour_sets, wagon_recolour_colour_set_num, wagon_recolour_colour_set_num) {
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_entry_point, freight_wagon_livery_index, freight_wagon_livery_index) {
     <tal:wagon_recolour_set repeat="livery_serialized livery_supplier.freight_wagon_livery_serialized_params">
-        ${livery_serialized.livery_index}: return switch_colour_mapping(${livery_serialized.serialized_params}); // ${livery_serialized.livery_name}
+        ${livery_serialized.livery_index}: return switch_freight_wagon_livery_set_params(${livery_serialized.serialized_params}); // ${livery_serialized.livery_name}
     </tal:wagon_recolour_set>
 }
 
@@ -117,7 +116,7 @@ switch(FEAT_TRAINS, SELF, switch_wagon_recolour_sets, wagon_recolour_colour_set_
      - would non-trivially complicate generating intermodal container spritesets etc
      - also would remove randomisation from non-box containers
      - so basically, unappealing-->
-switch (FEAT_TRAINS, SELF, switch_intermodal_by_company_colour_1cc_to_1cc, company_colour1) {
+switch (FEAT_TRAINS, SELF, switch_intermodal_container_by_company_colour_1cc_to_1cc, company_colour1) {
     COLOUR_DARK_BLUE: switch_colour_set_dark_blue_1cc;
     COLOUR_PALE_GREEN: switch_colour_set_pale_green_1cc;
     COLOUR_PINK: switch_colour_set_pink_1cc;

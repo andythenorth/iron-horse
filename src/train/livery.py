@@ -83,13 +83,11 @@ class LiverySupplier(dict):
             # flag_context_is_purchase = True if context == "purchase" else False
             # MAYBE add 100 to livery num if context purchase?
             flag_context_is_purchase = False  # SHIM
-            wagon_recolour_strategy_num = 104  # CABBAGE SHIM
             wagon_recolour_strategy_num_purchase = 104  # CABBAGE SHIM
 
             livery_result = [
                 flag_use_weathering,
                 flag_context_is_purchase,
-                wagon_recolour_strategy_num,
                 wagon_recolour_strategy_num_purchase,
             ]
             colour_set_indexes = []
@@ -135,7 +133,7 @@ class LiverySupplier(dict):
             # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
             available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
             # purchase strategy will be same as non-purchase
-            wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
+            CABBAGE = CABBAGE
 
         flag_use_weathering = self.catalogue_entry.livery_def.use_weathering
         flag_context_is_purchase = True if context == "purchase" else False
@@ -143,7 +141,6 @@ class LiverySupplier(dict):
         params_numeric = [
             flag_use_weathering,
             flag_context_is_purchase,
-            wagon_recolour_strategy_num,
             wagon_recolour_strategy_num_purchase,
         ]
 
