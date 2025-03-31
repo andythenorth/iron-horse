@@ -2864,12 +2864,9 @@ class BoxCarType1(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_SILVER",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     model_id_root = "box_car_type_1"
@@ -2944,12 +2941,9 @@ class BoxCarCurtainSide(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_SILVER",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     model_id_root = "curtain_side_box_car"
@@ -2997,15 +2991,10 @@ class BoxCarMerchandise(BoxCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_SILVER",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     model_id_root = "merchandise_box_car"
@@ -3089,12 +3078,11 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_OIL_BLACK",
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
@@ -3132,9 +3120,7 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_SILVER",
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
@@ -3166,11 +3152,10 @@ class BoxCarVehicleParts(BoxCarBase):
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_SILVER_PEWTER",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_SILVER",
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
@@ -3372,16 +3357,11 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OIL_BLACK",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
     ]
 
     def __init__(self, **kwargs):
@@ -3465,12 +3445,9 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_TEAL_PEWTER",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_TEAL",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_PEWTER",
     ]
@@ -3544,16 +3521,11 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OIL_BLACK",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
     ]
 
     def __init__(self, **kwargs):
@@ -3916,7 +3888,6 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
     ]
 
@@ -4113,15 +4084,12 @@ class CoveredHopperCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
-        "FREIGHT_SILVER",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     def __init__(self, **kwargs):
@@ -4241,13 +4209,10 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
         "FREIGHT_TEAL",
-        "FREIGHT_SILVER",
-        "FREIGHT_PEWTER",
     ]
 
     model_id_root = "swing_roof_hopper_car"
@@ -4280,11 +4245,8 @@ class ExpressCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_SILVER",
-        "FREIGHT_PEWTER",
         "FREIGHT_RED",
     ]
 
@@ -4327,7 +4289,11 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
     Random choice of food car sprite, noting limited refits because it includes food tankers.
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_TEAL",
+    ]
 
     model_id_root = "express_food_car_randomised"
 
@@ -4364,12 +4330,12 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_SILVER_PEWTER",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
-        "FREIGHT_SILVER",
-        "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -4454,7 +4420,9 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
     Express intermodal container cars - express freight, valuables, mails.
     """
 
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+    ]
 
     model_id_root = "express_intermodal_car"
 
@@ -5110,16 +5078,10 @@ class HopperCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
         "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
         "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     def __init__(self, **kwargs):
@@ -5151,6 +5113,21 @@ class HopperCarAggregateBase(HopperCarBase):
     Base class for hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
 
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
+        "FREIGHT_SAND",
+    ]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
@@ -5163,25 +5140,6 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
-        "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-    ]
 
     model_id_root = "aggregate_hopper_car_type_1"
 
@@ -5200,26 +5158,6 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
     Hopper for rock cargos, just a visual variant.
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
-        "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-    ]
-
     model_id_root = "aggregate_hopper_car_type_2"
 
     def __init__(self, **kwargs):
@@ -5237,26 +5175,6 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
     Hopper for rock cargos, just a visual variant.
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
-        "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-    ]
-
     model_id_root = "aggregate_hopper_car_type_3"
 
     def __init__(self, **kwargs):
@@ -5273,24 +5191,6 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
     """
     Random choice of aggregate hopper car sprite.
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_OCHRE",
-        "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
-    ]
 
     model_id_root = "aggregate_hopper_car_randomised"
 
@@ -5361,11 +5261,9 @@ class HopperCarMGRBase(HopperCarBase):
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_SULPHUR",
-        "FREIGHT_STRAW",
     ]
 
     def __init__(self, **kwargs):
@@ -5452,20 +5350,16 @@ class HopperCarRock(HopperCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
-        "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     model_id_root = "rock_hopper_car"
@@ -7901,10 +7795,8 @@ class TankCarAcidBase(TankCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_SULPHUR",
-        "FREIGHT_OCHRE",
         "FREIGHT_SILVER",
         "FREIGHT_NIGHTSHADE",
         "FREIGHT_TEAL",
@@ -8022,22 +7914,17 @@ class TankCarProductBase(TankCarBase):
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_GREY_PEWTER",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_SILVER",
         "FREIGHT_GREY",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
+        "FREIGHT_SILVER",
         "FREIGHT_SULPHUR",
-        "FREIGHT_OCHRE",
     ]
 
     def __init__(self, **kwargs):
@@ -8122,11 +8009,9 @@ class TankCarStandardBase(TankCarBase):
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
         "FREIGHT_SULPHUR",
-        "FREIGHT_OCHRE",
     ]
 
     def __init__(self, **kwargs):
@@ -8214,8 +8099,6 @@ class TankCarVolatilesBase(TankCarBase):
         "FREIGHT_RED",
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_NIGHTSHADE",
         "FREIGHT_GREY",
         "FREIGHT_TEAL",
     ]
@@ -8270,10 +8153,7 @@ class TarpaulinCarBase(BoxCarBase):
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
-        "FREIGHT_OIL_BLACK",
-        "FREIGHT_TEAL",
         "FREIGHT_NIGHTSHADE",
-        "RANDOM_LIVERIES_TEAL_PEWTER",
         "FREIGHT_PEWTER",
     ]
 
