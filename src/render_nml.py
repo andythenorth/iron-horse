@@ -29,7 +29,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), for
 
 generated_files_path = iron_horse.generated_files_path
 
-def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps):
+def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
@@ -42,7 +42,7 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
             railtype_manager=iron_horse.railtype_manager,
             roster_manager=iron_horse.roster_manager,
             graphics_path=graphics_path,
-            git_info=git_info,
+            git_revision=git_revision,
             pseudo_random_vehicle_maps=pseudo_random_vehicle_maps,
         )
     )
@@ -82,6 +82,9 @@ def main():
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos
 
+    # expensive if repeatedly computed
+    git_revision = git_info.get_revision()
+
     header_items = [
         "header",
         "cargo_table",
@@ -108,7 +111,7 @@ def main():
 
     for header_item in header_items:
         grf_nml.write(
-            render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps)
+            render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision)
         )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)

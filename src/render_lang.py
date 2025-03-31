@@ -31,7 +31,6 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), for
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-@timing
 def render_lang(roster, lang_name, lang_dst, git_tag_or_version):
     lang_data = roster.get_lang_data(lang_name, context="grf")
     lang_template = templates["lang_file.pylng"]

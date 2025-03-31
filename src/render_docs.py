@@ -350,15 +350,9 @@ def main():
 
     roster = iron_horse.roster_manager.active_roster
 
-    # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by get_docs_base_url()
-    # as of July 2024, utils.get_docs_base_url() relies on detecting git tags, read that to understand what it's doing
-    # this is quite expensive to compute due to git use, so get it once here
-    docs_base_url = utils.get_docs_base_url()
-
     # can't pass roster in to DocHelper at init, multiprocessing fails as it can't pickle the roster object
     doc_helper = DocHelper(
         lang_strings=roster.get_lang_data("english", context="docs")["lang_strings"],
-        docs_base_url = docs_base_url,
     )
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)

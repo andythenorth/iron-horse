@@ -10,7 +10,7 @@
 
 <!--! non-translated strings -->
 STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_tag_or_version}
-STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
+STR_GRF_DOCS_URL                                                :${utils.docs_url}
 
 STR_EMPTY                                                       :
 

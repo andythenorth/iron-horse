@@ -4,7 +4,7 @@ ${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
 Trains, for OpenTTD
 
 ${roster.str_grf_name} docs are published online:
-  ${utils.get_docs_url()}
+  ${utils.docs_url}
 
 =======
 GRF Name: ${roster.str_grf_name}

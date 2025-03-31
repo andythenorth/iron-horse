@@ -16,9 +16,8 @@ class DocHelper(object):
     docs_sprite_max_width = 65  # up to 2 units eh
     docs_sprite_height = 16
 
-    def __init__(self, lang_strings, docs_base_url):
+    def __init__(self, lang_strings):
         self.lang_strings = lang_strings
-        self.docs_base_url = docs_base_url
         # temp CABBAGE
         self.cached_tech_tree = None
         self.cached_tech_tree_simplified = None
@@ -486,8 +485,10 @@ class DocHelper(object):
 
     def get_og_tags_content(self, doc_name, optional_model_variant):
         description = "CABBAGE"
-        # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by get_docs_base_url()
-        base_url = self.docs_base_url
+
+        # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by utils.docs_base_url
+        # as of July 2024, utils.docs_base_url relies on detecting git tags, read that to understand what it's doing
+        base_url = utils.docs_base_url
 
         # generic or vehicle-specific image
         if optional_model_variant is not None:
