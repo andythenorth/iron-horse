@@ -9,7 +9,7 @@
 </tal:strings_as_lng_lines>
 
 <!--! non-translated strings -->
-STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
+STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_tag_or_version}
 STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
 
 STR_EMPTY                                                       :

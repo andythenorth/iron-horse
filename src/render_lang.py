@@ -13,6 +13,7 @@ import codecs  # used for writing files - more unicode friendly than standard op
 import iron_horse
 import global_constants
 import utils
+from utils import timing
 from polar_fox import git_info
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
@@ -30,8 +31,8 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), for
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-
-def render_lang(roster, lang_name, lang_dst):
+@timing
+def render_lang(roster, lang_name, lang_dst, git_tag_or_version):
     lang_data = roster.get_lang_data(lang_name, context="grf")
     lang_template = templates["lang_file.pylng"]
     # flatten the strings for rendering
@@ -39,6 +40,7 @@ def render_lang(roster, lang_name, lang_dst):
     longest_string_length = max([len(key)] for key in lang_data["lang_strings"].keys())[
         0
     ]
+
     for string_name, string_value in lang_data["lang_strings"].items():
         # note that stupid pretty formatting of generated output is just to ease debugging string generation when needed, otherwise not essential
         separator = ":".rjust(longest_string_length - len(string_name) + 7)
@@ -49,7 +51,7 @@ def render_lang(roster, lang_name, lang_dst):
     lang_content = utils.unescape_chameleon_output(
         lang_template(
             command_line_args=command_line_args,
-            git_info=git_info,
+            git_tag_or_version=git_tag_or_version,
             utils=utils,
             roster=roster,
             lang_data=lang_data,
@@ -90,6 +92,9 @@ def main():
     )
     hint_file.close()
 
+    # expensive if repeated due to git lookup, pre-compute it
+    git_tag_or_version = git_info.get_monorepo_tag_parts()[1]
+
     # we'll try and read any toml file in the lang dir, this requires that no other toml files are present there
     # possibly the installed languages should be handled by the roster when it parses the toml, not sure eh? (potato / potato?)
     for file_name in os.listdir(os.path.join("src", "lang")):
@@ -98,7 +103,7 @@ def main():
             continue
         if file_name.endswith(".toml"):
             lang_name = file_name.split(".")[0]
-            render_lang(roster, lang_name, lang_dst)
+            render_lang(roster, lang_name, lang_dst, git_tag_or_version)
 
     logger.info(
         f"[RENDER LANG]"
