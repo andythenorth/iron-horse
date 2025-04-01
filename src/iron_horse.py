@@ -66,6 +66,8 @@ class RosterManager(list):
 
         # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
         for roster in self:
+            # if rosters get large, it might become slow to init them all, in which case only init them all for the id-report
+            # this can be done using active_roster
             for (
                 livery_name,
                 livery_def,

@@ -16,7 +16,6 @@ import iron_horse
 import utils
 from utils import timing
 import global_constants
-from polar_fox import git_info
 from doc_helper import DocHelper
 
 metadata = {}
@@ -28,7 +27,6 @@ command_line_args = utils.get_command_line_args()
 docs_src = os.path.join(currentdir, "src", "docs_templates")
 
 palette = utils.dos_palette_to_rgb()
-
 
 def render_docs(
     PageTemplateLoader,
@@ -61,7 +59,6 @@ def render_docs(
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
-            git_info=git_info,
             metadata=metadata,
             utils=utils,
             doc_helper=doc_helper,
@@ -78,7 +75,6 @@ def render_docs(
                 model_variants=model_variants,
                 global_constants=global_constants,
                 command_line_args=command_line_args,
-                git_info=git_info,
                 metadata=metadata,
                 utils=utils,
                 doc_helper=doc_helper,
@@ -118,7 +114,6 @@ def render_docs_vehicle_details(
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
-            git_info=git_info,
             metadata=metadata,
             utils=utils,
             doc_helper=doc_helper,

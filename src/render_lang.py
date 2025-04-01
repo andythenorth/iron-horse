@@ -14,7 +14,6 @@ import iron_horse
 import global_constants
 import utils
 from utils import timing
-from polar_fox import git_info
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(
@@ -91,9 +90,6 @@ def main():
     )
     hint_file.close()
 
-    # expensive if repeated due to git lookup, pre-compute it
-    git_tag_or_version = git_info.get_monorepo_tag_parts()[1]
-
     # we'll try and read any toml file in the lang dir, this requires that no other toml files are present there
     # possibly the installed languages should be handled by the roster when it parses the toml, not sure eh? (potato / potato?)
     for file_name in os.listdir(os.path.join("src", "lang")):
@@ -102,7 +98,7 @@ def main():
             continue
         if file_name.endswith(".toml"):
             lang_name = file_name.split(".")[0]
-            render_lang(roster, lang_name, lang_dst, git_tag_or_version)
+            render_lang(roster, lang_name, lang_dst, utils.git_tag_or_version)
 
     logger.info(
         f"[RENDER LANG]"

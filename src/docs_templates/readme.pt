@@ -1,5 +1,5 @@
 ==================================
-${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
+${roster.str_grf_name} ${utils.git_tag_or_version}
 ==================================
 Trains, for OpenTTD
 
@@ -9,7 +9,7 @@ ${roster.str_grf_name} docs are published online:
 =======
 GRF Name: ${roster.str_grf_name}
 
-This version of ${roster.str_grf_name} is created using repository revision ${git_info.get_revision()}
+This version of ${roster.str_grf_name} is created using repository version ${utils.git_tag_or_version}
 
 Thanks to *all* who helped create ${roster.str_grf_name}.
 

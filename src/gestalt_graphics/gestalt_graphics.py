@@ -4,6 +4,7 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 import utils
+from utils import timing
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()

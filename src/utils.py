@@ -7,11 +7,6 @@ from polar_fox import git_info
 from polar_fox.utils import echo_message as echo_message
 from polar_fox.utils import dos_palette_to_rgb as dos_palette_to_rgb
 from polar_fox.utils import unescape_chameleon_output as unescape_chameleon_output
-from polar_fox.utils import split_nml_string_lines as split_nml_string_lines
-from polar_fox.utils import (
-    unwrap_nml_string_declaration as unwrap_nml_string_declaration,
-)
-
 
 def get_command_line_args():
     argparser = argparse.ArgumentParser()
@@ -41,6 +36,10 @@ def get_command_line_args():
     )
     return argparser.parse_args()
 
+@cached_property
+def git_tag_or_version():
+    # expensive if repeated due to git lookup, pre-compute and cache it
+    return git_info.get_monorepo_tag_parts()[1]
 
 @cached_property
 def docs_base_url():
@@ -49,7 +48,7 @@ def docs_base_url():
     # not convinced it's big enough to bother centralising TBH, too much close coupling has costs
     result = [global_constants.metadata["docs_url"]]
     if git_info.get_tag_exact_match() != "undefined":
-        result.append(git_info.get_monorepo_tag_parts()[1])
+        result.append(git_tag_or_version)
     return "/".join(result)
 
 
