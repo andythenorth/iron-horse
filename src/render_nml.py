@@ -114,24 +114,30 @@ def main():
         "pseudo_random_vehicle_maps",
     ]
 
+    render_header_item_nml_start = time()
     for header_item in header_items:
         grf_nml.write(
             render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision)
         )
+    logger.info(
+        f"render_header_item_nml "
+        f"{utils.string_format_compile_time_deltas(render_header_item_nml_start, time())}"
+    )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
     # also multiprocessing failed on fiddly internal deps as of March 2025
+    render_item_nml_start = time()
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
 
     model_variant_timings = []
     for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
-        start_time = time()
+        #start_time = time()
         rendered_nml = render_item_nml(model_variant, graphics_path)
         grf_nml.write(rendered_nml)
-        end_time = time()
-        elapsed_time = end_time - start_time
-        model_variant_timings.append((model_variant, elapsed_time))
+        #end_time = time()
+        #elapsed_time = end_time - start_time
+        #model_variant_timings.append((model_variant, elapsed_time))
     """
     # Sort timings by elapsed time in descending order (longest first)
     timings_sorted = sorted(model_variant_timings, key=lambda x: x[1], reverse=True)
@@ -140,6 +146,10 @@ def main():
         for variant, duration in timings_sorted:
             f.write(f"{variant} | {variant.id}: {duration:.4f} seconds\n")
     """
+    logger.info(
+        f"render_item_nml "
+        f"{utils.string_format_compile_time_deltas(render_item_nml_start, time())}"
+    )
 
     grf_nml.close()
 
