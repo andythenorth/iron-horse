@@ -1,8 +1,8 @@
 item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
     property {
         <!--! name static prop used for buy menu search only -->
-        name:                           ${model_variant.get_name_as_property()};
-        climates_available:             NO_CLIMATE; // nml constant
+        name:                           ${model_variant.name_as_nml_prop};
+        climates_available:             NO_CLIMATE;
         badges:                         ${model_variant.get_badges_for_nml()};
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
@@ -11,15 +11,15 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             power:                          ${model_variant.power}hp;
             weight:                         ${model_variant.weight}ton;
             tractive_effort_coefficient:    ${model_variant.tractive_effort_coefficient};
-            cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+            cost_factor:                    0; <!--! use the CB to set this, the prop is capped to max 255, cb is 32k -->
             running_cost_base:              ${unit.running_cost_base};
-            running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+            running_cost_factor:            0; <!--! use the CB to set this, the prop is capped to max 255, cb is 32k -->
             model_life:                     ${model_variant.model_life};
             retire_early:                   ${model_variant.retire_early};
-            reliability_decay:              20; // default value
+            reliability_decay:              20; <!--! default value -->
             vehicle_life:                   ${model_variant.vehicle_life};
-            <tal:variant_group condition="model_variant.get_variant_group_parent_vehicle_id() is not None"> <!--! CABBAGE -->
-                variant_group:                  ${model_variant.get_variant_group_parent_vehicle_id()};
+            <tal:variant_group condition="model_variant.variant_group_parent_vehicle_id is not None"> <!--! CABBAGE -->
+                variant_group:                  ${model_variant.variant_group_parent_vehicle_id};
             </tal:variant_group>
         </tal:not_trailing_parts>
         <tal:trailing_parts_only condition="unit.is_trailing_part">
@@ -37,8 +37,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             speed:                          ${model_variant.speed}mph;
         </tal:speed_is_optional>
         cargo_capacity:                 ${unit.default_cargo_capacity};
-        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
-        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        refit_cost:                     0; <!--! btw this needs to be 0 if we want autorefit without using cb -->
         refittable_cargo_classes:       ${unit.get_cargo_classes_for_nml('allowed')};
         non_refittable_cargo_classes:   ${unit.get_cargo_classes_for_nml('disallowed')};
         cargo_allow_refit:              [${unit.get_label_refits_allowed()}];
@@ -51,7 +51,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         dual_headed:                    ${1 if model_variant.dual_headed else 0};
         length:                         ${unit.vehicle_length};
         track_type:                     ${model_variant.track_type};
-        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; <!--! default to none to suppress effects, set in cb as needed -->
     }
     graphics {
         default:                        ${unit.graphics_switch_entry_point_cabbage}_switch_graphics;
@@ -59,9 +59,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             purchase:                       ${unit.graphics_switch_entry_point_cabbage}_switch_graphics_purchase;
             name:                           ${model_variant.model_id}_switch_name;
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
-            cost_factor:                    ${model_variant.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
+            cost_factor:                    ${model_variant.buy_cost}; <!--! CB used as it is capped to max 32k, prop is only 255 -->
             <tal:running_cost_factor switch="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False)">
-                // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                <!--! CB should be used even for static running costs as it is capped to max 32k, prop is only 255 -->
                 <tal:block case="True">
                     running_cost_factor:            ${model_variant.model_id}_switch_running_cost_factor;
                 </tal:block
@@ -69,7 +69,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                     running_cost_factor: ${model_variant.running_cost};
                 </tal:block>
             </tal:running_cost_factor>
-            purchase_running_cost_factor:   ${model_variant.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            <!--! purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs -->
+            purchase_running_cost_factor:   ${model_variant.running_cost};
             <tal:variable_power condition="model_variant.engine_varies_power_by_power_source or model_variant.wagons_add_power">
                 power:                          ${model_variant.model_id}_switch_power_0;
                 purchase_power:                 ${model_variant.power};

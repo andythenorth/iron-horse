@@ -5,7 +5,7 @@
       - most sprites are symmetric, except, e.g. brake coaches; if vehicle is flipped in depot, any asymmetric sprite will be flipped
  -->
 
-// default graphics chain
+<!--! default graphics chain -->
 <tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
     spriteset(${unit.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${model_variant.model_id}.png") {
         ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60))}
@@ -173,7 +173,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
-    // buy menu graphics chain
     spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
         <!--! note the weird jank to handle articulated the y position of buy menu sprites
               it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->

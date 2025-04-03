@@ -1,4 +1,4 @@
-// graphics chain for vehicle platform and masked overlay
+<!--! graphics chain for vehicle platform and masked overlay -->
 <tal:spritesets repeat="spriteset_data model_variant.gestalt_graphics.get_unique_spritesets(unit)">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
@@ -35,7 +35,7 @@
     }
 </tal:spritelayer_cargo_layers>
 
-// switch layers: base platform / spritelayer cargo
+<!--! switch layers: base platform / spritelayer cargo -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${unit.id}_switch_graphics_base_platform_position_in_formation_entry_point;
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
@@ -48,7 +48,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
-    // buy menu graphics chain
+    <!--! buy menu graphics chain -->
     spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
         ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
     }

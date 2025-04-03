@@ -1,4 +1,4 @@
-// define the newgrf
+<!--! define the newgrf -->
 grf {
 	grfid: "${roster.grfid}";
 	name: string(STR_GRF_NAME_VERSIONED);

@@ -36,7 +36,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
-    // buy menu graphics chain
     spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
         ${model_variant.get_nml_for_spriteset_template(y_offset=model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30)}
     }

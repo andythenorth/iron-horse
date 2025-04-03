@@ -1,4 +1,4 @@
-// add trailing units to an articulated vehicle
+<!--! add trailing units to an articulated vehicle -->
 switch (FEAT_TRAINS, SELF, ${model_variant.id}_articulated_cb_switch, extra_callback_info1) {
     <tal:trailing_units repeat="unit model_variant.units">
         ${repeat.unit.index}: return ${unit.id};

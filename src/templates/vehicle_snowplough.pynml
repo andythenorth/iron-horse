@@ -1,6 +1,6 @@
 <!--! this is the template for snowploughs -->
 
-// default graphics chain
+<!--! default graphics chain -->
 spriteset(${unit.id}_ss_unreversed, "${graphics_path}${model_variant.model_id}.png") {
     ${unit.get_spriteset_template_name('unreversed', 10)}
 }
@@ -18,7 +18,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, num_vehs_in_consi
 }
 
 
-// buy menu graphics chain
 spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
     ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
 }

@@ -7,7 +7,6 @@
 </tal:caboose_variants>
 
 <tal:caboose_families repeat="caboose_family model_variant.gestalt_graphics.caboose_families.items()">
-    // ${caboose_family}
     random_switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
             1: return ${unit.id}_ss_${caboose_variant};
@@ -34,7 +33,6 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
     return ${unit.id}_switch_graphics_default_fallback;
 }
 
-// buy menu graphics chain
 <!--! this uses buy_menu_sprite_pairs *only* to get the count of buy menu sprites, the actual data from buy_menu_sprite_pairs isn't used -->
 <tal:caboose_variants repeat="buy_menu_sprite_pair model_variant.gestalt_graphics.buy_menu_sprite_pairs">
     spriteset(${unit.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${model_variant.model_id}.png") {

@@ -38,7 +38,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
     return ${unit.id}_switch_graphics_livery;
 }
 
-// buy menu graphics chain
 spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
     <!--! CABBAGE --> // ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
     ${model_variant.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}

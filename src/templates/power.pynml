@@ -1,5 +1,5 @@
 <tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part">
-    // -- power varies by railtype -- //
+    <!--! power varies by railtype -->
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
     <tal:power_source repeat="power_source_data model_variant.vehicle_power_source_tree">
@@ -13,7 +13,7 @@
 </tal:railtype_varies_power>
 
 <tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part">
-    // -- power varies if specific engines are present in the consist -- //
+    <!--! power varies if specific engines are present in the consist -->
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS -->
     switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_power_0, [

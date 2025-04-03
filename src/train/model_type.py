@@ -264,7 +264,8 @@ class ModelTypeBase(object):
             result = formatted_strings[0]  # we just want the first string from the list
         return result
 
-    def get_name_as_property(self):
+    @cached_property
+    def name_as_nml_prop(self):
         # text filter in buy menu needs name as prop as of June 2023
         # this is very rudimentary and doesn't include all the parts of the name
         name_parts = self.get_name_parts(context="default_name")
@@ -986,7 +987,8 @@ class ModelTypeBase(object):
             e=fixed_mixed_suffix,
         )
 
-    def get_variant_group_parent_vehicle_id(self):
+    @cached_property
+    def variant_group_parent_vehicle_id(self):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately

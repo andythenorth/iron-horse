@@ -3,7 +3,7 @@
 <!--! fixed-formation articulated vehicle with opening doors
       specific re-ordering of the articulated sprites if the vehicle is last in consist (requires all units being same length) -->
 
-// default graphics chain
+<!--! default graphics chain -->
 <tal:reversed repeat="reversed ['unreversed', 'reversed']">
     spriteset(${unit.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${model_variant.model_id}.png") {
         ${unit.get_spriteset_template_name(reversed, 10)}
@@ -54,7 +54,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, position_in_artic
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
     <tal:model_common condition="model_variant.is_default_model_variant">
-        // buy menu graphics chain
         spriteset(${model_variant.model_id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
             ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
         }
