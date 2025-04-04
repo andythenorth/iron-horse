@@ -615,11 +615,8 @@ class ModelTypeBase(object):
         # override in subclass as needed
         return False
 
-    @property
+    @cached_property
     def vehicle_life(self):
-        # CABBAGE 8888 vehicle_life is slow? NERFED BY EARLY RETURN - FIX?
-        # ¿¿ cached_property??
-        return 60
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want
             return self._vehicle_life
@@ -638,11 +635,8 @@ class ModelTypeBase(object):
             # pick a sensible value for vehicles that don't otherwise get replaced
             return lifespan
 
-    @property
+    @cached_property
     def model_life(self):
-        # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX?
-        # ¿¿ cached_property??
-        return "VEHICLE_NEVER_EXPIRES"
         if self.replacement_model_variant is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
@@ -2412,12 +2406,8 @@ class CarModelTypeBase(ModelTypeBase):
         # cap to int for nml
         return int(run_cost_points)
 
-    @property
+    @cached_property
     def model_life(self):
-        # CABBAGE 8888 model_life is slow? NERFED BY EARLY RETURN - FIX
-        # ¿¿cached_property??
-        return "VEHICLE_NEVER_EXPIRES"
-
         # allow this to be delegated to the model def if necessary
         if self._model_life is not None:
             return self._model_life
