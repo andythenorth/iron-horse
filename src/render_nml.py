@@ -30,6 +30,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), for
 
 generated_files_path = iron_horse.generated_files_path
 
+@timing
 def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision):
     template = templates[header_item + ".pynml"]
     result = utils.unescape_chameleon_output(
@@ -130,7 +131,8 @@ def main():
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
 
-    model_variant_timings = []
+    #template_timings = {}
+    #model_variant_timings = []
     for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
         #start_time = time()
         rendered_nml = render_item_nml(model_variant, graphics_path)
@@ -138,11 +140,17 @@ def main():
         #end_time = time()
         #elapsed_time = end_time - start_time
         #model_variant_timings.append((model_variant, elapsed_time))
+        #template_timings.setdefault(model_variant.gestalt_graphics.nml_template, [0, 0])
+        #template_timings[model_variant.gestalt_graphics.nml_template][0] += elapsed_time
+        #template_timings[model_variant.gestalt_graphics.nml_template][1] += 1
+
     """
     # Sort timings by elapsed time in descending order (longest first)
     timings_sorted = sorted(model_variant_timings, key=lambda x: x[1], reverse=True)
     # Dump all timing information to a file after the loop
     with open('render_timings.txt', 'w') as f:
+        for template, results in template_timings.items():
+            f.write(f"{template} | total time: {results[0]:.4f} seconds | calls: {results[1]} | avg: {results[0]/results[1]:.4f}\n")
         for variant, duration in timings_sorted:
             f.write(f"{variant} | {variant.id}: {duration:.4f} seconds\n")
     """
