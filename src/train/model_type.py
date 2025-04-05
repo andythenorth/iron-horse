@@ -7507,16 +7507,16 @@ class TankCarAcidBase(TankCarBase):
         "RANDOM_LIVERIES_VARIETY",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_TEAL_PEWTER",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
-        "FREIGHT_SULPHUR",
-        "FREIGHT_SILVER",
         "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
+        "FREIGHT_SILVER",
         "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
+        "FREIGHT_SULPHUR",
     ]
 
     variant_group_id_root = "wagon_group_acid_tank_cars"
@@ -7636,9 +7636,10 @@ class TankCarProductBase(TankCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_OIL_BLACK",
         "FREIGHT_GREY",
-        "FREIGHT_TEAL",
         "FREIGHT_SILVER",
+        "FREIGHT_TEAL",
         "FREIGHT_SULPHUR",
     ]
 
@@ -7723,8 +7724,8 @@ class TankCarStandardBase(TankCarBase):
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_OIL_BLACK",
-        "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
         "FREIGHT_SULPHUR",
     ]
 
