@@ -430,47 +430,6 @@ class Roster(object):
         # convenience method for a key, only used for accessing a temp structure
         return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
 
-    def add_variant_groups(self):
-        # creating groups has to happen after *all* model variants are inited
-
-        # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
-        if self.variant_groups is not None:
-            raise BaseException(
-                "add_variant_groups() called more than once for roster "
-                + self.id
-            )
-
-        self.variant_groups = {}
-
-        # for every buyable variant for every model_variant
-        # - add a group if it doesn't already exist
-        # - add the buyable variant as a member of the group
-        for model_variant in self.model_variants:
-            variant_group_id = model_variant.catalogue_entry.variant_group_id
-            if variant_group_id is None:
-                raise ValueError(model_variant.id)
-            variant_group = self.variant_groups.setdefault(
-                variant_group_id, VariantGroup(id=variant_group_id)
-            )
-            variant_group.append(model_variant)
-        # handle nesting of static and random wagon groups
-        # logic: if both a `_static` and `_random` group exist for the same base ID,
-        #        then the static group is nested into the random group
-
-        for variant_group_id, variant_group in self.variant_groups.items():
-            if not variant_group_id.endswith("_static"):
-                continue
-
-            # derive the base ID stem (everything before `_static`)
-            group_id_stem = variant_group_id.rsplit("_static", 1)[0]
-            random_group_id = f"{group_id_stem}_random"
-            random_group = self.variant_groups.get(random_group_id)
-
-            if random_group and len(random_group) > 0:
-                variant_group.parent_group = random_group
-                random_group.child_groups.append(variant_group)
-
-
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
         global_pragma = {}
@@ -519,6 +478,47 @@ class Roster(object):
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
+    def add_variant_groups(self):
+        # creating groups has to happen after *all* model variants are inited
+
+        # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
+        if self.variant_groups is not None:
+            raise BaseException(
+                "add_variant_groups() called more than once for roster "
+                + self.id
+            )
+
+        self.variant_groups = {}
+
+        # for every buyable variant for every model_variant
+        # - add a group if it doesn't already exist
+        # - add the buyable variant as a member of the group
+        for model_variant in self.model_variants:
+            variant_group_id = model_variant.catalogue_entry.variant_group_id
+            if variant_group_id is None:
+                raise ValueError(model_variant.id)
+            cabbage_variant_group_purchase_level_0_string = model_variant.catalogue_entry.catalogue.factory.variant_group_id_root
+            variant_group = self.variant_groups.setdefault(
+                variant_group_id, VariantGroup(id=variant_group_id, cabbage_variant_group_purchase_level_0_string=cabbage_variant_group_purchase_level_0_string)
+            )
+            variant_group.append(model_variant)
+        # handle nesting of static and random wagon groups
+        # logic: if both a `_static` and `_random` group exist for the same base ID,
+        #        then the static group is nested into the random group
+
+        for variant_group_id, variant_group in self.variant_groups.items():
+            if not variant_group_id.endswith("_static"):
+                continue
+
+            # derive the base ID stem (everything before `_static`)
+            group_id_stem = variant_group_id.rsplit("_static", 1)[0]
+            random_group_id = f"{group_id_stem}_random"
+            random_group = self.variant_groups.get(random_group_id)
+
+            if random_group and len(random_group) > 0:
+                variant_group.parent_group = random_group
+                random_group.child_groups.append(variant_group)
+
 
 class VariantGroup(list):
     """
@@ -527,10 +527,11 @@ class VariantGroup(list):
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def __init__(self, id):
+    def __init__(self, id, cabbage_variant_group_purchase_level_0_string):
         self.id = id
         self.parent_group = None
         self.child_groups = []
+        self.cabbage_variant_group_purchase_level_0_string = cabbage_variant_group_purchase_level_0_string
 
     def get_variant_group_prop_for_model_variant(self, model_variant):
         # faff to find the group leader (typically the first variant)
@@ -545,3 +546,12 @@ class VariantGroup(list):
 
         # for nml, we want the id of the first unit
         return leader.units[0].id
+
+    @cached_property
+    def group_level(self):
+        level = 0
+        context = self
+        while context.parent_group is not None:
+            level += 1
+            context = context.parent_group
+        return level

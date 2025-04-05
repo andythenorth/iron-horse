@@ -188,6 +188,7 @@ class ModelTypeBase(object):
         return result
 
     def get_name_as_strings(self, context):
+        # CABBAGE THIS CAN BE SIGNIFICANTLY SIMPLIFIED
         raw_strings = self.get_name_parts(context=context)
 
         if raw_strings == None:
@@ -311,13 +312,11 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_variant_handling_badges(self):
+        # specific handling of indentation level 1
         result = []
-        # CABBAGE - remove buyable_variants dependency
-        if len(self.variant_group) > 1:
-            result.append("ih_variants_cabbage/cabbage_level_0_has_children")
-        if self.variant_group.parent_group is not None:
-            result.append("ih_variants_cabbage/cabbage_level_1_has_children")
-        return result
+        if self.variant_group.group_level == 1 and len(self.variant_group) > 0:
+            result.append("ih_variants_cabbage/purchase_level_1_has_more_nested_variants")
+        return list(set(result))
 
     @cached_property
     def badges(self):
@@ -2384,23 +2383,27 @@ class CarModelTypeBase(ModelTypeBase):
         elif context in ["default_name", "purchase_level_1", "purchase_level_2"]:
             result = default_result
         elif context == "purchase_level_0":
-            if getattr(self, "variant_group_id", None) != None:
-                try:
-                    # CABBAGE SHOULD BE COMING FROM CATALOGUE?
-                    result = [
-                        "STR_" + self.variant_group_id.upper(),
-                    ]
-                except:
-                    raise BaseException(self.id)
+            result = default_result
+            """
+            cabbage_variant_group_purchase_level_0_string = self.variant_group.cabbage_variant_group_purchase_level_0_string
+            print(self.id, cabbage_variant_group_purchase_level_0_string)
+            try:
+                # CABBAGE SHOULD BE COMING FROM CATALOGUE?
+                result = [
+                    "STR_" + cabbage_variant_group_purchase_level_0_string.upper(),
+                ]
+            except:
+                raise BaseException(self.id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
             # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
             #elif len(self.cabbage_buyable_variants) > 1:
                 #result = default_result.copy()
                 #result[0] = result[0].replace("_CAR", "_CARS")
                 #result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
-            else:
-                # no string needed, the name switch will handle using the default name
-                result = None
+            #else:
+                ## no string needed, the name switch will handle using the default name
+                #result = None
+            """
         else:
             raise BaseException(
                 "get_name_parts called for wagon "

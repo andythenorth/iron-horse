@@ -289,6 +289,15 @@ class ModelVariantFactory:
         else:
             return None
 
+    @property
+    def variant_group_id_root(self):
+        if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
+            return self.model_type_cls.variant_group_id_root
+        elif getattr(self.model_type_cls, "model_id_root", None) is not None:
+            return f"NAME_SUFFIX_{self.model_type_cls.model_id_root}"
+        else:
+            return self.model_id
+
     def get_variant_group_id(self, livery_def, base_track_type_name):
         # cascade of sources for variant group ID
 
@@ -302,14 +311,10 @@ class ModelVariantFactory:
 
         # primarily used for explcitly selected wagon groups (from a class property on the model type)
         if self.model_type_cls.group_as_wagon:
-            if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
-                variant_group_id_root = self.model_type_cls.variant_group_id_root
-            else:
-                variant_group_id_root = self.model_id
             # we split groups for random and static liveries (group nesting will then be determined by roster)
             livery_selection = "random" if len(livery_def.colour_set_names or []) > 1 else "static"
             return (
-                f"{variant_group_id_root}_"
+                f"{self.variant_group_id_root}_"
                 f"{base_track_type_name.lower()}_"
                 f"gen_{self.model_def.gen}{self.model_def.subtype}_"
                 f"{livery_selection}"

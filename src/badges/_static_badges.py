@@ -27,8 +27,7 @@ static_badges = {
     },
     "ih_variants_cabbage": {
         "sublabels": {
-            "cabbage_level_0_has_children": {},
-            "cabbage_level_1_has_children": {},
+            "purchase_level_1_has_more_nested_variants": {},
         }
     },
     "role": {
