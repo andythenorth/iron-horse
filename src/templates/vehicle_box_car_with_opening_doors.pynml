@@ -1,34 +1,34 @@
 <!--! box cars that have doors closed when empty / loaded, and doors open when loading -->
 
-<tal:weathered_variants repeat="weathered_variant model_variant.gestalt_graphics.weathered_variants">
+<tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
     <!--! default graphics chain -->
-    spriteset(${unit.id}_ss_${weathered_variant}_doors_closed, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 30) + (repeat.weathered_variant.index * 60))}
+    spriteset(${unit.id}_ss_${weathered_state}_doors_closed, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 30) + (repeat.weathered_state.index * 60))}
     }
-    spriteset(${unit.id}_ss_${weathered_variant}_doors_open, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 30) + (repeat.weathered_variant.index * 60) + 30)}
+    spriteset(${unit.id}_ss_${weathered_state}_doors_open, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 30) + (repeat.weathered_state.index * 60) + 30)}
     }
 
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_${weathered_variant},
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_${weathered_state},
             [switch_graphics_opening_doors()]) {
         <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
-        0: return ${unit.id}_ss_${weathered_variant}_doors_closed;
-        1: return ${unit.id}_ss_${weathered_variant}_doors_open;
+        0: return ${unit.id}_ss_${weathered_state}_doors_closed;
+        1: return ${unit.id}_ss_${weathered_state}_doors_open;
     }
-</tal:weathered_variants>
+</tal:weathered_states>
 
 <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
 <!--! this could be parameterised procedure, as it's used for other gestalts also -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
-    <tal:weathered_variants repeat="weathered_variant model_variant.gestalt_graphics.weathered_variants">
-        ${repeat.weathered_variant.index}: return ${unit.id}_switch_graphics_vehicle_${weathered_variant};
-    </tal:weathered_variants>
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_choose_weathered_state, random_bits_weathered_state()) {
+    <tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
+        ${repeat.weathered_state.index}: return ${unit.id}_switch_graphics_vehicle_${weathered_state};
+    </tal:weathered_states>
     return ${unit.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
 }
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, param_wagon_colour_randomisation) {
     0: ${unit.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
-    ${unit.id}_switch_graphics_vehicle_choose_weathered_variant;
+    ${unit.id}_switch_graphics_vehicle_choose_weathered_state;
 }
 
 

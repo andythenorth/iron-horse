@@ -6,25 +6,25 @@
 -->
 
 <tal:model_common condition="model_variant.is_default_model_variant">
-    <tal:weathered_variants repeat="weathered_variant model_variant.gestalt_graphics.weathered_variants">
-        spriteset(${model_variant.model_id}_ss_${weathered_variant}, "${graphics_path}${model_variant.model_id}.png") {
-            ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.weathered_variant.index * 30))}
+    <tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
+        spriteset(${model_variant.model_id}_ss_${weathered_state}, "${graphics_path}${model_variant.model_id}.png") {
+            ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.weathered_state.index * 30))}
         }
-    </tal:weathered_variants>
+    </tal:weathered_states>
 
     <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
     <!--! this could be parameterised procedure, as it's used for other gestalts also -->
-    switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
-        <tal:weathered_variants repeat="weathered_variant model_variant.gestalt_graphics.weathered_variants">
-            ${repeat.weathered_variant.index}: return ${model_variant.model_id}_ss_${weathered_variant};
-        </tal:weathered_variants>
+    switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_graphics_vehicle_choose_weathered_state, random_bits_weathered_state()) {
+        <tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
+            ${repeat.weathered_state.index}: return ${model_variant.model_id}_ss_${weathered_state};
+        </tal:weathered_states>
         return ${model_variant.model_id}_ss_unweathered; <!--! this default should not be reached in this case, but eh -->
     }
 </tal:model_common>
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, param_wagon_colour_randomisation) {
     0: ${model_variant.model_id}_ss_unweathered; <!--! no randomisation -->
-    ${model_variant.model_id}_switch_graphics_vehicle_choose_weathered_variant;
+    ${model_variant.model_id}_switch_graphics_vehicle_choose_weathered_state;
 }
 
 

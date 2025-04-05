@@ -1360,9 +1360,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
 
         for (
-            weathered_variant_label,
+            weathered_state_label,
             recolour_map,
-        ) in self.default_model_variant.gestalt_graphics.weathered_variants.items():
+        ) in self.default_model_variant.gestalt_graphics.weathered_states.items():
             crop_box_dest = (
                 0,
                 0,
@@ -1378,7 +1378,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.processing_units.append(SimpleRecolour(recolour_map))
             self.processing_units.append(
                 AddCargoLabel(
-                    label=weathered_variant_label,
+                    label=weathered_state_label,
                     x_offset=self.sprites_max_x_extent + 5,
                     y_offset=-1 * graphics_constants.spriterow_height,
                 )
@@ -1559,9 +1559,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
 
         for (
-            weathered_variant,
+            weathered_state,
             recolour_map,
-        ) in self.default_model_variant.gestalt_graphics.weathered_variants.items():
+        ) in self.default_model_variant.gestalt_graphics.weathered_states.items():
             self.processing_units.append(
                 AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
             )
@@ -1711,13 +1711,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # at March 2022 all wagons with bulk cargo are drawn using actual colours
         # the purple range used for cargo recolouring would clash with the typical body recolouring (and the default body recolour map on this gestalt)
         # this could be worked around by using the dark red option, but work would be needed to eliminate the clash
-        # !! we still have to duplicate the entire set of bulk spriterows per weathered variant, as the nml templating expects this (would be unwise to snowflake it)
+        # !! we still have to duplicate the entire set of bulk spriterows per weathered state, as the nml templating expects this (would be unwise to snowflake it)
         for (
             label,
             cargo_recolour_map,
         ) in polar_fox.constants.bulk_cargo_recolour_maps:
             body_recolour_map = (
-                self.default_model_variant.gestalt_graphics.weathered_variants[
+                self.default_model_variant.gestalt_graphics.weathered_states[
                     "unweathered"
                 ]
             )
@@ -1895,7 +1895,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
 
             body_recolour_map = (
-                self.default_model_variant.gestalt_graphics.weathered_variants[
+                self.default_model_variant.gestalt_graphics.weathered_states[
                     "unweathered"
                 ]
             )

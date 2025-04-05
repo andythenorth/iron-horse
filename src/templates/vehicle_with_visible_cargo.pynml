@@ -65,22 +65,22 @@
         </tal:has_cover>
     </tal:masked_overlay_graphics>
 
-    <tal:weathered_variant condition="len(model_variant.gestalt_graphics.weathered_variants) > 1">
+    <tal:weathered_state condition="len(model_variant.gestalt_graphics.weathered_states) > 1">
     <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
     <!--! this could be parameterised procedure, as it's used for other gestalts also -->
-    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
-        <tal:weathered_variants repeat="weathered_variant model_variant.gestalt_graphics.weathered_variants">
-            <!--!${repeat.weathered_variant.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_${weathered_variant};-->
-            ${repeat.weathered_variant.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_${weathered_variant};
-        </tal:weathered_variants>
+    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_state, random_bits_weathered_state()) {
+        <tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
+            <!--!${repeat.weathered_state.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_${weathered_state};-->
+            ${repeat.weathered_state.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_${weathered_state};
+        </tal:weathered_states>
         return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered; <!--! this default should not be reached in this case, but eh -->
     }
 
     switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_check_randomisation_strategy, param_wagon_colour_randomisation) {
         0: ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered; <!--! no randomisation -->
-        ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_variant;
+        ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_state;
     }
-    </tal:weathered_variant>
+    </tal:weathered_state>
 </tal:model_common>
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
