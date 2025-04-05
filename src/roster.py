@@ -329,8 +329,6 @@ class Roster(object):
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
                     ].append(model_variant)
-                    if model_variant.model_id in ["fleet", "nimbus"]:
-                        print("@@@ found", model_variant.id)
 
 
     @timing
