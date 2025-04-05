@@ -1,6 +1,6 @@
 import argparse
 import os.path
-from functools import cached_property
+from functools import lru_cache
 
 import global_constants
 from polar_fox import git_info
@@ -36,12 +36,12 @@ def get_command_line_args():
     )
     return argparser.parse_args()
 
-@cached_property
+@lru_cache(maxsize=None)
 def git_tag_or_version():
     # expensive if repeated due to git lookup, pre-compute and cache it
     return git_info.get_monorepo_tag_parts()[1]
 
-@cached_property
+@lru_cache(maxsize=None)
 def docs_base_url():
     # not convinced this belongs in utils, but I can't find anywhere better to put it
     # could be in polar fox - method will be common to all grfs? - pass the project name as a var?
@@ -51,8 +51,7 @@ def docs_base_url():
         result.append(git_tag_or_version)
     return "/".join(result)
 
-
-@cached_property
+@lru_cache(maxsize=None)
 def docs_url():
     return docs_base_url + "/index.html"
 
