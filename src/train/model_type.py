@@ -177,16 +177,6 @@ class ModelTypeBase(object):
         return unique_units
 
     @property
-    def unique_numeric_ids(self):
-        # all the numeric_ids used for all the unique units
-        # CABBAGE - this should match catalogue_entry.unit_numeric_ids??
-        # WOULD THAT BE BETTER TO USE??
-        result = []
-        for unit in self.unique_units:
-            result.append(unit.numeric_id)
-        return result
-
-    @property
     def base_track_type_name(self):
         # just a pass through for convenience
         return self.catalogue_entry.base_track_type_name

@@ -153,6 +153,7 @@ class Roster(object):
     @property
     def model_variants_in_order_optimised_for_action_2_ids(self):
         # CABBAGE as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants
+        # BUT random wagons are nerfed off so eh...
         # the base sort order for model variants is for the buy menu, but this isn't effective for order in nml output
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
@@ -268,7 +269,7 @@ class Roster(object):
                         f"{model_variant.units}"
                     )
             elif len(model_variant.units) > 1:
-                for numeric_id in model_variant.unique_numeric_ids:
+                for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
                     if numeric_id > global_constants.max_articulated_id:
                         raise BaseException(
                             f"Error: {model_variant.id} has a unit variant with numeric_id {numeric_id} which is part of an articulated vehicle "
@@ -276,7 +277,7 @@ class Roster(object):
                             f"Use a lower base_numeric_id in the model_def.\n"
                             f"{model_variant.units}"
                         )
-            for numeric_id in model_variant.unique_numeric_ids:
+            for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
                 if numeric_id in numeric_id_defender:
                     colliding_model_variant = numeric_id_defender[numeric_id]
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
