@@ -459,6 +459,8 @@ class Roster(object):
 
         self.buyable_variant_groups = {}
 
+        # CABBAGE, CAN THIS NOT JUST USE CATALOGUES?
+
         # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
@@ -532,6 +534,7 @@ class Roster(object):
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:
                     buyable_variant_group.parent_group = candidate_parent_group
+
 
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster

@@ -134,7 +134,6 @@ class CatalogueEntry:
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
     input_spritesheet_name_stem: str
-    intro_year: int
     base_track_type_name: str
 
     @property
@@ -291,19 +290,6 @@ class ModelVariantFactory:
         else:
             return None
 
-    @cached_property
-    def intro_year(self):
-        # automatic intro_year, but can override via model_def
-        assert self.model_def.gen != None, (
-            "%s has no gen value set, which is incorrect" % self.model_id
-        )
-        result = self.roster.intro_years[self.base_track_type_name][
-            self.model_def.gen - 1
-        ]
-        if self.model_def.intro_year_offset is not None:
-            result = result + self.model_def.intro_year_offset
-        return result
-
     @property
     def base_track_type_name(self):
         if self.model_def.base_track_type_name is not None:
@@ -423,7 +409,6 @@ class Catalogue(list):
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
-                intro_year=factory.intro_year,
                 base_track_type_name=factory.base_track_type_name,
             )
             instance.append(catalogue_entry)
@@ -562,6 +547,19 @@ class Catalogue(list):
             catalogue = catalogue_model_variant_mapping['catalogue']
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_model_variant_mapping)
+        return result
+
+    @cached_property
+    def intro_year(self):
+        # automatic intro_year, but can override via model_def
+        assert self.factory.model_def.gen != None, (
+            "%s has no gen value set, which is incorrect" % self.factory.model_id
+        )
+        result = self.factory.roster.intro_years[self.factory.base_track_type_name][
+            self.factory.model_def.gen - 1
+        ]
+        if self.factory.model_def.intro_year_offset is not None:
+            result = result + self.factory.model_def.intro_year_offset
         return result
 
 

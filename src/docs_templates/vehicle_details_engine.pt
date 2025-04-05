@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <th>Intro year / Designed</th>
-                            <td>${catalogue.factory.intro_year}</td>
+                            <td>${catalogue.intro_year}</td>
                         </tr>
                         <tr>
                             <th>Max. Speed</th>

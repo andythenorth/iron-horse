@@ -465,7 +465,7 @@ class ModelTypeBase(object):
 
     @cached_property
     def intro_year(self):
-        return self.catalogue_entry.intro_year
+        return self.catalogue_entry.catalogue.intro_year
 
     @cached_property
     def intro_year_offset(self):
