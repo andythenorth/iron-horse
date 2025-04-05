@@ -1459,8 +1459,6 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_buy_cost_points = 6
         # Graphics configuration
-        # inserts the default liveries for docs examples
-        # CABBAGE liveries - probably all gestalts need updated?
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
             catalogue_entry=self.catalogue_entry,
@@ -5800,9 +5798,6 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
-
     model_id_root = "express_railcar_mail_trailer_car"
 
     def __init__(self, **kwargs):
@@ -5890,9 +5885,6 @@ class MailHSTCar(MailCarBase):
     """
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
     """
-
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "hst_mail_car"
 
@@ -6813,9 +6805,6 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
-
     model_id_root = "express_railcar_passenger_trailer_car"
 
     def __init__(self, **kwargs):
@@ -6858,9 +6847,6 @@ class PassengerHSTCar(PassengerCarBase):
     Moderately improved decay rate compared to standard pax car.
     Position-dependent sprites for buffet car, brake car etc.
     """
-
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "hst_passenger_car"
 
@@ -6918,9 +6904,6 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
-
     model_id_root = "railbus_passenger_trailer_car"
 
     def __init__(self, **kwargs):
@@ -6962,9 +6945,6 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     Unpowered high-capacity passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
     """
-
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "railcar_passenger_trailer_car"
 
