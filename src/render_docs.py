@@ -150,7 +150,7 @@ def render_docs_images(
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
             # we *do* want docs images for all trailer model variants
             if (not model_variant.is_default_model_variant) and (
-                model_variant.cab_id is None
+                model_variant.cab_engine is None
             ):
                 continue
 

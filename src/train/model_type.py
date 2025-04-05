@@ -386,7 +386,7 @@ class ModelTypeBase(object):
 
     @cached_property
     def engine_varies_power_by_power_source(self):
-        # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
+        # note that we use self.cab_engine to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (self.power_by_power_source is not None) and (
             getattr(self, "cab_engine", None) is None
         ):
@@ -458,12 +458,6 @@ class ModelTypeBase(object):
     def requires_high_clearance(self):
         # just a passthrough for convenience
         return self.model_def.requires_high_clearance
-
-    @property
-    def cab_id(self):
-        # cab_id if required must be set in model_def
-        # CABBAGE - WE MIGHT NOT NEED THIS, WE HAVE cab_engine and can get cab_factory at all times?
-        return self.model_def.cab_id
 
     @property
     def easter_egg_haulage_speed_bonus(self):
@@ -2216,7 +2210,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._buyable_variant_group_id = self.cab_id
+        self._buyable_variant_group_id = self.model_def.cab_id
         self.wagons_add_power = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
         # train_flag_mu solely used for ottd livery (company colour) selection
@@ -2274,7 +2268,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     @property
     def buy_menu_distributed_power_name_substring(self):
-        return "STR_NAME_" + self.cab_id.upper()
+        return "STR_NAME_" + self.model_def.cab_id.upper()
 
     @property
     def buy_menu_distributed_power_hp_value(self):
@@ -5709,7 +5703,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
     def __init__(self, **kwargs):
         # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
-        self._buyable_variant_group_id = self.cab_id
+        self._buyable_variant_group_id = self.model_def.cab_id
         self._model_life = self.cab_engine.model_life
         self._vehicle_life = self.cab_engine.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
@@ -5745,7 +5739,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
     def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id.upper(),
+            "STR_NAME_" + self.model_def.cab_id.upper(),
             self._str_name_suffix,
         ]
         return result
@@ -5904,7 +5898,7 @@ class MailHSTCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._buyable_variant_group_id = self.cab_id
+        self._buyable_variant_group_id = self.model_def.cab_id
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -5937,7 +5931,7 @@ class MailHSTCar(MailCarBase):
     def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id.upper(),
+            "STR_NAME_" + self.model_def.cab_id.upper(),
             "STR_NAME_SUFFIX_HST_MAIL_CAR",
         ]
         return result
@@ -6632,7 +6626,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     def __init__(self, **kwargs):
         # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
-        self._buyable_variant_group_id = self.cab_id
+        self._buyable_variant_group_id = self.model_def.cab_id
         self._model_life = self.cab_engine.model_life
         self._vehicle_life = self.cab_engine.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
@@ -6664,7 +6658,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id.upper(),
+            "STR_NAME_" + self.model_def.cab_id.upper(),
             self._str_name_suffix,
         ]
         return result
@@ -6874,7 +6868,7 @@ class PassengerHSTCar(PassengerCarBase):
         super().__init__(**kwargs)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
-        self._buyable_variant_group_id = self.cab_id
+        self._buyable_variant_group_id = self.model_def.cab_id
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
@@ -6908,7 +6902,7 @@ class PassengerHSTCar(PassengerCarBase):
     def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id.upper(),
+            "STR_NAME_" + self.model_def.cab_id.upper(),
             "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
         ]
         return result
