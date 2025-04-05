@@ -38,12 +38,9 @@ class Roster(object):
         )
         self.engine_model_variants_by_catalogue = defaultdict(list)
         self.wagon_model_variants_by_catalogue = defaultdict(list)
-        # create a structure to hold (buyable) variant groups
+        # create a structure to hold variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all model variants are inited
-        self.buyable_variant_groups = None
-        self.buyable_variant_group_base_ids = kwargs.get(
-            "buyable_variant_group_base_ids", {}
-        )
+        self.variant_groups = None
         self.intro_years = kwargs.get("intro_years")
         self.speeds = kwargs.get("speeds")
         self.freight_car_capacity_per_unit_length = kwargs.get(
@@ -446,24 +443,24 @@ class Roster(object):
         # convenience method for a key, only used for accessing a temp structure
         return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
 
-    def add_buyable_variant_groups(self):
+    def add_variant_groups(self):
         # creating groups has to happen after *all* model variants are inited
 
         # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
-        if self.buyable_variant_groups is not None:
+        if self.variant_groups is not None:
             raise BaseException(
-                "add_buyable_variant_groups() called more than once for roster "
+                "add_variant_groups() called more than once for roster "
                 + self.id
             )
 
-        self.buyable_variant_groups = {}
+        self.variant_groups = {}
 
         # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
         for model_variant in self.model_variants:
-            variant_group_id = model_variant.catalogue_entry.buyable_variant_group_id
-            variant_group = self.buyable_variant_groups.setdefault(
+            variant_group_id = model_variant.catalogue_entry.variant_group_id
+            variant_group = self.variant_groups.setdefault(
                 variant_group_id, VariantGroup(id=variant_group_id)
             )
             variant_group.append(model_variant)
@@ -471,14 +468,14 @@ class Roster(object):
         # logic: if both a `_static` and `_random` group exist for the same base ID,
         #        then the static group is nested into the random group
 
-        for variant_group_id, variant_group in self.buyable_variant_groups.items():
+        for variant_group_id, variant_group in self.variant_groups.items():
             if not variant_group_id.endswith("_static"):
                 continue
 
             # derive the base ID stem (everything before `_static`)
             group_id_stem = variant_group_id.rsplit("_static", 1)[0]
             random_group_id = f"{group_id_stem}_random"
-            random_group = self.buyable_variant_groups.get(random_group_id)
+            random_group = self.variant_groups.get(random_group_id)
 
             if random_group and len(random_group) > 0:
                 variant_group.parent_group = random_group

@@ -54,7 +54,7 @@ def main(**kwargs):
         # introduce early by design
         intro_year_offset=-4,
         # force variant group (parent) to equivalent twin-unit railbus id
-        buyable_variant_group_id="zipper",
+        variant_group_id="zipper",
         # it's too complex to clone these from the twin unit, but treat the result like a clone
         quacks_like_a_clone=True,
         sprites_complete=True,

@@ -210,7 +210,7 @@ class UnitBase(object):
     def extra_flags(self):
         # on the unit for consistency with misc_flags
         extra_flags = []
-        if self.model_variant.buyable_variant_group is not None:
+        if self.model_variant.variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
             if self.model_variant.variant_group_parent_vehicle_id is not None:

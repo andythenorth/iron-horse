@@ -88,7 +88,7 @@ class RosterManager(list):
         # now complete any post validation steps
         # can be quite expensive, so only called if flagged
         if run_post_validation_steps:
-            self.active_roster.add_buyable_variant_groups()
+            self.active_roster.add_variant_groups()
 
     @cached_property
     def active_roster(self):

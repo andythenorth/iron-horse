@@ -313,9 +313,9 @@ class ModelTypeBase(object):
     def cabbage_variant_handling_badges(self):
         result = []
         # CABBAGE - remove buyable_variants dependency
-        if len(self.buyable_variant_group) > 1:
+        if len(self.variant_group) > 1:
             result.append("ih_variants_cabbage/cabbage_level_0_has_children")
-        if self.buyable_variant_group.parent_group is not None:
+        if self.variant_group.parent_group is not None:
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")
         return result
 
@@ -908,10 +908,10 @@ class ModelTypeBase(object):
         return result
 
     @cached_property
-    def buyable_variant_group(self):
-        self.assert_buyable_variant_groups()
-        variant_group = self.roster.buyable_variant_groups[
-            self.catalogue_entry.buyable_variant_group_id
+    def variant_group(self):
+        self.assert_variant_groups()
+        variant_group = self.roster.variant_groups[
+            self.catalogue_entry.variant_group_id
         ]
         return variant_group
 
@@ -920,15 +920,15 @@ class ModelTypeBase(object):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately
-        if self.buyable_variant_group.parent_vehicle.id == self.units[0].id:
+        if self.variant_group.parent_vehicle.id == self.units[0].id:
             # handle nested group case, which is only used on first unit
-            if self.buyable_variant_group.parent_group is None:
+            if self.variant_group.parent_group is None:
                 return None
             else:
                 # JFDI CABBAGE MAKE IT WORK TEMP
-                return self.buyable_variant_group.parent_group.parent_vehicle.id
+                return self.variant_group.parent_group.parent_vehicle.id
         else:
-            return self.buyable_variant_group.parent_vehicle.id
+            return self.variant_group.parent_vehicle.id
 
     @cached_property
     def requires_custom_buy_menu_sprite(self):
@@ -1114,11 +1114,11 @@ class ModelTypeBase(object):
             return True
         return False
 
-    def assert_buyable_variant_groups(self):
+    def assert_variant_groups(self):
         # can't use buyable variant groups until they've been inited, which depends on model variants being inited prior, so guard for that case
-        if self.roster.buyable_variant_groups is None:
+        if self.roster.variant_groups is None:
             raise BaseException(
-                "buyable_variant_groups undefined for roster "
+                "variant_groups undefined for roster "
                 + self.roster.id
                 + " - probably buyable_variant.buyable_variant called before variant groups inited"
             )
@@ -1676,7 +1676,7 @@ class MailEngineRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
 
@@ -1720,7 +1720,7 @@ class MailEngineExpressRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1871,7 +1871,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1964,7 +1964,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
     @property
     def vehicle_family_badge(self):
         # CABBAGE - CAN THESE JUST USE SUPER().foo?
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2195,7 +2195,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2395,11 +2395,11 @@ class CarModelTypeBase(ModelTypeBase):
         elif context in ["default_name", "purchase_level_1", "purchase_level_2"]:
             result = default_result
         elif context == "purchase_level_0":
-            if getattr(self, "buyable_variant_group_id", None) != None:
+            if getattr(self, "variant_group_id", None) != None:
                 try:
                     # CABBAGE SHOULD BE COMING FROM CATALOGUE?
                     result = [
-                        "STR_" + self.buyable_variant_group_id.upper(),
+                        "STR_" + self.variant_group_id.upper(),
                     ]
                 except:
                     raise BaseException(self.id)
@@ -5563,7 +5563,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
     def get_name_parts(self, context):
@@ -5774,7 +5774,7 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
     ]
 
-    buyable_variant_group_id = (
+    variant_group_id = (
         "wagon_group_metal_product_cars_randomised"
     )
 
@@ -6473,7 +6473,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.buyable_variant_group_id
+        family_name = self.catalogue_entry.variant_group_id
         return "vehicle_family/" + family_name
 
 

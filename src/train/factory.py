@@ -31,7 +31,7 @@ class ModelDef:
     model_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
     base_track_type_name: Optional[str] = None
-    buyable_variant_group_id: Optional[str] = None
+    variant_group_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
     default_livery_extra_docs_examples: List[Any] = None # CABBAGE - DOES THIS DO ANYTHNG CURRENTLY? - *SHOULD* BE USED BY vehicle_details_engine
@@ -133,7 +133,7 @@ class CatalogueEntry:
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
-    buyable_variant_group_id: str
+    variant_group_id: str
     input_spritesheet_name_stem: str
 
     @property
@@ -194,10 +194,10 @@ class ModelVariantFactory:
             )
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
-        # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
+        # CHECK if variant_group_id is already set?  If it is, leave it alone?
         # can this not be done when cloning?
         if self.model_def.cloned_from_model_def is not None:
-            self.model_def.buyable_variant_group_id = (
+            self.model_def.variant_group_id = (
                 self.model_def.cloned_from_model_def.model_id
             )
 
@@ -289,7 +289,7 @@ class ModelVariantFactory:
         else:
             return None
 
-    def get_buyable_variant_group_id(self, livery_def, base_track_type_name):
+    def get_variant_group_id(self, livery_def, base_track_type_name):
         # cascade of sources for variant group ID
 
         # group trailers with their cabs
@@ -297,8 +297,8 @@ class ModelVariantFactory:
             return self.cab_factory.model_id
 
         # force a variant group via model def
-        if self.model_def.buyable_variant_group_id is not None:
-            return self.model_def.buyable_variant_group_id
+        if self.model_def.variant_group_id is not None:
+            return self.model_def.variant_group_id
 
         # primarily used for explcitly selected wagon groups (from a class property on the model type)
         if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
@@ -373,7 +373,7 @@ class Catalogue(list):
                 for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
 
-            buyable_variant_group_id = factory.get_buyable_variant_group_id(livery_def, instance.base_track_type_name)
+            variant_group_id = factory.get_variant_group_id(livery_def, instance.base_track_type_name)
 
             # certain static properties are copied into the catalogue_entry from the factory
             # this is for convenience of access as
@@ -386,7 +386,7 @@ class Catalogue(list):
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
-                buyable_variant_group_id=buyable_variant_group_id,
+                variant_group_id=variant_group_id,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
             )
             instance.append(catalogue_entry)
@@ -625,7 +625,7 @@ class ModelDefCloner:
         cloned_model_def.model_id = (
             model_def.model_id + "_clone_" + str(len(model_def.clones))
         )
-        cloned_model_def.buyable_variant_group_id = model_def.model_id
+        cloned_model_def.variant_group_id = model_def.model_id
         return cloned_model_def
 
     @staticmethod
