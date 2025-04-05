@@ -486,9 +486,9 @@ class Roster(object):
             # we're only interested in nesting wagons as of May 2023
             parent_model_variant = buyable_variant_group.parent_model_variant
             if parent_model_variant.group_as_wagon:
-                if parent_model_variant.use_named_purchase_variant_group is not None:
+                if parent_model_variant.named_variant_group is not None:
                     base_id_for_target_parent_model_variant = global_constants.purchase_variant_group_base_model_ids_by_group_name[
-                        parent_model_variant.use_named_purchase_variant_group
+                        parent_model_variant.named_variant_group
                     ]
                     candidate_parent_group = None
                     if (

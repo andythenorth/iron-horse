@@ -498,6 +498,15 @@ class Catalogue(list):
                 result.append(catalogue_model_variant_mapping)
         return result
 
+    @property
+    def buyable_variant_group_id(self):
+        if self.factory.cab_factory is not None:
+            return self.factory.cab_factory.model_def.buyable_variant_group_id
+        if self.factory.model_def.buyable_variant_group_id is not None:
+            return self.factory.model_def.buyable_variant_group_id
+        # assume it's a wagon and roster will sort out buyable_variant_group_id, no error handling here currently
+        return None
+
     @cached_property
     def intro_year(self):
         # automatic intro_year, but can override via model_def
