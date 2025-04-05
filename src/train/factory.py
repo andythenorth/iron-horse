@@ -502,10 +502,36 @@ class Catalogue(list):
     def buyable_variant_group_id(self):
         if self.factory.cab_factory is not None:
             return self.factory.cab_factory.model_def.buyable_variant_group_id
+        if getattr(self.factory.model_type_cls, "buyable_variant_group_id", None) is not None:
+            return self.factory.model_type_cls.buyable_variant_group_id
         if self.factory.model_def.buyable_variant_group_id is not None:
             return self.factory.model_def.buyable_variant_group_id
-        # assume it's a wagon and roster will sort out buyable_variant_group_id, no error handling here currently
+        #raise ValueError(f"{self}")
         return None
+        """
+    @cached_property
+    def buyable_variant_group_id(self):
+        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
+            # explicitly defined group id
+            id = self.catalogue_entry.catalogue.buyable_variant_group_id
+        elif self.group_as_wagon:
+            if getattr(self, "buyable_variant_group_id", None) is not None:
+                group_id_base = self.buyable_variant_group_id
+            else:
+                group_id_base = self.model_id
+            if len(self.catalogue_entry.livery_def.colour_set_names or []) < 2:
+                # if it's less than two entries (or None) then it's fixed colours
+                # we nest buyable variants with fixed colours into sub-groups
+                fixed_mixed_suffix = "fixed"
+            else:
+                # everything else goes into one group, either on the model group, or a named parent group which composes multiple model variants
+                fixed_mixed_suffix = None
+            id = self.compose_variant_group_id(group_id_base, fixed_mixed_suffix)
+        if id is None:
+            raise ValueError(f"no buyable_variant_group_id found for {self.id}")
+        return id
+        """
+
 
     @cached_property
     def intro_year(self):
