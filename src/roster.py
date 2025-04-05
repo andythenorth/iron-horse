@@ -465,19 +465,18 @@ class Roster(object):
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
         for model_variant in self.model_variants:
-            for buyable_variant in model_variant.cabbage_buyable_variants:
-                if (
-                    not buyable_variant.model_variant.buyable_variant_group_id
-                    in self.buyable_variant_groups
-                ):
-                    self.buyable_variant_groups[
-                        buyable_variant.model_variant.buyable_variant_group_id
-                    ] = PurchaseVariantGroup(
-                        id=buyable_variant.model_variant.buyable_variant_group_id,
-                    )
+            if (
+                not model_variant.buyable_variant_group_id
+                in self.buyable_variant_groups
+            ):
                 self.buyable_variant_groups[
-                    buyable_variant.model_variant.buyable_variant_group_id
-                ].add_buyable_variant(buyable_variant)
+                    model_variant.buyable_variant_group_id
+                ] = PurchaseVariantGroup(
+                    id=model_variant.buyable_variant_group_id,
+                )
+            self.buyable_variant_groups[
+                model_variant.buyable_variant_group_id
+            ].add_buyable_variant(model_variant)
         # now deal with nested groups
         # we do this after creating all the groups, as some groups need to reference other groups
         for (
@@ -602,8 +601,9 @@ class PurchaseVariantGroup(object):
 
     @property
     def parent_vehicle(self):
+        # CABBAGE vehicle, unit or model_variant?
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self.buyable_variants[0].model_variant.units[0]
+        return self.buyable_variants[0].units[0]
 
     @property
     def parent_model_variant(self):

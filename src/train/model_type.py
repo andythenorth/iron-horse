@@ -42,10 +42,6 @@ class ModelTypeBase(object):
     def __init__(self, **kwargs):
         # mandatory, fail if missing
         self.catalogue_entry = kwargs["catalogue_entry"]
-        # create a structure to hold buyable variants - the method can be over-ridden in model type subclasses to provide specific rules for buyable variants
-        # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
-        # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
-        self.cabbage_buyable_variants = []
         # variant group id options are set in subclasses; supported methods are cascading:
         # set explicitly to a named group matching a model_variant id
         # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. track type, gen etc
@@ -169,19 +165,6 @@ class ModelTypeBase(object):
                 if catalogue.factory.model_def == self.model_def.cloned_from_model_def:
                     return catalogue.default_model_variant_from_roster
         raise Exception(f"cloned_from_model_type not found for {self.id}")
-
-    def resolve_buyable_variants(self):
-        # CABBAGE - this should be removable
-        # this method can be over-ridden per model type subclass as needed
-        # the basic form of buyable variants is driven by liveries
-        self.cabbage_buyable_variants.append(BuyableVariant(self))
-
-    def cabbage_add_buyable_variant(self, unit):
-        # CABBAGE - this should be removable
-        # !! we should just be able to either set the units from the factory after init, or pass units to the init (better?)
-        # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
-        if len(self.cabbage_buyable_variants) == 0:
-            self.resolve_buyable_variants()
 
     @property
     def unique_units(self):
@@ -2486,10 +2469,10 @@ class CarModelTypeBase(ModelTypeBase):
                     raise BaseException(self.id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
             # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
-            elif len(self.cabbage_buyable_variants) > 1:
-                result = default_result.copy()
-                result[0] = result[0].replace("_CAR", "_CARS")
-                result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
+            #elif len(self.cabbage_buyable_variants) > 1:
+                #result = default_result.copy()
+                #result[0] = result[0].replace("_CAR", "_CARS")
+                #result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
             else:
                 # no string needed, the name switch will handle using the default name
                 result = None
@@ -8276,14 +8259,3 @@ class TorpedoCarUnit(CarModelTypeBase):
             "vehicle_torpedo_car.pynml",
             catalogue_entry=self.catalogue_entry,
         )
-
-
-class BuyableVariant(object):
-    """
-    Simple class to hold buyable variants LEGACY CABBAGE.
-    """
-
-    def __init__(self, model_variant):
-        self.model_variant = model_variant
-        # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
-        # this is just for convenience if spritesheets are a chore to re-order
