@@ -596,6 +596,7 @@ class VariantGroup(list):
     @property
     def parent_vehicle(self):
         # CABBAGE vehicle, unit or model_variant?
+        # CABBAGE - first vehicle is always parent?
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
         return self[0].units[0]
 

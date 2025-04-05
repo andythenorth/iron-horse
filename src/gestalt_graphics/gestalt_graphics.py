@@ -70,7 +70,7 @@ class GestaltGraphics(object):
 
         result = []
         if pipeline.is_pantographs_pipeline:
-            # pans are the same for all buyable variants, and are just provided either once, or per position variant
+            # pans are the same for all buyable variants, and are just provided either once, or per formation position
             cabbage_dest_spriterows = [pipeline.catalogue.default_entry]
         else:
             cabbage_dest_spriterows = pipeline.catalogue
@@ -586,7 +586,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         }
 
     def get_output_row_types(self):
-        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
 
@@ -666,13 +666,13 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         return result
 
     @cached_property
-    def position_variants(self):
+    def formation_position_labels(self):
         # used in spriteset templating
         if self.formation_ruleset == "1_unit_sets":
-            # 1 unit articulated sets only need 1 variant
+            # 1 unit articulated sets only need 1 position rule
             return ["default"]
         elif self.formation_ruleset == "2_unit_sets":
-            # 2 unit articulated sets only need 3 variants
+            # 2 unit articulated sets only need 3 position rules
             return ["default", "first", "last"]
         else:
             return ["default", "first", "last", "middle"]
@@ -715,7 +715,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
-        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # 2 liveries * 4 formation position rules, so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         if self.formation_ruleset == "1_unit_sets":
             result = ["empty"]
@@ -788,11 +788,11 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         start_y_cumulative = graphics_constants.spritesheet_top_margin
 
         # add rows for empty sprite
-        for variant in self.position_variants:
+        for label in self.formation_position_labels:
             for vehicle_spritelayer_name in self.vehicle_spritelayer_names:
                 result.append(
                     [
-                        vehicle_spritelayer_name + "_" + variant,
+                        vehicle_spritelayer_name + "_" + label,
                         start_y_cumulative,
                     ]
                 )
@@ -838,16 +838,16 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         return result
 
     @cached_property
-    def position_variants(self):
+    def formation_position_labels(self):
         # used in spriteset templating
         if self.formation_ruleset == "articulated_permanent_twin_sets":
-            # permanent articulated twin sets only need 2 variants
+            # permanent articulated twin sets only need 2 formation position rules
             return ["first", "last"]
         elif self.formation_ruleset == "1_unit_sets":
-            # 1 unit articulated sets only need 1 variant
+            # 1 unit articulated sets only need 1 position rule
             return ["default"]
         elif self.formation_ruleset == "2_unit_sets":
-            # 2 unit articulated sets only need 3 variants
+            # 2 unit articulated sets only need 3 position rules
             return ["default", "first", "last"]
         else:
             # defaulting to 4 unit sets is apparently fine?
@@ -922,13 +922,13 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
      - the limit of 4 is arbitrary, and self-imposed to prevent combinatorial explosion (and consequent need to draw sprites)
     """
 
-    def __init__(self, spriterow_group_mappings, **kwargs):
+    def __init__(self, formation_position_spriterow_map, **kwargs):
         super().__init__(**kwargs)
-        # spriterow_group_mappings provided by subclass calling gestalt_graphics:
+        # formation_position_spriterow_map provided by subclass calling gestalt_graphics:
         # - spriterow numbers for named positions in formation
         # - spriterow numbers are zero-indexed *relative* to the start of the formation-cargo block, to reduce shuffling them all if new rows are inserted in future
         # - *all* of the keys must be provided in the mapping, set values to 0 if unused
-        self.spriterow_group_mappings = spriterow_group_mappings
+        self.formation_position_spriterow_map = formation_position_spriterow_map
         # liveries provided by subclass calling gestalt_graphics
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
@@ -939,16 +939,16 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        # verify that the spriterow_group_mappings keys are in the expected order
-        if list(self.spriterow_group_mappings.keys()) != [
+        # verify that the formation_position_spriterow_map keys are in the expected order
+        if list(self.formation_position_spriterow_map.keys()) != [
             "default",
             "first",
             "last",
             "special",
         ]:
             raise BaseException(
-                "Keys aren't correct for spriterow_group_mappings: "
-                + str(spriterow_group_mappings)
+                "Keys aren't correct for formation_position_spriterow_map: "
+                + str(formation_position_spriterow_map)
             )
         # configure pipelines
         self.pipelines = pipelines.get_pipelines(
@@ -971,11 +971,11 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             )
             # this assumes no gaps in the spriterows, so take the max spriterow num
             # note the +1 because livery rows are zero indexed
-            # note that we simply generate a row per vehicle position variant
+            # note that we simply generate a row per formation position
             # this method leads to unnecessary rows for many cases
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
             self.num_pantograph_rows = len(self.catalogue_entry.catalogue) * (
-                1 + max(self.spriterow_group_mappings.values())
+                1 + max(self.formation_position_spriterow_map.values())
             )
 
     @property
@@ -991,7 +991,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         return ["pax_mail_cars_with_doors"]
 
     @cached_property
-    def num_spritesheet_liveries_per_position_variant(self):
+    def num_spritesheet_liveries_per_formation_position(self):
         # this counts liveries in the spritesheet, the actual number of liveries may be higher due to sprite reuse with recolouring
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
@@ -1006,17 +1006,17 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
 
     @cached_property
     def total_spriterow_count(self):
-        # n unique liveries * 2 states for doors open/closed * number of position variants defined
+        # n unique liveries * 2 states for doors open/closed * number of formation position rules defined
         return (
-            self.num_spritesheet_liveries_per_position_variant
+            self.num_spritesheet_liveries_per_formation_position
             * self.num_load_state_or_similar_spriterows
-            * self.total_position_variants
+            * self.num_unique_formation_positions
         )
 
     @cached_property
-    def total_position_variants(self):
-        # rows can be reused across multiple position variant labels, so find uniques
-        return len(set(list(self.spriterow_group_mappings.values())))
+    def num_unique_formation_positions(self):
+        # rows can be reused across multiple formation position labels, so find uniques
+        return len(set(list(self.formation_position_spriterow_map.values())))
 
     @cached_property
     def asymmetric_row_map(self):
@@ -1025,37 +1025,38 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         result = {}
         base_row_num = 0
         # This is tied completely to the spritesheet format:
-        # [1..4] vehicle variants x n liveries x 2 rows (empty & loaded, loading)
-        for position_variant_num in range(self.total_position_variants):
-            if position_variant_num == self.spriterow_group_mappings["first"]:
-                source_row_num = self.spriterow_group_mappings["last"]
-            elif position_variant_num == self.spriterow_group_mappings["last"]:
-                source_row_num = self.spriterow_group_mappings["first"]
+        # [1..4] formation positions x n liveries x 2 rows (empty & loaded, loading)
+        # note that formation_position_num is index in unique position rules *not* index in the formation
+        for formation_position_num in range(self.num_unique_formation_positions):
+            if formation_position_num == self.formation_position_spriterow_map["first"]:
+                source_row_num = self.formation_position_spriterow_map["last"]
+            elif formation_position_num == self.formation_position_spriterow_map["last"]:
+                source_row_num = self.formation_position_spriterow_map["first"]
             else:
-                source_row_num = position_variant_num
+                source_row_num = formation_position_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
             row_group_size = self.num_load_state_or_similar_spriterows * len(
                 self.catalogue_entry.catalogue
             )
             for i in range(1, 1 + row_group_size):
-                result[base_row_num + (row_group_size * position_variant_num) + i] = (
+                result[base_row_num + (row_group_size * formation_position_num) + i] = (
                     base_row_num + (row_group_size * source_row_num) + i
                 )
         return result
 
     def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
-        # that means we can just do first / last, and not worry about other position variants
+        # that means we can just do first / last, and not worry about other formation positions
         # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
         if len(pipeline.default_model_variant.units) != 2:
             if pipeline.default_model_variant.id == "golfinho":
                 # JFDI jank
                 if unit_counter == 1:
-                    position_variant_offset = self.spriterow_group_mappings["special"]
+                    formation_position_row_offset = self.formation_position_spriterow_map["special"]
                     # CABBAGE - unit_variant_row_num is legacy name?
                     unit_variant_row_num = (
-                        self.num_spritesheet_liveries_per_position_variant
-                        * position_variant_offset
+                        self.num_spritesheet_liveries_per_formation_position
+                        * formation_position_row_offset
                         * self.num_load_state_or_similar_spriterows
                     ) + (
                         catalogue_entry.livery_def.relative_spriterow_num
@@ -1070,16 +1071,16 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 )
 
         if unit_counter == 0:
-            position_variant_offset = self.spriterow_group_mappings["first"]
+            formation_position_row_offset = self.formation_position_spriterow_map["first"]
         else:
-            position_variant_offset = self.spriterow_group_mappings["last"]
+            formation_position_row_offset = self.formation_position_spriterow_map["last"]
         if pipeline.is_pantographs_pipeline:
             # CABBAGE - unit_variant_row_num is legacy name?
-            unit_variant_row_num = position_variant_offset
+            unit_variant_row_num = formation_position_row_offset
         else:
             unit_variant_row_num = (
-                self.num_spritesheet_liveries_per_position_variant
-                * position_variant_offset
+                self.num_spritesheet_liveries_per_formation_position
+                * formation_position_row_offset
                 * self.num_load_state_or_similar_spriterows
             ) + (
                 catalogue_entry.livery_def.relative_spriterow_num

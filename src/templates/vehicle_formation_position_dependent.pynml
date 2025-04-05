@@ -6,28 +6,28 @@
  -->
 
 <!--! default graphics chain -->
-<tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
-    spriteset(${unit.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60))}
+<tal:formation_position_rules repeat="formation_position_rule_num python:range(model_variant.gestalt_graphics.num_unique_formation_positions)">
+    spriteset(${unit.id}_ss_doors_closed_formation_position_rule_${formation_position_rule_num}, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (formation_position_rule_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_formation_position * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60))}
     }
-    spriteset(${unit.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
+    spriteset(${unit.id}_ss_doors_open_formation_position_rule_${formation_position_rule_num}, "${graphics_path}${model_variant.model_id}.png") {
+        ${unit.get_spriteset_template_name('unreversed', 10 + (formation_position_rule_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_formation_position * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
     }
     <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
     <tal:pantographs condition="model_variant.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${unit.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${model_variant.model_id}_pantographs_${pantograph_state}.png") {
-                ${unit.get_spriteset_template_name('unreversed', 10 + (position_variant_num * 30))}
+            spriteset(${unit.id}_ss_pantographs_${pantograph_state}_${formation_position_rule_num}, "${graphics_path}${model_variant.model_id}_pantographs_${pantograph_state}.png") {
+                ${unit.get_spriteset_template_name('unreversed', 10 + (formation_position_rule_num * 30))}
             }
         </tal:pantographs>
-        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs_state_${position_variant_num}, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-            1: return ${unit.id}_ss_pantographs_up_${position_variant_num};
-            return ${unit.id}_ss_pantographs_down_${position_variant_num};
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs_state_${formation_position_rule_num}, ${model_variant.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+            1: return ${unit.id}_ss_pantographs_up_${formation_position_rule_num};
+            return ${unit.id}_ss_pantographs_down_${formation_position_rule_num};
         }
         <!--! some vehicle models don't show pans if the OpenTTD consist is not powered
               this isn't very sophisticated as of Feb 2024, it literally just checks if engine (cab cars) are in the conist, doesn't check for contiguous chain -->
-        switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_pantographs_${position_variant_num},
+        switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_pantographs_${formation_position_rule_num},
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
@@ -38,31 +38,31 @@
                 </tal:has_cab_consist>
             ]
         ) {
-            1: return ${unit.id}_switch_graphics_pantographs_state_${position_variant_num};
+            1: return ${unit.id}_switch_graphics_pantographs_state_${formation_position_rule_num};
             return ss_global_empty_vehicle;
         }
     </tal:pantographs>
-</tal:consist_position_variants>
+</tal:formation_position_rules>
 
 <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema
-      this does *not* try to handle variant ID in the same switch - that approach was removed as it caused concurrent varact2 IDs to be exhausted with higher numbers of buyabl variants -->
+      this does *not* try to handle variant ID in the same switch - that approach was removed as it caused concurrent varact2 IDs to be exhausted with higher numbers of variants -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_doors,
         [
-            (10 * LOAD_TEMP(${temp_storage_ids.consist_specific_position_variant_num}))
+            (10 * LOAD_TEMP(${temp_storage_ids.formation_position_rule_num}))
             +
             (1 * switch_graphics_opening_doors())
         ]
     ) {
-    <tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
-        ${position_variant_num}0: return ${unit.id}_ss_doors_closed_position_variant_${position_variant_num};
-        ${position_variant_num}1: return ${unit.id}_ss_doors_open_position_variant_${position_variant_num};
-    </tal:consist_position_variants>
+    <tal:formation_position_rules repeat="formation_position_rule_num python:range(model_variant.gestalt_graphics.num_unique_formation_positions)">
+        ${formation_position_rule_num}0: return ${unit.id}_ss_doors_closed_formation_position_rule_${formation_position_rule_num};
+        ${formation_position_rule_num}1: return ${unit.id}_ss_doors_open_formation_position_rule_${formation_position_rule_num};
+    </tal:formation_position_rules>
 }
 
-<tal:consist_position_variants repeat="position_variant_num python:range(model_variant.gestalt_graphics.total_position_variants)">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_layers_${position_variant_num},
+<tal:formation_position_rules repeat="formation_position_rule_num python:range(model_variant.gestalt_graphics.num_unique_formation_positions)">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_layers_${formation_position_rule_num},
             [
-                STORE_TEMP(${position_variant_num}, ${temp_storage_ids.consist_specific_position_variant_num}),
+                STORE_TEMP(${formation_position_rule_num}, ${temp_storage_ids.formation_position_rule_num}),
                 getbits(extra_callback_info1, 8, 8)
             ]
         ){
@@ -70,95 +70,95 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
         <tal:conditional_pantograph condition="model_variant.pantograph_type is not None">
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
-            1: return ${unit.id}_switch_graphics_pantographs_${position_variant_num};
+            1: return ${unit.id}_switch_graphics_pantographs_${formation_position_rule_num};
         </tal:conditional_pantograph>
     }
 
-</tal:consist_position_variants>
+</tal:formation_position_rules>
 
-<tal:vars define="position_variants model_variant.gestalt_graphics.spriterow_group_mappings">
+<tal:vars define="formation_position_labels model_variant.gestalt_graphics.formation_position_spriterow_map">
     <tal:switch_position_ruleset switch="model_variant.gestalt_graphics.formation_ruleset">
         <!--! rulesets must comply with the position names in gestalt_graphics
               these could be extended or made arbitrary, but that's unwanted complexity -->
         <tal:position_ruleset case="'pax_cars'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_pax_car_ruleset()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'mail_cars'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_mail_car_ruleset()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'railcars_6_unit_sets'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_railcar_ruleset_6_unit_sets()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'railcars_4_unit_sets'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_railcar_ruleset_4_unit_sets()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'railcars_3_unit_sets'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_railcar_ruleset_3_unit_sets()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'railcars_2_unit_sets'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_railcar_ruleset_2_unit_sets()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'tgv'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_tgv_ruleset()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                2: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
-                3: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
+                3: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'driving_cab_cars'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_driving_cab_car_ruleset()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['default']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="'metro'">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_metro_ruleset()) {
-                0: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['first']};
-                1: return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['last']};
+                0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
+                1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
             }
         </tal:position_ruleset>
 
         <tal:position_ruleset case="None">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, 0) {
-                return ${unit.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+                return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
             }
         </tal:position_ruleset>
     </tal:switch_position_ruleset>

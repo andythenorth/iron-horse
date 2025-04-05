@@ -14,8 +14,8 @@
             10 + switch_graphics_automobile_transporter_ruleset_${model_variant.gestalt_graphics.formation_ruleset}()
         ]
     ) {
-        <tal:position_ruleset repeat="position_variant model_variant.gestalt_graphics.position_variants">
-            ${10 + repeat.position_variant.index}: ${unit.id}_ss_${vehicle_spritelayer_name}_${position_variant};
+        <tal:position_ruleset repeat="formation_position_label model_variant.gestalt_graphics.formation_position_labels">
+            ${10 + repeat.formation_position_label.index}: ${unit.id}_ss_${vehicle_spritelayer_name}_${formation_position_label};
         </tal:position_ruleset>
     }
 </tal:spritelayer_vehicle_layers>
