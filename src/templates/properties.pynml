@@ -41,8 +41,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         refit_cost:                     0; <!--! btw this needs to be 0 if we want autorefit without using cb -->
         refittable_cargo_classes:       ${unit.get_cargo_classes_for_nml('allowed')};
         non_refittable_cargo_classes:   ${unit.get_cargo_classes_for_nml('disallowed')};
-        cargo_allow_refit:              [${unit.get_label_refits_allowed()}];
-        cargo_disallow_refit:           [${unit.get_label_refits_disallowed()}];
+        cargo_allow_refit:              [${model_variant.label_refits_allowed_as_nml_prop}];
+        cargo_disallow_refit:           [${model_variant.label_refits_disallowed_as_nml_prop}];
         <tal:default_cargo condition="len(model_variant.default_cargos) > 0">
             default_cargo_type:             ${model_variant.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>

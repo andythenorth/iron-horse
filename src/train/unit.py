@@ -24,11 +24,6 @@ class UnitBase(object):
             self.cabbage_numeric_id = 0
         else:
             self.cabbage_numeric_id = len(self.model_variant.unique_units)
-        # CABBAGE
-        # !! the need to copy cargo refits from the model_variant is legacy from the default multi-unit articulated vehicles in Iron Horse 1
-        # !! could likely be refactored !!
-        self.label_refits_allowed = self.model_variant.label_refits_allowed
-        self.label_refits_disallowed = self.model_variant.label_refits_disallowed
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = "ENGINE_CLASS_STEAM"
@@ -374,14 +369,6 @@ class UnitBase(object):
         args = ",".join([str(y), anim_flag])
         return template_name + "(" + args + ")"
 
-    def get_label_refits_allowed(self):
-        # allowed labels, for fine-grained control in addition to classes
-        return ",".join(self.label_refits_allowed)
-
-    def get_label_refits_disallowed(self):
-        # disallowed labels, for fine-grained control, knocking out cargos that are allowed by classes, but don't fit for gameplay reasons
-        return ",".join(self.label_refits_disallowed)
-
     def get_cargo_suffix(self):
         return "string(" + self.cargo_units_refit_menu + ")"
 
@@ -399,21 +386,8 @@ class UnitBase(object):
                         % (self.model_variant.id, nml_template)
                     )
 
-    def assert_cargo_labels(self, cargo_labels):
-        for i in cargo_labels:
-            if i not in global_constants.cargo_labels:
-                utils.echo_message(
-                    "Warning: vehicle "
-                    + self.id
-                    + " references cargo label "
-                    + i
-                    + " which is not defined in the cargo table"
-                )
-
     def validate(self):
         # integrity tests
-        self.assert_cargo_labels(self.label_refits_allowed)
-        self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()
 
 class BatteryHybridEngineUnit(UnitBase):

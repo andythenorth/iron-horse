@@ -893,6 +893,14 @@ class ModelTypeBase(object):
     def roster(self):
         return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
+    @cached_property
+    def label_refits_allowed_as_nml_prop(self):
+        return ",".join(self.label_refits_allowed)
+
+    @cached_property
+    def label_refits_disallowed_as_nml_prop(self):
+        return ",".join(self.label_refits_disallowed)
+
     def get_nml_expression_for_default_cargos(self):
         # sometimes first default cargo is not available, so we use a list
         # this avoids unwanted cases like box cars defaulting to mail when goods cargo not available
@@ -1233,6 +1241,17 @@ class ModelTypeBase(object):
                     self.model_id + " has weight > 500t, which is too much"
                 )
 
+    def assert_cargo_labels(self, cargo_labels):
+        for i in cargo_labels:
+            if i not in global_constants.cargo_labels:
+                utils.echo_message(
+                    "Warning: vehicle "
+                    + self.id
+                    + " references cargo label "
+                    + i
+                    + " which is not defined in the cargo table"
+                )
+
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
         if self.power > 0:
@@ -1246,6 +1265,8 @@ class ModelTypeBase(object):
     def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
+        self.assert_cargo_labels(self.label_refits_allowed)
+        self.assert_cargo_labels(self.label_refits_disallowed)
         # test interpolated gen and intro_year
         assert self.gen, (
             "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
