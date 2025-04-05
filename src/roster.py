@@ -68,30 +68,26 @@ class Roster(object):
             **self.wagon_model_variants_by_catalogue,
         }
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def engine_catalogues(self):
         return [
             catalogue_entry["catalogue"]
             for catalogue_entry in self.engine_model_variants_by_catalogue.values()
         ]
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def wagon_catalogues(self):
         return [
             catalogue_entry["catalogue"]
             for catalogue_entry in self.wagon_model_variants_by_catalogue.values()
         ]
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def catalogues(self):
         # Gather catalogue instances from both engines and wagons
         return self.engine_catalogues + self.wagon_catalogues
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def engine_model_variants(self):
         # Flatten the list of engine model variants from the nested dict
         return [
@@ -100,8 +96,7 @@ class Roster(object):
             for model_variant in catalogue_entry["model_variants"]
         ]
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def wagon_model_variants(self):
         # Flatten the list of wagon model variants from the nested dict
         return [
@@ -110,8 +105,7 @@ class Roster(object):
             for model_variant in catalogue_entry["model_variants"]
         ]
 
-    # should be safe to cache this one
-    @cached_property
+    @property
     def model_variants(self):
         # join both engine and wagon variants
         return self.engine_model_variants + self.wagon_model_variants
@@ -158,6 +152,7 @@ class Roster(object):
 
     @property
     def model_variants_in_order_optimised_for_action_2_ids(self):
+        # CABBAGE as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants
         # the base sort order for model variants is for the buy menu, but this isn't effective for order in nml output
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
@@ -315,6 +310,7 @@ class Roster(object):
             engine_module = importlib.import_module(
                 "." + engine_module_name, package_name
             )
+
             for model_def in engine_module.main():
                 factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
@@ -332,6 +328,9 @@ class Roster(object):
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
                     ].append(model_variant)
+                    if model_variant.model_id in ["fleet", "nimbus"]:
+                        print("@@@ found", model_variant.id)
+
 
     @timing
     def produce_wagons(self):
