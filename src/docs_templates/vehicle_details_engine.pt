@@ -82,7 +82,7 @@
                     </p>
                     <small>
                         <cite>
-                            ${structure: catalogue.factory.cite}
+                            ${structure: catalogue.cite}
                         </cite>
                     </small>
                 </blockquote>

@@ -103,9 +103,6 @@ class ModelTypeBase(object):
         # option to suppress nmlc warnings about animated pixels for vehicle models where they're intentional
         # override in subclasses as needed
         self.suppress_animated_pixel_warnings = False
-        # cite from a made up person) for docs etc
-        # optional, set per subclass as needed
-        self.cite = ""
 
     @classmethod
     @property
@@ -928,6 +925,8 @@ class ModelTypeBase(object):
     def buyable_variant_group_id(self):
         self.assert_buyable_variant_groups()
         if self._buyable_variant_group_id is not None:
+            #print("self._buyable_variant_group_id", self._buyable_variant_group_id)
+            #print("self.catalogue_entry.catalogue.buyable_variant_group_id", self.catalogue_entry.catalogue.buyable_variant_group_id)
             # explicitly defined group id
             id = self._buyable_variant_group_id
         elif self.group_as_wagon:
