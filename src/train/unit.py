@@ -206,8 +206,9 @@ class UnitBase(object):
             misc_flags.append("TRAIN_FLAG_MU")
         return ",".join(misc_flags)
 
-    def get_extra_flags(self):
-        # CABBAGE - should this be a model_variant or unit method??
+    @property
+    def extra_flags(self):
+        # on the unit for consistency with misc_flags
         extra_flags = []
         if self.model_variant.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
@@ -219,7 +220,7 @@ class UnitBase(object):
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
 
-    def get_cargo_classes_for_nml(self, allow_disallow_key):
+    def get_cargo_classes_as_nml_prop(self, allow_disallow_key):
         result = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
         if hasattr(self, "articulated_unit_different_class_refit_groups"):

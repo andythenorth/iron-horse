@@ -3,7 +3,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <!--! name static prop used for buy menu search only -->
         name:                           ${model_variant.name_as_nml_prop};
         climates_available:             NO_CLIMATE;
-        badges:                         ${model_variant.get_badges_for_nml()};
+        badges:                         ${model_variant.badges_as_nml_prop};
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
             engine_class:                   ${unit.engine_class};
@@ -39,15 +39,15 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         cargo_capacity:                 ${unit.default_cargo_capacity};
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         refit_cost:                     0; <!--! btw this needs to be 0 if we want autorefit without using cb -->
-        refittable_cargo_classes:       ${unit.get_cargo_classes_for_nml('allowed')};
-        non_refittable_cargo_classes:   ${unit.get_cargo_classes_for_nml('disallowed')};
+        refittable_cargo_classes:       ${unit.get_cargo_classes_as_nml_prop('allowed')};
+        non_refittable_cargo_classes:   ${unit.get_cargo_classes_as_nml_prop('disallowed')};
         cargo_allow_refit:              [${model_variant.label_refits_allowed_as_nml_prop}];
         cargo_disallow_refit:           [${model_variant.label_refits_disallowed_as_nml_prop}];
         <tal:default_cargo condition="len(model_variant.default_cargos) > 0">
             default_cargo_type:             ${model_variant.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
         misc_flags:                     bitmask(${unit.misc_flags});
-        extra_flags:                    bitmask(${unit.get_extra_flags()});
+        extra_flags:                    bitmask(${unit.extra_flags});
         dual_headed:                    ${1 if model_variant.dual_headed else 0};
         length:                         ${unit.vehicle_length};
         track_type:                     ${model_variant.track_type};

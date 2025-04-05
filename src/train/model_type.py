@@ -104,11 +104,9 @@ class ModelTypeBase(object):
         )
         # option to provide automatic roof for all units in the model type, leave as None for no generation
         self.roof_type = None
-        # optionally suppress nmlc warnings about animated pixels for vehicle models where they're intentional
-        # CABBAGE model_def?
-        self.suppress_animated_pixel_warnings = kwargs.get(
-            "suppress_animated_pixel_warnings", False
-        )
+        # option to suppress nmlc warnings about animated pixels for vehicle models where they're intentional
+        # override in subclasses as needed
+        self.suppress_animated_pixel_warnings = False
         # cite from a made up person) for docs etc
         # optional, set per subclass as needed
         self.cite = ""
@@ -315,7 +313,7 @@ class ModelTypeBase(object):
         # stub only, over-ride in subclasses as appropriate
         return None
 
-    @cached_property
+    @property
     def cabbage_power_source_badges(self):
         # note returns multiple badges, as engines support multiple power sources
         result = []
@@ -338,7 +336,7 @@ class ModelTypeBase(object):
                 result.append("power_source_cabbage/dual_voltage")
         return result
 
-    @cached_property
+    @property
     def cabbage_colour_mix_badges(self):
         # note returns multiple badges, as vehicles support multiple colours
         result = []
@@ -347,7 +345,8 @@ class ModelTypeBase(object):
                 result.append(f"freight_livery_colour_set_name/{colour_set_name}")
         return result
 
-    def get_cabbage_variant_handling_badges(self):
+    @property
+    def cabbage_variant_handling_badges(self):
         result = []
         # CABBAGE - remove buyable_variants dependency
         if len(self.buyable_variant_group.buyable_variants) > 1:
@@ -356,7 +355,8 @@ class ModelTypeBase(object):
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")
         return result
 
-    def get_badges(self):
+    @cached_property
+    def badges(self):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from model type or properties
@@ -366,7 +366,7 @@ class ModelTypeBase(object):
         # colour mix badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_colour_mix_badges)
         # special variant handling badges
-        result.extend(self.get_cabbage_variant_handling_badges())
+        result.extend(self.cabbage_variant_handling_badges)
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family
@@ -380,8 +380,9 @@ class ModelTypeBase(object):
             result.append("special_flags/tilt")
         return result
 
-    def get_badges_for_nml(self):
-        return "[" + ",".join(f'"{badge}"' for badge in self.get_badges()) + "]"
+    @property
+    def badges_as_nml_prop(self):
+        return "[" + ",".join(f'"{badge}"' for badge in self.badges) + "]"
 
     @cached_property
     def engine_varies_power_by_power_source(self):
