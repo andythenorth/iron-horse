@@ -2337,7 +2337,7 @@ class CarModelTypeBase(ModelTypeBase):
         tree_permissive = []
         tree_strict = []
 
-        for wagon in self.roster.wagon_model_variants_by_base_id[self.model_id_root]:
+        for wagon in self.roster.wagon_model_variants_by_model_id_root[self.model_id_root]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:

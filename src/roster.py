@@ -109,7 +109,7 @@ class Roster(object):
 
     # should be safe to cache this one
     @cached_property
-    def wagon_model_variants_by_base_id(self):
+    def wagon_model_variants_by_model_id_root(self):
         result = {}
         for wagon_model_variant in self.wagon_model_variants:
             result.setdefault(wagon_model_variant.model_id_root, [])
@@ -122,12 +122,11 @@ class Roster(object):
         result = []
         result.extend(self.engine_model_variants)
         for base_track_type_name in ["RAIL", "NG", "METRO"]:
-            # CABBAGE refactor to model_id not base_id
-            for base_id in self.wagon_model_variants_by_base_id.keys():
+            for model_id_root in self.wagon_model_variants_by_model_id_root.keys():
                 wagon_model_variants = [
                     wagon_model_variant
-                    for wagon_model_variant in self.wagon_model_variants_by_base_id[
-                        base_id
+                    for wagon_model_variant in self.wagon_model_variants_by_model_id_root[
+                        model_id_root
                     ]
                     if wagon_model_variant.base_track_type_name == base_track_type_name
                 ]
@@ -278,7 +277,7 @@ class Roster(object):
                 if numeric_id in numeric_id_defender:
                     colliding_model_variant = numeric_id_defender[numeric_id]
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
-                    # if base_id matches both model variants have been instantiated from the same source module...
+                    # if model_id_root matches both model variants have been instantiated from the same source module...
                     if hasattr(model_variant, "model_id_root"):
                         if (
                             getattr(colliding_model_variant, "model_id_root", None)
