@@ -61,8 +61,8 @@ class ModelTypeBase(object):
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
-        # CABBAGE model_def?
-        self._vehicle_life = kwargs.get("vehicle_life", None)
+        # option to force vehicle life, override in subclasses as needed
+        self._vehicle_life = None
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
         # some engines require pantograph sprites composited, don't bother setting this unless required
