@@ -194,12 +194,11 @@ class ModelVariantFactory:
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
         # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
+        # can this not be done when cloning?
         if self.model_def.cloned_from_model_def is not None:
             self.model_def.buyable_variant_group_id = (
                 self.model_def.cloned_from_model_def.model_id
             )
-        else:
-            self.model_def.buyable_variant_group_id = self.model_def.model_id
 
         model_variant = self.model_type_cls(
             factory=self,
@@ -500,14 +499,27 @@ class Catalogue(list):
 
     @property
     def buyable_variant_group_id(self):
+        # cascade of sources for variant group ID
+
+        # group trailers with their cabs
         if self.factory.cab_factory is not None:
-            return self.factory.cab_factory.model_def.buyable_variant_group_id
-        if getattr(self.factory.model_type_cls, "buyable_variant_group_id", None) is not None:
-            return self.factory.model_type_cls.buyable_variant_group_id
+            return self.factory.cab_factory.model_id
+
+        # force a variant group via model def
         if self.factory.model_def.buyable_variant_group_id is not None:
             return self.factory.model_def.buyable_variant_group_id
-        #raise ValueError(f"{self}")
-        return None
+
+        # primarily used for explcitly selected wagon groups (from a class property on the model type)
+        if getattr(self.factory.model_type_cls, "variant_group_id_root", None) is not None:
+            return (
+                f"{self.factory.model_type_cls.variant_group_id_root}_"
+                f"{self.base_track_type_name.lower()}_"
+                f"gen_{self.factory.model_def.gen}{self.factory.model_def.subtype}_"
+            )
+
+        # default is to group all variants from this catalogue together
+        return self.id
+
         """
     @cached_property
     def buyable_variant_group_id(self):
@@ -531,7 +543,18 @@ class Catalogue(list):
             raise ValueError(f"no buyable_variant_group_id found for {self.id}")
         return id
         """
+    """
 
+    def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
+        # composes a group id from a group name, and some properties from the model type
+        return "{a}_{b}_gen_{c}{d}_{e}".format(
+            a=group_name,
+            b=self.base_track_type_name.lower(),
+            c=self.gen,
+            d=self.subtype,
+            e=fixed_mixed_suffix,
+        )
+    """
 
     @cached_property
     def intro_year(self):

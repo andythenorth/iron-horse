@@ -915,16 +915,6 @@ class ModelTypeBase(object):
         ]
         return variant_group
 
-    def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
-        # composes a group id from a group name, and some properties from the model type
-        return "{a}_{b}_gen_{c}{d}_{e}".format(
-            a=group_name,
-            b=self.base_track_type_name.lower(),
-            c=self.gen,
-            d=self.subtype,
-            e=fixed_mixed_suffix,
-        )
-
     @cached_property
     def variant_group_parent_vehicle_id(self):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
@@ -1686,10 +1676,7 @@ class MailEngineRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
-            family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
-        else:
-            family_name = self.model_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
 
@@ -1733,10 +1720,7 @@ class MailEngineExpressRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
-            family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
-        else:
-            family_name = self.model_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1887,10 +1871,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
-            family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
-        else:
-            family_name = self.model_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1983,10 +1964,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
     @property
     def vehicle_family_badge(self):
         # CABBAGE - CAN THESE JUST USE SUPER().foo?
-        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
-            family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
-        else:
-            family_name = self.model_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2217,7 +2195,8 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        return "vehicle_family/" + family_name
 
     @property
     def tilt_bonus(self):
@@ -2554,7 +2533,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     """
 
     model_id_root = "automobile_car"
-    buyable_variant_group_id = "wagon_group_vehicle_transporter_cars"
+    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2604,7 +2583,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     """
 
     model_id_root = "low_floor_automobile_car"
-    buyable_variant_group_id = "wagon_group_vehicle_transporter_cars"
+    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2634,7 +2613,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
     ]
 
     model_id_root = "enclosed_automobile_car"
-    buyable_variant_group_id = "wagon_group_vehicle_transporter_cars"
+    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2673,7 +2652,7 @@ class BolsterCarBase(CarModelTypeBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
     ]
-    buyable_variant_group_id = "wagon_group_bolster_cars"
+    variant_group_id_root = "wagon_group_bolster_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2727,7 +2706,7 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
     """
 
     model_id_root = "bolster_car_randomised"
-    buyable_variant_group_id = "wagon_group_bolster_cars"
+    variant_group_id_root = "wagon_group_bolster_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2780,7 +2759,7 @@ class BoxCarType1(BoxCarBase):
     ]
 
     model_id_root = "box_car_type_1"
-    buyable_variant_group_id = "wagon_group_box_cars"
+    variant_group_id_root = "wagon_group_box_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2813,7 +2792,7 @@ class BoxCarType2(BoxCarBase):
 
     model_id_root = "box_car_type_2"
     input_spritesheet_delegate_id_root = "box_car_type_1"
-    buyable_variant_group_id = "wagon_group_box_cars"
+    variant_group_id_root = "wagon_group_box_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2853,7 +2832,7 @@ class BoxCarCurtainSide(BoxCarBase):
     ]
 
     model_id_root = "curtain_side_box_car"
-    buyable_variant_group_id = "wagon_group_box_cars"
+    variant_group_id_root = "wagon_group_box_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2938,7 +2917,7 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
     ]
 
     model_id_root = "box_car_randomised"
-    buyable_variant_group_id = "wagon_group_box_cars"
+    variant_group_id_root = "wagon_group_box_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2955,7 +2934,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
     Base for sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
 
-    buyable_variant_group_id = "wagon_group_sliding_wall_cars"
+    variant_group_id_root = "wagon_group_sliding_wall_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3062,7 +3041,7 @@ class BoxCarVehicleParts(BoxCarBase):
     ]
 
     model_id_root = "vehicle_parts_box_car"
-    buyable_variant_group_id = "wagon_group_sliding_wall_cars"
+    variant_group_id_root = "wagon_group_sliding_wall_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3129,7 +3108,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_aggregate_bulk_open_cars"
+    variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3262,7 +3241,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_mineral_bulk_open_cars"
+    variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3313,7 +3292,7 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
     """
 
     model_id_root = "mineral_bulk_open_car_randomised"
-    buyable_variant_group_id = "wagon_group_mineral_bulk_open_cars"
+    variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3347,7 +3326,7 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    buyable_variant_group_id = "wagon_group_scrap_metal_cars"
+    variant_group_id_root = "wagon_group_scrap_metal_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3422,7 +3401,7 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_tippler_bulk_open_cars"
+    variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3475,7 +3454,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_bulk_open_car_randomised"
-    buyable_variant_group_id = "wagon_group_tippler_bulk_open_cars"
+    variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3506,7 +3485,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_box_randomised"
-    buyable_variant_group_id = "wagon_group_bulk_cars_randomised"
+    variant_group_id_root = "wagon_group_bulk_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3532,7 +3511,7 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_hopper_randomised"
-    buyable_variant_group_id = "wagon_group_bulk_cars_randomised"
+    variant_group_id_root = "wagon_group_bulk_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3560,7 +3539,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_mixed_randomised"
-    buyable_variant_group_id = "wagon_group_bulk_cars_randomised"
+    variant_group_id_root = "wagon_group_bulk_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3779,7 +3758,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
     ]
 
     model_id_root = "coil_car_covered_asymmetric"
-    buyable_variant_group_id = "wagon_group_coil_cars"
+    variant_group_id_root = "wagon_group_coil_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3821,7 +3800,7 @@ class CoilCarCovered(CoilCarBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
     ]
-    buyable_variant_group_id = "wagon_group_coil_cars"
+    variant_group_id_root = "wagon_group_coil_cars"
     model_id_root = "coil_car_covered"
 
     def __init__(self, **kwargs):
@@ -3859,7 +3838,7 @@ class CoilCarTarpaulin(CoilCarBase):
     ]
 
     model_id_root = "coil_car_tarpaulin"
-    buyable_variant_group_id = "wagon_group_coil_cars"
+    variant_group_id_root = "wagon_group_coil_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3899,7 +3878,7 @@ class CoilCarUncovered(CoilCarBase):
     ]
 
     model_id_root = "coil_car_uncovered"
-    buyable_variant_group_id = "wagon_group_coil_cars"
+    variant_group_id_root = "wagon_group_coil_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3928,7 +3907,7 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
     ]
 
     model_id_root = "dedicated_coil_car_randomised"
-    buyable_variant_group_id = "wagon_group_coil_cars"
+    variant_group_id_root = "wagon_group_coil_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3997,7 +3976,7 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_1"
-    buyable_variant_group_id = "wagon_group_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4011,7 +3990,7 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_2"
-    buyable_variant_group_id = "wagon_group_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4026,7 +4005,7 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_3"
-    buyable_variant_group_id = "wagon_group_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4051,7 +4030,7 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
     ]
 
     model_id_root = "covered_hopper_car_randomised"
-    buyable_variant_group_id = "wagon_group_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4206,7 +4185,7 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_food_express_tank_cars"
+    variant_group_id_root = "wagon_group_food_express_tank_cars"
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -4336,7 +4315,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     # company colour not used on these wagons, so set SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
 
-    buyable_variant_group_id = "wagon_group_farm_product_box_cars"
+    variant_group_id_root = "wagon_group_farm_product_box_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4418,7 +4397,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     # company colour not used on these wagons, so use SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
 
-    buyable_variant_group_id = "wagon_group_farm_product_hopper_cars"
+    variant_group_id_root = "wagon_group_farm_product_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4499,7 +4478,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     # company colour not used on these wagons, so use SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
 
-    buyable_variant_group_id = "wagon_group_food_hopper_cars"
+    variant_group_id_root = "wagon_group_food_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4622,7 +4601,7 @@ class FlatCarBulkheadBase(FlatCarBase):
         "FREIGHT_GREY",
     ]
 
-    buyable_variant_group_id = "wagon_group_bulkhead_flat_cars"
+    variant_group_id_root = "wagon_group_bulkhead_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4687,7 +4666,7 @@ class FlatCarDropEnd(FlatCarBase):
     """
 
     model_id_root = "drop_end_flat_car"
-    buyable_variant_group_id = "wagon_group_flat_cars"
+    variant_group_id_root = "wagon_group_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4709,7 +4688,7 @@ class FlatCarDropSide(FlatCarBase):
     """
 
     model_id_root = "drop_side_flat_car"
-    buyable_variant_group_id = "wagon_group_flat_cars"
+    variant_group_id_root = "wagon_group_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4732,7 +4711,7 @@ class FlatCar(FlatCarBase):
     """
 
     model_id_root = "flat_car"
-    buyable_variant_group_id = "wagon_group_flat_cars"
+    variant_group_id_root = "wagon_group_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4779,7 +4758,7 @@ class FlatCarMillBase(FlatCarBase):
     Variant of flat wagon designed specfically for steel industry.
     """
 
-    buyable_variant_group_id = "wagon_group_mill_flat_cars"
+    variant_group_id_root = "wagon_group_mill_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4842,7 +4821,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     """
 
     model_id_root = "flat_car_randomised"
-    buyable_variant_group_id = "wagon_group_flat_cars"
+    variant_group_id_root = "wagon_group_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4891,7 +4870,7 @@ class GasTankCarPressure(GasTankCarBase):
     """
 
     model_id_root = "pressure_tank_car"
-    buyable_variant_group_id = "wagon_group_pressure_tank_cars"
+    variant_group_id_root = "wagon_group_pressure_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4903,7 +4882,7 @@ class GasTankCarCryo(GasTankCarBase):
     """
 
     model_id_root = "cryo_tank_car"
-    buyable_variant_group_id = "wagon_group_pressure_tank_cars"
+    variant_group_id_root = "wagon_group_pressure_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4977,7 +4956,7 @@ class HopperCarAggregateBase(HopperCarBase):
         "FREIGHT_SAND",
     ]
 
-    buyable_variant_group_id = "wagon_group_aggregate_hopper_cars"
+    variant_group_id_root = "wagon_group_aggregate_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5041,7 +5020,7 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_randomised"
-    buyable_variant_group_id = "wagon_group_aggregate_hopper_cars"
+    variant_group_id_root = "wagon_group_aggregate_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5059,7 +5038,7 @@ class HopperCar(HopperCarBase):
     """
 
     model_id_root = "hopper_car"
-    buyable_variant_group_id = "wagon_group_hopper_cars"
+    variant_group_id_root = "wagon_group_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5077,7 +5056,7 @@ class HopperCarHighSide(HopperCarBase):
     """
 
     model_id_root = "hopper_car_high_side"
-    buyable_variant_group_id = "wagon_group_hopper_cars"
+    variant_group_id_root = "wagon_group_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5107,7 +5086,7 @@ class HopperCarMGRBase(HopperCarBase):
         "FREIGHT_GREY",
         "FREIGHT_SULPHUR",
     ]
-    buyable_variant_group_id = "wagon_group_mgr_hopper_cars"
+    variant_group_id_root = "wagon_group_mgr_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5165,7 +5144,7 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
     ]
 
     model_id_root = "hopper_car_randomised"
-    buyable_variant_group_id = "wagon_group_hopper_cars"
+    variant_group_id_root = "wagon_group_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5349,7 +5328,7 @@ class IntermodalCarUnit(IntermodalCarBase):
     """
 
     model_id_root = "intermodal_car"
-    buyable_variant_group_id = "wagon_group_intermodal_cars"
+    variant_group_id_root = "wagon_group_intermodal_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5370,7 +5349,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
     """
 
     model_id_root = "low_floor_intermodal_car"
-    buyable_variant_group_id = "wagon_group_intermodal_cars"
+    variant_group_id_root = "wagon_group_intermodal_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5583,7 +5562,8 @@ class MailRailcarTrailerCarBase(MailCarBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        return "vehicle_family/" + family_name
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -5911,7 +5891,7 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    buyable_variant_group_id = "wagon_group_lime_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_lime_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6050,7 +6030,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    buyable_variant_group_id = "wagon_group_roller_roof_hopper_cars"
+    variant_group_id_root = "wagon_group_roller_roof_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6143,7 +6123,7 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_salt_covered_hopper_cars"
+    variant_group_id_root = "wagon_group_salt_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6250,7 +6230,7 @@ class OpenCar(OpenCarBase):
     ]
 
     model_id_root = "open_car"
-    buyable_variant_group_id = "wagon_group_open_cars"
+    variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6281,7 +6261,7 @@ class OpenCarHood(OpenCarBase):
     ]
 
     model_id_root = "hood_open_car"
-    buyable_variant_group_id = "wagon_group_open_cars"
+    variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6317,7 +6297,7 @@ class OpenCarHighEnd(OpenCarBase):
     ]
 
     model_id_root = "high_end_open_car"
-    buyable_variant_group_id = "wagon_group_open_cars"
+    variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6389,7 +6369,7 @@ class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
     ]
 
     model_id_root = "open_car_randomised"
-    buyable_variant_group_id = "wagon_group_open_cars"
+    variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6492,7 +6472,8 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        return "vehicle_family/" + family_name
 
 
 class PanoramicCar(PassengerCarBase):
@@ -6515,7 +6496,7 @@ class PanoramicCar(PassengerCarBase):
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
-    buyable_variant_group_id = "wagon_group_passenger_cars"
+    variant_group_id_root = "wagon_group_passenger_cars"
         """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
@@ -6556,7 +6537,7 @@ class PassengerCar(PassengerCarBase):
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
-    buyable_variant_group_id = "wagon_group_passenger_cars"
+    variant_group_id_root = "wagon_group_passenger_cars"
         """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
@@ -6944,7 +6925,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
     Refits match box vans, this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
     """
 
-    buyable_variant_group_id = "wagon_group_piece_goods_cars_randomised"
+    variant_group_id_root = "wagon_group_piece_goods_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7112,7 +7093,7 @@ class ReeferCarType1(ReeferCarBase):
     """
 
     model_id_root = "reefer_car_type_1"
-    buyable_variant_group_id = "wagon_group_reefer_cars"
+    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7124,7 +7105,7 @@ class ReeferCarType2(ReeferCarBase):
     """
 
     model_id_root = "reefer_car_type_2"
-    buyable_variant_group_id = "wagon_group_reefer_cars"
+    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7137,7 +7118,7 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
     """
 
     model_id_root = "reefer_car_randomised"
-    buyable_variant_group_id = "wagon_group_reefer_cars"
+    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7219,7 +7200,7 @@ class SiloCarType1(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_1"
-    buyable_variant_group_id = "wagon_group_silo_cars"
+    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7233,7 +7214,7 @@ class SiloCarType2(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_2"
-    buyable_variant_group_id = "wagon_group_silo_cars"
+    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7247,7 +7228,7 @@ class SiloCarType3(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_3"
-    buyable_variant_group_id = "wagon_group_silo_cars"
+    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7271,7 +7252,7 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
     ]
 
     model_id_root = "silo_car_randomised"
-    buyable_variant_group_id = "wagon_group_silo_cars"
+    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7291,7 +7272,7 @@ class SiloCarCementType1(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_1"
-    buyable_variant_group_id = "wagon_group_cement_silo_cars"
+    variant_group_id_root = "wagon_group_cement_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7317,7 +7298,7 @@ class SiloCarCementType2(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_2"
-    buyable_variant_group_id = "wagon_group_cement_silo_cars"
+    variant_group_id_root = "wagon_group_cement_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7343,7 +7324,7 @@ class SiloCarCementType3(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_3"
-    buyable_variant_group_id = "wagon_group_cement_silo_cars"
+    variant_group_id_root = "wagon_group_cement_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7369,7 +7350,7 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_randomised"
-    buyable_variant_group_id = "wagon_group_cement_silo_cars"
+    variant_group_id_root = "wagon_group_cement_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7573,7 +7554,7 @@ class TankCarAcidBase(TankCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    buyable_variant_group_id = "wagon_group_acid_tank_cars"
+    variant_group_id_root = "wagon_group_acid_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7696,7 +7677,7 @@ class TankCarProductBase(TankCarBase):
         "FREIGHT_SULPHUR",
     ]
 
-    buyable_variant_group_id = "wagon_group_product_tank_cars"
+    variant_group_id_root = "wagon_group_product_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7782,7 +7763,7 @@ class TankCarStandardBase(TankCarBase):
         "FREIGHT_SULPHUR",
     ]
 
-    buyable_variant_group_id = "wagon_group_tank_cars"
+    variant_group_id_root = "wagon_group_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7870,7 +7851,7 @@ class TankCarVolatilesBase(TankCarBase):
         "FREIGHT_TEAL",
     ]
 
-    buyable_variant_group_id = "wagon_group_volatiles_tank_cars"
+    variant_group_id_root = "wagon_group_volatiles_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7923,7 +7904,7 @@ class TarpaulinCarBase(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    buyable_variant_group_id = "wagon_group_tarpaulin_cars"
+    variant_group_id_root = "wagon_group_tarpaulin_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
