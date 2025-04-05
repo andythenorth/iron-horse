@@ -322,7 +322,7 @@ class ModelTypeBase(object):
     def cabbage_variant_handling_badges(self):
         result = []
         # CABBAGE - remove buyable_variants dependency
-        if len(self.buyable_variant_group.buyable_variants) > 1:
+        if len(self.buyable_variant_group) > 1:
             result.append("ih_variants_cabbage/cabbage_level_0_has_children")
         if self.buyable_variant_group.parent_group is not None:
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")

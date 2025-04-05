@@ -471,12 +471,12 @@ class Roster(object):
             ):
                 self.buyable_variant_groups[
                     model_variant.buyable_variant_group_id
-                ] = PurchaseVariantGroup(
+                ] = VariantGroup(
                     id=model_variant.buyable_variant_group_id,
                 )
             self.buyable_variant_groups[
                 model_variant.buyable_variant_group_id
-            ].add_buyable_variant(model_variant)
+            ].append(model_variant)
         # now deal with nested groups
         # we do this after creating all the groups, as some groups need to reference other groups
         for (
@@ -584,26 +584,22 @@ class Roster(object):
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
 
-class PurchaseVariantGroup(object):
+class VariantGroup(list):
     """
-    Simple class to hold groups of buyable variants.
-    These provide the variant_group in nml.
-    A group may comprise buyable variants for a single model type, or implement other rules to group multiple model types.
+    Simple class to manage providing the variant_group nml property.
+    List members are model_variant instances.
+    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
     def __init__(self, id):
         self.id = id
-        self.buyable_variants = []
         self.parent_group = None
-
-    def add_buyable_variant(self, buyable_variant):
-        self.buyable_variants.append(buyable_variant)
 
     @property
     def parent_vehicle(self):
         # CABBAGE vehicle, unit or model_variant?
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self.buyable_variants[0].units[0]
+        return self[0].units[0]
 
     @property
     def parent_model_variant(self):
