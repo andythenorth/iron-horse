@@ -968,7 +968,8 @@ class ModelTypeBase(object):
                 group_id_base = self.use_named_purchase_variant_group
             else:
                 group_id_base = self.model_id
-            if not self.uses_random_livery:
+            if len(self.catalogue_entry.livery_def.colour_set_names or []) < 2:
+                # if it's less than two entries (or None) then it's fixed colours
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"
             else:
@@ -1116,22 +1117,6 @@ class ModelTypeBase(object):
             + ",".join([str(arg) for arg in args])
             + ")"
         )
-
-    @property
-    def uses_random_livery(self):
-        # NOT EVEN SURE WHAT THIS IS FOR - THE CALLERS ARE PRETTY LIMITED
-        # CABBAGE RANDOM SHOULD ACTUALLY BE A FLAG ON THE LIVERY_DEF?
-        # RATHER THAN INFERRING FROM STRINGS?
-        # CABBAGE SHOULD BE FROM COUNTING BADGES OR SOMETHING?
-        if self.catalogue_entry.livery_def.colour_set_names is None:
-            return False
-        if not isinstance(self.catalogue_entry.livery_def.colour_set_names, list):
-            # CABBAGE shim
-            print(self.catalogue_entry.livery_def.livery_name, "colour_set_names is not a list")
-            return False
-        else:
-            # if it's more than one entry then it's randomised
-            return len(self.catalogue_entry.livery_def.colour_set_names) > 1
 
     def get_freight_wagon_livery_index(self, context=None):
         livery_name = self.catalogue_entry.livery_def.livery_name
