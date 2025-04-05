@@ -916,19 +916,8 @@ class ModelTypeBase(object):
         return variant_group
 
     @cached_property
-    def variant_group_parent_vehicle_id(self):
-        # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
-        # this function is just a wrapper to handle returning that to nml templates
-        # we still want to be able to get the variant group when needed without this check so this is handled separately
-        if self.variant_group.parent_vehicle.id == self.units[0].id:
-            # handle nested group case, which is only used on first unit
-            if self.variant_group.parent_group is None:
-                return None
-            else:
-                # JFDI CABBAGE MAKE IT WORK TEMP
-                return self.variant_group.parent_group.parent_vehicle.id
-        else:
-            return self.variant_group.parent_vehicle.id
+    def variant_group_as_nml_prop(self):
+        return self.variant_group.get_variant_group_prop_for_model_variant(self)
 
     @cached_property
     def requires_custom_buy_menu_sprite(self):

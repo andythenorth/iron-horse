@@ -459,6 +459,8 @@ class Roster(object):
         # - add the buyable variant as a member of the group
         for model_variant in self.model_variants:
             variant_group_id = model_variant.catalogue_entry.variant_group_id
+            if variant_group_id is None:
+                raise ValueError(model_variant.id)
             variant_group = self.variant_groups.setdefault(
                 variant_group_id, VariantGroup(id=variant_group_id)
             )
@@ -539,14 +541,16 @@ class VariantGroup(list):
         self.id = id
         self.parent_group = None
 
-    @property
-    def parent_vehicle(self):
-        # CABBAGE vehicle, unit or model_variant?
-        # CABBAGE - first vehicle is always parent?
-        # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self[0].units[0]
+    def get_variant_group_prop_for_model_variant(self, model_variant):
+        # faff to find the group leader (typically the first variant)
+        if self.parent_group is not None and model_variant == self[0]:
+            leader = self.parent_group[0]
+        else:
+            leader = self[0]
 
-    @property
-    def parent_model_variant(self):
-        # convenience function, note also parent_vehicle, which is often what we want
-        return self.parent_vehicle.model_variant
+        # guard - don't assign a group reference to the leader itself
+        if leader == model_variant:
+            return None
+
+        # for nml, we want the id of the first unit
+        return leader.units[0].id

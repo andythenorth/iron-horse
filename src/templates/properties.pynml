@@ -18,8 +18,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             retire_early:                   ${model_variant.retire_early};
             reliability_decay:              20; <!--! default value -->
             vehicle_life:                   ${model_variant.vehicle_life};
-            <tal:variant_group condition="model_variant.variant_group_parent_vehicle_id is not None"> <!--! CABBAGE -->
-                variant_group:                  ${model_variant.variant_group_parent_vehicle_id};
+            <tal:variant_group condition="model_variant.variant_group_as_nml_prop is not None">
+                variant_group:                  ${model_variant.variant_group_as_nml_prop};
             </tal:variant_group>
         </tal:not_trailing_parts>
         <tal:trailing_parts_only condition="unit.is_trailing_part">
