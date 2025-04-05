@@ -497,9 +497,8 @@ class Roster(object):
             variant_group_id = model_variant.catalogue_entry.variant_group_id
             if variant_group_id is None:
                 raise ValueError(model_variant.id)
-            cabbage_variant_group_purchase_level_0_string = model_variant.catalogue_entry.catalogue.factory.variant_group_id_root
             variant_group = self.variant_groups.setdefault(
-                variant_group_id, VariantGroup(id=variant_group_id, cabbage_variant_group_purchase_level_0_string=cabbage_variant_group_purchase_level_0_string)
+                variant_group_id, VariantGroup(id=variant_group_id)
             )
             variant_group.append(model_variant)
         # handle nesting of static and random wagon groups
@@ -527,11 +526,10 @@ class VariantGroup(list):
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def __init__(self, id, cabbage_variant_group_purchase_level_0_string):
+    def __init__(self, id):
         self.id = id
         self.parent_group = None
         self.child_groups = []
-        self.cabbage_variant_group_purchase_level_0_string = cabbage_variant_group_purchase_level_0_string
 
     def get_variant_group_prop_for_model_variant(self, model_variant):
         # faff to find the group leader (typically the first variant)

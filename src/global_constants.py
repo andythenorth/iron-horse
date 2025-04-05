@@ -889,27 +889,6 @@ temp_storage_ids = dict(
     # deprecated=34,  # no longer used
     position_in_vehid_chain_base_offset=35,  # used in position rulesets, an offset into position_in_vehid_chain_multiple_ids
     position_in_vehid_chain_multiple_ids_with_base_offset_applied=36,  # position_in_vehid_chain_multiple_ids, with a base offset applied
-    name_string_default_name=37,  # name substring
-    # deprecated=38,  # no longer used
-    # deprecated=39,  # no longer used
-    # deprecated=40,  # no longer used
-    name_string_purchase_level_0=41,  # name substring
-    # deprecated=42,  # no longer used
-    # deprecated=43,  # no longer used
-    # deprecated=44,  # no longer used
-    name_string_purchase_level_1=45,  # name substring
-    # deprecated=46,  # no longer used
-    # deprecated=47,  # no longer used
-    # deprecated=48,  # no longer used
-    # deprecated=49,  # no longer used
-    # deprecated=50,  # no longer used
-    # deprecated=51,  # no longer used
-    # deprecated=52,  # no longer used
-    # deprecated=53,  # no longer used
-    # deprecated=54,  # no longer used
-    # deprecated=55,  # no longer used
-    # deprecated=56,  # no longer used
-    name_string_from_property=57,  # name substring
 )
 
 # standard offsets for trains

@@ -14,8 +14,8 @@ switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_purchase_level_
 }
 
 switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-    1: ${model_variant.model_id}_switch_name_purchase_level_1;
     <!--! special handling only for purchase indent level 1 -->
+    1: ${model_variant.model_id}_switch_name_purchase_level_1;
     return 0x400;
 }
 switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_not_simplified_gameplay, [

@@ -180,19 +180,12 @@ class ModelTypeBase(object):
             return None
 
     def get_name_parts(self, context):
-        default_name = "STR_NAME_" + self.model_id.upper()
-        if context == "purchase_level_1":
-            result = [default_name]
-        else:
-            result = [default_name]
-        return result
+        return ["STR_NAME_" + self.model_id.upper()]
 
     def get_name_as_strings(self, context):
         # CABBAGE THIS CAN BE SIGNIFICANTLY SIMPLIFIED
+        # CABBAGE MOST OF THIS RELATES TO HANDLING COMPLICATED COMPOUND STRINGS WHICH ARE NOW DELETED
         raw_strings = self.get_name_parts(context=context)
-
-        if raw_strings == None:
-            return 0
 
         # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
         # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
@@ -2366,6 +2359,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     def get_name_parts(self, context):
         if self.wagon_title_optional_randomised_suffix_str is not None:
+            # CABBAGE
             default_result = [
                 self.wagon_title_class_str,
                 self.wagon_title_optional_randomised_suffix_str,
@@ -2380,30 +2374,8 @@ class CarModelTypeBase(ModelTypeBase):
                 self.wagon_title_class_str,
                 self.wagon_title_optional_randomised_suffix_str,
             ]
-        elif context in ["default_name", "purchase_level_1", "purchase_level_2"]:
+        elif context in ["default_name", "purchase_level_1"]:
             result = default_result
-        elif context == "purchase_level_0":
-            result = default_result
-            """
-            cabbage_variant_group_purchase_level_0_string = self.variant_group.cabbage_variant_group_purchase_level_0_string
-            print(self.id, cabbage_variant_group_purchase_level_0_string)
-            try:
-                # CABBAGE SHOULD BE COMING FROM CATALOGUE?
-                result = [
-                    "STR_" + cabbage_variant_group_purchase_level_0_string.upper(),
-                ]
-            except:
-                raise BaseException(self.id)
-            # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
-            # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
-            #elif len(self.cabbage_buyable_variants) > 1:
-                #result = default_result.copy()
-                #result[0] = result[0].replace("_CAR", "_CARS")
-                #result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
-            #else:
-                ## no string needed, the name switch will handle using the default name
-                #result = None
-            """
         else:
             raise BaseException(
                 "get_name_parts called for wagon "
