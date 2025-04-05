@@ -1044,7 +1044,6 @@ class ModelTypeBase(object):
         result.append((counter, "base"))
         # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.decor_spriterow_num is not None:
-            # CABBAGE
             # guard against the decor spriterow not being updated when liveries are added
             if self.decor_spriterow_num <= len(self.catalogue_entry.catalogue) - 1:
                 raise BaseException(
