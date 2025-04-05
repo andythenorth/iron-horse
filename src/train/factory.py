@@ -134,7 +134,6 @@ class CatalogueEntry:
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
     input_spritesheet_name_stem: str
-    base_track_type_name: str
 
     @property
     def index(self):
@@ -290,13 +289,6 @@ class ModelVariantFactory:
         else:
             return None
 
-    @property
-    def base_track_type_name(self):
-        if self.model_def.base_track_type_name is not None:
-            return self.model_def.base_track_type_name
-        else:
-            return "RAIL"
-
     @cached_property
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
@@ -409,7 +401,6 @@ class Catalogue(list):
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
-                base_track_type_name=factory.base_track_type_name,
             )
             instance.append(catalogue_entry)
         return instance
@@ -555,12 +546,19 @@ class Catalogue(list):
         assert self.factory.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.factory.model_id
         )
-        result = self.factory.roster.intro_years[self.factory.base_track_type_name][
+        result = self.factory.roster.intro_years[self.base_track_type_name][
             self.factory.model_def.gen - 1
         ]
         if self.factory.model_def.intro_year_offset is not None:
             result = result + self.factory.model_def.intro_year_offset
         return result
+
+    @cached_property
+    def base_track_type_name(self):
+        if self.factory.model_def.base_track_type_name is not None:
+            return self.factory.model_def.base_track_type_name
+        else:
+            return "RAIL"
 
 
 class ModelDefCloner:

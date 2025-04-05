@@ -179,7 +179,7 @@ class ModelTypeBase(object):
     @property
     def base_track_type_name(self):
         # just a pass through for convenience
-        return self.catalogue_entry.base_track_type_name
+        return self.catalogue_entry.catalogue.base_track_type_name
 
     @property
     def str_name_suffix(self):
