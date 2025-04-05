@@ -117,33 +117,21 @@ class Roster(object):
         return result
 
     @property
-    @timing
     def model_variants_in_buy_menu_order(self):
+        """
+        Returns a flat list of VariantGroup instances, depth-first ordered from the nested parent/child structure.
+        """
         result = []
-        result.extend(self.engine_model_variants)
-        for base_track_type_name in ["RAIL", "NG", "METRO"]:
-            for model_id_root in self.wagon_model_variants_by_model_id_root.keys():
-                wagon_model_variants = [
-                    wagon_model_variant
-                    for wagon_model_variant in self.wagon_model_variants_by_model_id_root[
-                        model_id_root
-                    ]
-                    if wagon_model_variant.base_track_type_name == base_track_type_name
-                ]
-                result.extend(
-                    # note that we want the sort order to be U, A, B, C, D so special handling
-                    # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
-                    sorted(
-                        wagon_model_variants,
-                        key=lambda wagon_model_variant: {
-                            "U": 1,
-                            "A": 2,
-                            "B": 3,
-                            "C": 4,
-                            "D": 5,
-                        }[wagon_model_variant.subtype],
-                    )
-                )
+
+        def walk(group: VariantGroup):
+            result.extend(group)
+            for child in group.child_groups:
+                walk(child)
+
+        for group in self.variant_groups.values():
+            if group.parent_group is None:
+                walk(group)
+
         return result
 
     @property
@@ -158,7 +146,7 @@ class Roster(object):
         randomised_wagons_by_track_gen_length_power = {}
 
         # Categorize model variants by generation, length, track type, and power
-        for model_variant in self.model_variants:
+        for model_variant in self.model_variants_in_buy_menu_order:
             gen = model_variant.gen
             track_type = model_variant.base_track_type_name
             power = model_variant.power
@@ -480,6 +468,8 @@ class Roster(object):
 
             if random_group and len(random_group) > 0:
                 variant_group.parent_group = random_group
+                random_group.child_groups.append(variant_group)
+
 
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
@@ -540,6 +530,7 @@ class VariantGroup(list):
     def __init__(self, id):
         self.id = id
         self.parent_group = None
+        self.child_groups = []
 
     def get_variant_group_prop_for_model_variant(self, model_variant):
         # faff to find the group leader (typically the first variant)
