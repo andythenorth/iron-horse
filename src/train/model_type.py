@@ -911,7 +911,7 @@ class ModelTypeBase(object):
     def buyable_variant_group(self):
         self.assert_buyable_variant_groups()
         variant_group = self.roster.buyable_variant_groups[
-            self.catalogue_entry.catalogue.buyable_variant_group_id
+            self.catalogue_entry.buyable_variant_group_id
         ]
         return variant_group
 
@@ -1676,7 +1676,7 @@ class MailEngineRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
 
@@ -1720,7 +1720,7 @@ class MailEngineExpressRailcar(MailEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1871,7 +1871,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -1964,7 +1964,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
     @property
     def vehicle_family_badge(self):
         # CABBAGE - CAN THESE JUST USE SUPER().foo?
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2195,7 +2195,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2397,6 +2397,7 @@ class CarModelTypeBase(ModelTypeBase):
         elif context == "purchase_level_0":
             if getattr(self, "buyable_variant_group_id", None) != None:
                 try:
+                    # CABBAGE SHOULD BE COMING FROM CATALOGUE?
                     result = [
                         "STR_" + self.buyable_variant_group_id.upper(),
                     ]
@@ -5562,7 +5563,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
     def get_name_parts(self, context):
@@ -6472,7 +6473,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
 
     @property
     def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.catalogue.buyable_variant_group_id
+        family_name = self.catalogue_entry.buyable_variant_group_id
         return "vehicle_family/" + family_name
 
 

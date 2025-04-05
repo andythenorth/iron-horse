@@ -446,7 +446,6 @@ class Roster(object):
         # convenience method for a key, only used for accessing a temp structure
         return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
 
-    @timing
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* model variants are inited
 
@@ -459,82 +458,30 @@ class Roster(object):
 
         self.buyable_variant_groups = {}
 
-        # CABBAGE, CAN THIS NOT JUST USE CATALOGUES?
-
         # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
         for model_variant in self.model_variants:
-            if (
-                not model_variant.catalogue_entry.catalogue.buyable_variant_group_id
-                in self.buyable_variant_groups
-            ):
-                self.buyable_variant_groups[
-                    model_variant.catalogue_entry.catalogue.buyable_variant_group_id
-                ] = VariantGroup(
-                    id=model_variant.catalogue_entry.catalogue.buyable_variant_group_id,
-                )
-            self.buyable_variant_groups[
-                model_variant.catalogue_entry.catalogue.buyable_variant_group_id
-            ].append(model_variant)
-        # now deal with nested groups
-        # we do this after creating all the groups, as some groups need to reference other groups
-        for (
-            buyable_variant_group_id,
-            buyable_variant_group,
-        ) in self.buyable_variant_groups.items():
-            # we're only interested in nesting wagons as of May 2023
-            parent_model_variant = buyable_variant_group.parent_model_variant
-            if parent_model_variant.group_as_wagon:
-                if getattr(parent_model_variant, "buyable_variant_group_id", None) is not None:
-                    base_id_for_target_parent_model_variant = global_constants.purchase_variant_group_base_model_ids_by_group_name[
-                        parent_model_variant.buyable_variant_group_id
-                    ]
-                    candidate_parent_group = None
-                    if (
-                        base_id_for_target_parent_model_variant
-                        not in self.wagon_model_variants_by_base_id
-                    ):
-                        error_message = (
-                            base_id_for_target_parent_model_variant
-                            + " not found in roster "
-                            + self.id
-                        )
-                        error_message += (
-                            "\n look in "
-                            + self.id
-                            + ".wagon_module_names_with_roster_ids as the module name may be incorrect there"
-                        )
-                        raise BaseException(error_message)
-                    for model_variant in self.wagon_model_variants_by_base_id[
-                        base_id_for_target_parent_model_variant
-                    ]:
-                        if (
-                            model_variant.model_id_root
-                            == base_id_for_target_parent_model_variant
-                        ):
-                            match_failed = False
-                            if (
-                                model_variant.base_track_type_name
-                                != parent_model_variant.base_track_type_name
-                            ):
-                                match_failed = True
-                            if model_variant.gen != parent_model_variant.gen:
-                                match_failed = True
-                            if model_variant.subtype != parent_model_variant.subtype:
-                                match_failed = True
-                            if not match_failed:
-                                candidate_parent_group = (
-                                    model_variant.buyable_variant_group
-                                )
-                                break
-                else:
-                    candidate_parent_group = parent_model_variant.buyable_variant_group
+            variant_group_id = model_variant.catalogue_entry.buyable_variant_group_id
+            variant_group = self.buyable_variant_groups.setdefault(
+                variant_group_id, VariantGroup(id=variant_group_id)
+            )
+            variant_group.append(model_variant)
+        # handle nesting of static and random wagon groups
+        # logic: if both a `_static` and `_random` group exist for the same base ID,
+        #        then the static group is nested into the random group
 
-                # we can't assign parent group to current group, that would be silly / recursive
-                if candidate_parent_group != buyable_variant_group:
-                    buyable_variant_group.parent_group = candidate_parent_group
+        for variant_group_id, variant_group in self.buyable_variant_groups.items():
+            if not variant_group_id.endswith("_static"):
+                continue
 
+            # derive the base ID stem (everything before `_static`)
+            group_id_stem = variant_group_id.rsplit("_static", 1)[0]
+            random_group_id = f"{group_id_stem}_random"
+            random_group = self.buyable_variant_groups.get(random_group_id)
+
+            if random_group and len(random_group) > 0:
+                variant_group.parent_group = random_group
 
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster

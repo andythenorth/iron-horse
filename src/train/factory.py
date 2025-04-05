@@ -133,6 +133,7 @@ class CatalogueEntry:
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
+    buyable_variant_group_id: str
     input_spritesheet_name_stem: str
 
     @property
@@ -288,6 +289,32 @@ class ModelVariantFactory:
         else:
             return None
 
+    def get_buyable_variant_group_id(self, livery_def, base_track_type_name):
+        # cascade of sources for variant group ID
+
+        # group trailers with their cabs
+        if self.cab_factory is not None:
+            return self.cab_factory.model_id
+
+        # force a variant group via model def
+        if self.model_def.buyable_variant_group_id is not None:
+            return self.model_def.buyable_variant_group_id
+
+        # primarily used for explcitly selected wagon groups (from a class property on the model type)
+        if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
+            # we split groups for random and static liveries (group nesting will then be determined by roster)
+            livery_selection = "random" if len(livery_def.colour_set_names or []) > 1 else "static"
+            return (
+                f"{self.model_type_cls.variant_group_id_root}_"
+                f"{base_track_type_name.lower()}_"
+                f"gen_{self.model_def.gen}{self.model_def.subtype}_"
+                f"{livery_selection}"
+            )
+
+        # default is to group all variants from this catalogue together
+        return self.model_id
+
+
     @cached_property
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
@@ -346,9 +373,11 @@ class Catalogue(list):
                 for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
 
+            buyable_variant_group_id = factory.get_buyable_variant_group_id(livery_def, instance.base_track_type_name)
+
             # certain static properties are copied into the catalogue_entry from the factory
             # this is for convenience of access as
-            # - we don't want to access factory directly from templates or graphics generation
+            # - we prefer not to access factory directly from templates or graphics generation
             # - model_def is considered mostly immutable after init, and we don't want the factory extensively writing properties into model_def instances
             catalogue_entry = CatalogueEntry(
                 catalogue=instance,
@@ -357,6 +386,7 @@ class Catalogue(list):
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
+                buyable_variant_group_id=buyable_variant_group_id,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
             )
             instance.append(catalogue_entry)
@@ -496,65 +526,6 @@ class Catalogue(list):
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_model_variant_mapping)
         return result
-
-    @property
-    def buyable_variant_group_id(self):
-        # cascade of sources for variant group ID
-
-        # group trailers with their cabs
-        if self.factory.cab_factory is not None:
-            return self.factory.cab_factory.model_id
-
-        # force a variant group via model def
-        if self.factory.model_def.buyable_variant_group_id is not None:
-            return self.factory.model_def.buyable_variant_group_id
-
-        # primarily used for explcitly selected wagon groups (from a class property on the model type)
-        if getattr(self.factory.model_type_cls, "variant_group_id_root", None) is not None:
-            return (
-                f"{self.factory.model_type_cls.variant_group_id_root}_"
-                f"{self.base_track_type_name.lower()}_"
-                f"gen_{self.factory.model_def.gen}{self.factory.model_def.subtype}_"
-            )
-
-        # default is to group all variants from this catalogue together
-        return self.id
-
-        """
-    @cached_property
-    def buyable_variant_group_id(self):
-        if self.catalogue_entry.catalogue.buyable_variant_group_id is not None:
-            # explicitly defined group id
-            id = self.catalogue_entry.catalogue.buyable_variant_group_id
-        elif self.group_as_wagon:
-            if getattr(self, "buyable_variant_group_id", None) is not None:
-                group_id_base = self.buyable_variant_group_id
-            else:
-                group_id_base = self.model_id
-            if len(self.catalogue_entry.livery_def.colour_set_names or []) < 2:
-                # if it's less than two entries (or None) then it's fixed colours
-                # we nest buyable variants with fixed colours into sub-groups
-                fixed_mixed_suffix = "fixed"
-            else:
-                # everything else goes into one group, either on the model group, or a named parent group which composes multiple model variants
-                fixed_mixed_suffix = None
-            id = self.compose_variant_group_id(group_id_base, fixed_mixed_suffix)
-        if id is None:
-            raise ValueError(f"no buyable_variant_group_id found for {self.id}")
-        return id
-        """
-    """
-
-    def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
-        # composes a group id from a group name, and some properties from the model type
-        return "{a}_{b}_gen_{c}{d}_{e}".format(
-            a=group_name,
-            b=self.base_track_type_name.lower(),
-            c=self.gen,
-            d=self.subtype,
-            e=fixed_mixed_suffix,
-        )
-    """
 
     @cached_property
     def intro_year(self):
