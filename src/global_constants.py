@@ -541,16 +541,31 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_VARIETY": {
+    "RANDOM_LIVERIES_VARIETY_MUTED": {
         "colour_set_names": [
             "company_colour",
             "complement_company_colour",
             "freight_bauxite",
+            "freight_ruby",
             "freight_grey",
             "freight_nightshade",
+            "freight_pewter",
+            "freight_silver",
+        ],
+        "purchase_colour_set_name": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_VARIETY_VIBRANT": {
+        "colour_set_names": [
+            "company_colour",
+            "complement_company_colour",
+            "freight_ruby",
             "freight_silver",
             "freight_teal",
-            "freight_violet",
         ],
         "purchase_colour_set_name": "complement_company_colour",
         "use_weathering": True,
@@ -641,6 +656,17 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_TEAL_NIGHTSHADE": {
         "colour_set_names": [
             "freight_teal",
+            "freight_nightshade",
+        ],
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_PEWTER_NIGHTSHADE": {
+        "colour_set_names": [
+            "freight_pewter",
             "freight_nightshade",
         ],
         "use_weathering": True,

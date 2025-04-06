@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=980,
+        base_numeric_id=15260,
         gen=1,
         subtype="U",
         base_track_type_name="METRO",
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=20370,
+        base_numeric_id=36410,
         gen=2,
         subtype="U",
         base_track_type_name="METRO",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=20270,
+        base_numeric_id=36390,
         gen=3,
         subtype="U",
         base_track_type_name="METRO",
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=29890,
+        base_numeric_id=36430,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -79,7 +79,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=26100,
+        base_numeric_id=36450,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -95,7 +95,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=29860,
+        base_numeric_id=36470,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -121,7 +121,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=29880,
+        base_numeric_id=36490,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -145,7 +145,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=26120,
+        base_numeric_id=36510,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -169,7 +169,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=26140,
+        base_numeric_id=36810,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -181,7 +181,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=26150,
+        base_numeric_id=36530,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -207,7 +207,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCar",
-        base_numeric_id=26170,
+        base_numeric_id=36750,
         gen=5,
         subtype="C",
         sprites_complete=True,

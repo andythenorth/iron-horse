@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarRandomised",
-        base_numeric_id=31340,
+        base_numeric_id=38580,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarRandomised",
-        base_numeric_id=16690,
+        base_numeric_id=37890,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -76,7 +76,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarRandomised",
-        base_numeric_id=16710,
+        base_numeric_id=37090,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarRandomised",
-        base_numeric_id=16720,
+        base_numeric_id=37120,
         gen=5,
         subtype="C",
         sprites_complete=True,
