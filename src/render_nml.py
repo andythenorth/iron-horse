@@ -30,7 +30,6 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), for
 
 generated_files_path = iron_horse.generated_files_path
 
-@timing
 def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision):
     template = templates[header_item + ".pynml"]
     result = utils.unescape_chameleon_output(
