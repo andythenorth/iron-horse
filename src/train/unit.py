@@ -1080,10 +1080,10 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
-        if self.model_variant.is_default_model_variant:
+        # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
+        if self.model_variant.is_default_model_variant and self.model_variant.gen == 5 and self.model_variant.subtype == "C":
             utils.echo_message(
                 "AutomobileCarAsymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-                + self.model_variant.id
             )
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
@@ -1101,10 +1101,11 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
-        utils.echo_message(
-            "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-            + self.model_variant.id
-        )
+        # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
+        if self.model_variant.is_default_model_variant and self.model_variant.gen == 5 and self.model_variant.subtype == "C":
+            utils.echo_message(
+                "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            )
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
             + self.model_variant.spritelayer_cargo_layers[0]
