@@ -2408,8 +2408,9 @@ class AutomobileCarBase(CarModelTypeBase):
 
     liveries = [
         "COMPANY_COLOUR_NO_WEATHERING",
-        "FREIGHT_BAUXITE_NO_WEATHERING",
-        "FREIGHT_GREY_NO_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
+        "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -2522,6 +2523,8 @@ class AutomobileEnclosedCar(CarModelTypeBase):
     liveries = [
         "COMPANY_COLOUR_NO_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
+        "FREIGHT_GREY_NO_WEATHERING",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "enclosed_automobile_car"
