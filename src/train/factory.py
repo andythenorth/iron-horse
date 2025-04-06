@@ -218,7 +218,6 @@ class ModelVariantFactory:
                     + ", "
                     + unit_def.class_name
                 )
-            # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, model variant knows too much
             # print(unit_cls, unit)
             # now add the units
             unit = unit_cls(

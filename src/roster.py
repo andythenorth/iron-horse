@@ -350,18 +350,16 @@ class Roster(object):
                             model_def, self.id, roster_id_providing_module
                         )
                         catalogue = factory.catalogue
+                        # Using the convenience property 'id'
                         catalogue_id = (
                             catalogue.id
-                        )  # Using the convenience property 'id'
+                        )
                         if catalogue_id not in self.wagon_model_variants_by_catalogue:
                             self.wagon_model_variants_by_catalogue[catalogue_id] = {
                                 "catalogue": catalogue,
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
-                            # CABBAGE NERFED OFF TO ENSURE IT COMPILES
-                            #if '_randomised' in wagon_module_name_stem:
-                                #continue
                             model_variant = factory.produce(
                                 catalogue_entry=catalogue_entry
                             )
@@ -376,6 +374,11 @@ class Roster(object):
                     )
                 except Exception:
                     raise
+        # we have to provision wagon randomisation candidates after initialising all wagon model variants
+        self.cabbage_randomisation_candidates(randomised_wagon_type_catalogues_tmp)
+
+    def cabbage_randomisation_candidates(self, randomised_wagon_type_catalogues_tmp):
+        # called by produce_wagons, but separate method so we can isolate and measure timing if we need to
 
         def get_tmp_uid(
             model_id_root, catalogue
@@ -383,8 +386,6 @@ class Roster(object):
             # convenience method for a key, only used for accessing a temp structure
             return f"{model_id_root}_{catalogue.factory.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.factory.model_def.subtype}"
 
-
-        # we have to provision wagon randomisation candidates after initialising all wagon model variants
         cabbage_random_temp_foo = {}
         for catalogue in self.wagon_catalogues:
             for model_id_root in getattr(catalogue.factory.model_type_cls, "randomised_candidate_groups", []):
