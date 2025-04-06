@@ -577,7 +577,7 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_VARIETY_VIBRANT_FOOD": {
+    "RANDOM_LIVERIES_VARIETY_VIBRANT": {
         "colour_set_names": [
             "company_colour",
             "complement_company_colour",
@@ -599,6 +599,7 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sand",
         ],
+        "purchase_colour_set_name": "freight_sand",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -633,6 +634,14 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING": {
+        "colour_set_names": ["freight_silver", "freight_pewter"],
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_LIVERIES_SULPHUR_OCHRE": {
         "colour_set_names": ["freight_sulphur", "freight_ochre"],
         "use_weathering": True,
@@ -652,6 +661,18 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_RUBY_BAUXITE": {
         "colour_set_names": ["freight_ruby", "freight_bauxite"],
         "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING": {
+        "colour_set_names": [
+            "freight_ruby",
+            "freight_grey",
+            "freight_nightshade",
+        ],
+        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -706,8 +727,8 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_TEAL_PEWTER": {
-        "colour_set_names": ["freight_teal", "freight_pewter"],
+    "RANDOM_LIVERIES_TEAL_PEWTER_SILVER": {
+        "colour_set_names": ["freight_teal", "freight_teal", "freight_pewter", "freight_silver"], # double teal for random balance
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -717,6 +738,14 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_GREY_PEWTER": {
         "colour_set_names": ["freight_grey", "freight_pewter"],
         "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_GREY_PEWTER_NO_WEATHERING": {
+        "colour_set_names": ["freight_grey", "freight_pewter"],
+        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
