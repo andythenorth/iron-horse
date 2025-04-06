@@ -3338,6 +3338,7 @@ class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class BulkOpenCarTipplerType2(BulkOpenCarTipplerBase):
@@ -3349,6 +3350,7 @@ class BulkOpenCarTipplerType2(BulkOpenCarTipplerBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
@@ -4170,6 +4172,7 @@ class ExpressFoodTankCarType2(ExpressFoodTankCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
@@ -4298,6 +4301,7 @@ class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
@@ -7729,6 +7733,7 @@ class TankCarStandardType2(TankCarStandardBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class TankCarStandardType3(TankCarStandardBase):
@@ -7784,6 +7789,7 @@ class TankCarVolatilesBase(TankCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
