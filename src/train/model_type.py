@@ -5310,7 +5310,10 @@ class KaolinHopperCar(CarModelTypeBase):
     Dedicated to kaolin (china clay).
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_TEAL",
+    ]
 
     model_id_root = "kaolin_hopper_car"
 
@@ -5348,16 +5351,18 @@ class LivestockCar(CarModelTypeBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
+        "RANDOM_LIVERIES_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_SAND",
         "FREIGHT_SILVER",
-        "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "livestock_car"
