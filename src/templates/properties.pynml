@@ -46,6 +46,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <tal:default_cargo condition="len(model_variant.default_cargos) > 0">
             default_cargo_type:             ${model_variant.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
+        <tal:loading_speed condition="unit.has_cargo_capacity">
+            loading_speed:                  ${unit.loading_speed};
+        </tal:loading_speed>
         misc_flags:                     bitmask(${unit.misc_flags});
         extra_flags:                    bitmask(${unit.extra_flags});
         dual_headed:                    ${1 if model_variant.dual_headed else 0};
