@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21210,
+        base_numeric_id=38840,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21180,
+        base_numeric_id=38680,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=30460,
+        base_numeric_id=38800,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -65,7 +65,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21190,
+        base_numeric_id=38820,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -77,7 +77,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21390,
+        base_numeric_id=40230,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -101,7 +101,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21590,
+        base_numeric_id=38720,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21600,
+        base_numeric_id=38700,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -137,7 +137,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21570,
+        base_numeric_id=38740,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -163,7 +163,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21550,
+        base_numeric_id=38760,
         gen=5,
         subtype="C",
         sprites_complete=True,

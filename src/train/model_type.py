@@ -2566,7 +2566,9 @@ class BolsterCarBase(CarModelTypeBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
@@ -3670,11 +3672,13 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "coil_car_covered_asymmetric"
@@ -3713,13 +3717,15 @@ class CoilCarCovered(CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
+
     variant_group_id_root = "wagon_group_coil_cars"
     model_id_root = "coil_car_covered"
     randomised_candidate_groups = [
@@ -3749,12 +3755,13 @@ class CoilCarTarpaulin(CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "coil_car_tarpaulin"
@@ -3789,12 +3796,13 @@ class CoilCarUncovered(CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "coil_car_uncovered"
@@ -3822,8 +3830,13 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "dedicated_coil_car_randomised"
@@ -4482,11 +4495,15 @@ class FlatCarBase(CarModelTypeBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -4511,16 +4528,6 @@ class FlatCarBulkheadBase(FlatCarBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
-    ]
 
     variant_group_id_root = "wagon_group_bulkhead_flat_cars"
     randomised_candidate_groups = ["bulkhead_flat_car_randomised"]
@@ -4678,6 +4685,21 @@ class FlatCarMillBase(FlatCarBase):
     """
     Variant of flat wagon designed specfically for steel industry.
     """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_TEAL",
+    ]
 
     variant_group_id_root = "wagon_group_mill_flat_cars"
     randomised_candidate_groups = [
@@ -6958,11 +6980,12 @@ class PipeCar(FlatCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "pipe_car"
@@ -7888,7 +7911,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hood
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
@@ -7923,12 +7946,11 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast when the wagon hood is white
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hood
         "FREIGHT_TEAL",
     ]
 

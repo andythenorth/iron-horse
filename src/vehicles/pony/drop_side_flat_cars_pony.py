@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30130,
+        base_numeric_id=40250,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30700,
+        base_numeric_id=40810,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30530,
+        base_numeric_id=40310,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -75,7 +75,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30540,
+        base_numeric_id=40830,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -99,7 +99,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30630,
+        base_numeric_id=40210,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30590,
+        base_numeric_id=40350,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -123,7 +123,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30510,
+        base_numeric_id=39970,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30880,
+        base_numeric_id=40270,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -147,7 +147,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30840,
+        base_numeric_id=40190,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -161,7 +161,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropSide",
-        base_numeric_id=30910,
+        base_numeric_id=39990,
         gen=5,
         subtype="C",
         sprites_complete=True,

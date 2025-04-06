@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25940,
+        base_numeric_id=40490,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25960,
+        base_numeric_id=40510,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25980,
+        base_numeric_id=40530,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -86,7 +86,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=26220,
+        base_numeric_id=40570,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -98,7 +98,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=26930,
+        base_numeric_id=40550,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -110,7 +110,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=34520,
+        base_numeric_id=40590,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -122,7 +122,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=34210,
+        base_numeric_id=40610,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -136,7 +136,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=30830,
+        base_numeric_id=40630,
         gen=5,
         subtype="C",
         sprites_complete=True,
