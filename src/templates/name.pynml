@@ -1,34 +1,20 @@
-<!--! we use the text stack here to avoid over-consumption of D0xx which are limited. Using the text stack permits nml to move strings to DCxx range.
-      see https://github.com/OpenTTD/nml/pull/326 for further details
--->
+<!--! shared globally, but not a procedure -->
 
-switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_purchase_level_1, [
-        STORE_TEMP(
-            ${model_variant.get_name_as_strings(context='purchase_level_1')},
-            0x100
-        ),
+switch (FEAT_TRAINS, SELF, switch_name_purchase_level_1, [
         has_badge("ih_variants_cabbage/purchase_level_1_has_more_nested_variants")
     ]) {
     1: return string(STR_WAGON_GROUP_MORE);
     return 0x400;
 }
 
-switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+switch (FEAT_TRAINS, SELF, switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
     <!--! special handling only for purchase indent level 1 -->
-    1: ${model_variant.model_id}_switch_name_purchase_level_1;
+    1: switch_name_purchase_level_1;
     return 0x400;
 }
-switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name_not_simplified_gameplay, [
+switch (FEAT_TRAINS, SELF, switch_name, [
         getbits(extra_callback_info1, 0, 8)
     ]) {
-    0x20: ${model_variant.model_id}_switch_name_purchase_extra_bits;
+    0x20: switch_name_purchase_extra_bits;
     return 0x400;
-}
-
-switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_name, [
-        ${"param_vehicle_availability_wagons" if model_variant.is_general_purpose_true_wagon else "param_vehicle_availability_engines"}
-    ]) {
-    <!--! simplified gameplay uses minimal variant nesting, so just use default name -->
-    1: return 0x400;
-    return ${model_variant.model_id}_switch_name_not_simplified_gameplay;
 }

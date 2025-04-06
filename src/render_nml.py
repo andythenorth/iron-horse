@@ -101,6 +101,7 @@ def main():
         "spritelayer_cargo_empty_ss",
         "tail_lights",
         "recolour_sprites",
+        "name",
         "procedures_var_41_but_badges_not_ids",
         "procedures_alternative_var_random_bits",
         "procedures_capacity",

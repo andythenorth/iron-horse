@@ -137,7 +137,7 @@ class Roster(object):
     @property
     def model_variants_in_order_optimised_for_action_2_ids(self):
         # CABBAGE as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants
-        # BUT random wagons are nerfed off so eh...
+        # CABBAGE WITHOUT THIS SWITCHES MIGHT NOT BE FOUND FOR RANDOMISED WAGONS
         # the base sort order for model variants is for the buy menu, but this isn't effective for order in nml output
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
@@ -146,7 +146,7 @@ class Roster(object):
         randomised_wagons_by_track_gen_length_power = {}
 
         # Categorize model variants by generation, length, track type, and power
-        for model_variant in self.model_variants_in_buy_menu_order:
+        for model_variant in self.model_variants:
             gen = model_variant.gen
             track_type = model_variant.base_track_type_name
             power = model_variant.power

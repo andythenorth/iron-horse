@@ -57,7 +57,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         default:                        ${unit.graphics_switch_entry_point_cabbage}_switch_graphics;
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             purchase:                       ${unit.graphics_switch_entry_point_cabbage}_switch_graphics_purchase;
-            name:                           ${model_variant.model_id}_switch_name;
+            <tal:name_callback condition="model_variant.cabbage_use_name_callback">
+                name:                           switch_name;
+            </tal:name_callback>
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
             cost_factor:                    ${model_variant.buy_cost}; <!--! CB used as it is capped to max 32k, prop is only 255 -->
             <tal:running_cost_factor switch="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False)">

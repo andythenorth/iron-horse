@@ -96,10 +96,6 @@
         <tal:include metal:use-macro="load: articulated_parts.pynml" />
     </tal:articulated_parts>
 
-    <tal:name condition="unit.is_not_trailing_part and model_variant.is_default_model_variant">
-        <tal:include metal:use-macro="load: name.pynml" />
-    </tal:name>
-
     <tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text and model_variant.is_default_model_variant">
         <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
     </tal:buy_menu_additional_text>

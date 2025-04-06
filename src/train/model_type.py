@@ -178,44 +178,6 @@ class ModelTypeBase(object):
     def get_name_parts(self, context):
         return ["STR_NAME_" + self.model_id.upper()]
 
-    def get_name_as_strings(self, context):
-        # CABBAGE THIS CAN BE SIGNIFICANTLY SIMPLIFIED
-        # CABBAGE MOST OF THIS RELATES TO HANDLING COMPLICATED COMPOUND STRINGS WHICH ARE NOW DELETED
-        raw_strings = self.get_name_parts(context=context)
-
-        # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
-        # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
-        string_counter = 0
-        for raw_string in raw_strings:
-            if raw_string[0:4] == "STR_":
-                string_counter += 1
-        if string_counter > 1:
-            raw_strings.insert(0, "STR_NAME_CONTAINER_" + str(string_counter))
-
-        formatted_strings = []
-        for raw_string in raw_strings:
-            if raw_string[0:4] == "STR_":
-                # possibly fragile wrapping of string() around strings, to avoid having to always specify them that way
-                formatted_strings.append("string(" + raw_string + ")")
-            else:
-                # otherwise pass through as is
-                formatted_strings.append(raw_string)
-
-        # special case for when substrings need converting to parameters on first string
-        if len(formatted_strings) > 1:
-            # assumes 2 items
-            if formatted_strings[0] != "string(STR_NAME_CONTAINER_2)":
-                raise Exception(
-                    "formatted_strings first result should be 'string(STR_NAME_CONTAINER_2)'"
-                )
-
-            base_string = formatted_strings[0][:-1]
-            parameters = formatted_strings[1:]
-            result = f"{base_string}, {', '.join(parameters)})"
-        else:
-            result = formatted_strings[0]  # we just want the first string from the list
-        return result
-
     @cached_property
     def name_as_nml_prop(self):
         # text filter in buy menu needs name as prop as of June 2023
@@ -223,6 +185,11 @@ class ModelTypeBase(object):
         name_parts = self.get_name_parts(context="default_name")
         result = "string(" + name_parts[0] + ")"
         return result
+
+    @property
+    def cabbage_use_name_callback(self):
+        # single special case as of April 2025
+        return (self.variant_group.group_level == 1) and (len(self.variant_group) > 0)
 
     @property
     def subrole_child_branch_num(self):
@@ -303,7 +270,7 @@ class ModelTypeBase(object):
     def cabbage_variant_handling_badges(self):
         # specific handling of indentation level 1
         result = []
-        if self.variant_group.group_level == 1 and len(self.variant_group) > 0:
+        if self.cabbage_use_name_callback:
             result.append("ih_variants_cabbage/purchase_level_1_has_more_nested_variants")
         return list(set(result))
 
