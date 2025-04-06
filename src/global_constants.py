@@ -577,7 +577,7 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_VARIETY_VIBRANT": {
+    "RANDOM_LIVERIES_VARIETY_VIBRANT_FOOD": {
         "colour_set_names": [
             "company_colour",
             "complement_company_colour",
@@ -586,6 +586,19 @@ freight_wagon_liveries = {
             "freight_teal",
         ],
         "purchase_colour_set_name": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_VARIETY_MUTED_EARTH": {
+        "colour_set_names": [
+            "freight_oil_black",
+            "freight_nightshade",
+            "freight_ochre",
+            "freight_sand",
+        ],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -604,8 +617,8 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_TEAL_VIOLET": {
-        "colour_set_names": ["freight_teal", "freight_violet"],
+    "RANDOM_LIVERIES_VIOLET_TEAL": {
+        "colour_set_names": ["freight_violet", "freight_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
