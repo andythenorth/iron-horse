@@ -174,8 +174,6 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_switch_purchase = "_switch_colour_mapping_purchase"
-        self.colour_mapping_with_purchase = True
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.render_pass_num = 2
@@ -186,13 +184,12 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
 
     @property
     def cabbage_common_graphics_target(self):
-        return False
+        return True
 
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
         wagon_randomisation_candidates = pipeline.default_model_variant.wagon_randomisation_candidates
-        print(pipeline.default_model_variant, wagon_randomisation_candidates)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022

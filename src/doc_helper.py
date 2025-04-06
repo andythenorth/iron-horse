@@ -216,8 +216,7 @@ class DocHelper(object):
         really_wagons = []
         not_really_wagons = []
         for catalogue in roster.wagon_catalogues:
-            default_model_variant = catalogue.default_model_variant_from_roster
-            if default_model_variant.is_randomised_wagon_type:
+            if catalogue.factory.model_is_randomised_wagon_type:
                 not_really_wagons.append(catalogue)
             else:
                 really_wagons.append(catalogue)
@@ -310,7 +309,7 @@ class DocHelper(object):
         wagon_catalogues = []
         for catalogue in roster.wagon_catalogues:
             # extensible excludes as needed
-            if catalogue.default_model_variant_from_roster.is_randomised_wagon_type:
+            if catalogue.factory.model_is_randomised_wagon_type:
                 continue
             if catalogue.default_model_variant_from_roster.is_caboose:
                 continue

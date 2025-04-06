@@ -160,7 +160,7 @@ class Roster(object):
                     "randomised": [],
                 }
 
-            if model_variant.is_randomised_wagon_type:
+            if model_variant.catalogue_entry.model_is_randomised_wagon_type:
                 randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
                     model_variant
                 )
@@ -329,12 +329,9 @@ class Roster(object):
         )  # Reset or initialize the grouping dict
 
         # temp book-keeping of randomised_wagons
-        randomised_wagons_tmp = {}
+        randomised_wagon_type_catalogues_tmp = []
 
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
-            # CABBAGE NERFED OFF TO ENSURE IT COMPILES
-            if '_randomised' in wagon_module_name_stem:
-                continue
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids:
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
                     wagon_module_name_stem
@@ -362,18 +359,17 @@ class Roster(object):
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
+                            # CABBAGE NERFED OFF TO ENSURE IT COMPILES
+                            #if '_randomised' in wagon_module_name_stem:
+                                #continue
                             model_variant = factory.produce(
                                 catalogue_entry=catalogue_entry
                             )
                             self.wagon_model_variants_by_catalogue[catalogue_id][
                                 "model_variants"
                             ].append(model_variant)
-                            if model_variant.is_randomised_wagon_type:
-                                randomised_wagons_tmp[
-                                    self.get_tmp_unique_key_for_random_wagon_type_model_variant(
-                                        model_variant.model_id_root, model_variant
-                                    )
-                                ] = model_variant
+                        if factory.model_is_randomised_wagon_type:
+                            randomised_wagon_type_catalogues_tmp.append(catalogue)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         f"{wagon_module_name} in {package_name} as defined by {self.id}.wagon_module_names_with_roster_ids"
@@ -381,54 +377,49 @@ class Roster(object):
                 except Exception:
                     raise
 
-        # we have to provision wagon randomisation candidates after initialising all wagon model variants
-        for model_variant in self.wagon_model_variants:
-            for model_id_root in model_variant.randomised_candidate_groups:
-                unique_key = (
-                    self.get_tmp_unique_key_for_random_wagon_type_model_variant(
-                        model_id_root, model_variant
-                    )
-                )
-                # it's ok that there might be no randomised wagons for a specific generation, track type etc
-                if unique_key in randomised_wagons_tmp:
-                    dest_model_variant = randomised_wagons_tmp[unique_key]
-                    dest_model_variant.wagon_randomisation_candidates.append(
-                        model_variant
-                    )
-        for model_variant in randomised_wagons_tmp.values():
-            print(model_variant.__class__.__name__, model_variant.wagon_randomisation_candidates)
-            if len(model_variant.wagon_randomisation_candidates) == 0:
-                raise BaseException(
-                    f"{model_variant.id}"
-                    f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
-                )
-            if len(model_variant.wagon_randomisation_candidates) == 1:
-                print(model_variant.wagon_randomisation_candidates)
-                raise BaseException(
-                    f"{model_variant.id}"
-                    f" colour set "
-                    f"{model_variant.catalogue_entry.livery_def.colour_set_names}"
-                    f" has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
-                    f"{model_variant.id}"
-                    f" or check that randomisation candidates provide this colour set"
-                )
-            if len(model_variant.wagon_randomisation_candidates) > 64:
-                # CABBAGE TEMP
-                model_variant.wagon_randomisation_candidates = model_variant.wagon_randomisation_candidates[0:8]
-                continue
-                # we have a limited number of random bits, and we need to use them independently of company colour choices
-                # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
-                raise BaseException(
-                    f"{model_variant.id}"
-                    f" has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates\n"
-                    f"{model_variant.wagon_randomisation_candidates}"
-                )
+        def get_tmp_uid(
+            model_id_root, catalogue
+        ):
+            # convenience method for a key, only used for accessing a temp structure
+            return f"{model_id_root}_{catalogue.factory.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.factory.model_def.subtype}"
 
-    def get_tmp_unique_key_for_random_wagon_type_model_variant(
-        self, model_id_root, model_variant
-    ):
-        # convenience method for a key, only used for accessing a temp structure
-        return f"{model_id_root}_{model_variant.gen}_{model_variant.base_track_type_name}_{model_variant.subtype}_{model_variant.catalogue_entry.livery_def.livery_name}"
+
+        # we have to provision wagon randomisation candidates after initialising all wagon model variants
+        cabbage_random_temp_foo = {}
+        for catalogue in self.wagon_catalogues:
+            for model_id_root in getattr(catalogue.factory.model_type_cls, "randomised_candidate_groups", []):
+                tmp_uid = get_tmp_uid(model_id_root, catalogue)
+                cabbage_random_temp_foo.setdefault(tmp_uid, [])
+                cabbage_random_temp_foo[tmp_uid].append(catalogue.default_model_variant_from_roster)
+
+        for catalogue in randomised_wagon_type_catalogues_tmp:
+            tmp_uid = get_tmp_uid(catalogue.factory.model_type_cls.model_id_root, catalogue)
+            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.id]["model_variants"]:
+                model_variant.wagon_randomisation_candidates = cabbage_random_temp_foo[tmp_uid]
+
+                if len(model_variant.wagon_randomisation_candidates) == 0:
+                    raise BaseException(
+                        f"{model_variant.id}"
+                        f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
+                    )
+                if len(model_variant.wagon_randomisation_candidates) == 1:
+                    raise BaseException(
+                        f"{model_variant.id}"
+                        f" has only one choice for randomisation_candidates\n"
+                        f"this will be either a shortage of candidates, or the model should not be declared\n"
+                        f"{model_variant.wagon_randomisation_candidates}"
+                    )
+                if len(model_variant.wagon_randomisation_candidates) > 64:
+                    # CABBAGE TEMP
+                    model_variant.wagon_randomisation_candidates = model_variant.wagon_randomisation_candidates[0:8]
+                    continue
+                    # we have a limited number of random bits, and we need to use them independently of company colour choices
+                    # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
+                    raise BaseException(
+                        f"{model_variant.id}"
+                        f" has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates\n"
+                        f"{model_variant.wagon_randomisation_candidates}"
+                    )
 
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster

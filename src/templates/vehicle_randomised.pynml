@@ -1,76 +1,47 @@
-<!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
-<!--! CABBAGE OPTIMISATION?
-    <tal:model_common condition="model_variant.is_default_model_variant">
--->
-spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
-    ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
-}
-
-<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates model_variant.wagon_randomisation_candidates;">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant_choose_randomised_wagon, [
+<tal:model_common condition="model_variant.is_default_model_variant">
+    <!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
+    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_variant_choose_randomised_wagon, [
                                 pseudo_random_value_from_deterministic_random_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                 %
                                 ${len(model_variant.wagon_randomisation_candidates)}
         ]) {
-        <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+        <tal:randomisation_candidates repeat="randomisation_candidate model_variant.wagon_randomisation_candidates">
             ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
         </tal:randomisation_candidates>
     }
-    <!--! note that the random chain is used by both graphics and colour mapping chains -->
-    <!--! CABBAGE
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant, ${unit.id}_switch_graphics_variant_choose_randomised_wagon()) {
-        <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-            ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics;
+    <!--! note that we provide '_switch_graphics' not '_switch_graphics_vehicle' as there are no precursor graphics entry switches for randomised wagons
+          we'll ultimately chain instead to the selected candidate's graphics entry switch
+          note that graphics_entry_switches.pynml shouldn't be used with this template
+          randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
+    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics,
+                ${unit.cabbage_unit_id_from_model_type}_switch_graphics_variant_choose_randomised_wagon()) {
+        <tal:randomisation_candidates repeat="randomisation_candidate model_variant.wagon_randomisation_candidates">
+            <!--! CABBAGE the id interpolation is JFDI -->
+            <tal:candidate_graphics_entry_cases switch="randomisation_candidate.gestalt_graphics.cabbage_common_graphics_target">
+                <tal:case tal:case="True">
+                    ${repeat.randomisation_candidate.index}: ${randomisation_candidate.model_id}_unit_${model_variant.units.index(unit)}_switch_graphics;
+                </tal:case>
+                <tal:case tal:case="False">
+                    ${repeat.randomisation_candidate.index}: ${randomisation_candidate.units[model_variant.units.index(unit)].id}_switch_graphics;
+                </tal:case>
+            </tal:candidate_graphics_entry_cases>
         </tal:randomisation_candidates>
     }
-    -->
-    <!--! handle colour mapping which can vary per buyable variant
-          note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
-    <!--! there is some faffy optimisation of colour mapping via a lookup table to reduce parameterised procedure calls (which are expensive in grf size) -->
-    <!--! CABBAGE
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, ${unit.id}_switch_graphics_variant_choose_randomised_wagon()) {
-        <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-            ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.unit.model_variant.get_freight_wagon_livery_index()};
-        </tal:randomisation_candidates>
-    }
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant, 0) {
-        return switch_freight_wagon_livery_entry_point(${unit.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
-    }
-    -->
-    <!--! purchase colour mapping is just taken from first candidate -->
-    <!--! CABBAGE
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_variant_purchase, 0) {
-        return switch_freight_wagon_livery_entry_point(
-            ${randomisation_candidates[0].unit.model_variant.get_freight_wagon_livery_index(context="purchase")}
-        );
-    }
-    -->
-</tal:optimise_wagon_randomisation_candidates>
+</tal:model_common>
 
-<tal:hide replace="nothing">
-<!--! note that we provide '_switch_graphics' not '_switch_graphics_vehicle' as there are no precursor graphics entry switches for randomised wagons
-      we'll ultimately chain instead to the selected candidate's graphics entry switch -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics, vehicle_type_id) {
-    ${unit.numeric_id}: ${unit.id}_switch_graphics_variant;
-    <!--! no default, by design all variants should be explicitly found -->
-}
-<!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
-      when there is nothing specific, then this is just a null switch -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, vehicle_type_id) {
-    <!--! all variants of randomised vehicles use the same common purchase sprite -->
-    ${unit.id}_ss_purchase;
-}
+<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+    <tal:model_common condition="model_variant.is_default_model_variant">
+    <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
+          when there is nothing specific, then this is just a null switch -->
+    spriteset(${model_variant.model_id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png") {
+        ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
+    }
+    switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_unit_0_switch_graphics_purchase, vehicle_type_id) {
+        <!--! all variants of randomised vehicles use the same common purchase sprite -->
+        ${model_variant.model_id}_ss_purchase;
+    }
+    </tal:model_common>
+</tal:buy_menu_lead_unit_only>
 
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-    ${unit.numeric_id}: ${unit.id}_switch_colour_mapping_variant;
-    <!--! no default, by design all variants should be explicitly found -->
-}
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping_purchase, vehicle_type_id) {
-    ${unit.numeric_id}: ${unit.id}_switch_colour_mapping_variant_purchase;
-    <!--! no default, by design all variants should be explicitly found -->
-}
-</tal:hide>
-<!--! note that graphics_entry_switches.pynml shouldn't be called as a macro here
-      randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
 

@@ -135,6 +135,7 @@ class CatalogueEntry:
     livery_def: "LiveryDef"
     variant_group_id: str
     input_spritesheet_name_stem: str
+    model_is_randomised_wagon_type: bool = False
 
     @property
     def index(self):
@@ -323,6 +324,10 @@ class ModelVariantFactory:
         # default is to group all variants from this catalogue together
         return self.model_id
 
+    @cached_property
+    def model_is_randomised_wagon_type(self):
+        # depends on looking up class name, but should be ok
+        return any(base.__name__ == "RandomisedCarMixin" for base in self.model_type_cls.__mro__)
 
     @cached_property
     def input_spritesheet_name_stem(self):
@@ -397,6 +402,7 @@ class Catalogue(list):
                 livery_def=livery_def,
                 variant_group_id=variant_group_id,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
+                model_is_randomised_wagon_type=factory.model_is_randomised_wagon_type,
             )
             instance.append(catalogue_entry)
         return instance

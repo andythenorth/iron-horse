@@ -66,10 +66,6 @@ class ModelTypeBase(object):
         self.buy_menu_additional_text_hint_wagons_add_power = False
         # structure to hold badges, add badges in subclass as needed
         self._badges = []
-        # wagons can be candidates for the magic randomised wagons
-        # this is on ModelTypeBase not CarModelTypeBase as we need to check it when determining order for all vehicle models
-        self.randomised_candidate_groups = []
-        # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # just a simple buy cost tweak, only use when needed
@@ -829,13 +825,6 @@ class ModelTypeBase(object):
             return True
 
     @cached_property
-    def is_randomised_wagon_type(self):
-        # this shorthand to avoid looking up the classname directly for a couple of special cases
-        return (
-            self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
-        )
-
-    @cached_property
     def is_caboose(self):
         # this shorthand to avoid looking up the classname directly for a couple of special cases
         return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
@@ -917,7 +906,7 @@ class ModelTypeBase(object):
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return True
-        elif self.is_randomised_wagon_type or self.is_caboose:
+        elif self.catalogue_entry.model_is_randomised_wagon_type or self.is_caboose:
             return True
         elif self.dual_headed:
             return True
@@ -2352,7 +2341,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def wagon_title_optional_randomised_suffix_str(self):
-        if self.is_randomised_wagon_type or self.is_caboose:
+        if self.catalogue_entry.model_is_randomised_wagon_type or self.is_caboose:
             return "STR_NAME_SUFFIX_RANDOMISED_WAGON"
         else:
             return None
@@ -2418,13 +2407,12 @@ class RandomisedCarMixin(object):
     Mixin to set certain common attributes for randomised car model types.
     """
 
+    # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+    randomised_candidate_groups = []
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.wagon_randomisation_candidates = []
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
-        # need to turn off colour randomisation on the random model type, it's handled explicitly by the template
-        self.use_colour_randomisation_strategies = False
 
     @property
     def joker(self):
@@ -2618,6 +2606,11 @@ class BolsterCarBase(CarModelTypeBase):
         "FREIGHT_GREY",
     ]
     variant_group_id_root = "wagon_group_bolster_cars"
+    randomised_candidate_groups = [
+        "bolster_car_randomised",
+        "metal_product_car_mixed_randomised",
+        "metal_product_car_uncovered_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2629,11 +2622,6 @@ class BolsterCarBase(CarModelTypeBase):
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "bolster_car_randomised",
-            "metal_product_car_mixed_randomised",
-            "metal_product_car_uncovered_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -2725,14 +2713,14 @@ class BoxCarType1(BoxCarBase):
 
     model_id_root = "box_car_type_1"
     variant_group_id_root = "wagon_group_box_cars"
+    randomised_candidate_groups = [
+        "box_car_randomised",
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "box_car_randomised",
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
-        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -2758,14 +2746,14 @@ class BoxCarType2(BoxCarBase):
     model_id_root = "box_car_type_2"
     input_spritesheet_delegate_id_root = "box_car_type_1"
     variant_group_id_root = "wagon_group_box_cars"
+    randomised_candidate_groups = [
+        "box_car_randomised",
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "box_car_randomised",
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -2798,18 +2786,18 @@ class BoxCarCurtainSide(BoxCarBase):
 
     model_id_root = "curtain_side_box_car"
     variant_group_id_root = "wagon_group_box_cars"
+    randomised_candidate_groups = [
+        "box_car_randomised",
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_manufacturing_parts_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "box_car_randomised",
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_manufacturing_parts_randomised",
-            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -2846,16 +2834,16 @@ class BoxCarMerchandise(BoxCarBase):
     ]
 
     model_id_root = "merchandise_box_car"
+    # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
+    randomised_candidate_groups = [
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_manufacturing_parts_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
-        # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
-        self.randomised_candidate_groups = [
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_manufacturing_parts_randomised",
-            "piece_goods_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         # CC1 roof is a bit of a non-standard thing, but seems to work
@@ -2900,16 +2888,16 @@ class BoxCarSlidingWallBase(BoxCarBase):
     """
 
     variant_group_id_root = "wagon_group_sliding_wall_cars"
+    randomised_candidate_groups = [
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
 
@@ -2974,9 +2962,12 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # CABBAGE THIS IS WEIRD !!
+        """
         self.randomised_candidate_groups.extend(
             ["piece_goods_car_manufacturing_parts_randomised"]
         )
+        """
         # Graphics configuration
         self.roof_type = "freight"
         weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -3007,6 +2998,10 @@ class BoxCarVehicleParts(BoxCarBase):
 
     model_id_root = "vehicle_parts_box_car"
     variant_group_id_root = "wagon_group_sliding_wall_cars"
+    randomised_candidate_groups = [
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3015,10 +3010,6 @@ class BoxCarVehicleParts(BoxCarBase):
             "non_core_wagons"
         ]
         self._joker = True
-        self.randomised_candidate_groups = [
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
-        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -3074,14 +3065,14 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
     ]
 
     variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
+    randomised_candidate_groups = [
+        "aggregate_bulk_open_car_randomised",
+        "bulk_car_box_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        self.randomised_candidate_groups = [
-            "aggregate_bulk_open_car_randomised",
-            "bulk_car_box_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -3137,11 +3128,11 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
     """
 
     model_id_root = "aggregate_bulk_open_car_randomised"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # needed to clear randomised set by base class
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
@@ -3207,14 +3198,14 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
     ]
 
     variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
+    randomised_candidate_groups = [
+        "bulk_car_box_randomised",
+        "bulk_car_mixed_randomised",
+        "mineral_bulk_open_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "mineral_bulk_open_car_randomised",
-        ]
         self._joker = True
 
 
@@ -3258,11 +3249,11 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
 
     model_id_root = "mineral_bulk_open_car_randomised"
     variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # needed to clear randomised set by base class
-        self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3292,13 +3283,13 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
     ]
 
     variant_group_id_root = "wagon_group_scrap_metal_cars"
+    randomised_candidate_groups = [
+        "scrap_metal_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
-        self.randomised_candidate_groups = [
-            "scrap_metal_car_randomised",
-        ]
         self._joker = True
 
 
@@ -3367,15 +3358,15 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
     ]
 
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
+    randomised_candidate_groups = [
+        "bulk_car_box_randomised",
+        "bulk_car_mixed_randomised",
+        "tippler_bulk_open_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "tippler_bulk_open_car_randomised",
-        ]
 
 
 class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
@@ -3406,11 +3397,11 @@ class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_rotary_bulk_open_car_type_1"
+    # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
-        self.randomised_candidate_groups = []
 
 
 class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
@@ -3420,11 +3411,11 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
 
     model_id_root = "tippler_bulk_open_car_randomised"
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # needed to clear randomised set by base class
-        self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3724,15 +3715,15 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
 
     model_id_root = "coil_car_covered_asymmetric"
     variant_group_id_root = "wagon_group_coil_cars"
+    randomised_candidate_groups = [
+        "dedicated_coil_car_randomised",
+        "metal_product_car_covered_randomised",
+        "metal_product_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.randomised_candidate_groups = [
-            "dedicated_coil_car_randomised",
-            "metal_product_car_covered_randomised",
-            "metal_product_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -3767,15 +3758,15 @@ class CoilCarCovered(CoilCarBase):
     ]
     variant_group_id_root = "wagon_group_coil_cars"
     model_id_root = "coil_car_covered"
+    randomised_candidate_groups = [
+        "dedicated_coil_car_randomised",
+        "metal_product_car_covered_randomised",
+        "metal_product_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.randomised_candidate_groups = [
-            "dedicated_coil_car_randomised",
-            "metal_product_car_covered_randomised",
-            "metal_product_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
@@ -3804,15 +3795,15 @@ class CoilCarTarpaulin(CoilCarBase):
 
     model_id_root = "coil_car_tarpaulin"
     variant_group_id_root = "wagon_group_coil_cars"
+    randomised_candidate_groups = [
+        "dedicated_coil_car_randomised",
+        "metal_product_car_covered_randomised",
+        "metal_product_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.randomised_candidate_groups = [
-            "dedicated_coil_car_randomised",
-            "metal_product_car_covered_randomised",
-            "metal_product_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -3844,14 +3835,14 @@ class CoilCarUncovered(CoilCarBase):
 
     model_id_root = "coil_car_uncovered"
     variant_group_id_root = "wagon_group_coil_cars"
+    randomised_candidate_groups = [
+        "dedicated_coil_car_randomised",
+        "metal_product_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
-        self.randomised_candidate_groups = [
-            "dedicated_coil_car_randomised",
-            "metal_product_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -3942,11 +3933,11 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
 
     model_id_root = "covered_hopper_car_type_1"
     variant_group_id_root = "wagon_group_covered_hopper_cars"
+    randomised_candidate_groups = ["covered_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
-        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
 
 
 class CoveredHopperCarType2(CoveredHopperCarBase):
@@ -3956,11 +3947,11 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
 
     model_id_root = "covered_hopper_car_type_2"
     variant_group_id_root = "wagon_group_covered_hopper_cars"
+    randomised_candidate_groups = ["covered_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
-        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         self._joker = True
 
 
@@ -3971,11 +3962,11 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
 
     model_id_root = "covered_hopper_car_type_3"
     variant_group_id_root = "wagon_group_covered_hopper_cars"
+    randomised_candidate_groups = ["covered_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
-        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         self._joker = True
 
 
@@ -4063,6 +4054,7 @@ class ExpressCarUnit(CarModelTypeBase):
     ]
 
     model_id_root = "express_car"
+    randomised_candidate_groups = ["express_food_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4074,7 +4066,6 @@ class ExpressCarUnit(CarModelTypeBase):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
-        self.randomised_candidate_groups = ["express_food_car_randomised"]
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         # keep matched to MailCar
@@ -4151,6 +4142,10 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
     ]
 
     variant_group_id_root = "wagon_group_food_express_tank_cars"
+    randomised_candidate_groups = [
+        "food_express_tank_car_randomised",
+        "express_food_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -4161,10 +4156,6 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        self.randomised_candidate_groups = [
-            "food_express_tank_car_randomised",
-            "express_food_car_randomised",
-        ]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -4314,12 +4305,12 @@ class FarmProductsBoxCarType1(FarmProductsBoxCarBase):
     """
 
     model_id_root = "farm_product_box_car_type_1"
+    randomised_candidate_groups = [
+        "farm_product_box_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "farm_product_box_car_randomised",
-        ]
 
 
 class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
@@ -4328,12 +4319,12 @@ class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
     """
 
     model_id_root = "farm_product_box_car_type_2"
+    randomised_candidate_groups = [
+        "farm_product_box_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "farm_product_box_car_randomised",
-        ]
 
 
 class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
@@ -4395,12 +4386,12 @@ class FarmProductsHopperCarType1(FarmProductsHopperCarBase):
     """
 
     model_id_root = "farm_product_hopper_car_type_1"
+    randomised_candidate_groups = [
+        "farm_product_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "farm_product_hopper_car_randomised",
-        ]
 
 
 class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
@@ -4409,12 +4400,12 @@ class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
     """
 
     model_id_root = "farm_product_hopper_car_type_2"
+    randomised_candidate_groups = [
+        "farm_product_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "farm_product_hopper_car_randomised",
-        ]
 
 
 class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarBase):
@@ -4464,12 +4455,12 @@ class FoodHopperCarType1(FoodHopperCarBase):
     """
 
     model_id_root = "food_hopper_car_type_1"
+    randomised_candidate_groups = [
+        "food_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "food_hopper_car_randomised",
-        ]
 
 
 class FoodHopperCarType2(FoodHopperCarBase):
@@ -4478,12 +4469,12 @@ class FoodHopperCarType2(FoodHopperCarBase):
     """
 
     model_id_root = "food_hopper_car_type_2"
+    randomised_candidate_groups = [
+        "food_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "food_hopper_car_randomised",
-        ]
 
 
 class FoodHopperCarType3(FoodHopperCarBase):
@@ -4492,12 +4483,12 @@ class FoodHopperCarType3(FoodHopperCarBase):
     """
 
     model_id_root = "food_hopper_car_type_3"
+    randomised_candidate_groups = [
+        "food_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "food_hopper_car_randomised",
-        ]
 
 
 class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
@@ -4567,6 +4558,7 @@ class FlatCarBulkheadBase(FlatCarBase):
     ]
 
     variant_group_id_root = "wagon_group_bulkhead_flat_cars"
+    randomised_candidate_groups = ["bulkhead_flat_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4574,7 +4566,6 @@ class FlatCarBulkheadBase(FlatCarBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
         ]
-        self.randomised_candidate_groups = ["bulkhead_flat_car_randomised"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -4632,17 +4623,17 @@ class FlatCarDropEnd(FlatCarBase):
 
     model_id_root = "drop_end_flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
+    randomised_candidate_groups = [
+        "flat_car_randomised",
+        "metal_product_car_mixed_randomised",
+        "metal_product_car_uncovered_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "flat_car_randomised",
-            "metal_product_car_mixed_randomised",
-            "metal_product_car_uncovered_randomised",
         ]
         self._joker = True
 
@@ -4654,18 +4645,18 @@ class FlatCarDropSide(FlatCarBase):
 
     model_id_root = "drop_side_flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
+    randomised_candidate_groups = [
+        "flat_car_randomised",
+        "metal_product_car_mixed_randomised",
+        "metal_product_car_uncovered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "flat_car_randomised",
-            "metal_product_car_mixed_randomised",
-            "metal_product_car_uncovered_randomised",
-            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
 
@@ -4677,12 +4668,12 @@ class FlatCar(FlatCarBase):
 
     model_id_root = "flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
+    randomised_candidate_groups = [
+        "flat_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "flat_car_randomised",
-        ]
 
 
 class FlatCarHeavyDuty(FlatCarBase):
@@ -4724,16 +4715,16 @@ class FlatCarMillBase(FlatCarBase):
     """
 
     variant_group_id_root = "wagon_group_mill_flat_cars"
+    randomised_candidate_groups = [
+        "metal_product_car_uncovered_randomised",
+        "mill_flat_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "metal_product_car_uncovered_randomised",
-            "mill_flat_car_randomised",
         ]
         self._joker = True
 
@@ -4876,6 +4867,10 @@ class HopperCarBase(CarModelTypeBase):
         "FREIGHT_OIL_BLACK",
         "FREIGHT_SAND",
     ]
+    randomised_candidate_groups = [
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4889,10 +4884,6 @@ class HopperCarBase(CarModelTypeBase):
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
-        ]
-        self.randomised_candidate_groups = [
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -4934,14 +4925,14 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_1"
+    randomised_candidate_groups = [
+        "aggregate_hopper_car_randomised",
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "aggregate_hopper_car_randomised",
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
-        ]
         self._joker = True
 
 
@@ -4951,14 +4942,14 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_2"
+    randomised_candidate_groups = [
+        "aggregate_hopper_car_randomised",
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "aggregate_hopper_car_randomised",
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
-        ]
         self._joker = True
 
 
@@ -4968,14 +4959,14 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_3"
+    randomised_candidate_groups = [
+        "aggregate_hopper_car_randomised",
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "aggregate_hopper_car_randomised",
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
-        ]
         self._joker = True
 
 
@@ -5004,15 +4995,15 @@ class HopperCar(HopperCarBase):
 
     model_id_root = "hopper_car"
     variant_group_id_root = "wagon_group_hopper_cars"
+    randomised_candidate_groups = [
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+        "hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
-        self.randomised_candidate_groups = [
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
-            "hopper_car_randomised",
-        ]
 
 
 class HopperCarHighSide(HopperCarBase):
@@ -5022,15 +5013,15 @@ class HopperCarHighSide(HopperCarBase):
 
     model_id_root = "hopper_car_high_side"
     variant_group_id_root = "wagon_group_hopper_cars"
+    randomised_candidate_groups = [
+        "bulk_car_hopper_randomised",
+        "bulk_car_mixed_randomised",
+        "hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
-        self.randomised_candidate_groups = [
-            "bulk_car_hopper_randomised",
-            "bulk_car_mixed_randomised",
-            "hopper_car_randomised",
-        ]
         self._joker = True
 
 
@@ -5052,11 +5043,11 @@ class HopperCarMGRBase(HopperCarBase):
         "FREIGHT_SULPHUR",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
+    # don't include MGR hoppers in randomised lists, they don't look good
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # don't include MGR hoppers in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         self._joker = True
         # adjust default liveries set by the base class
@@ -5110,11 +5101,11 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
 
     model_id_root = "hopper_car_randomised"
     variant_group_id_root = "wagon_group_hopper_cars"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # needed to clear randomised set by base class
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
@@ -5145,12 +5136,11 @@ class HopperCarRock(HopperCarBase):
     ]
 
     model_id_root = "rock_hopper_car"
+    randomised_candidate_groups = ["bulk_car_hopper_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        # don't include rock hoppers in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["bulk_car_hopper_randomised"]
         self._joker = True
 
 
@@ -5160,12 +5150,12 @@ class HopperCarSideDoor(HopperCarBase):
     """
 
     model_id_root = "side_door_hopper_car"
+    # not eligible for randomisation, doesn't look right
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
-        # not eligible for randomisation, doesn't look right
-        self.randomised_candidate_groups = []
         self._joker = True
 
 
@@ -5187,12 +5177,12 @@ class HopperCarSkip(HopperCarBase):
         # player choice, various others tried, not needed
     ]
     model_id_root = "skip_car"
+    # not eligible for randomisation, breaks due to articulation
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        # not eligible for randomisation, breaks due to articulation
-        self.randomised_candidate_groups = []
         self._joker = True
 
 
@@ -5857,14 +5847,14 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
     ]
 
     variant_group_id_root = "wagon_group_lime_covered_hopper_cars"
+    randomised_candidate_groups = [
+        "lime_covered_hopper_car_randomised",
+        "covered_bulk_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self.randomised_candidate_groups = [
-            "lime_covered_hopper_car_randomised",
-            "covered_bulk_car_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -5922,11 +5912,11 @@ class MineralCoveredHopperCarLimeRandomised(
     """
 
     model_id_root = "lime_covered_hopper_car_randomised"
+    # clear from randomisation groups
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # clear from randomisation groups
-        self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -5996,15 +5986,15 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
     ]
 
     variant_group_id_root = "wagon_group_roller_roof_hopper_cars"
+    randomised_candidate_groups = [
+        "roller_roof_hopper_car_randomised",
+        "covered_bulk_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
-        self.randomised_candidate_groups = [
-            "roller_roof_hopper_car_randomised",
-            "covered_bulk_car_randomised",
-        ]
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
@@ -6046,11 +6036,11 @@ class MineralCoveredHopperCarRollerRoofRandomised(
     """
 
     model_id_root = "roller_roof_hopper_car_randomised"
+    # clear from randomisation groups
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # clear from randomisation groups
-        self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -6089,14 +6079,14 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
     ]
 
     variant_group_id_root = "wagon_group_salt_covered_hopper_cars"
+    randomised_candidate_groups = [
+        "covered_bulk_car_randomised",
+        "salt_covered_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        self.randomised_candidate_groups = [
-            "covered_bulk_car_randomised",
-            "salt_covered_hopper_car_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         # the weathering is baked in to the sprite on these so no weathered remap
@@ -6139,11 +6129,11 @@ class MineralCoveredHopperCarSaltRandomised(
     """
 
     model_id_root = "salt_covered_hopper_car_randomised"
+    # clear from randomisation groups
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # clear from randomisation groups
-        self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -6158,6 +6148,11 @@ class OpenCarBase(CarModelTypeBase):
     General cargo - refits everything except mail, pax.
     """
 
+    randomised_candidate_groups = [
+        "open_car_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["all_freight"]
@@ -6169,10 +6164,6 @@ class OpenCarBase(CarModelTypeBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
-        ]
-        self.randomised_candidate_groups = [
-            "open_car_randomised",
-            "piece_goods_car_mixed_randomised",
         ]
 
 
@@ -6227,12 +6218,13 @@ class OpenCarHood(OpenCarBase):
 
     model_id_root = "hood_open_car"
     variant_group_id_root = "wagon_group_open_cars"
+    # CABBAGE THIS IS WEIRD !!!!
+    #randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = ["KAOL"]
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
-        self.randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -6300,15 +6292,15 @@ class OpenCarMill(OpenCarBase):
     ]
 
     model_id_root = "mill_open_car"
+    randomised_candidate_groups = [
+        "metal_product_car_mixed_randomised",
+        "metal_product_car_uncovered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
-        self.randomised_candidate_groups = [
-            "metal_product_car_mixed_randomised",
-            "metal_product_car_uncovered_randomised",
-            "piece_goods_car_mixed_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -6998,11 +6990,11 @@ class PipeCar(FlatCarBase):
     ]
 
     model_id_root = "pipe_car"
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
-        self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -7022,6 +7014,10 @@ class ReeferCarBase(CarModelTypeBase):
     """
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    randomised_candidate_groups = [
+        "reefer_car_randomised",
+        "express_food_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7031,10 +7027,6 @@ class ReeferCarBase(CarModelTypeBase):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
-        self.randomised_candidate_groups = [
-            "reefer_car_randomised",
-            "express_food_car_randomised",
-        ]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -7166,11 +7158,11 @@ class SiloCarType1(SiloCarBase):
 
     model_id_root = "silo_car_type_1"
     variant_group_id_root = "wagon_group_silo_cars"
+    randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["silo_car_randomised"]
 
 
 class SiloCarType2(SiloCarBase):
@@ -7180,11 +7172,11 @@ class SiloCarType2(SiloCarBase):
 
     model_id_root = "silo_car_type_2"
     variant_group_id_root = "wagon_group_silo_cars"
+    randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["silo_car_randomised"]
 
 
 class SiloCarType3(SiloCarBase):
@@ -7194,11 +7186,11 @@ class SiloCarType3(SiloCarBase):
 
     model_id_root = "silo_car_type_3"
     variant_group_id_root = "wagon_group_silo_cars"
+    randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["silo_car_randomised"]
 
 
 class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
@@ -7238,11 +7230,11 @@ class SiloCarCementType1(SiloCarBase):
 
     model_id_root = "cement_silo_car_type_1"
     variant_group_id_root = "wagon_group_cement_silo_cars"
+    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -7264,11 +7256,11 @@ class SiloCarCementType2(SiloCarBase):
 
     model_id_root = "cement_silo_car_type_2"
     variant_group_id_root = "wagon_group_cement_silo_cars"
+    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -7290,11 +7282,11 @@ class SiloCarCementType3(SiloCarBase):
 
     model_id_root = "cement_silo_car_type_3"
     variant_group_id_root = "wagon_group_cement_silo_cars"
+    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # Graphics configuration
         weathered_states = {
@@ -7348,18 +7340,18 @@ class SlidingRoofCar(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_car"
+    randomised_candidate_groups = [
+        "metal_product_car_covered_randomised",
+        "metal_product_car_mixed_randomised",
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "metal_product_car_covered_randomised",
-            "metal_product_car_mixed_randomised",
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -7399,6 +7391,9 @@ class SlidingRoofCarHiCube(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
+    randomised_candidate_groups = [
+        "piece_goods_car_manufacturing_parts_randomised"
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7407,9 +7402,6 @@ class SlidingRoofCarHiCube(BoxCarBase):
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "piece_goods_car_manufacturing_parts_randomised"
         ]
         self._joker = True
         # Graphics configuration
@@ -7520,14 +7512,14 @@ class TankCarAcidBase(TankCarBase):
     ]
 
     variant_group_id_root = "wagon_group_acid_tank_cars"
+    randomised_candidate_groups = [
+        "acid_tank_car_randomised",
+        "chemical_tank_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = [
-            "acid_tank_car_randomised",
-            "chemical_tank_car_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         # empty, set in subclasses
@@ -7644,14 +7636,14 @@ class TankCarProductBase(TankCarBase):
     ]
 
     variant_group_id_root = "wagon_group_product_tank_cars"
+    randomised_candidate_groups = [
+        "chemical_tank_car_randomised",
+        "product_tank_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = [
-            "chemical_tank_car_randomised",
-            "product_tank_car_randomised",
-        ]
         self._joker = True
         # Graphics configuration
         # set in variant subclasses
@@ -7730,11 +7722,11 @@ class TankCarStandardBase(TankCarBase):
     ]
 
     variant_group_id_root = "wagon_group_tank_cars"
+    randomised_candidate_groups = ["tank_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
-        self.randomised_candidate_groups = ["tank_car_randomised"]
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.tank_car_livery_recolour_map
@@ -7822,11 +7814,6 @@ class TankCarVolatilesBase(TankCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
-        """
-        self.randomised_candidate_groups = [
-            "volatives_tank_car_randomised",
-        ]
-        """
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
@@ -7871,19 +7858,19 @@ class TarpaulinCarBase(BoxCarBase):
     ]
 
     variant_group_id_root = "wagon_group_tarpaulin_cars"
+    randomised_candidate_groups = [
+        "metal_product_car_covered_randomised",
+        "metal_product_car_mixed_randomised",
+        "piece_goods_car_covered_randomised",
+        "piece_goods_car_mixed_randomised",
+        "tarpaulin_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.1
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
-        ]
-        self.randomised_candidate_groups = [
-            "metal_product_car_covered_randomised",
-            "metal_product_car_mixed_randomised",
-            "piece_goods_car_covered_randomised",
-            "piece_goods_car_mixed_randomised",
-            "tarpaulin_car_randomised",
         ]
         self._joker = True
         # Graphics configuration

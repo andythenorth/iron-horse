@@ -34,6 +34,8 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
+    # CABBBAGE - NERFED OFF WHILE REFACTORING
+    """
     model_def = ModelDef(
         class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26440,
@@ -45,7 +47,7 @@ def main(**kwargs):
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
-
+    """
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
