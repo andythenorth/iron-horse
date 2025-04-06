@@ -559,6 +559,24 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_LIVERIES_VARIETY_GENERAL": {
+        "colour_set_names": [
+            "company_colour",
+            "complement_company_colour",
+            "freight_bauxite",
+            "freight_ruby",
+            "freight_grey",
+            "freight_nightshade",
+            "freight_pewter",
+            "freight_teal",
+        ],
+        "purchase_colour_set_name": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_LIVERIES_VARIETY_VIBRANT": {
         "colour_set_names": [
             "company_colour",

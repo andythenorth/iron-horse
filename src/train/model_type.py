@@ -3402,8 +3402,10 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
     ]
 
     model_id_root = "bulk_car_box_randomised"
@@ -3428,8 +3430,10 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
     ]
 
     model_id_root = "bulk_car_hopper_randomised"
@@ -3456,8 +3460,10 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
     ]
 
     model_id_root = "bulk_car_mixed_randomised"
@@ -4409,8 +4415,11 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
-    # company colour not used on these wagons, so use SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_TEAL",
+    ]
 
     variant_group_id_root = "wagon_group_food_hopper_cars"
 
@@ -4853,6 +4862,7 @@ class HopperCarBase(CarModelTypeBase):
         "FREIGHT_GREY",
         "FREIGHT_OIL_BLACK",
         "FREIGHT_SAND",
+        "FREIGHT_TEAL",
     ]
     randomised_candidate_groups = [
         "bulk_car_hopper_randomised",
@@ -4888,6 +4898,7 @@ class HopperCarAggregateBase(HopperCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
@@ -4895,8 +4906,8 @@ class HopperCarAggregateBase(HopperCarBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
         "FREIGHT_SAND",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
@@ -5020,14 +5031,16 @@ class HopperCarMGRBase(HopperCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_SULPHUR_STRAW",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_SULPHUR",
+        "FREIGHT_TEAL",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
     # don't include MGR hoppers in randomised lists, they don't look good
@@ -5077,6 +5090,7 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
     Random choice of hopper car sprite.
     """
 
+    # could do more here, but would need wagon IDs shuffled
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
@@ -5120,6 +5134,8 @@ class HopperCarRock(HopperCarBase):
         "FREIGHT_GREY",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
+        "FREIGHT_SILVER",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "rock_hopper_car"
@@ -5711,7 +5727,8 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
+        "RANDOM_LIVERIES_VARIETY_GENERAL",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
     ]
 
@@ -5822,15 +5839,15 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_TEAL_PEWTER",
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
         "FREIGHT_SAND",
         "FREIGHT_TEAL",
-        "FREIGHT_PEWTER",
     ]
 
     variant_group_id_root = "wagon_group_lime_covered_hopper_cars"
@@ -7225,7 +7242,11 @@ class SiloCarCementType1(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_PEWTER",
+    ]
 
     model_id_root = "cement_silo_car_type_1"
     variant_group_id_root = "wagon_group_cement_silo_cars"
@@ -7251,7 +7272,11 @@ class SiloCarCementType2(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_PEWTER",
+    ]
 
     model_id_root = "cement_silo_car_type_2"
     variant_group_id_root = "wagon_group_cement_silo_cars"
@@ -7277,7 +7302,11 @@ class SiloCarCementType3(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_PEWTER",
+    ]
 
     model_id_root = "cement_silo_car_type_3"
     variant_group_id_root = "wagon_group_cement_silo_cars"
@@ -7303,7 +7332,11 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
     Random choice of cement silo car sprite.
     """
 
-    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
+    liveries = [
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_PEWTER",
+    ]
 
     model_id_root = "cement_silo_car_randomised"
     variant_group_id_root = "wagon_group_cement_silo_cars"
