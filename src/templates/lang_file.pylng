@@ -14,11 +14,6 @@ STR_GRF_DOCS_URL                                                :${utils.docs_ur
 
 STR_EMPTY                                                       :
 
-STR_NAME_CONTAINER_1                                            :{STRING}
-STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
-
 # buy menu wrappers
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
-STR_COMPANY_COLOUR_CABBAGE                                      :CC CABBAGE
