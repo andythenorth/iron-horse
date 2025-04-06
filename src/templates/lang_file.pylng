@@ -14,6 +14,8 @@ STR_GRF_DOCS_URL                                                :${utils.docs_ur
 
 STR_EMPTY                                                       :
 
+STR_NAME_TWO_PARTS                                              :{STRING} {STRING}
+
 # buy menu wrappers
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}

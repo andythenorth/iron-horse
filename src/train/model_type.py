@@ -181,9 +181,12 @@ class ModelTypeBase(object):
     @cached_property
     def name_as_nml_prop(self):
         # text filter in buy menu needs name as prop as of June 2023
-        # this is very rudimentary and doesn't include all the parts of the name
+        # this is very rudimentary and handles 1 or 2 part names, with no further validation
         name_parts = self.get_name_parts(context="default_name")
-        result = "string(" + name_parts[0] + ")"
+        if len(name_parts) == 1:
+            result = f"string({name_parts[0]})"
+        else:
+            result = f"string(STR_NAME_TWO_PARTS, string({name_parts[0]}), string({name_parts[1]}))"
         return result
 
     @property
@@ -2314,24 +2317,13 @@ class CarModelTypeBase(ModelTypeBase):
             return None
 
     def get_name_parts(self, context):
-        if self.wagon_title_optional_randomised_suffix_str is not None:
-            # CABBAGE
-            default_result = [
-                self.wagon_title_class_str,
-                self.wagon_title_optional_randomised_suffix_str,
-            ]
-        else:
-            default_result = [
-                self.wagon_title_class_str,
-            ]
-
         if context == "docs":
             result = [
                 self.wagon_title_class_str,
                 self.wagon_title_optional_randomised_suffix_str,
             ]
         elif context in ["default_name", "purchase_level_1"]:
-            result = default_result
+            result = [self.wagon_title_class_str]
         else:
             raise BaseException(
                 "get_name_parts called for wagon "
