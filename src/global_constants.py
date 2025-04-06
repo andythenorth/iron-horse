@@ -429,8 +429,6 @@ custom_wagon_recolour_sprite_maps = {
     "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
     "custom_oil_black": (1, 2, 3, 4, 5, 6, 7, 8),
     "custom_faded_oil_black": (1, 70, 16, 4, 26, 6, 7, 8),
-    "custom_gremlin_green": (24, 25, 26, 27, 28, 29, 30, 31),
-    "custom_faded_gremlin_green": (24, 25, 26, 109, 28, 29, 59, 103),
     "custom_ochre": (60, 61, 62, 63, 192, 193, 194, 196),
     "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
 }
@@ -465,7 +463,6 @@ colour_sets = {
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
     "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
-    "freight_gremlin_green": ["custom_gremlin_green", "custom_faded_gremlin_green"],
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
     "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
 }
@@ -633,17 +630,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_GREMLIN_GREEN_SILVER": {
-        "colour_set_names": [
-            "freight_gremlin_green",
-            "freight_silver",
-        ],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_SULPHUR_STRAW": {
         "colour_set_names": ["freight_sulphur", "freight_straw"],
         "use_weathering": True,
@@ -690,14 +676,6 @@ freight_wagon_liveries = {
     "FREIGHT_BAUXITE_NO_WEATHERING": {
         "colour_set_names": ["freight_bauxite"],
         "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_GREMLIN_GREEN": {
-        "colour_set_names": ["freight_gremlin_green"],
-        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
