@@ -7237,114 +7237,82 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         )
 
 
-class SiloCarCementType1(SiloCarBase):
+
+class SiloCarCementBase(SiloCarBase):
     """
     Cement-coloured silo car.
     """
 
+    # limited selection by design, limited visual difference
     liveries = [
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_PEWTER",
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
     ]
+
+    variant_group_id_root = "wagon_group_cement_silo_cars"
+    randomised_candidate_groups = ["cement_silo_car_randomised"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
+            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class SiloCarCementType1(SiloCarCementBase):
+    """
+    Cement-coloured silo car.
+    """
 
     model_id_root = "cement_silo_car_type_1"
-    variant_group_id_root = "wagon_group_cement_silo_cars"
-    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self._joker = True
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
-            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
-class SiloCarCementType2(SiloCarBase):
+
+class SiloCarCementType2(SiloCarCementBase):
     """
     Cement-coloured silo car.
     """
-
-    liveries = [
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_PEWTER",
-    ]
 
     model_id_root = "cement_silo_car_type_2"
-    variant_group_id_root = "wagon_group_cement_silo_cars"
-    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self._joker = True
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
-            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
-class SiloCarCementType3(SiloCarBase):
+
+class SiloCarCementType3(SiloCarCementBase):
     """
     Cement-coloured silo car.
     """
 
-    liveries = [
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_PEWTER",
-    ]
-
     model_id_root = "cement_silo_car_type_3"
-    variant_group_id_root = "wagon_group_cement_silo_cars"
-    randomised_candidate_groups = ["cement_silo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self._joker = True
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
-            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
-class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
+class SiloCarCementRandomised(RandomisedCarMixin, SiloCarCementBase):
     """
     Random choice of cement silo car sprite.
     """
 
-    liveries = [
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_PEWTER",
-    ]
-
     model_id_root = "cement_silo_car_randomised"
-    variant_group_id_root = "wagon_group_cement_silo_cars"
+    # clear from randomisation groups
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
