@@ -2,8 +2,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
     property {
         <!--! name static prop used for buy menu search only -->
         name:                           ${model_variant.name_as_nml_prop};
-        climates_available:             NO_CLIMATE;
         badges:                         ${model_variant.badges_as_nml_prop};
+        <!--! hide trailing parts from buy menu -->
+        climates_available:             ${"NO_CLIMATE" if unit.is_trailing_part else "ALL_CLIMATES"};
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
             engine_class:                   ${unit.engine_class};
@@ -129,14 +130,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
 }
 
 <tal:rosters condition="unit.is_not_trailing_part">
-    <!--! constructing combinatorial 'if' expressions is too complicated, just turn the unit on or off in a cascading way that will probably go wrong eh? -->
-
-    <!--! first default to 'on' if lead unit of an articulated vehicle (we don't want trailing parts) -->
-    item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
-        property {
-            climates_available:             ALL_CLIMATES;
-        }
-    }
+    <!--! constructing combinatorial 'if' expressions is too complicated, just turn the unit off in a cascading way that will probably go wrong eh? -->
     <tal:vehicle_availability_engines condition="not: model_variant.is_general_purpose_true_wagon">
         <tal:simplified_gameplay_only_mode condition="model_variant.joker or not model_variant.is_default_model_variant">
             if (param_vehicle_availability_engines==1) {
