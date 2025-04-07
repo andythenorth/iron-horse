@@ -579,6 +579,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_LIVERIES_VARIETY_MUTED_EARTH": {
+        # colour set names weighted for random weighting
         "colour_set_names": [
             "freight_oil_black",
             "freight_oil_black",
@@ -665,6 +666,7 @@ freight_wagon_liveries = {
             "freight_oil_black",
             "freight_nightshade",
         ],
+        "purchase_colour_set_name": "freight_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -676,6 +678,7 @@ freight_wagon_liveries = {
             "freight_oil_black",
             "freight_obsidian",
         ],
+        "purchase_colour_set_name": "freight_obsidian",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -698,20 +701,17 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_TEAL_NIGHTSHADE": {
-        "colour_set_names": [
-            "freight_teal",
-            "freight_nightshade",
-        ],
+    "RANDOM_LIVERIES_SULPHUR_OCHRE": {
+        "colour_set_names": ["freight_sulphur", "freight_ochre"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_PEWTER_NIGHTSHADE": {
+    "RANDOM_LIVERIES_TEAL_NIGHTSHADE": {
         "colour_set_names": [
-            "freight_pewter",
+            "freight_teal",
             "freight_nightshade",
         ],
         "use_weathering": True,
@@ -728,16 +728,28 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_GREY_PEWTER": {
-        "colour_set_names": ["freight_grey", "freight_pewter"],
+    "RANDOM_LIVERIES_GREY_PEWTER_SILVER": {
+        "colour_set_names": [
+            "freight_grey",
+            "freight_pewter",
+            "freight_pewter", # double pewter for random balance
+            "freight_silver",
+        ],
+        "purchase_colour_set_name": "freight_silver",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_GREY_PEWTER_NO_WEATHERING": {
-        "colour_set_names": ["freight_grey", "freight_pewter"],
+    "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING": {
+        "colour_set_names": [
+            "freight_grey",
+            "freight_pewter",
+            "freight_pewter", # double pewter for random balance
+            "freight_silver",
+        ],
+        "purchase_colour_set_name": "freight_silver",
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
