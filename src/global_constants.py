@@ -402,8 +402,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
     # tried darker bauxite colours, doesn't work well
-    "custom_bauxite": (70, 71, 122, 124, 75, 126, 77, 78),
-    "custom_light_bauxite": (71, 122, 74, 125, 76, 127, 78, 79),
+    "custom_bauxite": (70, 40, 122, 74, 75, 76, 77, 119),
+    "custom_light_bauxite": (104, 105, 106, 61, 62, 116, 77, 119),
     "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
@@ -677,6 +677,19 @@ freight_wagon_liveries = {
         "colour_set_names": [
             "freight_oil_black",
             "freight_obsidian",
+        ],
+        "purchase_colour_set_name": "freight_obsidian",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE": {
+        "colour_set_names": [
+            "freight_oil_black",
+            "freight_obsidian",
+            "freight_nightshade",
         ],
         "purchase_colour_set_name": "freight_obsidian",
         "use_weathering": True,
