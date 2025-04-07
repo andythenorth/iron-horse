@@ -3654,6 +3654,19 @@ class CoilCarBase(CarModelTypeBase):
     Coil car - for finished metals (steel, copper etc).
     """
 
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        # "RANDOM_LIVERIES_VARIETY_MUTED_EARTH", # tried, doesn't look good
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
+    ]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = []
@@ -3672,16 +3685,6 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
     """
     Covered coil car.  No visible cargo.
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_TEAL",
-    ]
 
     model_id_root = "coil_car_covered_asymmetric"
     variant_group_id_root = "wagon_group_coil_cars"
@@ -3717,17 +3720,6 @@ class CoilCarCovered(CoilCarBase):
     Covered coil car.  No visible cargo.
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
-    ]
-
     variant_group_id_root = "wagon_group_coil_cars"
     model_id_root = "coil_car_covered"
     randomised_candidate_groups = [
@@ -3754,17 +3746,6 @@ class CoilCarTarpaulin(CoilCarBase):
     """
     Covered coil car.  No visible cargo.
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
-    ]
 
     model_id_root = "coil_car_tarpaulin"
     variant_group_id_root = "wagon_group_coil_cars"
@@ -3796,16 +3777,8 @@ class CoilCarUncovered(CoilCarBase):
     Uncovered coil car.  Visible cargo.
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hoods
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
-    ]
+    # extend base class liveries, this is a special case to ease maintenance, not a general approach
+    #liveries = CoilCarBase.liveries + ["RANDOM_LIVERIES_VARIETY_MUTED_EARTH"] # CABBAGE
 
     model_id_root = "coil_car_uncovered"
     variant_group_id_root = "wagon_group_coil_cars"
@@ -3829,17 +3802,6 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
     """
     Random choice of covered or uncovered coil car.
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BAUXITE",
-        "FREIGHT_NIGHTSHADE",
-        "FREIGHT_TEAL",
-    ]
 
     model_id_root = "dedicated_coil_car_randomised"
     variant_group_id_root = "wagon_group_coil_cars"
