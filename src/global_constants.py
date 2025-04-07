@@ -427,8 +427,10 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
     "custom_ruby": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
-    "custom_oil_black": (1, 2, 3, 4, 5, 6, 7, 8),
-    "custom_faded_oil_black": (1, 70, 16, 4, 26, 6, 7, 8),
+    "custom_obsidian": (1, 2, 24, 4, 5, 6, 7, 8),
+    "custom_faded_obsidian": (1, 70, 16, 4, 26, 6, 19, 8),
+    "custom_oil_black": (1, 2, 106, 4, 5, 6, 7, 8),
+    "custom_faded_oil_black": (1, 70, 106, 4, 18, 6, 20, 9),
     "custom_ochre": (60, 61, 62, 63, 192, 193, 194, 196),
     "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
 }
@@ -462,6 +464,7 @@ colour_sets = {
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
+    "freight_obsidian": ["custom_obsidian", "custom_faded_obsidian"],
     "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
     "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
@@ -637,14 +640,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_RED_RUBY": {
-        "colour_set_names": ["red", "freight_ruby"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_RUBY_BAUXITE": {
         "colour_set_names": ["freight_ruby", "freight_bauxite"],
         "use_weathering": True,
@@ -669,6 +664,17 @@ freight_wagon_liveries = {
         "colour_set_names": [
             "freight_oil_black",
             "freight_nightshade",
+        ],
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN": {
+        "colour_set_names": [
+            "freight_oil_black",
+            "freight_obsidian",
         ],
         "use_weathering": True,
         "docs_image_input_cc": [
