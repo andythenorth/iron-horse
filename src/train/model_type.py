@@ -3142,7 +3142,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_SILVER_PEWTER",
@@ -3300,7 +3300,6 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
@@ -3392,14 +3391,13 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / box open cars.
     """
 
+    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
@@ -3420,14 +3418,13 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
 
+    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
@@ -3450,14 +3447,13 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
 
+    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
@@ -6068,7 +6064,6 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
-        "FREIGHT_GREY",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_SILVER",
@@ -7352,8 +7347,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_RUBY_BAUXITE",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPANY_COLOUR_USE_WEATHERING",
@@ -7362,7 +7356,6 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
-        "FREIGHT_NIGHTSHADE",
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
@@ -7779,7 +7772,6 @@ class TankCarVolatilesBase(TankCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RED",
-        "FREIGHT_RUBY",
         "FREIGHT_GREY",
         "FREIGHT_TEAL",
     ]
