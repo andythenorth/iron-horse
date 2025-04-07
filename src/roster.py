@@ -184,109 +184,6 @@ class Roster(object):
 
         return result
 
-    @property
-    def default_livery(self):
-        # the default livery if no livery is explicitly specified by name
-        return {
-            "remap_to_cc": None,
-            "docs_image_input_cc": [
-                ("COLOUR_BLUE", "COLOUR_BLUE"),
-                ("COLOUR_RED", "COLOUR_WHITE"),
-            ],
-        }
-
-    def get_pax_mail_liveries(self, default_livery_group_name, model_def):
-        result = []
-        # we can optionally specify liveries per model_variant via the model_def, otherwise use the default for the model type subclass
-        if model_def.livery_group_name is not None:
-            livery_group_name = model_def.livery_group_name
-        else:
-            livery_group_name = default_livery_group_name
-        # will fail if the livery group is not defined in the roster
-        # CABBAGE SHIM
-        for livery in self.pax_mail_livery_groups[livery_group_name]:
-            livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
-            livery_result["relative_spriterow_num"] = livery[1]
-            result.append(livery_result)
-        return result
-
-    def intro_year_ranges(self, base_track_type_name):
-        # return a list of year pairs (first year, last year) for generations
-        result = []
-        end_date = global_constants.max_game_date
-        for intro_year in reversed(self.intro_years[base_track_type_name]):
-            result.append((intro_year, end_date))
-            end_date = intro_year - 1
-        result.reverse()
-        return result
-
-    @timing
-    def validate_vehicle_ids(self, numeric_id_defender):
-        # has to be explicitly called after all model variants and units are registered to the roster
-
-        # this structure is used to test for duplicate ids
-        model_variant_id_counts = Counter(self.model_variants)
-
-        for model_variant in self.model_variants:
-            """
-            # CABBAGE - nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
-            # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
-            try:
-                pickle.dumps(model_variant)
-            except:
-                print("Pickling failed for model_variant:", model_variant.id)
-                raise
-            """
-            if model_variant_id_counts[model_variant.id] > 1:
-                raise BaseException(
-                    f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
-                    f"The catalogue for one of them is:"
-                    f"{model_variant.catalogue_entry.catalogue}"
-                )
-            if len(model_variant.units) == 0:
-                raise BaseException(f"Error: {model_variant.id} has no units defined")
-            elif len(model_variant.units) == 1:
-                if model_variant.base_numeric_id <= global_constants.max_articulated_id:
-                    raise BaseException(
-                        f"Error: {model_variant.id} with base_numeric_id {model_variant.base_numeric_id} needs a base_numeric_id larger than 16383 "
-                        f"as the range below 16383 is reserved for articulated vehicles.\n"
-                        f"{model_variant.units}"
-                    )
-            elif len(model_variant.units) > 1:
-                for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
-                    if numeric_id > global_constants.max_articulated_id:
-                        raise BaseException(
-                            f"Error: {model_variant.id} has a unit variant with numeric_id {numeric_id} which is part of an articulated vehicle "
-                            f"and needs a numeric_id smaller than {global_constants.max_articulated_id}.\n"
-                            f"Use a lower base_numeric_id in the model_def.\n"
-                            f"{model_variant.units}"
-                        )
-            for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
-                if numeric_id in numeric_id_defender:
-                    colliding_model_variant = numeric_id_defender[numeric_id]
-                    # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
-                    # if model_id_root matches both model variants have been instantiated from the same source module...
-                    if hasattr(model_variant, "model_id_root"):
-                        if (
-                            getattr(colliding_model_variant, "model_id_root", None)
-                            == model_variant.model_id_root
-                        ):
-                            # it's fine if both model variants are then in different rosters, as they will not conflict
-                            if (
-                                colliding_model_variant.roster.id
-                                != model_variant.roster.id
-                            ):
-                                continue
-                    raise ValueError(
-                        f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
-                        f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
-                        f"{[unit for unit in model_variant.units]}\n"
-                        f"{model_variant.catalogue_entry.catalogue}\n"
-                    )
-                else:
-                    numeric_id_defender[numeric_id] = model_variant
-        # no return value needed
-
     def produce_engines(self):
         self.engine_model_variants_by_catalogue = {}
         package_name = "vehicles." + self.id
@@ -313,7 +210,6 @@ class Roster(object):
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
                     ].append(model_variant)
-
 
     @timing
     def produce_wagons(self):
@@ -422,6 +318,42 @@ class Roster(object):
                         f"{model_variant.wagon_randomisation_candidates}"
                     )
 
+    @property
+    def default_livery(self):
+        # the default livery if no livery is explicitly specified by name
+        return {
+            "remap_to_cc": None,
+            "docs_image_input_cc": [
+                ("COLOUR_BLUE", "COLOUR_BLUE"),
+                ("COLOUR_RED", "COLOUR_WHITE"),
+            ],
+        }
+
+    def get_pax_mail_liveries(self, default_livery_group_name, model_def):
+        result = []
+        # we can optionally specify liveries per model_variant via the model_def, otherwise use the default for the model type subclass
+        if model_def.livery_group_name is not None:
+            livery_group_name = model_def.livery_group_name
+        else:
+            livery_group_name = default_livery_group_name
+        # will fail if the livery group is not defined in the roster
+        # CABBAGE SHIM
+        for livery in self.pax_mail_livery_groups[livery_group_name]:
+            livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
+            livery_result["relative_spriterow_num"] = livery[1]
+            result.append(livery_result)
+        return result
+
+    def intro_year_ranges(self, base_track_type_name):
+        # return a list of year pairs (first year, last year) for generations
+        result = []
+        end_date = global_constants.max_game_date
+        for intro_year in reversed(self.intro_years[base_track_type_name]):
+            result.append((intro_year, end_date))
+            end_date = intro_year - 1
+        result.reverse()
+        return result
+
     def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
         global_pragma = {}
@@ -470,6 +402,74 @@ class Roster(object):
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
+
+    @timing
+    def validate_vehicle_ids(self, numeric_id_defender):
+        # has to be explicitly called after all model variants and units are registered to the roster
+
+        # this structure is used to test for duplicate ids
+        model_variant_id_counts = Counter(self.model_variants)
+
+        for model_variant in self.model_variants:
+            """
+            # CABBAGE - nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
+            # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
+            try:
+                pickle.dumps(model_variant)
+            except:
+                print("Pickling failed for model_variant:", model_variant.id)
+                raise
+            """
+            if model_variant_id_counts[model_variant.id] > 1:
+                raise BaseException(
+                    f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
+                    f"The catalogue for one of them is:"
+                    f"{model_variant.catalogue_entry.catalogue}"
+                )
+            if len(model_variant.units) == 0:
+                raise BaseException(f"Error: {model_variant.id} has no units defined")
+            elif len(model_variant.units) == 1:
+                if model_variant.base_numeric_id <= global_constants.max_articulated_id:
+                    raise BaseException(
+                        f"Error: {model_variant.id} with base_numeric_id {model_variant.base_numeric_id} needs a base_numeric_id larger than 16383 "
+                        f"as the range below 16383 is reserved for articulated vehicles.\n"
+                        f"{model_variant.units}"
+                    )
+            elif len(model_variant.units) > 1:
+                for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
+                    if numeric_id > global_constants.max_articulated_id:
+                        raise BaseException(
+                            f"Error: {model_variant.id} has a unit variant with numeric_id {numeric_id} which is part of an articulated vehicle "
+                            f"and needs a numeric_id smaller than {global_constants.max_articulated_id}.\n"
+                            f"Use a lower base_numeric_id in the model_def.\n"
+                            f"{model_variant.units}"
+                        )
+            for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
+                if numeric_id in numeric_id_defender:
+                    colliding_model_variant = numeric_id_defender[numeric_id]
+                    # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
+                    # if model_id_root matches both model variants have been instantiated from the same source module...
+                    if hasattr(model_variant, "model_id_root"):
+                        if (
+                            getattr(colliding_model_variant, "model_id_root", None)
+                            == model_variant.model_id_root
+                        ):
+                            # it's fine if both model variants are then in different rosters, as they will not conflict
+                            if (
+                                colliding_model_variant.roster.id
+                                != model_variant.roster.id
+                            ):
+                                continue
+                    raise ValueError(
+                        f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
+                        f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
+                        f"{[unit for unit in model_variant.units]}\n"
+                        f"{model_variant.catalogue_entry.catalogue}\n"
+                    )
+                else:
+                    numeric_id_defender[numeric_id] = model_variant
+        # no return value needed
+
     def add_variant_groups(self):
         # creating groups has to happen after *all* model variants are inited
 
@@ -493,10 +493,10 @@ class Roster(object):
                 variant_group_id, VariantGroup(id=variant_group_id)
             )
             variant_group.append(model_variant)
+
         # handle nesting of static and random wagon groups
         # logic: if both a `_static` and `_random` group exist for the same base ID,
         #        then the static group is nested into the random group
-
         for variant_group_id, variant_group in self.variant_groups.items():
             if not variant_group_id.endswith("_static"):
                 continue
