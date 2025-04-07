@@ -3388,7 +3388,10 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / box open cars.
     """
 
-    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -3405,7 +3408,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=1,
+            dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3415,7 +3418,10 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
 
-    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
+    # best to not have too many livery options for these
+    # generally we want a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -3444,7 +3450,10 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
 
-    # best to not have too many livery options for these, they are *so* random it gets confusing with too many colours
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -3462,7 +3471,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=1,
+            dice_colour=3,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5704,26 +5713,24 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
     Base class for randomised cold metal car sprite.
     """
 
-    # more liveries were tried, but the randomisation is so extreme, it's hard to make them work pleasingly
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
-    variant_group_id = (
+    variant_group_id_root = (
         "wagon_group_metal_product_cars_randomised"
     )
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",
-            dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
 
     @property
     def random_reverse(self):
@@ -5739,6 +5746,12 @@ class MetalProductCarCoveredRandomised(MetalProductCarRandomisedBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
@@ -5750,6 +5763,12 @@ class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class MetalProductCarUncoveredRandomised(MetalProductCarRandomisedBase):
@@ -5761,6 +5780,12 @@ class MetalProductCarUncoveredRandomised(MetalProductCarRandomisedBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=3,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class MineralCoveredHopperCarBase(CarModelTypeBase):
@@ -6840,9 +6865,13 @@ class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
     Refits match box vans, this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
     """
 
-    # more liveries were tried, but the randomisation is so extreme, it's hard to make them work pleasingly
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        #"RANDOM_LIVERIES_VARIETY_MUTED_EARTH", # tried it, doesn't look good
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
