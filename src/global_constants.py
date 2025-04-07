@@ -541,16 +541,17 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    # doesn't benefit from any more colours, tried it, gets confusing
     "RANDOM_LIVERIES_VARIETY_MUTED": {
         "colour_set_names": [
             "company_colour",
             "complement_company_colour",
             "freight_bauxite",
+            "freight_bauxite", # increase random weighting
             "freight_ruby",
             "freight_grey",
-            "freight_nightshade",
+            "freight_grey", # increase random weighting
             "freight_pewter",
-            "freight_silver",
         ],
         "purchase_colour_set_name": "complement_company_colour",
         "use_weathering": True,
@@ -577,7 +578,11 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_VARIETY_MUTED_EARTH": {
         "colour_set_names": [
             "freight_oil_black",
+            "freight_oil_black",
             "freight_nightshade",
+            "freight_nightshade",
+            "freight_ochre",
+            "freight_ochre",
             "freight_ochre",
             "freight_sand",
         ],
@@ -591,8 +596,8 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE": {
         "colour_set_names": [
             "freight_bauxite",
-            "freight_grey",
             "freight_nightshade",
+            "freight_grey",
         ],
         "use_weathering": True,
         "docs_image_input_cc": [
