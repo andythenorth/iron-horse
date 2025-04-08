@@ -316,9 +316,10 @@ class ModelVariantFactory:
         # primarily used for explcitly selected wagon groups (from a class property on the model type)
         if self.model_type_cls.group_as_wagon:
             # we split groups for random and static liveries (group nesting will then be determined by roster)
-            livery_selection = (
-                "random" if len(livery_def.colour_set_names or []) > 1 else "static"
-            )
+            livery_selection = "static"
+            if not livery_def.group_as_static_livery and len(livery_def.colour_set_names) > 1:
+                livery_selection = "random"
+
             return (
                 f"{self.variant_group_id_root}_"
                 f"{base_track_type_name.lower()}_"

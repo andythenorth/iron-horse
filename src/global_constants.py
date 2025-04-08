@@ -410,9 +410,10 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_red": (180, 181, 182, 183, 164, 165, 166, 167),
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
-    # tried darker rust colours, doesn't work well
-    "custom_rust": (70, 40, 122, 74, 75, 76, 77, 119),
-    "custom_light_rust": (104, 105, 106, 61, 62, 116, 77, 119),
+    "custom_rust": (104, 24, 106, 61, 62, 116, 36, 37),
+    "custom_light_rust": (70, 40, 122, 73, 62, 115, 118, 119),
+    "custom_red_oxide": (1, 24, 122, 41, 74, 76, 118, 119),
+    "custom_faded_red_oxide": (1, 2, 106, 41, 74, 116, 36, 37),
     "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
@@ -466,6 +467,7 @@ colour_sets = {
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
     "freight_rust": ["custom_rust", "custom_light_rust"],
+    "freight_red_oxide": ["custom_red_oxide", "custom_faded_red_oxide"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
@@ -611,6 +613,7 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_RUST_GREY_NIGHTSHADE": {
         "colour_set_names": [
             "freight_rust",
+            "freight_rust", # for random weighting balance
             "freight_nightshade",
             "freight_grey",
         ],
@@ -803,9 +806,11 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_RUST": {
-        "colour_set_names": ["freight_rust"],
+    "FREIGHT_BONUS_RED_OXIDE": {
+        "colour_set_names": ["freight_red_oxide", "freight_rust"],
+        "purchase_colour_set_name": "freight_red_oxide", # best choice, contrasts with rust if used in random mix
         "use_weathering": True,
+        "group_as_static_livery": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

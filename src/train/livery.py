@@ -11,12 +11,13 @@ class LiveryDef:
     # CABBAGE SPARSE CLASS
     livery_name: str
     # alphabetised optional attrs
-    colour_set_names: Optional[List] = None
+    colour_set_names: List = field(default_factory=list)
     purchase_colour_set_name: Optional[str] = None
     docs_image_input_cc: Optional[List] = None
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
+    group_as_static_livery: Optional[bool] = False
     is_freight_wagon_livery: Optional[bool] = False
 
 
