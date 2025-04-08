@@ -418,6 +418,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
     "custom_dark_teal": (88, 97, 156, 157, 158, 101, 102, 103),
+    "custom_ocean_teal": (105, 33, 249, 157, 158, 159, 160, 14),
+    "custom_dark_ocean_teal": (104, 88, 155, 156, 158, 159, 102, 31),
     "custom_violet": (
         105,
         136,
@@ -471,6 +473,7 @@ colour_sets = {
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
+    "freight_ocean_teal": ["custom_ocean_teal", "custom_dark_ocean_teal"],
     "freight_violet": ["custom_violet", "custom_faded_violet"],
     "freight_silver": ["custom_silver", "custom_dark_silver"],
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
@@ -623,10 +626,10 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_VIOLET_TEAL_LIGHT_BLUE": {
+    "RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL": {
         "colour_set_names": [
-            "freight_teal",  # ordered for random weighting to teal / blue
-            "light_blue",  # similar to teal, but adds variety
+            "freight_teal",  # ordered for random weighting to teal
+            "freight_ocean_teal",
             "freight_violet",
         ],
         "purchase_colour_set_name": "freight_violet",
@@ -768,10 +771,10 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_TEAL_PEWTER_SILVER": {
         "colour_set_names": [
             "freight_teal",
-            "freight_teal",
+            "freight_teal", # double teal for random balance, don't bother using freight_ocean_teal, too much variation then
             "freight_pewter",
             "freight_silver",
-        ],  # double teal for random balance
+        ],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -809,6 +812,18 @@ freight_wagon_liveries = {
     "FREIGHT_BONUS_RED_OXIDE": {
         "colour_set_names": ["freight_red_oxide", "freight_rust"],
         "purchase_colour_set_name": "freight_red_oxide", # best choice, contrasts with rust if used in random mix
+        "use_weathering": True,
+        "group_as_static_livery": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BONUS_TEAL": {
+        "colour_set_names": [
+            "freight_teal",
+            "freight_ocean_teal",
+        ],
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
@@ -906,16 +921,6 @@ freight_wagon_liveries = {
     },
     "FREIGHT_SULPHUR": {
         "colour_set_names": ["freight_sulphur"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_TEAL": {
-        "colour_set_names": [
-            "freight_teal",
-        ],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),

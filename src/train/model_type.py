@@ -2471,7 +2471,7 @@ class AutomobileCarBase(CarModelTypeBase):
         "COMPANY_COLOUR_NO_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "FREIGHT_PEWTER",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -2585,7 +2585,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         "COMPANY_COLOUR_NO_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "FREIGHT_GREY_NO_WEATHERING",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "enclosed_automobile_car"
@@ -2714,7 +2714,7 @@ class BoxCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -2775,7 +2775,7 @@ class BoxCarType2(BoxCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "box_car_type_2"
@@ -2888,14 +2888,12 @@ class BoxCarSlidingWallBase(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_RUST", # CABBAGE?
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_RED_OXIDE", # CABBAGE
-        "FREIGHT_NIGHTSHADE", # CABBAGE?
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_sliding_wall_cars"
@@ -2971,12 +2969,12 @@ class BoxCarVehicleParts(BoxCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
-        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",  # CABBAGE
+        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
         "FREIGHT_PEWTER",
     ]
 
@@ -3045,7 +3043,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE", # CABBAGE
         "FREIGHT_OCHRE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
@@ -3176,7 +3174,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_RED_OXIDE", # CABBAGE
+        "FREIGHT_BONUS_RED_OXIDE",
     ]
 
     variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
@@ -3261,7 +3259,7 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_scrap_metal_cars"
@@ -3334,7 +3332,7 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_SILVER",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
@@ -3557,7 +3555,7 @@ class CaneBinCar(CarModelTypeBase):
         "RANDOM_LIVERIES_RUST_GREY_NIGHTSHADE",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_RED_OXIDE", # CABBAGE
+        "FREIGHT_BONUS_RED_OXIDE",
         "FREIGHT_GREY",
         "FREIGHT_NIGHTSHADE",
     ]
@@ -3689,7 +3687,7 @@ class CoilCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -4051,7 +4049,7 @@ class ExpressFoodCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -4381,7 +4379,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     liveries = [
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_food_hopper_cars"
@@ -4473,7 +4471,7 @@ class FlatCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_RED_OXIDE", # CABBAGE
+        "FREIGHT_BONUS_RED_OXIDE",
         # didn't bother with teal, marginal benefit
     ]
 
@@ -4993,7 +4991,7 @@ class HopperCarMGRBase(HopperCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
     # don't include MGR hoppers in randomised lists, they don't look good
@@ -5278,7 +5276,7 @@ class KaolinHopperCar(CarModelTypeBase):
     liveries = [
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "kaolin_hopper_car"
@@ -5808,7 +5806,7 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_SAND", # CABBAGE?
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_lime_covered_hopper_cars"
@@ -5940,7 +5938,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         "FREIGHT_NIGHTSHADE", # CABBAGE?
         "FREIGHT_SAND", # CABBAGE?
         "FREIGHT_SILVER", # CABBAGE?
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_roller_roof_hopper_cars"
@@ -6027,7 +6025,7 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         "FREIGHT_BONUS_RED_OXIDE",
         "FREIGHT_SAND", # CABBAGE?
         "FREIGHT_SILVER", # CABBAGE?
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_salt_covered_hopper_cars"
@@ -6111,7 +6109,7 @@ class OpenCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     randomised_candidate_groups = [
@@ -6198,7 +6196,7 @@ class OpenCarHighEnd(OpenCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "high_end_open_car"
@@ -6236,7 +6234,7 @@ class OpenCarMill(OpenCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "mill_open_car"
@@ -6838,7 +6836,7 @@ class PeatCar(CarModelTypeBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "peat_car"
@@ -7079,7 +7077,7 @@ class SiloCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_SULPHUR_OCHRE_NO_WEATHERING",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
-        "RANDOM_LIVERIES_VIOLET_TEAL_LIGHT_BLUE",
+        "RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
@@ -7317,7 +7315,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY", # CABBAGE?
         "FREIGHT_BONUS_RED_OXIDE", # CABBAGE?
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
         "FREIGHT_PEWTER", # CABBAGE?
     ]
 
@@ -7434,7 +7432,7 @@ class TankCarAcidBase(TankCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_acid_tank_cars"
@@ -7553,7 +7551,7 @@ class TankCarProductBase(TankCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_product_tank_cars"
@@ -7636,7 +7634,7 @@ class TankCarStandardBase(TankCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_tank_cars"
@@ -7724,7 +7722,7 @@ class TankCarVolatilesBase(TankCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RED", # CABBAGE - REMOVE - UNWEATHERED, REPLACE WITH PINK / RED
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_volatiles_tank_cars"
@@ -7770,7 +7768,7 @@ class TarpaulinCarBase(BoxCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_tarpaulin_cars"
@@ -7835,7 +7833,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "tarpaulin_car_type_3"
@@ -7871,7 +7869,7 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "FREIGHT_BONUS_RED_OXIDE",
-        "FREIGHT_TEAL",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "tarpaulin_car_randomised"

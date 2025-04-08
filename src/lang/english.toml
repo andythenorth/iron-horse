@@ -188,6 +188,9 @@ base = "Mustard"
 [STR_BADGE_COLOUR_SET_NAME_FREIGHT_TEAL]
 base = "Teal"
 
+[STR_BADGE_COLOUR_SET_NAME_FREIGHT_OCEAN_TEAL]
+base = "Ocean Teal"
+
 [STR_BADGE_COLOUR_SET_NAME_FREIGHT_VIOLET]
 base = "Amethyst"
 
