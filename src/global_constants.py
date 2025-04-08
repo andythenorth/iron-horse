@@ -473,7 +473,6 @@ colour_sets = {
     "freight_silver": ["custom_silver", "custom_dark_silver"],
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
-    "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
     "freight_obsidian": ["custom_obsidian", "custom_faded_obsidian"],
     "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
@@ -736,14 +735,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_SULPHUR_STRAW": {
-        "colour_set_names": ["freight_sulphur", "freight_straw"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_SULPHUR_OCHRE": {
         "colour_set_names": ["freight_sulphur", "freight_ochre"],
         "use_weathering": True,
@@ -910,14 +901,6 @@ freight_wagon_liveries = {
     },
     "FREIGHT_SILVER": {
         "colour_set_names": ["freight_silver"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_STRAW": {
-        "colour_set_names": ["freight_straw"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
