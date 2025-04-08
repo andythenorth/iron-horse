@@ -3037,10 +3037,8 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_OXIDE_RUST", # CABBAGE
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_OCHRE",
         "FREIGHT_BONUS_TEAL",
     ]
@@ -5001,14 +4999,13 @@ class HopperCarMGRBase(HopperCarBase):
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
+    # minimal list, single colours simpler
     liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_RUST", # RUBY / PINK, AS NEEDED FOR VOLATILES TANKERS?
-        "RANDOM_LIVERIES_SULPHUR_OCHRE",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
+        "FREIGHT_BONUS_MGR_YELLOW",
+        "FREIGHT_BONUS_STONE",
         "FREIGHT_BONUS_TEAL",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
@@ -7286,7 +7283,6 @@ class SlidingRoofCar(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_RUST", # CABBAGE?
         "RANDOM_LIVERIES_TEAL_NIGHTSHADE",  # contrast
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",

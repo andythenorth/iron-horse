@@ -856,6 +856,16 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    # probably highly regrettable special case for MGR wgonas
+    "FREIGHT_BONUS_MGR_YELLOW": {
+        "colour_set_names": ["freight_sulphur", "freight_ochre"],
+        "use_weathering": True,
+        "group_as_static_livery": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_GREY": {
         "colour_set_names": ["freight_grey"],
         "use_weathering": True,
