@@ -247,9 +247,7 @@ class Roster(object):
                         )
                         catalogue = factory.catalogue
                         # Using the convenience property 'id'
-                        catalogue_id = (
-                            catalogue.id
-                        )
+                        catalogue_id = catalogue.id
                         if catalogue_id not in self.wagon_model_variants_by_catalogue:
                             self.wagon_model_variants_by_catalogue[catalogue_id] = {
                                 "catalogue": catalogue,
@@ -276,23 +274,31 @@ class Roster(object):
     def cabbage_randomisation_candidates(self, randomised_wagon_type_catalogues_tmp):
         # called by produce_wagons, but separate method so we can isolate and measure timing if we need to
 
-        def get_tmp_uid(
-            model_id_root, catalogue
-        ):
+        def get_tmp_uid(model_id_root, catalogue):
             # convenience method for a key, only used for accessing a temp structure
             return f"{model_id_root}_{catalogue.factory.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.factory.model_def.subtype}"
 
         cabbage_random_temp_foo = {}
         for catalogue in self.wagon_catalogues:
-            for model_id_root in getattr(catalogue.factory.model_type_cls, "randomised_candidate_groups", []):
+            for model_id_root in getattr(
+                catalogue.factory.model_type_cls, "randomised_candidate_groups", []
+            ):
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
                 cabbage_random_temp_foo.setdefault(tmp_uid, [])
-                cabbage_random_temp_foo[tmp_uid].append(catalogue.default_model_variant_from_roster)
+                cabbage_random_temp_foo[tmp_uid].append(
+                    catalogue.default_model_variant_from_roster
+                )
 
         for catalogue in randomised_wagon_type_catalogues_tmp:
-            tmp_uid = get_tmp_uid(catalogue.factory.model_type_cls.model_id_root, catalogue)
-            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.id]["model_variants"]:
-                model_variant.wagon_randomisation_candidates = cabbage_random_temp_foo[tmp_uid]
+            tmp_uid = get_tmp_uid(
+                catalogue.factory.model_type_cls.model_id_root, catalogue
+            )
+            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.id][
+                "model_variants"
+            ]:
+                model_variant.wagon_randomisation_candidates = cabbage_random_temp_foo[
+                    tmp_uid
+                ]
 
                 if len(model_variant.wagon_randomisation_candidates) == 0:
                     raise BaseException(
@@ -308,7 +314,9 @@ class Roster(object):
                     )
                 if len(model_variant.wagon_randomisation_candidates) > 64:
                     # CABBAGE TEMP
-                    model_variant.wagon_randomisation_candidates = model_variant.wagon_randomisation_candidates[0:8]
+                    model_variant.wagon_randomisation_candidates = (
+                        model_variant.wagon_randomisation_candidates[0:8]
+                    )
                     continue
                     # we have a limited number of random bits, and we need to use them independently of company colour choices
                     # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
@@ -393,15 +401,12 @@ class Roster(object):
 
         for catalogue in self.catalogues:
             model_variant = catalogue.default_model_variant_from_roster
-            if (
-                model_variant.name is not None
-            ):
+            if model_variant.name is not None:
                 lang_strings["STR_NAME_" + model_variant.model_id.upper()] = (
                     model_variant.name
                 )
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
-
 
     @timing
     def validate_vehicle_ids(self, numeric_id_defender):
@@ -476,8 +481,7 @@ class Roster(object):
         # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
         if self.variant_groups is not None:
             raise BaseException(
-                "add_variant_groups() called more than once for roster "
-                + self.id
+                "add_variant_groups() called more than once for roster " + self.id
             )
 
         self.variant_groups = {}

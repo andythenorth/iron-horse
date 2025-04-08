@@ -274,7 +274,9 @@ class ModelTypeBase(object):
         # specific handling of indentation level 1
         result = []
         if self.cabbage_use_name_callback:
-            result.append("ih_variants_cabbage/purchase_level_1_has_more_nested_variants")
+            result.append(
+                "ih_variants_cabbage/purchase_level_1_has_more_nested_variants"
+            )
         return list(set(result))
 
     @cached_property
@@ -476,11 +478,14 @@ class ModelTypeBase(object):
                         model_variant.subrole_child_branch_num
                         == self.subrole_child_branch_num
                     )
-                    and (model_variant.base_track_type_name == self.base_track_type_name)
+                    and (
+                        model_variant.base_track_type_name == self.base_track_type_name
+                    )
                 ):
                     similar_model_variants.append(model_variant)
             for model_variant in sorted(
-                similar_model_variants, key=lambda model_variant: model_variant.intro_year
+                similar_model_variants,
+                key=lambda model_variant: model_variant.intro_year,
             ):
                 if model_variant.intro_year > self.intro_year:
                     replacement_model_variant = model_variant
@@ -542,7 +547,9 @@ class ModelTypeBase(object):
         else:
             lifespan = 40
         if self.replacement_model_variant is not None:
-            time_to_replacement = self.replacement_model_variant.intro_year - self.intro_year
+            time_to_replacement = (
+                self.replacement_model_variant.intro_year - self.intro_year
+            )
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
                 return time_to_replacement - (time_to_replacement % 10) + 10
@@ -983,7 +990,9 @@ class ModelTypeBase(object):
 
     def get_freight_wagon_livery_index(self, context=None):
         livery_name = self.catalogue_entry.livery_def.livery_name
-        return iron_horse.livery_supplier.freight_wagon_livery_index(livery_name=livery_name, context=context)
+        return iron_horse.livery_supplier.freight_wagon_livery_index(
+            livery_name=livery_name, context=context
+        )
 
     def get_buy_menu_additional_text(self):
         result = []
@@ -1118,10 +1127,12 @@ class ModelTypeBase(object):
         self.assert_cargo_labels(self.label_refits_disallowed)
         # test interpolated gen and intro_year
         assert self.gen, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year"
+            % self.id
         )
         assert self.intro_year, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year" % self.id
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year"
+            % self.id
         )
         # templating
         for unit in self.unique_units:
@@ -1137,6 +1148,7 @@ class ModelTypeBase(object):
             spritelayer_cargos=spritelayer_cargos,
         )
         return nml_result
+
 
 class EngineModelTypeBase(ModelTypeBase):
     """
@@ -1184,7 +1196,8 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.cloned_from_model_type.buy_cost * self.model_def.clone_stats_adjustment_factor
+                self.cloned_from_model_type.buy_cost
+                * self.model_def.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1235,7 +1248,8 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.cloned_from_model_type.running_cost * self.model_def.clone_stats_adjustment_factor
+                self.cloned_from_model_type.running_cost
+                * self.model_def.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -1444,7 +1458,12 @@ class MailEngineCabbageDVT(MailEngineBase):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # formation position rules:
-        formation_position_spriterow_map = {"default": 0, "first": 0, "last": 1, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 1,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
@@ -1533,7 +1552,12 @@ class MailEngineMetro(MailEngineBase):
         # formation position rules
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        formation_position_spriterow_map = {"default": 0, "first": 0, "last": 1, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 1,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="metro",
@@ -1550,6 +1574,7 @@ class MailEngineRailcar(MailEngineBase):
     """
     Mail railcar.
     """
+
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -1645,7 +1670,12 @@ class MailEngineExpressRailcar(MailEngineBase):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         jfdi_pantograph_debug_image_y_offsets = [
             len(self.catalogue_entry.catalogue) * 60,
             30,
@@ -1721,7 +1751,12 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # formation position rules:
-        formation_position_spriterow_map = {"default": 0, "first": 0, "last": 1, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 1,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
@@ -1790,7 +1825,12 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         else:
             self.roof_type = "pax_mail_smooth"
         # formation position rules
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         jfdi_pantograph_debug_image_y_offsets = [
             len(self.catalogue_entry.catalogue) * 60,
             30,
@@ -1846,7 +1886,12 @@ class PassengerEngineMetro(PassengerEngineBase):
         # formation position rules
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        formation_position_spriterow_map = {"default": 0, "first": 0, "last": 1, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 1,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="metro",
@@ -1878,7 +1923,12 @@ class PassengerEngineRailbus(PassengerEngineBase):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         formation_ruleset = "railcars_3_unit_sets"
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
@@ -1939,7 +1989,12 @@ class PassengerEngineRailcar(PassengerEngineBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="railcars_3_unit_sets",
@@ -2082,7 +2137,12 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         # * unit with pantograph - leading end
         # * unit with pantograph -  rear end
         # * buffet unit
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="tgv",
@@ -2277,7 +2337,9 @@ class CarModelTypeBase(ModelTypeBase):
         tree_permissive = []
         tree_strict = []
 
-        for wagon in self.roster.wagon_model_variants_by_model_id_root[self.model_id_root]:
+        for wagon in self.roster.wagon_model_variants_by_model_id_root[
+            self.model_id_root
+        ]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
@@ -2708,7 +2770,7 @@ class BoxCarType2(BoxCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        #"RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
+        # "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
@@ -2824,6 +2886,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
     """
     Base for sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
+
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
@@ -2910,7 +2973,7 @@ class BoxCarVehicleParts(BoxCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # CABBAGE
+        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",  # CABBAGE
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
@@ -3743,7 +3806,7 @@ class CoilCarUncovered(CoilCarBase):
     """
 
     # extend base class liveries, this is a special case to ease maintenance, not a general approach
-    #liveries = CoilCarBase.liveries + ["RANDOM_LIVERIES_VARIETY_MUTED_EARTH"] # CABBAGE
+    # liveries = CoilCarBase.liveries + ["RANDOM_LIVERIES_VARIETY_MUTED_EARTH"] # CABBAGE
 
     model_id_root = "coil_car_uncovered"
     variant_group_id_root = "wagon_group_coil_cars"
@@ -5508,7 +5571,12 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="railcars_4_unit_sets",
@@ -5589,7 +5657,12 @@ class MailHSTCar(MailCarBase):
         #   * brake coach front
         #   * brake coach rear
         #   * special (buffet) coach
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
@@ -5635,9 +5708,7 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
-    variant_group_id_root = (
-        "wagon_group_metal_product_cars_randomised"
-    )
+    variant_group_id_root = "wagon_group_metal_product_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6091,7 +6162,7 @@ class OpenCarHood(OpenCarBase):
     model_id_root = "hood_open_car"
     variant_group_id_root = "wagon_group_open_cars"
     # CABBAGE THIS IS WEIRD !!!!
-    #randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
+    # randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6123,7 +6194,7 @@ class OpenCarHighEnd(OpenCarBase):
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        #"RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
+        # "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
@@ -6334,7 +6405,12 @@ class PanoramicCar(PassengerCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6380,7 +6456,12 @@ class PassengerCar(PassengerCarBase):
         #   * brake coach front
         #   * brake coach rear
         #   * I removed special coaches from PassengerCar Feb 2021, as Restaurant cars were added
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6425,7 +6506,12 @@ class PassengerHighSpeedCar(PassengerCarBase):
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6470,7 +6556,12 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="railcars_6_unit_sets",
@@ -6509,7 +6600,12 @@ class PassengerHSTCar(PassengerCarBase):
         #   * brake coach front
         #   * brake coach rear
         #   * special (buffet) coach
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6567,7 +6663,12 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="railcars_3_unit_sets",
@@ -6611,7 +6712,12 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 3}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 3,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="railcars_3_unit_sets",
@@ -6649,7 +6755,12 @@ class PassengerRestaurantCar(PassengerCarBase):
         self._joker = True
         # Graphics configuration
         # formation position rules do not actually do anything for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
-        formation_position_spriterow_map = {"default": 0, "first": 0, "last": 0, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 0,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6695,7 +6806,12 @@ class PassengerSuburbanCar(PassengerCarBase):
         #   * brake coach front
         #   * brake coach rear
         #   * I removed special coaches from PassengerCarBase Dec 2018, overkill
-        formation_position_spriterow_map = {"default": 0, "first": 1, "last": 2, "special": 0}
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6764,7 +6880,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR", # might be odd, but intended for farm stuff
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",  # might be odd, but intended for farm stuff
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
     ]
 
@@ -6958,7 +7074,7 @@ class SiloCarBase(CarModelTypeBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER", # bounce teal to top for visual effect
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",  # bounce teal to top for visual effect
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
@@ -7065,7 +7181,6 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         )
 
 
-
 class SiloCarCementBase(SiloCarBase):
     """
     Cement-coloured silo car.
@@ -7106,7 +7221,6 @@ class SiloCarCementType1(SiloCarCementBase):
         super().__init__(**kwargs)
 
 
-
 class SiloCarCementType2(SiloCarCementBase):
     """
     Cement-coloured silo car.
@@ -7116,7 +7230,6 @@ class SiloCarCementType2(SiloCarCementBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
 
 
 class SiloCarCementType3(SiloCarCementBase):
@@ -7157,7 +7270,7 @@ class SlidingRoofCar(BoxCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_BAUXITE",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # contrast
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",  # contrast
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
     ]
@@ -7211,9 +7324,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
-    randomised_candidate_groups = [
-        "piece_goods_car_manufacturing_parts_randomised"
-    ]
+    randomised_candidate_groups = ["piece_goods_car_manufacturing_parts_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7315,7 +7426,7 @@ class TankCarAcidBase(TankCarBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER", # bump to top for visual effect
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",  # bump to top for visual effect
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
@@ -7323,7 +7434,7 @@ class TankCarAcidBase(TankCarBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY",     # CABBAGE REDUCE SINGLE LIVERIES
+        "FREIGHT_RUBY",  # CABBAGE REDUCE SINGLE LIVERIES
         "FREIGHT_PEWTER",
         "FREIGHT_NIGHTSHADE",
         "FREIGHT_SULPHUR",
@@ -7409,7 +7520,7 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # bump to top for visual effect
+        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",  # bump to top for visual effect
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
@@ -7447,7 +7558,7 @@ class TankCarProductBase(TankCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY", # CABBAGE REDUCE SINGLE LIVERIES
+        "FREIGHT_RUBY",  # CABBAGE REDUCE SINGLE LIVERIES
         "FREIGHT_SULPHUR",
         "FREIGHT_SILVER",
         "FREIGHT_TEAL",
@@ -7532,7 +7643,7 @@ class TankCarStandardBase(TankCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY", # CABBAGE REDUCE SINGLE LIVERIES
+        "FREIGHT_RUBY",  # CABBAGE REDUCE SINGLE LIVERIES
         "FREIGHT_SULPHUR",
         "FREIGHT_SILVER",
         "FREIGHT_TEAL",
@@ -7729,7 +7840,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hood
+        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",  # nightshade for contrast with hood
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",

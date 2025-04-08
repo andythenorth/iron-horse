@@ -17,20 +17,24 @@ from polar_fox import git_info
 command_line_args = utils.get_command_line_args()
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(
-    currentdir, global_constants.chameleon_cache_dir
-)
+chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
 # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
 os.makedirs(chameleon_cache_path, exist_ok=True)
 os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 # setup the places we look for templates
 from chameleon import PageTemplateLoader
-templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), format="text")
+
+templates = PageTemplateLoader(
+    os.path.join(currentdir, "src", "templates"), format="text"
+)
 
 generated_files_path = iron_horse.generated_files_path
 
-def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision):
+
+def render_header_item_nml(
+    header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision
+):
     template = templates[header_item + ".pynml"]
     result = utils.unescape_chameleon_output(
         template(
@@ -48,7 +52,9 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
         )
     )
     # write the nml per item to disk, it aids debugging
-    with codecs.open(os.path.join(generated_files_path, "nml", header_item + ".nml"), "w", "utf8") as header_item_nml:
+    with codecs.open(
+        os.path.join(generated_files_path, "nml", header_item + ".nml"), "w", "utf8"
+    ) as header_item_nml:
         header_item_nml.write(result)
 
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
@@ -58,7 +64,9 @@ def render_header_item_nml(header_item, roster, graphics_path, pseudo_random_veh
 def render_item_nml(item, graphics_path):
     result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
-    with codecs.open(os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8") as header_item_nml:
+    with codecs.open(
+        os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
+    ) as header_item_nml:
         header_item_nml.write(result)
 
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
@@ -66,7 +74,7 @@ def render_item_nml(item, graphics_path):
 
 
 def main():
-    globals()['logger'] = utils.get_logger(__file__)
+    globals()["logger"] = utils.get_logger(__file__)
     logger.info(f"[RENDER NML] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main(run_post_validation_steps=True)
@@ -118,7 +126,13 @@ def main():
     render_header_item_nml_start = time()
     for header_item in header_items:
         grf_nml.write(
-            render_header_item_nml(header_item, roster, graphics_path, pseudo_random_vehicle_maps, git_revision)
+            render_header_item_nml(
+                header_item,
+                roster,
+                graphics_path,
+                pseudo_random_vehicle_maps,
+                git_revision,
+            )
         )
     logger.info(
         f"render_header_item_nml "
@@ -131,18 +145,18 @@ def main():
     for spritelayercargo in spritelayer_cargos:
         grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
 
-    #template_timings = {}
-    #model_variant_timings = []
+    # template_timings = {}
+    # model_variant_timings = []
     for model_variant in roster.model_variants_in_order_optimised_for_action_2_ids:
-        #start_time = time()
+        # start_time = time()
         rendered_nml = render_item_nml(model_variant, graphics_path)
         grf_nml.write(rendered_nml)
-        #end_time = time()
-        #elapsed_time = end_time - start_time
-        #model_variant_timings.append((model_variant, elapsed_time))
-        #template_timings.setdefault(model_variant.gestalt_graphics.nml_template, [0, 0])
-        #template_timings[model_variant.gestalt_graphics.nml_template][0] += elapsed_time
-        #template_timings[model_variant.gestalt_graphics.nml_template][1] += 1
+        # end_time = time()
+        # elapsed_time = end_time - start_time
+        # model_variant_timings.append((model_variant, elapsed_time))
+        # template_timings.setdefault(model_variant.gestalt_graphics.nml_template, [0, 0])
+        # template_timings[model_variant.gestalt_graphics.nml_template][0] += elapsed_time
+        # template_timings[model_variant.gestalt_graphics.nml_template][1] += 1
 
     """
     # Sort timings by elapsed time in descending order (longest first)

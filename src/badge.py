@@ -5,6 +5,7 @@ from badges import _static_badges
 # CABBAGE - convert to @dataclass?
 # ALSO - move to train/badge.py? - ¿ might not just be trains ?
 
+
 class Badge(object):
     """Simple generic class for badges"""
 
@@ -85,7 +86,9 @@ class BadgeManager(list):
             label=f"freight_livery_colour_set_name",
             name=f"STR_BADGE_COLOUR_SET_NAME",
         )
-        for colour_set_name in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
+        for (
+            colour_set_name
+        ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
                 label=f"freight_livery_colour_set_name/{colour_set_name}",
                 name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",

@@ -16,19 +16,21 @@ import utils
 from utils import timing
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(
-    currentdir, global_constants.chameleon_cache_dir
-)
+chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
 # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
 os.makedirs(chameleon_cache_path, exist_ok=True)
 os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 # setup the places we look for templates
 from chameleon import PageTemplateLoader
-templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"), format="text")
+
+templates = PageTemplateLoader(
+    os.path.join(currentdir, "src", "templates"), format="text"
+)
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
+
 
 def render_lang(roster, lang_name, lang_dst, git_tag_or_version):
     lang_data = roster.get_lang_data(lang_name, context="grf")
@@ -67,7 +69,7 @@ def render_lang(roster, lang_name, lang_dst, git_tag_or_version):
 
 
 def main():
-    globals()['logger'] = utils.get_logger(__file__)
+    globals()["logger"] = utils.get_logger(__file__)
     logger.info(f"[RENDER LANG] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main()

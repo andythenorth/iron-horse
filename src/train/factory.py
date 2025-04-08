@@ -34,7 +34,9 @@ class ModelDef:
     variant_group_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
-    default_livery_extra_docs_examples: List[Any] = None # CABBAGE - DOES THIS DO ANYTHNG CURRENTLY? - *SHOULD* BE USED BY vehicle_details_engine
+    default_livery_extra_docs_examples: List[Any] = (
+        None  # CABBAGE - DOES THIS DO ANYTHNG CURRENTLY? - *SHOULD* BE USED BY vehicle_details_engine
+    )
     easter_egg_haulage_speed_bonus: Optional[Any] = None
     extended_vehicle_life: bool = False
     fixed_run_cost_points: Optional[int] = None
@@ -285,7 +287,9 @@ class ModelVariantFactory:
     def cab_factory(self):
         # convenience way to get cab factory
         if self.model_def.cab_id is not None:
-            return self.roster.model_variants_by_catalogue[self.model_def.cab_id]['catalogue'].factory
+            return self.roster.model_variants_by_catalogue[self.model_def.cab_id][
+                "catalogue"
+            ].factory
         else:
             return None
 
@@ -312,7 +316,9 @@ class ModelVariantFactory:
         # primarily used for explcitly selected wagon groups (from a class property on the model type)
         if self.model_type_cls.group_as_wagon:
             # we split groups for random and static liveries (group nesting will then be determined by roster)
-            livery_selection = "random" if len(livery_def.colour_set_names or []) > 1 else "static"
+            livery_selection = (
+                "random" if len(livery_def.colour_set_names or []) > 1 else "static"
+            )
             return (
                 f"{self.variant_group_id_root}_"
                 f"{base_track_type_name.lower()}_"
@@ -326,7 +332,10 @@ class ModelVariantFactory:
     @cached_property
     def model_is_randomised_wagon_type(self):
         # depends on looking up class name, but should be ok
-        return any(base.__name__ == "RandomisedCarMixin" for base in self.model_type_cls.__mro__)
+        return any(
+            base.__name__ == "RandomisedCarMixin"
+            for base in self.model_type_cls.__mro__
+        )
 
     @cached_property
     def input_spritesheet_name_stem(self):
@@ -386,7 +395,9 @@ class Catalogue(list):
                 for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
 
-            variant_group_id = factory.get_variant_group_id(livery_def, instance.base_track_type_name)
+            variant_group_id = factory.get_variant_group_id(
+                livery_def, instance.base_track_type_name
+            )
 
             # certain static properties are copied into the catalogue_entry from the factory
             # this is for convenience of access as
@@ -526,7 +537,9 @@ class Catalogue(list):
     @cached_property
     def default_model_variant_from_roster(self):
         # requires that the factory produce() method has been called
-        model_variants = self.factory.roster.model_variants_by_catalogue[self.id]['model_variants']
+        model_variants = self.factory.roster.model_variants_by_catalogue[self.id][
+            "model_variants"
+        ]
         for model_variant in model_variants:
             if model_variant.is_default_model_variant:
                 return model_variant
@@ -535,8 +548,11 @@ class Catalogue(list):
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
-        for catalogue_id, catalogue_model_variant_mapping in self.factory.roster.model_variants_by_catalogue.items():
-            catalogue = catalogue_model_variant_mapping['catalogue']
+        for (
+            catalogue_id,
+            catalogue_model_variant_mapping,
+        ) in self.factory.roster.model_variants_by_catalogue.items():
+            catalogue = catalogue_model_variant_mapping["catalogue"]
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_model_variant_mapping)
         return result
@@ -587,7 +603,10 @@ class Catalogue(list):
                     "Senior Engineer, Self-Propelled Traction",
                     "Director, Suburban and Rural Lines",
                 ]
-            elif getattr(self.factory.model_type_cls, "cite", None) == "Dr Constance Speed":
+            elif (
+                getattr(self.factory.model_type_cls, "cite", None)
+                == "Dr Constance Speed"
+            ):
                 cite_name = self.factory.model_type_cls.cite
                 cite_titles = [
                     "Lead Engineer, High Speed Projects",

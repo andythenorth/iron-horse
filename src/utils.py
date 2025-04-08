@@ -8,6 +8,7 @@ from polar_fox.utils import echo_message as echo_message
 from polar_fox.utils import dos_palette_to_rgb as dos_palette_to_rgb
 from polar_fox.utils import unescape_chameleon_output as unescape_chameleon_output
 
+
 def get_command_line_args():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
@@ -36,10 +37,12 @@ def get_command_line_args():
     )
     return argparser.parse_args()
 
+
 @lru_cache(maxsize=None)
 def git_tag_or_version():
     # expensive if repeated due to git lookup, pre-compute and cache it
     return git_info.get_monorepo_tag_parts()[1]
+
 
 @lru_cache(maxsize=None)
 def docs_base_url():
@@ -50,6 +53,7 @@ def docs_base_url():
     if git_info.get_tag_exact_match() != "undefined":
         result.append(git_tag_or_version)
     return "/".join(result)
+
 
 @lru_cache(maxsize=None)
 def docs_url():
@@ -95,6 +99,7 @@ def convert_flat_list_to_pairs_of_tuples(flat_list):
     ]
     return pairs
 
+
 def string_format_compile_time_deltas(time_start, time_later):
     return format((time_later - time_start), ".2f") + " s"
 
@@ -112,33 +117,49 @@ def grfid_to_dword(grfid: str) -> str:
     # Remove backslashes and split into parts
     parts = grfid.split("\\")
     # Convert the parts into bytes
-    byte_values = [ord(parts[0][0]), ord(parts[0][1]), int(parts[1], 16), int(parts[2], 16)]
+    byte_values = [
+        ord(parts[0][0]),
+        ord(parts[0][1]),
+        int(parts[1], 16),
+        int(parts[2], 16),
+    ]
     # Combine into a single DWORD using big-endian order
-    dword = (byte_values[0] << 24) | (byte_values[1] << 16) | (byte_values[2] << 8) | byte_values[3]
+    dword = (
+        (byte_values[0] << 24)
+        | (byte_values[1] << 16)
+        | (byte_values[2] << 8)
+        | byte_values[3]
+    )
     # Return as hexadecimal string
     return f"{dword:08X}"
+
 
 # move logger to Polar Fox?
 import logging
 import os
 import sys
 
+
 def get_logger(module_name):
     """Return a logger configured to write to a file named after the module (with timestamp and level)
     and to stdout (with plain message)."""
     logger = logging.getLogger(module_name)
-    if not logger.handlers:  # Prevent duplicate handlers if the logger is already configured
+    if (
+        not logger.handlers
+    ):  # Prevent duplicate handlers if the logger is already configured
         logger.setLevel(logging.DEBUG)
 
         # Ensure the log directory exists
         os.makedirs("build_logs", exist_ok=True)
-        log_filename = os.path.join("build_logs", os.path.basename(module_name) + ".log")
+        log_filename = os.path.join(
+            "build_logs", os.path.basename(module_name) + ".log"
+        )
 
         # File handler: timestamp truncated to seconds and log level included
         file_handler = logging.FileHandler(log_filename, mode="a", encoding="utf-8")
         file_handler.setLevel(logging.DEBUG)
         file_formatter = logging.Formatter(
-            '%(asctime)s [%(levelname)s] %(message)s', datefmt="%Y-%m-%d %H:%M:%S"
+            "%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
         )
         file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
@@ -146,18 +167,21 @@ def get_logger(module_name):
         # Console handler: plain message only
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.INFO)
-        console_formatter = logging.Formatter('%(message)s')
+        console_formatter = logging.Formatter("%(message)s")
         console_handler.setFormatter(console_formatter)
         logger.addHandler(console_handler)
 
     return logger
 
+
 # move timing decorator to Polar Fox?
 import time
 import functools
 
+
 def timing(func):
     """Decorator that reports the execution time of the wrapped function."""
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
@@ -165,4 +189,5 @@ def timing(func):
         end = time.perf_counter()
         print(f"{func.__name__} took {end - start:.4f} seconds")
         return result
+
     return wrapper

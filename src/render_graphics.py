@@ -3,10 +3,12 @@ import codecs  # used for writing files - more unicode friendly than standard op
 import shutil
 import sys
 import os
+
 currentdir = os.curdir
 
 from multiprocessing import Pool
 import multiprocessing
+
 mp_logger = multiprocessing.log_to_stderr()
 mp_logger.setLevel(25)
 from itertools import repeat
@@ -64,7 +66,7 @@ def report_sprites_complete(catalogues):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
-    globals()['logger'] = utils.get_logger(__file__)
+    globals()["logger"] = utils.get_logger(__file__)
     logger.info(f"[RENDER GRAPHICS] {' '.join(sys.argv)}")
     start = time()
     iron_horse.main()

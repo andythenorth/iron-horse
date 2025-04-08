@@ -139,7 +139,9 @@ class LiverySupplier(dict):
                 colour_set_indexes=colour_set_indexes,
             )
             # purchase livery indexes are appended after the list of non-purchase liveries, so offset appropriately
-            livery_index = len(self.freight_wagon_liveries) + self.freight_wagon_livery_index(livery_name)
+            livery_index = len(
+                self.freight_wagon_liveries
+            ) + self.freight_wagon_livery_index(livery_name)
             result.append(
                 {
                     "livery_name": f"Purchase - {livery_name}",  # for convenient debugging

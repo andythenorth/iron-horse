@@ -28,6 +28,7 @@ docs_src = os.path.join(currentdir, "src", "docs_templates")
 
 palette = utils.dos_palette_to_rgb()
 
+
 def render_docs(
     PageTemplateLoader,
     doc_list,

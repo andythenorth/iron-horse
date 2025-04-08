@@ -56,4 +56,3 @@ static_badges = {
         },
     },
 }
-

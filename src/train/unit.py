@@ -382,7 +382,9 @@ class UnitBase(object):
                     "vehicle_with_cargo_specific_liveries.pynml",
                     "vehicle_formation_position_dependent.pynml",
                 ]:
-                    assert self.model_variant.gestalt_graphics.nml_template != nml_template, (
+                    assert (
+                        self.model_variant.gestalt_graphics.nml_template != nml_template
+                    ), (
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s"
                         % (self.model_variant.id, nml_template)
                     )
@@ -390,6 +392,7 @@ class UnitBase(object):
     def validate(self):
         # integrity tests
         self.assert_random_reverse()
+
 
 class BatteryHybridEngineUnit(UnitBase):
     """
@@ -926,7 +929,9 @@ class CarUnitBase(UnitBase):
         return int(
             self.model_variant.weight_factor
             * self.default_cargo_capacity
-            * self.model_variant.roster.train_car_weight_factors[self.model_variant.gen - 1]
+            * self.model_variant.roster.train_car_weight_factors[
+                self.model_variant.gen - 1
+            ]
         )
 
 
@@ -987,11 +992,12 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
     @property
     def tail_light(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
-        assert (
-            self.unit_def.tail_light is not None
-        ), "%s model_variant has a unit without tail_light set, which is required for %s" % (
-            self.id,
-            self.__class__.__name__,
+        assert self.unit_def.tail_light is not None, (
+            "%s model_variant has a unit without tail_light set, which is required for %s"
+            % (
+                self.id,
+                self.__class__.__name__,
+            )
         )
         return self.unit_def.tail_light
 
@@ -1061,11 +1067,12 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
     @property
     def tail_light(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
-        assert (
-            self.unit_def.tail_light is not None
-        ), "%s model_variant has a unit without tail_light set, which is required for %s" % (
-            self.id,
-            self.__class__.__name__,
+        assert self.unit_def.tail_light is not None, (
+            "%s model_variant has a unit without tail_light set, which is required for %s"
+            % (
+                self.id,
+                self.__class__.__name__,
+            )
         )
         return self.unit_def.tail_light
 
@@ -1081,7 +1088,11 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
         # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
-        if self.model_variant.is_default_model_variant and self.model_variant.gen == 5 and self.model_variant.subtype == "C":
+        if (
+            self.model_variant.is_default_model_variant
+            and self.model_variant.gen == 5
+            and self.model_variant.subtype == "C"
+        ):
             utils.echo_message(
                 "AutomobileCarAsymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             )
@@ -1102,7 +1113,11 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
         # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
-        if self.model_variant.is_default_model_variant and self.model_variant.gen == 5 and self.model_variant.subtype == "C":
+        if (
+            self.model_variant.is_default_model_variant
+            and self.model_variant.gen == 5
+            and self.model_variant.subtype == "C"
+        ):
             utils.echo_message(
                 "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             )
