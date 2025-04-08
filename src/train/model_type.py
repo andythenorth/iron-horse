@@ -4003,8 +4003,8 @@ class ExpressCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPANY_COLOUR_NO_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
+        "COMPANY_COLOUR_NO_WEATHERING",
         "FREIGHT_RED",
     ]
 
@@ -4382,8 +4382,8 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     """
 
     liveries = [
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_TEAL",
     ]
 
@@ -5280,6 +5280,7 @@ class KaolinHopperCar(CarModelTypeBase):
 
     liveries = [
         "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_TEAL",
     ]
 
