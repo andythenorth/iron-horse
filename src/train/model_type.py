@@ -3138,6 +3138,8 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "heavy_duty_dump_car"
@@ -4069,6 +4071,17 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, ExpressFoodCarBase):
     Random choice of food car sprite, noting limited refits because it includes food tankers.
     """
 
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+    ]
+
     model_id_root = "express_food_car_randomised"
 
     def __init__(self, **kwargs):
@@ -4634,6 +4647,8 @@ class FlatCarHeavyDuty(FlatCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "heavy_duty_flat_car"
@@ -4820,6 +4835,7 @@ class HopperCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     randomised_candidate_groups = [
@@ -4864,6 +4880,7 @@ class HopperCarAggregateBase(HopperCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
@@ -5075,6 +5092,7 @@ class HopperCarRock(HopperCarBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
         "FREIGHT_BONUS_STONE",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "rock_hopper_car"
@@ -5103,6 +5121,7 @@ class HopperCarSideDoor(HopperCarBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "side_door_hopper_car"
@@ -5156,6 +5175,7 @@ class IngotCarUnit(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "ingot_car"
@@ -7358,6 +7378,8 @@ class SlagLadleCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "slag_ladle_car"
@@ -7864,6 +7886,8 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
         "FREIGHT_BONUS_TEAL",
     ]
@@ -7896,6 +7920,8 @@ class TorpedoCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
     ]
 
     model_id_root = "torpedo_car"
