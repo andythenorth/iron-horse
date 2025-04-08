@@ -410,9 +410,9 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_red": (180, 181, 182, 183, 164, 165, 166, 167),
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
-    # tried darker bauxite colours, doesn't work well
-    "custom_bauxite": (70, 40, 122, 74, 75, 76, 77, 119),
-    "custom_light_bauxite": (104, 105, 106, 61, 62, 116, 77, 119),
+    # tried darker rust colours, doesn't work well
+    "custom_rust": (70, 40, 122, 74, 75, 76, 77, 119),
+    "custom_light_rust": (104, 105, 106, 61, 62, 116, 77, 119),
     "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
@@ -465,7 +465,7 @@ colour_sets = {
     "brown": ["COLOUR_BROWN", "custom_dark_brown"],
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
-    "freight_bauxite": ["custom_bauxite", "custom_light_bauxite"],
+    "freight_rust": ["custom_rust", "custom_light_rust"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
@@ -560,8 +560,8 @@ freight_wagon_liveries = {
         "colour_set_names": [
             "company_colour",
             "complement_company_colour",
-            "freight_bauxite",
-            "freight_bauxite",  # increase random weighting
+            "freight_rust",
+            "freight_rust",  # increase random weighting
             "freight_ruby",
             "freight_grey",
             "freight_grey",  # increase random weighting
@@ -608,9 +608,9 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE": {
+    "RANDOM_LIVERIES_RUST_GREY_NIGHTSHADE": {
         "colour_set_names": [
-            "freight_bauxite",
+            "freight_rust",
             "freight_nightshade",
             "freight_grey",
         ],
@@ -670,8 +670,8 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_RUBY_BAUXITE": {
-        "colour_set_names": ["freight_ruby", "freight_bauxite"],
+    "RANDOM_LIVERIES_RUBY_RUST": {
+        "colour_set_names": ["freight_ruby", "freight_rust"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -803,17 +803,9 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BAUXITE": {
-        "colour_set_names": ["freight_bauxite"],
+    "FREIGHT_RUST": {
+        "colour_set_names": ["freight_rust"],
         "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_BAUXITE_NO_WEATHERING": {
-        "colour_set_names": ["freight_bauxite"],
-        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
