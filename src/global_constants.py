@@ -344,7 +344,7 @@ purchase_variant_group_base_model_ids_by_group_name = {
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
-    "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38),
+    "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38), # CABBAGE PREVIOUS
     "custom_dark_pink": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_light_pink": (43, 44, 45, 46, 47, 166, 167, 168),
     "custom_dark_grey": (3, 16, 17, 18, 19, 20, 21, 22),
@@ -412,8 +412,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
     "custom_rust": (104, 24, 106, 61, 62, 116, 36, 37),
     "custom_light_rust": (70, 40, 122, 73, 62, 115, 118, 119),
-    "custom_red_oxide": (1, 24, 122, 41, 74, 76, 118, 119),
-    "custom_faded_red_oxide": (1, 2, 106, 41, 74, 116, 36, 37),
+    "custom_oxide": (1, 24, 122, 41, 74, 76, 118, 119),
+    "custom_faded_oxide": (1, 2, 106, 41, 74, 116, 36, 37),
     "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
@@ -447,6 +447,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
     "custom_clover": (96, 97, 98, 99, 100, 101, 102, 103),
     "custom_faded_clover": (97, 98, 99, 100, 101, 102, 103, 14),
+    "custom_stone": (4, 109, 8, 9, 10, 38, 13, 15),
+    "custom_light_stone": (26, 35, 36, 37, 59, 31, 169, 15),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -469,7 +471,7 @@ colour_sets = {
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
     "freight_rust": ["custom_rust", "custom_light_rust"],
-    "freight_red_oxide": ["custom_red_oxide", "custom_faded_red_oxide"],
+    "freight_oxide": ["custom_oxide", "custom_faded_oxide"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
@@ -484,6 +486,8 @@ colour_sets = {
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
     "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
     "freight_clover": ["custom_clover", "custom_faded_clover"],
+    "freight_stone": ["custom_stone", "custom_light_stone"],
+    "freight_misty_stone": ["custom_dark_white", "custom_dark_silver"],
 }
 
 # select a colour that matches the current company colour
@@ -589,6 +593,17 @@ freight_wagon_liveries = {
         ],
         "purchase_colour_set_name": "complement_company_colour",
         "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_VARIETY_LIMEWASH_NO_WEATHERING": {
+        "colour_set_names": [
+            "freight_sand",
+            "freight_pewter",
+        ],
+        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -809,9 +824,9 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BONUS_RED_OXIDE": {
-        "colour_set_names": ["freight_red_oxide", "freight_rust"],
-        "purchase_colour_set_name": "freight_red_oxide", # best choice, contrasts with rust if used in random mix
+    "FREIGHT_BONUS_OXIDE_RUST": {
+        "colour_set_names": ["freight_oxide", "freight_rust"],
+        "purchase_colour_set_name": "freight_oxide", # best choice, contrasts with rust if used in random mix
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
@@ -824,6 +839,16 @@ freight_wagon_liveries = {
             "freight_teal",
             "freight_ocean_teal",
         ],
+        "use_weathering": True,
+        "group_as_static_livery": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    # acts like a single livery due to basically being 4 variations of one colour
+    "FREIGHT_BONUS_STONE": {
+        "colour_set_names": ["freight_stone", "freight_misty_stone"],
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
@@ -887,17 +912,25 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_RUBY": {
-        "colour_set_names": ["freight_ruby"],
+    "FREIGHT_RED": {
+        "colour_set_names": ["red"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_RED": {
+    "FREIGHT_RED_NO_WEATHERING": {
         "colour_set_names": ["red"],
         "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_RUBY": {
+        "colour_set_names": ["freight_ruby"],
+        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
