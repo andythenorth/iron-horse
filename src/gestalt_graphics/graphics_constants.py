@@ -582,11 +582,11 @@ sliding_wall_livery_recolour_map = {
     40: 4,
     41: 5,
     42: 6,
-    43: 7,
-    44: 20,
-    45: 21,
-    46: 22,
-    47: 13,
+    43: 8,
+    44: 21,
+    45: 22,
+    46: 23,
+    47: 14,
 }
 sliding_wall_livery_recolour_map_weathered = {
     40: 33,
