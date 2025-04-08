@@ -2650,10 +2650,10 @@ class BoxCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -2711,10 +2711,10 @@ class BoxCarType2(BoxCarBase):
         #"RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "box_car_type_2"
@@ -2829,11 +2829,11 @@ class BoxCarSlidingWallBase(BoxCarBase):
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
         "FREIGHT_NIGHTSHADE",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_sliding_wall_cars"
@@ -2912,10 +2912,10 @@ class BoxCarVehicleParts(BoxCarBase):
         "RANDOM_LIVERIES_RUBY_BAUXITE",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # CABBAGE
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
 
@@ -2980,11 +2980,11 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
         "FREIGHT_OCHRE",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
@@ -3197,11 +3197,11 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
         "FREIGHT_PEWTER",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_scrap_metal_cars"
@@ -3268,13 +3268,13 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
         "FREIGHT_OCHRE",
         "FREIGHT_SAND",
         "FREIGHT_SILVER",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
@@ -3626,10 +3626,10 @@ class CoilCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -3989,9 +3989,9 @@ class ExpressFoodCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_TEAL",
     ]
 
     def __init__(self, **kwargs):
@@ -4321,7 +4321,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     liveries = [
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_TEAL", # CABBAGE
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_food_hopper_cars"
@@ -6039,10 +6039,10 @@ class OpenCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     randomised_candidate_groups = [
@@ -6126,10 +6126,10 @@ class OpenCarHighEnd(OpenCarBase):
         #"RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "high_end_open_car"
@@ -6164,10 +6164,10 @@ class OpenCarMill(OpenCarBase):
         "RANDOM_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "mill_open_car"
@@ -6724,6 +6724,7 @@ class PeatCar(CarModelTypeBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "peat_car"
@@ -7201,11 +7202,11 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
         "FREIGHT_BAUXITE",
+        "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
 
@@ -7664,10 +7665,10 @@ class TarpaulinCarBase(BoxCarBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
+        "FREIGHT_TEAL",
     ]
 
     variant_group_id_root = "wagon_group_tarpaulin_cars"
@@ -7729,10 +7730,10 @@ class TarpaulinCarType3(TarpaulinCarBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_NIGHTSHADE", # nightshade for contrast with hood
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_RUBY",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "tarpaulin_car_type_3"
@@ -7767,8 +7768,8 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_TEAL_CORNFLOWER",
         "FREIGHT_RUBY",
+        "FREIGHT_TEAL",
     ]
 
     model_id_root = "tarpaulin_car_randomised"

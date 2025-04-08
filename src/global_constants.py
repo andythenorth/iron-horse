@@ -471,7 +471,6 @@ colour_sets = {
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
     "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
     "freight_clover": ["custom_clover", "custom_faded_clover"],
-    "freight_cornflower": ["custom_dark_blue", "custom_light_blue"], # CABBAGE - CAN PROBABLY ADJUST COLOUR_LIGHT_BLUE to be weathered or darker
 }
 
 # select a colour that matches the current company colour
@@ -747,18 +746,6 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_SULPHUR_OCHRE_NO_WEATHERING": {
         "colour_set_names": ["freight_sulphur", "freight_ochre"],
         "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "RANDOM_LIVERIES_TEAL_CORNFLOWER": {
-        "colour_set_names": [
-            "freight_teal",
-            "freight_cornflower",
-        ],
-        "purchase_colour_set_name": "freight_cornflower",
-        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
