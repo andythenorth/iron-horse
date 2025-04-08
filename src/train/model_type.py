@@ -4000,6 +4000,7 @@ class ExpressCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "COMPANY_COLOUR_NO_WEATHERING",
+        "FREIGHT_BONUS_TEAL",
         "FREIGHT_RED",
     ]
 
