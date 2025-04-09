@@ -447,8 +447,10 @@ custom_wagon_recolour_sprite_maps = {
     "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
     "custom_clover": (96, 97, 98, 99, 100, 101, 102, 103),
     "custom_faded_clover": (97, 98, 99, 100, 101, 102, 103, 14),
-    "custom_stone": (4, 109, 8, 9, 10, 38, 13, 15),
-    "custom_light_stone": (26, 35, 36, 37, 59, 31, 169, 15),
+    "custom_cloud": (3, 17, 19, 20, 21, 22, 13, 69),
+    "custom_faded_cloud": (24, 25, 35, 20, 21, 22, 13, 15),
+    "custom_mist": (2, 4, 18, 20, 21, 22, 13, 69),
+    "custom_faded_mist": (2, 107, 7, 20, 21, 22, 13, 69),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -486,8 +488,8 @@ colour_sets = {
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
     "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
     "freight_clover": ["custom_clover", "custom_faded_clover"],
-    "freight_stone": ["custom_stone", "custom_light_stone"],
-    "freight_misty_stone": ["custom_dark_white", "custom_dark_silver"],
+    "freight_cloud": ["custom_cloud", "custom_faded_cloud"],
+    "freight_mist": ["custom_mist", "custom_faded_mist"],
 }
 
 # select a colour that matches the current company colour
@@ -592,6 +594,24 @@ freight_wagon_liveries = {
             "freight_teal",
         ],
         "purchase_colour_set_name": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_VARIETY_GEMSTONE": {
+        # colour set names weighted for random weighting
+        "colour_set_names": [
+            "freight_violet",
+            "freight_cloud",
+            "freight_cloud",
+            "freight_cloud",
+            "freight_cloud",
+            "freight_teal",
+            "freight_ocean_teal",
+            "freight_mist",
+        ],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -742,6 +762,7 @@ freight_wagon_liveries = {
             "freight_nightshade",
         ],
         "purchase_colour_set_name": "freight_obsidian",
+        "group_as_static_livery": True,
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -839,16 +860,6 @@ freight_wagon_liveries = {
             "freight_teal",
             "freight_ocean_teal",
         ],
-        "use_weathering": True,
-        "group_as_static_livery": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    # acts like a single livery due to basically being 4 variations of one colour
-    "FREIGHT_BONUS_STONE": {
-        "colour_set_names": ["freight_stone", "freight_misty_stone"],
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
