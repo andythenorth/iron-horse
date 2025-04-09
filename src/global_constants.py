@@ -621,7 +621,9 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_VARIETY_LIMEWASH_NO_WEATHERING": {
         "colour_set_names": [
             "freight_sand",
-            "freight_pewter",
+            "freight_sand", # random weighting balance
+            "freight_mist",
+            "freight_cloud",
         ],
         "use_weathering": False,
         "docs_image_input_cc": [
@@ -648,12 +650,12 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_RUST_GREY_NIGHTSHADE": {
+    "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE": {
         "colour_set_names": [
+            "freight_grey",
             "freight_rust",
             "freight_rust", # for random weighting balance
             "freight_nightshade",
-            "freight_grey",
         ],
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -762,7 +764,6 @@ freight_wagon_liveries = {
             "freight_nightshade",
         ],
         "purchase_colour_set_name": "freight_obsidian",
-        "group_as_static_livery": True,
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -817,34 +818,69 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_GREY_PEWTER_SILVER": {
+    # generally we use bonus teal, but occasionally we want this to bounce teal to first group level
+    "RANDOM_LIVERIES_TEAL_OCEAN_TEAL": {
         "colour_set_names": [
-            "freight_grey",
-            "freight_pewter",
-            "freight_pewter",  # double pewter for random balance
-            "freight_silver",
+            "freight_ocean_teal",
+            "freight_teal",
         ],
-        "purchase_colour_set_name": "freight_silver",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING": {
+    "RANDOM_LIVERIES_SILVER_GREY_PEWTER": {
         "colour_set_names": [
+            "freight_silver",
             "freight_grey",
             "freight_pewter",
             "freight_pewter",  # double pewter for random balance
-            "freight_silver",
         ],
-        "purchase_colour_set_name": "freight_silver",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING": {
+        "colour_set_names": [
+            "freight_silver",
+            "freight_grey",
+            "freight_pewter",
+            "freight_pewter",  # double pewter for random balance
+        ],
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_LIVERIES_OXIDE_RUST": {
+        "colour_set_names": ["freight_oxide", "freight_rust"],
+        "purchase_colour_set_name": "freight_oxide", # best choice, contrasts with rust if used in random mix
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    # sometimes we want to nest the black livery options, sometimes we don't, this is for when we do
+    "FREIGHT_BONUS_OBSIDIAN": {
+        "colour_set_names": [
+            "freight_oil_black",
+            "freight_obsidian",
+            "freight_nightshade",
+        ],
+        "purchase_colour_set_name": "freight_obsidian",
+        "group_as_static_livery": True,
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    # often we want to nest the rust livery when there are lots of others, or it doesn't look so good
     "FREIGHT_BONUS_OXIDE_RUST": {
         "colour_set_names": ["freight_oxide", "freight_rust"],
         "purchase_colour_set_name": "freight_oxide", # best choice, contrasts with rust if used in random mix
@@ -857,8 +893,8 @@ freight_wagon_liveries = {
     },
     "FREIGHT_BONUS_TEAL": {
         "colour_set_names": [
-            "freight_teal",
             "freight_ocean_teal",
+            "freight_teal",
         ],
         "use_weathering": True,
         "group_as_static_livery": True,
@@ -867,11 +903,13 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    # probably highly regrettable special case for MGR wgonas
-    "FREIGHT_BONUS_MGR_YELLOW": {
-        "colour_set_names": ["freight_sulphur", "freight_ochre"],
-        "use_weathering": True,
+    "FREIGHT_BONUS_MIST": {
+        "colour_set_names": [
+            "freight_mist",
+            "freight_cloud",
+        ],
         "group_as_static_livery": True,
+        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

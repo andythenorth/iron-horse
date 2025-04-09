@@ -529,10 +529,10 @@ class VariantGroup(list):
 
     def get_variant_group_prop_for_model_variant(self, model_variant):
         # faff to find the group leader (typically the first variant)
-        if self.parent_group is not None and model_variant == self[0]:
-            leader = self.parent_group[0]
-        else:
-            leader = self[0]
+        leader = self[0]
+        if self.parent_group is not None:
+            if model_variant == self[0] or self.flatten_short_group:
+                leader = self.parent_group[0]
 
         # guard - don't assign a group reference to the leader itself
         if leader == model_variant:
@@ -540,6 +540,12 @@ class VariantGroup(list):
 
         # for nml, we want the id of the first unit
         return leader.units[0].id
+
+    # CABBAGE - remove?
+    @property
+    def flatten_short_group(self):
+        # don't bother nesting short groups
+        return len(self) < 3
 
     @cached_property
     def group_level(self):
