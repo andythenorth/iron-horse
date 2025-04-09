@@ -2889,10 +2889,11 @@ class BoxCarSlidingWallBase(BoxCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
         "FREIGHT_BONUS_TEAL",
     ]
 
@@ -2901,7 +2902,6 @@ class BoxCarSlidingWallBase(BoxCarBase):
         "piece_goods_car_covered_randomised",
         "piece_goods_car_mixed_randomised",
     ]
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
@@ -2921,10 +2921,13 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
+        """ # CABBAGE
         if self.base_track_type_name == "NG":
             self.roof_type = "freight_cc1"
         else:
             self.roof_type = "freight"
+        """
+        self.roof_type = "freight_cc1"
         weathered_states = {
             "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
             "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
@@ -7282,10 +7285,10 @@ class SlidingRoofCar(BoxCarBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",  # contrast
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "sliding_roof_car"
@@ -7325,15 +7328,16 @@ class SlidingRoofCarHiCube(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE", # OBSIDIAN INSTEAD?
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER", # CABBAGE - NO WEATHERING?
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
+        "RANDOM_LIVERIES_GREY_PEWTER_SILVER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RUBY", # CABBAGE?
-        "FREIGHT_BONUS_OXIDE_RUST", # CABBAGE?
+        "FREIGHT_BONUS_OXIDE_RUST",
         "FREIGHT_BONUS_TEAL",
-        "FREIGHT_PEWTER", # CABBAGE?
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
