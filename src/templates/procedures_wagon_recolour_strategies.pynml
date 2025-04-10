@@ -14,7 +14,6 @@
     }
 </tal:colour_sets>
 
-<!--! company colour passed as a param to avoid pissing around switching between vars for CC1 or CC2 -->
 switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, company_colour1) {
     <tal:complements_to_company_colours repeat="complement_pair global_constants.complements_to_company_colours.items()">
         ${complement_pair[0]}: return ${complement_pair[1]};
