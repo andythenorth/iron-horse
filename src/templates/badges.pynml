@@ -4,6 +4,12 @@ badgetable {
 </tal:badgetable>
 }
 
+<tal:spritesets repeat="cabbage_livery_badge livery_supplier.freight_wagon_liveries">
+    spriteset (spriteset_${cabbage_livery_badge.lower()}, "${graphics_path}/badges/${cabbage_livery_badge.lower()}.png") {
+        [10, 10, 14, 12, 20, -6]
+    }
+</tal:spritesets>
+
 <tal:badges repeat="badge badge_manager">
     item (FEAT_BADGES, ${badge.label.replace("/", "_")}) {
         property {
@@ -11,6 +17,12 @@ badgetable {
             <tal:name condition="badge.name is not None">
                 name: string(${badge.name});
             </tal:name>
+            flags: bitmask(3);
         }
+        <tal:sprite condition="badge.sprite is not None">
+            graphics {
+                default: spriteset_${badge.sprite};
+            }
+        </tal:sprite>
     }
 </tal:badges>

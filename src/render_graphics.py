@@ -168,6 +168,13 @@ def main():
 
     report_sprites_complete(roster.catalogues)
 
+    # badge sprite generation is self contained, just call the badge module
+    iron_horse.badge_manager.render_graphics(
+        iron_horse=iron_horse,
+        graphics_input_path=graphics_input_path,
+        graphics_output_path=graphics_output_path,
+    )
+
     for dir_name in ["railtypes", "signals", "tail_lights"]:
         target_path = os.path.join(graphics_input_path, dir_name)
         dest_path = os.path.join(graphics_output_path, dir_name)

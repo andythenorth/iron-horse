@@ -12,13 +12,23 @@ class LiveryDef:
     livery_name: str
     # alphabetised optional attrs
     colour_set_names: List = field(default_factory=list)
-    purchase_colour_set_name: Optional[str] = None
+    purchase_swatch_colour_set_names: List = field(default_factory=list)
     docs_image_input_cc: Optional[List] = None
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
     group_as_static_livery: Optional[bool] = False
     is_freight_wagon_livery: Optional[bool] = False
+
+    @property
+    def purchase_swatch(self):
+        if not self.is_freight_wagon_livery:
+            return None
+        # for any case where we want to control swatches, use purchase_swatch_colour_set_names
+        if len(self.purchase_swatch_colour_set_names) > 0:
+            return self.purchase_swatch_colour_set_names
+        # default to colour_set_names, but we only want uniques
+        return list(set(self.colour_set_names))
 
 
 class LiverySupplier(dict):
@@ -122,8 +132,8 @@ class LiverySupplier(dict):
             )
         # then append purchase variants of each livery, in same order
         for livery_name, livery in self.freight_wagon_liveries.items():
-            if livery.purchase_colour_set_name is not None:
-                colour_set_name = livery.purchase_colour_set_name
+            if len(livery.purchase_swatch_colour_set_names) > 0:
+                colour_set_name = livery.purchase_swatch_colour_set_names[0]
             else:
                 # otherwise take the first colour set as default for purchase
                 colour_set_name = livery.colour_set_names[0]

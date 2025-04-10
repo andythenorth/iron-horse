@@ -261,6 +261,12 @@ class ModelTypeBase(object):
         return result
 
     @property
+    def cabbage_livery_badge(self):
+        livery = self.catalogue_entry.livery_def.livery_name
+        return f"ih_livery/{livery}"
+
+
+    @property
     def cabbage_colour_mix_badges(self):
         # note returns multiple badges, as vehicles support multiple colours
         result = []
@@ -290,6 +296,8 @@ class ModelTypeBase(object):
         result.extend(self.cabbage_colour_mix_badges)
         # special variant handling badges
         result.extend(self.cabbage_variant_handling_badges)
+        # livery badge
+        result.append(self.cabbage_livery_badge)
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family

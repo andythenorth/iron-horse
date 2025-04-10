@@ -558,42 +558,8 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR": {
-        "colour_set_names": ["complement_company_colour", "company_colour"],
-        "purchase_colour_set_name": "company_colour",
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    # doesn't benefit from any more colours, tried it, gets confusing
-    "RANDOM_LIVERIES_VARIETY_MUTED": {
-        "colour_set_names": [
-            "company_colour",
-            "complement_company_colour",
-            "freight_rust",
-            "freight_rust",  # increase random weighting
-            "freight_ruby",
-            "freight_grey",
-            "freight_grey",  # increase random weighting
-            "freight_pewter",
-        ],
-        "purchase_colour_set_name": "complement_company_colour",
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "RANDOM_LIVERIES_VARIETY_VIBRANT": {
-        "colour_set_names": [
-            "company_colour",
-            "complement_company_colour",
-            "freight_ruby",
-            "freight_silver",
-            "freight_teal",
-        ],
-        "purchase_colour_set_name": "complement_company_colour",
+        "colour_set_names": ["company_colour", "complement_company_colour"],
+        "purchase_swatch_colour_set_names": ["company_colour", "complement_company_colour"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -612,6 +578,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_mist",
         ],
+        "purchase_swatch_colour_set_names": ["freight_violet", "freight_cloud", "freight_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -625,6 +592,7 @@ freight_wagon_liveries = {
             "freight_mist",
             "freight_cloud",
         ],
+        "purchase_swatch_colour_set_names": ["freight_sand", "freight_cloud"],
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -643,7 +611,7 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sand",
         ],
-        "purchase_colour_set_name": "freight_sand",
+        "purchase_swatch_colour_set_names": ["freight_sand", "freight_nightshade", "freight_ochre"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -657,6 +625,7 @@ freight_wagon_liveries = {
             "freight_rust", # for random weighting balance
             "freight_nightshade",
         ],
+        "purchase_swatch_colour_set_names": ["freight_grey", "freight_nightshade", "freight_rust"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -669,7 +638,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_violet",
         ],
-        "purchase_colour_set_name": "freight_violet",
+        "purchase_swatch_colour_set_names": ["freight_violet", "freight_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -678,6 +647,7 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_SILVER_PEWTER": {
         "colour_set_names": ["freight_silver", "freight_pewter"],
+        "purchase_swatch_colour_set_names": ["freight_silver"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -686,6 +656,7 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING": {
         "colour_set_names": ["freight_silver", "freight_pewter"],
+        "purchase_swatch_colour_set_names": ["freight_silver"],
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -699,6 +670,7 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sulphur",
         ],
+        "purchase_swatch_colour_set_names": ["freight_clover", "freight_ochre", "freight_sulphur"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -713,20 +685,13 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_RUBY_RUST": {
-        "colour_set_names": ["freight_ruby", "freight_rust"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING": {
         "colour_set_names": [
             "freight_ruby",
             "freight_grey",
             "freight_nightshade",
         ],
+        "purchase_swatch_colour_set_names": ["freight_ruby", "freight_nightshade"],
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -738,7 +703,7 @@ freight_wagon_liveries = {
             "freight_oil_black",
             "freight_nightshade",
         ],
-        "purchase_colour_set_name": "freight_nightshade",
+        "purchase_swatch_colour_set_names": ["freight_nightshade"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -750,7 +715,7 @@ freight_wagon_liveries = {
             "freight_oil_black",
             "freight_obsidian",
         ],
-        "purchase_colour_set_name": "freight_obsidian",
+        "purchase_swatch_colour_set_names": ["freight_obsidian"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -763,7 +728,7 @@ freight_wagon_liveries = {
             "freight_obsidian",
             "freight_nightshade",
         ],
-        "purchase_colour_set_name": "freight_obsidian",
+        "purchase_swatch_colour_set_names": ["freight_obsidian"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -794,17 +759,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_TEAL_NIGHTSHADE": {
-        "colour_set_names": [
-            "freight_teal",
-            "freight_nightshade",
-        ],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_TEAL_PEWTER_SILVER": {
         "colour_set_names": [
             "freight_teal",
@@ -812,6 +766,7 @@ freight_wagon_liveries = {
             "freight_pewter",
             "freight_silver",
         ],
+        "purchase_swatch_colour_set_names": ["freight_teal", "freight_silver"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -824,6 +779,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_teal",
         ],
+        "purchase_swatch_colour_set_names": ["freight_ocean_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -837,6 +793,7 @@ freight_wagon_liveries = {
             "freight_pewter",
             "freight_pewter",  # double pewter for random balance
         ],
+        "purchase_swatch_colour_set_names": ["freight_silver"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -850,6 +807,7 @@ freight_wagon_liveries = {
             "freight_pewter",
             "freight_pewter",  # double pewter for random balance
         ],
+        "purchase_swatch_colour_set_names": ["freight_silver"],
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -858,7 +816,7 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_OXIDE_RUST": {
         "colour_set_names": ["freight_oxide", "freight_rust"],
-        "purchase_colour_set_name": "freight_oxide", # best choice, contrasts with rust if used in random mix
+        "purchase_swatch_colour_set_names": ["freight_oxide"], # best choice, contrasts with rust if used in random mix
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -872,7 +830,7 @@ freight_wagon_liveries = {
             "freight_obsidian",
             "freight_nightshade",
         ],
-        "purchase_colour_set_name": "freight_obsidian",
+        "purchase_swatch_colour_set_names": ["freight_obsidian"],
         "group_as_static_livery": True,
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -883,7 +841,7 @@ freight_wagon_liveries = {
     # often we want to nest the rust livery when there are lots of others, or it doesn't look so good
     "FREIGHT_BONUS_OXIDE_RUST": {
         "colour_set_names": ["freight_oxide", "freight_rust"],
-        "purchase_colour_set_name": "freight_oxide", # best choice, contrasts with rust if used in random mix
+        "purchase_swatch_colour_set_names": ["freight_oxide"], # best choice, contrasts with rust if used in random mix
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
@@ -896,6 +854,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_teal",
         ],
+        "purchase_swatch_colour_set_names": ["freight_ocean_teal"],
         "use_weathering": True,
         "group_as_static_livery": True,
         "docs_image_input_cc": [
@@ -908,6 +867,7 @@ freight_wagon_liveries = {
             "freight_mist",
             "freight_cloud",
         ],
+        "purchase_swatch_colour_set_names": ["freight_mist"],
         "group_as_static_livery": True,
         "use_weathering": True,
         "docs_image_input_cc": [

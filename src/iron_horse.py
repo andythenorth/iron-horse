@@ -146,6 +146,8 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     for livery_name, livery_def in global_constants.freight_wagon_liveries.items():
         livery_supplier.add_livery(livery_name, is_freight_wagon_livery=True, **livery_def)
 
+    print(len(livery_supplier.freight_wagon_liveries))
+
     # rosters
     roster_manager.add_rosters(roster_module_names, validate_vehicle_ids, run_post_validation_steps)
 
