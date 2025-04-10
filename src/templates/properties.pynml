@@ -111,7 +111,6 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <tal:optional_capacity_switches condition="unit.has_cargo_capacity">
             cargo_capacity:                 ${unit.cabbage_unit_id_from_default_model_variant}_switch_cargo_capacity;
             purchase_cargo_capacity:        ${unit.cabbage_unit_id_from_default_model_variant}_switch_cargo_capacity;
-            loading_speed:                  ${unit.loading_speed};
         </tal:optional_capacity_switches>
         <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
         <tal:optional_cargo_subtype condition="getattr(model_variant, 'use_cargo_subytpes_VEHI', False)">
