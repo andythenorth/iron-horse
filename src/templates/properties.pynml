@@ -113,9 +113,12 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             purchase_cargo_capacity:        ${unit.cabbage_unit_id_from_default_model_variant}_switch_cargo_capacity;
         </tal:optional_capacity_switches>
         <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
+        <!--! as of April 2025 this is not used, only type of automotive sprites exists -->
+        <!--!
         <tal:optional_cargo_subtype condition="getattr(model_variant, 'use_cargo_subytpes_VEHI', False)">
             cargo_subtype_text: switch_cargo_subtype_text();
         </tal:optional_cargo_subtype>
+        -->
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:create_effect condition="len(unit.effects) > 0">
             effect_spawn_model_and_powered: ${unit.id}_switch_effect_spawn_model_and_powered;
