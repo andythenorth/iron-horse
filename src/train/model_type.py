@@ -2767,11 +2767,11 @@ class BoxCarType2(BoxCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         # "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -2837,8 +2837,25 @@ class BoxCarCurtainSide(BoxCarBase):
 
 class BoxCarMerchandise(BoxCarBase):
     """
-    Alternative livery for standard box car / van
+    Alternative appearance for standard box car / van
     """
+
+    # !! could force these to one group, not two? - would produce double teal though - maybe after badge icons are done?
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BONUS_OXIDE_RUST",
+        "FREIGHT_BONUS_TEAL",
+    ]
 
     model_id_root = "merchandise_box_car"
     # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
@@ -3039,6 +3056,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
+    # minimal set by design
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
@@ -3802,9 +3820,6 @@ class CoilCarUncovered(CoilCarBase):
     Uncovered coil car.  Visible cargo.
     """
 
-    # extend base class liveries, this is a special case to ease maintenance, not a general approach
-    # liveries = CoilCarBase.liveries + ["RANDOM_LIVERIES_VARIETY_MUTED_EARTH"] # CABBAGE
-
     model_id_root = "coil_car_uncovered"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
@@ -4394,6 +4409,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
+    # minimal set by design
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
@@ -5301,6 +5317,7 @@ class KaolinHopperCar(CarModelTypeBase):
     Dedicated to kaolin (china clay).
     """
 
+    # minimal set by design
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
@@ -7108,6 +7125,7 @@ class SiloCarBase(CarModelTypeBase):
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OBSIDIAN",
         "FREIGHT_BONUS_OXIDE_RUST",
+        "FREIGHT_BONUS_MIST",
         # didn't bother with teal, marginal benefit
     ]
 
@@ -7291,11 +7309,11 @@ class SlidingRoofCar(BoxCarBase):
     Sliding roof flat - sfins2 holdall and similar - same refits as box van.
     """
 
+    # minimal set by design
     liveries = [
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_OXIDE_RUST",
-        "FREIGHT_BONUS_TEAL",
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
     model_id_root = "sliding_roof_car"
@@ -7333,6 +7351,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
     Sliding roof high volume wagon - rover KSA cube and similar - same refits as box van.
     """
 
+    # !! could force these to one group, not two? - would produce double teal though - maybe after badge icons are done?
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -7340,6 +7359,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE", # tried it, not convinced it adds anything
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -7797,6 +7817,7 @@ class TarpaulinCarBase(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OBSIDIAN",
@@ -7858,17 +7879,6 @@ class TarpaulinCarType3(TarpaulinCarBase):
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_NIGHTSHADE",  # nightshade for contrast with hood
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_OXIDE_RUST",
-        "FREIGHT_BONUS_OBSIDIAN",
-        "FREIGHT_BONUS_TEAL",
-    ]
-
     model_id_root = "tarpaulin_car_type_3"
 
     def __init__(self, **kwargs):
@@ -7893,19 +7903,6 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
     """
     Random choice of tarpaulin car sprite
     """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_BONUS_OXIDE_RUST",
-        "FREIGHT_BONUS_OBSIDIAN",
-        "FREIGHT_BONUS_TEAL",
-    ]
 
     model_id_root = "tarpaulin_car_randomised"
 

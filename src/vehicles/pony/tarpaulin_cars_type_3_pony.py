@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TarpaulinCarType3",
-        base_numeric_id=25750,
+        base_numeric_id=41170,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TarpaulinCarType3",
-        base_numeric_id=27230,
+        base_numeric_id=41110,
         gen=5,
         subtype="C",
         sprites_complete=True,
