@@ -268,8 +268,13 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_colour_mix_badges(self):
-        # note returns multiple badges, as vehicles support multiple colours
         result = []
+
+        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
+        if self.catalogue_entry.livery_def.livery_name in ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]:
+            return result
+
+        # note returns multiple badges, as vehicles support multiple colours
         for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
             result.append(f"freight_livery_colour_set_name/{colour_set_name}")
         return result
@@ -297,7 +302,9 @@ class ModelTypeBase(object):
         # special variant handling badges
         result.extend(self.cabbage_variant_handling_badges)
         # livery badge
-        result.append(self.cabbage_livery_badge)
+        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
+        if self.catalogue_entry.livery_def.livery_name not in ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]:
+            result.append(self.cabbage_livery_badge)
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family
@@ -3531,7 +3538,7 @@ class CabooseCarUnit(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
     model_id_root = "caboose_car"
 
@@ -4254,7 +4261,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     """
 
     # company colour not used on these wagons, so set SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
     variant_group_id_root = "wagon_group_farm_product_box_cars"
 
@@ -4337,7 +4344,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     """
 
     # company colour not used on these wagons, so use SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
     variant_group_id_root = "wagon_group_farm_product_hopper_cars"
 
@@ -4794,7 +4801,7 @@ class GasTankCarBase(CarModelTypeBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -5250,7 +5257,7 @@ class IntermodalCarBase(CarModelTypeBase):
     """
 
     # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH"]
+    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

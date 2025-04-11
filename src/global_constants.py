@@ -516,9 +516,9 @@ complements_to_company_colours = {
 # wagon liveries overlap between rosters so are in global constants (engine liveries are per-roster)
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 freight_wagon_liveries = {
-    # SWOOSH is default, and only used for cases where the livery isn't actually meaningful, e.g. randomised cars
-    "FREIGHT_SWOOSH": {
-        "colour_set_names": ["company_colour"],
+    # SWOOSH is default, and only used for cases where the livery isn't actually meaningful, e.g. no recolouring applied
+    "FREIGHT_SWOOSH_NO_LIVERY_BADGE": {
+        "colour_set_names": ["company_colour"], # CABBAGE - colour_set_names can be optionally empty?
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -578,7 +578,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_mist",
         ],
-        "purchase_swatch_colour_set_names": ["freight_violet", "freight_cloud", "freight_teal"],
+        "purchase_swatch_colour_set_names": ["freight_violet", "freight_cloud", "freight_ocean_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -611,7 +611,7 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sand",
         ],
-        "purchase_swatch_colour_set_names": ["freight_sand", "freight_nightshade", "freight_ochre"],
+        "purchase_swatch_colour_set_names": ["freight_sand", "freight_oil_black", "freight_ochre"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -625,7 +625,7 @@ freight_wagon_liveries = {
             "freight_rust", # for random weighting balance
             "freight_nightshade",
         ],
-        "purchase_swatch_colour_set_names": ["freight_grey", "freight_nightshade", "freight_rust"],
+        "purchase_swatch_colour_set_names": ["freight_grey", "freight_oil_black", "freight_rust"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -638,7 +638,7 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_violet",
         ],
-        "purchase_swatch_colour_set_names": ["freight_violet", "freight_teal"],
+        "purchase_swatch_colour_set_names": ["freight_violet", "freight_ocean_teal"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -715,7 +715,7 @@ freight_wagon_liveries = {
             "freight_oil_black",
             "freight_obsidian",
         ],
-        "purchase_swatch_colour_set_names": ["freight_obsidian"],
+        "purchase_swatch_colour_set_names": ["freight_oil_black"],
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
