@@ -1009,12 +1009,6 @@ class ModelTypeBase(object):
             + ")"
         )
 
-    def get_freight_wagon_livery_index(self, context=None):
-        livery_name = self.catalogue_entry.livery_def.livery_name
-        return iron_horse.livery_supplier.freight_wagon_livery_index(
-            livery_name=livery_name, context=context
-        )
-
     def get_buy_menu_additional_text(self):
         result = []
         # optional string if engine varies power by railtype
