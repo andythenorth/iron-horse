@@ -79,6 +79,11 @@ class BadgeManager(list):
             label="ih_randomised_wagon"
         )
 
+        for i in range(100):
+            self.add_badge(
+                label=f"cabbage/foo/bar_{i}"
+            )
+
         # CABBAGE - CATALOGUES THOUGH?
         # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
         for roster in roster_manager:
