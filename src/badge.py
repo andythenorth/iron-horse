@@ -1,3 +1,6 @@
+import os
+from PIL import Image
+
 import global_constants
 import utils
 from badges import _static_badges
@@ -90,7 +93,7 @@ class BadgeManager(list):
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
             self.add_badge(
-                label=f"ih_livery/{livery.livery_name}",
+                label=f"ih_livery/{livery.livery_name.lower()}",
                 sprite=sprite,
             )
 
@@ -107,24 +110,37 @@ class BadgeManager(list):
             )
 
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
-        # CABBAGE MOVE THE IMPORTS LATER
-        import os
-        from PIL import Image
+        badge_graphics_generator = BadgeGraphicsGenerator(self, iron_horse, graphics_input_path, graphics_output_path)
+        badge_graphics_generator.render_livery_badges()
 
-        badge_sprites_output_path = os.path.join(graphics_output_path, "badges")
-        os.makedirs(badge_sprites_output_path, exist_ok=True)
+class BadgeGraphicsGenerator:
+    """
+    intended as a singleton
+    didn't name it "Pipelines" because as of April 2025 it's just a set of self-contained methods, it doesn't have a full pipeline approach
+    """
+
+    def __init__(self, badge_manager, iron_horse, graphics_input_path, graphics_output_path):
+        self.badge_manager = badge_manager
+        self.iron_horse = iron_horse
+        self.graphics_input_path = graphics_input_path
+        self.graphics_output_path = graphics_output_path
+        self.badge_sprites_output_path = os.path.join(self.graphics_output_path, "badges")
+        # this should maybe be wrapped in an isolation method but eh, do it on init for now
+        os.makedirs(self.badge_sprites_output_path, exist_ok=True)
+
+    def render_livery_badges(self):
 
         # CABBAGE for now only livery badges
         livery_badge_spritesheet = Image.open(
-            os.path.join(graphics_input_path, "badges", "cabbage_badge.png")
+            os.path.join(self.graphics_input_path, "badges", "cabbage_badge.png")
         )
         DOS_PALETTE = Image.open("palette_key.png").palette
         if "icc_profile" in livery_badge_spritesheet.info:
             livery_badge_spritesheet.info.pop("icc_profile")
 
-        for livery_name, livery in iron_horse.livery_supplier.freight_wagon_liveries.items():
+        for livery_name, livery in self.iron_horse.livery_supplier.freight_wagon_liveries.items():
             output_path = os.path.join(
-                badge_sprites_output_path,
+                self.badge_sprites_output_path,
                 f"{livery.livery_name.lower()}.png",
             )
             # the dimensions of the spritesheet, with 10px padding around the actual sprite
@@ -147,7 +163,7 @@ class BadgeManager(list):
             target_recolour_map = {}
 
             for counter, colour_set_name in enumerate(livery.purchase_swatch):
-                if colour_set_name in ["company_colour"]:
+                if colour_set_name == "company_colour":
                     continue
 
                 if colour_set_name in ["complement_company_colour"]:
@@ -173,3 +189,5 @@ class BadgeManager(list):
 
             dest_image.save(output_path)
             dest_image.close()
+
+        livery_badge_spritesheet.close()

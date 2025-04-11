@@ -262,8 +262,8 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_livery_badge(self):
-        livery = self.catalogue_entry.livery_def.livery_name
-        return f"ih_livery/{livery}"
+        livery_name = self.catalogue_entry.livery_def.livery_name
+        return f"ih_livery/{livery_name.lower()}"
 
 
     @property
