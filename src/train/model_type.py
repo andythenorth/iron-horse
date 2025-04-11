@@ -192,7 +192,11 @@ class ModelTypeBase(object):
     @property
     def cabbage_use_name_callback(self):
         # single special case as of April 2025
-        return (self.variant_group.group_level == 1) and (len(self.variant_group) > 0) and (not self.variant_group.flatten_short_group)
+        return (
+            (self.variant_group.group_level == 1)
+            and (len(self.variant_group) > 0)
+            and (not self.variant_group.flatten_short_group)
+        )
 
     @property
     def subrole_child_branch_num(self):
@@ -265,13 +269,14 @@ class ModelTypeBase(object):
         livery_name = self.catalogue_entry.livery_def.livery_name
         return f"ih_livery/{livery_name.lower()}"
 
-
     @property
     def cabbage_colour_mix_badges(self):
         result = []
 
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name in ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]:
+        if self.catalogue_entry.livery_def.livery_name in [
+            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
+        ]:
             return result
 
         # note returns multiple badges, as vehicles support multiple colours
@@ -303,7 +308,9 @@ class ModelTypeBase(object):
         result.extend(self.cabbage_variant_handling_badges)
         # livery badge
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name not in ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]:
+        if self.catalogue_entry.livery_def.livery_name not in [
+            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
+        ]:
             result.append(self.cabbage_livery_badge)
         if self.role_badge is not None:
             result.append(self.role_badge)
@@ -2934,6 +2941,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
         "piece_goods_car_covered_randomised",
         "piece_goods_car_mixed_randomised",
     ]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
@@ -3286,7 +3294,7 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
 
     # tried more, didn't add anything useful
     liveries = [
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN", # bump black to start of list; no nightshade for these wagons
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # bump black to start of list; no nightshade for these wagons
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
@@ -4037,7 +4045,7 @@ class ExpressCarUnit(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "COMPANY_COLOUR_NO_WEATHERING",
         "FREIGHT_BONUS_TEAL",
-        "FREIGHT_RED_NO_WEATHERING", # because royal mail livery
+        "FREIGHT_RED_NO_WEATHERING",  # because royal mail livery
     ]
 
     model_id_root = "express_car"
@@ -5423,7 +5431,7 @@ class LogCar(CarModelTypeBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        #"RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE", # CABBAGE ran out of IDs
+        # "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE", # CABBAGE ran out of IDs
         "RANDOM_LIVERIES_OXIDE_RUST",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
@@ -7374,7 +7382,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_VARIETY_GEMSTONE", # tried it, not convinced it adds anything
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",  # tried it, not convinced it adds anything
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -7494,7 +7502,7 @@ class TankCarAcidBase(TankCarBase):
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN", # no nightshade for these tankers
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -7590,7 +7598,7 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "FREIGHT_BONUS_OBSIDIAN", # base tankers don't use nightshade, but random do, for increased visual variation
+        "FREIGHT_BONUS_OBSIDIAN",  # base tankers don't use nightshade, but random do, for increased visual variation
     ]
 
     model_id_root = "chemical_tank_car_randomised"
@@ -7619,7 +7627,7 @@ class TankCarProductBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN", # no nightshade for these tankers
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -7703,7 +7711,7 @@ class TankCarStandardBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN", # no nightshade for these tankers
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
         "COMPANY_COLOUR_USE_WEATHERING",
         "FREIGHT_BONUS_OXIDE_RUST",
@@ -7787,7 +7795,7 @@ class TankCarVolatilesBase(TankCarBase):
     liveries = [
         "COMPANY_COLOUR_USE_WEATHERING",
         "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
-        "FREIGHT_RED", # custom for this tanker type
+        "FREIGHT_RED",  # custom for this tanker type
         "FREIGHT_OIL_BLACK",
         "FREIGHT_BONUS_OXIDE_RUST",
         "FREIGHT_BONUS_TEAL",

@@ -4,6 +4,7 @@ from PIL import Image
 import global_constants
 import utils
 from badges import _static_badges
+
 # CABBAGE - convert to @dataclass?
 # ALSO - move to train/badge.py? - ¿ might not just be trains ?
 
@@ -110,8 +111,11 @@ class BadgeManager(list):
             )
 
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
-        badge_graphics_generator = BadgeGraphicsGenerator(self, iron_horse, graphics_input_path, graphics_output_path)
+        badge_graphics_generator = BadgeGraphicsGenerator(
+            self, iron_horse, graphics_input_path, graphics_output_path
+        )
         badge_graphics_generator.render_livery_badges()
+
 
 class BadgeGraphicsGenerator:
     """
@@ -119,12 +123,16 @@ class BadgeGraphicsGenerator:
     didn't name it "Pipelines" because as of April 2025 it's just a set of self-contained methods, it doesn't have a full pipeline approach
     """
 
-    def __init__(self, badge_manager, iron_horse, graphics_input_path, graphics_output_path):
+    def __init__(
+        self, badge_manager, iron_horse, graphics_input_path, graphics_output_path
+    ):
         self.badge_manager = badge_manager
         self.iron_horse = iron_horse
         self.graphics_input_path = graphics_input_path
         self.graphics_output_path = graphics_output_path
-        self.badge_sprites_output_path = os.path.join(self.graphics_output_path, "badges")
+        self.badge_sprites_output_path = os.path.join(
+            self.graphics_output_path, "badges"
+        )
         # this should maybe be wrapped in an isolation method but eh, do it on init for now
         os.makedirs(self.badge_sprites_output_path, exist_ok=True)
 
@@ -138,13 +146,16 @@ class BadgeGraphicsGenerator:
         if "icc_profile" in livery_badge_spritesheet.info:
             livery_badge_spritesheet.info.pop("icc_profile")
 
-        for livery_name, livery in self.iron_horse.livery_supplier.freight_wagon_liveries.items():
+        for (
+            livery_name,
+            livery,
+        ) in self.iron_horse.livery_supplier.freight_wagon_liveries.items():
             output_path = os.path.join(
                 self.badge_sprites_output_path,
                 f"{livery.livery_name.lower()}.png",
             )
             # the dimensions of the spritesheet, with 10px padding around the actual sprite
-            badge_spritesheet_dimensions = {"x":34, "y":32}
+            badge_spritesheet_dimensions = {"x": 34, "y": 32}
 
             x_offset = 30 * (len(livery.purchase_swatch) - 1)
             dest_image = livery_badge_spritesheet.copy().crop(
@@ -178,13 +189,19 @@ class BadgeGraphicsGenerator:
                         # assume it's a default CC name constant
                         remap = global_constants.company_colour_maps[colour_name][4]
                     else:
-                        remap = global_constants.custom_wagon_recolour_sprite_maps[colour_name][4]
+                        remap = global_constants.custom_wagon_recolour_sprite_maps[
+                            colour_name
+                        ][4]
 
-                target_recolour_map.update({target_recolour_range_starting_indexes[counter]: remap})
+                target_recolour_map.update(
+                    {target_recolour_range_starting_indexes[counter]: remap}
+                )
 
             # *dont* do the point inside the loop, it leads to remapping of already-remapped colours
             dest_image = dest_image.point(
-                lambda i: target_recolour_map[i] if i in target_recolour_map.keys() else i
+                lambda i: (
+                    target_recolour_map[i] if i in target_recolour_map.keys() else i
+                )
             )
 
             dest_image.save(output_path)

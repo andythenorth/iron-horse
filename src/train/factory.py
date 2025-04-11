@@ -317,7 +317,10 @@ class ModelVariantFactory:
         if self.model_type_cls.group_as_wagon:
             # we split groups for random and static liveries (group nesting will then be determined by roster)
             livery_selection = "static"
-            if not livery_def.group_as_static_livery and len(livery_def.colour_set_names) > 1:
+            if (
+                not livery_def.group_as_static_livery
+                and len(livery_def.colour_set_names) > 1
+            ):
                 livery_selection = "random"
 
             return (
