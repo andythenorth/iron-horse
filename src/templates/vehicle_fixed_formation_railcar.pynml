@@ -38,45 +38,44 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
     return ${unit.id}_switch_graphics_livery;
 }
 
-spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
-    <!--! CABBAGE --> // ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
-    ${model_variant.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
-}
-
-<tal:conditional_pantographs condition="model_variant.pantograph_type is not None">
-    <!--! purchase sprites for case where pantograph layer is needed -->
-    spriteset(${unit.id}_ss_pantographs_purchase, "${graphics_path}${model_variant.id}_pantographs_down.png") {
-        ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
+<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+    spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
+        ${model_variant.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
     }
-</tal:conditional_pantographs>
+    <tal:conditional_pantographs condition="model_variant.pantograph_type is not None">
+        <!--! purchase sprites for case where pantograph layer is needed -->
+        spriteset(${unit.id}_ss_pantographs_purchase, "${graphics_path}${model_variant.id}_pantographs_down.png") {
+            ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
+        }
+    </tal:conditional_pantographs>
 
-<tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
-        STORE_TEMP(
-            <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
-                CB_FLAG_MORE_SPRITES |
-            </tal:more_sprites>
-            PALETTE_USE_DEFAULT, 0x100
-            )
-        ) {
-        <tal:result switch="extra_sprite_layer[1]">
-            <tal:block case="'base'">
-                return ${unit.id}_ss_vehicle_purchase;
-            </tal:block>
-            <tal:block case="'pantographs'">
-                return ${unit.id}_ss_${extra_sprite_layer[1]}_purchase;
-            </tal:block>
-        </tal:result>
-    }
-</tal:extra_sprite_layers>
-
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
-    <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
     <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
-        ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
+            STORE_TEMP(
+                <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
+                    CB_FLAG_MORE_SPRITES |
+                </tal:more_sprites>
+                PALETTE_USE_DEFAULT, 0x100
+                )
+            ) {
+            <tal:result switch="extra_sprite_layer[1]">
+                <tal:block case="'base'">
+                    return ${unit.id}_ss_vehicle_purchase;
+                </tal:block>
+                <tal:block case="'pantographs'">
+                    return ${unit.id}_ss_${extra_sprite_layer[1]}_purchase;
+                </tal:block>
+            </tal:result>
+        }
     </tal:extra_sprite_layers>
-}
 
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
+        <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
+            ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
+        </tal:extra_sprite_layers>
+    }
+</tal:buy_menu_lead_unit_only>
 
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
