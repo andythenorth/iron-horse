@@ -75,6 +75,10 @@ class BadgeManager(list):
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
+        self.add_badge(
+            label="ih_randomised_wagon"
+        )
+
         # CABBAGE - CATALOGUES THOUGH?
         # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
         for roster in roster_manager:
@@ -83,6 +87,14 @@ class BadgeManager(list):
                     self.add_badge(
                         label=model_variant.vehicle_family_badge,
                     )
+                """
+                # CABBAGE - crashes nml?
+                if model_variant.catalogue_entry.model_is_randomised_wagon_type:
+                    for randomisation_candidate in model_variant.wagon_randomisation_candidates:
+                        self.add_badge(
+                            label=f"ih_randomised_wagon/candidates/{randomisation_candidate.catalogue_entry.catalogue.model_id_root}",
+                        )
+                """
 
         livery_supplier = kwargs["livery_supplier"]
 

@@ -53,6 +53,8 @@ static_badges = {
         "name": "STR_BADGE_SPECIAL_FLAGS",
         "sublabels": {
             "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
+            "ih_lgv_capable": {},
+            "ih_random_reverse": {},
         },
     },
 }

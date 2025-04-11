@@ -285,6 +285,21 @@ class ModelTypeBase(object):
         return result
 
     @property
+    def cabbage_randomised_wagon_badges(self):
+        result = []
+        if self.catalogue_entry.model_is_randomised_wagon_type:
+            result.append("ih_randomised_wagon")
+            """
+            # CABBAGE - crashes nml?
+            tmp_model_id_roots = []
+            for randomisation_candidate in self.wagon_randomisation_candidates:
+                tmp_model_id_roots.append(randomisation_candidate.catalogue_entry.catalogue.model_id_root)
+            for model_id_root in set(tmp_model_id_roots):
+                result.append(f"ih_randomised_wagon/candidates/{model_id_root}")
+            """
+        return result
+
+    @property
     def cabbage_variant_handling_badges(self):
         # specific handling of indentation level 1
         result = []
@@ -306,6 +321,8 @@ class ModelTypeBase(object):
         result.extend(self.cabbage_colour_mix_badges)
         # special variant handling badges
         result.extend(self.cabbage_variant_handling_badges)
+        # randomised wagon badges, useful for debug
+        result.extend(self.cabbage_randomised_wagon_badges)
         # livery badge
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
         if self.catalogue_entry.livery_def.livery_name not in [
@@ -323,6 +340,10 @@ class ModelTypeBase(object):
         # badges for special behaviours
         if self.tilt_bonus:
             result.append("special_flags/tilt")
+        if self.lgv_capable:
+            result.append("special_flags/ih_lgv_capable")
+        if self.random_reverse:
+            result.append("special_flags/ih_random_reverse")
         return result
 
     @property

@@ -531,6 +531,11 @@ class Catalogue(list):
         return self.factory.model_id
 
     @property
+    def model_id_root(self):
+        # convenience method
+        return self.factory.model_type_cls.model_id_root
+
+    @property
     def default_entry(self):
         # provide default entry as an explicit option for consumers, not implicit
         return self[0]
