@@ -2407,20 +2407,8 @@ class CarModelTypeBase(ModelTypeBase):
     def wagon_title_class_str(self):
         return "STR_NAME_SUFFIX_" + self.model_id_root.upper()
 
-    @property
-    def wagon_title_optional_randomised_suffix_str(self):
-        if self.catalogue_entry.model_is_randomised_wagon_type or self.is_caboose:
-            return "STR_NAME_SUFFIX_RANDOMISED_WAGON"
-        else:
-            return None
-
     def get_name_parts(self, context):
-        if context == "docs":
-            result = [
-                self.wagon_title_class_str,
-                self.wagon_title_optional_randomised_suffix_str,
-            ]
-        elif context in ["default_name", "purchase_level_1"]:
+        if context in ["docs", "default_name", "purchase_level_1"]:
             result = [self.wagon_title_class_str]
         else:
             raise BaseException(

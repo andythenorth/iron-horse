@@ -100,9 +100,6 @@ base = "grand"
 [STR_BADGE_WAGON_LENGTH_TWIN]
 base = "jumeau"
 
-[STR_NAME_SUFFIX_RANDOMISED_WAGON]
-base = " - aléatoire"
-
 [STR_WAGON_GROUP_MORE]
 # special case
 base = "Plus…"

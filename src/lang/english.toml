@@ -300,9 +300,6 @@ base = "Steam"
 [STR_NAME_SUFFIX_TRAILER]
 base = "Trailer"
 
-[STR_NAME_SUFFIX_RANDOMISED_WAGON]
-base = " - Random"
-
 # special case variant group name
 [STR_WAGON_GROUP_MORE]
 base = "More..."

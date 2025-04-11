@@ -609,9 +609,6 @@ suppressed_rosters = ["moose"]
 [STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_RANDOMISED_WAGON]
-suppressed_rosters = ["moose"]
-
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 suppressed_rosters = ["moose"]
 
