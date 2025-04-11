@@ -1534,7 +1534,7 @@ class MailEngineCargoSprinter(MailEngineBase):
     @property
     def fixed_run_cost_points(self):
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
-        return 240
+        return 2 * super().fixed_run_cost_points
 
     @property
     def spritelayer_cargo_layers(self):
