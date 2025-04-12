@@ -31,7 +31,7 @@ class ModelDef:
     model_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
     base_track_type_name: Optional[str] = None
-    variant_group_id: Optional[str] = None
+    vehicle_family_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
     default_livery_extra_docs_examples: List[Any] = (
@@ -136,6 +136,7 @@ class CatalogueEntry:
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
     variant_group_id: str
+    vehicle_family_id: str
     input_spritesheet_name_stem: str
     model_is_randomised_wagon_type: bool = False
 
@@ -197,12 +198,14 @@ class ModelVariantFactory:
             )
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
-        # CHECK if variant_group_id is already set?  If it is, leave it alone?
+        # CHECK if vehicle_family_id is already set?  If it is, leave it alone?
         # can this not be done when cloning?
+        """
         if self.model_def.cloned_from_model_def is not None:
-            self.model_def.variant_group_id = (
+            self.model_def.vehicle_family_id = (
                 self.model_def.cloned_from_model_def.model_id
             )
+        """
 
         model_variant = self.model_type_cls(
             factory=self,
@@ -294,6 +297,17 @@ class ModelVariantFactory:
             return None
 
     @property
+    def vehicle_family_id(self):
+        # cascading rules?
+        if self.model_def.vehicle_family_id is not None:
+            return(self.model_def.vehicle_family_id)
+        if self.model_def.cab_id is not None:
+            return(self.model_def.cab_id)
+        else:
+            # fall through to just model_id
+            return self.model_id
+
+    @property
     def variant_group_id_root(self):
         if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
             return self.model_type_cls.variant_group_id_root
@@ -305,13 +319,10 @@ class ModelVariantFactory:
     def get_variant_group_id(self, livery_def, base_track_type_name):
         # cascade of sources for variant group ID
 
-        # group trailers with their cabs
+        # group trailers with their cabs - needs to be done before generic wagon handling
+        # there are a few ways this could be done, doesn't matter which as of Apr 2025
         if self.cab_factory is not None:
             return self.cab_factory.model_id
-
-        # force a variant group via model def
-        if self.model_def.variant_group_id is not None:
-            return self.model_def.variant_group_id
 
         # primarily used for explcitly selected wagon groups (from a class property on the model type)
         if self.model_type_cls.group_as_wagon:
@@ -330,8 +341,12 @@ class ModelVariantFactory:
                 f"{livery_selection}"
             )
 
-        # default is to group all variants from this catalogue together
-        return self.model_id
+        # delegate to vehicle family
+        if self.vehicle_family_id is not None:
+            return self.vehicle_family_id
+
+        # should never be reached
+        raise ValueError(f"variant_group_id not found for {self.model_id}")
 
     @cached_property
     def model_is_randomised_wagon_type(self):
@@ -399,6 +414,8 @@ class Catalogue(list):
                 for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
 
+            vehicle_family_id = factory.vehicle_family_id
+
             variant_group_id = factory.get_variant_group_id(
                 livery_def, instance.base_track_type_name
             )
@@ -414,6 +431,7 @@ class Catalogue(list):
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
+                vehicle_family_id=vehicle_family_id,
                 variant_group_id=variant_group_id,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
                 model_is_randomised_wagon_type=factory.model_is_randomised_wagon_type,
@@ -667,7 +685,8 @@ class ModelDefCloner:
         cloned_model_def.model_id = (
             model_def.model_id + "_clone_" + str(len(model_def.clones))
         )
-        cloned_model_def.variant_group_id = model_def.model_id
+        # CABBAGE - USE THE FAMILY ID
+        cloned_model_def.vehicle_family_id = model_def.model_id
         return cloned_model_def
 
     @staticmethod

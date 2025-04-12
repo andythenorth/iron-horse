@@ -59,8 +59,8 @@ def main(**kwargs):
         gen=3,
         # extended vehicle life for all this generation of NG eh
         extended_vehicle_life=True,
-        # force variant group (parent) to equivalent twin-unit railbus id
-        variant_group_id="mumble",
+        # match to equivalent twin-unit railbus id
+        vehicle_family_id="mumble",
         # it's too complex to clone these from the twin unit, but treat the result like a clone
         quacks_like_a_clone=True,
         sprites_complete=True,

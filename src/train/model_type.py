@@ -233,8 +233,8 @@ class ModelTypeBase(object):
 
     @property
     def vehicle_family_badge(self):
-        # stub only, over-ride in subclasses as appropriate
-        return None
+        # over-ride in subclasses as appropriate
+        return f"ih_vehicle_family/{self.catalogue_entry.vehicle_family_id}"
 
     @property
     def cabbage_subtype_badge(self):
@@ -1667,11 +1667,6 @@ class MailEngineRailcar(MailEngineBase):
         else:
             return super().fixed_run_cost_points
 
-    @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
-
 
 class MailEngineExpressRailcar(MailEngineBase):
     """
@@ -1715,11 +1710,6 @@ class MailEngineExpressRailcar(MailEngineBase):
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
-
-    @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
 
     @property
     def fixed_run_cost_points(self):
@@ -1878,11 +1868,6 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         )
 
     @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
-
-    @property
     def fixed_run_cost_points(self):
         if self.base_track_type_name == "NG":
             # cleanest way to compress run cost down sufficiently
@@ -1980,12 +1965,6 @@ class PassengerEngineRailbus(PassengerEngineBase):
             return super().subrole
 
     @property
-    def vehicle_family_badge(self):
-        # CABBAGE - CAN THESE JUST USE SUPER().foo?
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
-
-    @property
     def fixed_run_cost_points(self):
         # big cost bonus for railbus
         return 48
@@ -2033,10 +2012,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["high_capacity"]
-
-    @property
-    def vehicle_family_badge(self):
-        return "ih_vehicle_family/" + self.model_id
 
 
 class SnowploughEngine(EngineModelTypeBase):
@@ -2220,11 +2195,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
         return self.cab_engine.intro_year_offset
-
-    @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
 
     @property
     def tilt_bonus(self):
@@ -5551,11 +5521,6 @@ class MailRailcarTrailerCarBase(MailCarBase):
     def pantograph_type(self):
         return self._frozen_pantograph_type
 
-    @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
-
     def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
@@ -6439,11 +6404,6 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
             self._str_name_suffix,
         ]
         return result
-
-    @property
-    def vehicle_family_badge(self):
-        family_name = self.catalogue_entry.variant_group_id
-        return "ih_vehicle_family/" + family_name
 
 
 class PanoramicCar(PassengerCarBase):

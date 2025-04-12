@@ -57,8 +57,8 @@ def main(**kwargs):
         gen=4,
         # introduce early by design
         intro_year_offset=-4,
-        # force variant group (parent) to equivalent twin-unit railbus id
-        variant_group_id="clipper",
+        # match to equivalent twin-unit railbus id
+        vehicle_family_id="clipper",
         # it's too complex to clone these from the twin unit, but treat the result like a clone
         quacks_like_a_clone=True,
         sprites_complete=True,
