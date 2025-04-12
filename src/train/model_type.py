@@ -243,26 +243,8 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_power_source_badges(self):
-        # note returns multiple badges, as engines support multiple power sources
-        result = []
-        if self.power_by_power_source is not None:
-            for power_source in self.power_by_power_source.keys():
-                # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
-                if power_source in ["NULL"]:
-                    continue
-                result.append(f"power_source/{power_source.lower()}")
-            # special cases
-            if (
-                "DIESEL" in self.power_by_power_source.keys()
-                and "AC" in self.power_by_power_source.keys()
-            ):
-                result.append("power_source_cabbage/electro_diesel")
-            if (
-                "AC" in self.power_by_power_source.keys()
-                and "DC" in self.power_by_power_source.keys()
-            ):
-                result.append("power_source_cabbage/dual_voltage")
-        return result
+        # stub only, over-ride in subclasses as appropriate
+        return None
 
     @property
     def cabbage_livery_badge(self):
@@ -308,14 +290,15 @@ class ModelTypeBase(object):
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from model type or properties
         result = list(set(self._badges))
-        # power source badges - note that this returns a list, not a single badge
-        result.extend(self.cabbage_power_source_badges)
         # colour mix badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_colour_mix_badges)
         # special variant handling badges
         result.extend(self.cabbage_variant_handling_badges)
         # randomised wagon badges, useful for debug
         result.extend(self.cabbage_randomised_wagon_badges)
+        # power source badges - note that this returns a list, not a single badge
+        if self.cabbage_power_source_badges is not None:
+            result.extend(self.cabbage_power_source_badges)
         # livery badge
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
         if self.catalogue_entry.livery_def.livery_name not in [
@@ -1209,6 +1192,15 @@ class EngineModelTypeBase(ModelTypeBase):
             catalogue_entry=self.catalogue_entry,
         )
 
+    @cached_property
+    def joker(self):
+        # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
+        # all clones are automatically jokers and excluded
+        if self.quacks_like_a_clone:
+            return True
+        # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
+        return self.subrole_child_branch_num < 0
+
     @property
     def caboose_family(self):
         # caboose families are used to match engines to caboose variants
@@ -1338,14 +1330,28 @@ class EngineModelTypeBase(ModelTypeBase):
         # cap to int for nml
         return int(run_cost)
 
-    @cached_property
-    def joker(self):
-        # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
-        # all clones are automatically jokers and excluded
-        if self.quacks_like_a_clone:
-            return True
-        # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
-        return self.subrole_child_branch_num < 0
+    @property
+    def cabbage_power_source_badges(self):
+        # note returns multiple badges, as engines support multiple power sources
+        result = []
+        if self.power_by_power_source is not None:
+            for power_source in self.power_by_power_source.keys():
+                # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
+                if power_source in ["NULL"]:
+                    continue
+                result.append(f"power_source/{power_source.lower()}")
+            # special cases
+            if (
+                "DIESEL" in self.power_by_power_source.keys()
+                and "AC" in self.power_by_power_source.keys()
+            ):
+                result.append("power_source_cabbage/electro_diesel")
+            if (
+                "AC" in self.power_by_power_source.keys()
+                and "DC" in self.power_by_power_source.keys()
+            ):
+                result.append("power_source_cabbage/dual_voltage")
+        return result
 
 
 class SimpleEngine(EngineModelTypeBase):

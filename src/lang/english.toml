@@ -246,16 +246,16 @@ base = "General Purpose / High Capacity"
 # size badges
 
 [STR_BADGE_WAGON_LENGTH]
-base = "Size Class"
+base = "Length"
 
 [STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Small"
+base = "Short"
 
 [STR_BADGE_WAGON_LENGTH_MEDIUM]
 base = "Medium"
 
 [STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Large"
+base = "Long"
 
 [STR_BADGE_WAGON_LENGTH_TWIN]
 base = "Twin"
