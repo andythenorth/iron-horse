@@ -202,12 +202,11 @@ base = "Amethyst"
 
 # randomised wagon badges
 
-[STR_BADGE_RANDOMISED_WAGON]
-base = "Assortment"
+[STR_BADGE_BEHAVIOUR]
+base = "Behaviour"
 
-[STR_BADGE_RANDOMISED_WAGON_CABBAGE]
-base = "Example Wagon"
-
+[STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
+base = "Randomised choice of wagon"
 
 # role badges
 
@@ -267,7 +266,7 @@ base = "Twin"
 base = "Special Features"
 
 [STR_BADGE_SPECIAL_FLAG_TILT]
-base = "TILT CABBAGE"
+base = "Tilts for faster cornering"
 
 # power source badges
 

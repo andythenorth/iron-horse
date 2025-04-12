@@ -287,6 +287,7 @@ class ModelTypeBase(object):
     def cabbage_randomised_wagon_badges(self):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
+            result.append("ih_behaviour/randomised_wagon")
             for candidate_name in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
                 result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
         return set(result)
@@ -2434,9 +2435,10 @@ class RandomisedCarMixin(object):
         # we display names, and we only want to show uniques
         result = {}
         for randomisation_candidate in self.wagon_randomisation_candidates:
-            # name = randomisation_candidate.get_name_parts(context='badge')
-            name = randomisation_candidate.vehicle_family_badge
-            result[name.lower()] = name
+            # we re-use the whole vehicle family badge here, probably fine?
+            label = randomisation_candidate.vehicle_family_badge
+            name = randomisation_candidate.get_name_parts(context='badge')
+            result[label] = name
         return result
 
 
@@ -6205,6 +6207,7 @@ class OpenCar(OpenCarBase):
     """
 
     model_id_root = "open_car"
+    vehicle_family_id = "open_car"
     variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
@@ -6268,6 +6271,7 @@ class OpenCarHighEnd(OpenCarBase):
     ]
 
     model_id_root = "high_end_open_car"
+    vehicle_family_id = "open_car" # intended
     variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):

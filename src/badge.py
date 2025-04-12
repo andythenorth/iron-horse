@@ -84,8 +84,12 @@ class BadgeManager(list):
             )
 
         self.add_badge(
-            label="ih_randomised_wagon",
-            name="STR_BADGE_RANDOMISED_WAGON"
+            label="ih_behaviour",
+            name="STR_BADGE_BEHAVIOUR",
+        )
+        self.add_badge(
+            label="ih_behaviour/randomised_wagon",
+            name="STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON",
         )
 
         # CABBAGE - CATALOGUES THOUGH?
@@ -96,6 +100,7 @@ class BadgeManager(list):
                     self.add_badge(
                         label=model_variant.vehicle_family_badge,
                     )
+                # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
                 if model_variant.catalogue_entry.model_is_randomised_wagon_type:
                     for label, name in model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
                         self.add_badge(
