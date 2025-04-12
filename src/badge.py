@@ -15,7 +15,15 @@ class Badge(object):
     def __init__(self, label, **kwargs):
         self.label = label
         self.name = kwargs.get("name", None)
+        self._flags = kwargs.get("flags", [])
         self.sprite = kwargs.get("sprite", None)
+
+    @property
+    def flags(self):
+        result = self._flags
+        if self.sprite is not None:
+            result.append("BADGE_FLAG_NAME_USE_COMPANY_COLOUR")
+        return ",".join(set(result))
 
 
 class BadgeManager(list):
@@ -76,13 +84,9 @@ class BadgeManager(list):
             )
 
         self.add_badge(
-            label="ih_randomised_wagon"
+            label="ih_randomised_wagon",
+            name="STR_BADGE_RANDOMISED_WAGON"
         )
-
-        for i in range(100):
-            self.add_badge(
-                label=f"cabbage/foo/bar_{i}"
-            )
 
         # CABBAGE - CATALOGUES THOUGH?
         # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
@@ -92,14 +96,12 @@ class BadgeManager(list):
                     self.add_badge(
                         label=model_variant.vehicle_family_badge,
                     )
-                """
-                # CABBAGE - crashes nml?
                 if model_variant.catalogue_entry.model_is_randomised_wagon_type:
-                    for randomisation_candidate in model_variant.wagon_randomisation_candidates:
+                    for label, name in model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
                         self.add_badge(
-                            label=f"ih_randomised_wagon/candidates/{randomisation_candidate.catalogue_entry.catalogue.model_id_root}",
+                            label=f"ih_randomised_wagon/candidates/{label}",
+                            name=f"{name}",
                         )
-                """
 
         livery_supplier = kwargs["livery_supplier"]
 
@@ -111,19 +113,19 @@ class BadgeManager(list):
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
             self.add_badge(
-                label=f"ih_livery/{livery.livery_name.lower()}",
+                label=livery.badge_label,
                 sprite=sprite,
             )
 
         self.add_badge(
-            label=f"freight_livery_colour_set_name",
+            label=f"ih_colour_set_name",
             name=f"STR_BADGE_COLOUR_SET_NAME",
         )
         for (
             colour_set_name
         ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
-                label=f"freight_livery_colour_set_name/{colour_set_name}",
+                label=f"ih_colour_set_name/{colour_set_name}",
                 name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
 

@@ -200,6 +200,15 @@ base = "Ocean Teal"
 [STR_BADGE_COLOUR_SET_NAME_FREIGHT_VIOLET]
 base = "Amethyst"
 
+# randomised wagon badges
+
+[STR_BADGE_RANDOMISED_WAGON]
+base = "Assortment"
+
+[STR_BADGE_RANDOMISED_WAGON_CABBAGE]
+base = "Example Wagon"
+
+
 # role badges
 
 [STR_BADGE_ROLE]

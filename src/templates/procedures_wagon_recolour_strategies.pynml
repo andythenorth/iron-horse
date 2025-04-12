@@ -23,7 +23,7 @@ switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, company_colou
 <!--! * Strategies for random recolouring of freight wagons * -->
 
 <tal:livery_loop_unroll repeat="livery livery_supplier.freight_wagon_liveries.values()">
-    switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_livery_num_from_badge_${repeat.livery.index}, has_badge("ih_livery/${livery.livery_name.lower()}")) {
+    switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_livery_num_from_badge_${repeat.livery.index}, has_badge("${livery.badge_label}")) {
         1: return ${repeat.livery.index};
         <tal:block switch="repeat.livery.start">
             <tal:continue_loop case="False">

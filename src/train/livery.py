@@ -30,6 +30,15 @@ class LiveryDef:
         # default to colour_set_names, but we only want uniques
         return list(set(self.colour_set_names))
 
+    @property
+    def badge_label(self):
+        # conforms to draft livery spec in grf docs as of Apr 2025
+        if self.is_freight_wagon_livery:
+            subcategory = "freight_wagon/"
+        else:
+            subcategory = ""
+        return f"livery/iron_horse/{subcategory}{self.livery_name.lower()}"
+
 
 class LiverySupplier(dict):
     """
@@ -161,3 +170,4 @@ class LiverySupplier(dict):
                 }
             )
         return result
+

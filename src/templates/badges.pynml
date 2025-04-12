@@ -17,9 +17,7 @@ badgetable {
             <tal:name condition="badge.name is not None">
                 name: string(${badge.name});
             </tal:name>
-            <tal:flags condition="badge.sprite is not None">
-                flags: bitmask(3); <!--! CABBAGE JFDI set sprite flag -->
-            </tal:flags>
+            flags: bitmask(${badge.flags});
         }
         <tal:sprite condition="badge.sprite is not None">
             graphics {

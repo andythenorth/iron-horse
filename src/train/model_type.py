@@ -266,8 +266,7 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_livery_badge(self):
-        livery_name = self.catalogue_entry.livery_def.livery_name
-        return f"ih_livery/{livery_name.lower()}"
+        return self.catalogue_entry.livery_def.badge_label
 
     @property
     def cabbage_colour_mix_badges(self):
@@ -281,23 +280,16 @@ class ModelTypeBase(object):
 
         # note returns multiple badges, as vehicles support multiple colours
         for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
-            result.append(f"freight_livery_colour_set_name/{colour_set_name}")
+            result.append(f"ih_colour_set_name/{colour_set_name}")
         return result
 
     @property
     def cabbage_randomised_wagon_badges(self):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
-            result.append("ih_randomised_wagon")
-            """
-            # CABBAGE - crashes nml?
-            tmp_model_id_roots = []
-            for randomisation_candidate in self.wagon_randomisation_candidates:
-                tmp_model_id_roots.append(randomisation_candidate.catalogue_entry.catalogue.model_id_root)
-            for model_id_root in set(tmp_model_id_roots):
-                result.append(f"ih_randomised_wagon/candidates/{model_id_root}")
-            """
-        return result
+            for candidate_name in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
+                result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
+        return set(result)
 
     @property
     def cabbage_variant_handling_badges(self):
@@ -1678,7 +1670,7 @@ class MailEngineRailcar(MailEngineBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
 
 class MailEngineExpressRailcar(MailEngineBase):
@@ -1727,7 +1719,7 @@ class MailEngineExpressRailcar(MailEngineBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
     @property
     def fixed_run_cost_points(self):
@@ -1888,7 +1880,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
     @property
     def fixed_run_cost_points(self):
@@ -1991,7 +1983,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
     def vehicle_family_badge(self):
         # CABBAGE - CAN THESE JUST USE SUPER().foo?
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
     @property
     def fixed_run_cost_points(self):
@@ -2044,7 +2036,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.model_id
+        return "ih_vehicle_family/" + self.model_id
 
 
 class SnowploughEngine(EngineModelTypeBase):
@@ -2232,7 +2224,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
     @property
     def tilt_bonus(self):
@@ -2410,6 +2402,8 @@ class CarModelTypeBase(ModelTypeBase):
     def get_name_parts(self, context):
         if context in ["docs", "default_name", "purchase_level_1"]:
             result = [self.wagon_title_class_str]
+        elif context in ["badge"]:
+            result = self.wagon_title_class_str
         else:
             raise BaseException(
                 "get_name_parts called for wagon "
@@ -2463,6 +2457,16 @@ class RandomisedCarMixin(object):
     def joker(self):
         # no randomised wagons in simplified gameplay mode
         return True
+
+    @cached_property
+    def cabbage_wagon_randomisation_candidate_assortment_unique_names(self):
+        # names to show in badges for candidate wagon assortment
+        # we display names, and we only want to show uniques
+        result = {}
+        for randomisation_candidate in self.wagon_randomisation_candidates:
+            name = randomisation_candidate.get_name_parts(context='badge')
+            result[name.lower()] = name
+        return result
 
 
 class AlignmentCarUnit(CarModelTypeBase):
@@ -5550,7 +5554,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -6439,7 +6443,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     @property
     def vehicle_family_badge(self):
         family_name = self.catalogue_entry.variant_group_id
-        return "vehicle_family/" + family_name
+        return "ih_vehicle_family/" + family_name
 
 
 class PanoramicCar(PassengerCarBase):
