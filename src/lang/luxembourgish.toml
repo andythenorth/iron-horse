@@ -26,29 +26,21 @@ base = "(Elektro-Diesel)"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(Damp)"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "Këschtewaggon"
-
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Begleedwaggon"
 
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Flaachbettwaggon"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Véiwaggon"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Postwaggon"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "Openen Waggon"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Passagéierwaggon"
 
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Killwaggon"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Tankwaggon"

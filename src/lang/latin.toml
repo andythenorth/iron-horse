@@ -28,29 +28,21 @@ base = "(Electrica Diselianaque)"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(Vaporaria)"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "Currus Clausus"
-
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Currus Postremus"
 
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Currus Planus"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Currus Pecuarius"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Currus Cursualis"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "Currus Apertus"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Currus Vectorius"
 
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Currus Frigidarius"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Currus Cisterninus"

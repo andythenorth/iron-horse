@@ -298,17 +298,31 @@ class ModelVariantFactory:
 
     @property
     def vehicle_family_id(self):
-        # cascading rules?
+        # vehicle families can transcend multiple model types, and can be used for purposes such as
+        # - fetching common model type names
+        # - variant grouping (other methods exist)
+        # - badges for behaviour such as formation-dependent sprites
+        # - other badges
+
+        # cascade of sources for vehicle family ID
         if self.model_def.vehicle_family_id is not None:
             return(self.model_def.vehicle_family_id)
+
+        # delegate to cab_id if prsent
         if self.model_def.cab_id is not None:
             return(self.model_def.cab_id)
-        else:
-            # fall through to just model_id
-            return self.model_id
+        if self.model_type_cls.group_as_wagon:
+            # wagon can optionally set vehicle_family_id as class property
+            if getattr(self.model_type_cls, "vehicle_family_id", None) is not None:
+                return self.model_type_cls.vehicle_family_id
+            # wagons otherwise fall through to just model_id
+            return self.model_type_cls.model_id_root
+        # otherwise fall through to just model_id
+        return self.model_id
 
     @property
     def variant_group_id_root(self):
+        # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
         if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
             return self.model_type_cls.variant_group_id_root
         elif getattr(self.model_type_cls, "model_id_root", None) is not None:

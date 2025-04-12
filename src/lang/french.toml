@@ -83,7 +83,7 @@ base = "Métro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Vapeur"
 
-[STR_NAME_SUFFIX_TRAILER]
+[STR_WAGON_NAME_TRAILER]
 base = "Remorque"
 
 # size suffixes
@@ -105,274 +105,184 @@ base = "jumeau"
 base = "Plus…"
 
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1]
-base = "Wagon-citerne d’acide"
-
-[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
-base = "Wagon-citerne d’acide"
-
-[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_1]
-base = "Wagon-trémie à agrégats"
-
-[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_2]
-base = "Wagon-trémie à agrégats"
-
-[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_3]
-base = "Wagon-trémie à agrégats"
-
-[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+[STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Fourgon d’alignement"
 
-[STR_NAME_SUFFIX_AUTOMOBILE_CAR]
+[STR_WAGON_NAME_AUTOMOBILE_CAR]
 base = "Wagon porte-véhicule"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "Fourgon"
-
-[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
+[STR_WAGON_NAME_COIL_BUGGY_CAR]
 base = "Chariot à bobines"
 
-[STR_NAME_SUFFIX_BOLSTER_CAR]
+[STR_WAGON_NAME_BOLSTER_CAR]
 base = "Wagon plat long"
 
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Wagon plat à cloison"
 
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Fourgon-frein"
 
-[STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
+[STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Wagon-trémie à noir de carbone"
 
-[STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1]
-base = "Wagon cimentier"
-
-[STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_2]
-base = "Wagon cimentier"
-
-[STR_NAME_SUFFIX_COIL_CAR_COVERED]
+[STR_WAGON_NAME_COIL_CAR_COVERED]
 base = "Wagon porte-bobines couvert"
 
-[STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC]
-base = "Wagon porte-bobines couvert"
-
-[STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
+[STR_WAGON_NAME_COIL_CAR_UNCOVERED]
 base = "Wagon porte-bobines"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
-base = "Wagon-trémie couvert"
-
-[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+[STR_WAGON_NAME_CRYO_TANK_CAR]
 base = "Wagon-citerne cryogénique"
 
-[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+[STR_WAGON_NAME_CURTAIN_SIDE_BOX_CAR]
 base = "Wagon à rideau latéral"
 
-[STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR]
+[STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_2]
-base = "Wagon-trémie couvert"
-
-[STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
+[STR_WAGON_NAME_ENCLOSED_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles fermé"
 
-[STR_NAME_SUFFIX_EXPRESS_CAR]
+[STR_WAGON_NAME_EXPRESS_CAR]
 base = "Fourgon express"
 
-[STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
+[STR_WAGON_NAME_EXPRESS_INTERMODAL_CAR]
 base = "Wagon porte-container express"
 
-[STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_1]
-base = "Fourgon agricole"
-
-[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_1]
-base = "Wagon-trémie agricole"
-
-[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_2]
-base = "Wagon-trémie agricole"
-
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Wagon plat"
 
-[STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR]
+[STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
 base= "Wagon de gros renforcé"
 
-[STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR]
+[STR_WAGON_NAME_HEAVY_DUTY_FLAT_CAR]
 base= "Wagon plat de gros renforcé"
 
-[STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
+[STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]
 base= "Fourgon postal à grande vitesse"
 
-[STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR]
+[STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
 base= "Voiture à grande vitesse"
 
-[STR_NAME_SUFFIX_HOOD_OPEN_CAR]
+[STR_WAGON_NAME_HOOD_OPEN_CAR]
 base = "Wagon-tombereau bâché"
 
-[STR_NAME_SUFFIX_HOPPER_CAR]
+[STR_WAGON_NAME_HOPPER_CAR]
 base = "Wagon-trémie"
 
-[STR_NAME_SUFFIX_HOPPER_CAR_HIGH_SIDE]
+[STR_WAGON_NAME_HOPPER_CAR_HIGH_SIDE]
 base = "Wagon-trémie haut"
 
-[STR_NAME_SUFFIX_HST_MAIL_CAR]
+[STR_WAGON_NAME_HST_MAIL_CAR]
 base = "Fourgon postal"
 
-[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+[STR_WAGON_NAME_HST_PASSENGER_CAR]
 base = "Voiture"
 
-[STR_NAME_SUFFIX_INGOT_CAR]
+[STR_WAGON_NAME_INGOT_CAR]
 base = "Wagon porte-lingots"
 
-[STR_NAME_SUFFIX_INTERMODAL_CAR]
+[STR_WAGON_NAME_INTERMODAL_CAR]
 base = "Wagon porte-container"
 
-[STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR]
+[STR_WAGON_NAME_KAOLIN_HOPPER_CAR]
 base = "Wagon-trémie à kaolin"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Wagon à bétail"
 
-[STR_NAME_SUFFIX_LOG_CAR]
+[STR_WAGON_NAME_LOG_CAR]
 base = "Wagon porte-bûches"
 
-[STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR]
+[STR_WAGON_NAME_LOW_FLOOR_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles surbaissé"
 
-[STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR]
+[STR_WAGON_NAME_LOW_FLOOR_INTERMODAL_CAR]
 base = "Wagon porte-container surbaissé"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Fourgon postal"
 
-[STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR]
+[STR_WAGON_NAME_MERCHANDISE_BOX_CAR]
 base = "Fourgon de marchandise"
 
-[STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
+[STR_WAGON_NAME_HIGH_END_OPEN_CAR]
 base = "Wagon-tombereau de marchandise"
 
-[STR_NAME_SUFFIX_MGR_HOPPER_CAR]
+[STR_WAGON_NAME_MGR_HOPPER_CAR]
 base = "Wagon-trémie «{NBSP}carrousel{NBSP}»"
 
-[STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR]
+[STR_WAGON_NAME_MGR_TOP_HOOD_HOPPER_CAR]
 base = "Wagon-trémie «{NBSP}carrousel{NBSP}» bâché"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "Wagon-tombereau"
 
-[STR_NAME_SUFFIX_PANORAMIC_CAR]
+[STR_WAGON_NAME_PANORAMIC_CAR]
 base = "Voiture panoramique"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Voiture"
 
-[STR_NAME_SUFFIX_PEAT_CAR]
+[STR_WAGON_NAME_PEAT_CAR]
 base = "Wagon à tourbe"
 
-[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
+[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
 base = "Wagon porte-tôles"
 
-[STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
+[STR_WAGON_NAME_PRESSURE_TANK_CAR]
 base = "Wagon-citerne pressurisé"
 
-[STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
-base = "Wagon-citerne à produits"
-
-[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
-base = "Wagon-trémie à agrégats"
-
-[STR_NAME_SUFFIX_BOX_CAR_RANDOMISED]
-base = "Fourgon"
-
-[STR_NAME_SUFFIX_BULK_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_BULK_CAR_MIXED_RANDOMISED]
 base = "Wagon de gros"
 
-[STR_NAME_SUFFIX_CEMENT_SILO_CAR_RANDOMISED]
-base = "Wagon cimentier"
-
-[STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED]
+[STR_WAGON_NAME_CHEMICAL_TANK_CAR_RANDOMISED]
 base = "Wagon-citerne à produits chimiques"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Wagon-trémie couvert"
-
-[STR_NAME_SUFFIX_DEDICATED_COIL_CAR_RANDOMISED]
+[STR_WAGON_NAME_DEDICATED_COIL_CAR_RANDOMISED]
 base = "Wagon porte-bobines"
 
-[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED]
-base = "Wagon-trémie agricole"
-
-[STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED]
+[STR_WAGON_NAME_FLAT_CAR_RANDOMISED]
 base = "Wagon plat"
 
-[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
 base = "Wagon porte-bobines"
 
-[STR_NAME_SUFFIX_HOPPER_CAR_RANDOMISED]
+[STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
 base = "Wagon-trémie"
 
-[STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED]
+[STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
 base = "Wagon-tombereau"
 
-[STR_NAME_SUFFIX_PIECE_GOODS_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_PIECE_GOODS_CAR_MIXED_RANDOMISED]
 base = "Wagon de pièces détachées"
 
-[STR_NAME_SUFFIX_SILO_CAR_RANDOMISED]
-base = "Wagon-silo"
-
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Wagon frigorifique"
-
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_2]
-base = "Wagon frigorifique"
-
-[STR_NAME_SUFFIX_RESTAURANT_CAR]
+[STR_WAGON_NAME_RESTAURANT_CAR]
 base = "Wagon-restaurant"
 
-[STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
+[STR_WAGON_NAME_ROCK_HOPPER_CAR]
 base = "Wagon-trémie à pierres"
 
-[STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_1]
-base = "Wagon-trémie à toit coulissant"
-
-[STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
-base = "Wagon-silo"
-
-[STR_NAME_SUFFIX_SILO_CAR_TYPE_2]
-base = "Wagon-silo"
-
-[STR_NAME_SUFFIX_SKIP_CAR]
+[STR_WAGON_NAME_SKIP_CAR]
 base = "Tombereau à bascule"
 
-[STR_NAME_SUFFIX_SLAG_LADLE_CAR]
+[STR_WAGON_NAME_SLAG_LADLE_CAR]
 base = "Wagon-poche"
 
-[STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
+[STR_WAGON_NAME_SLIDING_ROOF_CAR]
 base = "Wagon à toit coulissant"
 
-[STR_NAME_SUFFIX_SLIDING_ROOF_HI_CUBE_CAR]
+[STR_WAGON_NAME_SLIDING_ROOF_HI_CUBE_CAR]
 base = "Wagon cube"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
-base = "Wagon à parois coulissantes"
-
-[STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
-base = "Wagon à ferraille"
-
-[STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
+[STR_WAGON_NAME_SUBURBAN_PASSENGER_CAR]
 base = "Voiture de banlieue"
 
-[STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR]
+[STR_WAGON_NAME_SWING_ROOF_HOPPER_CAR]
 base = "Wagon-trémie à toit baculant"
 
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Wagon-citerne"
-
-[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
-base = "Wagon bâché"
-
-[STR_NAME_SUFFIX_TORPEDO_CAR]
+[STR_WAGON_NAME_TORPEDO_CAR]
 base = "Wagon-torpille"
 
 [STR_CARGO_SUBTYPE_VEHI_0]

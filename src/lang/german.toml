@@ -36,35 +36,24 @@ base = "Mittel"
 [STR_BADGE_WAGON_LENGTH_LARGE]
 base = "Groß"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "geschlossener Wagen"
-
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Bremserwagen"
 
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Flachwagen"
 
-[STR_NAME_SUFFIX_INTERMODAL_CAR]
+[STR_WAGON_NAME_INTERMODAL_CAR]
 base = "Wagen für kombinierten Verkehr"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Viehwagen"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Postwagen"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "offener Wagen"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Personenwagen"
 
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Kühlwagen"
-
-[STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
-base = "Silowagen"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Kesselwagen"

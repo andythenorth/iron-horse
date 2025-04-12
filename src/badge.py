@@ -100,7 +100,7 @@ class BadgeManager(list):
                     for label, name in model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
                         self.add_badge(
                             label=f"ih_randomised_wagon/candidates/{label}",
-                            name=f"{name}",
+                            #name=f"{name}",
                         )
 
         livery_supplier = kwargs["livery_supplier"]

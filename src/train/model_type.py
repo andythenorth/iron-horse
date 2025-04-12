@@ -2367,7 +2367,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def wagon_title_class_str(self):
-        return "STR_NAME_SUFFIX_" + self.model_id_root.upper()
+        return "STR_WAGON_NAME_" + self.catalogue_entry.vehicle_family_id.upper()
 
     def get_name_parts(self, context):
         if context in ["docs", "default_name", "purchase_level_1"]:
@@ -2434,7 +2434,8 @@ class RandomisedCarMixin(object):
         # we display names, and we only want to show uniques
         result = {}
         for randomisation_candidate in self.wagon_randomisation_candidates:
-            name = randomisation_candidate.get_name_parts(context='badge')
+            # name = randomisation_candidate.get_name_parts(context='badge')
+            name = randomisation_candidate.vehicle_family_badge
             result[name.lower()] = name
         return result
 
@@ -2630,6 +2631,8 @@ class BolsterCarBase(CarModelTypeBase):
         "FREIGHT_BONUS_OXIDE_RUST",
         # didn't bother with teal or obsidian, marginal benefit
     ]
+
+    vehicle_family_id = "bolster_car"
     variant_group_id_root = "wagon_group_bolster_cars"
     randomised_candidate_groups = [
         "bolster_car_randomised",
@@ -2702,6 +2705,7 @@ class BoxCarBase(CarModelTypeBase):
     Base for box car, van - piece goods cargos, express, other selected cargos.
     """
 
+    vehicle_family_id = "box_car"
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -2807,6 +2811,7 @@ class BoxCarCurtainSide(BoxCarBase):
     """
 
     model_id_root = "curtain_side_box_car"
+    vehicle_family_id = "curtain_side_box_car"
     variant_group_id_root = "wagon_group_box_cars"
     randomised_candidate_groups = [
         "box_car_randomised",
@@ -2857,6 +2862,7 @@ class BoxCarMerchandise(BoxCarBase):
     ]
 
     model_id_root = "merchandise_box_car"
+    vehicle_family_id = "merchandise_box_car"
     # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
     randomised_candidate_groups = [
         "piece_goods_car_covered_randomised",
@@ -2913,6 +2919,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "sliding_wall_car"
     variant_group_id_root = "wagon_group_sliding_wall_cars"
     randomised_candidate_groups = [
         "piece_goods_car_covered_randomised",
@@ -3063,6 +3070,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
+    vehicle_family_id = "aggregate_bulk_open_car"
     variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
     randomised_candidate_groups = [
         "aggregate_bulk_open_car_randomised",
@@ -3197,6 +3205,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "mineral_bulk_open_car"
     variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
     randomised_candidate_groups = [
         "bulk_car_box_randomised",
@@ -3225,6 +3234,7 @@ class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
+    vehicle_family_id = "mineral_bulk_open_car_high_side"
     model_id_root = "mineral_bulk_open_car_high_side"
 
     def __init__(self, **kwargs):
@@ -3236,6 +3246,7 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
 
+    vehicle_family_id = "mineral_bulk_open_car_high_side"
     model_id_root = "mineral_bulk_open_car_low_side"
 
     def __init__(self, **kwargs):
@@ -3282,6 +3293,7 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "scrap_metal_car"
     variant_group_id_root = "wagon_group_scrap_metal_cars"
     randomised_candidate_groups = [
         "scrap_metal_car_randomised",
@@ -3354,6 +3366,7 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "tippler_bulk_open_car"
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
     randomised_candidate_groups = [
         "bulk_car_box_randomised",
@@ -3396,6 +3409,7 @@ class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_rotary_bulk_open_car_type_1"
+    vehicle_family_id = "tippler_rotary_bulk_open_car"
     # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
     randomised_candidate_groups = []
 
@@ -3730,6 +3744,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
     """
 
     model_id_root = "coil_car_covered_asymmetric"
+    vehicle_family_id = "coil_car_covered"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3763,8 +3778,9 @@ class CoilCarCovered(CoilCarBase):
     Covered coil car.  No visible cargo.
     """
 
-    variant_group_id_root = "wagon_group_coil_cars"
     model_id_root = "coil_car_covered"
+    vehicle_family_id = "coil_car_covered"
+    variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
         "metal_product_car_covered_randomised",
@@ -3791,6 +3807,7 @@ class CoilCarTarpaulin(CoilCarBase):
     """
 
     model_id_root = "coil_car_tarpaulin"
+    vehicle_family_id = "coil_car_covered"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3883,6 +3900,8 @@ class CoveredHopperCarBase(CarModelTypeBase):
         # no teal?
     ]
 
+    vehicle_family_id = "covered_hopper_car"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_any_grade"]
@@ -3912,8 +3931,8 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_1"
-    variant_group_id_root = "wagon_group_covered_hopper_cars"
     randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3926,8 +3945,8 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_2"
-    variant_group_id_root = "wagon_group_covered_hopper_cars"
     randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3941,8 +3960,8 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_3"
-    variant_group_id_root = "wagon_group_covered_hopper_cars"
     randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3991,6 +4010,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
     ]
 
     model_id_root = "swing_roof_hopper_car"
+    vehicle_family_id = "swing_roof_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4124,6 +4144,7 @@ class ExpressFoodTankCarBase(ExpressFoodCarBase):
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
+    vehicle_family_id = "food_express_tank_car"
     variant_group_id_root = "wagon_group_food_express_tank_cars"
     randomised_candidate_groups = [
         "food_express_tank_car_randomised",
@@ -4248,6 +4269,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     # company colour not used on these wagons, so set SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
+    vehicle_family_id = "farm_product_box_car"
     variant_group_id_root = "wagon_group_farm_product_box_cars"
 
     def __init__(self, **kwargs):
@@ -4331,6 +4353,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     # company colour not used on these wagons, so use SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
 
+    vehicle_family_id = "farm_product_hopper_car"
     variant_group_id_root = "wagon_group_farm_product_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -4416,6 +4439,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
+    vehicle_family_id = "food_hopper_car"
     variant_group_id_root = "wagon_group_food_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -4705,6 +4729,7 @@ class FlatCarMillBase(FlatCarBase):
         # didn't bother with teal or obsidian, marginal benefit
     ]
 
+    vehicle_family_id = "mill_flat_car"
     variant_group_id_root = "wagon_group_mill_flat_cars"
     randomised_candidate_groups = [
         "metal_product_car_uncovered_randomised",
@@ -4903,6 +4928,7 @@ class HopperCarAggregateBase(HopperCarBase):
         # didn't bother with teal, marginal benefit
     ]
 
+    vehicle_family_id = "aggregate_hopper_car"
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -5498,7 +5524,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
+        self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_engine.pantograph_type
@@ -5719,7 +5745,7 @@ class MailHSTCar(MailCarBase):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.model_def.cab_id.upper(),
-            "STR_NAME_SUFFIX_HST_MAIL_CAR",
+            "STR_WAGON_NAME_HST_MAIL_CAR",
         ]
         return result
 
@@ -5850,6 +5876,7 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "lime_covered_hopper_car"
     variant_group_id_root = "wagon_group_lime_covered_hopper_cars"
     randomised_candidate_groups = [
         "lime_covered_hopper_car_randomised",
@@ -5981,6 +6008,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "roller_roof_hopper_car"
     variant_group_id_root = "wagon_group_roller_roof_hopper_cars"
     randomised_candidate_groups = [
         "roller_roof_hopper_car_randomised",
@@ -6067,6 +6095,7 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "salt_covered_hopper_car"
     variant_group_id_root = "wagon_group_salt_covered_hopper_cars"
     randomised_candidate_groups = [
         "covered_bulk_car_randomised",
@@ -6374,7 +6403,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
+        self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_engine.pantograph_type
@@ -6654,7 +6683,7 @@ class PassengerHSTCar(PassengerCarBase):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.model_def.cab_id.upper(),
-            "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
+            "STR_WAGON_NAME_HST_PASSENGER_CAR",
         ]
         return result
 
@@ -7024,6 +7053,8 @@ class ReeferCarBase(ExpressFoodCarBase):
     No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
     """
 
+    vehicle_family_id = "reefer_car"
+    variant_group_id_root = "wagon_group_reefer_cars"
     randomised_candidate_groups = [
         "reefer_car_randomised",
         "express_food_car_randomised",
@@ -7054,7 +7085,6 @@ class ReeferCarType1(ReeferCarBase):
     """
 
     model_id_root = "reefer_car_type_1"
-    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7066,7 +7096,6 @@ class ReeferCarType2(ReeferCarBase):
     """
 
     model_id_root = "reefer_car_type_2"
-    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7079,7 +7108,6 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
     """
 
     model_id_root = "reefer_car_randomised"
-    variant_group_id_root = "wagon_group_reefer_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7118,6 +7146,9 @@ class SiloCarBase(CarModelTypeBase):
         "FREIGHT_BONUS_MIST",
         # didn't bother with teal, marginal benefit
     ]
+
+    vehicle_family_id = "silo_car"
+    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7159,7 +7190,6 @@ class SiloCarType1(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_1"
-    variant_group_id_root = "wagon_group_silo_cars"
     randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
@@ -7173,7 +7203,6 @@ class SiloCarType2(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_2"
-    variant_group_id_root = "wagon_group_silo_cars"
     randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
@@ -7187,7 +7216,6 @@ class SiloCarType3(SiloCarBase):
     """
 
     model_id_root = "silo_car_type_3"
-    variant_group_id_root = "wagon_group_silo_cars"
     randomised_candidate_groups = ["silo_car_randomised"]
 
     def __init__(self, **kwargs):
@@ -7201,7 +7229,6 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
     """
 
     model_id_root = "silo_car_randomised"
-    variant_group_id_root = "wagon_group_silo_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7224,6 +7251,7 @@ class SiloCarCementBase(SiloCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
+    vehicle_family_id = "cement_silo_car"
     variant_group_id_root = "wagon_group_cement_silo_cars"
     randomised_candidate_groups = ["cement_silo_car_randomised"]
 
@@ -7307,6 +7335,7 @@ class SlidingRoofCar(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_car"
+    vehicle_family_id = "sliding_roof_car"
     randomised_candidate_groups = [
         "metal_product_car_covered_randomised",
         "metal_product_car_mixed_randomised",
@@ -7358,6 +7387,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
+    vehicle_family_id = "sliding_roof_hi_cube_car"
     randomised_candidate_groups = ["piece_goods_car_manufacturing_parts_randomised"]
 
     def __init__(self, **kwargs):
@@ -7476,6 +7506,7 @@ class TankCarAcidBase(TankCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "acid_tank_car"
     variant_group_id_root = "wagon_group_acid_tank_cars"
     randomised_candidate_groups = [
         "acid_tank_car_randomised",
@@ -7601,6 +7632,7 @@ class TankCarProductBase(TankCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "product_tank_car"
     variant_group_id_root = "wagon_group_product_tank_cars"
     randomised_candidate_groups = [
         "chemical_tank_car_randomised",
@@ -7685,6 +7717,7 @@ class TankCarStandardBase(TankCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "tank_car"
     variant_group_id_root = "wagon_group_tank_cars"
     randomised_candidate_groups = ["tank_car_randomised"]
 
@@ -7768,6 +7801,7 @@ class TankCarVolatilesBase(TankCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "volatiles_tank_car"
     variant_group_id_root = "wagon_group_volatiles_tank_cars"
 
     def __init__(self, **kwargs):
@@ -7815,6 +7849,7 @@ class TarpaulinCarBase(BoxCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "tarpaulin_car"
     variant_group_id_root = "wagon_group_tarpaulin_cars"
     randomised_candidate_groups = [
         "metal_product_car_covered_randomised",

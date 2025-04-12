@@ -40,64 +40,46 @@ base = "Srednji"
 [STR_BADGE_WAGON_LENGTH_LARGE]
 base = "Veliki"
 
-[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+[STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Vagon za poravnanje"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "Zatvoreni vagon"
-
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Vagon za kočničara"
 
-[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+[STR_WAGON_NAME_CRYO_TANK_CAR]
 base = "Krio-cisterna"
 
-[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+[STR_WAGON_NAME_CURTAIN_SIDE_BOX_CAR]
 base = "Vagon sa stranicama od cerade"
 
-[STR_NAME_SUFFIX_EXPRESS_CAR]
+[STR_WAGON_NAME_EXPRESS_CAR]
 base = "Ekspresni vagon"
 
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Plato-vagon"
 
-[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+[STR_WAGON_NAME_HST_PASSENGER_CAR]
 base = "Putnički vagon za vlak velike brzine"
 
-[STR_NAME_SUFFIX_INTERMODAL_CAR]
+[STR_WAGON_NAME_INTERMODAL_CAR]
 base = "Intermodalni vagon"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Vagon za stoku"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Poštanski vagon"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "Otvoreni vagon"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Putnički vagon"
 
-[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
+[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
 base = "Plato-vagon"
 
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Vagon hladnjača"
-
-[STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
-base = "Vagon-silos"
-
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
-base = "Vagon sa pomičnim stranicama"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Vagon cisterna"
-
-[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
-base = "Vagon sa ceradom"
-
-[STR_NAME_SUFFIX_TORPEDO_CAR]
+[STR_WAGON_NAME_TORPEDO_CAR]
 base = "Vagon-torpedo"
 
 [STR_BADGE_ROLE]

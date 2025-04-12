@@ -27,29 +27,21 @@ base = "(diésel eléctrica)"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(vapor)"
 
-[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
-base = "Furgón"
-
-[STR_NAME_SUFFIX_CABOOSE_CAR]
+[STR_WAGON_NAME_CABOOSE_CAR]
 base = "Cabús"
 
-[STR_NAME_SUFFIX_FLAT_CAR]
+[STR_WAGON_NAME_FLAT_CAR]
 base = "Plataforma"
 
-[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+[STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Vagón de ganado"
 
-[STR_NAME_SUFFIX_MAIL_CAR]
+[STR_WAGON_NAME_MAIL_CAR]
 base = "Vagón postal"
 
-[STR_NAME_SUFFIX_OPEN_CAR]
+[STR_WAGON_NAME_OPEN_CAR]
 base = "Vagón abierto"
 
-[STR_NAME_SUFFIX_PASSENGER_CAR]
+[STR_WAGON_NAME_PASSENGER_CAR]
 base = "Coche de pasajeros"
 
-[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
-base = "Vagón refrigerado"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-base = "Carro tanque"
