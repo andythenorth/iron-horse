@@ -250,7 +250,6 @@ class ModelTypeBase(object):
     def cabbage_livery_badges(self):
         result = []
         result.append(self.catalogue_entry.livery_def.badge_label)
-        # CABBAGE - SCOPE WEATHERING ONLY TO WAGONS? - HANDLE IT IN THE LIVERY DELIVERY RESOLVER IF SO
         result.append(self.catalogue_entry.livery_def.weathering_badge_label)
         return result
 

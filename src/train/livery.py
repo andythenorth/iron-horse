@@ -57,6 +57,9 @@ class LiverySupplier(dict):
 
     def add_livery(self, livery_name: str, **kwargs):
         livery = LiveryDef(livery_name, **kwargs)
+        # all freight wagons use weathering by default
+        if livery.is_freight_wagon_livery:
+            livery.use_weathering = True
         # liveries can be defined in multiple rosters, for simplicity, if they're exact duplicates we allow that
         # otherwise the liveries need de-duplicated by changing one of their names
         if livery_name in self:
@@ -72,24 +75,26 @@ class LiverySupplier(dict):
         # Return a modified copy of the canonical LiveryDef identified by livery_name.
 
         # regrettable special case handling of detecting weathering, as we want to use only simple constants to fetch liveries
+        force_no_weathering = False
         if livery_name.endswith("_NO_WEATHERING"):
-            livery_name = livery_name[:-len("_NO_WEATHERING")]
-            use_weathering = False
-        else:
-            # CABBAGE - THIS MIGHT NEED NO_WEATHERING SET FOR NON_FREIGHT LIVERIES?
-            # OR SCOPE IT TO FREIGHT WAGON LIVERIES?
-            use_weathering = True
+            livery_name = livery_name.removesuffix("_NO_WEATHERING")
+            force_no_weathering = True
 
         try:
             livery_def = self[livery_name]
-        except KeyError:
-            raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier")
-        self.delivered_liveries.append(livery_name)
-        return replace(
+        except KeyError as e:
+                raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier") from e
+
+        use_weathering = False if force_no_weathering else livery_def.use_weathering
+        livery = replace(
             livery_def,
             relative_spriterow_num=relative_spriterow_num,
             use_weathering=use_weathering,
         )
+
+        self.delivered_liveries.append(livery_name)
+        return livery
+
 
     @cached_property
     def freight_wagon_liveries(self):
