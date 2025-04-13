@@ -285,42 +285,54 @@ class ModelTypeBase(object):
             )
         return list(set(result))
 
-    @cached_property
-    def badges(self):
-        # badges can be set on a vehicle for diverse reasons, including
-        # - badges explicitly added to _badges attr
-        # - badges arising implicitly from model type or properties
-        result = list(set(self._badges))
-        # colour mix badges - note that this returns a list, not a single badge
-        result.extend(self.cabbage_colour_mix_badges)
-        # special variant handling badges
-        result.extend(self.cabbage_variant_handling_badges)
-        # randomised wagon badges, useful for debug
-        result.extend(self.cabbage_randomised_wagon_badges)
-        # power source badges - note that this returns a list, not a single badge
-        if self.cabbage_power_source_badges is not None:
-            result.extend(self.cabbage_power_source_badges)
-        # livery badge
-        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name not in [
-            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
-        ]:
-            result.append(self.cabbage_livery_badge)
-        if self.role_badge is not None:
-            result.append(self.role_badge)
-        # badge for handling vehicle_family
-        if self.vehicle_family_badge is not None:
-            result.append(self.vehicle_family_badge)
-        # badge for handling wagon lengths
-        if self.cabbage_subtype_badge is not None:
-            result.append(self.cabbage_subtype_badge)
-        # badges for special behaviours
+    @property
+    def special_flags_badges(self):
+        # both OpenTTD special flags and some IH specific flags
+        result = []
         if self.tilt_bonus:
             result.append("special_flags/tilt")
         if self.lgv_capable:
             result.append("special_flags/ih_lgv_capable")
         if self.random_reverse:
             result.append("special_flags/ih_random_reverse")
+        return result
+
+    @cached_property
+    def badges(self):
+        # badges can be set on a vehicle for diverse reasons, including
+        # - badges explicitly added to _badges attr
+        # - badges arising implicitly from model type or properties
+        result = list(set(self._badges))
+
+        # general metadata, visible or not
+        result.append(f"ih_gen/{self.gen}")
+        result.append(self.vehicle_family_badge)
+        result.extend(self.special_flags_badges)
+        if self.role_badge is not None:
+            result.append(self.role_badge)
+        if self.cabbage_subtype_badge is not None:
+            result.append(self.cabbage_subtype_badge)
+
+        # power badges, for engines only
+        if self.cabbage_power_source_badges is not None:
+            # note that this extends not appends
+            result.extend(self.cabbage_power_source_badges)
+
+        # livery and colour mix badges - note that this returns a list, not a single badge
+        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
+        if self.catalogue_entry.livery_def.livery_name not in [
+            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
+        ]:
+            result.append(self.cabbage_livery_badge)
+        # for debug use
+        result.extend(self.cabbage_colour_mix_badges)
+
+        # special variant handling badges (used for purchase string handling)
+        result.extend(self.cabbage_variant_handling_badges)
+
+        # randomised wagon candidates, if any, for debug use
+        result.extend(self.cabbage_randomised_wagon_badges)
+
         return result
 
     @property
@@ -2371,7 +2383,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def cabbage_subtype_badge(self):
-        return "ih_wagon_length/" + self.subtype.lower()
+        return "ih_wagon_subtype/" + self.subtype.lower()
 
     @property
     def wagon_title_class_str(self):

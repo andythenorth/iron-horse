@@ -3,6 +3,7 @@ from PIL import Image
 
 import global_constants
 import utils
+from utils import timing
 from badges import _static_badges
 
 # CABBAGE - convert to @dataclass?
@@ -83,17 +84,9 @@ class BadgeManager(list):
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
-        self.add_badge(
-            label="ih_behaviour",
-            name="STR_BADGE_BEHAVIOUR",
-        )
-        self.add_badge(
-            label="ih_behaviour/randomised_wagon",
-            name="STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON",
-        )
-
         # CABBAGE - CATALOGUES THOUGH?
         # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
+        # timed at < 0.1 using variants, but probably still worth converting to catalogue?
         for roster in roster_manager:
             for model_variant in roster.model_variants:
                 if model_variant.vehicle_family_badge is not None:
@@ -137,6 +130,16 @@ class BadgeManager(list):
                 label=f"ih_colour_set_name/candidates/{colour_set_name}",
                 #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
+
+        self.add_badge(
+            label="ih_behaviour",
+            name="STR_BADGE_BEHAVIOUR",
+        )
+        self.add_badge(
+            label="ih_behaviour/randomised_wagon",
+            name="STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON",
+        )
+
 
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
         badge_graphics_generator = BadgeGraphicsGenerator(

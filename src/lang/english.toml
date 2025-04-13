@@ -230,7 +230,7 @@ base = "Freight Blue"
 [STR_BADGE_LIVERY_CC_DARK_BLUE]
 base = "Freight Dark Blue"
 
-# colour set badges (sprite recolour liveries)
+# colour set badges (sprite recolour liveries) CABBAGE - DEPRECATED
 #
 # [STR_BADGE_COLOUR_SET_NAME]
 # base = "Livery"
@@ -386,22 +386,22 @@ base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches
 [STR_BADGE_ROLE_SUBURBAN]
 base = "General Purpose / High Capacity"
 
-# size badges
+# size badges CABBAGE - DEPRECATED
 
-[STR_BADGE_WAGON_LENGTH]
-base = "Length"
-
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Short"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Medium"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Long"
-
-[STR_BADGE_WAGON_LENGTH_TWIN]
-base = "Twin"
+# [STR_BADGE_WAGON_LENGTH]
+# base = "Length"
+#
+# [STR_BADGE_WAGON_LENGTH_SMALL]
+# base = "Short"
+#
+# [STR_BADGE_WAGON_LENGTH_MEDIUM]
+# base = "Medium"
+#
+# [STR_BADGE_WAGON_LENGTH_LARGE]
+# base = "Long"
+#
+# [STR_BADGE_WAGON_LENGTH_TWIN]
+# base = "Twin"
 
 # special features badges
 

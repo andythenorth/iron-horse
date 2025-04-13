@@ -15,20 +15,30 @@ static_badges = {
             "report_as_mail_car": {},
         },
     },
-    "ih_wagon_length": {
-        "name": "STR_BADGE_WAGON_LENGTH",
+    "ih_wagon_subtype": {
+        #"name": "STR_BADGE_WAGON_LENGTH",
         "sublabels": {
-            "a": {"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
-            "b": {"name": "STR_BADGE_WAGON_LENGTH_MEDIUM"},
-            "c": {"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
-            "d": {"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
-            "u": {"name": "STR_EMPTY"},
+            "a": {}, #{"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
+            "b": {}, #{"name": "STR_BADGE_WAGON_LENGTH_MEDIUM"},
+            "c": {}, #{"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
+            "d": {}, #{"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
+            "u": {}, #{"name": "STR_EMPTY"},
         },
     },
     "ih_variants_cabbage": {
         "sublabels": {
             "purchase_level_1_has_more_nested_variants": {},
         }
+    },
+    "ih_gen": {
+        "sublabels": {
+            "1": {},
+            "2": {},
+            "3": {},
+            "4": {},
+            "5": {},
+            "6": {},
+        },
     },
     "role": {
         "name": "STR_BADGE_ROLE",
