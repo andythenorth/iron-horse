@@ -273,7 +273,7 @@ class ModelTypeBase(object):
     def cabbage_randomised_wagon_badges(self):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
-            result.append("ih_behaviour/randomised_wagon")
+            result.append(f"ih_behaviour/randomised_wagon")
             for candidate_name in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
                 result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
         return set(result)
@@ -284,9 +284,19 @@ class ModelTypeBase(object):
         result = []
         if self.cabbage_use_name_callback:
             result.append(
-                "ih_variants_cabbage/purchase_level_1_has_more_nested_variants"
+                f"ih_variants_cabbage/purchase_level_1_has_more_nested_variants"
             )
         return list(set(result))
+
+    @property
+    def cabbage_tech_tree_badges(self):
+        result = []
+        result.append(f"ih_tech_tree/subrole/{self.subrole}")
+        result.append(f"ih_tech_tree/subrole_child_branch_num/{self.subrole_child_branch_num}")
+        result.append(f"ih_tech_tree/joker/{self.joker}")
+        result.append(f"ih_tech_tree/intro_year/{self.intro_year}")
+        result.append(f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}")
+        return result
 
     @property
     def special_flags_badges(self):
@@ -309,6 +319,7 @@ class ModelTypeBase(object):
 
         # general metadata, visible or not
         result.append(f"ih_gen/{self.gen}")
+        #result.append(f"ih_railtype/{self.track_type}")
         result.append(self.vehicle_family_badge)
         result.extend(self.special_flags_badges)
         if self.role_badge is not None:
@@ -335,6 +346,9 @@ class ModelTypeBase(object):
 
         # randomised wagon candidates, if any, for debug use
         result.extend(self.cabbage_randomised_wagon_badges)
+
+        # tech tree metadata
+        result.extend(self.cabbage_tech_tree_badges)
 
         return result
 

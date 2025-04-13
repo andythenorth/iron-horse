@@ -104,6 +104,17 @@ def string_format_compile_time_deltas(time_start, time_later):
     return format((time_later - time_start), ".2f") + " s"
 
 
+def nml_safe_id(s: str) -> str:
+    NML_SAFE_REPLACEMENTS = {
+        "/": "_",
+        "-": "_minus_",
+        "!": "_shebang_",
+        # add more here as needed
+    }
+    for bad_char, replacement in NML_SAFE_REPLACEMENTS.items():
+        s = s.replace(bad_char, replacement)
+    return s
+
 def grfid_to_dword(grfid: str) -> str:
     """
     Convert a GRF ID string like "CA\\12\\22" into a DWORD in hexadecimal format.

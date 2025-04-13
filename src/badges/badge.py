@@ -54,10 +54,12 @@ class BadgeManager(list):
         # explicit, not on __init__, more controllable
         self.produce_badges_from_static_config(**kwargs)
         self.produce_grf_metadata_badges(**kwargs)
+        self.produce_railtype_badges(**kwargs)
         self.produce_power_source_badges(**kwargs)
         self.produce_livery_badges(**kwargs)
         self.produce_vehicle_family_badges(**kwargs)
         self.produce_randomised_wagon_candidate_badges(**kwargs)
+        self.produce_tech_tree_badges(**kwargs)
 
     def produce_badges_from_static_config(self, **kwargs):
         # purely static badges
@@ -84,6 +86,13 @@ class BadgeManager(list):
         if roster_manager.active_roster is not None:
             self.add_badge(
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
+            )
+
+    def produce_railtype_badges(self, **kwargs):
+        railtype_manager = kwargs["railtype_manager"]
+        for railtype in railtype_manager:
+            self.add_badge(
+                label=f"ih_railtype/{railtype.label}",
             )
 
     def produce_vehicle_family_badges(self, **kwargs):
@@ -153,5 +162,29 @@ class BadgeManager(list):
         ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
                 label=f"ih_livery_def/colour_set_names/{colour_set_name}",
-                # name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
+
+    def produce_tech_tree_badges(self, **kwargs):
+        # this is for debug use
+        # gen is NOT part of the tech tree as of April 2025, decided it's a standalone item
+        roster_manager = kwargs["roster_manager"]
+
+        self.add_badge(label="ih_tech_tree")
+
+        for roster in roster_manager:
+            for catalogue in roster.catalogues:
+                self.add_badge(
+                    label=f"ih_tech_tree/subrole/{catalogue.default_model_variant_from_roster.subrole}"
+                )
+                self.add_badge(
+                    label=f"ih_tech_tree/subrole_child_branch_num/{catalogue.default_model_variant_from_roster.subrole_child_branch_num}"
+                )
+                self.add_badge(
+                    label=f"ih_tech_tree/joker/{catalogue.default_model_variant_from_roster.joker}"
+                )
+                self.add_badge(
+                    label=f"ih_tech_tree/intro_year/{catalogue.default_model_variant_from_roster.intro_year}"
+                )
+                self.add_badge(
+                    label=f"ih_tech_tree/intro_date_months_offset/{catalogue.default_model_variant_from_roster.intro_date_months_offset}"
+                )

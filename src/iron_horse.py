@@ -56,7 +56,12 @@ class RosterManager(list):
     """
 
     @timing
-    def add_rosters(self, roster_module_names, validate_vehicle_ids=False, run_post_validation_steps=False):
+    def add_rosters(
+        self,
+        roster_module_names,
+        validate_vehicle_ids=False,
+        run_post_validation_steps=False,
+    ):
         for roster_module_name in roster_module_names:
             roster_module = importlib.import_module(
                 "." + roster_module_name, package="rosters"
@@ -125,8 +130,11 @@ class RosterManager(list):
             ]:
                 subroles = global_constants.role_subrole_mapping[role]
                 if model_variant.subrole in subroles:
-                    express_engine_ids.append(model_variant.catalogue_entry.unit_variant_ids[0])
+                    express_engine_ids.append(
+                        model_variant.catalogue_entry.unit_variant_ids[0]
+                    )
         return [(count, id) for count, id in enumerate(express_engine_ids)]
+
 
 @timing
 def main(validate_vehicle_ids=False, run_post_validation_steps=False):
@@ -144,12 +152,14 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
 
     # liveries
     for livery_name, livery_def in global_constants.freight_wagon_liveries.items():
-        livery_supplier.add_livery(livery_name, is_freight_wagon_livery=True, **livery_def)
-
-    print(len(livery_supplier.freight_wagon_liveries))
+        livery_supplier.add_livery(
+            livery_name, is_freight_wagon_livery=True, **livery_def
+        )
 
     # rosters
-    roster_manager.add_rosters(roster_module_names, validate_vehicle_ids, run_post_validation_steps)
+    roster_manager.add_rosters(
+        roster_module_names, validate_vehicle_ids, run_post_validation_steps
+    )
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
@@ -159,4 +169,8 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
         spritelayer_cargo_module.main()
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
-    badge_manager.produce_badges(roster_manager=roster_manager, livery_supplier=livery_supplier)
+    badge_manager.produce_badges(
+        railtype_manager=railtype_manager,
+        roster_manager=roster_manager,
+        livery_supplier=livery_supplier,
+    )
