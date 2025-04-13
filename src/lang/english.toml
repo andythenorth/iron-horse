@@ -127,9 +127,6 @@ base = "Workday"
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL]
 base = "Soap Bubbles"
 
-[STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_PEWTER]
-base = "Platinum"
-
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING]
 base = "Platinum"
 
@@ -144,9 +141,6 @@ base = "Sulphur Mix"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING]
 base = "Ruby Nightshade"
-
-[STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE]
-base = "Obsidian"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN]
 base = "Obsidian"
@@ -193,12 +187,6 @@ base = "Grey"
 [STR_BADGE_LIVERY_FREIGHT_NIGHTSHADE]
 base = "Nightshade"
 
-[STR_BADGE_LIVERY_FREIGHT_NIGHTSHADE_NO_WEATHERING]
-base = "Nightshade"
-
-[STR_BADGE_LIVERY_FREIGHT_OCHRE]
-base = "Ochre"
-
 [STR_BADGE_LIVERY_FREIGHT_OIL_BLACK]
 base = "Oil Black"
 
@@ -211,32 +199,8 @@ base = "Freight Red"
 [STR_BADGE_LIVERY_FREIGHT_RED_NO_WEATHERING]
 base = "Freight Red"
 
-[STR_BADGE_LIVERY_FREIGHT_RUBY]
-base = "Ruby"
-
-[STR_BADGE_LIVERY_FREIGHT_SAND]
-base = "Sand"
-
-[STR_BADGE_LIVERY_FREIGHT_SILVER]
-base = "Silver"
-
-[STR_BADGE_LIVERY_FREIGHT_SULPHUR]
-base = "Sulphur"
-
-[STR_BADGE_LIVERY_FREIGHT_VIOLET]
-base = "Amethyst"
-
-[STR_BADGE_LIVERY_CC_BLUE]
-base = "Freight Blue"
-
-[STR_BADGE_LIVERY_CC_DARK_BLUE]
-base = "Freight Dark Blue"
-
 # other liveries
 # _might_ need to use roster-specific strings, but we'll see
-
-[STR_BADGE_LIVERY_FOO]
-base = "CABBAGE"
 
 [STR_BADGE_LIVERY_ARC]
 base = "CABBAGE"

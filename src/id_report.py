@@ -74,6 +74,10 @@ def main():
                 # range of ids
                 id_gaps.append(" to ".join([str(id) for id in id_run]))
         logger.info(f"\n" f"Vacant {label}:\n" f"{', '.join(id_gaps)})")
+
+    # we want to be told about and clear out unused liveries, doesn't really belong anywhere, so here will do
+    iron_horse.livery_supplier.report_unused_liveries()
+
     logger.info(
         f"[ID REPORT] "
         f"{command_line_args.grf_name} - complete "

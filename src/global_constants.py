@@ -645,15 +645,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_SILVER_PEWTER": {
-        "colour_set_names": ["freight_silver", "freight_pewter"],
-        "purchase_swatch_colour_set_names": ["freight_silver"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING": {
         "colour_set_names": ["freight_silver", "freight_pewter"],
         "purchase_swatch_colour_set_names": ["freight_silver"],
@@ -693,18 +684,6 @@ freight_wagon_liveries = {
         ],
         "purchase_swatch_colour_set_names": ["freight_ruby", "freight_nightshade"],
         "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "RANDOM_LIVERIES_OIL_BLACK_NIGHTSHADE": {
-        "colour_set_names": [
-            "freight_oil_black",
-            "freight_nightshade",
-        ],
-        "purchase_swatch_colour_set_names": ["freight_nightshade"],
-        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -899,22 +878,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_NIGHTSHADE_NO_WEATHERING": {
-        "colour_set_names": ["freight_nightshade"],
-        "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_OCHRE": {
-        "colour_set_names": ["freight_ochre"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "FREIGHT_OIL_BLACK": {
         "colour_set_names": ["freight_oil_black"],
         "use_weathering": True,
@@ -942,62 +905,6 @@ freight_wagon_liveries = {
     "FREIGHT_RED_NO_WEATHERING": {
         "colour_set_names": ["red"],
         "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_RUBY": {
-        "colour_set_names": ["freight_ruby"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_SAND": {
-        "colour_set_names": ["freight_sand"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_SILVER": {
-        "colour_set_names": ["freight_silver"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_SULPHUR": {
-        "colour_set_names": ["freight_sulphur"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_VIOLET": {
-        "colour_set_names": ["freight_violet"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "CC_BLUE": {
-        "colour_set_names": ["blue"],
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "CC_DARK_BLUE": {
-        "colour_set_names": ["dark_blue"],
-        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

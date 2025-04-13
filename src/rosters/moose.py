@@ -157,16 +157,6 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
-            "FOO": {
-                # optional remap, allowing 1cc wagons to be whatever player chooses
-                # "remap_to_cc": {"company_colour1": "company_colour1", "company_colour2": "company_colour2"},
-                "docs_image_input_cc": [
-                    ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_GREEN"),
-                    ("COLOUR_CREAM", "COLOUR_MAUVE"),
-                ],
-            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,

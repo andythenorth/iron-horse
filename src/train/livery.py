@@ -49,6 +49,9 @@ class LiverySupplier(dict):
     Intended for use as a singleton in contexts such as templates or compile-time operations.
     """
 
+    def __init__(self):
+        self.delivered_liveries = []
+
     def add_livery(self, livery_name: str, **kwargs):
         livery = LiveryDef(livery_name, **kwargs)
         # liveries can be defined in multiple rosters, for simplicity, if they're exact duplicates we allow that
@@ -69,6 +72,7 @@ class LiverySupplier(dict):
             livery_def = self[livery_name]
         except KeyError:
             raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier")
+        self.delivered_liveries.append(livery_name)
         return replace(livery_def, relative_spriterow_num=relative_spriterow_num)
 
     @cached_property
@@ -171,3 +175,7 @@ class LiverySupplier(dict):
             )
         return result
 
+    def report_unused_liveries(self):
+        for livery in self.keys():
+            if livery not in self.delivered_liveries:
+                print("Unused", livery)
