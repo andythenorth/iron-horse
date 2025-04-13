@@ -319,7 +319,6 @@ class ModelTypeBase(object):
 
         # general metadata, visible or not
         result.append(f"ih_gen/{self.gen}")
-        #result.append(f"ih_railtype/{self.track_type}")
         result.append(self.vehicle_family_badge)
         result.extend(self.special_flags_badges)
         if self.role_badge is not None:

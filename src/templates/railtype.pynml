@@ -42,6 +42,7 @@ if (param_add_railtypes) {
         item (FEAT_RAILTYPES, item_${railtype.id}) {
             property {
                 label:                          "${railtype.label}";
+                badges:                         ["ih_railtype/${railtype.label}"];
                 <tal:introduction_date condition="railtype.introduction_date is not None">
                     introduction_date:              date(${railtype.introduction_date});
                 </tal:introduction_date>

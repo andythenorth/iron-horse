@@ -93,6 +93,7 @@ class BadgeManager(list):
         for railtype in railtype_manager:
             self.add_badge(
                 label=f"ih_railtype/{railtype.label}",
+                flags=["BADGE_FLAG_COPY_TO_RELATED_ENTITY"],
             )
 
     def produce_vehicle_family_badges(self, **kwargs):
