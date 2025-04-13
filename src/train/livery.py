@@ -41,7 +41,7 @@ class LiveryDef:
 
     @property
     def weathering_badge_label(self):
-        return f"ih_livery_flags/use_weathering/{str(self.use_weathering).lower()}"
+        return f"ih_livery_def/use_weathering/{str(self.use_weathering).lower()}"
 
 class LiverySupplier(dict):
     """

@@ -100,9 +100,6 @@ base = "CABBAGE"
 [STR_BADGE_LIVERY_COMPANY_COLOUR]
 base = "Company Colour"
 
-[STR_BADGE_LIVERY_COMPANY_COLOUR_NO_WEATHERING]
-base = "Company Colour"
-
 [STR_BADGE_LIVERY_COMPLEMENT_COMPANY_COLOUR]
 base = "Company Colour Adjacent"
 

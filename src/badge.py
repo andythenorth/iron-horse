@@ -118,10 +118,10 @@ class BadgeManager(list):
             )
 
         self.add_badge(
-            label=f"ih_livery_flags/use_weathering/false",
+            label=f"ih_livery_def/use_weathering/false",
         )
         self.add_badge(
-            label=f"ih_livery_flags/use_weathering/true",
+            label=f"ih_livery_def/use_weathering/true",
         )
 
         self.add_badge(
@@ -132,7 +132,7 @@ class BadgeManager(list):
             colour_set_name
         ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
-                label=f"ih_colour_set_name/candidates/{colour_set_name}",
+                label=f"ih_livery_def/colour_set_names/{colour_set_name}",
                 #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
 

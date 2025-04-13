@@ -266,7 +266,7 @@ class ModelTypeBase(object):
 
         # note returns multiple badges, as vehicles support multiple colours
         for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
-            result.append(f"ih_colour_set_name/candidates/{colour_set_name}")
+            result.append(f"ih_livery_def/colour_set_names/{colour_set_name}")
         return result
 
     @property
