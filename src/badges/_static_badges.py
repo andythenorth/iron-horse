@@ -68,4 +68,10 @@ static_badges = {
             "ih_random_reverse": {},
         },
     },
+    "ih_behaviour": {
+        "name": "STR_BADGE_BEHAVIOUR",
+        "sublabels": {
+            "randomised_wagon": {"name": "STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON"},
+        },
+    },
 }

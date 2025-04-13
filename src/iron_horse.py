@@ -9,7 +9,7 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 
 from functools import cached_property
 
-from badge import BadgeManager
+from badges.badge import BadgeManager
 from train.livery import LiverySupplier
 from railtype import RailTypeManager
 import global_constants

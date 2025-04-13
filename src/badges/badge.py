@@ -47,8 +47,8 @@ class BadgeManager(list):
         return None
 
     def cabbage_init_badges_1(self):
-        # CABBAGE SHIM TO ADD DEFAULT BADGES UNTIL A BETTER PATTERN IS ESTABLISHED
-        # CABBAGE SPLIT UP _static_badges to badges by domain / concern
+        # purely static badges
+        # CABBAGE SPLIT UP _static_badges to badges by domain / concern?  MAYBE NOT NEEDED
         for (
             badge_class_label,
             badge_class_properties,
@@ -66,12 +66,6 @@ class BadgeManager(list):
                     label=badge_class_label + "/" + sublabel,
                     name=sublabel_properties.get("name", None),
                 )
-
-        for power_source in global_constants.power_sources.keys():
-            self.add_badge(
-                label=f"power_source/{power_source.lower()}",
-                name=f"STR_BADGE_POWER_SOURCE_{power_source}",
-            )
 
     @timing
     def cabbage_init_badges_2(self, **kwargs):
@@ -99,6 +93,13 @@ class BadgeManager(list):
                             label=f"ih_randomised_wagon/candidates/{label}",
                             #name=f"{name}",
                         )
+
+        # power source badges
+        for power_source in global_constants.power_sources.keys():
+            self.add_badge(
+                label=f"power_source/{power_source.lower()}",
+                name=f"STR_BADGE_POWER_SOURCE_{power_source}",
+            )
 
         # livery badges
         livery_supplier = kwargs["livery_supplier"]
@@ -132,17 +133,6 @@ class BadgeManager(list):
                 label=f"ih_livery_def/colour_set_names/{colour_set_name}",
                 #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
-
-        # CABBAGE - these look like static badges? move??
-        self.add_badge(
-            label="ih_behaviour",
-            name="STR_BADGE_BEHAVIOUR",
-        )
-        self.add_badge(
-            label="ih_behaviour/randomised_wagon",
-            name="STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON",
-        )
-
 
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
         badge_graphics_generator = BadgeGraphicsGenerator(
