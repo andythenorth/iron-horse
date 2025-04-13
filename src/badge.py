@@ -111,27 +111,31 @@ class BadgeManager(list):
         livery_supplier = kwargs["livery_supplier"]
 
         self.add_badge(
-            label=f"ih_livery",
+            label=f"livery",
+            name="STR_BADGE_LIVERY",
         )
         for livery in livery_supplier.values():
             sprite = None
+            name = None
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
+                name=f"STR_BADGE_LIVERY_{livery.livery_name}"
             self.add_badge(
                 label=livery.badge_label,
                 sprite=sprite,
+                name=name,
             )
 
         self.add_badge(
-            label=f"ih_colour_set_name",
-            name=f"STR_BADGE_COLOUR_SET_NAME",
+            label=f"ih_colour_set_names",
+            #name=f"STR_BADGE_COLOUR_SET_NAME",
         )
         for (
             colour_set_name
         ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
-                label=f"ih_colour_set_name/{colour_set_name}",
-                name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
+                label=f"ih_colour_set_name/candidates/{colour_set_name}",
+                #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
 
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):

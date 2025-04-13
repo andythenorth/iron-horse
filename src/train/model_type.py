@@ -254,6 +254,7 @@ class ModelTypeBase(object):
     def cabbage_colour_mix_badges(self):
         result = []
 
+        # CABBAGE THE LIVERY SHOULD TAKE CARE OF THIS NOT THE MODEL TYPE
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
         if self.catalogue_entry.livery_def.livery_name in [
             "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
@@ -262,7 +263,7 @@ class ModelTypeBase(object):
 
         # note returns multiple badges, as vehicles support multiple colours
         for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
-            result.append(f"ih_colour_set_name/{colour_set_name}")
+            result.append(f"ih_colour_set_name/candidates/{colour_set_name}")
         return result
 
     @property
@@ -3540,7 +3541,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         )
 
 
-class CabooseCarUnit(CarModelTypeBase):
+class CabooseCar(CarModelTypeBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
