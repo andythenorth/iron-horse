@@ -324,6 +324,7 @@ def export_roster_to_json(roster, output_dir="docs"):
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
+    """ # commented out as rarely used
     # Write to JSON file
     file_path = os.path.join(output_dir, f"{roster.grf_name}.json")
     with open(file_path, "w", encoding="utf-8") as json_file:
@@ -332,6 +333,7 @@ def export_roster_to_json(roster, output_dir="docs"):
         f"Roster exported to {file_path} "
         f"{utils.string_format_compile_time_deltas(json_start, time())}"
     )
+    """
 
 
 def main():
