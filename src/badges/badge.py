@@ -189,3 +189,11 @@ class BadgeManager(list):
                 self.add_badge(
                     label=f"ih_tech_tree/intro_date_months_offset/{catalogue.default_model_variant_from_roster.intro_date_months_offset}"
                 )
+
+                if (
+                    catalogue.default_model_variant_from_roster.replacement_model_variant
+                    is not None
+                ):
+                    self.add_badge(
+                        label=f"ih_tech_tree/replacement/{catalogue.default_model_variant_from_roster.replacement_model_variant.vehicle_family_badge}"
+                    )

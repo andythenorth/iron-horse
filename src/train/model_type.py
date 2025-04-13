@@ -296,6 +296,10 @@ class ModelTypeBase(object):
         result.append(f"ih_tech_tree/joker/{self.joker}")
         result.append(f"ih_tech_tree/intro_year/{self.intro_year}")
         result.append(f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}")
+        if self.replacement_model_variant is not None:
+            result.append(
+                f"ih_tech_tree/replacement/{self.replacement_model_variant.vehicle_family_badge}"
+            )
         return result
 
     @property
