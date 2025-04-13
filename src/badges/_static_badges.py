@@ -16,13 +16,13 @@ static_badges = {
         },
     },
     "ih_wagon_subtype": {
-        #"name": "STR_BADGE_WAGON_LENGTH",
+        # "name": "STR_BADGE_WAGON_LENGTH",
         "sublabels": {
-            "a": {}, #{"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
-            "b": {}, #{"name": "STR_BADGE_WAGON_LENGTH_MEDIUM"},
-            "c": {}, #{"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
-            "d": {}, #{"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
-            "u": {}, #{"name": "STR_EMPTY"},
+            "a": {},  # {"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
+            "b": {},  # {"name": "STR_BADGE_WAGON_LENGTH_MEDIUM"},
+            "c": {},  # {"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
+            "d": {},  # {"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
+            "u": {},  # {"name": "STR_EMPTY"},
         },
     },
     "ih_variants_cabbage": {

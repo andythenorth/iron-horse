@@ -3,6 +3,7 @@ from PIL import Image
 
 import global_constants
 
+
 class BadgeGraphicsGenerator:
     """
     intended as a singleton

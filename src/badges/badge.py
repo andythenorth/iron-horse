@@ -44,9 +44,23 @@ class BadgeManager(list):
                 return badge
         return None
 
-    def cabbage_init_badges_1(self):
+    def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
+        badge_graphics_generator = BadgeGraphicsGenerator(
+            self, iron_horse, graphics_input_path, graphics_output_path
+        )
+        badge_graphics_generator.render_livery_badges()
+
+    def produce_badges(self, **kwargs):
+        # explicit, not on __init__, more controllable
+        self.produce_badges_from_static_config(**kwargs)
+        self.produce_grf_metadata_badges(**kwargs)
+        self.produce_power_source_badges(**kwargs)
+        self.produce_livery_badges(**kwargs)
+        self.produce_vehicle_family_badges(**kwargs)
+        self.produce_randomised_wagon_candidate_badges(**kwargs)
+
+    def produce_badges_from_static_config(self, **kwargs):
         # purely static badges
-        # CABBAGE SPLIT UP _static_badges to badges by domain / concern?  MAYBE NOT NEEDED
         for (
             badge_class_label,
             badge_class_properties,
@@ -65,41 +79,51 @@ class BadgeManager(list):
                     name=sublabel_properties.get("name", None),
                 )
 
-    @timing
-    def cabbage_init_badges_2(self, **kwargs):
-        # CABBAGE SHIM TO ADD DEFAULT BADGES UNTIL A BETTER PATTERN IS ESTABLISHED
-        # THIS IS FOR BADGES THAT NEED SOMETHING PASSED
-
+    def produce_grf_metadata_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]
-
         if roster_manager.active_roster is not None:
             self.add_badge(
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
+    def produce_vehicle_family_badges(self, **kwargs):
+        roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                # vehicle_family_badge should always be found, error if not
+                # vehicle_family_badge should always be found, just allow unhandled error if not
                 self.add_badge(
                     label=catalogue.default_model_variant_from_roster.vehicle_family_badge,
                 )
-                if catalogue.default_model_variant_from_roster.catalogue_entry.model_is_randomised_wagon_type:
+
+    def produce_randomised_wagon_candidate_badges(self, **kwargs):
+        # this is for debug use
+        roster_manager = kwargs["roster_manager"]
+        for roster in roster_manager:
+            for catalogue in roster.catalogues:
+                if (
+                    catalogue.default_model_variant_from_roster.catalogue_entry.model_is_randomised_wagon_type
+                ):
                     # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
-                    # but...probably fine as of April 2025 - the whole method timed at < 0.1s
-                    for label, name in catalogue.default_model_variant_from_roster.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
+                    # but...probably fine as of April 2025 - the whole method timed at < 0.05s
+                    for (
+                        label,
+                        name,
+                    ) in (
+                        catalogue.default_model_variant_from_roster.cabbage_wagon_randomisation_candidate_assortment_unique_names.items()
+                    ):
                         self.add_badge(
                             label=f"ih_randomised_wagon/candidates/{label}",
-                            #name=f"{name}",
                         )
 
-        # power source badges
+    def produce_power_source_badges(self, **kwargs):
         for power_source in global_constants.power_sources.keys():
             self.add_badge(
                 label=f"power_source/{power_source.lower()}",
                 name=f"STR_BADGE_POWER_SOURCE_{power_source}",
             )
 
-        # livery badges
+    def produce_livery_badges(self, **kwargs):
+        # this includes some badges which could strictly be static, but we group all livery concerns together in this method
         livery_supplier = kwargs["livery_supplier"]
 
         self.add_badge(
@@ -107,7 +131,7 @@ class BadgeManager(list):
             name="STR_BADGE_LIVERY",
         )
         for livery in livery_supplier.values():
-            name=f"STR_BADGE_LIVERY_{livery.livery_name}"
+            name = f"STR_BADGE_LIVERY_{livery.livery_name}"
             sprite = None
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
@@ -129,13 +153,5 @@ class BadgeManager(list):
         ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
             self.add_badge(
                 label=f"ih_livery_def/colour_set_names/{colour_set_name}",
-                #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
+                # name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
-
-    def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
-        badge_graphics_generator = BadgeGraphicsGenerator(
-            self, iron_horse, graphics_input_path, graphics_output_path
-        )
-        badge_graphics_generator.render_livery_badges()
-
-

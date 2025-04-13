@@ -159,6 +159,4 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
         spritelayer_cargo_module.main()
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
-    # CABBAGE - CABBADGE
-    badge_manager.cabbage_init_badges_1()
-    badge_manager.cabbage_init_badges_2(roster_manager=roster_manager, livery_supplier=livery_supplier)
+    badge_manager.produce_badges(roster_manager=roster_manager, livery_supplier=livery_supplier)
