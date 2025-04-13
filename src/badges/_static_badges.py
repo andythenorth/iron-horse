@@ -31,13 +31,14 @@ static_badges = {
         }
     },
     "ih_gen": {
+        "name": "STR_BADGE_GEN",
         "sublabels": {
-            "1": {},
-            "2": {},
-            "3": {},
-            "4": {},
-            "5": {},
-            "6": {},
+            "1": {"name": "STR_BADGE_GEN_1"},
+            "2": {"name": "STR_BADGE_GEN_2"},
+            "3": {"name": "STR_BADGE_GEN_3"},
+            "4": {"name": "STR_BADGE_GEN_4"},
+            "5": {"name": "STR_BADGE_GEN_5"},
+            "6": {"name": "STR_BADGE_GEN_6"},
         },
     },
     "role": {

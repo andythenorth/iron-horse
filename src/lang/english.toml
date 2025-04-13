@@ -403,6 +403,29 @@ base = "General Purpose / High Capacity"
 # [STR_BADGE_WAGON_LENGTH_TWIN]
 # base = "Twin"
 
+# gen badges
+
+[STR_BADGE_GEN]
+base = "Gen"
+
+[STR_BADGE_GEN_1]
+base = "1"
+
+[STR_BADGE_GEN_2]
+base = "2"
+
+[STR_BADGE_GEN_3]
+base = "3"
+
+[STR_BADGE_GEN_4]
+base = "4"
+
+[STR_BADGE_GEN_5]
+base = "5"
+
+[STR_BADGE_GEN_6]
+base = "6"
+
 # special features badges
 
 [STR_BADGE_SPECIAL_FLAGS]

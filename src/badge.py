@@ -73,6 +73,7 @@ class BadgeManager(list):
                 name=f"STR_BADGE_POWER_SOURCE_{power_source}",
             )
 
+    @timing
     def cabbage_init_badges_2(self, **kwargs):
         # CABBAGE SHIM TO ADD DEFAULT BADGES UNTIL A BETTER PATTERN IS ESTABLISHED
         # THIS IS FOR BADGES THAT NEED SOMETHING PASSED
@@ -84,18 +85,16 @@ class BadgeManager(list):
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
-        # CABBAGE - CATALOGUES THOUGH?
-        # !! this was provably slow as of March 2025, due to walking all variants, but that might be solved now?
-        # timed at < 0.1 using variants, but probably still worth converting to catalogue?
         for roster in roster_manager:
-            for model_variant in roster.model_variants:
-                if model_variant.vehicle_family_badge is not None:
-                    self.add_badge(
-                        label=model_variant.vehicle_family_badge,
-                    )
-                # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
-                if model_variant.catalogue_entry.model_is_randomised_wagon_type:
-                    for label, name in model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
+            for catalogue in roster.catalogues:
+                # vehicle_family_badge should always be found, error if not
+                self.add_badge(
+                    label=catalogue.default_model_variant_from_roster.vehicle_family_badge,
+                )
+                if catalogue.default_model_variant_from_roster.catalogue_entry.model_is_randomised_wagon_type:
+                    # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
+                    # but...probably fine as of April 2025 - the whole method timed at < 0.1s
+                    for label, name in catalogue.default_model_variant_from_roster.cabbage_wagon_randomisation_candidate_assortment_unique_names.items():
                         self.add_badge(
                             label=f"ih_randomised_wagon/candidates/{label}",
                             #name=f"{name}",
