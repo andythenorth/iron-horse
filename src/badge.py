@@ -100,6 +100,7 @@ class BadgeManager(list):
                             #name=f"{name}",
                         )
 
+        # livery badges
         livery_supplier = kwargs["livery_supplier"]
 
         self.add_badge(
@@ -117,16 +118,12 @@ class BadgeManager(list):
                 name=name,
             )
 
+        # copy elements of the livery_def into badges, for both behaviour and debugging
         self.add_badge(
             label=f"ih_livery_def/use_weathering/false",
         )
         self.add_badge(
             label=f"ih_livery_def/use_weathering/true",
-        )
-
-        self.add_badge(
-            label=f"ih_colour_set_names",
-            #name=f"STR_BADGE_COLOUR_SET_NAME",
         )
         for (
             colour_set_name
@@ -136,6 +133,7 @@ class BadgeManager(list):
                 #name=f"STR_BADGE_COLOUR_SET_NAME_{colour_set_name.upper()}",
             )
 
+        # CABBAGE - these look like static badges? move??
         self.add_badge(
             label="ih_behaviour",
             name="STR_BADGE_BEHAVIOUR",
