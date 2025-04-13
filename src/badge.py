@@ -107,11 +107,10 @@ class BadgeManager(list):
             name="STR_BADGE_LIVERY",
         )
         for livery in livery_supplier.values():
+            name=f"STR_BADGE_LIVERY_{livery.livery_name}"
             sprite = None
-            name = None
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
-                name=f"STR_BADGE_LIVERY_{livery.livery_name}"
             self.add_badge(
                 label=livery.badge_label,
                 sprite=sprite,
