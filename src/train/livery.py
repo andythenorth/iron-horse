@@ -39,6 +39,9 @@ class LiveryDef:
             subcategory = ""
         return f"livery/iron_horse/{subcategory}{self.livery_name.lower()}"
 
+    @property
+    def weathering_badge_label(self):
+        return f"ih_livery_flags/use_weathering/{str(self.use_weathering).lower()}"
 
 class LiverySupplier(dict):
     """
@@ -68,12 +71,25 @@ class LiverySupplier(dict):
     def deliver(self, livery_name: str, relative_spriterow_num: int):
         # Return a modified copy of the canonical LiveryDef identified by livery_name.
 
+        # regrettable special case handling of detecting weathering, as we want to use only simple constants to fetch liveries
+        if livery_name.endswith("_NO_WEATHERING"):
+            livery_name = livery_name[:-len("_NO_WEATHERING")]
+            use_weathering = False
+        else:
+            # CABBAGE - THIS MIGHT NEED NO_WEATHERING SET FOR NON_FREIGHT LIVERIES?
+            # OR SCOPE IT TO FREIGHT WAGON LIVERIES?
+            use_weathering = True
+
         try:
             livery_def = self[livery_name]
         except KeyError:
             raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier")
         self.delivered_liveries.append(livery_name)
-        return replace(livery_def, relative_spriterow_num=relative_spriterow_num)
+        return replace(
+            livery_def,
+            relative_spriterow_num=relative_spriterow_num,
+            use_weathering=use_weathering,
+        )
 
     @cached_property
     def freight_wagon_liveries(self):
@@ -102,11 +118,10 @@ class LiverySupplier(dict):
         return result
 
     def serialize_livery_params(
-        self, flag_use_weathering, flag_context_is_purchase, colour_set_indexes
+        self, flag_context_is_purchase, colour_set_indexes
     ):
         # flatten to numeric params for nml templating
         livery_result = [
-            flag_use_weathering,
             flag_context_is_purchase,
         ]
         # length of colour_set_indexes *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
@@ -131,7 +146,6 @@ class LiverySupplier(dict):
                     ]
                 )
             serialized_params = self.serialize_livery_params(
-                flag_use_weathering=livery.use_weathering,
                 flag_context_is_purchase=False,
                 colour_set_indexes=colour_set_indexes,
             )
@@ -158,7 +172,6 @@ class LiverySupplier(dict):
             # we still use the list of colour set indexes, but one entry is enough for purchase, the entries will be auto-repeated by the serializer
             colour_set_indexes = [purchase_livery_index]
             serialized_params = self.serialize_livery_params(
-                flag_use_weathering=False,
                 flag_context_is_purchase=True,
                 colour_set_indexes=colour_set_indexes,
             )

@@ -118,6 +118,13 @@ class BadgeManager(list):
             )
 
         self.add_badge(
+            label=f"ih_livery_flags/use_weathering/false",
+        )
+        self.add_badge(
+            label=f"ih_livery_flags/use_weathering/true",
+        )
+
+        self.add_badge(
             label=f"ih_colour_set_names",
             #name=f"STR_BADGE_COLOUR_SET_NAME",
         )

@@ -6,7 +6,8 @@
     <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
     switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
                 <!--! check if randomisation is enabled (player parameter) -->
-                param_wagon_colour_randomisation && LOAD_TEMP(${temp_storage_ids.flag_use_weathering})
+                <!--! note that this relies on purchase context having no random bits, to avoid applying weathering to purchase sprite...probably fine? -->
+                param_wagon_colour_randomisation && has_badge("ih_livery_flags/use_weathering/true")
                 ? random_bits_colour_set()
                 : 0) {
         1: return ${utils.unpack_colour(colour_set[1][1], 1)};
@@ -76,13 +77,11 @@ switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_select_colour_set,
 }
 
 switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_set_params,
-        flag_use_weathering,
         flag_context_is_purchase,
         <tal:available_liveries repeat="livery_num range(8)">
             wagon_recolour_livery_num_${livery_num},
         </tal:available_liveries>
                 [
-                 STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
                  STORE_TEMP(flag_context_is_purchase, ${temp_storage_ids.flag_context_is_purchase}),
                  <tal:available_liveries repeat="livery_num range(8)">
                      STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
