@@ -161,10 +161,10 @@ class BadgeManager(list):
 
         # copy elements of the livery_def into badges, for both behaviour and debugging
         self.add_badge(
-            label=f"ih_livery_def/use_weathering/false",
+            label=f"ih_livery_def/use_weathering/False",
         )
         self.add_badge(
-            label=f"ih_livery_def/use_weathering/true",
+            label=f"ih_livery_def/use_weathering/True",
         )
         for (
             colour_set_name

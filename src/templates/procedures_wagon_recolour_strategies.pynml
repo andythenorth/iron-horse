@@ -7,7 +7,7 @@
     switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
                 <!--! check if randomisation is enabled (player parameter) -->
                 <!--! note that this relies on purchase context having no random bits, to avoid applying weathering to purchase sprite...probably fine? -->
-                param_wagon_colour_randomisation && has_badge("ih_livery_def/use_weathering/true")
+                param_wagon_colour_randomisation && has_badge("ih_livery_def/use_weathering/True")
                 ? random_bits_colour_set()
                 : 0) {
         1: return ${utils.unpack_colour(colour_set[1][1], 1)};
