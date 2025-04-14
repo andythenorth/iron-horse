@@ -108,7 +108,7 @@ class ModelTypeBase(object):
     @property
     def model_def(self):
         # just a pass through for convenience
-        return self.catalogue_entry.catalogue.factory.model_def
+        return self.catalogue_entry.catalogue.model_def
 
     @property
     def roster_id(self):
@@ -147,7 +147,7 @@ class ModelTypeBase(object):
         # possibly expensive, but not often required option to get the default model a clone was sourced from
         if self.model_def.cloned_from_model_def is not None:
             for catalogue in self.roster.catalogues:
-                if catalogue.factory.model_def == self.model_def.cloned_from_model_def:
+                if catalogue.model_def == self.model_def.cloned_from_model_def:
                     return catalogue.default_model_variant_from_roster
         raise Exception(f"cloned_from_model_type not found for {self.id}")
 

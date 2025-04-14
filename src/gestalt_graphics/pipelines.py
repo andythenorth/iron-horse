@@ -627,7 +627,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
-        # CABBAGE default_model_variant looks like it should be using catalogue.factory.model_def here
+        # CABBAGE default_model_variant looks like it should be using catalogue.model_def here
         if len(self.default_model_variant.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated vehicles - called by "
@@ -721,7 +721,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
             # the gen % 2 is to alternate the overlay colour between generations, to aid distinguising them when replacing vehicles
             dice_recolour_map = dice_recolour_maps[
                 self.default_model_variant.gestalt_graphics.dice_colour
-            ][self.catalogue.factory.model_def.gen % 2]
+            ][self.catalogue.model_def.gen % 2]
             dice_image = dice_image.point(
                 lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
             )

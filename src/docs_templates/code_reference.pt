@@ -162,7 +162,7 @@
                                                     </td>
                                                 </tal:props>
                                                 <td>
-                                                    ${structure: "&amp;#10004;" if catalogue.factory.model_def.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                                    ${structure: "&amp;#10004;" if catalogue.model_def.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
                                                 </td>
                                             </tr>
                                         </tal:default_model_variants>
@@ -191,9 +191,9 @@
                             <th>Title</th>
                         </thead>
                         <tbody>
-                            <tal:catalogues repeat="catalogue sorted(catalogues, key=lambda catalogue: catalogue.factory.model_def.base_numeric_id)">
+                            <tal:catalogues repeat="catalogue sorted(catalogues, key=lambda catalogue: catalogue.model_def.base_numeric_id)">
                                 <tr>
-                                    <td>${catalogue.factory.model_def.base_numeric_id}</td>
+                                    <td>${catalogue.model_def.base_numeric_id}</td>
                                     <td>${catalogue.id}</td>
                                     <td>${doc_helper.unpack_name_string(catalogue)}</td>
                                 </tr>

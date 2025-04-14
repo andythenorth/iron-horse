@@ -554,7 +554,7 @@ class Catalogue(list):
         raise ValueError(
             f"Unable to determine valid livery names for "
             f"{self.id}\n"
-            f"{self.factory.model_def}"
+            f"{self.model_def}"
             f"{self.factory.cab_factory}"
         )
 
@@ -566,6 +566,11 @@ class Catalogue(list):
     def model_id_root(self):
         # convenience method
         return self.factory.model_type_cls.model_id_root
+
+    @property
+    def model_def(self):
+        # convenience method
+        return self.factory.model_def
 
     @property
     def default_entry(self):
@@ -594,7 +599,7 @@ class Catalogue(list):
             catalogue_model_variant_mapping,
         ) in self.factory.roster.model_variants_by_catalogue.items():
             catalogue = catalogue_model_variant_mapping["catalogue"]
-            if catalogue.factory.model_def.cab_id == self.id:
+            if catalogue.model_def.cab_id == self.id:
                 result.append(catalogue_model_variant_mapping)
         return result
 
@@ -610,20 +615,20 @@ class Catalogue(list):
     @cached_property
     def intro_year(self):
         # automatic intro_year, but can override via model_def
-        assert self.factory.model_def.gen != None, (
+        assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.id
         )
         result = self.factory.roster.intro_years[self.base_track_type_name][
-            self.factory.model_def.gen - 1
+            self.model_def.gen - 1
         ]
-        if self.factory.model_def.intro_year_offset is not None:
-            result = result + self.factory.model_def.intro_year_offset
+        if self.model_def.intro_year_offset is not None:
+            result = result + self.model_def.intro_year_offset
         return result
 
     @cached_property
     def base_track_type_name(self):
-        if self.factory.model_def.base_track_type_name is not None:
-            return self.factory.model_def.base_track_type_name
+        if self.model_def.base_track_type_name is not None:
+            return self.model_def.base_track_type_name
         else:
             return "RAIL"
 
@@ -632,14 +637,14 @@ class Catalogue(list):
         # this assumes that NG and Metro always return the same, irrespective of model type cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
         # don't like how much content (text) is in code here, but eh
-        if self.factory.model_def.base_track_type_name == "NG":
+        if self.model_def.base_track_type_name == "NG":
             cite_name = "Roberto Flange"
             cite_titles = [
                 "Narrow Gauge Superintendent",
                 "Works Manager (Narrow Gauge)",
                 "Traction Controller, Narrow Gauge Lines",
             ]
-        elif self.factory.model_def.base_track_type_name == "METRO":
+        elif self.model_def.base_track_type_name == "METRO":
             cite_name = "JJ Transit"
             cite_titles = [
                 "Superintendent (Metro Division)",

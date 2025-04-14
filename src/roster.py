@@ -280,7 +280,7 @@ class Roster:
 
         def get_tmp_uid(model_id_root, catalogue):
             # convenience method for a key, only used for accessing a temp structure
-            return f"{model_id_root}_{catalogue.factory.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.factory.model_def.subtype}"
+            return f"{model_id_root}_{catalogue.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.model_def.subtype}"
 
         cabbage_random_temp_foo = {}
         for catalogue in self.wagon_catalogues:
@@ -595,7 +595,7 @@ class TechTree(dict):
         branch_dict = self._ensure_branch_dict(
             subrole_dict, subrole_child_branch_num, track_type=track_type
         )
-        branch_dict[catalogue.factory.model_def.gen] = catalogue
+        branch_dict[catalogue.model_def.gen] = catalogue
 
     def _ensure_role_dict(self, track_type, role):
         if track_type not in self:
@@ -642,7 +642,7 @@ class TechTree(dict):
 
     def get_relative_catalogue(self, catalogue, offset: int):
         target_branch = self._get_branch_for_catalogue(catalogue)
-        target_gen = catalogue.factory.model_def.gen + offset
+        target_gen = catalogue.model_def.gen + offset
 
         # Branch keys are pre-provisioned with valid gens (1,2,...,max).
         # If target_gen is below 1 or above the highest valid generation,
@@ -668,10 +668,10 @@ class TechTree(dict):
 
         # models have 1 or None replacement models
         # this method might not work for wagons, callers should guard against calling in that case
-        if catalogue.factory.model_def.replacement_model_id is not None:
+        if catalogue.model_def.replacement_model_id is not None:
             # ocasionally we need to merge two branches of the subrole, in this case set replacement_model_id on the model_def
             return self.roster.model_variants_by_catalogue[
-                catalogue.factory.model_def.replacement_model_id
+                catalogue.model_def.replacement_model_id
             ]["catalogue"]
 
         # models can span generations, so walk forward to find if there's a replacement in the line
@@ -681,7 +681,7 @@ class TechTree(dict):
             )
         )
         offset = 1
-        while (catalogue.factory.model_def.gen + offset) <= max_gen:
+        while (catalogue.model_def.gen + offset) <= max_gen:
             replacement_candidate = self.get_relative_catalogue(catalogue, offset)
             if replacement_candidate is not None:
                 return replacement_candidate

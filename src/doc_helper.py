@@ -323,7 +323,7 @@ class DocHelper(object):
                     catalogue.id,
                     catalogue.default_entry.model_variant_id,
                     str(self.docs_sprite_width(catalogue)),
-                    catalogue.factory.model_def.base_numeric_id,
+                    catalogue.model_def.base_numeric_id,
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
