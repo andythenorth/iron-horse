@@ -15,12 +15,12 @@
                 |
                 <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
-            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, model_variants, simplified_gameplay)">
+            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
-                    <h3>${base_track_type_and_label[1]}</h3>
-                    <tal:roles define="intro_years roster.intro_years[base_track_type_and_label[0]]"
+                    <h3>${base_track_type_and_label} CABBAGE RAILTYPE NAME NEEDS LOOKED UP from doc_helper.base_track_type_names_and_labels</h3>
+                    <tal:roles define="intro_years roster.intro_years[base_track_type_and_label]"
                                repeat="role tech_tree[base_track_type_and_label]">
-                        <tal:descriptions_rail condition="base_track_type_and_label[0]=='RAIL'">
+                        <tal:descriptions_rail condition="base_track_type_and_label=='RAIL'">
                             <tal:descriptions switch="role">
                                 <div tal:case="'express'">
                                     <h4>General Purpose / Express Engines</h4>
@@ -101,7 +101,7 @@
                                 </div>
                             </tal:descriptions>
                         </tal:descriptions_rail>
-                        <tal:descriptions_ng condition="base_track_type_and_label[0]=='NG'">
+                        <tal:descriptions_ng condition="base_track_type_and_label=='NG'">
                             <div tal:condition="role=='express'">
                                 <h4>Narrow Gauge Trains</h4>
                                 <ul>
@@ -118,7 +118,7 @@
                                 </ul>
                             </div>
                         </tal:descriptions_ng>
-                        <tal:descriptions_metro condition="base_track_type_and_label[0]=='METRO'">
+                        <tal:descriptions_metro condition="base_track_type_and_label=='METRO'">
                             <div tal:condition="role=='metro'">
                                 <h4>Metro Trains</h4>
                                 <ul>
@@ -186,9 +186,9 @@
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
                                                 <!--! model_type might actually be default model_variant -->
-                                                <tal:model_type define="model_type tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen];">
-                                                    <tal:block condition="model_type is not None"
-                                                               define="catalogue model_type.catalogue_entry.catalogue if model_type is not None else None;">
+                                                <tal:model_type define="catalogue tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen];">
+                                                    <tal:block condition="catalogue is not None"
+                                                               define="model_type catalogue.default_model_variant_from_roster if catalogue is not None else None;">
                                                         <div id="${model_type.model_id}" class="tech_tree_vehicle_container">
                                                             <a href="${model_type.model_id}.html">
                                                                 <div class="tech_tree_vehicle

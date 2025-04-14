@@ -18,9 +18,6 @@ class DocHelper(object):
 
     def __init__(self, lang_strings):
         self.lang_strings = lang_strings
-        # temp CABBAGE
-        self.cached_tech_tree = None
-        self.cached_tech_tree_simplified = None
 
     def docs_sprite_width(self, catalogue=None, model_variant=None):
         # generally use catalogue for this
@@ -80,97 +77,11 @@ class DocHelper(object):
             result.append(catalogue)
         return result
 
-    @timing
-    def engines_as_tech_tree(self, roster, model_variants, simplified_gameplay):
-        # structure
-        # |- base_track_type_name
-        #    |- role
-        #       |- subrole
-        #          |- subrole child_branch
-        #             |- generation
-        #                |- engine model
-        # if there's no engine model matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
-        # CABBAGE - THIS SHOULD BE DRIVEN FROM CATALOGUES SURELY?
-        # PFFF I DON'T FANCY UNPICKING THIS :|
-
-        # CABBAGE temp caching as these take 0.35 seconds each to build
-        # CABBAGE - could further improve this by filtering out simplified from the final result, probably faster than walking model_variants repeatedly
+    def engines_as_tech_tree(self, roster, simplified_gameplay):
         if not simplified_gameplay:
-            if self.cached_tech_tree is not None:
-                return self.cached_tech_tree
+            return roster.engine_model_tech_tree
         if simplified_gameplay:
-            if self.cached_tech_tree_simplified is not None:
-                return self.cached_tech_tree_simplified
-
-        result = {}
-        # much nested loops
-        for base_track_type_and_label in self.base_track_type_names_and_labels:
-            for role in global_constants.role_subrole_mapping:
-                for subrole in global_constants.role_subrole_mapping[role]:
-                    subrole_child_branches = {}
-                    for subrole_child_branch in self.get_subrole_child_branches(
-                        model_variants, base_track_type_and_label[0], subrole
-                    ):
-                        # special case to drop anything that shouldn't be in tech tree
-                        # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
-                        if (
-                            (subrole_child_branch == 0)
-                            or (subrole_child_branch > 999)
-                            or (subrole_child_branch < -999)
-                        ):
-                            continue
-                        # allowed cases
-                        if not (simplified_gameplay and subrole_child_branch < 0):
-                            subrole_child_branches[subrole_child_branch] = {}
-                            # walk the generations, providing default None objects
-                            for gen in range(
-                                1,
-                                len(roster.intro_years[base_track_type_and_label[0]])
-                                + 1,
-                            ):
-                                subrole_child_branches[subrole_child_branch][gen] = None
-                    # get the engines matching this subrole and track type, and place them into the child branches
-                    for model_variant in model_variants:
-                        if not model_variant.is_default_model_variant:
-                            continue
-                        # special case to drop anything that shouldn't be in tech tree
-                        # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
-                        if (
-                            (model_variant.subrole_child_branch_num == 0)
-                            or (model_variant.subrole_child_branch_num > 999)
-                            or (model_variant.subrole_child_branch_num < -999)
-                        ):
-                            continue
-                        if (
-                            simplified_gameplay
-                            and model_variant.subrole_child_branch_num < 0
-                        ):
-                            continue
-                        if (
-                            model_variant.base_track_type_name
-                            == base_track_type_and_label[0]
-                        ) and (model_variant.subrole == subrole):
-                            subrole_child_branches[
-                                model_variant.subrole_child_branch_num
-                            ][model_variant.gen] = model_variant
-                    # only add subrole to tree for this track type if there are actual vehicles in it
-                    if len(subrole_child_branches) > 0:
-                        result.setdefault(base_track_type_and_label, {})
-                        result[base_track_type_and_label].setdefault(role, {})
-                        result[base_track_type_and_label][role].setdefault(subrole, {})
-                        result[base_track_type_and_label][role][
-                            subrole
-                        ] = subrole_child_branches
-
-        # CABBAGE temp caching
-        if not simplified_gameplay:
-            if self.cached_tech_tree is None:
-                self.cached_tech_tree = result
-        if simplified_gameplay:
-            if self.cached_tech_tree_simplified is None:
-                self.cached_tech_tree_simplified = result
-
-        return result
+            return roster.engine_model_tech_tree.simplified_tree
 
     def engine_model_counts(self, roster):
         # some engines aren't really engines

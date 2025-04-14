@@ -694,3 +694,36 @@ class TechTree(dict):
         return self.get_relative_catalogue(
             model_variant.catalogue_entry.catalogue, offset=-1
         )
+
+    @cached_property
+    @timing
+    def simplified_tree(self) -> dict:
+        """
+        Return a simplified version of the TechTree in which any branch where
+        subrole_child_branch_num is negative is dropped. Additionally, any roles
+        or subrole entries that become empty after the prune are removed.
+
+        The returned dict has the same general structure as the TechTree:
+            { track_type: { role: { subrole: { subrole_child_branch_num: { gen: catalogue, ... } } } } }
+        but with branches (keys) < 0 removed.
+        """
+        simplified = {}
+        for track_type, roles in self.items():
+            new_roles = {}
+            for role, subroles in roles.items():
+                new_subroles = {}
+                for subrole, branches in subroles.items():
+                    # Drop branches with subrole_child_branch_num < 0.
+                    new_branches = {branch: branch_dict
+                                    for branch, branch_dict in branches.items()
+                                    if branch >= 0}
+                    # Only add this subrole if there's at least one valid branch.
+                    if new_branches:
+                        new_subroles[subrole] = new_branches
+                # Only add the role if there's at least one valid subrole.
+                if new_subroles:
+                    new_roles[role] = new_subroles
+            # Only add the track_type if there's at least one valid role.
+            if new_roles:
+                simplified[track_type] = new_roles
+        return simplified
