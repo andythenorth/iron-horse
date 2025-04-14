@@ -1,12 +1,12 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg
       *cannot* be combined with any other variable speed effects  -->
-<tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part">
-    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, haulage_bonus_switch_speed_0()) {
+<tal:receives_easter_egg_haulage_speed_bonus condition="model_variant.receives_easter_egg_haulage_speed_bonus and unit.is_not_trailing_part">
+    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, [count_has_badge("ih_behaviour/provides_easter_egg_haulage_speed_bonus") > 0]) {
         1: return ${int(1.60934 * model_variant.get_speed_by_class('express'))};
         0: return ${int(1.60934 * model_variant.speed)};
     }
-</tal:easter_egg_haulage_speed_bonus>
+</tal:receives_easter_egg_haulage_speed_bonus>
 
 <!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
       *cannot* be combined with any other variable speed effects  -->

@@ -308,6 +308,16 @@ class ModelTypeBase(object):
         return result
 
     @property
+    def easter_egg_haulage_speed_bonus_badges(self):
+        result = []
+        if self.receives_easter_egg_haulage_speed_bonus:
+            result.append(f"ih_behaviour/receives_easter_egg_haulage_speed_bonus")
+        if self.provides_easter_egg_haulage_speed_bonus:
+            result.append(f"ih_behaviour/provides_easter_egg_haulage_speed_bonus")
+            pass
+        return result
+
+    @property
     def distributed_power_badges(self):
         result = []
         if self.distributed_power_wagon:
@@ -365,8 +375,6 @@ class ModelTypeBase(object):
 
         # general metadata, visible or not
         result.append(f"ih_gen/{self.gen}")
-        result.append(self.vehicle_family_badge)
-        result.extend(self.special_flags_badges)
         if self.role_badge is not None:
             result.append(self.role_badge)
         if self.cabbage_subtype_badge is not None:
@@ -383,18 +391,15 @@ class ModelTypeBase(object):
             "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
         ]:
             result.extend(self.cabbage_livery_badges)
-
-        # for debug use
         result.extend(self.cabbage_colour_mix_badges)
-        # badges for formation rulesets
+        # misc badges
+        result.append(self.vehicle_family_badge)
+        result.extend(self.special_flags_badges)
         result.extend(self.formation_ruleset_badges)
-        # badges distributed power behaviour, for TGVs etc
         result.extend(self.distributed_power_badges)
-        # special variant handling badges (used for purchase string handling)
+        result.extend(self.easter_egg_haulage_speed_bonus_badges)
         result.extend(self.cabbage_variant_handling_badges)
-        # randomised wagon candidates, if any, for debug use
         result.extend(self.cabbage_randomised_wagon_badges)
-        # caboose
         result.extend(self.caboose_badges)
         # tech tree metadata
         result.extend(self.cabbage_tech_tree_badges)
@@ -484,9 +489,14 @@ class ModelTypeBase(object):
         return self.model_def.requires_high_clearance
 
     @property
-    def easter_egg_haulage_speed_bonus(self):
-        # just a passthrough for convenience
-        return self.model_def.easter_egg_haulage_speed_bonus
+    def receives_easter_egg_haulage_speed_bonus(self):
+        # over-ride in subclasses as needed
+        return False
+
+    @property
+    def provides_easter_egg_haulage_speed_bonus(self):
+        # over-ride in subclasses as needed
+        return False
 
     @property
     def pantograph_type(self):
@@ -1420,6 +1430,25 @@ class EngineModelTypeBase(ModelTypeBase):
             run_cost = 0.33 * run_cost
         # cap to int for nml
         return int(run_cost)
+
+
+    @property
+    def receives_easter_egg_haulage_speed_bonus(self):
+        # just a passthrough for convenience
+        return self.model_def.receives_easter_egg_haulage_speed_bonus
+
+    @property
+    def provides_easter_egg_haulage_speed_bonus(self):
+        # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
+        # the list is deliberately a little generous and includes driving cab cars for lolz reasons
+        if self.role in [
+                "express",
+                "driving_cab",
+                "express_railcar",
+                "high_power_railcar",
+            ]:
+            return True
+        return False
 
     @property
     def cabbage_power_source_badges(self):

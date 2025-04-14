@@ -15,7 +15,7 @@ def main(**kwargs):
             "AC": 420,  # RL EMU HP is much lower per single car, but eh
         },
         pantograph_type="z-shaped-single-with-base",
-        easter_egg_haulage_speed_bonus=True,
+        receives_easter_egg_haulage_speed_bonus=True,
         gen=4,
         # introduce early by design
         intro_year_offset=-3,

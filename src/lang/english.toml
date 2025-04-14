@@ -276,6 +276,9 @@ base = "Randomised choice of wagon"
 [STR_BADGE_BEHAVIOUR_CABOOSE]
 base = "No gameplay effect"
 
+[STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS]
+base = "Express haulable"
+
 # role badges
 
 [STR_BADGE_ROLE]

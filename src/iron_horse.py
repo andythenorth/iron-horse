@@ -114,27 +114,6 @@ class RosterManager(list):
         else:
             raise Exception("RosterManager: no roster found for ", roster_id)
 
-    @cached_property
-    def haulage_bonus_engine_id_tree(self):
-        # CABBAGE - JUST USE BADGES
-        # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
-        express_engine_ids = []
-        # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for model_variant in self.active_roster.engine_model_variants:
-            # check for express-type roles, which are determined by multiple role groups
-            for role in [
-                "express",
-                "driving_cab",
-                "express_railcar",
-                "high_power_railcar",
-            ]:
-                subroles = global_constants.role_subrole_mapping[role]
-                if model_variant.subrole in subroles:
-                    express_engine_ids.append(
-                        model_variant.catalogue_entry.unit_variant_ids[0]
-                    )
-        return [(count, id) for count, id in enumerate(express_engine_ids)]
-
 
 @timing
 def main(validate_vehicle_ids=False, run_post_validation_steps=False):

@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=3,
         power_by_power_source={"DIESEL": 700, "AC": 820},
         pantograph_type="z-shaped-single-with-base",
-        easter_egg_haulage_speed_bonus=True,
+        receives_easter_egg_haulage_speed_bonus=True,
         formation_ruleset="railcars_3_unit_sets",
         gen=6,
         # introduce early by design

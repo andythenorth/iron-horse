@@ -15,7 +15,7 @@ def main(**kwargs):
             "AC": 320,
         },
         pantograph_type="diamond-single-with-base",
-        easter_egg_haulage_speed_bonus=True,
+        receives_easter_egg_haulage_speed_bonus=True,
         gen=3,
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="suburban_pax_liveries",

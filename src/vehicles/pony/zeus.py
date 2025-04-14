@@ -15,7 +15,7 @@ def main(**kwargs):
             "AC": 620,
         },
         pantograph_type="z-shaped-single-with-base",
-        easter_egg_haulage_speed_bonus=True,
+        receives_easter_egg_haulage_speed_bonus=True,
         gen=6,
         # introduce early by design
         intro_year_offset=-3,

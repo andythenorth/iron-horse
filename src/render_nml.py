@@ -114,7 +114,6 @@ def main():
         "procedures_capacity",
         "procedures_cargo_subtypes",
         "procedures_colour_names",
-        "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_powered_by_railtype",
         "procedures_rulesets",

@@ -81,7 +81,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                 power:                          ${model_variant.model_id}_switch_power_0;
                 purchase_power:                 ${model_variant.power};
             </tal:variable_power>
-            <tal:speed_is_optional condition="model_variant.easter_egg_haulage_speed_bonus or model_variant.lgv_capable">
+            <tal:speed_is_optional condition="model_variant.receives_easter_egg_haulage_speed_bonus or model_variant.lgv_capable">
                 speed:                          ${model_variant.model_id}_switch_speed;
                 purchase_speed:                 ${int(1.60934 * model_variant.speed)};
             </tal:speed_is_optional>

@@ -14,6 +14,7 @@ def main(**kwargs):
         power_by_power_source={
             "DIESEL": 200,
         },
+        receives_easter_egg_haulage_speed_bonus=True,
         gen=3,
         # introduce early by design
         intro_year_offset=-5,
