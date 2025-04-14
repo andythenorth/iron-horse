@@ -64,8 +64,6 @@ class ModelTypeBase(object):
         # some wagons will provide power if specific engine IDs are in the consist
         self.distributed_power_wagon = False
         self.distributed_power_cab = False
-        # structure to hold badges, add badges in subclass as needed
-        self._badges = []
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # just a simple buy cost tweak, only use when needed
@@ -368,10 +366,8 @@ class ModelTypeBase(object):
 
     @cached_property
     def badges(self):
-        # badges can be set on a vehicle for diverse reasons, including
-        # - badges explicitly added to _badges attr
-        # - badges arising implicitly from model type or properties
-        result = list(set(self._badges))
+        # badges can be set on a vehicle for diverse reasons, including behaviour, visible display, debug
+        result = []
 
         # general metadata, visible or not
         result.append(f"ih_gen/{self.gen}")
