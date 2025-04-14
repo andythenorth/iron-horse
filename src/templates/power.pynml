@@ -15,11 +15,8 @@
 <tal:distributed_power_wagon condition="model_variant.distributed_power_wagon and unit.is_not_trailing_part">
     <!--! power varies if specific engines are present in the consist -->
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-    <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS see model type distributed_power_badges-->
-    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_power_0, [
-            count_veh_id(${model_variant.cab_engine.units[0].id}) > 0
-        ]) {
-        1: return ${model_variant.cab_power};
+    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_power_0, has_badge("ih_distributed_power/is_power_cab/${model_variant.cab_engine.model_id}")) {
+        1: return ${model_variant.cab_engine.power};
         return 0;
     }
 </tal:distributed_power_wagon>

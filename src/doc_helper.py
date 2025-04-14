@@ -404,7 +404,7 @@ class DocHelper(object):
     def power_formatted_for_docs(self, catalogue):
         default_model_variant = catalogue.default_model_variant_from_roster
         if default_model_variant.distributed_power_wagon:
-            return [str(default_model_variant.cab_power) + " hp"]
+            return [str(default_model_variant.cab_engine.power) + " hp"]
         elif default_model_variant.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??

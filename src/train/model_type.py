@@ -2238,11 +2238,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         return True
 
     @property
-    def cab_power(self):
-        # match middle engine power to cab engine power
-        return self.cab_engine.power
-
-    @property
     def buy_cost(self):
         # match middle engine buy cost to cab engine buy cost
         # engine and wagon base costs are set differently, attempt to compensate for that
