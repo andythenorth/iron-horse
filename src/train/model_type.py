@@ -3320,7 +3320,7 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
 
-    vehicle_family_id = "mineral_bulk_open_car_high_side"
+    vehicle_family_id = "mineral_bulk_open_car_low_side"
     model_id_root = "mineral_bulk_open_car_low_side"
 
     def __init__(self, **kwargs):

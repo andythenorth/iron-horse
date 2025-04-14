@@ -634,9 +634,6 @@ base = "Heavy Duty Bulk Wagon"
 [STR_WAGON_NAME_HEAVY_DUTY_FLAT_CAR]
 base = "Heavy Duty Flat Wagon"
 
-[STR_WAGON_NAME_HIGH_END_OPEN_CAR]
-base = "Open Wagon"
-
 [STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]
 base = "High Speed Mail Van"
 
@@ -708,9 +705,6 @@ base = "High Side Mineral Wagon"
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
 base = "Low Side Mineral Wagon"
-
-[STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_RANDOMISED]
-base = "Mineral Wagon"
 
 [STR_WAGON_NAME_MGR_HOPPER_CAR]
 base = "MGR Hopper"

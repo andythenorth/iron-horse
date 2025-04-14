@@ -87,10 +87,7 @@ suppressed_rosters = ["pony", "moose"]
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
-suppressed_rosters = ["pony", "ibex", "moose"]
-
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_2]
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
@@ -337,9 +334,6 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_FOOD_EXPRESS_TANK_CAR_TYPE_2]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_WAGON_NAME_HIGH_END_OPEN_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]

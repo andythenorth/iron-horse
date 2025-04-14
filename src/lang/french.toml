@@ -207,9 +207,6 @@ base = "Fourgon postal"
 [STR_WAGON_NAME_MERCHANDISE_BOX_CAR]
 base = "Fourgon de marchandise"
 
-[STR_WAGON_NAME_HIGH_END_OPEN_CAR]
-base = "Wagon-tombereau de marchandise"
-
 [STR_WAGON_NAME_MGR_HOPPER_CAR]
 base = "Wagon-trémie «{NBSP}carrousel{NBSP}»"
 
