@@ -289,6 +289,15 @@ class ModelTypeBase(object):
         return set(result)
 
     @property
+    def distributed_power_badges(self):
+        result = []
+        if self.wagons_add_power:
+            result.append(f"ih_distributed_power/powered_by/{self.cab_engine.model_id}")
+        if self.buy_menu_additional_text_hint_wagons_add_power:
+            result.append(f"ih_distributed_power/is_power_cab/{self.model_id}")
+        return result
+
+    @property
     def cabbage_variant_handling_badges(self):
         # specific handling of indentation level 1
         result = []
@@ -356,6 +365,9 @@ class ModelTypeBase(object):
 
         # badges for formation rulesets
         result.extend(self.formation_ruleset_badges)
+
+        # badges distributed power behaviour, for TGVs etc
+        result.extend(self.distributed_power_badges)
 
         # special variant handling badges (used for purchase string handling)
         result.extend(self.cabbage_variant_handling_badges)
@@ -1102,6 +1114,7 @@ class ModelTypeBase(object):
         if self.engine_varies_power_by_power_source:
             # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
             # !!! we need a better tree, similar to get_name_parts
+            # !! this is not solved by badges (unusually) as it needs to support string formatting of numeric values
             if self.lgv_capable:
                 return "variable_power_and_lgv_capable"
             else:

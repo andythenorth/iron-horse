@@ -57,12 +57,14 @@ class BadgeManager(list):
         )
         badge_graphics_generator.render_livery_badges()
 
+    @timing
     def produce_badges(self, **kwargs):
         # explicit, not on __init__, more controllable
         self.produce_badges_from_static_config(**kwargs)
         self.produce_grf_metadata_badges(**kwargs)
         self.produce_railtype_badges(**kwargs)
         self.produce_power_source_badges(**kwargs)
+        self.produce_distributed_power_badges(**kwargs)
         self.produce_livery_badges(**kwargs)
         self.produce_vehicle_family_badges(**kwargs)
         self.produce_formation_ruleset_badges(**kwargs)
@@ -96,6 +98,7 @@ class BadgeManager(list):
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
+    @timing
     def produce_railtype_badges(self, **kwargs):
         railtype_manager = kwargs["railtype_manager"]
         for railtype in railtype_manager:
@@ -139,6 +142,15 @@ class BadgeManager(list):
                 label=f"power_source/{power_source.lower()}",
                 name=f"STR_BADGE_POWER_SOURCE_{power_source}",
             )
+
+    def produce_distributed_power_badges(self, **kwargs):
+        roster_manager = kwargs["roster_manager"]
+        for roster in roster_manager:
+            for catalogue in roster.catalogues:
+                for badge in catalogue.default_model_variant_from_roster.distributed_power_badges:
+                    self.add_badge(
+                        label=f"{badge}",
+                    )
 
     def produce_livery_badges(self, **kwargs):
         # this includes some badges which could strictly be static, but we group all livery concerns together in this method
@@ -193,6 +205,7 @@ class BadgeManager(list):
                     self.add_badge(f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}")
 
 
+    @timing
     def produce_tech_tree_badges(self, **kwargs):
         # this is for debug use
         # gen is NOT part of the tech tree as of April 2025, decided it's a standalone item
@@ -217,7 +230,7 @@ class BadgeManager(list):
                 self.add_badge(
                     label=f"ih_tech_tree/intro_date_months_offset/{catalogue.default_model_variant_from_roster.intro_date_months_offset}"
                 )
-
+                # CABBAGE - replacement_model_variant known slow
                 if (
                     catalogue.default_model_variant_from_roster.replacement_model_variant
                     is not None

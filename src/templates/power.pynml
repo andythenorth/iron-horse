@@ -15,7 +15,7 @@
 <tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part">
     <!--! power varies if specific engines are present in the consist -->
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-    <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS -->
+    <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS see model type distributed_power_badges-->
     switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_power_0, [
             count_veh_id(${model_variant.cab_engine.units[0].id}) > 0
         ]) {
