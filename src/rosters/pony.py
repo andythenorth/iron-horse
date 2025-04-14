@@ -380,6 +380,7 @@ wagon_module_names_with_roster_ids = {
     "volatiles_tank_cars_type_1": "pony",
 }
 
+
 def main():
     return Roster(
         id="pony",

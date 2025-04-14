@@ -466,9 +466,7 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
             ) in row_data["source_vehicles_and_input_spriterow_nums"]:
                 # the generated sprite for dual_headed case is intended for docs use only (OpenTTD already assembles the buy menu sprite in that case)
                 for input_sprite_x_offset in (
-                    [224, 104]
-                    if self.default_model_variant.dual_headed
-                    else [224]
+                    [224, 104] if self.default_model_variant.dual_headed else [224]
                 ):
                     # currently no cap on purchase menu sprite width
                     # model_variant has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh

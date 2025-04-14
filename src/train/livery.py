@@ -43,6 +43,7 @@ class LiveryDef:
     def weathering_badge_label(self):
         return f"ih_livery_def/use_weathering/{self.use_weathering}"
 
+
 class LiverySupplier(dict):
     """
     A lightweight supplier of canonical LiveryDef instances.
@@ -86,7 +87,9 @@ class LiverySupplier(dict):
         try:
             livery_def = self[livery_name]
         except KeyError as e:
-                raise ValueError(f"Livery '{livery_name}' not found in LiverySupplier") from e
+            raise ValueError(
+                f"Livery '{livery_name}' not found in LiverySupplier"
+            ) from e
 
         use_weathering = False if force_no_weathering else livery_def.use_weathering
         livery = replace(
@@ -97,7 +100,6 @@ class LiverySupplier(dict):
 
         self.delivered_liveries.append(livery_name)
         return livery
-
 
     @cached_property
     def freight_wagon_liveries(self):
@@ -125,9 +127,7 @@ class LiverySupplier(dict):
             result[colour_set_name] = index
         return result
 
-    def serialize_livery_params(
-        self, flag_context_is_purchase, colour_set_indexes
-    ):
+    def serialize_livery_params(self, flag_context_is_purchase, colour_set_indexes):
         # flatten to numeric params for nml templating
         livery_result = [
             flag_context_is_purchase,

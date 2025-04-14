@@ -27,7 +27,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=48, vehicle_length=4, rel_spriterow_index=0
+        class_name="DieselEngineUnit",
+        weight=48,
+        vehicle_length=4,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""Punchy little number.""")

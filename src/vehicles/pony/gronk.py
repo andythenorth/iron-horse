@@ -28,7 +28,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=55, vehicle_length=4, rel_spriterow_index=0
+        class_name="DieselEngineUnit",
+        weight=55,
+        vehicle_length=4,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(
@@ -44,7 +47,10 @@ def main(**kwargs):
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
     model_def_clone.unit_defs[0].rel_spriterow_index = 1
     model_def_clone.add_unit_def(
-        class_name="DieselEngineUnit", weight=55, vehicle_length=4, rel_spriterow_index=0
+        class_name="DieselEngineUnit",
+        weight=55,
+        vehicle_length=4,
+        rel_spriterow_index=0,
     )
 
     # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax

@@ -30,7 +30,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit", weight=105, vehicle_length=6, rel_spriterow_index=0
+        class_name="ElectricEngineUnit",
+        weight=105,
+        vehicle_length=6,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(""" """)

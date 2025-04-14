@@ -42,7 +42,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=90, vehicle_length=8, rel_spriterow_index=0
+        class_name="DieselEngineUnit",
+        weight=90,
+        vehicle_length=8,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""Technically, we're all half centaur.""")

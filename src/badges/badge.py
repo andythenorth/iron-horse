@@ -147,7 +147,11 @@ class BadgeManager(list):
         roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                for badge in catalogue.default_model_variant_from_roster.distributed_power_badges:
+                for (
+                    badge
+                ) in (
+                    catalogue.default_model_variant_from_roster.distributed_power_badges
+                ):
                     self.add_badge(
                         label=f"{badge}",
                     )
@@ -200,10 +204,12 @@ class BadgeManager(list):
         for roster in roster_manager:
             for catalogue in roster.catalogues:
                 if (
-                    catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset is not None
-                    ):
-                    self.add_badge(f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}")
-
+                    catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset
+                    is not None
+                ):
+                    self.add_badge(
+                        f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}"
+                    )
 
     @timing
     def produce_tech_tree_badges(self, **kwargs):

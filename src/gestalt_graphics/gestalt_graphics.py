@@ -86,7 +86,7 @@ class GestaltGraphics(object):
                     [
                         unit,
                         self.get_buy_menu_unit_input_row_num(
-                             pipeline, catalogue_entry, unit_counter, unit
+                            pipeline, catalogue_entry, unit_counter, unit
                         ),
                     ]
                 )
@@ -100,13 +100,12 @@ class GestaltGraphics(object):
             result.append(row_config)
         return result
 
-    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
         # override in subclasses as needed
         # CABBAGE - unit_variant_row_num is legacy name?
-        unit_variant_row_num = (
-            unit.rel_spriterow_index
-            * len(pipeline.catalogue)
-        ) + (
+        unit_variant_row_num = (unit.rel_spriterow_index * len(pipeline.catalogue)) + (
             catalogue_entry.livery_def.relative_spriterow_num
             * self.num_load_state_or_similar_spriterows
         )
@@ -190,7 +189,9 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
-        wagon_randomisation_candidates = pipeline.default_model_variant.wagon_randomisation_candidates
+        wagon_randomisation_candidates = (
+            pipeline.default_model_variant.wagon_randomisation_candidates
+        )
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
@@ -391,7 +392,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             row_map[1] = row_map[1] + vehicle_y_offset
         return result
 
-    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
         result = (
             len(self.get_unique_spritesets(unit))
             * unit.unit_def.force_spriterow_group_in_output_spritesheet
@@ -448,12 +451,12 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         )
         return None
 
-    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
         # CABBAGE - unit_variant_row_num is legacy name?
         unit_variant_row_num = unit.rel_spriterow_index + (
-            (
-                catalogue_entry.livery_def.relative_spriterow_num
-            )
+            (catalogue_entry.livery_def.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -684,6 +687,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     def cabbage_common_graphics_target(self):
         return False
 
+
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     """
     Dedicated automobiles (car, truck, tractor) transporter
@@ -860,6 +864,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     def cabbage_common_graphics_target(self):
         return False
 
+
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
     Simple recolouring from false body colour to a single default livery
@@ -1028,7 +1033,9 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         for formation_position_num in range(self.num_unique_formation_positions):
             if formation_position_num == self.formation_position_spriterow_map["first"]:
                 source_row_num = self.formation_position_spriterow_map["last"]
-            elif formation_position_num == self.formation_position_spriterow_map["last"]:
+            elif (
+                formation_position_num == self.formation_position_spriterow_map["last"]
+            ):
                 source_row_num = self.formation_position_spriterow_map["first"]
             else:
                 source_row_num = formation_position_num
@@ -1042,7 +1049,9 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 )
         return result
 
-    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other formation positions
         # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
@@ -1050,7 +1059,9 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             if pipeline.default_model_variant.id == "golfinho":
                 # JFDI jank
                 if unit_counter == 1:
-                    formation_position_row_offset = self.formation_position_spriterow_map["special"]
+                    formation_position_row_offset = (
+                        self.formation_position_spriterow_map["special"]
+                    )
                     # CABBAGE - unit_variant_row_num is legacy name?
                     unit_variant_row_num = (
                         self.num_spritesheet_liveries_per_formation_position
@@ -1069,9 +1080,13 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 )
 
         if unit_counter == 0:
-            formation_position_row_offset = self.formation_position_spriterow_map["first"]
+            formation_position_row_offset = self.formation_position_spriterow_map[
+                "first"
+            ]
         else:
-            formation_position_row_offset = self.formation_position_spriterow_map["last"]
+            formation_position_row_offset = self.formation_position_spriterow_map[
+                "last"
+            ]
         if pipeline.is_pantographs_pipeline:
             # CABBAGE - unit_variant_row_num is legacy name?
             unit_variant_row_num = formation_position_row_offset

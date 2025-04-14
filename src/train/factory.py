@@ -306,11 +306,11 @@ class ModelVariantFactory:
 
         # cascade of sources for vehicle family ID
         if self.model_def.vehicle_family_id is not None:
-            return(self.model_def.vehicle_family_id)
+            return self.model_def.vehicle_family_id
 
         # delegate to cab_id if prsent
         if self.model_def.cab_id is not None:
-            return(self.model_def.cab_id)
+            return self.model_def.cab_id
         if self.model_type_cls.group_as_wagon:
             # wagon can optionally set vehicle_family_id as class property
             if getattr(self.model_type_cls, "vehicle_family_id", None) is not None:

@@ -22,7 +22,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit", weight=60, vehicle_length=3, rel_spriterow_index=0
+        class_name="SteamEngineTenderUnit",
+        weight=60,
+        vehicle_length=3,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
@@ -34,7 +37,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit", weight=60, vehicle_length=3, rel_spriterow_index=2
+        class_name="SteamEngineTenderUnit",
+        weight=60,
+        vehicle_length=3,
+        rel_spriterow_index=2,
     )
 
     model_def.define_description("""Well it's a big bugger isn't it.""")

@@ -273,7 +273,9 @@ class ModelTypeBase(object):
     def formation_ruleset_badges(self):
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
-            result.append(f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}")
+            result.append(
+                f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
+            )
         if self.gestalt_graphics.formation_ruleset_flags is not None:
             for flag in self.gestalt_graphics.formation_ruleset_flags:
                 result.append(f"ih_formation_ruleset/flags/{flag}")
@@ -284,7 +286,9 @@ class ModelTypeBase(object):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
             result.append(f"ih_behaviour/randomised_wagon")
-            for candidate_name in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
+            for (
+                candidate_name
+            ) in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
                 result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
         return set(result)
 
@@ -311,10 +315,14 @@ class ModelTypeBase(object):
     def cabbage_tech_tree_badges(self):
         result = []
         result.append(f"ih_tech_tree/subrole/{self.subrole}")
-        result.append(f"ih_tech_tree/subrole_child_branch_num/{self.subrole_child_branch_num}")
+        result.append(
+            f"ih_tech_tree/subrole_child_branch_num/{self.subrole_child_branch_num}"
+        )
         result.append(f"ih_tech_tree/joker/{self.joker}")
         result.append(f"ih_tech_tree/intro_year/{self.intro_year}")
-        result.append(f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}")
+        result.append(
+            f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
+        )
         if self.replacement_model_variant is not None:
             result.append(
                 f"ih_tech_tree/replacement/{self.replacement_model_variant.vehicle_family_badge}"
@@ -1568,7 +1576,7 @@ class MailEngineCabbageDVT(MailEngineBase):
             "special": 0,
         }
         # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
@@ -1852,7 +1860,7 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             "special": 0,
         }
         # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
@@ -2509,7 +2517,7 @@ class RandomisedCarMixin(object):
         for randomisation_candidate in self.wagon_randomisation_candidates:
             # we re-use the whole vehicle family badge here, probably fine?
             label = randomisation_candidate.vehicle_family_badge
-            name = randomisation_candidate.get_name_parts(context='badge')
+            name = randomisation_candidate.get_name_parts(context="badge")
             result[label] = name
         return result
 
@@ -5661,7 +5669,7 @@ class MailCar(MailCarBase):
             "special": bonus_sprites,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
@@ -5755,7 +5763,7 @@ class MailHighSpeedCar(MailCarBase):
             "special": 2,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
@@ -5798,7 +5806,7 @@ class MailHSTCar(MailCarBase):
             "special": 0,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
@@ -6343,7 +6351,7 @@ class OpenCarHighEnd(OpenCarBase):
     ]
 
     model_id_root = "high_end_open_car"
-    vehicle_family_id = "open_car" # intended
+    vehicle_family_id = "open_car"  # intended
     variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
@@ -6544,7 +6552,7 @@ class PanoramicCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6596,7 +6604,7 @@ class PassengerCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6647,7 +6655,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6742,7 +6750,7 @@ class PassengerHSTCar(PassengerCarBase):
             "last": 2,
             "special": 3,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6897,7 +6905,7 @@ class PassengerRestaurantCar(PassengerCarBase):
             "last": 0,
             "special": 0,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
@@ -6949,7 +6957,7 @@ class PassengerSuburbanCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags=["report_as_pax_car"]
+        formation_ruleset_flags = ["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",

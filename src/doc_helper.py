@@ -361,7 +361,10 @@ class DocHelper(object):
                     # this will fail if name parts are found that don't correspond to string IDs (for example putting variables on the text stack)
                     result.append(self.lang_strings[name_part])
 
-            if default_model_variant.catalogue_entry.model_is_randomised_wagon_type or default_model_variant.is_caboose:
+            if (
+                default_model_variant.catalogue_entry.model_is_randomised_wagon_type
+                or default_model_variant.is_caboose
+            ):
                 result.append("- Random")
             return " ".join(result)
 

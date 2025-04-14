@@ -12,11 +12,19 @@ def main(**kwargs):
     )
 
     model_def.add_unit(
-        type=DieselEngineUnit, weight=20, vehicle_length=7, capacity=35, rel_spriterow_index=0
+        type=DieselEngineUnit,
+        weight=20,
+        vehicle_length=7,
+        capacity=35,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit(
-        type=DieselEngineUnit, weight=20, vehicle_length=7, capacity=35, rel_spriterow_index=1
+        type=DieselEngineUnit,
+        weight=20,
+        vehicle_length=7,
+        capacity=35,
+        rel_spriterow_index=1,
     )
 
     return model_def
