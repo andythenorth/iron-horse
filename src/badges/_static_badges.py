@@ -60,7 +60,6 @@ static_badges = {
             "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
             "ih_lgv_capable": {},
             "ih_random_reverse": {},
-            "ih_wagons_add_power": {},
         },
     },
     "ih_behaviour": {

@@ -188,7 +188,7 @@ class DocHelper(object):
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                default_model_variant.wagons_add_power
+                default_model_variant.distributed_power_wagon
                 or (
                     default_model_variant.role
                     in ["driving_cab", "gronk", "lolz", "metro"]
@@ -403,7 +403,7 @@ class DocHelper(object):
 
     def power_formatted_for_docs(self, catalogue):
         default_model_variant = catalogue.default_model_variant_from_roster
-        if default_model_variant.wagons_add_power:
+        if default_model_variant.distributed_power_wagon:
             return [str(default_model_variant.cab_power) + " hp"]
         elif default_model_variant.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)

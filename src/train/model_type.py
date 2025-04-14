@@ -62,8 +62,8 @@ class ModelTypeBase(object):
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
-        self.wagons_add_power = False
-        self.buy_menu_additional_text_hint_wagons_add_power = False
+        self.distributed_power_wagon = False
+        self.distributed_power_cab = False
         # structure to hold badges, add badges in subclass as needed
         self._badges = []
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
@@ -291,9 +291,9 @@ class ModelTypeBase(object):
     @property
     def distributed_power_badges(self):
         result = []
-        if self.wagons_add_power:
+        if self.distributed_power_wagon:
             result.append(f"ih_distributed_power/powered_by/{self.cab_engine.model_id}")
-        if self.buy_menu_additional_text_hint_wagons_add_power:
+        if self.distributed_power_cab:
             result.append(f"ih_distributed_power/is_power_cab/{self.model_id}")
         return result
 
@@ -397,7 +397,7 @@ class ModelTypeBase(object):
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
                 # would require quite a bit of refactoring though eh
-                assert self.wagons_add_power == False, (
+                assert self.distributed_power_wagon == False, (
                     "%s has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
                     % self.model_id
                 )
@@ -875,7 +875,7 @@ class ModelTypeBase(object):
         # some subclasses handle this directly (e.g. pax trailers for specific railcars)
         if self.power > 0:
             return False
-        elif self.wagons_add_power:
+        elif self.distributed_power_wagon:
             return False
         else:
             return True
@@ -1067,6 +1067,14 @@ class ModelTypeBase(object):
             + ")"
         )
 
+    @property
+    def buy_menu_additional_text_hint_distributed_power(self):
+        if self.distributed_power_wagon:
+            return True
+        if self.distributed_power_cab:
+            return True
+        return False
+
     def get_buy_menu_additional_text(self):
         result = []
         # optional string if engine varies power by railtype
@@ -1083,7 +1091,7 @@ class ModelTypeBase(object):
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
         # optional string if dedicated wagons add power
-        if self.buy_menu_additional_text_hint_wagons_add_power:
+        if self.buy_menu_additional_text_hint_distributed_power:
             result.append(self.buy_menu_additional_text_distributed_power_substring)
 
         if len(result) == 1:
@@ -1110,7 +1118,7 @@ class ModelTypeBase(object):
 
     def get_buy_menu_additional_text_format(self):
         # keep the template logic simple, present strings for a switch/case tree
-        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
+        # variable_power and distributed_power_wagon are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
         if self.engine_varies_power_by_power_source:
             # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
             # !!! we need a better tree, similar to get_name_parts
@@ -1121,7 +1129,7 @@ class ModelTypeBase(object):
                 return "variable_power"
         elif self.lgv_capable:
             # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
-            if self.buy_menu_additional_text_hint_wagons_add_power:
+            if self.buy_menu_additional_text_hint_distributed_power:
                 return "lgv_capable_and_wagons_add_power"
             else:
                 return "lgv_capable"
@@ -1133,7 +1141,7 @@ class ModelTypeBase(object):
         if self.power_by_power_source is not None:
             if len(self.power_by_power_source) > 1:
                 return True
-        if self.buy_menu_additional_text_hint_wagons_add_power:
+        if self.buy_menu_additional_text_hint_distributed_power:
             return True
         return False
 
@@ -2150,7 +2158,7 @@ class TGVCabEngine(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.buy_menu_additional_text_hint_wagons_add_power = True
+        self.distributed_power_cab = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # ....run cost multiplier is adjusted up from pax base because regrettable realism
@@ -2194,8 +2202,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.wagons_add_power = True
-        self.buy_menu_additional_text_hint_wagons_add_power = True
+        self.distributed_power_wagon = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab

@@ -12,7 +12,7 @@
     </tal:power_source>
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part">
+<tal:distributed_power_wagon condition="model_variant.distributed_power_wagon and unit.is_not_trailing_part">
     <!--! power varies if specific engines are present in the consist -->
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS see model type distributed_power_badges-->
@@ -22,4 +22,4 @@
         1: return ${model_variant.cab_power};
         return 0;
     }
-</tal:wagons_add_power>
+</tal:distributed_power_wagon>
