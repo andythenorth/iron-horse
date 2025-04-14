@@ -392,14 +392,14 @@ class DocHelper(object):
                 return self.unpack_name_string(model_variant.catalogue_entry.catalogue)
 
     def model_cabbage_has_direct_replacment(self, model_variant):
-        if model_variant.replacement_model_variant.subrole != model_variant.subrole:
+        if model_variant.replacement_model_catalogue.default_model_variant_from_roster.subrole != model_variant.subrole:
             return False
         elif (
-            model_variant.replacement_model_variant.subrole_child_branch_num
+            model_variant.replacement_model_catalogue.default_model_variant_from_roster.subrole_child_branch_num
             != model_variant.subrole_child_branch_num
         ):
             return False
-        elif model_variant.replacement_model_variant.gen != model_variant.gen + 1:
+        elif model_variant.replacement_model_catalogue.default_model_variant_from_roster.gen != model_variant.gen + 1:
             return False
         else:
             return True

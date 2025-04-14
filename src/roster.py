@@ -19,7 +19,7 @@ command_line_args = utils.get_command_line_args()
 from train.factory import ModelVariantFactory
 
 
-class Roster(object):
+class Roster:
     """
     Rosters compose a set of vehicles which is complete for gameplay.
     In Iron Horse each roster is compiled to a standalone grf.
@@ -55,6 +55,8 @@ class Roster(object):
             "engine_and_pax_mail_car_liveries", []
         )
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
+        # CABBAGE init tech tree(s) - this _might_ be expensive, so we might need to do it conditionally as not all compile steps need it
+        self.engine_model_tech_tree = TechTree.create(roster=self)
 
     @property
     def model_variants_by_catalogue(self):
@@ -184,6 +186,7 @@ class Roster(object):
 
         return result
 
+    @timing
     def produce_engines(self):
         self.engine_model_variants_by_catalogue = {}
         package_name = "vehicles." + self.id
@@ -210,6 +213,8 @@ class Roster(object):
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
                     ].append(model_variant)
+                    if model_variant.is_default_model_variant:
+                        self.engine_model_tech_tree.add_model(model_variant)
 
     @timing
     def produce_wagons(self):
@@ -555,3 +560,131 @@ class VariantGroup(list):
             level += 1
             context = context.parent_group
         return level
+
+
+class TechTree(dict):
+    """
+    Dedicated class to handle tech trees.
+    Intended to be singleton per roster.
+    Dict, keyed on base_track_type.
+    """
+
+    # CABABGE - we should get these from roster railtypes, but JFDI for now
+    base_track_type_names_and_labels: dict[str, str] = {
+        "Standard Gauge": "RAIL",
+        "Narrow Gauge": "NG",
+        "Metro": "METRO",
+    }
+
+    def __init__(self, roster):
+        self.roster = roster
+
+
+class TechTree(dict):
+    # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
+    @classmethod
+    def create(cls, *, roster=None):
+        instance = cls()
+        instance.roster = roster
+        return instance
+
+    def add_model(self, model_variant):
+        track_type = model_variant.base_track_type_name  # e.g., "RAIL"
+        role = model_variant.role
+        subrole = model_variant.subrole
+        subchild_branch = model_variant.subrole_child_branch_num
+        gen = model_variant.gen
+
+        role_dict = self._ensure_role_dict(track_type, role)
+        subrole_dict = self._ensure_subrole_dict(role_dict, subrole)
+        branch_dict = self._ensure_branch_dict(
+            subrole_dict, subchild_branch, track_type=track_type
+        )
+        branch_dict[gen] = model_variant
+
+    def _ensure_role_dict(self, track_type, role):
+        if track_type not in self:
+            self[track_type] = {}
+        if role not in self[track_type]:
+            self[track_type][role] = {}
+        return self[track_type][role]
+
+    def _ensure_subrole_dict(self, role_dict, subrole):
+        if subrole not in role_dict:
+            role_dict[subrole] = {}
+        return role_dict[subrole]
+
+    def _ensure_branch_dict(self, subrole_dict, subchild_branch, *, track_type):
+        if subchild_branch not in subrole_dict:
+            gens = self._valid_gens_for_track_type(track_type)
+            subrole_dict[subchild_branch] = {gen: None for gen in gens}
+        return subrole_dict[subchild_branch]
+
+    def _valid_gens_for_track_type(self, track_type: str) -> list[int]:
+        if not self.roster or not hasattr(self.roster, "intro_years"):
+            raise RuntimeError(
+                "TechTree requires a roster with intro_years to infer valid generations."
+            )
+        years = self.roster.intro_years.get(track_type)
+        if not years:
+            raise ValueError(f"No intro years defined for track type: {track_type}")
+        return [i + 1 for i in range(len(years))]
+
+    def get_relative_model_variant(self, model_variant, offset: int):
+        # Attempt to access the branch for this model_variant.
+        try:
+            branch = self[model_variant.base_track_type_name][model_variant.role][
+                model_variant.subrole
+            ][model_variant.subrole_child_branch_num]
+        except KeyError as e:
+            raise KeyError(
+                f"Error accessing branch for model_variant {model_variant.id}: {e}"
+            ) from e
+
+        target_gen = model_variant.gen + offset
+
+        # Branch keys are pre-provisioned with valid gens (1,2,...,max).
+        # If target_gen is below 1 or above the highest valid generation,
+        # then this model_variant is at the start or end of its branch: return None.
+        if target_gen < 1 or target_gen > max(branch):
+            return None
+
+        # Otherwise, if the key exists in the branch, return its value
+        # (even if that value is None, which is acceptable).
+        if target_gen in branch:
+            return branch[target_gen]
+        else:
+            # This case should not occur given our pre-provisioning.
+            raise KeyError(
+                f"Target generation {target_gen} missing in branch for model_variant {model_variant.id}"
+            )
+
+    def replacement_model_catalogue(self, catalogue):
+        # models have 1 or None replacement models
+        # this method might not work for wagons, callers should guard against calling in that case
+        if catalogue.factory.model_def.replacement_model_id is not None:
+            # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
+            return self.roster.model_variants_by_catalogue[
+                catalogue.factory.model_def.replacement_model_id
+            ]["catalogue"]
+
+        # models can span generations, so walk forward to find if there's a replacement in the line
+        max_gen = max(
+            self._valid_gens_for_track_type(
+                catalogue.default_model_variant_from_roster.base_track_type_name
+            )
+        )
+        offset = 1
+        while (catalogue.default_model_variant_from_roster.gen + offset) <= max_gen:
+            replacement_candidate = self.get_relative_model_variant(
+                catalogue.default_model_variant_from_roster, offset
+            )
+            if replacement_candidate is not None:
+                return replacement_candidate.catalogue_entry.catalogue
+            offset += 1
+        # fall through to None
+        return None
+
+    def replaces_model_variant(self, model_variant):
+        # CABBAGE unfinished see model_type replaces_model_variants
+        return self.get_relative_model_variant(model_variant, offset=-1)

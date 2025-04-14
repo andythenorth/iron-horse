@@ -345,9 +345,10 @@ class ModelTypeBase(object):
         result.append(
             f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
         )
-        if self.replacement_model_variant is not None:
+        if self.replacement_model_catalogue is not None:
+            # note that as of April 2025 only wagons do not set replacement_model_catalogue
             result.append(
-                f"ih_tech_tree/replacement/{self.replacement_model_variant.vehicle_family_badge}"
+                f"ih_tech_tree/replacement/{self.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
             )
         return result
 
@@ -550,57 +551,24 @@ class ModelTypeBase(object):
         return result
 
     @cached_property
-    def replacement_model_variant(self):
-        # option exists to force a replacement model, this is used to merge tech tree branches
-        #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
-        # ocasionally we need to merge two branches of the subrole, in this case set replacement model id on the model_def
-        # CABBAGE THIS SHOULD WORK ON CATALOGUES?  OR DEFAULT MODEL VARIANTS ONLY
-        if self.model_def.replacement_model_id is not None:
-            for model_variant in self.roster.engine_model_variants:
-                # CABBAGE model_id will over-detect here as multiple variants have the same model_id
-                if model_variant.model_id == self.model_def.replacement_model_id:
-                    return model_variant
-            # if we don't return a valid result, that's an error, probably a broken replacement id
-            raise Exception(
-                "replacement model id "
-                + self.model_def.replacement_model_id
-                + " not found for model variant "
-                + self.id
-            )
-        else:
-            similar_model_variants = []
-            replacement_model_variant = None
-            for model_variant in self.roster.engine_model_variants:
-                if (
-                    (model_variant.subrole == self.subrole)
-                    and (
-                        model_variant.subrole_child_branch_num
-                        == self.subrole_child_branch_num
-                    )
-                    and (
-                        model_variant.base_track_type_name == self.base_track_type_name
-                    )
-                ):
-                    similar_model_variants.append(model_variant)
-            for model_variant in sorted(
-                similar_model_variants,
-                key=lambda model_variant: model_variant.intro_year,
-            ):
-                if model_variant.intro_year > self.intro_year:
-                    replacement_model_variant = model_variant
-                    break
-            return replacement_model_variant
+    def replacement_model_catalogue(self):
+        # convenience passthrough
+        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
+        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
+        if self.power > 0:
+            return self.roster.engine_model_tech_tree.replacement_model_catalogue(self.catalogue_entry.catalogue)
+        return None
 
     @cached_property
     def replaces_model_variants(self):
-        # note that this depends on replacement_model_variant property in other model defs, and may not work in all cases
+        # note that this depends on replacement_model property in other model defs, and may not work in all cases
         # a model can replace more than one other model
         result = []
-        for model_variant in self.roster.engine_model_variants:
-            if model_variant.replacement_model_variant is not None:
-                # CABBAGE - THIS WILL OVER-DETECT as model_id is used by more than one model variant
-                if model_variant.replacement_model_variant.model_id == self.model_id:
-                    result.append(model_variant)
+        for catalogue in self.roster.engine_catalogues:
+            candidate_for_replacement = catalogue.default_model_variant_from_roster.replacement_model_catalogue.replacement_model_catalogue
+            if candidate_for_replacement is not None:
+                if candidate_for_replacement.model_id == self.model_id:
+                    result.append(candidate_for_replacement)
         return result
 
     @cached_property
@@ -645,9 +613,9 @@ class ModelTypeBase(object):
             lifespan = 60
         else:
             lifespan = 40
-        if self.replacement_model_variant is not None:
+        if self.replacement_model_catalogue is not None:
             time_to_replacement = (
-                self.replacement_model_variant.intro_year - self.intro_year
+                self.replacement_model_catalogue.intro_year - self.intro_year
             )
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
@@ -660,10 +628,10 @@ class ModelTypeBase(object):
 
     @cached_property
     def model_life(self):
-        if self.replacement_model_variant is None:
+        if self.replacement_model_catalogue is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.replacement_model_variant.intro_year - self.intro_year
+            return self.replacement_model_catalogue.intro_year - self.intro_year
 
     @property
     def retire_early(self):

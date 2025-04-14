@@ -193,7 +193,7 @@
                                                                 <div class="tech_tree_vehicle
                                                                             ${'tech_tree_vehicle_electric_' + model_type.electrification_type.lower() if model_type.requires_electric_rails else 'None'}
                                                                             ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in model_type.power_source_badges else None}
-                                                                            ${'tech_tree_vehicle_arrow' if model_type.replacement_model_variant is not None else None}">
+                                                                            ${'tech_tree_vehicle_arrow' if model_type.replacement_model_catalogue is not None else None}">
                                                                     <span style="display:block;">
                                                                         ${model_type.name}
                                                                     </span>
@@ -221,13 +221,13 @@
                                                                         </tal:branch>
                                                                     </span>
                                                                 </div>
-                                                                <div tal:condition="model_type.replacement_model_variant is not None"
+                                                                <div tal:condition="model_type.replacement_model_catalogue is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
                                                                      <div style="${'visibility:hidden;' if doc_helper.model_cabbage_has_direct_replacment(model_type) else nothing}">
-                                                                        <a href="${model_type.replacement_model_variant.model_id}.html">
+                                                                        <a href="${model_type.replacement_model_catalogue.id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                                Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_model_variant.id, model_variants)}
+                                                                                Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_model_catalogue.id, model_variants)}
                                                                             </div>
                                                                         </a>
                                                                     </div>

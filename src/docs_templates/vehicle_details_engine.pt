@@ -272,6 +272,12 @@
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
                 CABBAGE - DROPPED TECH TREE AS BROKEN - RESTORE
+                <br />
+                <!--! replaces_model_variant ${default_model_variant.replaces_model_variant.model_id if default_model_variant.replaces_model_variant is not None else "None"}-->
+                <!--!replaces_model_variants ${[i.id for i in default_model_variant.replaces_model_variants] if default_model_variant.replaces_model_variants is not None else "None"}-->
+                <br />
+                replacement_model_catalogue ${default_model_variant.replacement_model_catalogue.id if default_model_variant.replacement_model_catalogue is not None else "None"}
+                <br />
                 <table class="vehicle-facts" tal:replace="nothing"><!--! CABBAGE DROPPED THIS WHILE REFACTORING, PERFORMANCE ISSUES -->
                     <tbody>
                         <tr>
@@ -313,19 +319,19 @@
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
-                                <tal:replacement condition="default_model_variant.replacement_model_variant is not None">
+                                <tal:replacement condition="default_model_variant.replacement_model_catalogue is not None">
                                     <div style="margin:10px;">
-                                        <a href="${default_model_variant.replacement_model_variant.model_id}.html">
+                                        <a href="${default_model_variant.replacement_model_catalogue.model_id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${default_model_variant.replacement_model_variant.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(catalogue=default_model_variant.replacement_model_variant.catalogue_entry.catalogue)}"
+                                                <img src="static/img/${default_model_variant.replacement_model_catalogue.id}_variant_0_red_white.png"
+                                                     width="${2* doc_helper.docs_sprite_width(catalogue=default_model_variant.replacement_model_catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(default_model_variant.replacement_model_variant.id, model_variants)}
+                                             ${doc_helper.get_replaced_by_name(default_model_variant.replacement_model_catalogue.id, model_variants)}
                                         </a>
                                     </div>
                                 </tal:replacement>
-                                <tal:replacement_is_none condition="default_model_variant.replacement_model_variant is None">
+                                <tal:replacement_is_none condition="default_model_variant.replacement_model_catalogue is None">
                                     <span class="muted">None</span>
                                 </tal:replacement_is_none>
                             </td>

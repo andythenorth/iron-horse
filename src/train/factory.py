@@ -496,7 +496,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.factory.model_id}")
+                raise ValueError(f"no liveries found for {self.id}")
             return result
 
         # liveries as group from class livery_group_name (default)
@@ -514,7 +514,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.factory.model_id}")
+                raise ValueError(f"no liveries found for {self.id}")
             return result
 
         # liveries directly from model_def (simple list)
@@ -527,7 +527,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.factory.model_id}")
+                raise ValueError(f"no liveries found for {self.id}")
             return result
 
         # liveries directly from model_type_cls
@@ -547,13 +547,13 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.factory.model_id}")
+                raise ValueError(f"no liveries found for {self.id}")
             return result
 
         # If no valid source is found, raise an error.
         raise ValueError(
             f"Unable to determine valid livery names for "
-            f"{self.factory.model_id}\n"
+            f"{self.id}\n"
             f"{self.factory.model_def}"
             f"{self.factory.cab_factory}"
         )
@@ -602,7 +602,7 @@ class Catalogue(list):
     def intro_year(self):
         # automatic intro_year, but can override via model_def
         assert self.factory.model_def.gen != None, (
-            "%s has no gen value set, which is incorrect" % self.factory.model_id
+            "%s has no gen value set, which is incorrect" % self.id
         )
         result = self.factory.roster.intro_years[self.base_track_type_name][
             self.factory.model_def.gen - 1

@@ -240,11 +240,10 @@ class BadgeManager(list):
                 self.add_badge(
                     label=f"ih_tech_tree/intro_date_months_offset/{catalogue.default_model_variant_from_roster.intro_date_months_offset}"
                 )
-                # CABBAGE - replacement_model_variant known slow
                 if (
-                    catalogue.default_model_variant_from_roster.replacement_model_variant
+                    catalogue.default_model_variant_from_roster.replacement_model_catalogue
                     is not None
                 ):
                     self.add_badge(
-                        label=f"ih_tech_tree/replacement/{catalogue.default_model_variant_from_roster.replacement_model_variant.vehicle_family_badge}"
+                        label=f"ih_tech_tree/replacement/{catalogue.default_model_variant_from_roster.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
                     )
