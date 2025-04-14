@@ -30,15 +30,6 @@ base = "도시철도"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "증기"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "작음"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "중간"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "큼"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "정렬 차량"
 

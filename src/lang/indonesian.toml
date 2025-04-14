@@ -38,18 +38,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Uap"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Kecil"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Medium"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Besar"
-
-[STR_BADGE_WAGON_LENGTH_TWIN]
-base = "Ganda"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Gerbong Penjajaran"
 
@@ -58,9 +46,6 @@ base = "Gerbong Koil"
 
 [STR_WAGON_NAME_BOLSTER_CAR]
 base = "Gerbong Pendukung"
-
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
-base = "Gerbong Datar"
 
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Van Rem"
@@ -141,7 +126,7 @@ base = "Gerbong Sub urban"
 base = "Gerbong Torpedo"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Role: {GOLD}{STRING}"
+base = "Role"
 
 [STR_BADGE_ROLE_DRIVING_CAB]
 base = "Kabin Kemudi"

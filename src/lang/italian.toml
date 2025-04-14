@@ -31,15 +31,6 @@ base = "Metropolitana"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(A vapore)"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Piccolo"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Intermedio"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Grande"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Carro per allineamento"
 
@@ -74,7 +65,7 @@ base = "Carrozza passeggeri"
 base = "Carro piatto"
 
 [STR_BADGE_ROLE]
-base = "Ruolo: {GOLD}{STRING}"
+base = "Ruolo"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Universale"

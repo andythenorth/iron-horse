@@ -29,15 +29,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Stoom"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Klein"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Gemiddeld"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Groot"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Lijnwagen"
 
@@ -84,7 +75,7 @@ base = "Plaatwagon"
 base = "Torpedowagen"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Rol: {GOLD}{STRING}"
+base = "Rol"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Algemeen gebruik"

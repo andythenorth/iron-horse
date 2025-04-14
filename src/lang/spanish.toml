@@ -39,18 +39,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Vapor"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Pequeño"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Medio"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Grande"
-
-[STR_BADGE_WAGON_LENGTH_TWIN]
-base = "Doble"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Vagón de alineamiento"
 
@@ -59,9 +47,6 @@ base = "Vagón de bobinado"
 
 [STR_WAGON_NAME_BOLSTER_CAR]
 base = "Vagón de carga plana"
-
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
-base = "Vagón plataforma"
 
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Vagón de cola"
@@ -139,7 +124,7 @@ base = "Vagón de techo deslizante"
 base = "Vagón torpedo"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Rol: {GOLD}{STRING}"
+base = "Rol"
 
 [STR_BADGE_ROLE_DRIVING_CAB]
 base = "Cabina de Conducción"

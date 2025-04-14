@@ -31,15 +31,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Para"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Mali"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Srednji"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Veliki"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Vagon za poravnanje"
 
@@ -83,7 +74,7 @@ base = "Plato-vagon"
 base = "Vagon-torpedo"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Uloga: {GOLD}{STRING}"
+base = "Uloga"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Opća namjena"

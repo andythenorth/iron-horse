@@ -31,15 +31,6 @@ base = "Metro vůz"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Parní"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Malý"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Střední"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Velký"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Zarovnávací vůz"
 
@@ -86,7 +77,7 @@ base = "Plošinový vůz"
 base = "Torpédový vůz"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Role: {GOLD}{STRING}"
+base = "Role"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Obecný účel"

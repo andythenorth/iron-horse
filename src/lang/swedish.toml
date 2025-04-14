@@ -29,15 +29,6 @@ base = "Tunnelbana"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Ånga"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Liten"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Medium"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Stor"
-
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Bromsvagn"
 

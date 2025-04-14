@@ -87,19 +87,6 @@ base = "Vapeur"
 base = "Remorque"
 
 # size suffixes
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "petit"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "moyen"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "grand"
-
-# special feature suffixes
-[STR_BADGE_WAGON_LENGTH_TWIN]
-base = "jumeau"
-
 [STR_WAGON_GROUP_MORE]
 # special case
 base = "Plus…"
@@ -116,9 +103,6 @@ base = "Chariot à bobines"
 
 [STR_WAGON_NAME_BOLSTER_CAR]
 base = "Wagon plat long"
-
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
-base = "Wagon plat à cloison"
 
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Fourgon-frein"
@@ -290,7 +274,7 @@ base = "(camions)"
 
 # role information for buy menu
 [STR_BADGE_ROLE]
-base = "{BLACK}Rôle{NBSP}: {GOLD}{STRING}"
+base = "Rôle"
 
 [STR_BADGE_ROLE_DRIVING_CAB]
 base = "Voiture-pilote"

@@ -27,15 +27,6 @@ base = "Dieselelektrisch"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Dampf"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Klein"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Mittel"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Groß"
-
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Bremserwagen"
 

@@ -39,18 +39,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Vapor"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Petit"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Mitjà"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Gran"
-
-[STR_BADGE_WAGON_LENGTH_TWIN]
-base = "Doble"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Cotxe d'alineament"
 
@@ -59,9 +47,6 @@ base = "Cotxe de bobinat"
 
 [STR_WAGON_NAME_BOLSTER_CAR]
 base = "Cotxe de càrrega plana"
-
-[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_TYPE_1]
-base = "Vagó plataforma"
 
 [STR_WAGON_NAME_CABOOSE_CAR]
 base = "Furgó de Cua"
@@ -139,7 +124,7 @@ base = "Cotxe de sostre deslliçant"
 base = "Cotxe torpedo"
 
 [STR_BADGE_ROLE]
-base = "{BLACK}Rol: {GOLD}{STRING}"
+base = "Rol"
 
 [STR_BADGE_ROLE_DRIVING_CAB]
 base = "Cabina de Conducció"

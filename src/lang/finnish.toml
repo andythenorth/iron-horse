@@ -29,15 +29,6 @@ base = "Metro"
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Höyry"
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-base = "Kevyt"
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-base = "Keskiraskas"
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-base = "Raskas"
-
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Ryhmitysvaunu"
 
