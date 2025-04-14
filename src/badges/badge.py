@@ -57,7 +57,6 @@ class BadgeManager(list):
         )
         badge_graphics_generator.render_livery_badges()
 
-    @timing
     def produce_badges(self, **kwargs):
         # explicit, not on __init__, more controllable
         self.produce_badges_from_static_config(**kwargs)
@@ -98,7 +97,6 @@ class BadgeManager(list):
                 f"newgrf/{utils.grfid_to_dword(roster_manager.active_roster.grfid)}"
             )
 
-    @timing
     def produce_railtype_badges(self, **kwargs):
         # these are really just an experiment to see if they aid debug, they don't do anything else as of April 2025, and `dumpinfo railtypes` gets the same result
         railtype_manager = kwargs["railtype_manager"]
@@ -215,7 +213,6 @@ class BadgeManager(list):
                         f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}"
                     )
 
-    @timing
     def produce_tech_tree_badges(self, **kwargs):
         # this is for debug use
         # gen is NOT part of the tech tree as of April 2025, decided it's a standalone item
