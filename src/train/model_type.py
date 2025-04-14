@@ -241,6 +241,14 @@ class ModelTypeBase(object):
         # stub only, over-ride in subclasses as appropriate
         return None
 
+    """
+    # CABBAGE commented out - IHA_ is used for RAIL, but no railtype is defined for RAIL or IHA_, as it relies on default game railtype
+    # that can be changed, but eh, risk of unexpected behaviour from redefining RAIL so needs care
+    @property
+    def track_type_badge(self):
+        # just for debug
+        return f"ih_railtype/{self.track_type}"
+    """
     @property
     def cabbage_power_source_badges(self):
         # stub only, over-ride in subclasses as appropriate
@@ -363,7 +371,7 @@ class ModelTypeBase(object):
             result.append(self.role_badge)
         if self.cabbage_subtype_badge is not None:
             result.append(self.cabbage_subtype_badge)
-
+        # result.append(self.track_type_badge) # CABBAGE nerfed off - not quite working
         # power badges, for engines only
         if self.cabbage_power_source_badges is not None:
             # note that this extends not appends
@@ -375,6 +383,7 @@ class ModelTypeBase(object):
             "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
         ]:
             result.extend(self.cabbage_livery_badges)
+
         # for debug use
         result.extend(self.cabbage_colour_mix_badges)
         # badges for formation rulesets

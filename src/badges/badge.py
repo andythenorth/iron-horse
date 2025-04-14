@@ -100,11 +100,15 @@ class BadgeManager(list):
 
     @timing
     def produce_railtype_badges(self, **kwargs):
+        # these are really just an experiment to see if they aid debug, they don't do anything else as of April 2025, and `dumpinfo railtypes` gets the same result
         railtype_manager = kwargs["railtype_manager"]
+        self.add_badge(
+            label=f"ih_railtype",
+        )
         for railtype in railtype_manager:
             self.add_badge(
                 label=f"ih_railtype/{railtype.label}",
-                flags=["BADGE_FLAG_COPY_TO_RELATED_ENTITY"],
+                flags=["BADGE_FLAG_COPY_TO_RELATED_ENTITY"], # !! doesn't appear to be copying to vehicle as of April 2025
             )
 
     def produce_vehicle_family_badges(self, **kwargs):
