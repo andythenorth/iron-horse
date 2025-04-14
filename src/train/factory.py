@@ -599,6 +599,15 @@ class Catalogue(list):
         return result
 
     @cached_property
+    def replacement_model_catalogue(self):
+        # convenience passthrough
+        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
+        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
+        if self.default_model_variant_from_roster.power > 0:
+            return self.factory.roster.engine_model_tech_tree.replacement_model_catalogue(self)
+        return None
+
+    @cached_property
     def intro_year(self):
         # automatic intro_year, but can override via model_def
         assert self.factory.model_def.gen != None, (

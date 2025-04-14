@@ -385,21 +385,18 @@ class DocHelper(object):
                 role_string_name = badge_manager.get_badge_by_label("role/" + role).name
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
-    def get_replaced_by_name(self, replacement_model_id, model_variants):
-        # CABBAGE - REPLACED BY IS CATALOGUE? OR INTERPOLATED
-        for model_variant in model_variants:
-            if model_variant.id == replacement_model_id:
-                return self.unpack_name_string(model_variant.catalogue_entry.catalogue)
-
     def model_cabbage_has_direct_replacment(self, model_variant):
-        if model_variant.replacement_model_catalogue.default_model_variant_from_roster.subrole != model_variant.subrole:
+        # CABBAGE - THIS CAN PROBABLY JUST USE THE ROSTER TECH TREE DIRECTLY?
+        # MIGHT be a case of JFDI - this is just to hide or show some tech tree content
+        replacement_model_variant = model_variant.catalogue_entry.catalogue.replacement_model_catalogue.default_model_variant_from_roster
+        if replacement_model_variant.subrole != model_variant.subrole:
             return False
         elif (
-            model_variant.replacement_model_catalogue.default_model_variant_from_roster.subrole_child_branch_num
+            replacement_model_variant.subrole_child_branch_num
             != model_variant.subrole_child_branch_num
         ):
             return False
-        elif model_variant.replacement_model_catalogue.default_model_variant_from_roster.gen != model_variant.gen + 1:
+        elif replacement_model_variant.gen != model_variant.gen + 1:
             return False
         else:
             return True

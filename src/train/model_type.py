@@ -345,10 +345,10 @@ class ModelTypeBase(object):
         result.append(
             f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
         )
-        if self.replacement_model_catalogue is not None:
+        if self.catalogue_entry.catalogue.replacement_model_catalogue is not None:
             # note that as of April 2025 only wagons do not set replacement_model_catalogue
             result.append(
-                f"ih_tech_tree/replacement/{self.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
+                f"ih_tech_tree/replacement/{self.catalogue_entry.catalogue.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
             )
         return result
 
@@ -551,21 +551,12 @@ class ModelTypeBase(object):
         return result
 
     @cached_property
-    def replacement_model_catalogue(self):
-        # convenience passthrough
-        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
-        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
-        if self.power > 0:
-            return self.roster.engine_model_tech_tree.replacement_model_catalogue(self.catalogue_entry.catalogue)
-        return None
-
-    @cached_property
     def replaces_model_variants(self):
         # note that this depends on replacement_model property in other model defs, and may not work in all cases
         # a model can replace more than one other model
         result = []
         for catalogue in self.roster.engine_catalogues:
-            candidate_for_replacement = catalogue.default_model_variant_from_roster.replacement_model_catalogue.replacement_model_catalogue
+            candidate_for_replacement = catalogue.default_model_variant_from_roster.replacement_model_catalogue
             if candidate_for_replacement is not None:
                 if candidate_for_replacement.model_id == self.model_id:
                     result.append(candidate_for_replacement)
@@ -613,9 +604,9 @@ class ModelTypeBase(object):
             lifespan = 60
         else:
             lifespan = 40
-        if self.replacement_model_catalogue is not None:
+        if self.catalogue_entry.catalogue.replacement_model_catalogue is not None:
             time_to_replacement = (
-                self.replacement_model_catalogue.intro_year - self.intro_year
+                self.catalogue_entry.catalogue.replacement_model_catalogue.intro_year - self.intro_year
             )
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
@@ -628,10 +619,10 @@ class ModelTypeBase(object):
 
     @cached_property
     def model_life(self):
-        if self.replacement_model_catalogue is None:
+        if self.catalogue_entry.catalogue.replacement_model_catalogue is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.replacement_model_catalogue.intro_year - self.intro_year
+            return self.catalogue_entry.catalogue.replacement_model_catalogue.intro_year - self.intro_year
 
     @property
     def retire_early(self):

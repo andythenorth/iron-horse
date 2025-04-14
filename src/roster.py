@@ -681,7 +681,7 @@ class TechTree(dict):
             )
         )
         offset = 1
-        while (catalogue.default_model_variant_from_roster.gen + offset) <= max_gen:
+        while (catalogue.factory.model_def.gen + offset) <= max_gen:
             replacement_candidate = self.get_relative_catalogue(catalogue, offset)
             if replacement_candidate is not None:
                 return replacement_candidate

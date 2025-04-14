@@ -276,7 +276,7 @@
                 <!--! replaces_model_variant ${default_model_variant.replaces_model_variant.model_id if default_model_variant.replaces_model_variant is not None else "None"}-->
                 <!--!replaces_model_variants ${[i.id for i in default_model_variant.replaces_model_variants] if default_model_variant.replaces_model_variants is not None else "None"}-->
                 <br />
-                replacement_model_catalogue ${default_model_variant.replacement_model_catalogue.id if default_model_variant.replacement_model_catalogue is not None else "None"}
+                replacement_model_catalogue ${catalogue.replacement_model_catalogue.id if catalogue.replacement_model_catalogue is not None else "None"}
                 <br />
                 <table class="vehicle-facts" tal:replace="nothing"><!--! CABBAGE DROPPED THIS WHILE REFACTORING, PERFORMANCE ISSUES -->
                     <tbody>
@@ -297,7 +297,7 @@
                                                          width="${2 * doc_helper.docs_sprite_width(catalogue=replaced_model_variant.catalogue_entry.catalogue)}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
-                                                 ${doc_helper.get_replaced_by_name(replaced_model_variant.id, model_variants)}
+                                                 ${doc_helper.unpack_name_string(replaced_model_variant.catalogue_entry.catalogue)}
                                             </a>
                                         </div>
                                      </tal:replaced_model_variant>
@@ -319,19 +319,19 @@
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
-                                <tal:replacement condition="default_model_variant.replacement_model_catalogue is not None">
+                                <tal:replacement condition="catalogue.replacement_model_catalogue is not None">
                                     <div style="margin:10px;">
-                                        <a href="${default_model_variant.replacement_model_catalogue.model_id}.html">
+                                        <a href="${catalogue.replacement_model_catalogue.model_id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${default_model_variant.replacement_model_catalogue.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(catalogue=default_model_variant.replacement_model_catalogue)}"
+                                                <img src="static/img/${catalogue.replacement_model_catalogue.id}_variant_0_red_white.png"
+                                                     width="${2* doc_helper.docs_sprite_width(catalogue=catalogue.replacement_model_catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(default_model_variant.replacement_model_catalogue.id, model_variants)}
+                                             ${doc_helper.unpack_name_string(catalogue.replacement_model_catalogue)}
                                         </a>
                                     </div>
                                 </tal:replacement>
-                                <tal:replacement_is_none condition="default_model_variant.replacement_model_catalogue is None">
+                                <tal:replacement_is_none condition="catalogue.replacement_model_catalogue is None">
                                     <span class="muted">None</span>
                                 </tal:replacement_is_none>
                             </td>
@@ -350,7 +350,7 @@
                                                      width="${2* doc_helper.docs_sprite_width(catalogue=similar_default_model_variant.catalogue_entry.catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(similar_default_model_variant.id, model_variants)}
+                                             ${doc_helper.unpack_name_string(similar_default_model_variant.catalogue_entry.catalogue)}
                                         </a>
                                     </div>
                                 </tal:similar_default_model_variants>
