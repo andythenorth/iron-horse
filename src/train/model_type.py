@@ -270,6 +270,16 @@ class ModelTypeBase(object):
         return result
 
     @property
+    def formation_ruleset_badges(self):
+        result = []
+        if self.gestalt_graphics.formation_ruleset is not None:
+            result.append(f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}")
+        if self.gestalt_graphics.formation_ruleset_flags is not None:
+            for flag in self.gestalt_graphics.formation_ruleset_flags:
+                result.append(f"ih_formation_ruleset/flags/{flag}")
+        return result
+
+    @property
     def cabbage_randomised_wagon_badges(self):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
@@ -344,6 +354,9 @@ class ModelTypeBase(object):
         # for debug use
         result.extend(self.cabbage_colour_mix_badges)
 
+        # badges for formation rulesets
+        result.extend(self.formation_ruleset_badges)
+
         # special variant handling badges (used for purchase string handling)
         result.extend(self.cabbage_variant_handling_badges)
 
@@ -352,10 +365,6 @@ class ModelTypeBase(object):
 
         # tech tree metadata
         result.extend(self.cabbage_tech_tree_badges)
-
-        # for debug use
-        if self.gestalt_graphics.formation_ruleset is not None:
-            result.append(f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}")
 
         # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
         # 2. alpha sort is better than default append order
@@ -1524,8 +1533,6 @@ class MailEngineCabbageDVT(MailEngineBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # report mail cab cars as pax cars for formation rulesets
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -1539,9 +1546,12 @@ class MailEngineCabbageDVT(MailEngineBase):
             "last": 1,
             "special": 0,
         }
+        # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1807,8 +1817,6 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # report cab cars as pax cars for formation rulesets
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -1822,9 +1830,12 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             "last": 1,
             "special": 0,
         }
+        # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5615,9 +5626,6 @@ class MailCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
-        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -5637,9 +5645,12 @@ class MailCar(MailCarBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
+        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5712,9 +5723,6 @@ class MailHighSpeedCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
-        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "express"
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
@@ -5731,9 +5739,12 @@ class MailHighSpeedCar(MailCarBase):
             "last": 1,
             "special": 2,
         }
+        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5755,9 +5766,6 @@ class MailHSTCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
-        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "hst"
         self.buy_cost_adjustment_factor = 1.66
         self._model_life = self.cab_engine.model_life
@@ -5774,9 +5782,12 @@ class MailHSTCar(MailCarBase):
             "last": 2,
             "special": 0,
         }
+        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+        formation_ruleset_flags=["report_as_pax_car", "report_as_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6502,7 +6513,6 @@ class PanoramicCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
     variant_group_id_root = "wagon_group_passenger_cars"
@@ -6519,9 +6529,11 @@ class PanoramicCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6548,7 +6560,6 @@ class PassengerCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
     variant_group_id_root = "wagon_group_passenger_cars"
@@ -6570,9 +6581,11 @@ class PassengerCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6603,7 +6616,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
         self.floating_run_cost_multiplier = 4
@@ -6620,9 +6632,11 @@ class PassengerHighSpeedCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6694,7 +6708,6 @@ class PassengerHSTCar(PassengerCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.speed_class = "hst"
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -6714,9 +6727,11 @@ class PassengerHSTCar(PassengerCarBase):
             "last": 2,
             "special": 3,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6853,8 +6868,6 @@ class PassengerRestaurantCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # flag pax car ruleset behaviour
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
@@ -6869,9 +6882,11 @@ class PassengerRestaurantCar(PassengerCarBase):
             "last": 0,
             "special": 0,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6896,7 +6911,6 @@ class PassengerSuburbanCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # PassengerCarBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
@@ -6920,9 +6934,11 @@ class PassengerSuburbanCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
+        formation_ruleset_flags=["report_as_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
+            formation_ruleset_flags=formation_ruleset_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
