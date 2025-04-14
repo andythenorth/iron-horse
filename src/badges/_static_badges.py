@@ -66,6 +66,7 @@ static_badges = {
         "name": "STR_BADGE_BEHAVIOUR",
         "sublabels": {
             "randomised_wagon": {"name": "STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON"},
+            "caboose": {"name": "STR_BADGE_BEHAVIOUR_CABOOSE"},
         },
     },
 }

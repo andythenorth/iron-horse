@@ -273,6 +273,9 @@ base = "Behaviour"
 [STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
 base = "Randomised choice of wagon"
 
+[STR_BADGE_BEHAVIOUR_CABOOSE]
+base = "No gameplay effect"
+
 # role badges
 
 [STR_BADGE_ROLE]

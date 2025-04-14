@@ -293,6 +293,13 @@ class ModelTypeBase(object):
         return set(result)
 
     @property
+    def caboose_badges(self):
+        result = []
+        if self.is_caboose:
+            result.append(f"ih_behaviour/caboose")
+        return result
+
+    @property
     def distributed_power_badges(self):
         result = []
         if self.distributed_power_wagon:
@@ -370,19 +377,16 @@ class ModelTypeBase(object):
             result.extend(self.cabbage_livery_badges)
         # for debug use
         result.extend(self.cabbage_colour_mix_badges)
-
         # badges for formation rulesets
         result.extend(self.formation_ruleset_badges)
-
         # badges distributed power behaviour, for TGVs etc
         result.extend(self.distributed_power_badges)
-
         # special variant handling badges (used for purchase string handling)
         result.extend(self.cabbage_variant_handling_badges)
-
         # randomised wagon candidates, if any, for debug use
         result.extend(self.cabbage_randomised_wagon_badges)
-
+        # caboose
+        result.extend(self.caboose_badges)
         # tech tree metadata
         result.extend(self.cabbage_tech_tree_badges)
 
