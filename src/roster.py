@@ -696,7 +696,6 @@ class TechTree(dict):
         )
 
     @cached_property
-    @timing
     def simplified_tree(self) -> dict:
         """
         Return a simplified version of the TechTree in which any branch where
