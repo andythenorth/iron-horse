@@ -357,7 +357,10 @@ class ModelTypeBase(object):
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}")
 
-        return result
+        # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
+        # 2. alpha sort is better than default append order
+        # 3. alpha also makes badge order in the generated nml easier to read for debugging
+        return sorted(result)
 
     @property
     def badges_as_nml_prop(self):

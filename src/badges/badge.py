@@ -44,6 +44,13 @@ class BadgeManager(list):
                 return badge
         return None
 
+    @property
+    def badges_in_table_order(self):
+        # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
+        # 2. alpha sort is better than default append order
+        # 3. alpha also makes badge order in the generated nml easier to read for debugging
+        return sorted(self, key=lambda badge: badge.label)
+
     def render_graphics(self, iron_horse, graphics_input_path, graphics_output_path):
         badge_graphics_generator = BadgeGraphicsGenerator(
             self, iron_horse, graphics_input_path, graphics_output_path
