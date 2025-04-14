@@ -234,11 +234,6 @@ class ModelTypeBase(object):
         # over-ride in subclasses as appropriate
         return f"ih_vehicle_family/{self.catalogue_entry.vehicle_family_id}"
 
-    @property
-    def cabbage_subtype_badge(self):
-        # stub only, over-ride in subclasses as appropriate
-        return None
-
     """
     # CABBAGE commented out - IHA_ is used for RAIL, but no railtype is defined for RAIL or IHA_, as it relies on default game railtype
     # that can be changed, but eh, risk of unexpected behaviour from redefining RAIL so needs care
@@ -248,21 +243,25 @@ class ModelTypeBase(object):
         return f"ih_railtype/{self.track_type}"
     """
     @property
-    def cabbage_power_source_badges(self):
+    def power_source_badges(self):
         # stub only, over-ride in subclasses as appropriate
-        return None
+        # return list by default for ease of interface elsewhere
+        return []
 
     @property
-    def cabbage_livery_badges(self):
+    def livery_badges(self):
         result = []
-        result.append(self.catalogue_entry.livery_def.badge_label)
-        result.append(self.catalogue_entry.livery_def.weathering_badge_label)
+        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
+        if self.catalogue_entry.livery_def.livery_name not in [
+            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
+        ]:
+            result.append(self.catalogue_entry.livery_def.badge_label)
+            result.append(self.catalogue_entry.livery_def.weathering_badge_label)
         return result
 
     @property
-    def cabbage_colour_mix_badges(self):
+    def colour_mix_badges(self):
         result = []
-
         # CABBAGE THE LIVERY SHOULD TAKE CARE OF THIS NOT THE MODEL TYPE
         # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
         if self.catalogue_entry.livery_def.livery_name in [
@@ -288,7 +287,7 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def cabbage_randomised_wagon_badges(self):
+    def randomised_wagon_badges(self):
         result = []
         if self.catalogue_entry.model_is_randomised_wagon_type:
             result.append(f"ih_behaviour/randomised_wagon")
@@ -325,7 +324,7 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def cabbage_variant_handling_badges(self):
+    def variant_handling_badges(self):
         # specific handling of indentation level 1
         result = []
         if self.cabbage_use_name_callback:
@@ -335,7 +334,7 @@ class ModelTypeBase(object):
         return list(set(result))
 
     @property
-    def cabbage_tech_tree_badges(self):
+    def tech_tree_badges(self):
         result = []
         result.append(f"ih_tech_tree/subrole/{self.subrole}")
         result.append(
@@ -364,41 +363,35 @@ class ModelTypeBase(object):
             result.append("special_flags/ih_random_reverse")
         return result
 
+    @property
+    def general_metadata_badges(self):
+        result = []
+        result.append(f"ih_gen/{self.gen}")
+        if self.role_badge is not None:
+            result.append(self.role_badge)
+        if getattr(self, "subtype", None) is not None:
+            result.append("ih_wagon_subtype/" + self.subtype.lower())
+        return result
+
     @cached_property
     def badges(self):
         # badges can be set on a vehicle for diverse reasons, including behaviour, visible display, debug
         result = []
-
-        # general metadata, visible or not
-        result.append(f"ih_gen/{self.gen}")
-        if self.role_badge is not None:
-            result.append(self.role_badge)
-        if self.cabbage_subtype_badge is not None:
-            result.append(self.cabbage_subtype_badge)
-        # result.append(self.track_type_badge) # CABBAGE nerfed off - not quite working
-        # power badges, for engines only
-        if self.cabbage_power_source_badges is not None:
-            # note that this extends not appends
-            result.extend(self.cabbage_power_source_badges)
-
-        # livery and colour mix badges - note that this returns a list, not a single badge
-        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name not in [
-            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
-        ]:
-            result.extend(self.cabbage_livery_badges)
-        result.extend(self.cabbage_colour_mix_badges)
-        # misc badges
-        result.append(self.vehicle_family_badge)
-        result.extend(self.special_flags_badges)
-        result.extend(self.formation_ruleset_badges)
+        # order isn't significant here, so just alphabetise the calls for ease
+        result.extend(self.caboose_badges)
+        result.extend(self.colour_mix_badges)
         result.extend(self.distributed_power_badges)
         result.extend(self.easter_egg_haulage_speed_bonus_badges)
-        result.extend(self.cabbage_variant_handling_badges)
-        result.extend(self.cabbage_randomised_wagon_badges)
-        result.extend(self.caboose_badges)
-        # tech tree metadata
-        result.extend(self.cabbage_tech_tree_badges)
+        result.extend(self.formation_ruleset_badges)
+        result.extend(self.general_metadata_badges)
+        result.extend(self.livery_badges)
+        result.extend(self.power_source_badges)
+        result.extend(self.randomised_wagon_badges)
+        result.extend(self.special_flags_badges)
+        result.extend(self.tech_tree_badges)
+        # result.append(self.track_type_badge) # CABBAGE nerfed off - not quite working
+        result.extend(self.variant_handling_badges)
+        result.extend([self.vehicle_family_badge])
 
         # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
         # 2. alpha sort is better than default append order
@@ -1447,7 +1440,7 @@ class EngineModelTypeBase(ModelTypeBase):
         return False
 
     @property
-    def cabbage_power_source_badges(self):
+    def power_source_badges(self):
         # note returns multiple badges, as engines support multiple power sources
         result = []
         if self.power_by_power_source is not None:
@@ -2479,10 +2472,6 @@ class CarModelTypeBase(ModelTypeBase):
             next_gen - 1
         ]
         return next_gen_intro_year - self.intro_year
-
-    @property
-    def cabbage_subtype_badge(self):
-        return "ih_wagon_subtype/" + self.subtype.lower()
 
     @property
     def wagon_title_class_str(self):

@@ -192,7 +192,7 @@
                                                             <a href="${model_type.model_id}.html">
                                                                 <div class="tech_tree_vehicle
                                                                             ${'tech_tree_vehicle_electric_' + model_type.electrification_type.lower() if model_type.requires_electric_rails else 'None'}
-                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in model_type.cabbage_power_source_badges else None}
+                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in model_type.power_source_badges else None}
                                                                             ${'tech_tree_vehicle_arrow' if model_type.replacement_model_variant is not None else None}">
                                                                     <span style="display:block;">
                                                                         ${model_type.name}
