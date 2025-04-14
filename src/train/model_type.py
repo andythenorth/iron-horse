@@ -353,6 +353,10 @@ class ModelTypeBase(object):
         # tech tree metadata
         result.extend(self.cabbage_tech_tree_badges)
 
+        # for debug use
+        if self.gestalt_graphics.formation_ruleset is not None:
+            result.append(f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}")
+
         return result
 
     @property
@@ -1518,7 +1522,7 @@ class MailEngineCabbageDVT(MailEngineBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # report mail cab cars as pax cars for formation rulesets
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -1801,7 +1805,7 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # report cab cars as pax cars for formation rulesets
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -5608,9 +5612,9 @@ class MailCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -5705,9 +5709,9 @@ class MailHighSpeedCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "express"
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
@@ -5748,9 +5752,9 @@ class MailHSTCar(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.speed_class = "hst"
         self.buy_cost_adjustment_factor = 1.66
         self._model_life = self.cab_engine.model_life
@@ -6495,7 +6499,7 @@ class PanoramicCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
     variant_group_id_root = "wagon_group_passenger_cars"
@@ -6541,7 +6545,7 @@ class PassengerCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
     variant_group_id_root = "wagon_group_passenger_cars"
@@ -6596,7 +6600,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
         self.floating_run_cost_multiplier = 4
@@ -6687,7 +6691,7 @@ class PassengerHSTCar(PassengerCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.speed_class = "hst"
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -6847,7 +6851,7 @@ class PassengerRestaurantCar(PassengerCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # flag pax car ruleset behaviour
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
@@ -6889,7 +6893,7 @@ class PassengerSuburbanCar(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_formation_ruleset/flags/report_as_pax_car")
         # PassengerCarBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"

@@ -9,12 +9,6 @@ static_badges = {
             "electro_diesel": {},
         },
     },
-    "ih_ruleset_flags": {
-        "sublabels": {
-            "report_as_pax_car": {},
-            "report_as_mail_car": {},
-        },
-    },
     "ih_wagon_subtype": {
         # "name": "STR_BADGE_WAGON_LENGTH",
         "sublabels": {

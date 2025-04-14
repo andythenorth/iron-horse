@@ -58,6 +58,7 @@ class BadgeManager(list):
         self.produce_power_source_badges(**kwargs)
         self.produce_livery_badges(**kwargs)
         self.produce_vehicle_family_badges(**kwargs)
+        self.produce_formation_ruleset_badges(**kwargs)
         self.produce_randomised_wagon_candidate_badges(**kwargs)
         self.produce_tech_tree_badges(**kwargs)
 
@@ -164,6 +165,26 @@ class BadgeManager(list):
             self.add_badge(
                 label=f"ih_livery_def/colour_set_names/{colour_set_name}",
             )
+
+    def produce_formation_ruleset_badges(self, **kwargs):
+        self.add_badge(
+            label=f"ih_formation_ruleset",
+        )
+        self.add_badge(
+            label=f"ih_formation_ruleset/flags/report_as_pax_car",
+        )
+        self.add_badge(
+            label=f"ih_formation_ruleset/flags/report_as_mail_car",
+        )
+        # these are for debug use
+        roster_manager = kwargs["roster_manager"]
+        for roster in roster_manager:
+            for catalogue in roster.catalogues:
+                if (
+                    catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset is not None
+                    ):
+                    self.add_badge(f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}")
+
 
     def produce_tech_tree_badges(self, **kwargs):
         # this is for debug use
