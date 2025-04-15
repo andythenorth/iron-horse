@@ -13,7 +13,6 @@ def main(**kwargs):
 
     model_def =ModelDef(
         class_name="AutomobileSingleDeckCar",
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22570,
         gen=2,
         subtype="A",

@@ -38,7 +38,6 @@ def main(**kwargs):
 
     model_def =ModelDef(
         class_name="LogCar",
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=36240,
         gen=4,
         subtype="U",

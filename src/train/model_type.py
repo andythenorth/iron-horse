@@ -116,11 +116,6 @@ class ModelTypeBase(object):
         return self.catalogue_entry.catalogue.factory.roster_id
 
     @property
-    def roster_id_providing_module(self):
-        # just a pass through for convenience
-        return self.catalogue_entry.catalogue.factory.roster_id_providing_module
-
-    @property
     def base_numeric_id(self):
         return self.model_def.base_numeric_id
 
