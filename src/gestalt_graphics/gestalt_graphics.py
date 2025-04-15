@@ -88,7 +88,7 @@ class GestaltGraphics(object):
         ):
             source_vehicles_and_input_spriterow_nums = []
 
-            for unit_counter, unit in enumerate(pipeline.default_model_variant.units):
+            for unit_counter, unit in enumerate(pipeline.example_model_variant.units):
                 # vehicle unit, y offset (num spriterows) to buy menu input row
                 source_vehicles_and_input_spriterow_nums.append(
                     [
@@ -198,7 +198,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
         wagon_randomisation_candidates = (
-            pipeline.default_model_variant.wagon_randomisation_candidates
+            pipeline.example_model_variant.wagon_randomisation_candidates
         )
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
@@ -537,11 +537,11 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             source_vehicles_and_input_spriterow_nums = [
                 (
-                    pipeline.default_model_variant.units[0],
+                    pipeline.example_model_variant.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[0]),
                 ),
                 (
-                    pipeline.default_model_variant.units[0],
+                    pipeline.example_model_variant.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[1]),
                 ),
             ]
@@ -1063,8 +1063,8 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other formation positions
         # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
-        if len(pipeline.default_model_variant.units) != 2:
-            if pipeline.default_model_variant.id == "golfinho":
+        if len(pipeline.example_model_variant.units) != 2:
+            if pipeline.example_model_variant.id == "golfinho":
                 # JFDI jank
                 if unit_counter == 1:
                     formation_position_row_offset = (
