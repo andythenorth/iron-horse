@@ -273,12 +273,12 @@
                 <h3 id="tech-tree">Tech Tree</h3>
                 CABBAGE - DROPPED TECH TREE AS BROKEN - RESTORE
                 <br />
-                <!--! replaces_model_variant ${example_model_variant.replaces_model_variant.model_id if example_model_variant.replaces_model_variant is not None else "None"}-->
+                replaces_model_variant
+                <!--!${catalogue.replaces_models.model_id if example_model_variant.replaces_model_variant is not None else "None"}-->
                 <!--!replaces_model_variants ${[i.id for i in example_model_variant.replaces_model_variants] if example_model_variant.replaces_model_variants is not None else "None"}-->
                 <br />
-                replacement_model_catalogue ${catalogue.replacement_model_catalogue.model_id if catalogue.replacement_model_catalogue is not None else "None"}
                 <br />
-                <table class="vehicle-facts" tal:replace="nothing"><!--! CABBAGE DROPPED THIS WHILE REFACTORING, PERFORMANCE ISSUES -->
+                <table class="vehicle-facts">
                     <tbody>
                         <tr>
                             <th style="text-align:center;">Previous</th>
@@ -286,7 +286,8 @@
                             <th style="text-align:center;">Replaced by</th>
                         </tr>
                         <tr>
-                            <td style="text-align:center; vertical-align:middle;">
+                            <td><!--! CABBAGE TEMP SPACE KEEPER --></td>
+                            <td style="text-align:center; vertical-align:middle;" tal:replace="nothing"><!--! CABBAGE nerf -->
                                 <!--! replaces -->
                                 <tal:replaces condition="len(example_model_variant.replaces_model_variants) > 0">
                                     <tal:replaced_model_variant repeat="replaced_model_variant example_model_variant.replaces_model_variants">
@@ -308,26 +309,26 @@
                             </td>
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
-                                <div class="vehicle-image">
-                                    <img src="static/img/${example_model_variant.id}_variant_0_red_white.png"
+                                <div class="vehicle-image" style="margin-bottom:15px;">
+                                    <img src="static/img/${example_model_variant.catalogue_entry.model_variant_id}_red_white.png"
                                          width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                          height="${4 * doc_helper.docs_sprite_height}" />
                                 </div>
-                                ${doc_helper.unpack_name_string(catalogue)}
-                                <br />
-                                <a href="tech_tree_table_red.html#${example_model_variant.id}">See in Tech Tree</a>
+                                <p>${doc_helper.unpack_name_string(catalogue)}</p>
+
+                                <p><a href="tech_tree_table_red.html#${catalogue.model_id}">See in Tech Tree</a></p>
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
                                 <tal:replacement condition="catalogue.replacement_model_catalogue is not None">
                                     <div style="margin:10px;">
                                         <a href="${catalogue.replacement_model_catalogue.model_id}.html">
-                                            <div class="vehicle-image">
-                                                <img src="static/img/${catalogue.replacement_model_catalogue.model_id}_variant_0_red_white.png"
+                                            <div class="vehicle-image" style="margin-bottom:7px;">
+                                                <img src="static/img/${catalogue.replacement_model_catalogue.example_model_variant.catalogue_entry.model_variant_id}_red_white.png"
                                                      width="${2* doc_helper.docs_sprite_width(catalogue=catalogue.replacement_model_catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.unpack_name_string(catalogue.replacement_model_catalogue)}
+                                             <p>${doc_helper.unpack_name_string(catalogue.replacement_model_catalogue)}</p>
                                         </a>
                                     </div>
                                 </tal:replacement>
@@ -340,7 +341,7 @@
                             <th colspan="3" style="text-align:center">Vehicles with Similar Role or Power</th>
                         </tr>
                         <tr>
-                            <td colspan="3" style="text-align:center">
+                            <td colspan="3" style="text-align:center" tal:replace="nothing"><!--! CABBAGE nerfed -->
                                 <!--! this really isn't a well constructed table, but eh -->
                                 <tal:similar_default_model_variants repeat="similar_default_model_variant example_model_variant.similar_model_variants">
                                     <div style="display:inline-block; margin:10px;">
