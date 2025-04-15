@@ -106,7 +106,9 @@ class BadgeManager(list):
         for railtype in railtype_manager:
             self.add_badge(
                 label=f"ih_railtype/{railtype.label}",
-                flags=["BADGE_FLAG_COPY_TO_RELATED_ENTITY"], # !! doesn't appear to be copying to vehicle as of April 2025
+                flags=[
+                    "BADGE_FLAG_COPY_TO_RELATED_ENTITY"
+                ],  # !! doesn't appear to be copying to vehicle as of April 2025
             )
 
     def produce_vehicle_family_badges(self, **kwargs):
@@ -123,19 +125,12 @@ class BadgeManager(list):
         roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                if (
-                    catalogue.model_is_randomised_wagon_type
-                ):
-                    # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
-                    # but...probably fine as of April 2025 - the whole method timed at < 0.05s
+                if catalogue.model_is_randomised_wagon_type:
                     for (
-                        label,
-                        name,
-                    ) in (
-                        catalogue.example_model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items()
-                    ):
+                        badge
+                    ) in catalogue.example_model_variant.randomised_wagon_badges:
                         self.add_badge(
-                            label=f"ih_randomised_wagon/candidates/{label}",
+                            label=f"{badge}",
                         )
 
     def produce_power_source_badges(self, **kwargs):
@@ -149,11 +144,7 @@ class BadgeManager(list):
         roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                for (
-                    badge
-                ) in (
-                    catalogue.example_model_variant.distributed_power_badges
-                ):
+                for badge in catalogue.example_model_variant.distributed_power_badges:
                     self.add_badge(
                         label=f"{badge}",
                     )
@@ -192,26 +183,11 @@ class BadgeManager(list):
             )
 
     def produce_formation_ruleset_badges(self, **kwargs):
-        self.add_badge(
-            label=f"ih_formation_ruleset",
-        )
-        self.add_badge(
-            label=f"ih_formation_ruleset/flags/report_as_pax_car",
-        )
-        self.add_badge(
-            label=f"ih_formation_ruleset/flags/report_as_mail_car",
-        )
-        # these are for debug use
         roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                if (
-                    catalogue.example_model_variant.gestalt_graphics.formation_ruleset
-                    is not None
-                ):
-                    self.add_badge(
-                        f"ih_formation_ruleset/{catalogue.example_model_variant.gestalt_graphics.formation_ruleset}"
-                    )
+                for badge in catalogue.example_model_variant.formation_ruleset_badges:
+                    self.add_badge(f"{badge}")
 
     def produce_tech_tree_badges(self, **kwargs):
         # this is for debug use

@@ -67,7 +67,9 @@ static_badges = {
         "sublabels": {
             "randomised_wagon": {"name": "STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON"},
             "caboose": {"name": "STR_BADGE_BEHAVIOUR_CABOOSE"},
-            "receives_easter_egg_haulage_speed_bonus": {"name": "STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS"},
+            "receives_easter_egg_haulage_speed_bonus": {
+                "name": "STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS"
+            },
             "provides_easter_egg_haulage_speed_bonus": {},
         },
     },
