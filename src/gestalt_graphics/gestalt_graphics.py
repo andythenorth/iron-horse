@@ -1083,7 +1083,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             else:
                 raise BaseException(
                     "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): catalogue "
-                    + pipeline.catalogue.id
+                    + pipeline.catalogue.model_id
                     + " does not have exactly 2 units - this case is not currently supported"
                 )
 
@@ -1180,7 +1180,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
         raise BaseException(
             "buy_menu_row_map called in GestaltGraphicsCustom for catalogue "
-            + pipeline.catalogue.id
+            + pipeline.catalogue.model_id
             + " - this isn't supported."
         )
 

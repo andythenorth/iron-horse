@@ -110,8 +110,8 @@ class DocHelper(object):
                 not_really_engines.append(catalogue)
             else:
                 really_engines.append(catalogue)
-        # print("really_engines", [catalogue.id for catalogue in really_engines])
-        # print("not_really_engines", [catalogue.id for catalogue in not_really_engines])
+        # print("really_engines", [catalogue.model_id for catalogue in really_engines])
+        # print("not_really_engines", [catalogue.model_id for catalogue in not_really_engines])
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
@@ -231,7 +231,7 @@ class DocHelper(object):
         for vehicle_type, catalogues in [engines, wagons]:
             for catalogue in catalogues:
                 vehicle_data = [
-                    catalogue.id,
+                    catalogue.model_id,
                     catalogue.default_entry.model_variant_id,
                     str(self.docs_sprite_width(catalogue)),
                     catalogue.model_def.base_numeric_id,

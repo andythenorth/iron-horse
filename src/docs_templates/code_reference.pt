@@ -194,7 +194,7 @@
                             <tal:catalogues repeat="catalogue sorted(catalogues, key=lambda catalogue: catalogue.model_def.base_numeric_id)">
                                 <tr>
                                     <td>${catalogue.model_def.base_numeric_id}</td>
-                                    <td>${catalogue.id}</td>
+                                    <td>${catalogue.model_id}</td>
                                     <td>${doc_helper.unpack_name_string(catalogue)}</td>
                                 </tr>
                             </tal:catalogues>

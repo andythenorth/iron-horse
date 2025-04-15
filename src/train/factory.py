@@ -510,7 +510,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.id}")
+                raise ValueError(f"no liveries found for {self.model_id}")
             return result
 
         # liveries as group from class livery_group_name (default)
@@ -528,7 +528,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.id}")
+                raise ValueError(f"no liveries found for {self.model_id}")
             return result
 
         # liveries directly from model_def (simple list)
@@ -541,7 +541,7 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.id}")
+                raise ValueError(f"no liveries found for {self.model_id}")
             return result
 
         # liveries directly from model_type_cls
@@ -561,20 +561,20 @@ class Catalogue(list):
                     )
                 )
             if len(result) == 0:
-                raise ValueError(f"no liveries found for {self.id}")
+                raise ValueError(f"no liveries found for {self.model_id}")
             return result
 
         # If no valid source is found, raise an error.
         raise ValueError(
             f"Unable to determine valid livery names for "
-            f"{self.id}\n"
+            f"{self.model_id}\n"
             f"{self.model_def}"
             f"{self.factory.cab_factory}"
         )
 
     @property
-    def id(self):
-        # CABBAGE possibly this property should be model_id also, or duplicate to both
+    def model_id(self):
+        # catalogue model_id is synonymous with catalogue id, and derived from factory
         return self.factory.model_id
 
     @property
@@ -608,7 +608,7 @@ class Catalogue(list):
     @cached_property
     def default_model_variant_from_roster(self):
         # requires that the factory produce() method has been called
-        model_variants = self.factory.roster.model_variants_by_catalogue[self.id][
+        model_variants = self.factory.roster.model_variants_by_catalogue[self.model_id][
             "model_variants"
         ]
         for model_variant in model_variants:
@@ -630,7 +630,7 @@ class Catalogue(list):
             catalogue_model_variant_mapping,
         ) in self.factory.roster.model_variants_by_catalogue.items():
             catalogue = catalogue_model_variant_mapping["catalogue"]
-            if catalogue.model_def.cab_id == self.id:
+            if catalogue.model_def.cab_id == self.model_id:
                 result.append(catalogue_model_variant_mapping)
         return result
 
@@ -647,7 +647,7 @@ class Catalogue(list):
     def intro_year(self):
         # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
-            "%s has no gen value set, which is incorrect" % self.id
+            "%s has no gen value set, which is incorrect" % self.model_id
         )
         result = self.factory.roster.intro_years[self.base_track_type_name][
             self.model_def.gen - 1

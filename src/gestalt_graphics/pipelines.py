@@ -77,7 +77,7 @@ class Pipeline(object):
         # finally the spritesheet is saved
         if output_base_name is None:
             # default to catalogue id for file name, but can override for e.g. containers by passing something in
-            output_base_name = self.catalogue.id
+            output_base_name = self.catalogue.model_id
         output_path = os.path.join(
             self.graphics_output_path,
             output_base_name + output_suffix + ".png",
@@ -535,7 +535,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.catalogue.id + ".png",
+                self.catalogue.model_id + ".png",
             )
         )
         self.render_common(spritesheet_image, self.processing_units)
@@ -578,7 +578,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.catalogue.id + suffix + ".png",
+                self.catalogue.model_id + suffix + ".png",
             )
         )
         self.render_common(
@@ -777,7 +777,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.catalogue.id + ".png",
+                self.catalogue.model_id + ".png",
             )
         )
 
@@ -997,7 +997,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         vehicle_debug_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.catalogue.id + ".png",
+                self.catalogue.model_id + ".png",
             )
         )
         vehicle_debug_image = vehicle_debug_image.copy().crop(

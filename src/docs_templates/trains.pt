@@ -64,7 +64,7 @@
                             </thead>
                             <tbody>
                                 <tal:engine_model_types repeat="catalogue doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${catalogue.id}">
+                                    <tr id="${catalogue.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
                                             <img src="static/img/${catalogue.default_entry.model_variant_id}_blue_blue.png"
@@ -78,7 +78,7 @@
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            <a class="table-link-dark" href="${catalogue.id}.html">${doc_helper.unpack_name_string(catalogue)}</a>
+                                            <a class="table-link-dark" href="${catalogue.model_id}.html">${doc_helper.unpack_name_string(catalogue)}</a>
                                         </td>
                                         <td>${doc_helper.get_role_string_from_catalogue(catalogue, iron_horse.badge_manager)}</td>
                                         <td class="date">${catalogue.intro_year}</td>
@@ -89,7 +89,7 @@
                                         </td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(catalogue)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${catalogue.id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:engine_model_types>
@@ -118,7 +118,7 @@
                             </thead>
                             <tbody>
                                 <tal:wagon_model_types repeat="catalogue doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${catalogue.id}">
+                                    <tr id="${catalogue.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
                                             <img src="static/img/${catalogue.default_entry.model_variant_id}_blue_blue.png"
@@ -138,7 +138,7 @@
                                         <td class="number">${doc_helper.capacity_formatted_for_docs(catalogue)}</td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(catalogue)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${catalogue.id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:wagon_model_types>

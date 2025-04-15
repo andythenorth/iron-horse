@@ -225,7 +225,7 @@
                                                                 <div tal:condition="catalogue.replacement_model_catalogue is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
                                                                      <div style="${'visibility:hidden;' if doc_helper.model_cabbage_has_direct_replacment(model_type) else nothing}">
-                                                                        <a href="${catalogue.replacement_model_catalogue.id}.html">
+                                                                        <a href="${catalogue.replacement_model_catalogue.model_id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
                                                                                 Replaced by ${doc_helper.unpack_name_string(catalogue.replacement_model_catalogue)}

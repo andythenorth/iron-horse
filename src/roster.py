@@ -202,7 +202,7 @@ class Roster:
                 )
                 catalogue = factory.catalogue
                 # Use the convenience property `id` on Catalogue
-                catalogue_id = catalogue.id
+                catalogue_id = catalogue.model_id
                 if catalogue_id not in self.engine_model_variants_by_catalogue:
                     self.engine_model_variants_by_catalogue[catalogue_id] = {
                         "catalogue": catalogue,
@@ -251,7 +251,7 @@ class Roster:
                         )
                         catalogue = factory.catalogue
                         # Using the convenience property 'id'
-                        catalogue_id = catalogue.id
+                        catalogue_id = catalogue.model_id
                         if catalogue_id not in self.wagon_model_variants_by_catalogue:
                             self.wagon_model_variants_by_catalogue[catalogue_id] = {
                                 "catalogue": catalogue,
@@ -297,7 +297,7 @@ class Roster:
             tmp_uid = get_tmp_uid(
                 catalogue.factory.model_type_cls.model_id_root, catalogue
             )
-            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.id][
+            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.model_id][
                 "model_variants"
             ]:
                 model_variant.wagon_randomisation_candidates = cabbage_random_temp_foo[
@@ -636,7 +636,7 @@ class TechTree(dict):
             ][model_variant.subrole_child_branch_num]
         except KeyError as e:
             raise KeyError(
-                f"Error accessing branch for catalogue {catalogue.id}: {e}"
+                f"Error accessing branch for catalogue {catalogue.model_id}: {e}"
             ) from e
         return branch
 
@@ -657,7 +657,7 @@ class TechTree(dict):
         else:
             # This case should not occur given our pre-provisioning.
             raise KeyError(
-                f"Target generation {target_gen} missing in target_branch for catalogue {catalogue.id}"
+                f"Target generation {target_gen} missing in target_branch for catalogue {catalogue.model_id}"
             )
 
     def replacement_model_catalogue(self, catalogue):

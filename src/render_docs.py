@@ -101,8 +101,8 @@ def render_docs_vehicle_details(
     roster = iron_horse.roster_manager.active_roster
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
-        doc_name = catalogue.id
-        model_variants = roster.model_variants_by_catalogue[catalogue.id][
+        doc_name = catalogue.model_id
+        model_variants = roster.model_variants_by_catalogue[catalogue.model_id][
             "model_variants"
         ]
 
@@ -139,7 +139,7 @@ def render_docs_images(
     catalogue = model_variant_catalogue_mapping["catalogue"]
 
     vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, catalogue.id + ".png")
+        os.path.join(generated_graphics_path, catalogue.model_id + ".png")
     )
     dos_palette = Image.open("palette_key.png").palette
 
@@ -203,7 +203,7 @@ def render_docs_images(
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(
                 os.path.join(
-                    generated_graphics_path, catalogue.id + "_pantographs_up.png"
+                    generated_graphics_path, catalogue.model_id + "_pantographs_up.png"
                 )
             )
             pan_crop_width = model_variant.buy_menu_width
