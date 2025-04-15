@@ -40,6 +40,14 @@ class GestaltGraphics(object):
             "jfdi_pantograph_debug_image_y_offsets", [0, 0]
         )
 
+    @cached_property
+    def catalogue(self):
+        # convenience function - but catalogue_entry might be none in some contexts
+        if self.catalogue_entry is not None:
+            return self.catalogue_entry.catalogue
+        else:
+            return None
+
     @property
     def nml_template(self):
         # override in subclasses as needed
@@ -141,7 +149,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
                     ]
                 )
             )
-        self.num_pantograph_rows = len(self.catalogue_entry.catalogue)
+        self.num_pantograph_rows = len(self.catalogue)
 
     @property
     def nml_template(self):
@@ -977,7 +985,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             # note that we simply generate a row per formation position
             # this method leads to unnecessary rows for many cases
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
-            self.num_pantograph_rows = len(self.catalogue_entry.catalogue) * (
+            self.num_pantograph_rows = len(self.catalogue) * (
                 1 + max(self.formation_position_spriterow_map.values())
             )
 
@@ -999,7 +1007,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
-        for livery_counter, livery_def in enumerate(self.catalogue_entry.catalogue):
+        for livery_counter, livery_def in enumerate(self.catalogue):
             # CABBAGE SHIM
             if getattr(livery_def, "relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
@@ -1041,7 +1049,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 source_row_num = formation_position_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
             row_group_size = self.num_load_state_or_similar_spriterows * len(
-                self.catalogue_entry.catalogue
+                self.catalogue
             )
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * formation_position_num) + i] = (

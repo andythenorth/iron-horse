@@ -3,10 +3,10 @@
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 
 spriteset(${unit.id}_ss_doors_closed, "${graphics_path}${model_variant.model_id}.png") {
-    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue) * 60))}
 }
 spriteset(${unit.id}_ss_doors_open, "${graphics_path}${model_variant.model_id}.png") {
-    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue) * 60))}
 }
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors, switch_graphics_opening_doors()) {
     0: return ${unit.id}_ss_doors_closed;

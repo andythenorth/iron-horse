@@ -43,7 +43,7 @@ class UnitBase(object):
     @property
     def cabbage_unit_id_from_default_model_variant(self):
         # convenience method when we have shared switch chains, and we want to target a specific unit in the default variant
-        return f"{self.model_variant.catalogue_entry.catalogue.default_model_variant_from_roster.id}_unit_{self.model_variant.units.index(self)}"
+        return f"{self.model_variant.catalogue.default_model_variant_from_roster.id}_unit_{self.model_variant.units.index(self)}"
 
     @property
     def tail_light(self):

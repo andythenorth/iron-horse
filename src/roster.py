@@ -162,7 +162,7 @@ class Roster:
                     "randomised": [],
                 }
 
-            if model_variant.catalogue_entry.catalogue.model_is_randomised_wagon_type:
+            if model_variant.catalogue.model_is_randomised_wagon_type:
                 randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
                     model_variant
                 )
@@ -433,7 +433,7 @@ class Roster:
                 raise BaseException(
                     f"Error: vehicle id '{model_variant.id}' is defined more than once - to fix, search src for the duplicate.\n"
                     f"The catalogue for one of them is:"
-                    f"{model_variant.catalogue_entry.catalogue}"
+                    f"{model_variant.catalogue}"
                 )
             if len(model_variant.units) == 0:
                 raise BaseException(f"Error: {model_variant.id} has no units defined")
@@ -473,7 +473,7 @@ class Roster:
                         f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
                         f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
                         f"{[unit for unit in model_variant.units]}\n"
-                        f"{model_variant.catalogue_entry.catalogue}\n"
+                        f"{model_variant.catalogue}\n"
                     )
                 else:
                     numeric_id_defender[numeric_id] = model_variant
@@ -692,7 +692,7 @@ class TechTree(dict):
     def replaces_model_variant(self, model_variant):
         # CABBAGE unfinished see model_type replaces_model_variants
         return self.get_relative_catalogue(
-            model_variant.catalogue_entry.catalogue, offset=-1
+            model_variant.catalogue, offset=-1
         )
 
     @cached_property
