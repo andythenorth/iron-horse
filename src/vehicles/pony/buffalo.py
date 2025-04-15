@@ -11,7 +11,6 @@ def main(**kwargs):
         name="0-6-2 Buffalo",
         subrole="branch_freight",
         subrole_child_branch_num=-2,
-        replacement_model_id="saxon",  # this Joker ends with Saxon
         power_by_power_source={
             "STEAM": 650,
         },

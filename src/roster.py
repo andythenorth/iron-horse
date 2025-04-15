@@ -574,6 +574,8 @@ class TechTree(dict):
     def create(cls, *, roster=None):
         instance = cls()
         instance.roster = roster
+        # minor optimisation, this avoids repeatedly walking catalogues for the niche case of explicit replacement_model_id
+        instance.explicit_replacements_cached = {}
         return instance
 
     def add_model(self, catalogue):
@@ -594,6 +596,10 @@ class TechTree(dict):
             subrole_dict, subrole_child_branch_num, track_type=track_type
         )
         branch_dict[catalogue.model_def.gen] = catalogue
+
+        # mild optimisation of lookups for explicit manual replacement of catalogues
+        if catalogue.model_def.replacement_model_id is not None:
+            self.explicit_replacements_cached.setdefault(catalogue.model_def.replacement_model_id, []).append(catalogue)
 
     def _ensure_role_dict(self, track_type, role):
         if track_type not in self:
@@ -681,25 +687,40 @@ class TechTree(dict):
         )
         offset = 1
         while (catalogue.model_def.gen + offset) <= max_gen:
-            replacement_candidate = self.get_relative_catalogue(catalogue, offset)
-            if replacement_candidate is not None:
-                return replacement_candidate
+            candidate_catalogue = self.get_relative_catalogue(catalogue, offset)
+            if candidate_catalogue is not None:
+                return candidate_catalogue
             offset += 1
         # fall through to None
         return None
 
-    def get_replaced_catalogues(self, catalogue):
+    def get_previous_gen_catalogues(self, catalogue):
         # find the catalogues a catalogue replaces in the previous generation, if any
         # a catalogue (model) can replace multiple catalogues (models) or None
 
-        print(catalogue)
-        return
-        """
-        # CABBAGE unfinished see model_type replaces_model_variants
-        return self.get_relative_catalogue(
-            model_variant.catalogue, offset=-1
-        )
-        """
+        # clones don't get added to the tree, don't try and access them directly
+        if catalogue.model_quacks_like_a_clone:
+            catalogue = catalogue.get_upstream_catalogue(permissive=True)
+
+        result = []
+
+        # first check same line...
+        # ...models can span generations, so walk back to find if there's a replacement
+        min_gen = 1
+        offset = -1
+        while (catalogue.model_def.gen + offset) >= min_gen:
+            candidate_catalogue = self.get_relative_catalogue(catalogue, offset)
+            if candidate_catalogue is not None:
+                # stop checking same line if candidate found is found
+                result.append(candidate_catalogue)
+                break
+            offset -= 1
+
+        # handle any manually defined explicit replacements of other catalogues
+        result.extend(self.explicit_replacements_cached.get(catalogue.model_id, []))
+
+        return result
+
 
     @cached_property
     def simplified_tree(self) -> dict:

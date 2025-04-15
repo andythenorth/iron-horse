@@ -271,13 +271,6 @@
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
-                CABBAGE - DROPPED TECH TREE AS BROKEN - RESTORE
-                <br />
-                replaces_model_variant
-                <!--!${catalogue.replaces_models.model_id if example_model_variant.replaces_model_variant is not None else "None"}-->
-                <!--!replaces_model_variants ${[i.id for i in example_model_variant.replaces_model_variants] if example_model_variant.replaces_model_variants is not None else "None"}-->
-                <br />
-                <br />
                 <table class="vehicle-facts">
                     <tbody>
                         <tr>
@@ -286,26 +279,25 @@
                             <th style="text-align:center;">Replaced by</th>
                         </tr>
                         <tr>
-                            <td><!--! CABBAGE TEMP SPACE KEEPER --></td>
-                            <td style="text-align:center; vertical-align:middle;" tal:replace="nothing"><!--! CABBAGE nerf -->
+                            <td style="text-align:center; vertical-align:middle;">
                                 <!--! replaces -->
-                                <tal:replaces condition="len(example_model_variant.replaces_model_variants) > 0">
-                                    <tal:replaced_model_variant repeat="replaced_model_variant example_model_variant.replaces_model_variants">
+                                <tal:previous_gen condition="len(catalogue.previous_gen_catalogues) > 0">
+                                    <tal:previous_gen_catalogue repeat="previous_gen_catalogue catalogue.previous_gen_catalogues">
                                         <div style="margin:10px;">
-                                            <a href="${replaced_model_variant.model_id}.html">
-                                                <div class="vehicle-image">
-                                                    <img src="static/img/${replaced_model_variant.id}_variant_0_red_white.png"
-                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=replaced_model_variant.catalogue)}"
+                                            <a href="${previous_gen_catalogue.model_id}.html">
+                                                <div class="vehicle-image" style="margin-bottom:7px;">
+                                                    <img src="static/img/${previous_gen_catalogue.example_model_variant.catalogue_entry.model_variant_id}_red_white.png"
+                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=previous_gen_catalogue)}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
-                                                 ${doc_helper.unpack_name_string(replaced_model_variant.catalogue)}
+                                                 ${doc_helper.unpack_name_string(previous_gen_catalogue)}
                                             </a>
                                         </div>
-                                     </tal:replaced_model_variant>
-                                </tal:replaces>
-                                <tal:replaces_none condition="len(example_model_variant.replaces_model_variants) == 0">
+                                     </tal:previous_gen_catalogue>
+                                </tal:previous_gen>
+                                <tal:no_previous_gen condition="len(catalogue.previous_gen_catalogues) == 0">
                                     <span class="muted">None</span>
-                                </tal:replaces_none>
+                                </tal:no_previous_gen>
                             </td>
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
@@ -320,7 +312,7 @@
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
-                                <tal:replacement condition="catalogue.next_gen_catalogue is not None">
+                                <tal:next_gen condition="catalogue.next_gen_catalogue is not None">
                                     <div style="margin:10px;">
                                         <a href="${catalogue.next_gen_catalogue.model_id}.html">
                                             <div class="vehicle-image" style="margin-bottom:7px;">
@@ -331,10 +323,10 @@
                                              <p>${doc_helper.unpack_name_string(catalogue.next_gen_catalogue)}</p>
                                         </a>
                                     </div>
-                                </tal:replacement>
-                                <tal:replacement_is_none condition="catalogue.next_gen_catalogue is None">
+                                </tal:next_gen>
+                                <tal:no_next_gen condition="catalogue.next_gen_catalogue is None">
                                     <span class="muted">None</span>
-                                </tal:replacement_is_none>
+                                </tal:no_next_gen>
                             </td>
                         </tr>
                         <tr>

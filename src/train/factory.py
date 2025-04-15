@@ -648,12 +648,22 @@ class Catalogue(list):
 
     @cached_property
     def next_gen_catalogue(self):
-        # convenience passthrough
+        # note that there's just one replacement catalogue in the next gen (has to be this way for model life calculations)
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
         if self.example_model_variant.power > 0:
             return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(catalogue=self)
         return None
+
+    @cached_property
+    def previous_gen_catalogues(self):
+        # note a catalogue can replace multiple catalogues in the previous gen (as tree branches can merge)
+        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
+        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
+        if self.example_model_variant.power > 0:
+            return self.factory.roster.engine_model_tech_tree.get_previous_gen_catalogues(catalogue=self)
+        # empty list if nothing found
+        return []
 
     def get_upstream_catalogue(self, permissive=False):
         # possibly expensive, but not often required option to get the catalogue for the model a clone was sourced from

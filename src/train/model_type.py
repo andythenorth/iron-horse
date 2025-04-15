@@ -524,18 +524,6 @@ class ModelTypeBase(object):
         return result
 
     @cached_property
-    def replaces_model_variants(self):
-        # note that this depends on replacement_model property in other model defs, and may not work in all cases
-        # a model can replace more than one other model
-        result = []
-        for catalogue in self.roster.engine_catalogues:
-            candidate_for_replacement = catalogue.next_gen_catalogue
-            if candidate_for_replacement is not None:
-                if candidate_for_replacement.model_id == self.model_id:
-                    result.append(candidate_for_replacement)
-        return result
-
-    @cached_property
     def similar_model_variants(self):
         # quite a crude guess at similar engines by subrole
         result = []

@@ -11,7 +11,6 @@ def main(**kwargs):
         name="2-4-0 Reliance",
         subrole="express",
         subrole_child_branch_num=-1,
-        replacement_model_id="carrack",  # this Joker ends with Carrack
         power_by_power_source={
             "STEAM": 950,
         },
