@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="SimpleEngine",
         model_id="wildfire",
-        base_numeric_id=39890,
+        base_numeric_id=40840,
         name="Wildfire",
         subrole="branch_express",
         subrole_child_branch_num=-1,
@@ -34,7 +34,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def_clone = model_def.begin_clone(base_numeric_id=15240, unit_repeats=[2])
+    model_def_clone = model_def.begin_clone(base_numeric_id=15280, unit_repeats=[2])
 
     model_def = model_def_clone.complete_clone()
 

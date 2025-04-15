@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="SimpleEngine",
         model_id="smirr",
-        base_numeric_id=15200,
+        base_numeric_id=15300,
         name="2-10-0 Smirr", # Surtr
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
