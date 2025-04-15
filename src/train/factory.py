@@ -797,7 +797,8 @@ class ModelDefCloner:
         cloned_model_def.model_id = (
             model_def.model_id + "_clone_" + str(len(model_def.clones))
         )
-        cloned_model_def.vehicle_family_id = model_def.vehicle_family_id
+        # this will cause the clone to group as a variant of the original source (unless influenced by other factors)
+        cloned_model_def.vehicle_family_id = model_def.model_id
         return cloned_model_def
 
     @staticmethod
