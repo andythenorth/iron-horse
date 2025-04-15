@@ -16,11 +16,11 @@
                 <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, simplified_gameplay)">
-                <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
-                    <h3>${base_track_type_and_label} CABBAGE RAILTYPE NAME NEEDS LOOKED UP from doc_helper.base_track_type_names_and_labels</h3>
-                    <tal:roles define="intro_years roster.intro_years[base_track_type_and_label]"
-                               repeat="role tech_tree[base_track_type_and_label]">
-                        <tal:descriptions_rail condition="base_track_type_and_label=='RAIL'">
+                <tal:base_track_type repeat="base_track_type tech_tree.keys()">
+                    <h3>${doc_helper.base_track_type_names_and_labels[base_track_type]}</h3>
+                    <tal:roles define="intro_years roster.intro_years[base_track_type]"
+                               repeat="role tech_tree[base_track_type]">
+                        <tal:descriptions_rail condition="base_track_type=='RAIL'">
                             <tal:descriptions switch="role">
                                 <div tal:case="'express'">
                                     <h4>General Purpose / Express Engines</h4>
@@ -101,7 +101,7 @@
                                 </div>
                             </tal:descriptions>
                         </tal:descriptions_rail>
-                        <tal:descriptions_ng condition="base_track_type_and_label=='NG'">
+                        <tal:descriptions_ng condition="base_track_type=='NG'">
                             <div tal:condition="role=='express'">
                                 <h4>Narrow Gauge Trains</h4>
                                 <ul>
@@ -118,7 +118,7 @@
                                 </ul>
                             </div>
                         </tal:descriptions_ng>
-                        <tal:descriptions_metro condition="base_track_type_and_label=='METRO'">
+                        <tal:descriptions_metro condition="base_track_type=='METRO'">
                             <div tal:condition="role=='metro'">
                                 <h4>Metro Trains</h4>
                                 <ul>
@@ -135,7 +135,7 @@
                             </div>
                         </tal:descriptions_metro>
                         <table style="width:100%; margin-bottom:40px;"
-                               tal:define="subroles tech_tree[base_track_type_and_label][role].keys();"
+                               tal:define="subroles tech_tree[base_track_type][role].keys();"
                                tal:condition="len(subroles) > 0">
                             <thead>
                                 <tr>
@@ -146,7 +146,7 @@
                             </thead>
                             <tbody>
                                 <tal:roles repeat="subrole subroles">
-                                    <tal:subrole_child_branch tal:repeat="subrole_child_branch doc_helper.get_subrole_child_branches_in_order(tech_tree[base_track_type_and_label][role][subrole].keys())">
+                                    <tal:subrole_child_branch tal:repeat="subrole_child_branch doc_helper.get_subrole_child_branches_in_order(tech_tree[base_track_type][role][subrole].keys())">
                                         <tr style="border-top: solid ${'2px #ccc' if subrole in ['branch_freight', 'heavy_freight', 'super_heavy_freight', 'heavy_express', 'super_heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
                                                    box-shadow: inset 0 -1px #fff;
                                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
@@ -185,7 +185,7 @@
                                                 </span>
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
-                                                <tal:example_model_variant define="catalogue tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen];">
+                                                <tal:example_model_variant define="catalogue tech_tree[base_track_type][role][subrole][subrole_child_branch][gen];">
                                                     <tal:block condition="catalogue is not None"
                                                                define="example_model_variant catalogue.example_model_variant if catalogue is not None else None;">
                                                         <div id="${example_model_variant.model_id}" class="tech_tree_vehicle_container">
@@ -244,7 +244,7 @@
                             </tbody>
                         </table>
                     </tal:roles>
-                </tal:base_track_type_and_label>
+                </tal:base_track_type>
             </tal:tech_tree>
         </div>
     </div>

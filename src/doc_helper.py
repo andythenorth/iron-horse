@@ -209,7 +209,7 @@ class DocHelper(object):
         for (
             base_track_type_name,
             base_track_label,
-        ) in self.base_track_type_names_and_labels:
+        ) in self.base_track_type_names_and_labels.items():
             result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ] = defaultdict(list)
@@ -244,7 +244,7 @@ class DocHelper(object):
         for (
             base_track_type_name,
             base_track_label,
-        ) in self.base_track_type_names_and_labels:
+        ) in self.base_track_type_names_and_labels.items():
             vehicles = result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ]
@@ -391,8 +391,8 @@ class DocHelper(object):
 
     @property
     def base_track_type_names_and_labels(self):
-        # list of pairs, need consistent order so can't use dict
-        return [("RAIL", "Standard Gauge"), ("NG", "Narrow Gauge"), ("METRO", "Metro")]
+        # could fetch from lang strings, but eh, JFDI, it's docs
+        return {"RAIL": "Standard Gauge", "NG": "Narrow Gauge", "METRO": "Metro"}
 
     def get_og_tags_content(self, doc_name, optional_model_variant):
         description = "CABBAGE"
