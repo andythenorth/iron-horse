@@ -529,26 +529,6 @@ class ModelTypeBase(object):
                 result = min(result + 6, 11)
         return result
 
-    @cached_property
-    def similar_model_variants(self):
-        # quite a crude guess at similar engines by subrole
-        result = []
-        for model_variant in self.roster.engine_model_variants:
-            if (
-                (model_variant.base_track_type_name == self.base_track_type_name)
-                and (model_variant.gen == self.gen)
-                and (model_variant != self)
-                and (model_variant.model_def.cloned_from_model_def is None)
-                and (getattr(model_variant, "cab_id", None) is None)
-            ):
-                if (
-                    (model_variant.subrole == self.subrole)
-                    or (0 <= (model_variant.power - self.power) < 500)
-                    or (0 <= (self.power - model_variant.power) < 500)
-                ):
-                    result.append(model_variant)
-        return result
-
     @property
     def dual_headed(self):
         # override in subclass as needed

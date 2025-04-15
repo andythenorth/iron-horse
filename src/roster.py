@@ -721,6 +721,87 @@ class TechTree(dict):
 
         return result
 
+    def get_similar_model_catalogues(self, catalogue, power_tolerance_pct=0.4):
+        """
+        Return catalogues similar to the given one, scoped to same track_type, role,
+        subrole, and generation. Also considers adjacent generations:
+        - If this catalogue has no next-gen replacement, look at next gen.
+        - Always look at previous gen catalogues with no replacement.
+        - Freight engines may also consider express engines (but not vice versa).
+        """
+        if catalogue.model_quacks_like_a_clone:
+            catalogue = catalogue.get_upstream_catalogue(permissive=True)
+
+        base_track_type = catalogue.base_track_type_name
+        role = catalogue.example_model_variant.role
+        gen = catalogue.model_def.gen
+        target_power = getattr(catalogue.example_model_variant, "power", None)
+
+        # Determine which roles to include in the search
+        roles_to_check = [role]
+        if role == "freight":
+            roles_to_check.append("express")
+
+        # Reverse map: subrole → role
+        subrole_to_role = {
+            sub: r
+            for r, subroles in global_constants.role_subrole_mapping.items()
+            for sub in subroles
+        }
+
+        # Collect all relevant branch dicts
+        branch_dicts = []
+        for r in roles_to_check:
+            for subrole_key in global_constants.role_subrole_mapping.get(r, []):
+                candidate_role = subrole_to_role.get(subrole_key)
+                if candidate_role is None:
+                    continue
+                try:
+                    branches = self[base_track_type][candidate_role][subrole_key]
+                    branch_dicts.extend(branches.values())  # <- pull each individual branch
+                except KeyError:
+                    continue
+
+        def is_similar_candidate(candidate):
+            if not candidate or candidate is catalogue:
+                return False
+            if candidate.model_quacks_like_a_clone:
+                return False
+            if target_power is not None:
+                candidate_power = getattr(candidate.example_model_variant, "power", None)
+                if candidate_power is not None:
+                    lower = target_power * (1 - power_tolerance_pct)
+                    upper = target_power * (1 + power_tolerance_pct)
+                    if not (lower <= candidate_power <= upper):
+                        return False
+            return True
+
+        results = []
+
+        # Same generation
+        for branch in branch_dicts:
+            candidate = branch.get(gen)
+            if is_similar_candidate(candidate):
+                results.append(candidate)
+
+        # Next gen fallback if no explicit replacement
+        if self.get_next_gen_catalogue(catalogue) is None:
+            for branch in branch_dicts:
+                candidate = branch.get(gen + 1)
+                if is_similar_candidate(candidate):
+                    results.append(candidate)
+
+        # Previous gen candidates with no replacement
+        for branch in branch_dicts:
+            candidate = branch.get(gen - 1)
+            if is_similar_candidate(candidate):
+                if self.get_next_gen_catalogue(candidate) is None:
+                    results.append(candidate)
+
+        if len(results) == 0:
+            print(catalogue.model_id, " has no similar catalogues")
+
+        return results
 
     @cached_property
     def simplified_tree(self) -> dict:

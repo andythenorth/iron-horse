@@ -330,23 +330,26 @@
                             </td>
                         </tr>
                         <tr>
-                            <th colspan="3" style="text-align:center">Vehicles with Similar Role or Power</th>
+                            <th colspan="3" style="text-align:center">See also&hellip;</th>
                         </tr>
                         <tr>
-                            <td colspan="3" style="text-align:center" tal:replace="nothing"><!--! CABBAGE nerfed -->
+                            <td colspan="3" style="text-align:center">
                                 <!--! this really isn't a well constructed table, but eh -->
-                                <tal:similar_default_model_variants repeat="similar_default_model_variant example_model_variant.similar_model_variants">
+                                <tal:similar_model_catalogues repeat="similar_model_catalogue catalogue.similar_model_catalogues">
                                     <div style="display:inline-block; margin:10px;">
-                                        <a href="${similar_default_model_variant.id}.html">
-                                            <div class="vehicle-image">
-                                                <img src="static/img/${similar_default_model_variant.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(catalogue=similar_default_model_variant.catalogue)}"
+                                        <a href="${similar_model_catalogue.model_id}.html">
+                                            <div class="vehicle-image" style="margin-bottom:7px;">
+                                                <img src="static/img/${similar_model_catalogue.example_model_variant.catalogue_entry.model_variant_id}_red_white.png"
+                                                     width="${2* doc_helper.docs_sprite_width(catalogue=similar_model_catalogue)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.unpack_name_string(similar_default_model_variant.catalogue)}
+                                             ${doc_helper.unpack_name_string(similar_model_catalogue)}
                                         </a>
                                     </div>
-                                </tal:similar_default_model_variants>
+                                </tal:similar_model_catalogues>
+                                <tal:no_no_similar_model_catalogues condition="len(catalogue.similar_model_catalogues) == 0">
+                                    <span class="muted">Sorry, nothing else to show here :|</span>
+                                </tal:no_no_similar_model_catalogues>
                             </td>
                         </tr>
                     </tbody>

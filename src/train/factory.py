@@ -665,6 +665,15 @@ class Catalogue(list):
         # empty list if nothing found
         return []
 
+    @cached_property
+    def similar_model_catalogues(self):
+        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
+        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
+        if self.example_model_variant.power > 0:
+            return self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(catalogue=self)
+        # empty list if nothing found
+        return []
+
     def get_upstream_catalogue(self, permissive=False):
         # possibly expensive, but not often required option to get the catalogue for the model a clone was sourced from
         # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
