@@ -9,8 +9,8 @@ def main(**kwargs):
         model_id="lebeche",
         base_numeric_id=30570,
         name="Lebeche",
-        subrole="express",
-        subrole_child_branch_num=1,
+        subrole="universal",
+        subrole_child_branch_num=5,
         power_by_power_source={
             "DIESEL": 1200,
         },

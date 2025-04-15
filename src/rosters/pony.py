@@ -440,16 +440,10 @@ def main():
                 # only standard for metro in Pony
             },
             "NG": {
-                "standard": [
-                    45,
-                    45,
-                    60,
-                    60,
-                ],
-                # NG standard/suburban/express same in Pony, balanced against trams, RVs
-                # suburban has to be provided as the mail railcar expects it, just copying it in is easiest solution
+                # NG standard/suburban/express all *same* in Pony, balanced against trams, RVs
+                # suburban and express have to be provided as some vehicles expect it, just copying it in is easiest solution
+                "standard": [45, 45, 60, 75],
                 "suburban": [45, 45, 60, 75],
-                # NG express breaks from standard in gen 4
                 "express": [45, 45, 60, 75],
             },
         },

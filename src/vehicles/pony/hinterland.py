@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21740,
         name="Hinterland",
         subrole="universal",
-        subrole_child_branch_num=-5,
+        subrole_child_branch_num=-4,
         power_by_power_source={
             "DIESEL": 1200,
         },

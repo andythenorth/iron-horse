@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21820,
         name="2-6-0+0-6-2 Nile",
         subrole="universal",
-        subrole_child_branch_num=-5,
+        subrole_child_branch_num=-4,
         base_track_type="NG",
         power_by_power_source={
             "STEAM": 900,

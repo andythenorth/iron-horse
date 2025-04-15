@@ -9,8 +9,8 @@ def main(**kwargs):
         model_id="higuma",
         base_numeric_id=30870,
         name="Higuma",
-        subrole="express",
-        subrole_child_branch_num=-2,
+        subrole="universal",
+        subrole_child_branch_num=-6,
         base_track_type="NG",
         power_by_power_source={
             "DIESEL": 1600,  # breaks the 300 hp step size, but eh, lots of precedent  1800 hp would be too much?

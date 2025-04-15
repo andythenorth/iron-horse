@@ -1446,17 +1446,6 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
         return self.roster.pax_car_capacity_types[self.model_def.pax_car_capacity_type]
 
     @property
-    def subrole(self):
-        if self.base_track_type == "NG":
-            # pony NG jank, to force a different role string for NG
-            if self.gen == 4:
-                return "express"
-            else:
-                return "universal"
-        else:
-            return super().subrole
-
-    @property
     def loading_speed_multiplier(self):
         # !!!!!!!!!!!!!!!
         return self.pax_car_capacity_type["loading_speed_multiplier"]
@@ -1666,14 +1655,6 @@ class MailEngineRailcar(MailEngineBase):
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    def subrole(self):
-        if self.base_track_type == "NG" and self.gen == 4:
-            # pony NG jank
-            return "express"
-        else:
-            return super().subrole
 
     @property
     def fixed_run_cost_points(self):
@@ -1966,20 +1947,6 @@ class PassengerEngineRailbus(PassengerEngineBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
-
-    @property
-    def subrole(self):
-        # CABBAGE - IS THIS INTENDED?  IT'S MESSING UP THE TECH TREE
-        # IS IT RELATED TO SETTING SPEEDS?  OR IS IT BUY MENU TEXT?
-        # CHANGING IT WILL ALSO CHANGE ENGINE COUNTS IN DOCS
-        if self.base_track_type == "NG":
-            # pony NG jank
-            if self.gen == 4:
-                return "express"
-            else:
-                return "universal"
-        else:
-            return super().subrole
 
     @property
     def fixed_run_cost_points(self):
@@ -5603,11 +5570,9 @@ class MailCar(MailCarBase):
 
     @property
     def subrole(self):
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type == "NG" and self.gen < 4:
+        if self.base_track_type == "NG":
             return "universal"
-        else:
-            return "express"
+        return "express"
 
 
 class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
@@ -6486,7 +6451,8 @@ class PanoramicCar(PassengerCarBase):
 
     @property
     def subrole(self):
-        return "express"
+        # assumes pony NG, extend checks as appropriate
+        return "universal"
 
 
 class PassengerCar(PassengerCarBase):
@@ -6538,11 +6504,9 @@ class PassengerCar(PassengerCarBase):
 
     @property
     def subrole(self):
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type == "NG" and self.gen < 4:
+        if self.base_track_type == "NG":
             return "universal"
-        else:
-            return "express"
+        return "express"
 
 
 class PassengerHighSpeedCar(PassengerCarBase):
@@ -6714,12 +6678,8 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if self.base_track_type == "NG" and self.gen == 4:
-            # pony NG jank, gen 4 railbus trailers get a speed bump to 'express'
-            self.speed_class = "express"
-        else:
-            # PassengerCarBase sets 'express' speed, but railbus trailers should override this
-            self.speed_class = "standard"
+        # PassengerCarBase sets 'express' speed, but railcar trailers should override this
+        self.speed_class = "standard"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[

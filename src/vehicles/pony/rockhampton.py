@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=21290,
         name="Rockhampton",
         subrole="universal",
-        subrole_child_branch_num=-4,
+        subrole_child_branch_num=-3,
         base_track_type="NG",
         power_by_power_source={
             "DIESEL": 1200,

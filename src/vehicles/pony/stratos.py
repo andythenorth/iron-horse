@@ -9,7 +9,7 @@ def main(**kwargs):
         model_id="stratos",
         base_numeric_id=390,
         name="Stratos",
-        subrole="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
+        subrole="express_pax_railcar",  # this will cause it to get the express label, but eh, probably fine
         subrole_child_branch_num=-2,
         base_track_type="NG",
         power_by_power_source={
