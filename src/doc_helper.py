@@ -373,7 +373,7 @@ class DocHelper(object):
                 "TE coefficient",
                 example_model_variant.tractive_effort_coefficient,
             )
-            self.fetch_prop(result, "Intro Year", example_model_variant.intro_year)
+            self.fetch_prop(result, "Intro Year", catalogue.intro_year)
             self.fetch_prop(result, "Vehicle Life", example_model_variant.vehicle_life)
             self.fetch_prop(result, "Buy Cost", example_model_variant.buy_cost)
             self.fetch_prop(result, "Running Cost", example_model_variant.running_cost)

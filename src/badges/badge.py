@@ -232,7 +232,7 @@ class BadgeManager(list):
                     label=f"ih_tech_tree/joker/{catalogue.example_model_variant.joker}"
                 )
                 self.add_badge(
-                    label=f"ih_tech_tree/intro_year/{catalogue.example_model_variant.intro_year}"
+                    label=f"ih_tech_tree/intro_year/{catalogue.intro_year}"
                 )
                 self.add_badge(
                     label=f"ih_tech_tree/intro_date_months_offset/{catalogue.example_model_variant.intro_date_months_offset}"

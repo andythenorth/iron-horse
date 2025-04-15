@@ -445,9 +445,9 @@ def main():
     ]
     # default sort for docs is by intro year
     model_variants = sorted(
-        model_variants, key=lambda model_variant: model_variant.intro_year
+        model_variants, key=lambda model_variant: model_variant.catalogue.intro_year
     )
-    dates = sorted([i.intro_year for i in model_variants])
+    dates = sorted([i.catalogue.intro_year for i in model_variants])
     metadata["dates"] = (dates[0], dates[-1])
 
     # render standard docs from a list

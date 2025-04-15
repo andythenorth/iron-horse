@@ -327,7 +327,7 @@ class ModelTypeBase(object):
             f"ih_tech_tree/subrole_child_branch_num/{self.subrole_child_branch_num}"
         )
         result.append(f"ih_tech_tree/joker/{self.joker}")
-        result.append(f"ih_tech_tree/intro_year/{self.intro_year}")
+        result.append(f"ih_tech_tree/intro_year/{self.catalogue.intro_year}")
         result.append(
             f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
         )
@@ -501,10 +501,6 @@ class ModelTypeBase(object):
             return 0.3
 
     @cached_property
-    def intro_year(self):
-        return self.catalogue.intro_year
-
-    @cached_property
     def intro_year_offset(self):
         # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
         return self.model_def.intro_year_offset
@@ -584,7 +580,7 @@ class ModelTypeBase(object):
             lifespan = 40
         if self.catalogue.replacement_model_catalogue is not None:
             time_to_replacement = (
-                self.catalogue.replacement_model_catalogue.intro_year - self.intro_year
+                self.catalogue.replacement_model_catalogue.intro_year - self.catalogue.intro_year
             )
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
@@ -600,7 +596,7 @@ class ModelTypeBase(object):
         if self.catalogue.replacement_model_catalogue is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.catalogue.replacement_model_catalogue.intro_year - self.intro_year
+            return self.catalogue.replacement_model_catalogue.intro_year - self.catalogue.intro_year
 
     @property
     def retire_early(self):
@@ -1166,11 +1162,11 @@ class ModelTypeBase(object):
         self.assert_cargo_labels(self.label_refits_disallowed)
         # test interpolated gen and intro_year
         assert self.gen, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year"
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year in model_def"
             % self.id
         )
-        assert self.intro_year, (
-            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year"
+        assert self.catalogue.intro_year, (
+            "%s model_variant.gen is None, which is invalid.  Set gen or intro_year in model_def"
             % self.id
         )
         # templating
@@ -2407,7 +2403,7 @@ class CarModelTypeBase(ModelTypeBase):
         next_gen_intro_year = self.roster.intro_years[self.base_track_type_name][
             next_gen - 1
         ]
-        return next_gen_intro_year - self.intro_year
+        return next_gen_intro_year - self.catalogue.intro_year
 
     @property
     def wagon_title_class_str(self):
