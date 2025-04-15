@@ -621,11 +621,16 @@ class Catalogue(list):
             if model_variant.is_default_model_variant:
                 return model_variant
 
+    @property
+    def example_model_variant(self):
+        # more convenient when we just want an example model_variant for templates
+        return self.default_model_variant_from_roster
+
     @cached_property
     def cab_engine_model(self):
-        # fetch the default model variant for the cab, if relevant
+        # fetch a model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
-        return self.factory.cab_factory.catalogue.default_model_variant_from_roster
+        return self.factory.cab_factory.catalogue.example_model_variant
 
     @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
@@ -645,8 +650,8 @@ class Catalogue(list):
         # convenience passthrough
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
-        if self.default_model_variant_from_roster.power > 0:
-            return self.factory.roster.engine_model_tech_tree.replacement_model_catalogue(self)
+        if self.example_model_variant.power > 0:
+            return self.factory.roster.engine_model_tech_tree.replacement_model_catalogue(catalogue=self)
         return None
 
     @cached_property

@@ -139,7 +139,7 @@ class ModelTypeBase(object):
         if self.model_def.cloned_from_model_def is not None:
             for catalogue in self.roster.catalogues:
                 if catalogue.model_def == self.model_def.cloned_from_model_def:
-                    return catalogue.default_model_variant_from_roster
+                    return catalogue.example_model_variant
         raise Exception(f"cloned_from_model_type not found for {self.id}")
 
     @property
@@ -542,7 +542,7 @@ class ModelTypeBase(object):
         # a model can replace more than one other model
         result = []
         for catalogue in self.roster.engine_catalogues:
-            candidate_for_replacement = catalogue.default_model_variant_from_roster.replacement_model_catalogue
+            candidate_for_replacement = catalogue.replacement_model_catalogue
             if candidate_for_replacement is not None:
                 if candidate_for_replacement.model_id == self.model_id:
                     result.append(candidate_for_replacement)

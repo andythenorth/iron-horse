@@ -185,20 +185,19 @@
                                                 </span>
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
-                                                <!--! model_type might actually be default model_variant -->
-                                                <tal:model_type define="catalogue tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen];">
+                                                <tal:example_model_variant define="catalogue tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen];">
                                                     <tal:block condition="catalogue is not None"
-                                                               define="model_type catalogue.default_model_variant_from_roster if catalogue is not None else None;">
-                                                        <div id="${model_type.model_id}" class="tech_tree_vehicle_container">
-                                                            <a href="${model_type.model_id}.html">
+                                                               define="example_model_variant catalogue.example_model_variant if catalogue is not None else None;">
+                                                        <div id="${example_model_variant.model_id}" class="tech_tree_vehicle_container">
+                                                            <a href="${example_model_variant.model_id}.html">
                                                                 <div class="tech_tree_vehicle
-                                                                            ${'tech_tree_vehicle_electric_' + model_type.electrification_type.lower() if model_type.requires_electric_rails else 'None'}
-                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in model_type.power_source_badges else None}
+                                                                            ${'tech_tree_vehicle_electric_' + example_model_variant.electrification_type.lower() if example_model_variant.requires_electric_rails else 'None'}
+                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in example_model_variant.power_source_badges else None}
                                                                             ${'tech_tree_vehicle_arrow' if catalogue.replacement_model_catalogue is not None else None}">
                                                                     <span style="display:block;">
-                                                                        ${model_type.name}
+                                                                        ${example_model_variant.name}
                                                                     </span>
-                                                                    <img src="static/img/${model_type.id}_${vehicle_cc}.png"
+                                                                    <img src="static/img/${example_model_variant.id}_${vehicle_cc}.png"
                                                                          width="${2 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
@@ -211,20 +210,20 @@
                                                                             this is a lolz JFDI hack to provide equal height spacing when there are 1 or 2 power sources
                                                                             this will fail with more than 2 power sources, but deal with that later by adding more conditions
                                                                         -->
-                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(catalogue)) == 1) and (model_type.lgv_capable == False)">
+                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(catalogue)) == 1) and (example_model_variant.lgv_capable == False)">
                                                                             <br />
                                                                         </tal:linebreak>
                                                                         <small>${doc_helper.speed_formatted_for_docs(catalogue)}</small>
 
-                                                                        <small>${model_type.power_speed_ratio}i</small>
-                                                                        <tal:branch condition="model_type.roster.id != 'pony'">
-                                                                            <small>branch: ${model_type.subrole_child_branch_num}</small>
+                                                                        <small>${example_model_variant.power_speed_ratio}i</small>
+                                                                        <tal:branch condition="example_model_variant.roster.id != 'pony'">
+                                                                            <small>branch: ${example_model_variant.subrole_child_branch_num}</small>
                                                                         </tal:branch>
                                                                     </span>
                                                                 </div>
                                                                 <div tal:condition="catalogue.replacement_model_catalogue is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                     <div style="${'visibility:hidden;' if doc_helper.model_cabbage_has_direct_replacment(model_type) else nothing}">
+                                                                     <div style="${'visibility:hidden;' if doc_helper.model_cabbage_has_direct_replacment(example_model_variant) else nothing}">
                                                                         <a href="${catalogue.replacement_model_catalogue.model_id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
@@ -236,7 +235,7 @@
                                                             </a>
                                                         </div>
                                                     </tal:block>
-                                                </tal:model_type>
+                                                </tal:example_model_variant>
                                             </td>
                                             <td><!--! empty space cell --></td>
                                         </tr>

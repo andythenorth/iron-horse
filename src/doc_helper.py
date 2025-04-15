@@ -21,10 +21,10 @@ class DocHelper(object):
 
     def docs_sprite_width(self, catalogue=None, model_variant=None):
         # generally use catalogue for this
-        # but fetching the default_model_variant from the roster fails in multiprocessing
+        # but fetching the example_model_variant from the roster fails in multiprocessing
         # therefore have the option to pass in a model_variant directly for that case
         if model_variant is None:
-            model_variant = catalogue.default_model_variant_from_roster
+            model_variant = catalogue.example_model_variant
         if not model_variant.dual_headed:
             # +1 for the buffers etc
             return min((model_variant.buy_menu_width + 1), self.docs_sprite_max_width)
@@ -51,7 +51,7 @@ class DocHelper(object):
         result = []
         for catalogue in roster.engine_catalogues:
             if (
-                not catalogue.default_model_variant_from_roster.base_track_type_name
+                not catalogue.base_track_type_name
                 == base_track_type_name
             ):
                 continue
@@ -67,7 +67,7 @@ class DocHelper(object):
         result = []
         for catalogue in roster.wagon_catalogues:
             if (
-                not catalogue.default_model_variant_from_roster.base_track_type_name
+                not catalogue.base_track_type_name
                 == base_track_type_name
             ):
                 continue
@@ -96,16 +96,15 @@ class DocHelper(object):
         for catalogue in roster.engine_catalogues:
             if catalogue.model_quacks_like_a_clone:
                 continue
-            default_model_variant = catalogue.default_model_variant_from_roster
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                default_model_variant.distributed_power_wagon
+                catalogue.example_model_variant.distributed_power_wagon
                 or (
-                    default_model_variant.role
+                    catalogue.example_model_variant.role
                     in ["driving_cab", "gronk", "lolz", "metro"]
                 )
-                or (default_model_variant.subrole_child_branch_num > 999)
-                or (default_model_variant.subrole_child_branch_num < -999)
+                or (catalogue.example_model_variant.subrole_child_branch_num > 999)
+                or (catalogue.example_model_variant.subrole_child_branch_num < -999)
             ):
                 not_really_engines.append(catalogue)
             else:
@@ -222,7 +221,7 @@ class DocHelper(object):
             # extensible excludes as needed
             if catalogue.model_is_randomised_wagon_type:
                 continue
-            if catalogue.default_model_variant_from_roster.is_caboose:
+            if catalogue.example_model_variant.is_caboose:
                 continue
             wagon_catalogues.append(catalogue)
         wagons = ("wagons", wagon_catalogues)
@@ -238,7 +237,7 @@ class DocHelper(object):
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
-                    catalogue.default_model_variant_from_roster.base_track_type_name
+                    catalogue.base_track_type_name
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
@@ -260,12 +259,12 @@ class DocHelper(object):
         return json.dumps(result)
 
     def unpack_name_string(self, catalogue):
-        default_model_variant = catalogue.default_model_variant_from_roster
+        example_model_variant = catalogue.example_model_variant
         # engines have an untranslated name defined via name, wagons use a translated string
-        if default_model_variant.name is not None:
-            return default_model_variant.name
+        if example_model_variant.name is not None:
+            return example_model_variant.name
         else:
-            name_parts = default_model_variant.get_name_parts(context="docs")
+            name_parts = example_model_variant.get_name_parts(context="docs")
             result = []
             for name_part in name_parts:
                 if name_part is not None:
@@ -274,7 +273,7 @@ class DocHelper(object):
 
             if (
                 catalogue.model_is_randomised_wagon_type
-                or default_model_variant.is_caboose
+                or example_model_variant.is_caboose
             ):
                 result.append("- Random")
             return " ".join(result)
@@ -285,7 +284,7 @@ class DocHelper(object):
 
     def get_role_string_from_catalogue(self, catalogue, badge_manager):
         role_string_name = badge_manager.get_badge_by_label(
-            catalogue.default_model_variant_from_roster.role_badge
+            catalogue.example_model_variant.role_badge
         ).name
         return self.clean_role_string(self.lang_strings[role_string_name])
 
@@ -299,7 +298,7 @@ class DocHelper(object):
     def model_cabbage_has_direct_replacment(self, model_variant):
         # CABBAGE - THIS CAN PROBABLY JUST USE THE ROSTER TECH TREE DIRECTLY?
         # MIGHT be a case of JFDI - this is just to hide or show some tech tree content
-        replacement_model_variant = model_variant.catalogue.replacement_model_catalogue.default_model_variant_from_roster
+        replacement_model_variant = model_variant.catalogue.replacement_model_catalogue.example_model_variant
         if replacement_model_variant.subrole != model_variant.subrole:
             return False
         elif (
@@ -313,43 +312,42 @@ class DocHelper(object):
             return True
 
     def power_formatted_for_docs(self, catalogue):
-        default_model_variant = catalogue.default_model_variant_from_roster
-        if default_model_variant.distributed_power_wagon:
+        example_model_variant = catalogue.example_model_variant
+        if example_model_variant.distributed_power_wagon:
             return [str(catalogue.cab_engine_model.power) + " hp"]
-        elif default_model_variant.power_by_power_source is not None:
+        elif example_model_variant.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             # !! could be global_constants.power_source
             result = []
-            for power_data in default_model_variant.vehicle_power_source_tree:
+            for power_data in example_model_variant.vehicle_power_source_tree:
                 power_source_name = self.lang_strings[
                     "STR_POWER_SOURCE_" + power_data[0]
                 ]
                 power_value = (
-                    str(default_model_variant.power_by_power_source[power_data[0]])
+                    str(example_model_variant.power_by_power_source[power_data[0]])
                     + " hp"
                 )
                 result.append(power_source_name + " " + power_value)
             return result
         else:
-            return [str(default_model_variant.power) + " hp"]
+            return [str(example_model_variant.power) + " hp"]
 
     def speed_formatted_for_docs(self, catalogue):
-        default_model_variant = catalogue.default_model_variant_from_roster
-        if default_model_variant.speed == None:
+        example_model_variant = catalogue.example_model_variant
+        if example_model_variant.speed == None:
             # unlimited speed
             return "No limit"
-        result = [str(default_model_variant.speed) + " mph"]
-        if default_model_variant.lgv_capable:
-            result.append(str(default_model_variant.speed_on_lgv) + " mph (LGV)")
+        result = [str(example_model_variant.speed) + " mph"]
+        if example_model_variant.lgv_capable:
+            result.append(str(example_model_variant.speed_on_lgv) + " mph (LGV)")
         return " / ".join(result)
 
     def capacity_formatted_for_docs(self, catalogue):
-        default_model_variant = catalogue.default_model_variant_from_roster
         capacity = sum(
             [
                 unit.default_cargo_capacity
-                for unit in catalogue.default_model_variant_from_roster.units
+                for unit in catalogue.example_model_variant.units
             ]
         )
         # CABBAGE - we could attempt to find better units from the model type subclass?  At least for pax and mail?
@@ -362,28 +360,28 @@ class DocHelper(object):
     def get_props_to_print_in_code_reference(self, catalogues):
         result = defaultdict(list)
         for catalogue in catalogues:
-            # we print _mostly_ from default_model_variant here, not catalogue or model_def, to see what actually gets determined
-            default_model_variant = catalogue.default_model_variant_from_roster
+            # we print _mostly_ from example_model_variant here, not catalogue or model_def, to see what actually gets determined
+            example_model_variant = catalogue.example_model_variant
             self.fetch_prop(result, "Vehicle Name", self.unpack_name_string(catalogue))
-            self.fetch_prop(result, "Gen", default_model_variant.gen)
-            self.fetch_prop(result, "Railtype", default_model_variant.track_type)
-            self.fetch_prop(result, "HP", int(default_model_variant.power))
-            self.fetch_prop(result, "Speed (mph)", default_model_variant.speed)
-            self.fetch_prop(result, "Weight (t)", default_model_variant.weight)
+            self.fetch_prop(result, "Gen", example_model_variant.gen)
+            self.fetch_prop(result, "Railtype", example_model_variant.track_type)
+            self.fetch_prop(result, "HP", int(example_model_variant.power))
+            self.fetch_prop(result, "Speed (mph)", example_model_variant.speed)
+            self.fetch_prop(result, "Weight (t)", example_model_variant.weight)
             self.fetch_prop(
                 result,
                 "TE coefficient",
-                default_model_variant.tractive_effort_coefficient,
+                example_model_variant.tractive_effort_coefficient,
             )
-            self.fetch_prop(result, "Intro Year", default_model_variant.intro_year)
-            self.fetch_prop(result, "Vehicle Life", default_model_variant.vehicle_life)
-            self.fetch_prop(result, "Buy Cost", default_model_variant.buy_cost)
-            self.fetch_prop(result, "Running Cost", default_model_variant.running_cost)
+            self.fetch_prop(result, "Intro Year", example_model_variant.intro_year)
+            self.fetch_prop(result, "Vehicle Life", example_model_variant.vehicle_life)
+            self.fetch_prop(result, "Buy Cost", example_model_variant.buy_cost)
+            self.fetch_prop(result, "Running Cost", example_model_variant.running_cost)
             self.fetch_prop(
                 result,
                 "Loading Speed",
                 ", ".join(
-                    [str(unit.loading_speed) for unit in default_model_variant.units]
+                    [str(unit.loading_speed) for unit in example_model_variant.units]
                 ),
             )
         return result

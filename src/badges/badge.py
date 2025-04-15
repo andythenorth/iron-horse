@@ -132,7 +132,7 @@ class BadgeManager(list):
                         label,
                         name,
                     ) in (
-                        catalogue.default_model_variant_from_roster.cabbage_wagon_randomisation_candidate_assortment_unique_names.items()
+                        catalogue.example_model_variant.cabbage_wagon_randomisation_candidate_assortment_unique_names.items()
                     ):
                         self.add_badge(
                             label=f"ih_randomised_wagon/candidates/{label}",
@@ -152,7 +152,7 @@ class BadgeManager(list):
                 for (
                     badge
                 ) in (
-                    catalogue.default_model_variant_from_roster.distributed_power_badges
+                    catalogue.example_model_variant.distributed_power_badges
                 ):
                     self.add_badge(
                         label=f"{badge}",
@@ -206,11 +206,11 @@ class BadgeManager(list):
         for roster in roster_manager:
             for catalogue in roster.catalogues:
                 if (
-                    catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset
+                    catalogue.example_model_variant.gestalt_graphics.formation_ruleset
                     is not None
                 ):
                     self.add_badge(
-                        f"ih_formation_ruleset/{catalogue.default_model_variant_from_roster.gestalt_graphics.formation_ruleset}"
+                        f"ih_formation_ruleset/{catalogue.example_model_variant.gestalt_graphics.formation_ruleset}"
                     )
 
     def produce_tech_tree_badges(self, **kwargs):
@@ -223,19 +223,19 @@ class BadgeManager(list):
         for roster in roster_manager:
             for catalogue in roster.catalogues:
                 self.add_badge(
-                    label=f"ih_tech_tree/subrole/{catalogue.default_model_variant_from_roster.subrole}"
+                    label=f"ih_tech_tree/subrole/{catalogue.example_model_variant.subrole}"
                 )
                 self.add_badge(
-                    label=f"ih_tech_tree/subrole_child_branch_num/{catalogue.default_model_variant_from_roster.subrole_child_branch_num}"
+                    label=f"ih_tech_tree/subrole_child_branch_num/{catalogue.example_model_variant.subrole_child_branch_num}"
                 )
                 self.add_badge(
-                    label=f"ih_tech_tree/joker/{catalogue.default_model_variant_from_roster.joker}"
+                    label=f"ih_tech_tree/joker/{catalogue.example_model_variant.joker}"
                 )
                 self.add_badge(
-                    label=f"ih_tech_tree/intro_year/{catalogue.default_model_variant_from_roster.intro_year}"
+                    label=f"ih_tech_tree/intro_year/{catalogue.example_model_variant.intro_year}"
                 )
                 self.add_badge(
-                    label=f"ih_tech_tree/intro_date_months_offset/{catalogue.default_model_variant_from_roster.intro_date_months_offset}"
+                    label=f"ih_tech_tree/intro_date_months_offset/{catalogue.example_model_variant.intro_date_months_offset}"
                 )
                 if (
                     catalogue.replacement_model_catalogue

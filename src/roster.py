@@ -290,7 +290,7 @@ class Roster:
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
                 cabbage_random_temp_foo.setdefault(tmp_uid, [])
                 cabbage_random_temp_foo[tmp_uid].append(
-                    catalogue.default_model_variant_from_roster
+                    catalogue.example_model_variant
                 )
 
         for catalogue in randomised_wagon_type_catalogues_tmp:
@@ -404,10 +404,10 @@ class Roster:
                     lang_strings[node_name] = node_value["base"]
 
         for catalogue in self.catalogues:
-            model_variant = catalogue.default_model_variant_from_roster
-            if model_variant.name is not None:
-                lang_strings["STR_NAME_" + model_variant.model_id.upper()] = (
-                    model_variant.name
+            example_model_variant = catalogue.example_model_variant
+            if example_model_variant.name is not None:
+                lang_strings["STR_NAME_" + example_model_variant.model_id.upper()] = (
+                    example_model_variant.name
                 )
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
@@ -580,14 +580,12 @@ class TechTree(dict):
         if catalogue.model_quacks_like_a_clone:
             # clones don't get added to the tree
             return
-        # CABBAGE SHIM
-        model_variant = catalogue.default_model_variant_from_roster
 
         track_type = catalogue.base_track_type_name
-        role = catalogue.default_model_variant_from_roster.role
-        subrole = catalogue.default_model_variant_from_roster.subrole
+        role = catalogue.example_model_variant.role
+        subrole = catalogue.example_model_variant.subrole
         subrole_child_branch_num = (
-            catalogue.default_model_variant_from_roster.subrole_child_branch_num
+            catalogue.example_model_variant.subrole_child_branch_num
         )
 
         role_dict = self._ensure_role_dict(track_type, role)
@@ -628,12 +626,12 @@ class TechTree(dict):
         return [i + 1 for i in range(len(years))]
 
     def _get_branch_for_catalogue(self, catalogue):
-        model_variant = catalogue.default_model_variant_from_roster
-        # Attempt to access the branch for this model_variant.
+        example_model_variant = catalogue.example_model_variant
+        # Attempt to access the branch for this catalogue.
         try:
-            branch = self[catalogue.base_track_type_name][model_variant.role][
-                model_variant.subrole
-            ][model_variant.subrole_child_branch_num]
+            branch = self[catalogue.base_track_type_name][example_model_variant.role][
+                example_model_variant.subrole
+            ][example_model_variant.subrole_child_branch_num]
         except KeyError as e:
             raise KeyError(
                 f"Error accessing branch for catalogue {catalogue.model_id}: {e}"
@@ -646,7 +644,7 @@ class TechTree(dict):
 
         # Branch keys are pre-provisioned with valid gens (1,2,...,max).
         # If target_gen is below 1 or above the highest valid generation,
-        # then this model_variant is at the start or end of its branch: return None.
+        # then this catalogue is at the start or end of its branch: return None.
         if target_gen < 1 or target_gen > max(target_branch):
             return None
 
@@ -677,7 +675,7 @@ class TechTree(dict):
         # models can span generations, so walk forward to find if there's a replacement in the line
         max_gen = max(
             self._valid_gens_for_track_type(
-                catalogue.default_model_variant_from_roster.base_track_type_name
+                catalogue.base_track_type_name
             )
         )
         offset = 1
