@@ -323,10 +323,16 @@ class ModelTypeBase(object):
             f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
         )
         if self.catalogue.next_gen_catalogue is not None:
-            # note that as of April 2025 only wagons do not set next_gen_catalogue
+            # note that as of April 2025 wagons do not have next_gen_catalogue
             result.append(
                 f"ih_tech_tree/replacement/{self.catalogue.next_gen_catalogue.vehicle_family_badge}"
             )
+        if len(self.catalogue.previous_gen_catalogues) > 0:
+            for previous_gen_catalogue in self.catalogue.previous_gen_catalogues:
+                # note that as of April 2025 wagons do not have previous_gen_catalogues
+                result.append(
+                    f"ih_tech_tree/replaces/{previous_gen_catalogue.vehicle_family_badge}"
+                )
         return result
 
     @property

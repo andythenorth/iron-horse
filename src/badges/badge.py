@@ -222,25 +222,5 @@ class BadgeManager(list):
 
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                self.add_badge(
-                    label=f"ih_tech_tree/subrole/{catalogue.example_model_variant.subrole}"
-                )
-                self.add_badge(
-                    label=f"ih_tech_tree/subrole_child_branch_num/{catalogue.example_model_variant.subrole_child_branch_num}"
-                )
-                self.add_badge(
-                    label=f"ih_tech_tree/joker/{catalogue.example_model_variant.joker}"
-                )
-                self.add_badge(
-                    label=f"ih_tech_tree/intro_year/{catalogue.intro_year}"
-                )
-                self.add_badge(
-                    label=f"ih_tech_tree/intro_date_months_offset/{catalogue.example_model_variant.intro_date_months_offset}"
-                )
-                if (
-                    catalogue.next_gen_catalogue
-                    is not None
-                ):
-                    self.add_badge(
-                        label=f"ih_tech_tree/replacement/{catalogue.next_gen_catalogue.vehicle_family_badge}"
-                    )
+                for badge in catalogue.example_model_variant.tech_tree_badges:
+                    self.add_badge(f"{badge}")
