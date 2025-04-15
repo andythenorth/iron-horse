@@ -322,10 +322,10 @@ class ModelTypeBase(object):
         result.append(
             f"ih_tech_tree/intro_date_months_offset/{self.intro_date_months_offset}"
         )
-        if self.catalogue.replacement_model_catalogue is not None:
-            # note that as of April 2025 only wagons do not set replacement_model_catalogue
+        if self.catalogue.next_gen_catalogue is not None:
+            # note that as of April 2025 only wagons do not set next_gen_catalogue
             result.append(
-                f"ih_tech_tree/replacement/{self.catalogue.replacement_model_catalogue.vehicle_family_badge}"
+                f"ih_tech_tree/replacement/{self.catalogue.next_gen_catalogue.vehicle_family_badge}"
             )
         return result
 
@@ -529,7 +529,7 @@ class ModelTypeBase(object):
         # a model can replace more than one other model
         result = []
         for catalogue in self.roster.engine_catalogues:
-            candidate_for_replacement = catalogue.replacement_model_catalogue
+            candidate_for_replacement = catalogue.next_gen_catalogue
             if candidate_for_replacement is not None:
                 if candidate_for_replacement.model_id == self.model_id:
                     result.append(candidate_for_replacement)
@@ -569,9 +569,9 @@ class ModelTypeBase(object):
             lifespan = 60
         else:
             lifespan = 40
-        if self.catalogue.replacement_model_catalogue is not None:
+        if self.catalogue.next_gen_catalogue is not None:
             time_to_replacement = (
-                self.catalogue.replacement_model_catalogue.intro_year - self.catalogue.intro_year
+                self.catalogue.next_gen_catalogue.intro_year - self.catalogue.intro_year
             )
             if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
@@ -584,10 +584,10 @@ class ModelTypeBase(object):
 
     @cached_property
     def model_life(self):
-        if self.catalogue.replacement_model_catalogue is None:
+        if self.catalogue.next_gen_catalogue is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.catalogue.replacement_model_catalogue.intro_year - self.catalogue.intro_year
+            return self.catalogue.next_gen_catalogue.intro_year - self.catalogue.intro_year
 
     @property
     def retire_early(self):

@@ -238,9 +238,9 @@ class BadgeManager(list):
                     label=f"ih_tech_tree/intro_date_months_offset/{catalogue.example_model_variant.intro_date_months_offset}"
                 )
                 if (
-                    catalogue.replacement_model_catalogue
+                    catalogue.next_gen_catalogue
                     is not None
                 ):
                     self.add_badge(
-                        label=f"ih_tech_tree/replacement/{catalogue.replacement_model_catalogue.vehicle_family_badge}"
+                        label=f"ih_tech_tree/replacement/{catalogue.next_gen_catalogue.vehicle_family_badge}"
                     )

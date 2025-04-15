@@ -647,12 +647,12 @@ class Catalogue(list):
         return result
 
     @cached_property
-    def replacement_model_catalogue(self):
+    def next_gen_catalogue(self):
         # convenience passthrough
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
         if self.example_model_variant.power > 0:
-            return self.factory.roster.engine_model_tech_tree.replacement_model_catalogue(catalogue=self)
+            return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(catalogue=self)
         return None
 
     def get_upstream_catalogue(self, permissive=False):

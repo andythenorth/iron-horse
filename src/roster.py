@@ -658,14 +658,14 @@ class TechTree(dict):
                 f"Target generation {target_gen} missing in target_branch for catalogue {catalogue.model_id}"
             )
 
-    def replacement_model_catalogue(self, catalogue):
-        # find the catalogue for the model a catalogue is replaced by, if any
+    def get_next_gen_catalogue(self, catalogue):
+        # find the catalogue a catalogue is replaced by in the next generation, if any
+        # catalogues (model) have exactly 1 replacement catalogue (model) or None
 
         # clones don't get added to the tree, don't try and access them directly
         if catalogue.model_quacks_like_a_clone:
             catalogue = catalogue.get_upstream_catalogue(permissive=True)
 
-        # models have 1 or None replacement models
         # this method might not work for wagons, callers should guard against calling in that case
         if catalogue.model_def.replacement_model_id is not None:
             # ocasionally we need to merge two branches of the subrole, in this case set replacement_model_id on the model_def
@@ -688,11 +688,18 @@ class TechTree(dict):
         # fall through to None
         return None
 
-    def replaces_model_variant(self, model_variant):
+    def get_replaced_catalogues(self, catalogue):
+        # find the catalogues a catalogue replaces in the previous generation, if any
+        # a catalogue (model) can replace multiple catalogues (models) or None
+
+        print(catalogue)
+        return
+        """
         # CABBAGE unfinished see model_type replaces_model_variants
         return self.get_relative_catalogue(
             model_variant.catalogue, offset=-1
         )
+        """
 
     @cached_property
     def simplified_tree(self) -> dict:
