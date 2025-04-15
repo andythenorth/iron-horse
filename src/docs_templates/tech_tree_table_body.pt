@@ -17,7 +17,7 @@
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, simplified_gameplay)">
                 <tal:base_track_type repeat="base_track_type tech_tree.keys()">
-                    <h3>${doc_helper.base_track_type_names_and_labels[base_track_type]}</h3>
+                    <h3>${doc_helper.base_track_types_with_display_names[base_track_type]}</h3>
                     <tal:roles define="intro_years roster.intro_years[base_track_type]"
                                repeat="role tech_tree[base_track_type]">
                         <tal:descriptions_rail condition="base_track_type=='RAIL'">

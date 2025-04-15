@@ -206,10 +206,7 @@ class DocHelper(object):
             "sorted_by_base_track_type_and_vehicle_type": {},
         }
 
-        for (
-            base_track_type,
-            base_track_label,
-        ) in self.base_track_type_names_and_labels.items():
+        for base_track_type in self.base_track_types_with_display_names:
             result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type
             ] = defaultdict(list)
@@ -241,10 +238,7 @@ class DocHelper(object):
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
-        for (
-            base_track_type,
-            base_track_label,
-        ) in self.base_track_type_names_and_labels.items():
+        for base_track_type in self.base_track_types_with_display_names:
             vehicles = result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type
             ]
@@ -390,7 +384,7 @@ class DocHelper(object):
         return ("", "active")[doc_name == nav_link]
 
     @property
-    def base_track_type_names_and_labels(self):
+    def base_track_types_with_display_names(self):
         # could fetch from lang strings, but eh, JFDI, it's docs
         return {"RAIL": "Standard Gauge", "NG": "Narrow Gauge", "METRO": "Metro"}
 
