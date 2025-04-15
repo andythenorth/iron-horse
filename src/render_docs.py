@@ -110,7 +110,7 @@ def render_docs_vehicle_details(
             roster=roster,
             catalogue=catalogue,
             model_variants=model_variants,
-            default_model_variant=catalogue.default_model_variant_from_roster,
+            example_model_variant=catalogue.example_model_variant,
             dedicated_trailer_catalogue_model_variant_mappings=catalogue.dedicated_trailer_catalogue_model_variant_mappings,
             iron_horse=iron_horse,
             global_constants=global_constants,

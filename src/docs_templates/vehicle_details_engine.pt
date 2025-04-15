@@ -1,7 +1,7 @@
 <tal:title define="global title python: doc_helper.unpack_name_string(catalogue) + ' - ' + roster.str_grf_name" />
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
-<!--! this page uses a catalogue as main context, and a default_model_variant is also in scope as needed -->
+<!--! this page uses a catalogue as main context, and an example_model_variant is also in scope as needed -->
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
@@ -20,7 +20,7 @@
             <div class="span10 offset1">
                 <h2>
                     ${doc_helper.unpack_name_string(catalogue)}
-                    ${'(' + doc_helper.lang_strings[default_model_variant.str_name_suffix] + ')' if default_model_variant.str_name_suffix is not None else None}
+                    ${'(' + doc_helper.lang_strings[example_model_variant.str_name_suffix] + ')' if example_model_variant.str_name_suffix is not None else None}
                     <small>Vehicle Info</small>
                 </h2>
                 <div style="margin-top:30px; margin-bottom:50px;">
@@ -145,11 +145,11 @@
                         </tr>
                         <tr>
                             <th>Weight</th>
-                            <td>${default_model_variant.weight} t</td>
+                            <td>${example_model_variant.weight} t</td>
                         </tr>
                         <tr>
                             <th>Track type</th>
-                            <td>${default_model_variant.track_type}</td>
+                            <td>${example_model_variant.track_type}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -273,8 +273,8 @@
                 <h3 id="tech-tree">Tech Tree</h3>
                 CABBAGE - DROPPED TECH TREE AS BROKEN - RESTORE
                 <br />
-                <!--! replaces_model_variant ${default_model_variant.replaces_model_variant.model_id if default_model_variant.replaces_model_variant is not None else "None"}-->
-                <!--!replaces_model_variants ${[i.id for i in default_model_variant.replaces_model_variants] if default_model_variant.replaces_model_variants is not None else "None"}-->
+                <!--! replaces_model_variant ${example_model_variant.replaces_model_variant.model_id if example_model_variant.replaces_model_variant is not None else "None"}-->
+                <!--!replaces_model_variants ${[i.id for i in example_model_variant.replaces_model_variants] if example_model_variant.replaces_model_variants is not None else "None"}-->
                 <br />
                 replacement_model_catalogue ${catalogue.replacement_model_catalogue.model_id if catalogue.replacement_model_catalogue is not None else "None"}
                 <br />
@@ -288,8 +288,8 @@
                         <tr>
                             <td style="text-align:center; vertical-align:middle;">
                                 <!--! replaces -->
-                                <tal:replaces condition="len(default_model_variant.replaces_model_variants) > 0">
-                                    <tal:replaced_model_variant repeat="replaced_model_variant default_model_variant.replaces_model_variants">
+                                <tal:replaces condition="len(example_model_variant.replaces_model_variants) > 0">
+                                    <tal:replaced_model_variant repeat="replaced_model_variant example_model_variant.replaces_model_variants">
                                         <div style="margin:10px;">
                                             <a href="${replaced_model_variant.model_id}.html">
                                                 <div class="vehicle-image">
@@ -302,20 +302,20 @@
                                         </div>
                                      </tal:replaced_model_variant>
                                 </tal:replaces>
-                                <tal:replaces_none condition="len(default_model_variant.replaces_model_variants) == 0">
+                                <tal:replaces_none condition="len(example_model_variant.replaces_model_variants) == 0">
                                     <span class="muted">None</span>
                                 </tal:replaces_none>
                             </td>
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
                                 <div class="vehicle-image">
-                                    <img src="static/img/${default_model_variant.id}_variant_0_red_white.png"
+                                    <img src="static/img/${example_model_variant.id}_variant_0_red_white.png"
                                          width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
                                          height="${4 * doc_helper.docs_sprite_height}" />
                                 </div>
                                 ${doc_helper.unpack_name_string(catalogue)}
                                 <br />
-                                <a href="tech_tree_table_red.html#${default_model_variant.id}">See in Tech Tree</a>
+                                <a href="tech_tree_table_red.html#${example_model_variant.id}">See in Tech Tree</a>
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
@@ -342,7 +342,7 @@
                         <tr>
                             <td colspan="3" style="text-align:center">
                                 <!--! this really isn't a well constructed table, but eh -->
-                                <tal:similar_default_model_variants repeat="similar_default_model_variant default_model_variant.similar_model_variants">
+                                <tal:similar_default_model_variants repeat="similar_default_model_variant example_model_variant.similar_model_variants">
                                     <div style="display:inline-block; margin:10px;">
                                         <a href="${similar_default_model_variant.id}.html">
                                             <div class="vehicle-image">
