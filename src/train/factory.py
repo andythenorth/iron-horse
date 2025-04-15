@@ -693,6 +693,9 @@ class Catalogue(list):
 
     @cached_property
     def intro_year(self):
+        if self.factory.cab_factory is not None:
+            return self.factory.cab_factory.catalogue.intro_year
+
         # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
