@@ -46,13 +46,13 @@ class DocHelper(object):
         return sorted(result.values(), key=lambda x: x["model_type_cls"].__name__)
 
     def get_engine_catalogues_by_roster_and_base_track_type(
-        self, roster, base_track_type_name
+        self, roster, base_track_type
     ):
         result = []
         for catalogue in roster.engine_catalogues:
             if (
-                not catalogue.base_track_type_name
-                == base_track_type_name
+                not catalogue.base_track_type
+                == base_track_type
             ):
                 continue
             if catalogue.model_quacks_like_a_clone:
@@ -62,13 +62,13 @@ class DocHelper(object):
         return result
 
     def get_wagon_catalogues_by_roster_and_base_track_type(
-        self, roster, base_track_type_name
+        self, roster, base_track_type
     ):
         result = []
         for catalogue in roster.wagon_catalogues:
             if (
-                not catalogue.base_track_type_name
-                == base_track_type_name
+                not catalogue.base_track_type
+                == base_track_type
             ):
                 continue
             if catalogue.model_quacks_like_a_clone:
@@ -191,10 +191,10 @@ class DocHelper(object):
             result.append(colour_name.split("COLOUR_")[1])
         return ("_").join(result).lower()
 
-    def get_subrole_child_branches(self, model_variants, base_track_type_name, role):
+    def get_subrole_child_branches(self, model_variants, base_track_type, role):
         result = []
         for model_variant in model_variants:
-            if model_variant.base_track_type_name == base_track_type_name:
+            if model_variant.base_track_type == base_track_type:
                 if model_variant.subrole is not None and model_variant.subrole == role:
                     result.append(model_variant.subrole_child_branch_num)
         return set(result)
@@ -207,11 +207,11 @@ class DocHelper(object):
         }
 
         for (
-            base_track_type_name,
+            base_track_type,
             base_track_label,
         ) in self.base_track_type_names_and_labels.items():
             result["sorted_by_base_track_type_and_vehicle_type"][
-                base_track_type_name
+                base_track_type
             ] = defaultdict(list)
 
         # parse the engine and wagon model variants into a consistent structure
@@ -237,23 +237,23 @@ class DocHelper(object):
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
-                    catalogue.base_track_type_name
+                    catalogue.base_track_type
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
         for (
-            base_track_type_name,
+            base_track_type,
             base_track_label,
         ) in self.base_track_type_names_and_labels.items():
             vehicles = result["sorted_by_base_track_type_and_vehicle_type"][
-                base_track_type_name
+                base_track_type
             ]
             for vehicle_type in ["engines", "wagons"]:
                 if len(vehicles[vehicle_type]) == 0:
                     del vehicles[vehicle_type]
             if len(vehicles.keys()) == 0:
                 del result["sorted_by_base_track_type_and_vehicle_type"][
-                    base_track_type_name
+                    base_track_type
                 ]
 
         return json.dumps(result)

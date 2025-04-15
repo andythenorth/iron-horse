@@ -15,7 +15,7 @@ def main(**kwargs):
             "DIESEL": 1200,
         },
         random_reverse=True,
-        base_track_type_name="NG",
+        base_track_type="NG",
         gen=4,
         intro_year_offset=-15,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh

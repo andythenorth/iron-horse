@@ -9,7 +9,7 @@ def main(**kwargs):
         name="4-8-2+2-8-4 Drakensberg",
         tractive_effort_coefficient=0.25,
         power=3000,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1945,
     )
 

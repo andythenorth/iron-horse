@@ -57,7 +57,7 @@ def report_sprites_complete(catalogues):
     incomplete_by_track_type = {}
     for catalogue in catalogues:
         if not catalogue.model_def.sprites_complete:
-            track_type = catalogue.model_def.base_track_type_name
+            track_type = catalogue.model_def.base_track_type
             incomplete_by_track_type.setdefault(track_type, []).append(catalogue)
 
     for track_type, group in incomplete_by_track_type.items():

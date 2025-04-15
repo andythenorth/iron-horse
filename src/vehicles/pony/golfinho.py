@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Golfinho",
         subrole="pax_railbus",
         subrole_child_branch_num=-2,
-        base_track_type_name="NG",
+        base_track_type="NG",
         power_by_power_source={
             "DIESEL": 900,
         },

@@ -19,7 +19,7 @@
                     <span tal:condition="roster.id == 'pony'">the UK and Ireland</span>
                 </h2>
                 <ul class="inline">
-                    <tal:base_track_type_name repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
+                    <tal:base_track_type repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
                         <tal:not_empty condition="len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_name_and_label[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name_and_label[0]}-engines">
@@ -29,8 +29,8 @@
                                 </a>
                             </li>
                         </tal:not_empty>
-                    </tal:base_track_type_name>
-                    <tal:base_track_type_name repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
+                    </tal:base_track_type>
+                    <tal:base_track_type repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
                         <tal:not_empty condition="len(doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_name_and_label[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name_and_label[0]}-wagons">
@@ -40,9 +40,9 @@
                                 </a>
                             </li>
                         </tal:not_empty>
-                    </tal:base_track_type_name>
+                    </tal:base_track_type>
                 </ul>
-                <tal:base_track_type_name repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
+                <tal:base_track_type repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
                     <tal:not_empty condition="len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_name_and_label[0])) >  0">
                         <hr />
                         <h4 id="${base_track_type_name_and_label[0]}-engines">
@@ -96,8 +96,8 @@
                             </tbody>
                         </table>
                     </tal:not_empty>
-                </tal:base_track_type_name>
-                <tal:base_track_type_name repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
+                </tal:base_track_type>
+                <tal:base_track_type repeat="base_track_type_name_and_label doc_helper.base_track_type_names_and_labels.items()">
                     <tal:not_empty condition="len(doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_name_and_label[0])) >  0">
                         <hr />
                         <h4 id="${base_track_type_name_and_label[0]}-wagons">
@@ -145,7 +145,7 @@
                             </tbody>
                         </table>
                     </tal:not_empty>
-                </tal:base_track_type_name>
+                </tal:base_track_type>
             </div>
         </div>
     </div>

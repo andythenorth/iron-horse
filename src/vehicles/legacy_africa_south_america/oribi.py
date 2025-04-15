@@ -10,7 +10,7 @@ def main(**kwargs):
         power_by_power_source={
             "DIESEL": 450,
         },
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1960,
     )
 

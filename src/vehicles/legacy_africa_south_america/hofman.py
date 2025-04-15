@@ -8,7 +8,7 @@ def main(**kwargs):
         name="2-6-2+2-6-2 Hofman",
         tractive_effort_coefficient=0.27,  # dibble for game balance
         power=750,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1940,
     )
 

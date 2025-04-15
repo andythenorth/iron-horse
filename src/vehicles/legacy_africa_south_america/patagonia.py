@@ -6,7 +6,7 @@ def main(**kwargs):
         id="patagonia",
         base_numeric_id=9370,
         name="Patagonia",
-        base_track_type_name="NG",
+        base_track_type="NG",
         power=500,
         intro_year=1960,
     )

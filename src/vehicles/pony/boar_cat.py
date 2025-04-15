@@ -15,7 +15,7 @@ def main(**kwargs):
             "DIESEL": 600,
         },
         random_reverse=True,
-        base_track_type_name="NG",
+        base_track_type="NG",
         gen=3,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows

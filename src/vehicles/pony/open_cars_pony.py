@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=15260,
         gen=1,
         subtype="U",
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         sprites_complete=True,
     )
 
@@ -26,7 +26,7 @@ def main(**kwargs):
         base_numeric_id=36410,
         gen=2,
         subtype="U",
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         sprites_complete=True,
     )
 
@@ -39,7 +39,7 @@ def main(**kwargs):
         base_numeric_id=36390,
         gen=3,
         subtype="U",
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         sprites_complete=True,
     )
 
@@ -54,7 +54,7 @@ def main(**kwargs):
         base_numeric_id=36430,
         gen=1,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
@@ -69,7 +69,7 @@ def main(**kwargs):
         base_numeric_id=26090,
         gen=3,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
@@ -82,7 +82,7 @@ def main(**kwargs):
         base_numeric_id=36450,
         gen=3,
         subtype="B",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 

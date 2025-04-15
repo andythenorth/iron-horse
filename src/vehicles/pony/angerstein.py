@@ -15,7 +15,7 @@ def main(**kwargs):
             "METRO": 1250,
         },
         random_reverse=True,
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         gen=3,
         intro_year_offset=1,  # introduce later than gen epoch by design
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines

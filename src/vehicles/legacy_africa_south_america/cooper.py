@@ -9,7 +9,7 @@ def main(**kwargs):  # GE Shovelnose - meter gauge ish
         power_by_power_source={
             "DIESEL": 1000,
         },
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1949,
     )
 

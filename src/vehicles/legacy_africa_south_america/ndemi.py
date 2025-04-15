@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=11110,
         name="4-8-0 Ndemi",
         power=1700,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1887,
     )
 

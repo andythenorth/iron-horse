@@ -6,7 +6,7 @@ def main(**kwargs):
         id="planet",
         base_numeric_id=360,
         name="Planet",
-        base_track_type_name="NG",
+        base_track_type="NG",
         power=500,
         intro_year=1950,
     )

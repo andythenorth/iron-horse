@@ -144,9 +144,9 @@ class ModelTypeBase(object):
         return unique_units
 
     @property
-    def base_track_type_name(self):
+    def base_track_type(self):
         # just a pass through for convenience
-        return self.catalogue.base_track_type_name
+        return self.catalogue.base_track_type
 
     @property
     def str_name_suffix(self):
@@ -574,18 +574,18 @@ class ModelTypeBase(object):
     def track_type_name(self):
         if self.requires_electric_rails:
             result = (
-                self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type
+                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
             )
         else:
-            result = self.base_track_type_name
+            result = self.base_track_type
         return result
 
     @cached_property
     def track_type(self):
-        # are you sure you don't want base_track_type_name instead? (generally you do want base_track_type_name)
-        # track_type maps base_track_type_name and modifiers to an actual railtype label
+        # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
+        # track_type maps base_track_type and modifiers to an actual railtype label
         # this is done by looking up a railtype mapping in global constants, via internal labels
-        # e.g. electric engines with "RAIL" as base_track_type_name will be translated to "ELRL"
+        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         valid_railtype_labels = (
             global_constants.railtype_labels_by_vehicle_track_type_name[
@@ -621,7 +621,7 @@ class ModelTypeBase(object):
                 result.append(
                     [
                         power_source,
-                        self.base_track_type_name + optional_props.get("suffix", ""),
+                        self.base_track_type + optional_props.get("suffix", ""),
                     ]
                 )
         # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here
@@ -698,7 +698,7 @@ class ModelTypeBase(object):
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can override via the model def
-        speeds_by_track_type = self.roster.speeds[self.base_track_type_name]
+        speeds_by_track_type = self.roster.speeds[self.base_track_type]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
     @cached_property
@@ -836,12 +836,12 @@ class ModelTypeBase(object):
                 if electrification_type in self.power_by_power_source:
                     result.append(
                         "tile_powers_track_type_name_"
-                        + self.base_track_type_name
+                        + self.base_track_type
                         + "_ELECTRIFIED_"
                         + electrification_type
                         + "()"
                     )
-                    # note that this is JFDI and expects the base_track_type_name to NOT be LGV, refactor approach if that's a problem
+                    # note that this is JFDI and expects the base_track_type to NOT be LGV, refactor approach if that's a problem
                     if self.lgv_capable:
                         result.append(
                             "tile_powers_track_type_name_"
@@ -853,7 +853,7 @@ class ModelTypeBase(object):
             # otherwise use the electrification type already known by the model type
             result.append(
                 "tile_powers_track_type_name_"
-                + self.base_track_type_name
+                + self.base_track_type
                 + "_ELECTRIFIED_"
                 + self.electrification_type
                 + "()"
@@ -1263,7 +1263,7 @@ class EngineModelTypeBase(ModelTypeBase):
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
-        is_NG = True if self.base_track_type_name == "NG" else False
+        is_NG = True if self.base_track_type == "NG" else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
         # multiplier for speed, max value will be 12.5
         speed_cost_factor = self.speed / (8 if is_NG else 16)
@@ -1447,7 +1447,7 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
 
     @property
     def subrole(self):
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             # pony NG jank, to force a different role string for NG
             if self.gen == 4:
                 return "express"
@@ -1669,7 +1669,7 @@ class MailEngineRailcar(MailEngineBase):
 
     @property
     def subrole(self):
-        if self.base_track_type_name == "NG" and self.gen == 4:
+        if self.base_track_type == "NG" and self.gen == 4:
             # pony NG jank
             return "express"
         else:
@@ -1677,7 +1677,7 @@ class MailEngineRailcar(MailEngineBase):
 
     @property
     def fixed_run_cost_points(self):
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             # give NG a bonus to align run cost with NG railbus
             return 52
         else:
@@ -1886,7 +1886,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
 
     @property
     def fixed_run_cost_points(self):
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             # cleanest way to compress run cost down sufficiently
             self.floating_run_cost_multiplier = 4
             # special case to knock costs on NG versions of these down similar to other railcars
@@ -1972,7 +1972,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
         # CABBAGE - IS THIS INTENDED?  IT'S MESSING UP THE TECH TREE
         # IS IT RELATED TO SETTING SPEEDS?  OR IS IT BUY MENU TEXT?
         # CHANGING IT WILL ALSO CHANGE ENGINE COUNTS IN DOCS
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             # pony NG jank
             if self.gen == 4:
                 return "express"
@@ -2273,7 +2273,7 @@ class CarModelTypeBase(ModelTypeBase):
         self.speed_class = "standard"
         # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
+        self.weight_factor = 0.8 if self.base_track_type == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all car model types to 'universal' offset, override in subclasses as needed
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -2321,7 +2321,7 @@ class CarModelTypeBase(ModelTypeBase):
         # (base cost is set deliberately low to allow small increments for fine-grained control)
         run_cost_points = 1.2 * run_cost_points * self.floating_run_cost_multiplier
         # narrow gauge gets a massive bonus - NG wagons are lower cap, so earn relatively much less / length
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             run_cost_points = 0.2 * run_cost_points
         # arbitrary factor for minor cost inflation by generation (above and beyond speed and length increases)
         # small balance against later game trains that are more profitable due increased average network speed resulting in faster transit times (clearing junctions etc faster)
@@ -2347,7 +2347,7 @@ class CarModelTypeBase(ModelTypeBase):
         for wagon in self.roster.wagon_model_variants_by_model_id_root[
             self.model_id_root
         ]:
-            if wagon.base_track_type_name == self.base_track_type_name:
+            if wagon.base_track_type == self.base_track_type:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
                     tree_strict.append(wagon.gen)
@@ -2365,7 +2365,7 @@ class CarModelTypeBase(ModelTypeBase):
         else:
             # this is the last of this subtype, but there are other later generations of other subtypes
             next_gen = tree_permissive[tree_permissive.index(self.gen) + 1]
-        next_gen_intro_year = self.roster.intro_years[self.base_track_type_name][
+        next_gen_intro_year = self.roster.intro_years[self.base_track_type][
             next_gen - 1
         ]
         return next_gen_intro_year - self.catalogue.intro_year
@@ -2405,7 +2405,7 @@ class CarModelTypeBase(ModelTypeBase):
             return self.joker_by_subclass_rules
 
         # all metro wagons are jokers as of May 2024
-        if self.base_track_type_name == "METRO":
+        if self.base_track_type == "METRO":
             return True
 
         # for wagons/coaches, default jokers are medium and twin lengths, note that this may have been over-ridden by joker_by_subclass_rules above
@@ -2952,7 +2952,7 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         super().__init__(**kwargs)
         # Graphics configuration
         """ # CABBAGE
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             self.roof_type = "freight_cc1"
         else:
             self.roof_type = "freight"
@@ -3574,7 +3574,7 @@ class CabooseCar(CarModelTypeBase):
         # map buy menu variants and date ranges to show them for
         result = []
         for counter, date_range in enumerate(
-            self.roster.intro_year_ranges(self.base_track_type_name)
+            self.roster.intro_year_ranges(self.base_track_type)
         ):
             result.append((counter, date_range))
         return result
@@ -5320,7 +5320,7 @@ class IntermodalCarUnit(IntermodalCarBase):
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             return ["low_floor"]
         else:
             return ["default"]
@@ -5508,7 +5508,7 @@ class MailCarBase(CarModelTypeBase):
     def joker_by_subclass_rules(self):
         # special-case handling for simplified mode with narrow gauge mail cars
         # make short and medium lengths available, for flexibility
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             if self.subtype in ["A", "B"]:
                 return False
             else:
@@ -5604,7 +5604,7 @@ class MailCar(MailCarBase):
     @property
     def subrole(self):
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type_name == "NG" and self.gen < 4:
+        if self.base_track_type == "NG" and self.gen < 4:
             return "universal"
         else:
             return "express"
@@ -5628,7 +5628,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         ]
         self._joker = True
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
+        self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -6389,7 +6389,7 @@ class PassengerCarBase(CarModelTypeBase):
     @property
     def joker_by_subclass_rules(self):
         # special-case handling for simplified mode with narrow gauge pax cars
-        if self.base_track_type_name == "NG":
+        if self.base_track_type == "NG":
             if self.subtype in ["A", "B"]:
                 return False
             else:
@@ -6468,7 +6468,7 @@ class PanoramicCar(PassengerCarBase):
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
         formation_position_spriterow_map = {
             "default": 0,
@@ -6515,7 +6515,7 @@ class PassengerCar(PassengerCarBase):
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
         # formation position rules:
         #   * standard coach
@@ -6539,7 +6539,7 @@ class PassengerCar(PassengerCarBase):
     @property
     def subrole(self):
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type_name == "NG" and self.gen < 4:
+        if self.base_track_type == "NG" and self.gen < 4:
             return "universal"
         else:
             return "express"
@@ -6613,7 +6613,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         ]
         self._joker = True
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
+        self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -6661,7 +6661,7 @@ class PassengerHSTCar(PassengerCarBase):
         self._model_life = self.catalogue.cab_engine_model.model_life
         self._vehicle_life = self.catalogue.cab_engine_model.vehicle_life
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
+        self.weight_factor = 0.8 if self.base_track_type == "NG" else 1.6
         # Graphics configuration
         # formation position rules:
         #   * standard coach
@@ -6714,7 +6714,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if self.base_track_type_name == "NG" and self.gen == 4:
+        if self.base_track_type == "NG" and self.gen == 4:
             # pony NG jank, gen 4 railbus trailers get a speed bump to 'express'
             self.speed_class = "express"
         else:
@@ -6726,7 +6726,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
             "suburban_or_universal_railcar"
         ]
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # formation position rules
@@ -6770,7 +6770,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         ]
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
+        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -6819,7 +6819,7 @@ class PassengerRestaurantCar(PassengerCarBase):
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         self._joker = True
         # Graphics configuration
         # formation position rules do not actually do anything for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
@@ -6867,7 +6867,7 @@ class PassengerSuburbanCar(PassengerCarBase):
         self.floating_run_cost_multiplier = 4.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
+        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
         self._joker = True
         # Graphics configuration
         # formation position rules:

@@ -150,7 +150,7 @@ class Roster:
         # Categorize model variants by generation, length, track type, and power
         for model_variant in self.model_variants:
             gen = model_variant.gen
-            track_type = model_variant.base_track_type_name
+            track_type = model_variant.base_track_type
             power = model_variant.power
             length = model_variant.length
 
@@ -280,7 +280,7 @@ class Roster:
 
         def get_tmp_uid(model_id_root, catalogue):
             # convenience method for a key, only used for accessing a temp structure
-            return f"{model_id_root}_{catalogue.model_def.gen}_{catalogue.base_track_type_name}_{catalogue.model_def.subtype}"
+            return f"{model_id_root}_{catalogue.model_def.gen}_{catalogue.base_track_type}_{catalogue.model_def.subtype}"
 
         cabbage_random_temp_foo = {}
         for catalogue in self.wagon_catalogues:
@@ -356,11 +356,11 @@ class Roster:
             result.append(livery_result)
         return result
 
-    def intro_year_ranges(self, base_track_type_name):
+    def intro_year_ranges(self, base_track_type):
         # return a list of year pairs (first year, last year) for generations
         result = []
         end_date = global_constants.max_game_date
-        for intro_year in reversed(self.intro_years[base_track_type_name]):
+        for intro_year in reversed(self.intro_years[base_track_type]):
             result.append((intro_year, end_date))
             end_date = intro_year - 1
         result.reverse()
@@ -583,7 +583,7 @@ class TechTree(dict):
             # clones don't get added to the tree
             return
 
-        track_type = catalogue.base_track_type_name
+        track_type = catalogue.base_track_type
         role = catalogue.example_model_variant.role
         subrole = catalogue.example_model_variant.subrole
         subrole_child_branch_num = (
@@ -635,7 +635,7 @@ class TechTree(dict):
         example_model_variant = catalogue.example_model_variant
         # Attempt to access the branch for this catalogue.
         try:
-            branch = self[catalogue.base_track_type_name][example_model_variant.role][
+            branch = self[catalogue.base_track_type][example_model_variant.role][
                 example_model_variant.subrole
             ][example_model_variant.subrole_child_branch_num]
         except KeyError as e:
@@ -682,7 +682,7 @@ class TechTree(dict):
         # models can span generations, so walk forward to find if there's a replacement in the line
         max_gen = max(
             self._valid_gens_for_track_type(
-                catalogue.base_track_type_name
+                catalogue.base_track_type
             )
         )
         offset = 1
@@ -732,7 +732,7 @@ class TechTree(dict):
         if catalogue.model_quacks_like_a_clone:
             catalogue = catalogue.get_upstream_catalogue(permissive=True)
 
-        base_track_type = catalogue.base_track_type_name
+        base_track_type = catalogue.base_track_type
         role = catalogue.example_model_variant.role
         gen = catalogue.model_def.gen
         target_power = getattr(catalogue.example_model_variant, "power", None)

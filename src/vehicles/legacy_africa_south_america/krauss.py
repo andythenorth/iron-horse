@@ -6,7 +6,7 @@ def main(**kwargs):  # for rest of stats, look up Krauss Maffei Brazil
         id="krauss",
         base_numeric_id=9300,
         name="Krauss",
-        base_track_type_name="NG",
+        base_track_type="NG",
         power_by_power_source={
             "DIESEL": 3500,
         },

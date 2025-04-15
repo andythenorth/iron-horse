@@ -11,7 +11,7 @@ def main(**kwargs):
         name="2-6-0+0-6-2 Nile",
         subrole="universal",
         subrole_child_branch_num=-5,
-        base_track_type_name="NG",
+        base_track_type="NG",
         power_by_power_source={
             "STEAM": 900,
         },

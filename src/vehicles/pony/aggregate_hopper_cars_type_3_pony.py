@@ -13,7 +13,7 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=False,
     )
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
         subtype="B",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=False,
     )
 

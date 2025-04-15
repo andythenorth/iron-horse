@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=10500,
         name="GE 289a Boxcab",
         power=1200,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1922,
     )
 

@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=11050,
         name="2-6-6-2 Oubangui",
         power=1500,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1920,
     )
 

@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=11100,
         name="2-6-0 Pangolin",
         power=1200,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1860,
     )
 

@@ -8,7 +8,7 @@ def main(**kwargs):
         name="4-6-2 Hyena",
         power=1400,
         tractive_effort_coefficient=0.19,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1915,
     )
 

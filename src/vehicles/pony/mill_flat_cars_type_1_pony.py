@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=34160,
         gen=2,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year_offset=20,  # these are pushed right back to line up with standard gauge versions
         sprites_complete=True,
     )
@@ -25,7 +25,7 @@ def main(**kwargs):
         base_numeric_id=40370,
         gen=3,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
@@ -38,7 +38,7 @@ def main(**kwargs):
         base_numeric_id=40390,
         gen=3,
         subtype="B",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 

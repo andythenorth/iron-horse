@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=11000,
         name="Okapi",
         power=1850,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1958,
     )
 

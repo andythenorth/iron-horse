@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=10910,
         name="Hippo",
         power=3600,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1975,
     )
 

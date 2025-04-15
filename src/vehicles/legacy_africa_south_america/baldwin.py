@@ -7,7 +7,7 @@ def main(**kwargs):
         base_numeric_id=9100,
         name="2-8-2 Baldwin",
         power=1600,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1920,
     )
 

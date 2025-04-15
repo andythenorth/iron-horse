@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Stratos",
         subrole="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
         subrole_child_branch_num=-2,
-        base_track_type_name="NG",
+        base_track_type="NG",
         power_by_power_source={
             "DIESEL": 1200,  # corsica AMG 800 is 590hp per engine https://fr.wikipedia.org/wiki/AMG_800
         },

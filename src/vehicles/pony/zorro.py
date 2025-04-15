@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Zorro",
         subrole="mail_railcar",
         subrole_child_branch_num=1,
-        base_track_type_name="NG",
+        base_track_type="NG",
         power_by_power_source={
             "DIESEL": 420,
         },

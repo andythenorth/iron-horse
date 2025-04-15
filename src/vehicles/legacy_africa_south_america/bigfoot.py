@@ -7,7 +7,7 @@ def main(**kwargs):  # roughly an SAR 91-000 class
         base_numeric_id=10660,
         name="Bigfoot",
         power=900,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1970,
     )
 

@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=23510,
         name="Panoramic Driving Trailer",
         subrole_child_branch_num=-2,  # driving cab cars are probably jokers?
-        base_track_type_name="NG",
+        base_track_type="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         sprites_complete=True,

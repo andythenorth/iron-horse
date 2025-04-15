@@ -8,7 +8,7 @@ def main(**kwargs):
         name="4-4-2 Albertine",
         power=1200,
         tractive_effort_coefficient=0.19,
-        base_track_type_name="NG",
+        base_track_type="NG",
         intro_year=1885,
     )
 

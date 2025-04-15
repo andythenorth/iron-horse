@@ -31,7 +31,7 @@ class ModelDef:
     liveries: List[Any] = None
     model_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
-    base_track_type_name: Optional[str] = None
+    base_track_type: Optional[str] = None
     vehicle_family_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
@@ -269,9 +269,9 @@ class ModelVariantFactory:
         # handled by model variant factory not model variant, better this way
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
-        if model_def.base_track_type_name == "NG":
+        if model_def.base_track_type == "NG":
             base_id = model_id_root + "_ng"
-        elif model_def.base_track_type_name == "METRO":
+        elif model_def.base_track_type == "METRO":
             base_id = model_id_root + "_metro"
         else:
             base_id = model_id_root
@@ -337,7 +337,7 @@ class ModelVariantFactory:
         else:
             return self.model_id
 
-    def get_variant_group_id(self, livery_def, base_track_type_name):
+    def get_variant_group_id(self, livery_def, base_track_type):
         # cascade of sources for variant group ID
 
         # group trailers with their cabs - needs to be done before generic wagon handling
@@ -357,7 +357,7 @@ class ModelVariantFactory:
 
             return (
                 f"{self.variant_group_id_root}_"
-                f"{base_track_type_name.lower()}_"
+                f"{base_track_type.lower()}_"
                 f"gen_{self.model_def.gen}{self.model_def.subtype}_"
                 f"{livery_selection}"
             )
@@ -453,7 +453,7 @@ class Catalogue(list):
             vehicle_family_id = factory.vehicle_family_id
 
             variant_group_id = factory.get_variant_group_id(
-                livery_def, instance.base_track_type_name
+                livery_def, instance.base_track_type
             )
 
             # certain static properties are copied into the catalogue_entry from the factory
@@ -697,7 +697,7 @@ class Catalogue(list):
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
-        result = self.factory.roster.intro_years[self.base_track_type_name][
+        result = self.factory.roster.intro_years[self.base_track_type][
             self.model_def.gen - 1
         ]
         if self.model_def.intro_year_offset is not None:
@@ -705,9 +705,9 @@ class Catalogue(list):
         return result
 
     @cached_property
-    def base_track_type_name(self):
-        if self.model_def.base_track_type_name is not None:
-            return self.model_def.base_track_type_name
+    def base_track_type(self):
+        if self.model_def.base_track_type is not None:
+            return self.model_def.base_track_type
         else:
             return "RAIL"
 
@@ -721,14 +721,14 @@ class Catalogue(list):
         # this assumes that NG and Metro always return the same, irrespective of model type cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
         # don't like how much content (text) is in code here, but eh
-        if self.model_def.base_track_type_name == "NG":
+        if self.model_def.base_track_type == "NG":
             cite_name = "Roberto Flange"
             cite_titles = [
                 "Narrow Gauge Superintendent",
                 "Works Manager (Narrow Gauge)",
                 "Traction Controller, Narrow Gauge Lines",
             ]
-        elif self.model_def.base_track_type_name == "METRO":
+        elif self.model_def.base_track_type == "METRO":
             cite_name = "JJ Transit"
             cite_titles = [
                 "Superintendent (Metro Division)",

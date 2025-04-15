@@ -105,7 +105,7 @@ class UnitBase(object):
     def get_pax_car_capacity(self):
         # magic to set capacity subject to length
         base_capacity = self.model_variant.roster.pax_car_capacity_per_unit_length[
-            self.model_variant.base_track_type_name
+            self.model_variant.base_track_type
         ][self.model_variant.gen - 1]
         result = int(
             self.vehicle_length
@@ -123,7 +123,7 @@ class UnitBase(object):
     def get_freight_car_capacity(self):
         # magic to set capacity subject to length
         base_capacity = self.model_variant.roster.freight_car_capacity_per_unit_length[
-            self.model_variant.base_track_type_name
+            self.model_variant.base_track_type
         ][self.model_variant.gen - 1]
         result = int(self.vehicle_length * base_capacity)
         return result
@@ -255,7 +255,7 @@ class UnitBase(object):
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.model_variant.roof_type is not None:
-            if self.model_variant.base_track_type_name == "NG":
+            if self.model_variant.base_track_type == "NG":
                 ng_prefix = "ng_"
             else:
                 ng_prefix = ""
@@ -958,7 +958,7 @@ class CabooseCarUnit(CarUnitBase):
     @cached_property
     def weight(self):
         # special handling of weight
-        weight_factor = 3 if self.model_variant.base_track_type_name == "NG" else 5
+        weight_factor = 3 if self.model_variant.base_track_type == "NG" else 5
         return weight_factor * self.vehicle_length
 
     @property
@@ -1146,7 +1146,7 @@ class FreightCarUnit(CarUnitBase):
             )
         # magic to set freight car capacity subject to length
         base_capacity = self.model_variant.roster.freight_car_capacity_per_unit_length[
-            self.model_variant.base_track_type_name
+            self.model_variant.base_track_type
         ][self.model_variant.gen - 1]
         return self.vehicle_length * base_capacity
 

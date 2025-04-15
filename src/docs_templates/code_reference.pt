@@ -75,7 +75,7 @@
                             <tal:railtype_mapping repeat="railtype_mapping global_constants.railtype_labels_by_vehicle_track_type_name.items()">
                                 <!--!
                                     note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
-                                    we discard the base_track_type_name values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
+                                    we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
                                 -->
                                 <tr>
                                     <th>${railtype_mapping[0]}</th>

@@ -15,7 +15,7 @@ def main(**kwargs):
             "METRO": 1200,
         },
         random_reverse=True,
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         gen=3,
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,

@@ -14,7 +14,7 @@ def main(**kwargs):
         power_by_power_source={
             "METRO": 1050,
         },
-        base_track_type_name="METRO",
+        base_track_type="METRO",
         gen=3,
         sprites_complete=True,
     )

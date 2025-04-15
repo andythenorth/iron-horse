@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=28340,
         gen=1,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
@@ -24,7 +24,7 @@ def main(**kwargs):
         base_numeric_id=16920,
         gen=3,
         subtype="A",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
@@ -37,7 +37,7 @@ def main(**kwargs):
         base_numeric_id=17030,
         gen=3,
         subtype="B",
-        base_track_type_name="NG",
+        base_track_type="NG",
         sprites_complete=True,
     )
 
