@@ -188,7 +188,11 @@
                                                 <tal:example_model_variant define="catalogue tech_tree[base_track_type][role][subrole][subrole_child_branch][gen];">
                                                     <tal:block condition="catalogue is not None"
                                                                define="example_model_variant catalogue.example_model_variant if catalogue is not None else None;">
-                                                        <div id="${example_model_variant.model_id}" class="tech_tree_vehicle_container">
+                                                        <div id="${example_model_variant.model_id}"
+                                                             class="tech_tree_vehicle_container"
+                                                             title="role: ${example_model_variant.role}
+                                                                    subrole: ${example_model_variant.subrole}
+                                                                    subrole_child_branch_num: ${example_model_variant.subrole_child_branch_num}">
                                                             <a href="${example_model_variant.model_id}.html">
                                                                 <div class="tech_tree_vehicle
                                                                             ${'tech_tree_vehicle_electric_' + example_model_variant.electrification_type.lower() if example_model_variant.requires_electric_rails else 'None'}
