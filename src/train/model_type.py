@@ -133,15 +133,6 @@ class ModelTypeBase(object):
     def is_default_model_variant(self):
         return self.catalogue.is_default_model_variant(self)
 
-    @cached_property
-    def cloned_from_model_type(self):
-        # possibly expensive, but not often required option to get the default model a clone was sourced from
-        if self.model_def.cloned_from_model_def is not None:
-            for catalogue in self.roster.catalogues:
-                if catalogue.model_def == self.model_def.cloned_from_model_def:
-                    return catalogue.example_model_variant
-        raise Exception(f"cloned_from_model_type not found for {self.id}")
-
     @property
     def unique_units(self):
         # units may be repeated in the model type, sometimes we need an ordered list of unique units
@@ -1241,7 +1232,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.cloned_from_model_type.buy_cost
+                self.catalogue.upstream_catalogue.example_model_variant.buy_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 
@@ -1293,7 +1284,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.cloned_from_model_type.running_cost
+                self.catalogue.upstream_catalogue.example_model_variant.running_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 

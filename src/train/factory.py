@@ -14,6 +14,7 @@ from functools import cached_property
 
 from train import model_type as model_type_module
 from train import unit as unit_module
+from utils import timing
 
 import iron_horse
 
@@ -653,6 +654,17 @@ class Catalogue(list):
         if self.example_model_variant.power > 0:
             return self.factory.roster.engine_model_tech_tree.replacement_model_catalogue(catalogue=self)
         return None
+
+    @cached_property
+    def upstream_catalogue(self):
+        # possibly expensive, but not often required option to get the catalogue for the model a clone was sourced from
+        # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
+        if self.model_def.cloned_from_model_def is None:
+            raise ValueError(f"{self.model_id} is not a clone, don't call upstream_catalogue on it")
+        for candidate_catalogue in self.factory.roster.catalogues:
+            if candidate_catalogue.model_def == self.model_def.cloned_from_model_def:
+                return candidate_catalogue
+        raise Exception(f"upstream_catalogue not found for {self.model_id}")
 
     @cached_property
     def intro_year(self):
