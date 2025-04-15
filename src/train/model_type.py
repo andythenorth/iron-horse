@@ -1112,7 +1112,7 @@ class ModelTypeBase(object):
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
-        if self.power > 0:
+        if self.power > 0: # CABBAGE again we don't have a way to trivially find engines
             if len(self.model_def.description) == 0:
                 utils.echo_message(self.model_id + " has no description")
             if len(self.model_def.foamer_facts) == 0:

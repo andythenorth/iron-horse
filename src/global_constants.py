@@ -344,7 +344,7 @@ purchase_variant_group_base_model_ids_by_group_name = {
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
-    "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38), # CABBAGE PREVIOUS
+    "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38),
     "custom_dark_pink": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_light_pink": (43, 44, 45, 46, 47, 166, 167, 168),
     "custom_dark_grey": (3, 16, 17, 18, 19, 20, 21, 22),

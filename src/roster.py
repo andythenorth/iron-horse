@@ -55,7 +55,7 @@ class Roster:
             "engine_and_pax_mail_car_liveries", []
         )
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
-        # CABBAGE init tech tree(s) - this _might_ be expensive, so we might need to do it conditionally as not all compile steps need it
+        # tech tree times as fast to create as of April 2025, so no need for conditional creation
         self.engine_model_tech_tree = TechTree.create(roster=self)
 
     @property
@@ -421,7 +421,7 @@ class Roster:
 
         for model_variant in self.model_variants:
             """
-            # CABBAGE - nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
+            # pickled test nerfed off as (1) slow (2) mp_logger is now used, which should improve the error output when pickle does fail
             # if model_variant won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:
                 pickle.dumps(model_variant)
@@ -545,7 +545,6 @@ class VariantGroup(list):
         # for nml, we want the id of the first unit
         return leader.units[0].id
 
-    # CABBAGE - remove?
     @property
     def flatten_short_group(self):
         # don't bother nesting short groups

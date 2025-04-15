@@ -198,16 +198,6 @@ class ModelVariantFactory:
                 + str(self.model_type_cls)
             )
 
-        # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
-        # CHECK if vehicle_family_id is already set?  If it is, leave it alone?
-        # can this not be done when cloning?
-        """
-        if self.model_def.cloned_from_model_def is not None:
-            self.model_def.vehicle_family_id = (
-                self.model_def.cloned_from_model_def.model_id
-            )
-        """
-
         model_variant = self.model_type_cls(
             factory=self,
             catalogue_entry=catalogue_entry,

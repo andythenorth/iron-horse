@@ -1,7 +1,6 @@
 <!--! graphics entry switch for either common (all models share same sprites) or per-model -->
 
 <tal:graphics_entry_cases switch="model_variant.gestalt_graphics.cabbage_common_graphics_target">
-    <!--! CABBAGE the id interpolation is JFDI -->
     <tal:case tal:case="True">
         <tal:model_common condition="model_variant.is_default_model_variant">
             switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {

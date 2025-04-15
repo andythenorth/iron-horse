@@ -3,7 +3,7 @@ import importlib
 import global_constants
 
 
-# CABBAGE - CONVERT TO DATACLASS?
+# !! could be @dataclass, but little benefit to changing currently
 class Railtype(object):
     """
     Railtype - self explanatory?

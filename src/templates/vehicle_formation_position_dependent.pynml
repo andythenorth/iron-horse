@@ -31,7 +31,7 @@
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
-                <!--! CABBAGE SHOULD BE BADGES NOT UNIT IDS -->
+                <!--! CABBAGE SHOULD BE has_badge BADGES NOT UNIT IDS -->
                 <tal:has_cab_consist condition="getattr(model_variant, 'cab_engine_model', None) is not None">
                     ||
                     count_veh_id(${catalogue.cab_engine_model.units[0].id}) > 0

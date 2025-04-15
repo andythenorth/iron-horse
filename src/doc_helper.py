@@ -290,8 +290,6 @@ class DocHelper(object):
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
     def model_cabbage_has_direct_replacment(self, model_variant):
-        # CABBAGE - THIS CAN PROBABLY JUST USE THE ROSTER TECH TREE DIRECTLY?
-        # MIGHT be a case of JFDI - this is just to hide or show some tech tree content
         replacement_model_variant = model_variant.catalogue.next_gen_catalogue.example_model_variant
         if replacement_model_variant.subrole != model_variant.subrole:
             return False
