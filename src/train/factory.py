@@ -321,6 +321,12 @@ class ModelVariantFactory:
         return self.model_id
 
     @property
+    def _vehicle_family_badge(self):
+        # accessed via catalogue
+        # over-ride in subclasses as appropriate
+        return f"ih_vehicle_family/{self.vehicle_family_id}"
+
+    @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
         if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
@@ -662,6 +668,11 @@ class Catalogue(list):
             return self.model_def.base_track_type_name
         else:
             return "RAIL"
+
+    @property
+    def vehicle_family_badge(self):
+        # convenience method, catalogue method is public, factory is not
+        return self.factory._vehicle_family_badge
 
     @property
     def cite(self):

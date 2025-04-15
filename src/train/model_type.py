@@ -220,11 +220,6 @@ class ModelTypeBase(object):
             return "role/" + self.role
         return None
 
-    @property
-    def vehicle_family_badge(self):
-        # over-ride in subclasses as appropriate
-        return f"ih_vehicle_family/{self.catalogue_entry.vehicle_family_id}"
-
     """
     # CABBAGE commented out - IHA_ is used for RAIL, but no railtype is defined for RAIL or IHA_, as it relies on default game railtype
     # that can be changed, but eh, risk of unexpected behaviour from redefining RAIL so needs care
@@ -339,7 +334,7 @@ class ModelTypeBase(object):
         if self.catalogue.replacement_model_catalogue is not None:
             # note that as of April 2025 only wagons do not set replacement_model_catalogue
             result.append(
-                f"ih_tech_tree/replacement/{self.catalogue.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
+                f"ih_tech_tree/replacement/{self.catalogue.replacement_model_catalogue.vehicle_family_badge}"
             )
         return result
 
@@ -383,7 +378,7 @@ class ModelTypeBase(object):
         result.extend(self.tech_tree_badges)
         # result.append(self.track_type_badge) # CABBAGE nerfed off - not quite working
         result.extend(self.variant_handling_badges)
-        result.extend([self.vehicle_family_badge])
+        result.extend([self.catalogue.vehicle_family_badge])
 
         # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
         # 2. alpha sort is better than default append order
@@ -2484,7 +2479,7 @@ class RandomisedCarMixin(object):
         result = {}
         for randomisation_candidate in self.wagon_randomisation_candidates:
             # we re-use the whole vehicle family badge here, probably fine?
-            label = randomisation_candidate.vehicle_family_badge
+            label = randomisation_candidate.catalogue.vehicle_family_badge
             name = randomisation_candidate.get_name_parts(context="badge")
             result[label] = name
         return result

@@ -115,7 +115,7 @@ class BadgeManager(list):
             for catalogue in roster.catalogues:
                 # vehicle_family_badge should always be found, just allow unhandled error if not
                 self.add_badge(
-                    label=catalogue.default_model_variant_from_roster.vehicle_family_badge,
+                    label=catalogue.vehicle_family_badge,
                 )
 
     def produce_randomised_wagon_candidate_badges(self, **kwargs):
@@ -242,5 +242,5 @@ class BadgeManager(list):
                     is not None
                 ):
                     self.add_badge(
-                        label=f"ih_tech_tree/replacement/{catalogue.replacement_model_catalogue.default_model_variant_from_roster.vehicle_family_badge}"
+                        label=f"ih_tech_tree/replacement/{catalogue.replacement_model_catalogue.vehicle_family_badge}"
                     )
