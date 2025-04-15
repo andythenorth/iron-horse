@@ -362,8 +362,23 @@ class ModelVariantFactory:
         # should never be reached
         raise ValueError(f"variant_group_id not found for {self.model_id}")
 
+
     @cached_property
-    def model_is_randomised_wagon_type(self):
+    def _model_quacks_like_a_clone(self):
+        # convenience boolean for things that either are clones, or can be treated like clones for docs etc
+        # public access via catalogue
+        if self.model_def.cloned_from_model_def is not None:
+            return True
+        if self.model_def.quacks_like_a_clone:
+            return True
+        if getattr(self.model_type_cls, "quacks_like_a_clone", False):
+            return True
+        else:
+            return False
+
+    @cached_property
+    def _model_is_randomised_wagon_type(self):
+        # public access via catalogue
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "RandomisedCarMixin"
@@ -448,7 +463,6 @@ class Catalogue(list):
                 vehicle_family_id=vehicle_family_id,
                 variant_group_id=variant_group_id,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
-                model_is_randomised_wagon_type=factory.model_is_randomised_wagon_type,
             )
             instance.append(catalogue_entry)
         return instance
@@ -560,6 +574,7 @@ class Catalogue(list):
 
     @property
     def id(self):
+        # CABBAGE possibly this property should be model_id also, or duplicate to both
         return self.factory.model_id
 
     @property
@@ -576,6 +591,16 @@ class Catalogue(list):
     def default_entry(self):
         # provide default entry as an explicit option for consumers, not implicit
         return self[0]
+
+    @cached_property
+    def model_quacks_like_a_clone(self):
+        # public access better via catalogue, not factory
+        return self.factory._model_quacks_like_a_clone
+
+    @cached_property
+    def model_is_randomised_wagon_type(self):
+        # public access better via catalogue, not factory
+        return self.factory._model_is_randomised_wagon_type
 
     def is_default_model_variant(self, model_variant):
         return model_variant.catalogue_entry == self.default_entry

@@ -441,7 +441,7 @@ def main():
     model_variants = [
         model_variant
         for model_variant in roster.model_variants
-        if model_variant.quacks_like_a_clone == False
+        if model_variant.catalogue_entry.catalogue.model_quacks_like_a_clone == False
     ]
     # default sort for docs is by intro year
     model_variants = sorted(

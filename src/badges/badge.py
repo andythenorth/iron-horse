@@ -124,7 +124,7 @@ class BadgeManager(list):
         for roster in roster_manager:
             for catalogue in roster.catalogues:
                 if (
-                    catalogue.factory.model_is_randomised_wagon_type
+                    catalogue.model_is_randomised_wagon_type
                 ):
                     # this is inherently inefficient as it walks ALL the candidates, but actually only needs one vehicle name for each vehicle_family_id
                     # but...probably fine as of April 2025 - the whole method timed at < 0.05s

@@ -162,7 +162,7 @@ class Roster:
                     "randomised": [],
                 }
 
-            if model_variant.catalogue_entry.model_is_randomised_wagon_type:
+            if model_variant.catalogue_entry.catalogue.model_is_randomised_wagon_type:
                 randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
                     model_variant
                 )
@@ -264,7 +264,7 @@ class Roster:
                             self.wagon_model_variants_by_catalogue[catalogue_id][
                                 "model_variants"
                             ].append(model_variant)
-                        if factory.model_is_randomised_wagon_type:
+                        if catalogue.model_is_randomised_wagon_type:
                             randomised_wagon_type_catalogues_tmp.append(catalogue)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
@@ -577,7 +577,7 @@ class TechTree(dict):
         return instance
 
     def add_model(self, catalogue):
-        if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+        if catalogue.model_quacks_like_a_clone:
             # clones don't get added to the tree
             return
         # CABBAGE SHIM
@@ -661,7 +661,7 @@ class TechTree(dict):
             )
 
     def replacement_model_catalogue(self, catalogue):
-        if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+        if catalogue.model_quacks_like_a_clone:
             # clones don't get added to the tree, don't try and access them
             # CABBAGE BUT WE DO WANT THE ALTERNATIVE CLONED FROM CATALOGUE REPLACEMENT
             return None

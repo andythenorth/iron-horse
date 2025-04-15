@@ -133,16 +133,6 @@ class ModelTypeBase(object):
         return self.catalogue_entry.catalogue.is_default_model_variant(self)
 
     @cached_property
-    def quacks_like_a_clone(self):
-        # convenience boolean for things that either are clones, or can be treated like clones for docs etc
-        if self.model_def.cloned_from_model_def is not None:
-            return True
-        if self.model_def.quacks_like_a_clone:
-            return True
-        else:
-            return False
-
-    @cached_property
     def cloned_from_model_type(self):
         # possibly expensive, but not often required option to get the default model a clone was sourced from
         if self.model_def.cloned_from_model_def is not None:
@@ -289,7 +279,7 @@ class ModelTypeBase(object):
     @property
     def randomised_wagon_badges(self):
         result = []
-        if self.catalogue_entry.model_is_randomised_wagon_type:
+        if self.catalogue_entry.catalogue.model_is_randomised_wagon_type:
             result.append(f"ih_behaviour/randomised_wagon")
             for (
                 candidate_name
@@ -941,7 +931,7 @@ class ModelTypeBase(object):
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return True
-        elif self.catalogue_entry.model_is_randomised_wagon_type or self.is_caboose:
+        elif self.catalogue_entry.catalogue.model_is_randomised_wagon_type or self.is_caboose:
             return True
         elif self.dual_headed:
             return True
@@ -1202,6 +1192,7 @@ class ModelTypeBase(object):
         nml_result = template(
             model_variant=self,
             catalogue_entry=self.catalogue_entry,
+            catalogue=self.catalogue_entry.catalogue,
             global_constants=global_constants,
             utils=utils,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
@@ -1245,7 +1236,7 @@ class EngineModelTypeBase(ModelTypeBase):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.quacks_like_a_clone:
+        if self.catalogue_entry.catalogue.model_quacks_like_a_clone:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0
@@ -2198,6 +2189,9 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     Add as additional class for e.g. pax or mail engine model type.
     """
 
+    # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
+    quacks_like_a_clone = True
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.distributed_power_wagon = True
@@ -2229,11 +2223,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
-
-    @property
-    def quacks_like_a_clone(self):
-        # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
-        return True
 
     @property
     def buy_cost(self):

@@ -55,7 +55,7 @@ class DocHelper(object):
                 == base_track_type_name
             ):
                 continue
-            if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+            if catalogue.model_quacks_like_a_clone:
                 # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
@@ -71,7 +71,7 @@ class DocHelper(object):
                 == base_track_type_name
             ):
                 continue
-            if catalogue.default_model_variant_from_roster.quacks_like_a_clone:
+            if catalogue.model_quacks_like_a_clone:
                 # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
@@ -94,9 +94,9 @@ class DocHelper(object):
         really_engines = []
         not_really_engines = []
         for catalogue in roster.engine_catalogues:
-            default_model_variant = catalogue.default_model_variant_from_roster
-            if default_model_variant.quacks_like_a_clone:
+            if catalogue.model_quacks_like_a_clone:
                 continue
+            default_model_variant = catalogue.default_model_variant_from_roster
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
                 default_model_variant.distributed_power_wagon
@@ -127,7 +127,7 @@ class DocHelper(object):
         really_wagons = []
         not_really_wagons = []
         for catalogue in roster.wagon_catalogues:
-            if catalogue.factory.model_is_randomised_wagon_type:
+            if catalogue.model_is_randomised_wagon_type:
                 not_really_wagons.append(catalogue)
             else:
                 really_wagons.append(catalogue)
@@ -220,7 +220,7 @@ class DocHelper(object):
         wagon_catalogues = []
         for catalogue in roster.wagon_catalogues:
             # extensible excludes as needed
-            if catalogue.factory.model_is_randomised_wagon_type:
+            if catalogue.model_is_randomised_wagon_type:
                 continue
             if catalogue.default_model_variant_from_roster.is_caboose:
                 continue
@@ -273,7 +273,7 @@ class DocHelper(object):
                     result.append(self.lang_strings[name_part])
 
             if (
-                default_model_variant.catalogue_entry.model_is_randomised_wagon_type
+                catalogue.model_is_randomised_wagon_type
                 or default_model_variant.is_caboose
             ):
                 result.append("- Random")
