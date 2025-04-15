@@ -1232,7 +1232,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.upstream_catalogue.example_model_variant.buy_cost
+                self.catalogue.get_upstream_catalogue(permissive=False).example_model_variant.buy_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 
@@ -1284,7 +1284,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.upstream_catalogue.example_model_variant.running_cost
+                self.catalogue.get_upstream_catalogue(permissive=False).example_model_variant.running_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 

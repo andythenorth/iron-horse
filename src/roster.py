@@ -659,16 +659,11 @@ class TechTree(dict):
             )
 
     def replacement_model_catalogue(self, catalogue):
+        # find the catalogue for the model a catalogue is replaced by, if any
+
+        # clones don't get added to the tree, don't try and access them directly
         if catalogue.model_quacks_like_a_clone:
-            # clones don't get added to the tree, don't try and access them
-            # CABBAGE BUT WE DO WANT THE ALTERNATIVE CLONED FROM CATALOGUE REPLACEMENT
-            #self.roster.get_cloned_from_catalogue_for_catalogue(catalogue)
-            # possibly expensive resolution of clones
-            if catalogue.model_def.cloned_from_model_def is not None:
-                catalogue = catalogue.upstream_catalogue
-            else:
-                print("no replacement model found for", catalogue.model_id)
-                return None
+            catalogue = catalogue.get_upstream_catalogue(permissive=True)
 
         # models have 1 or None replacement models
         # this method might not work for wagons, callers should guard against calling in that case
