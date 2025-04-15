@@ -616,6 +616,12 @@ class Catalogue(list):
                 return model_variant
 
     @cached_property
+    def cab_engine_model(self):
+        # fetch the default model variant for the cab, if relevant
+        # only applies if cab_id is set in model_def
+        return self.factory.cab_factory.catalogue.default_model_variant_from_roster
+
+    @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
