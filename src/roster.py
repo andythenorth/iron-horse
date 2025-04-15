@@ -451,7 +451,7 @@ class Roster:
                             f"Error: {model_variant.id} has a unit variant with numeric_id {numeric_id} which is part of an articulated vehicle "
                             f"and needs a numeric_id smaller than {global_constants.max_articulated_id}.\n"
                             f"Use a lower base_numeric_id in the model_def.\n"
-                            f"{model_variant.units}"
+                            f"{model_variant.catalogue.unit_numeric_ids}"
                         )
             for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
                 if numeric_id in numeric_id_defender:
@@ -472,8 +472,8 @@ class Roster:
                     raise ValueError(
                         f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
                         f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
-                        f"{[unit for unit in model_variant.units]}\n"
-                        f"{model_variant.catalogue}\n"
+                        f"{model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in model_variant.catalogue]}\n"
+                        f"{colliding_model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in colliding_model_variant.catalogue]}\n"
                     )
                 else:
                     numeric_id_defender[numeric_id] = model_variant
