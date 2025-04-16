@@ -362,6 +362,7 @@ class ModelVariantFactory:
 
     @cached_property
     def _model_is_randomised_wagon_type(self):
+        # CABBAGE MOVE TO WAGON QUACKER
         # public access via catalogue
         # depends on looking up class name, but should be ok
         return any(
@@ -395,6 +396,19 @@ class ModelVariantFactory:
             self.roster_id, self.roster_id_providing_module
         )
         return input_spritesheet_name_stem
+
+    @cached_property
+    def numeric_id_blocks_consumed(self):
+        """
+        Returns a sorted list of unique numeric ID blocks (multiple-of-10 bases)
+        consumed by this vehicle.
+        """
+        all_ids = []
+        for catalogue_entry in self.catalogue:
+            all_ids.extend(catalogue_entry.unit_numeric_ids)
+
+        blocks = {id_ - (id_ % 10) for id_ in all_ids}
+        return sorted(blocks)
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment out the caller
