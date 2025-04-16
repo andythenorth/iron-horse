@@ -138,8 +138,9 @@ class Roster:
 
     @property
     def model_variants_in_order_optimised_for_action_2_ids(self):
-        # CABBAGE as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants
-        # CABBAGE WITHOUT THIS SWITCHES MIGHT NOT BE FOUND FOR RANDOMISED WAGONS
+        # !! as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants
+        # !! however it is necessary to control order of variants so that switches are not unrecognised
+
         # the base sort order for model variants is for the buy menu, but this isn't effective for order in nml output
         # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
         # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
@@ -317,11 +318,6 @@ class Roster:
                         f"{model_variant.wagon_randomisation_candidates}"
                     )
                 if len(model_variant.wagon_randomisation_candidates) > 64:
-                    # CABBAGE TEMP
-                    model_variant.wagon_randomisation_candidates = (
-                        model_variant.wagon_randomisation_candidates[0:8]
-                    )
-                    continue
                     # we have a limited number of random bits, and we need to use them independently of company colour choices
                     # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
                     raise BaseException(
@@ -349,7 +345,6 @@ class Roster:
         else:
             livery_group_name = default_livery_group_name
         # will fail if the livery group is not defined in the roster
-        # CABBAGE SHIM
         for livery in self.pax_mail_livery_groups[livery_group_name]:
             livery_result = self.engine_and_misc_car_liveries[livery[0]].copy()
             livery_result["relative_spriterow_num"] = livery[1]

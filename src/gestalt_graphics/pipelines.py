@@ -627,7 +627,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
-        # CABBAGE example_model_variant looks like it should be using catalogue.model_def here
+        # !! example_model_variant looks like it could be using catalogue.model_def here, but eh
         if len(self.example_model_variant.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated vehicles - called by "

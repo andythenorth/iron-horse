@@ -167,7 +167,7 @@ def render_docs_images(
 
         if model_variant.model_def.docs_image_spriterow is not None:
             y_offset = 30 * model_variant.model_def.docs_image_spriterow
-        # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
+        # !! requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
             y_offset = (
                 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
