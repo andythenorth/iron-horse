@@ -442,7 +442,8 @@ class Roster:
                     raise BaseException(
                         f"Error: {model_variant.id} with base_numeric_id {model_variant.base_numeric_id} needs a base_numeric_id larger than 16383 "
                         f"as the range below 16383 is reserved for articulated vehicles.\n"
-                        f"{model_variant.units}"
+                        f"{model_variant.units}\n"
+                        f"Unused IDs might be found in build_logs/id_report.py.log"
                     )
             elif len(model_variant.units) > 1:
                 for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
@@ -452,6 +453,7 @@ class Roster:
                             f"and needs a numeric_id smaller than {global_constants.max_articulated_id}.\n"
                             f"Use a lower base_numeric_id in the model_def.\n"
                             f"{model_variant.catalogue.unit_numeric_ids}"
+                            f"Unused IDs might be found in build_logs/id_report.py.log"
                         )
             for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
                 if numeric_id in numeric_id_defender:
@@ -474,6 +476,7 @@ class Roster:
                         f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
                         f"{model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in model_variant.catalogue]}\n"
                         f"{colliding_model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in colliding_model_variant.catalogue]}\n"
+                        f"Unused IDs might be found in build_logs/id_report.py.log"
                     )
                 else:
                     numeric_id_defender[numeric_id] = model_variant
