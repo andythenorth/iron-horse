@@ -255,7 +255,7 @@ class ModelTypeBase(object):
     @property
     def randomised_wagon_badges(self):
         result = []
-        if self.catalogue.model_is_randomised_wagon_type:
+        if self.catalogue.wagon_quacker.is_randomised_wagon_type:
             result.append(f"ih_behaviour/randomised_wagon")
             for (
                 candidate_name
@@ -856,7 +856,7 @@ class ModelTypeBase(object):
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return True
-        elif self.catalogue.model_is_randomised_wagon_type or self.is_caboose:
+        elif self.catalogue.wagon_quacker.is_randomised_wagon_type or self.is_caboose:
             return True
         elif self.dual_headed:
             return True

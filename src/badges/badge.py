@@ -125,7 +125,7 @@ class BadgeManager(list):
         roster_manager = kwargs["roster_manager"]
         for roster in roster_manager:
             for catalogue in roster.catalogues:
-                if catalogue.model_is_randomised_wagon_type:
+                if catalogue.wagon_quacker.is_randomised_wagon_type:
                     for (
                         badge
                     ) in catalogue.example_model_variant.randomised_wagon_badges:

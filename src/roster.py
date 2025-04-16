@@ -162,7 +162,7 @@ class Roster:
                     "randomised": [],
                 }
 
-            if model_variant.catalogue.model_is_randomised_wagon_type:
+            if model_variant.catalogue.wagon_quacker.is_randomised_wagon_type:
                 randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
                     model_variant
                 )
@@ -264,7 +264,7 @@ class Roster:
                             self.wagon_model_variants_by_catalogue[catalogue_id][
                                 "model_variants"
                             ].append(model_variant)
-                        if catalogue.model_is_randomised_wagon_type:
+                        if catalogue.wagon_quacker.is_randomised_wagon_type:
                             randomised_wagon_type_catalogues_tmp.append(catalogue)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(

@@ -139,7 +139,6 @@ class CatalogueEntry:
     variant_group_id: str
     vehicle_family_id: str
     input_spritesheet_name_stem: str
-    model_is_randomised_wagon_type: bool = False
 
     @property
     def index(self):
@@ -359,16 +358,6 @@ class ModelVariantFactory:
 
         # should never be reached
         raise ValueError(f"variant_group_id not found for {self.model_id}")
-
-    @cached_property
-    def _model_is_randomised_wagon_type(self):
-        # CABBAGE MOVE TO WAGON QUACKER
-        # public access via catalogue
-        # depends on looking up class name, but should be ok
-        return any(
-            base.__name__ == "RandomisedCarMixin"
-            for base in self.model_type_cls.__mro__
-        )
 
     @cached_property
     def input_spritesheet_name_stem(self):
@@ -605,11 +594,6 @@ class Catalogue(list):
     def default_entry(self):
         # provide default entry as an explicit option for consumers, not implicit
         return self[0]
-
-    @cached_property
-    def model_is_randomised_wagon_type(self):
-        # public access better via catalogue, not factory
-        return self.factory._model_is_randomised_wagon_type
 
     def is_default_model_variant(self, model_variant):
         return model_variant.catalogue_entry == self.default_entry
@@ -913,6 +897,18 @@ class WagonQuacker:
             return False
         # fall through
         return True
+
+    @cached_property
+    def is_randomised_wagon_type(self):
+        # predicate for wagons which act as randomised types
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # depends on looking up class name, but should be ok
+        return any(
+            base.__name__ == "RandomisedCarMixin"
+            for base in self.factory.model_type_cls.__mro__
+        )
 
 
 class CloneQuacker:

@@ -60,7 +60,7 @@
 
     <!--! Common -->
 
-    <tal:graphics_entry_switches condition="not catalogue.model_is_randomised_wagon_type">
+    <tal:graphics_entry_switches condition="not catalogue.wagon_quacker.is_randomised_wagon_type">
        <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
     </tal:graphics_entry_switches>
 
