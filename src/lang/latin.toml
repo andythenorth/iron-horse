@@ -22,9 +22,6 @@ base = "Nimiae"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "(Diseliana)"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "(Electrica Diselianaque)"
-
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(Vaporaria)"
 

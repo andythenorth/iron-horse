@@ -22,9 +22,6 @@ base = "Eccessiva"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Diesel-Elettrica"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metropolitana"
 

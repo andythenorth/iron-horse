@@ -22,9 +22,6 @@ base = "Prekomjeran"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Dizel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Elektro-dizel"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 

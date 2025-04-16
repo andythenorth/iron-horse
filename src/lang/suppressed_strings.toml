@@ -16,12 +16,18 @@ suppressed_rosters = ["pony", "ibex", "moose"]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_POWER_SOURCE_BATTERY_HYBRID]
+# docs only
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_POWER_SOURCE_DC]
 suppressed_rosters = ["pony", "moose"]
 
 [STR_POWER_SOURCE_METRO]
+# docs only
+suppressed_rosters = ["pony", "ibex", "moose"]
+
+[STR_POWER_SOURCE_STEAM]
+# docs only
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_BADGE_POWER_SOURCE_ELECTRIC_DC]
@@ -250,9 +256,6 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_BADGE_POWER_SOURCE_ELECTRIC_AC]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
 suppressed_rosters = ["moose"]
 
 [STR_WAGON_NAME_ACID_TANK_CAR]

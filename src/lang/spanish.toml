@@ -30,9 +30,6 @@ base = "Selección de color de vagón aleatorio"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diésel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Electro-Diésel"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 

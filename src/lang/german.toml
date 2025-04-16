@@ -21,9 +21,6 @@ base = "übermäßig"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Dieselelektrisch"
-
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "Dampf"
 

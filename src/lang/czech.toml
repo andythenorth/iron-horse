@@ -22,9 +22,6 @@ base = "Nadměrná"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Dieselová"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Hybridní"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro vůz"
 

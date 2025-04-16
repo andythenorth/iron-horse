@@ -20,9 +20,6 @@ base = "Extravagant"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Diesel-elektrisch"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 

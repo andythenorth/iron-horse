@@ -20,9 +20,6 @@ base = "Kohtuuton"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Sähkö-Diesel"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 

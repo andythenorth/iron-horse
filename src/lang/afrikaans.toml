@@ -21,9 +21,6 @@ base = "Uitbundig"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "(Diesel)"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "(Elektro-Diesel)"
-
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(Stoom)"
 

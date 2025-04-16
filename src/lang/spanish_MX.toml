@@ -21,9 +21,6 @@ base = "Excesiva"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "(diésel)"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "(diésel eléctrica)"
-
 [STR_BADGE_POWER_SOURCE_STEAM]
 base = "(vapor)"
 

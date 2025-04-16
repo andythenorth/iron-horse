@@ -350,26 +350,11 @@ base = "Battery Hybrid"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-# CABBAGE REFACTORING
-[STR_BADGE_POWER_SOURCE_ELECTRIC_AC]
-base = "AC Electric"
-
-# CABBAGE REFACTORING
-[STR_BADGE_POWER_SOURCE_ELECTRIC_DC]
-base = "DC Electric"
-
-# CABBAGE REFACTORING
-[STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC]
-base = "AC/DC Electric"
-
 [STR_BADGE_POWER_SOURCE_AC]
 base = "AC Electric"
 
 [STR_BADGE_POWER_SOURCE_DC]
 base = "DC Electric"
-
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Electro-Diesel"
 
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
@@ -716,6 +701,7 @@ base = "Metro"
 base = "Diesel"
 
 [STR_POWER_SOURCE_STEAM]
+# reported unused by nml, but needed by docs as of April 2025
 base = "Steam"
 
 # assumed to be handling case of lgv_capable (two speeds)

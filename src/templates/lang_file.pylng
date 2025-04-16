@@ -12,7 +12,7 @@
 STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_tag_or_version}
 STR_GRF_DOCS_URL                                                :${utils.docs_url}
 
-STR_EMPTY                                                       :
+<!--!STR_EMPTY                                                       :-->
 
 STR_NAME_TWO_PARTS                                              :{STRING} {STRING}
 

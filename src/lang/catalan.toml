@@ -30,9 +30,6 @@ base = "Selecció de color de cotxe aleatori"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
-base = "Elèctric-Diesel"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 
