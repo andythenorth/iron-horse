@@ -174,12 +174,13 @@ def main():
 
     grf_nml.close()
 
+    logger.set_colour("cyan")
     logger.info(
         f"[RENDER NML]"
         f"{command_line_args.grf_name} - complete "
-        f"{utils.string_format_compile_time_deltas(start, time())}"
+        f"{utils.string_format_compile_time_deltas(start, time())}",
     )
-
+    logger.set_colour("reset")
 
 if __name__ == "__main__":
     main()

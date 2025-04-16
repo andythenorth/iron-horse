@@ -150,23 +150,50 @@ import logging
 import os
 import sys
 
+# ANSI escape codes
+COLOR_CODES = {
+    "reset": "\033[0m",
+    "cyan": "\033[96m",
+    "red": "\033[91m",
+    "green": "\033[92m",
+    "yellow": "\033[93m",
+    "aquamarine": "\033[38;5;122m",
+    # Add more as needed
+}
+
+class ColoredLogger(logging.Logger):
+    def __init__(self, name):
+        super().__init__(name)
+        self._current_colour = None
+
+    def set_colour(self, colour_name):
+        """Set the current colour for console output."""
+        if colour_name in COLOR_CODES:
+            self._current_colour = COLOR_CODES[colour_name]
+        else:
+            raise ValueError(f"Unknown colour: {colour_name}")
+
+    def _colorize(self, msg):
+        if self._current_colour:
+            return f"{self._current_colour}{msg}{COLOR_CODES['reset']}"
+        return msg
+
+    def _log(self, level, msg, args, **kwargs):
+        msg = self._colorize(msg)
+        super()._log(level, msg, args, **kwargs)
+
 
 def get_logger(module_name):
-    """Return a logger configured to write to a file named after the module (with timestamp and level)
-    and to stdout (with plain message)."""
+    """Return a logger that supports .set_colour(name) for console output."""
+    logging.setLoggerClass(ColoredLogger)
     logger = logging.getLogger(module_name)
-    if (
-        not logger.handlers
-    ):  # Prevent duplicate handlers if the logger is already configured
+
+    if not logger.handlers:
         logger.setLevel(logging.DEBUG)
 
-        # Ensure the log directory exists
+        # File handler
         os.makedirs("build_logs", exist_ok=True)
-        log_filename = os.path.join(
-            "build_logs", os.path.basename(module_name) + ".log"
-        )
-
-        # File handler: timestamp truncated to seconds and log level included
+        log_filename = os.path.join("build_logs", os.path.basename(module_name) + ".log")
         file_handler = logging.FileHandler(log_filename, mode="a", encoding="utf-8")
         file_handler.setLevel(logging.DEBUG)
         file_formatter = logging.Formatter(
@@ -175,7 +202,7 @@ def get_logger(module_name):
         file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
 
-        # Console handler: plain message only
+        # Console handler
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.INFO)
         console_formatter = logging.Formatter("%(message)s")

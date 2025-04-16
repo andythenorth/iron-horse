@@ -537,11 +537,13 @@ def main():
 
     export_roster_to_json(roster)
 
+    logger.set_colour("cyan")
     logger.info(
         f"[RENDER DOCS] "
         f"{command_line_args.grf_name} - complete "
         f"{utils.string_format_compile_time_deltas(start, time())}"
     )
+    logger.set_colour("reset")
 
     # CABBAGE - THIS IS USED TO HANDLE VISIBLE CARGO ONLY SUPPORTING ONE UNIT?
     """

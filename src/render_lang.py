@@ -102,11 +102,13 @@ def main():
             lang_name = file_name.split(".")[0]
             render_lang(roster, lang_name, lang_dst, utils.git_tag_or_version())
 
+    logger.set_colour("cyan")
     logger.info(
         f"[RENDER LANG]"
         f"{command_line_args.grf_name} - complete "
         f"{utils.string_format_compile_time_deltas(start, time())}"
     )
+    logger.set_colour("reset")
 
 
 if __name__ == "__main__":

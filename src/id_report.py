@@ -78,11 +78,13 @@ def main():
     # we want to be told about and clear out unused liveries, doesn't really belong anywhere, so here will do
     iron_horse.livery_supplier.report_unused_liveries()
 
+    logger.set_colour("cyan")
     logger.info(
         f"[ID REPORT] "
         f"{command_line_args.grf_name} - complete "
         f"{utils.string_format_compile_time_deltas(start, time())}"
     )
+    logger.set_colour("reset")
 
 
 if __name__ == "__main__":

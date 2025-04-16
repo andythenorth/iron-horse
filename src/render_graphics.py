@@ -49,10 +49,12 @@ def report_sprites_complete(catalogues):
     )
     percent_complete = int(100 * (complete_count / total))
 
+    logger.set_colour("aquamarine")
     logger.info(
         f"Sprites complete for {complete_count} vehicles; "
         f"incomplete for {total - complete_count} vehicles; {percent_complete}%"
     )
+    logger.set_colour("reset")
 
     incomplete_by_track_type = {}
     for catalogue in catalogues:
@@ -180,11 +182,13 @@ def main():
             shutil.rmtree(dest_path)
         shutil.copytree(target_path, dest_path)
 
+    logger.set_colour("cyan")
     logger.info(
         f"[RENDER GRAPHICS]"
         f"{command_line_args.grf_name} - complete "
         f"{utils.string_format_compile_time_deltas(start, time())}"
     )
+    logger.set_colour("reset")
 
 
 if __name__ == "__main__":
