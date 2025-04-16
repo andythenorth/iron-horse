@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21170,
+        base_numeric_id=35580,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -89,7 +89,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21200,
+        base_numeric_id=35720,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21580,
+        base_numeric_id=35600,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -149,7 +149,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=21560,
+        base_numeric_id=35740,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -163,7 +163,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCar",
-        base_numeric_id=38760,
+        base_numeric_id=35640,
         gen=5,
         subtype="C",
         sprites_complete=True,

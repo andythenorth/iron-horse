@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCarRandomised",
-        base_numeric_id=36600,
+        base_numeric_id=38920,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCarRandomised",
-        base_numeric_id=31080,
+        base_numeric_id=38900,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCarRandomised",
-        base_numeric_id=31090,
+        base_numeric_id=35470,
         gen=5,
         subtype="B",
         sprites_complete=True,

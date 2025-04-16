@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCar",
-        base_numeric_id=34330,
+        base_numeric_id=34250,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCar",
-        base_numeric_id=34350,
+        base_numeric_id=34230,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCar",
-        base_numeric_id=34370,
+        base_numeric_id=34210,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCar",
-        base_numeric_id=34390,
+        base_numeric_id=34190,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -161,7 +161,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCar",
-        base_numeric_id=34290,
+        base_numeric_id=35230,
         gen=5,
         subtype="C",
         sprites_complete=True,

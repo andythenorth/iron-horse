@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropEnd",
-        base_numeric_id=26310,
+        base_numeric_id=35960,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -34,7 +34,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropEnd",
-        base_numeric_id=26330,
+        base_numeric_id=35980,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropEnd",
-        base_numeric_id=26350,
+        base_numeric_id=35620,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarDropEnd",
-        base_numeric_id=26370,
+        base_numeric_id=35940,
         gen=4,
         subtype="B",
         sprites_complete=True,

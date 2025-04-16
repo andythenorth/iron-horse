@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileEnclosedCar",
-        base_numeric_id=34410,
+        base_numeric_id=20820,
         gen=3,
         subtype="B",
         sprites_complete=True,

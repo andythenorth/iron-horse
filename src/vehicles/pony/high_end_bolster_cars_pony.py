@@ -38,7 +38,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCarHighEnd",
-        base_numeric_id=28120,
+        base_numeric_id=40090,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BolsterCarHighEnd",
-        base_numeric_id=36580,
+        base_numeric_id=40110,
         gen=4,
         subtype="C",
         sprites_complete=True,

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20820,
+        base_numeric_id=35760,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -34,7 +34,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20840,
+        base_numeric_id=35780,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20860,
+        base_numeric_id=35800,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20880,
+        base_numeric_id=35700,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20900,
+        base_numeric_id=35680,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -123,7 +123,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=26440,
+        base_numeric_id=35900,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -139,7 +139,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=20920,
+        base_numeric_id=35660,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -151,7 +151,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=26560,
+        base_numeric_id=35880,
         gen=5,
         subtype="C",
         sprites_complete=True,
