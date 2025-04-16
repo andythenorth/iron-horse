@@ -19,12 +19,6 @@ class UnitBase(object):
         self.model_variant = model_variant
         self.id = id
         self.numeric_id = numeric_id
-        # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
-        # CABBAGE - do we still need cabbage_numeric_id?
-        if len(self.model_variant.unique_units) == 0:
-            self.cabbage_numeric_id = 0
-        else:
-            self.cabbage_numeric_id = len(self.model_variant.unique_units)
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = "ENGINE_CLASS_STEAM"
@@ -38,13 +32,19 @@ class UnitBase(object):
         self.random_trigger_switch = None
 
     @property
-    def cabbage_unit_id_from_model_type(self):
-        return f"{self.model_variant.model_id}_unit_{self.cabbage_numeric_id}"
+    def unit_index_in_model_variant(self):
+        # note this won't work reliabily until all units have been added to model_variant.unique_units
+        # not 100% certain if this should be unique_units, or units, but previous code was using unique_units, so continued that when refactoring
+        return self.model_variant.unique_units.index(self)
 
     @property
-    def cabbage_unit_id_from_default_model_variant(self):
-        # convenience method when we have shared switch chains, and we want to target a specific unit in the default variant
-        return f"{self.model_variant.catalogue.default_model_variant_from_roster.id}_unit_{self.model_variant.units.index(self)}"
+    def unit_id_from_common_model_id(self):
+        return f"{self.model_variant.model_id}_unit_{self.unit_index_in_model_variant}"
+
+    @property
+    def unit_id_from_default_model_variant_id(self):
+        # for the case where we want to target a specific unit in the default model variant
+        return f"{self.model_variant.catalogue.default_model_variant_from_roster.id}_unit_{self.unit_index_in_model_variant}"
 
     @property
     def tail_light(self):
@@ -349,9 +349,9 @@ class UnitBase(object):
         return expression_template.substitute(unit_offset=unit_offset)
 
     @property
-    def graphics_switch_entry_point_cabbage(self):
-        if self.model_variant.gestalt_graphics.cabbage_common_graphics_target:
-            return self.cabbage_unit_id_from_model_type
+    def graphics_switch_entry_point_stem(self):
+        if self.model_variant.gestalt_graphics.variants_use_common_graphics_switch_chain:
+            return self.unit_id_from_common_model_id
         else:
             return self.id
 

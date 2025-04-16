@@ -55,7 +55,7 @@ class GestaltGraphics(object):
         return None
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
     def get_output_row_types(self):
@@ -156,7 +156,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         return "vehicle_engine.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
     # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
@@ -191,7 +191,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         return "vehicle_randomised.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return True
 
     def buy_menu_row_map(self, pipeline):
@@ -276,7 +276,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return "vehicle_with_visible_cargo.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return True
 
     def get_output_row_types(self):
@@ -445,7 +445,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         return "vehicle_box_car_with_opening_doors.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         # !! could be common, but template looks to use unit.foo as of March 2025?
         return False
 
@@ -516,7 +516,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         return "vehicle_caboose.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
     def get_output_row_types(self):
@@ -692,7 +692,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         return "vehicle_intermodal.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
 
@@ -869,7 +869,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         return "vehicle_automobile_car.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
 
@@ -909,7 +909,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return "vehicle_with_simple_body_colour_remaps.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return True
 
     def get_output_row_types(self):
@@ -995,7 +995,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         return "vehicle_formation_position_dependent.pynml"
 
     @property
-    def cabbage_common_graphics_target(self):
+    def variants_use_common_graphics_switch_chain(self):
         return False
 
     def get_output_row_types(self):
@@ -1123,7 +1123,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
     def __init__(
         self,
         _nml_template,
-        cabbage_common_graphics_target=None,
+        variants_use_common_graphics_switch_chain=None,
         cargo_row_map=None,
         generic_rows=None,
         unique_spritesets=None,
@@ -1135,7 +1135,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
         self._nml_template = _nml_template
-        self._cabbage_common_graphics_target = cabbage_common_graphics_target
+        self._variants_use_common_graphics_switch_chain = variants_use_common_graphics_switch_chain
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
@@ -1156,9 +1156,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         return self._nml_template
 
     @property
-    def cabbage_common_graphics_target(self):
-        if self._cabbage_common_graphics_target is not None:
-            return self._cabbage_common_graphics_target
+    def variants_use_common_graphics_switch_chain(self):
+        if self._variants_use_common_graphics_switch_chain is not None:
+            return self._variants_use_common_graphics_switch_chain
         else:
             return False
 

@@ -58,9 +58,9 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; <!--! default to none to suppress effects, set in cb as needed -->
     }
     graphics {
-        default:                        ${unit.graphics_switch_entry_point_cabbage}_switch_graphics;
+        default:                        ${unit.graphics_switch_entry_point_stem}_switch_graphics;
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
-            purchase:                       ${unit.graphics_switch_entry_point_cabbage}_switch_graphics_purchase;
+            purchase:                       ${unit.graphics_switch_entry_point_stem}_switch_graphics_purchase;
             <tal:name_callback condition="model_variant.cabbage_use_name_callback">
                 name:                           switch_name;
             </tal:name_callback>
@@ -109,8 +109,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         </tal:colour_mapping_cb>
         <!--! only use the capacity switches if unit carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="unit.has_cargo_capacity">
-            cargo_capacity:                 ${unit.cabbage_unit_id_from_default_model_variant}_switch_cargo_capacity;
-            purchase_cargo_capacity:        ${unit.cabbage_unit_id_from_default_model_variant}_switch_cargo_capacity;
+            cargo_capacity:                 ${unit.unit_id_from_default_model_variant_id}_switch_cargo_capacity;
+            purchase_cargo_capacity:        ${unit.unit_id_from_default_model_variant_id}_switch_cargo_capacity;
         </tal:optional_capacity_switches>
         <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
         <!--! as of April 2025 this is not used, only type of automotive sprites exists -->

@@ -1,18 +1,18 @@
 <!--! graphics entry switch for either common (all models share same sprites) or per-model -->
 
-<tal:graphics_entry_cases switch="model_variant.gestalt_graphics.cabbage_common_graphics_target">
+<tal:graphics_entry_cases switch="model_variant.gestalt_graphics.variants_use_common_graphics_switch_chain">
     <tal:case tal:case="True">
         <tal:model_common condition="model_variant.is_default_model_variant">
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
-                return ${unit.cabbage_unit_id_from_default_model_variant}_switch_graphics_vehicle;
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+                return ${unit.unit_id_from_default_model_variant_id}_switch_graphics_vehicle;
             }
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
                 <!--!
                     tail lights are extra, not counted in num_sprite_layers
                     total number of sprite layers is limited by OpenTTD
                 -->
                 <tal:sprite_layers repeat="sprite_layer_num range(0, model_variant.num_sprite_layers)">
-                    ${sprite_layer_num}: return ${unit.cabbage_unit_id_from_model_type}_switch_set_layers_register_more_sprites;
+                    ${sprite_layer_num}: return ${unit.unit_id_from_common_model_id}_switch_set_layers_register_more_sprites;
                 </tal:sprite_layers>
                 return switch_graphics_layer_tail_light_${unit.tail_light};
             }

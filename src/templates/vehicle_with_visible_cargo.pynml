@@ -4,7 +4,7 @@
     <tal:spritesets repeat="spriteset_data model_variant.gestalt_graphics.get_unique_spritesets(unit)">
         <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
               so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
-        spriteset(${unit.cabbage_unit_id_from_model_type}_ss_${spriteset_data[0]}, "${graphics_path}${model_variant.model_id}.png") {
+        spriteset(${unit.unit_id_from_common_model_id}_ss_${spriteset_data[0]}, "${graphics_path}${model_variant.model_id}.png") {
             ${unit.get_spriteset_template_name('unreversed', spriteset_data[1])}
         }
         <!--! spritegroups aren't used here, direct to spriteset -->
@@ -12,36 +12,36 @@
 
     <!--! I did try consolidating cargo + load into a single switch checking procedures, but it exceeded the 255 limit for varact 2 ranges -->
     <tal:load_state repeat="load_state ['loading', 'loaded']">
-        switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_cargo_${load_state}, cargo_type_in_veh) {
+        switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_cargo_${load_state}, cargo_type_in_veh) {
             <tal:optimise_out_if_only_1_cargo condition="len(model_variant.gestalt_graphics.cargo_row_map.items()) > 1">
                 <tal:cargos repeat="mapping model_variant.gestalt_graphics.cargo_row_map.items()">
                     <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
                         <!--! cargo_row_map provides a list format to support multiple variants for same cargo label, but that is unused currently (June 2020) so just take first item
                               the list could be used to provide random cargo sprites for selected labels, but support for that was unused, and was removed by design in 2020 to speed up compiling
                             -->
-                        ${mapping[0]}: return ${unit.cabbage_unit_id_from_model_type}_ss_${load_state}_${mapping[1][0]};
+                        ${mapping[0]}: return ${unit.unit_id_from_common_model_id}_ss_${load_state}_${mapping[1][0]};
                     </tal:exclude_default_cargo>
                 </tal:cargos>
             </tal:optimise_out_if_only_1_cargo>
             <!--! generic cargos -->
-            return ${unit.cabbage_unit_id_from_model_type}_ss_${load_state}_${model_variant.gestalt_graphics.generic_rows[0]};
+            return ${unit.unit_id_from_common_model_id}_ss_${load_state}_${model_variant.gestalt_graphics.generic_rows[0]};
         }
     </tal:load_state>
 
     <tal:graphics_with_optional_cover switch="getattr(model_variant.gestalt_graphics, 'has_cover', False)">
         <tal:no_cover case="False">
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
-                0: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_unweathered;
-                1: return ${unit.cabbage_unit_id_from_model_type}_switch_cargo_loading;
-                2: return ${unit.cabbage_unit_id_from_model_type}_switch_cargo_loaded;
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+                0: return ${unit.unit_id_from_common_model_id}_ss_empty_unweathered;
+                1: return ${unit.unit_id_from_common_model_id}_switch_cargo_loading;
+                2: return ${unit.unit_id_from_common_model_id}_switch_cargo_loaded;
             }
         </tal:no_cover>
         <tal:has_cover case="True">
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_has_cover()) {
-                0: return ${unit.cabbage_unit_id_from_model_type}_ss_has_cover_unweathered;
-                1: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_unweathered;
-                2: return ${unit.cabbage_unit_id_from_model_type}_switch_cargo_loading;
-                3: return ${unit.cabbage_unit_id_from_model_type}_switch_cargo_loaded;
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_has_cover()) {
+                0: return ${unit.unit_id_from_common_model_id}_ss_has_cover_unweathered;
+                1: return ${unit.unit_id_from_common_model_id}_ss_empty_unweathered;
+                2: return ${unit.unit_id_from_common_model_id}_switch_cargo_loading;
+                3: return ${unit.unit_id_from_common_model_id}_switch_cargo_loaded;
             }
         </tal:has_cover>
     </tal:graphics_with_optional_cover>
@@ -49,18 +49,18 @@
     <!--! weathered graphics are optional, and only used when recoloured sprites are provided in an overlay layer, rather than by CC remapping the default sprite -->
     <tal:masked_overlay_graphics condition="model_variant.gestalt_graphics.add_masked_overlay" switch="getattr(model_variant.gestalt_graphics, 'has_cover', False)">
         <tal:no_cover case="False">
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
-                0: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
-                1: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
-                2: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+                0: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
+                1: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
+                2: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
             }
         </tal:no_cover>
         <tal:has_cover case="True">
-            switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_has_cover()) {
-                0: return ${unit.cabbage_unit_id_from_model_type}_ss_has_cover_weathered;
-                1: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
-                2: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
-                3: return ${unit.cabbage_unit_id_from_model_type}_ss_empty_weathered;
+            switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_has_cover()) {
+                0: return ${unit.unit_id_from_common_model_id}_ss_has_cover_weathered;
+                1: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
+                2: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
+                3: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
             }
         </tal:has_cover>
     </tal:masked_overlay_graphics>
@@ -68,17 +68,17 @@
     <tal:weathered_state condition="len(model_variant.gestalt_graphics.weathered_states) > 1">
     <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
     <!--! this could be parameterised procedure, as it's used for other gestalts also -->
-    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_state, random_bits_weathered_state()) {
+    switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_choose_weathered_state, random_bits_weathered_state()) {
         <tal:weathered_states repeat="weathered_state model_variant.gestalt_graphics.weathered_states">
-            <!--!${repeat.weathered_state.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_${weathered_state};-->
-            ${repeat.weathered_state.index}: return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_${weathered_state};
+            <!--!${repeat.weathered_state.index}: return ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_${weathered_state};-->
+            ${repeat.weathered_state.index}: return ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_${weathered_state};
         </tal:weathered_states>
-        return ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered; <!--! this default should not be reached in this case, but eh -->
+        return ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered; <!--! this default should not be reached in this case, but eh -->
     }
 
-    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_check_randomisation_strategy, param_wagon_colour_randomisation) {
-        0: ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered; <!--! no randomisation -->
-        ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_choose_weathered_state;
+    switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_check_randomisation_strategy, param_wagon_colour_randomisation) {
+        0: ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered; <!--! no randomisation -->
+        ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_choose_weathered_state;
     }
     </tal:weathered_state>
 </tal:model_common>
@@ -86,9 +86,9 @@
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     <!--! masked overlay is JFDI hard-coded for now -->
     <tal:masked_overlay condition="model_variant.gestalt_graphics.add_masked_overlay">
-        1: ${unit.cabbage_unit_id_from_model_type}_switch_graphics_check_randomisation_strategy;
+        1: ${unit.unit_id_from_common_model_id}_switch_graphics_check_randomisation_strategy;
     </tal:masked_overlay>
-    ${unit.cabbage_unit_id_from_model_type}_switch_graphics_vehicle_check_state_unweathered;
+    ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered;
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">

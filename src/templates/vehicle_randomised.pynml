@@ -1,6 +1,6 @@
 <tal:model_common condition="model_variant.is_default_model_variant">
     <!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
-    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics_variant_choose_randomised_wagon, [
+    switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_variant_choose_randomised_wagon, [
                                 pseudo_random_value_from_deterministic_random_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                 %
@@ -14,11 +14,11 @@
           we'll ultimately chain instead to the selected candidate's graphics entry switch
           note that graphics_entry_switches.pynml shouldn't be used with this template
           randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
-    switch (FEAT_TRAINS, SELF, ${unit.cabbage_unit_id_from_model_type}_switch_graphics,
-                ${unit.cabbage_unit_id_from_model_type}_switch_graphics_variant_choose_randomised_wagon()) {
+    switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics,
+                ${unit.unit_id_from_common_model_id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate model_variant.wagon_randomisation_candidates">
             <!--! CABBAGE the id interpolation is JFDI -->
-            <tal:candidate_graphics_entry_cases switch="randomisation_candidate.gestalt_graphics.cabbage_common_graphics_target">
+            <tal:candidate_graphics_entry_cases switch="randomisation_candidate.gestalt_graphics.variants_use_common_graphics_switch_chain">
                 <tal:case tal:case="True">
                     ${repeat.randomisation_candidate.index}: ${randomisation_candidate.model_id}_unit_${model_variant.units.index(unit)}_switch_graphics;
                 </tal:case>
