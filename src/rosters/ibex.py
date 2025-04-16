@@ -276,7 +276,7 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-        engine_and_pax_mail_car_liveries={
+        engine_and_misc_car_liveries={
             "SWOOSH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -305,7 +305,7 @@ def main():
         },
         # lists of 2-tuple (livery_name, relative_spriterow_num) for pax / mail vehicles
         # buy menu order will match list order
-        # - livery name comes from roster engine_and_pax_mail_car_liveries
+        # - livery name comes from roster engine_and_misc_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
             "default_pax_liveries": [("VANILLA", 0)],

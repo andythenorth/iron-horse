@@ -76,7 +76,7 @@ class RosterManager(list):
             for (
                 livery_name,
                 livery_def,
-            ) in roster.engine_and_pax_mail_car_liveries.items():
+            ) in roster.engine_and_misc_car_liveries.items():
                 livery_supplier.add_livery(livery_name, **livery_def)
             roster.produce_engines()
             roster.produce_wagons()

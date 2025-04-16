@@ -51,8 +51,8 @@ class Roster:
         )
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
-        self.engine_and_pax_mail_car_liveries = kwargs.get(
-            "engine_and_pax_mail_car_liveries", []
+        self.engine_and_misc_car_liveries = kwargs.get(
+            "engine_and_misc_car_liveries", []
         )
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
         # tech tree times as fast to create as of April 2025, so no need for conditional creation
@@ -351,7 +351,7 @@ class Roster:
         # will fail if the livery group is not defined in the roster
         # CABBAGE SHIM
         for livery in self.pax_mail_livery_groups[livery_group_name]:
-            livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
+            livery_result = self.engine_and_misc_car_liveries[livery[0]].copy()
             livery_result["relative_spriterow_num"] = livery[1]
             result.append(livery_result)
         return result
