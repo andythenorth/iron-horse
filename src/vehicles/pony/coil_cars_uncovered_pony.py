@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarUncovered",
-        base_numeric_id=24050,
+        base_numeric_id=29060,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -45,7 +45,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarUncovered",
-        base_numeric_id=24070,
+        base_numeric_id=29040,
         gen=5,
         subtype="B",
         sprites_complete=True,

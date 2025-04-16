@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarCovered",
-        base_numeric_id=30200,
+        base_numeric_id=34480,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -33,7 +33,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarCovered",
-        base_numeric_id=30210,
+        base_numeric_id=29020,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -59,7 +59,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarCovered",
-        base_numeric_id=30230,
+        base_numeric_id=34460,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BulkCarBoxRandomised",
-        base_numeric_id=26410,
+        base_numeric_id=25950,
         gen=3,
         subtype="A",
         sprites_complete=True,

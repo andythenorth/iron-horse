@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarSlidingWallType2",
-        base_numeric_id=23360,
+        base_numeric_id=20920,
         gen=3,
         subtype="A",
         base_track_type="NG",

@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetric",
-        base_numeric_id=23330,
+        base_numeric_id=29850,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetric",
-        base_numeric_id=23350,
+        base_numeric_id=34820,
         gen=5,
         subtype="C",
         sprites_complete=True,

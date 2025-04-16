@@ -40,7 +40,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=24090,
+        base_numeric_id=20900,
         gen=3,
         subtype="B",
         sprites_complete=True,
