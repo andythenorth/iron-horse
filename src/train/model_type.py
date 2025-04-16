@@ -1435,7 +1435,7 @@ class MailEngineBase(EngineModelTypeBase):
 
 class MailEngineCabbageDVT(MailEngineBase):
     """
-    Mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
+    Mail DVT / Cabbage.  Implemented as Engine so it can lead a consist in-game.
     """
 
     livery_group_name = "dvt_mail_liveries"
