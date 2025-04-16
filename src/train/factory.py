@@ -829,6 +829,16 @@ class EngineQuacker:
         self._validate(result)
         return result
 
+    @cached_property
+    def availability_controlled_by_engine_param(self):
+        # predicate for engines whose availability is governed by the player setting for engines availability parameter
+        # *all* engines are engines
+        if self._quack():
+            return True
+        # otherwise delegate to inversion of wagon quacker availability params
+        # anything that's not a wagon for availability params is treated as an engine
+        return not self.catalogue.wagon_quacker.availability_controlled_by_wagon_param
+
 
 class WagonQuacker:
     """
@@ -863,6 +873,18 @@ class WagonQuacker:
         result = self._quack()
         self._validate(result)
         return result
+
+    @cached_property
+    def availability_controlled_by_wagon_param(self):
+        # predicate for wagons whose availability is governed by the player setting for wagons availability parameter
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # wagons that are trailers for railcars etc need to match availability to their cab, so they're handled as engines
+        if self.factory.cab_factory is not None:
+            return False
+        # fall through
+        return True
 
 
 class CloneQuacker:

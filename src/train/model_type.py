@@ -785,21 +785,6 @@ class ModelTypeBase(object):
         # override in subclass as needed
         return self._loading_speed_multiplier
 
-    @property
-    def is_general_purpose_true_wagon(self):
-        # all engines have power
-        # all true wagons don't
-        # wagons that add power aren't true wagons
-        # some subclasses handle this directly (e.g. pax trailers for specific railcars)
-
-        # !! CABBAGE this is a refactoring shim, but we need to be cautious about recursive loops from EngineQuacker and WagonQuacker calling each other
-        if self.catalogue.engine_quacker.quack:
-            return False
-        elif self.distributed_power_wagon:
-            return False
-        else:
-            return True
-
     @cached_property
     def is_caboose(self):
         # this shorthand to avoid looking up the classname directly for a couple of special cases
@@ -5620,10 +5605,6 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
-
 
 class MailHighSpeedCar(MailCarBase):
     """
@@ -5721,10 +5702,6 @@ class MailHSTCar(MailCarBase):
             "STR_WAGON_NAME_HST_MAIL_CAR",
         ]
         return result
-
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
 
 
 class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
@@ -6604,10 +6581,6 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
-
 
 class PassengerHSTCar(PassengerCarBase):
     """
@@ -6665,10 +6638,6 @@ class PassengerHSTCar(PassengerCarBase):
         ]
         return result
 
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
-
 
 class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     """
@@ -6707,10 +6676,6 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
-
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
 
 
 class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
@@ -6760,10 +6725,6 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["high_capacity"]
-
-    @property
-    def is_general_purpose_true_wagon(self):
-        return False
 
 
 class PassengerRestaurantCar(PassengerCarBase):
