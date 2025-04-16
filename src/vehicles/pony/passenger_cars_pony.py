@@ -117,7 +117,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerCar",
-        base_numeric_id=23030,
+        base_numeric_id=20840,
         gen=1,
         subtype="B",
         sprites_complete=True,

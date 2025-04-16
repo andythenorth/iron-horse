@@ -87,7 +87,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BulkCarHopperRandomised",
-        base_numeric_id=30440,
+        base_numeric_id=21200,
         gen=4,
         subtype="A",
         sprites_complete=True,

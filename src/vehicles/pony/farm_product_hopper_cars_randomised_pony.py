@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsHopperCarRandomised",
-        base_numeric_id=30290,
+        base_numeric_id=21560,
         gen=3,
         subtype="B",
         sprites_complete=True,

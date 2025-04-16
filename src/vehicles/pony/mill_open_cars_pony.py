@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarMill",
-        base_numeric_id=23000,
+        base_numeric_id=34270,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -136,7 +136,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarMill",
-        base_numeric_id=39890,
+        base_numeric_id=34800,
         gen=5,
         subtype="B",
         sprites_complete=True,
