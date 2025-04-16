@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=36230,
+        base_numeric_id=35700,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -53,7 +53,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=31780,
+        base_numeric_id=35720,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=30750,
+        base_numeric_id=35740,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -101,7 +101,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=31800,
+        base_numeric_id=35760,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=30970,
+        base_numeric_id=35800,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=31810,
+        base_numeric_id=35780,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -139,7 +139,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="LogCar",
-        base_numeric_id=26050,
+        base_numeric_id=17010,
         gen=5,
         subtype="C",
         sprites_complete=True,
