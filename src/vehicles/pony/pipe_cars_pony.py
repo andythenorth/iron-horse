@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PipeCar",
-        base_numeric_id=20010,
+        base_numeric_id=34720,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PipeCar",
-        base_numeric_id=28490,
+        base_numeric_id=39900,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PipeCar",
-        base_numeric_id=35590,
+        base_numeric_id=38770,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PipeCar",
-        base_numeric_id=30460,
+        base_numeric_id=34780,
         gen=5,
         subtype="C",
         sprites_complete=True,

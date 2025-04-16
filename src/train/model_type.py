@@ -6927,14 +6927,16 @@ class PipeCar(FlatCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
-        "FREIGHT_BONUS_OXIDE_RUST",
         # didn't bother with teal, these wagons have limited coloured pixels, looks same as silver/teal
-        # didn't bother with obsidian, saving IDs
     ]
 
     model_id_root = "pipe_car"
