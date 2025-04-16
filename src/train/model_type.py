@@ -1143,8 +1143,6 @@ class EngineModelTypeBase(ModelTypeBase):
     Base model type for Engines and other powered vehicles.
     """
 
-    # used for docs management
-    is_wagon_for_docs = False
     # how to handle grouping this model type
     group_as_wagon = False
 
@@ -2213,8 +2211,6 @@ class CarModelTypeBase(ModelTypeBase):
 
     # model_id = '' # provide in subclass
 
-    # used for docs optimisation etc
-    is_wagon_for_docs = True
     # how to handle grouping this model type
     group_as_wagon = True
 

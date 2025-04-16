@@ -146,7 +146,7 @@ def render_docs_images(
     docs_image_variants = []
 
     for model_variant in model_variant_catalogue_mapping["model_variants"]:
-        if model_variant.is_wagon_for_docs:
+        if catalogue.wagon_quacker.quack:
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
             # we *do* want docs images for all trailer model variants

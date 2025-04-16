@@ -534,9 +534,8 @@ class Catalogue(list):
         if hasattr(target_factory.model_type_cls, "liveries"):
             result = []
             for index, name in enumerate(target_factory.model_type_cls.liveries):
-                if target_factory.model_type_cls.is_wagon_for_docs:
+                if self.wagon_quacker.quack:
                     # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
-                    # slight abuse of is_wagon_for_docs to force this - add another cls attr to wagon model type if needed
                     relative_spriterow_num = 0
                 else:
                     # assume that liveries map to spriterows (common case for engines)
@@ -806,7 +805,7 @@ class EngineQuacker:
         self.catalogue = catalogue
         self.factory = self.catalogue.factory
 
-    def _validate(self, test_result):
+    def _validate_inverse_quacker(self, test_result):
         # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
         # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
         # doing it this way prevents conceptual blur enforceably
@@ -826,7 +825,7 @@ class EngineQuacker:
     def quack(self):
         # wraps _quack so we can run _validate without recursion loop
         result = self._quack()
-        self._validate(result)
+        self._validate_inverse_quacker(result)
         return result
 
     @cached_property
@@ -851,7 +850,7 @@ class WagonQuacker:
         self.catalogue = catalogue
         self.factory = self.catalogue.factory
 
-    def _validate(self, test_result):
+    def _validate_inverse_quacker(self, test_result):
         # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
         # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
         assert (
@@ -871,7 +870,7 @@ class WagonQuacker:
     def quack(self):
         # wraps _quack so we can run _validate without recursion loop
         result = self._quack()
-        self._validate(result)
+        self._validate_inverse_quacker(result)
         return result
 
     @cached_property
