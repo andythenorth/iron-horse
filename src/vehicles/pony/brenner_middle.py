@@ -40,7 +40,7 @@ def main(**kwargs):
         class_name="TGVMiddleMailEngine",
         model_id="brenner_middle_mail",
         cab_id="brenner_cab",
-        base_numeric_id=6780,
+        base_numeric_id=2160,
         name="Brenner Mail Van",
         subrole="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
