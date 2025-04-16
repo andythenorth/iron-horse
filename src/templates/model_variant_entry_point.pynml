@@ -76,9 +76,9 @@
         <tal:include metal:use-macro="load: power.pynml" />
     </tal:railtype_varies_power>
 
-    <tal:distributed_power_wagon condition="model_variant.distributed_power_wagon and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+    <tal:is_distributed_power_wagon condition="model_variant.is_distributed_power_wagon and unit.is_not_trailing_part and model_variant.is_default_model_variant">
         <tal:include metal:use-macro="load: power.pynml" />
-    </tal:distributed_power_wagon>
+    </tal:is_distributed_power_wagon>
 
     <tal:receives_easter_egg_haulage_speed_bonus condition="model_variant.receives_easter_egg_haulage_speed_bonus and unit.is_not_trailing_part and model_variant.is_default_model_variant">
         <tal:include metal:use-macro="load: speed.pynml" />

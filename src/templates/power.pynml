@@ -12,11 +12,11 @@
     </tal:power_source>
 </tal:railtype_varies_power>
 
-<tal:distributed_power_wagon condition="model_variant.distributed_power_wagon and unit.is_not_trailing_part">
+<tal:is_distributed_power_wagon condition="model_variant.is_distributed_power_wagon and unit.is_not_trailing_part">
     <!--! power varies if specific engines are present in the consist -->
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_power_0, has_badge("ih_distributed_power/is_power_cab/${catalogue.cab_engine_model.model_id}")) {
         1: return ${catalogue.cab_engine_model.power};
         return 0;
     }
-</tal:distributed_power_wagon>
+</tal:is_distributed_power_wagon>

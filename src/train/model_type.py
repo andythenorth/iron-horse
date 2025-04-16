@@ -62,8 +62,8 @@ class ModelTypeBase(object):
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
-        self.distributed_power_wagon = False
-        self.distributed_power_cab = False
+        self.is_distributed_power_wagon = False
+        self.is_distributed_power_cab = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # just a simple buy cost tweak, only use when needed
@@ -283,9 +283,9 @@ class ModelTypeBase(object):
     @property
     def distributed_power_badges(self):
         result = []
-        if self.distributed_power_wagon:
+        if self.is_distributed_power_wagon:
             result.append(f"ih_distributed_power/powered_by/{self.catalogue.cab_engine_model.model_id}")
-        if self.distributed_power_cab:
+        if self.is_distributed_power_cab:
             result.append(f"ih_distributed_power/is_power_cab/{self.model_id}")
         return result
 
@@ -385,7 +385,7 @@ class ModelTypeBase(object):
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
                 # would require quite a bit of refactoring though eh
-                assert self.distributed_power_wagon == False, (
+                assert self.is_distributed_power_wagon == False, (
                     "%s has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
                     % self.model_id
                 )
@@ -960,9 +960,9 @@ class ModelTypeBase(object):
 
     @property
     def buy_menu_additional_text_hint_distributed_power(self):
-        if self.distributed_power_wagon:
+        if self.is_distributed_power_wagon:
             return True
-        if self.distributed_power_cab:
+        if self.is_distributed_power_cab:
             return True
         return False
 
@@ -1009,7 +1009,7 @@ class ModelTypeBase(object):
 
     def get_buy_menu_additional_text_format(self):
         # keep the template logic simple, present strings for a switch/case tree
-        # variable_power and distributed_power_wagon are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
+        # variable_power and is_distributed_power_wagon are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
         if self.engine_varies_power_by_power_source:
             # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
             # !!! we need a better tree, similar to get_name_parts
@@ -2021,7 +2021,7 @@ class TGVCabEngine(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.distributed_power_cab = True
+        self.is_distributed_power_cab = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # ....run cost multiplier is adjusted up from pax base because regrettable realism
@@ -2068,7 +2068,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.distributed_power_wagon = True
+        self.is_distributed_power_wagon = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab

@@ -77,7 +77,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             </tal:running_cost_factor>
             <!--! purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs -->
             purchase_running_cost_factor:   ${model_variant.running_cost};
-            <tal:variable_power condition="model_variant.engine_varies_power_by_power_source or model_variant.distributed_power_wagon">
+            <tal:variable_power condition="model_variant.engine_varies_power_by_power_source or model_variant.is_distributed_power_wagon">
                 power:                          ${model_variant.model_id}_switch_power_0;
                 purchase_power:                 ${model_variant.power};
             </tal:variable_power>
