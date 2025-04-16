@@ -185,6 +185,7 @@ class ModelVariantFactory:
         self.roster_id_providing_module = roster_id_providing_module
         # catalogue is a singleton that provides basic metadata for produced model variants
         self.catalogue = Catalogue.create(self)
+        self.catalogue.add_entries()
         if len(self.catalogue) == 0:
             raise Exception(
                 f"{self.model_id}\n" f"ModelVariantFactory catalogue is empty"
@@ -302,7 +303,7 @@ class ModelVariantFactory:
         # delegate to cab_id if prsent
         if self.model_def.cab_id is not None:
             return self.model_def.cab_id
-        if self.model_type_cls.group_as_wagon:
+        if self.catalogue.wagon_quacker.quack:
             # wagon can optionally set vehicle_family_id as class property
             if getattr(self.model_type_cls, "vehicle_family_id", None) is not None:
                 return self.model_type_cls.vehicle_family_id
@@ -335,8 +336,8 @@ class ModelVariantFactory:
         if self.cab_factory is not None:
             return self.cab_factory.model_id
 
-        # primarily used for explcitly selected wagon groups (from a class property on the model type)
-        if self.model_type_cls.group_as_wagon:
+        # default grouping for wagons not otherwise handled above
+        if self.catalogue.wagon_quacker.quack:
             # we split groups for random and static liveries (group nesting will then be determined by roster)
             livery_selection = "static"
             if (
@@ -413,26 +414,30 @@ class Catalogue(list):
     @classmethod
     def create(cls, factory):
         instance = cls(factory)
-        for livery_counter, livery_def in enumerate(instance.livery_defs):
-            model_variant_id = f"{instance.factory.model_id}_mv_{livery_counter}"
+        return instance
+
+    def add_entries(self):
+        # entry adding separated from create() as it depends on the catalogue being available to factory
+        for livery_counter, livery_def in enumerate(self.livery_defs):
+            model_variant_id = f"{self.factory.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
-                for i, _ in enumerate(instance.factory.model_def.unit_defs)
+                for i, _ in enumerate(self.factory.model_def.unit_defs)
             ]
             # pre-calculated numeric IDs provided for every unit
-            numeric_id_offset = instance.factory.model_def.base_numeric_id + (
-                livery_counter * len(instance.factory.model_def.unit_defs)
+            numeric_id_offset = self.factory.model_def.base_numeric_id + (
+                livery_counter * len(self.factory.model_def.unit_defs)
             )
             # note that this is the list of *unique* numeric ids - it doesn't repeat ids for repeated units
             unit_numeric_ids = [
                 numeric_id_offset + i
-                for i, _ in enumerate(instance.factory.model_def.unit_defs)
+                for i, _ in enumerate(self.factory.model_def.unit_defs)
             ]
 
-            vehicle_family_id = factory.vehicle_family_id
+            vehicle_family_id = self.factory.vehicle_family_id
 
-            variant_group_id = factory.get_variant_group_id(
-                livery_def, instance.base_track_type
+            variant_group_id = self.factory.get_variant_group_id(
+                livery_def, self.base_track_type
             )
 
             # certain static properties are copied into the catalogue_entry from the factory
@@ -440,18 +445,17 @@ class Catalogue(list):
             # - we prefer not to access factory directly from templates or graphics generation
             # - model_def is considered mostly immutable after init, and we don't want the factory extensively writing properties into model_def instances
             catalogue_entry = CatalogueEntry(
-                catalogue=instance,
-                model_id=factory.model_id,
+                catalogue=self,
+                model_id=self.factory.model_id,
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
                 vehicle_family_id=vehicle_family_id,
                 variant_group_id=variant_group_id,
-                input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
+                input_spritesheet_name_stem=self.factory.input_spritesheet_name_stem,
             )
-            instance.append(catalogue_entry)
-        return instance
+            self.append(catalogue_entry)
 
     @property
     def livery_defs(self):

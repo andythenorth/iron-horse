@@ -1143,9 +1143,6 @@ class EngineModelTypeBase(ModelTypeBase):
     Base model type for Engines and other powered vehicles.
     """
 
-    # how to handle grouping this model type
-    group_as_wagon = False
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
@@ -2210,9 +2207,6 @@ class CarModelTypeBase(ModelTypeBase):
     """
 
     # model_id = '' # provide in subclass
-
-    # how to handle grouping this model type
-    group_as_wagon = True
 
     def __init__(self, speedy=False, **kwargs):
         super().__init__(**kwargs)
