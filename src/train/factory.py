@@ -910,6 +910,15 @@ class WagonQuacker:
             for base in self.factory.model_type_cls.__mro__
         )
 
+    @cached_property
+    def is_caboose(self):
+        # predicate for wagons which act as caboose
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # depends on looking up class name, but should be ok
+        return self.catalogue.example_model_variant.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
+
 
 class CloneQuacker:
     """

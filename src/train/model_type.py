@@ -266,7 +266,7 @@ class ModelTypeBase(object):
     @property
     def caboose_badges(self):
         result = []
-        if self.is_caboose:
+        if self.catalogue.wagon_quacker.is_caboose:
             result.append(f"ih_behaviour/caboose")
         return result
 
@@ -774,11 +774,6 @@ class ModelTypeBase(object):
         # override in subclass as needed
         return self._loading_speed_multiplier
 
-    @cached_property
-    def is_caboose(self):
-        # this shorthand to avoid looking up the classname directly for a couple of special cases
-        return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
-
     @property
     def roster(self):
         return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
@@ -856,12 +851,14 @@ class ModelTypeBase(object):
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return True
-        elif self.catalogue.wagon_quacker.is_randomised_wagon_type or self.is_caboose:
+        if self.catalogue.wagon_quacker.is_randomised_wagon_type:
             return True
-        elif self.dual_headed:
+        if self.catalogue.wagon_quacker.is_caboose:
             return True
-        else:
-            return False
+        if self.dual_headed:
+            return True
+        # fall through
+        return False
 
     @property
     def buy_menu_x_loc(self):
