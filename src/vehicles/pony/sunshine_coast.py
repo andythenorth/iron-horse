@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="PassengerEngineExpressRailcar",
         model_id="sunshine_coast",
-        base_numeric_id=4130,
+        base_numeric_id=4860,
         name="Sunshine Coast",
         subrole="express_pax_railcar",
         subrole_child_branch_num=-2,  # joker to hide them from simplified mode

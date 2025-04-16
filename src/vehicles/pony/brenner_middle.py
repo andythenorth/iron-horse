@@ -10,7 +10,7 @@ def main(**kwargs):
         class_name="TGVMiddlePassengerEngine",
         model_id="brenner_middle_passenger",
         cab_id="brenner_cab",
-        base_numeric_id=2880,
+        base_numeric_id=310,
         name="Brenner Passenger Coach",
         subrole="very_high_speed",
         pantograph_type="z-shaped-single-with-base",

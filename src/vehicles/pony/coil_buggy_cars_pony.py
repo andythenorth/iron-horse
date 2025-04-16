@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoilBuggyCarUnit",
-        base_numeric_id=5160,
+        base_numeric_id=330,
         gen=1,
         subtype="U",
         base_track_type="NG",

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TorpedoCarUnit",
-        base_numeric_id=4140,
+        base_numeric_id=490,
         gen=2,
         subtype="U",
         sprites_complete=True,
@@ -24,7 +24,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TorpedoCarUnit",
-        base_numeric_id=4060,
+        base_numeric_id=90,
         gen=3,
         subtype="U",
         sprites_complete=True,

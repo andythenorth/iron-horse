@@ -27,7 +27,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerExpressRailcarTrailerCar",
-        base_numeric_id=6750,
+        base_numeric_id=1940,
         gen=3,
         subtype="U",
         cab_id="high_flyer",
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerExpressRailcarTrailerCar",
-        base_numeric_id=6770,
+        base_numeric_id=2170,
         gen=4,
         subtype="U",
         cab_id="sunshine_coast",
@@ -81,7 +81,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerExpressRailcarTrailerCar",
-        base_numeric_id=15630,
+        base_numeric_id=1010,
         gen=5,
         subtype="U",
         cab_id="typhoon",

@@ -101,7 +101,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarSlidingWallType2",
-        base_numeric_id=6130,
+        base_numeric_id=2140,
         gen=5,
         subtype="D",
         sprites_complete=True,

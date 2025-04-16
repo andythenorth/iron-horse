@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="IngotCarUnit",
-        base_numeric_id=5150,
+        base_numeric_id=1870,
         gen=1,
         subtype="U",
         base_track_type="NG",

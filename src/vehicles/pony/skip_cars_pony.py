@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarSkip",
-        base_numeric_id=6120,
+        base_numeric_id=10,
         gen=1,
         subtype="U",
         base_track_type="NG",

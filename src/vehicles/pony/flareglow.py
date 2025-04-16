@@ -38,7 +38,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def_clone = model_def.begin_clone(base_numeric_id=39960, unit_repeats=[1])
+    model_def_clone = model_def.begin_clone(base_numeric_id=26330, unit_repeats=[1])
 
     model_def = model_def_clone.complete_clone()
 
