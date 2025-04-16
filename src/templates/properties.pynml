@@ -61,7 +61,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         default:                        ${unit.graphics_switch_entry_point_stem}_switch_graphics;
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             purchase:                       ${unit.graphics_switch_entry_point_stem}_switch_graphics_purchase;
-            <tal:name_callback condition="model_variant.cabbage_use_name_callback">
+            <tal:name_callback condition="model_variant.use_name_callback">
                 name:                           switch_name;
             </tal:name_callback>
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->

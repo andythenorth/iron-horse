@@ -196,7 +196,7 @@
                                                             <a href="${example_model_variant.model_id}.html">
                                                                 <div class="tech_tree_vehicle
                                                                             ${'tech_tree_vehicle_electric_' + example_model_variant.electrification_type.lower() if example_model_variant.requires_electric_rails else 'None'}
-                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source_cabbage/electro_diesel' in example_model_variant.power_source_badges else None}
+                                                                            ${'tech_tree_vehicle_electro_diesel' if 'power_source/electro_diesel' in example_model_variant.power_source_badges else None}
                                                                             ${'tech_tree_vehicle_arrow' if catalogue.next_gen_catalogue is not None else None}">
                                                                     <span style="display:block;">
                                                                         ${example_model_variant.name}

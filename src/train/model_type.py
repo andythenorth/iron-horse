@@ -170,7 +170,7 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def cabbage_use_name_callback(self):
+    def use_name_callback(self):
         # single special case as of April 2025
         return (
             (self.variant_group.group_level == 1)
@@ -259,7 +259,7 @@ class ModelTypeBase(object):
             result.append(f"ih_behaviour/randomised_wagon")
             for (
                 candidate_name
-            ) in self.cabbage_wagon_randomisation_candidate_assortment_unique_names:
+            ) in self.wagon_randomisation_candidate_assortment_unique_names:
                 result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
         return set(result)
 
@@ -293,9 +293,9 @@ class ModelTypeBase(object):
     def variant_handling_badges(self):
         # specific handling of indentation level 1
         result = []
-        if self.cabbage_use_name_callback:
+        if self.use_name_callback:
             result.append(
-                f"ih_variants_cabbage/purchase_level_1_has_more_nested_variants"
+                f"ih_name_cb_flags/purchase_level_1_has_more_nested_variants"
             )
         return list(set(result))
 
@@ -1314,12 +1314,12 @@ class EngineModelTypeBase(ModelTypeBase):
                 "DIESEL" in self.power_by_power_source.keys()
                 and "AC" in self.power_by_power_source.keys()
             ):
-                result.append("power_source_cabbage/electro_diesel")
+                result.append("power_source/electro_diesel")
             if (
                 "AC" in self.power_by_power_source.keys()
                 and "DC" in self.power_by_power_source.keys()
             ):
-                result.append("power_source_cabbage/dual_voltage")
+                result.append("power_source/dual_voltage")
         return result
 
 
@@ -2357,7 +2357,7 @@ class RandomisedCarMixin(object):
         return True
 
     @cached_property
-    def cabbage_wagon_randomisation_candidate_assortment_unique_names(self):
+    def wagon_randomisation_candidate_assortment_unique_names(self):
         # names to show in badges for candidate wagon assortment
         # we display names, and we only want to show uniques
         result = {}

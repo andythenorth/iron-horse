@@ -80,11 +80,11 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-    <tal:livery define="livery_cabbage model_variant.catalogue_entry.livery_def">
-        <tal:optional_forced_recolour switch="getattr(livery_cabbage, 'remap_to_cc', None) is not None">
+    <tal:livery define="livery_def model_variant.catalogue_entry.livery_def">
+        <tal:optional_forced_recolour switch="getattr(livery_def, 'remap_to_cc', None) is not None">
             <tal:block case="True">
                 <!--! recolour CC2 to arbitrary other CC as defined by livery -->
-                ${unit.numeric_id}: palette_2cc(${livery_cabbage['remap_to_cc']['company_colour1']}, ${livery_cabbage['remap_to_cc']['company_colour2']});
+                ${unit.numeric_id}: palette_2cc(${livery_def['remap_to_cc']['company_colour1']}, ${livery_def['remap_to_cc']['company_colour2']});
             </tal:block>
             <tal:block case="False">
                 <!--! apply regular 1CC and 2CC -->

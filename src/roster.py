@@ -273,23 +273,23 @@ class Roster:
                 except Exception:
                     raise
         # we have to provision wagon randomisation candidates after initialising all wagon model variants
-        self.cabbage_randomisation_candidates(randomised_wagon_type_catalogues_tmp)
+        self.provision_randomisation_candidates(randomised_wagon_type_catalogues_tmp)
 
-    def cabbage_randomisation_candidates(self, randomised_wagon_type_catalogues_tmp):
+    def provision_randomisation_candidates(self, randomised_wagon_type_catalogues_tmp):
         # called by produce_wagons, but separate method so we can isolate and measure timing if we need to
 
         def get_tmp_uid(model_id_root, catalogue):
             # convenience method for a key, only used for accessing a temp structure
             return f"{model_id_root}_{catalogue.model_def.gen}_{catalogue.base_track_type}_{catalogue.model_def.subtype}"
 
-        cabbage_random_temp_foo = {}
+        tmp_randomisation_candidates_map = {}
         for catalogue in self.wagon_catalogues:
             for model_id_root in getattr(
                 catalogue.factory.model_type_cls, "randomised_candidate_groups", []
             ):
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
-                cabbage_random_temp_foo.setdefault(tmp_uid, [])
-                cabbage_random_temp_foo[tmp_uid].append(
+                tmp_randomisation_candidates_map.setdefault(tmp_uid, [])
+                tmp_randomisation_candidates_map[tmp_uid].append(
                     catalogue.example_model_variant
                 )
 
@@ -300,7 +300,7 @@ class Roster:
             for model_variant in self.wagon_model_variants_by_catalogue[catalogue.model_id][
                 "model_variants"
             ]:
-                model_variant.wagon_randomisation_candidates = cabbage_random_temp_foo[
+                model_variant.wagon_randomisation_candidates = tmp_randomisation_candidates_map[
                     tmp_uid
                 ]
 

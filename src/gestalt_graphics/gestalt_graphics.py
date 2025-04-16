@@ -80,11 +80,12 @@ class GestaltGraphics(object):
         result = []
         if pipeline.is_pantographs_pipeline:
             # pans are the same for all buyable variants, and are just provided either once, or per formation position
-            cabbage_dest_spriterows = [pipeline.catalogue.default_entry]
+            dest_spriterows = [pipeline.catalogue.default_entry]
         else:
-            cabbage_dest_spriterows = pipeline.catalogue
+            # dest_spriterows is equivalent to liveries in catalogue
+            dest_spriterows = pipeline.catalogue
         for dest_spriterow_counter, catalogue_entry in enumerate(
-            cabbage_dest_spriterows
+            dest_spriterows
         ):
             source_vehicles_and_input_spriterow_nums = []
 

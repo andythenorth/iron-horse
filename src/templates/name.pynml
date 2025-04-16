@@ -1,7 +1,7 @@
 <!--! shared globally, but not a procedure -->
 
 switch (FEAT_TRAINS, SELF, switch_name_purchase_level_1, [
-        has_badge("ih_variants_cabbage/purchase_level_1_has_more_nested_variants")
+        has_badge("ih_name_cb_flags/purchase_level_1_has_more_nested_variants")
     ]) {
     1: return string(STR_WAGON_GROUP_MORE);
     return 0x400;

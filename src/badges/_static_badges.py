@@ -2,8 +2,6 @@
 static_badges = {
     "power_source": {
         "name": "STR_POWER_SOURCE",
-    },
-    "power_source_cabbage": {
         "sublabels": {
             "dual_voltage": {},
             "electro_diesel": {},
@@ -19,7 +17,7 @@ static_badges = {
             "u": {},  # {"name": "STR_EMPTY"},
         },
     },
-    "ih_variants_cabbage": {
+    "ih_name_cb_flags": {
         "sublabels": {
             "purchase_level_1_has_more_nested_variants": {},
         }
