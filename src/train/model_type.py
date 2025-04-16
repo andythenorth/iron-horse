@@ -2558,7 +2558,8 @@ class BolsterCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
         "FREIGHT_BONUS_OXIDE_RUST",
-        # didn't bother with teal or obsidian, marginal benefit
+        # didn't bother with teal, these wagons have limited coloured pixels, looks same as silver/teal
+        # didn't bother with obsidian, saving IDs
     ]
 
     vehicle_family_id = "bolster_car"
@@ -4457,7 +4458,8 @@ class FlatCarBase(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
         "FREIGHT_BONUS_OXIDE_RUST",
-        # didn't bother with teal or obsidian, marginal benefit
+        # didn't bother with teal, these wagons have limited coloured pixels, looks same as silver/teal
+        # didn't bother with obsidian, saving IDs
     ]
 
     def __init__(self, **kwargs):
@@ -6931,7 +6933,8 @@ class PipeCar(FlatCarBase):
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
         "FREIGHT_BONUS_OXIDE_RUST",
-        # didn't bother with teal or obsidian, marginal benefit
+        # didn't bother with teal, these wagons have limited coloured pixels, looks same as silver/teal
+        # didn't bother with obsidian, saving IDs
     ]
 
     model_id_root = "pipe_car"
