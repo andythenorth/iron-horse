@@ -8,7 +8,6 @@ import global_constants
 
 @dataclass
 class LiveryDef:
-    # CABBAGE SPARSE CLASS
     livery_name: str
     # alphabetised optional attrs
     colour_set_names: List = field(default_factory=list)

@@ -311,23 +311,6 @@ base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches
 [STR_BADGE_ROLE_SUBURBAN]
 base = "General Purpose / High Capacity"
 
-# size badges CABBAGE - DEPRECATED
-
-# [STR_BADGE_WAGON_LENGTH]
-# base = "Length"
-#
-# [STR_BADGE_WAGON_LENGTH_SMALL]
-# base = "Short"
-#
-# [STR_BADGE_WAGON_LENGTH_MEDIUM]
-# base = "Medium"
-#
-# [STR_BADGE_WAGON_LENGTH_LARGE]
-# base = "Long"
-#
-# [STR_BADGE_WAGON_LENGTH_TWIN]
-# base = "Twin"
-
 # gen badges
 
 [STR_BADGE_GEN]

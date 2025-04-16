@@ -52,6 +52,9 @@ class BadgeManager(list):
         badge_graphics_generator = BadgeGraphicsGenerator(
             self, iron_horse, graphics_input_path, graphics_output_path
         )
+        # for now we only generate our own badge sprites for liveries
+        # more can be added if required
+        # badge sprites may be available from OpenTTD for some common cases
         badge_graphics_generator.render_livery_badges()
 
     def produce_badges(self, **kwargs):

@@ -14,6 +14,7 @@ from functools import cached_property
 
 from train import model_type as model_type_module
 from train import unit as unit_module
+import utils
 from utils import timing
 
 import iron_horse
@@ -394,6 +395,16 @@ class ModelVariantFactory:
             self.roster_id, self.roster_id_providing_module
         )
         return input_spritesheet_name_stem
+
+    def assert_description_foamer_facts(self):
+        # if these are too noisy, comment out the caller
+        if self.catalogue.engine_quacker.quack:
+            if len(self.model_def.description) == 0:
+                utils.echo_message(self.model_id + " has no description")
+            if len(self.model_def.foamer_facts) == 0:
+                utils.echo_message(self.model_id + " has no foamer_facts")
+            if "." in self.model_def.foamer_facts:
+                utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
 
 
 class Catalogue(list):

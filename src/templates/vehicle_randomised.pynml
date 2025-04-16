@@ -17,7 +17,11 @@
     switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics,
                 ${unit.unit_id_from_common_model_id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate model_variant.wagon_randomisation_candidates">
-            <!--! CABBAGE the id interpolation is JFDI -->
+            <!--! the id interpolation is JFDI
+                - possibly should be using unit.unit_index_in_model_variant instead of model_variant.units.index(unit)
+                - or possibly it should at least by using unique_units
+                - may not matter for non-articulated cases
+                - this is untested with articulated vehicles and random articulated vehicles may simply not work at all -->
             <tal:candidate_graphics_entry_cases switch="randomisation_candidate.gestalt_graphics.variants_use_common_graphics_switch_chain">
                 <tal:case tal:case="True">
                     ${repeat.randomisation_candidate.index}: ${randomisation_candidate.model_id}_unit_${model_variant.units.index(unit)}_switch_graphics;

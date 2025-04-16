@@ -24,8 +24,6 @@ class BadgeGraphicsGenerator:
         os.makedirs(self.badge_sprites_output_path, exist_ok=True)
 
     def render_livery_badges(self):
-
-        # CABBAGE for now only livery badges
         livery_badge_spritesheet = Image.open(
             os.path.join(self.graphics_input_path, "badges", "cabbage_badge.png")
         )

@@ -1086,16 +1086,6 @@ class ModelTypeBase(object):
                     + " which is not defined in the cargo table"
                 )
 
-    def assert_description_foamer_facts(self):
-        # if these are too noisy, comment them out temporarily
-        if self.catalogue.engine_quacker.quack:
-            if len(self.model_def.description) == 0:
-                utils.echo_message(self.model_id + " has no description")
-            if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message(self.model_id + " has no foamer_facts")
-            if "." in self.model_def.foamer_facts:
-                utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
-
     def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
