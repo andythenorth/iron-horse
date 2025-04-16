@@ -44,6 +44,9 @@ def find_vacant_id_runs(numeric_id_defender, lower_bound, upper_bound):
 
 def main():
     globals()["logger"] = utils.get_logger(__file__)
+    AQUA = "\033[38;5;122m"
+    JUNIPER = "\033[38;5;66m"
+    RESET = "\033[0m"
     logger.info("[ID REPORT] " + " ".join(sys.argv))
     start = time()
     iron_horse.main(validate_vehicle_ids=True)
@@ -69,11 +72,11 @@ def main():
         for id_run in id_runs:
             if id_run[0] == id_run[1]:
                 # single id
-                id_gaps.append(str(id_run[0]))
+                id_gaps.append(f"{AQUA}{str(id_run[0])}")
             else:
                 # range of ids
-                id_gaps.append(" to ".join([str(id) for id in id_run]))
-        logger.info(f"\n" f"Vacant {label}:\n" f"{', '.join(id_gaps)})")
+                id_gaps.append(f"{JUNIPER}[{' to '.join([str(id) for id in id_run])}]")
+        logger.info(f"\n" f"Vacant {label}:\n" f"{', '.join(id_gaps)}){RESET}")
 
     # we want to be told about and clear out unused liveries, doesn't really belong anywhere, so here will do
     iron_horse.livery_supplier.report_unused_liveries()
