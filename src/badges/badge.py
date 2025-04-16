@@ -4,10 +4,7 @@ from utils import timing
 from badges import _static_badges
 from badges.graphics_generator import BadgeGraphicsGenerator
 
-# CABBAGE - convert to @dataclass?
-# ALSO - move to train/badge.py? - ¿ might not just be trains ?
-
-
+# could be @dataclass but eh
 class Badge(object):
     """Simple generic class for badges"""
 
@@ -177,7 +174,7 @@ class BadgeManager(list):
         )
         for (
             colour_set_name
-        ) in livery_supplier.cabbage_valid_freight_livery_colour_set_names_and_nums:
+        ) in livery_supplier.freight_livery_colour_set_indexes_and_names:
             self.add_badge(
                 label=f"ih_livery_def/colour_set_names/{colour_set_name}",
             )

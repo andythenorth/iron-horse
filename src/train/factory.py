@@ -99,7 +99,6 @@ class ModelDef:
 class UnitDef:
     """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
 
-    # CABBAGE DOCUMENT
     class_name: str
     repeat: int = 1
     capacity: Optional[int] = None
@@ -399,9 +398,10 @@ class ModelVariantFactory:
 
 class Catalogue(list):
     """
-    CABBAGE - METADATA ABOUT ALL AVAILABLE MODEL VARIANTS
-        # all available model variants, with ids, numeric ids etc
-        # ordered by livery index
+    Entry point for information about a model, including
+    - liveries (variants) as catalogue entries
+    - some properties that aren't otherwise delegated to model_variant or model_def
+    - accessors for factory, tech tree etc
     """
 
     def __init__(self, factory):

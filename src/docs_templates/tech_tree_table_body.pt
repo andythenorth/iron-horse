@@ -227,7 +227,7 @@
                                                                 </div>
                                                                 <div tal:condition="catalogue.next_gen_catalogue is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                     <div style="${'visibility:hidden;' if doc_helper.model_cabbage_has_direct_replacment(example_model_variant) else nothing}">
+                                                                     <div style="${'visibility:hidden;' if doc_helper.model_has_direct_replacement_in_tree(example_model_variant) else nothing}">
                                                                         <a href="${catalogue.next_gen_catalogue.model_id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">

@@ -20,6 +20,7 @@ class UnitBase(object):
         self.id = id
         self.numeric_id = numeric_id
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
+        # CABBAGE - do we still need cabbage_numeric_id?
         if len(self.model_variant.unique_units) == 0:
             self.cabbage_numeric_id = 0
         else:

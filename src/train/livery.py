@@ -118,7 +118,7 @@ class LiverySupplier(dict):
         return livery_index
 
     @cached_property
-    def cabbage_valid_freight_livery_colour_set_names_and_nums(self):
+    def freight_livery_colour_set_indexes_and_names(self):
         result = {
             "company_colour": 100,
             "complement_company_colour": 101,
@@ -149,7 +149,7 @@ class LiverySupplier(dict):
             colour_set_indexes = []
             for colour_set_name in livery.colour_set_names:
                 colour_set_indexes.append(
-                    self.cabbage_valid_freight_livery_colour_set_names_and_nums[
+                    self.freight_livery_colour_set_indexes_and_names[
                         colour_set_name
                     ]
                 )
@@ -173,7 +173,7 @@ class LiverySupplier(dict):
                 # otherwise take the first colour set as default for purchase
                 colour_set_name = livery.colour_set_names[0]
             purchase_livery_index = (
-                self.cabbage_valid_freight_livery_colour_set_names_and_nums[
+                self.freight_livery_colour_set_indexes_and_names[
                     colour_set_name
                 ]
             )

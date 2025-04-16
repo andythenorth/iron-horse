@@ -289,7 +289,7 @@ class DocHelper(object):
                 role_string_name = badge_manager.get_badge_by_label("role/" + role).name
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
-    def model_cabbage_has_direct_replacment(self, model_variant):
+    def model_has_direct_replacement_in_tree(self, model_variant):
         replacement_model_variant = model_variant.catalogue.next_gen_catalogue.example_model_variant
         if replacement_model_variant.subrole != model_variant.subrole:
             return False
