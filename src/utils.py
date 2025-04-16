@@ -115,6 +115,7 @@ def nml_safe_id(s: str) -> str:
         s = s.replace(bad_char, replacement)
     return s
 
+
 def grfid_to_dword(grfid: str) -> str:
     """
     Convert a GRF ID string like "CA\\12\\22" into a DWORD in hexadecimal format.
@@ -149,6 +150,7 @@ def grfid_to_dword(grfid: str) -> str:
 import logging
 import os
 import sys
+import re
 
 # ANSI escape codes
 COLOR_CODES = {
@@ -161,51 +163,76 @@ COLOR_CODES = {
     # Add more as needed
 }
 
+ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-9;]*m")
+
+
 class ColoredLogger(logging.Logger):
     def __init__(self, name):
         super().__init__(name)
         self._current_colour = None
 
     def set_colour(self, colour_name):
-        """Set the current colour for console output."""
         if colour_name in COLOR_CODES:
             self._current_colour = COLOR_CODES[colour_name]
         else:
             raise ValueError(f"Unknown colour: {colour_name}")
 
-    def _colorize(self, msg):
-        if self._current_colour:
-            return f"{self._current_colour}{msg}{COLOR_CODES['reset']}"
+    def reset_colour(self):
+        self._current_colour = None
+
+    def get_colour(self):
+        return self._current_colour
+
+
+class ColorizingFormatter(logging.Formatter):
+    """Applies colour only in console formatter, not in log files."""
+
+    def __init__(self, get_colour_fn, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._get_colour = get_colour_fn
+
+    def format(self, record):
+        msg = super().format(record)
+        colour = self._get_colour()
+        if colour:
+            return f"{colour}{msg}{COLOR_CODES['reset']}"
         return msg
 
-    def _log(self, level, msg, args, **kwargs):
-        msg = self._colorize(msg)
-        super()._log(level, msg, args, **kwargs)
+
+class StrippingFormatter(logging.Formatter):
+    """Strips ANSI codes from log file output."""
+
+    def format(self, record):
+        msg = super().format(record)
+        return ANSI_ESCAPE_RE.sub("", msg)
 
 
 def get_logger(module_name):
-    """Return a logger that supports .set_colour(name) for console output."""
     logging.setLoggerClass(ColoredLogger)
     logger = logging.getLogger(module_name)
 
     if not logger.handlers:
         logger.setLevel(logging.DEBUG)
 
-        # File handler
+        # Ensure log dir exists
         os.makedirs("build_logs", exist_ok=True)
-        log_filename = os.path.join("build_logs", os.path.basename(module_name) + ".log")
+        log_filename = os.path.join(
+            "build_logs", os.path.basename(module_name) + ".log"
+        )
+
+        # File handler — strip ANSI
         file_handler = logging.FileHandler(log_filename, mode="a", encoding="utf-8")
         file_handler.setLevel(logging.DEBUG)
-        file_formatter = logging.Formatter(
+        file_formatter = StrippingFormatter(
             "%(asctime)s [%(levelname)s] %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
         )
         file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
 
-        # Console handler
+        # Console handler — apply ANSI
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.INFO)
-        console_formatter = logging.Formatter("%(message)s")
+        console_formatter = ColorizingFormatter(logger.get_colour, "%(message)s")
         console_handler.setFormatter(console_formatter)
         logger.addHandler(console_handler)
 
