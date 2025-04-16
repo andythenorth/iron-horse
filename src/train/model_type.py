@@ -228,24 +228,13 @@ class ModelTypeBase(object):
     @property
     def livery_badges(self):
         result = []
-        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name not in [
-            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
-        ]:
-            result.append(self.catalogue_entry.livery_def.badge_label)
-            result.append(self.catalogue_entry.livery_def.weathering_badge_label)
+        result.append(self.catalogue_entry.livery_def.badge_label)
+        result.append(self.catalogue_entry.livery_def.weathering_badge_label)
         return result
 
     @property
     def colour_mix_badges(self):
         result = []
-        # CABBAGE THE LIVERY SHOULD TAKE CARE OF THIS NOT THE MODEL TYPE
-        # CABBAGE JFDI filtering of non-badged liveries, replace with a boolean flag if needed
-        if self.catalogue_entry.livery_def.livery_name in [
-            "FREIGHT_SWOOSH_NO_LIVERY_BADGE"
-        ]:
-            return result
-
         # note returns multiple badges, as vehicles support multiple colours
         for colour_set_name in self.catalogue_entry.livery_def.colour_set_names:
             result.append(f"ih_livery_def/colour_set_names/{colour_set_name}")
@@ -3487,7 +3476,7 @@ class CabooseCar(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
+    liveries = ["VANILLA"] # no recolours
 
     model_id_root = "caboose_car"
 
@@ -4216,8 +4205,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     Bae for farm type cargos - box cars / vans.
     """
 
-    # company colour not used on these wagons, so set SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
+    liveries = ["VANILLA"] # no recolours
 
     vehicle_family_id = "farm_product_box_car"
     variant_group_id_root = "wagon_group_farm_product_box_cars"
@@ -4300,8 +4288,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     Farm type cargos - covered hoppers.
     """
 
-    # company colour not used on these wagons, so use SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
+    liveries = ["VANILLA"] # no recolours
 
     vehicle_family_id = "farm_product_hopper_car"
     variant_group_id_root = "wagon_group_farm_product_hopper_cars"
@@ -4761,7 +4748,7 @@ class GasTankCarBase(CarModelTypeBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
+    liveries = ["VANILLA"] # no recolours
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -5217,8 +5204,8 @@ class IntermodalCarBase(CarModelTypeBase):
     General cargo - refits everything except mail, pax.
     """
 
-    # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
-    liveries = ["FREIGHT_SWOOSH_NO_LIVERY_BADGE"]
+    # as of April 2025, company colour isn't used for default intermodal sprites
+    liveries = ["VANILLA"] # no recolours
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -94,9 +94,6 @@ base = "Livery"
 
 # freight wagon liveries
 
-[STR_BADGE_LIVERY_FREIGHT_SWOOSH_NO_LIVERY_BADGE]
-base = "CABBAGE"
-
 [STR_BADGE_LIVERY_COMPANY_COLOUR]
 base = "Company Colour"
 

@@ -12,13 +12,13 @@ class LiveryDef:
     livery_name: str
     # alphabetised optional attrs
     colour_set_names: List = field(default_factory=list)
-    purchase_swatch_colour_set_names: List = field(default_factory=list)
     docs_image_input_cc: Optional[List] = None
+    group_as_static_livery: Optional[bool] = False
+    is_freight_wagon_livery: Optional[bool] = False
+    purchase_swatch_colour_set_names: List = field(default_factory=list)
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
-    group_as_static_livery: Optional[bool] = False
-    is_freight_wagon_livery: Optional[bool] = False
 
     @property
     def purchase_swatch(self):

@@ -516,14 +516,6 @@ complements_to_company_colours = {
 # wagon liveries overlap between rosters so are in global constants (engine liveries are per-roster)
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 freight_wagon_liveries = {
-    # SWOOSH is default, and only used for cases where the livery isn't actually meaningful, e.g. no recolouring applied
-    "FREIGHT_SWOOSH_NO_LIVERY_BADGE": {
-        "colour_set_names": ["company_colour"], # CABBAGE - colour_set_names can be optionally empty?
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "COMPANY_COLOUR": {
         "colour_set_names": ["company_colour"],
         "docs_image_input_cc": [
