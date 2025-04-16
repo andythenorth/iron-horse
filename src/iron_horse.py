@@ -55,7 +55,7 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    @timing
+    #@timing
     def add_rosters(
         self,
         roster_module_names,
@@ -114,8 +114,7 @@ class RosterManager(list):
         else:
             raise Exception("RosterManager: no roster found for ", roster_id)
 
-
-@timing
+#@timing
 def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_files_path, exist_ok=True)

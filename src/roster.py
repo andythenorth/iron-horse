@@ -186,7 +186,7 @@ class Roster:
 
         return result
 
-    @timing
+    #@timing
     def produce_engines(self):
         self.engine_model_variants_by_catalogue = {}
         package_name = "vehicles." + self.id
@@ -215,7 +215,7 @@ class Roster:
                     ].append(model_variant)
                 self.engine_model_tech_tree.add_model(catalogue)
 
-    @timing
+    #@timing
     def produce_wagons(self):
         # Iterate over wagon module name stems and warn if not in global_constants
         for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
@@ -412,7 +412,7 @@ class Roster:
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
-    @timing
+    #@timing
     def validate_vehicle_ids(self, numeric_id_defender):
         # has to be explicitly called after all model variants and units are registered to the roster
 
@@ -821,8 +821,9 @@ class TechTree(dict):
                 if self.get_next_gen_catalogue(candidate) is None:
                     results.append(candidate)
 
-        if len(results) == 0:
-            print(catalogue.model_id, " has no similar catalogues")
+        # comment this back in if needed for debugging
+#         if len(results) == 0:
+#             print(catalogue.model_id, "has no similar catalogues")
 
         return results
 
