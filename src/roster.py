@@ -569,7 +569,7 @@ class VariantGroup(list):
     @property
     def flatten_short_group(self):
         # don't bother nesting short groups
-        return len(self) < 3
+        return len(self) < 4
 
     @cached_property
     def group_level(self):
