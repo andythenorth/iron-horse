@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarRandomised",
-        base_numeric_id=40850,
+        base_numeric_id=30240,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -33,7 +33,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarRandomised",
-        base_numeric_id=35830,
+        base_numeric_id=28650,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -45,7 +45,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarRandomised",
-        base_numeric_id=40870,
+        base_numeric_id=26090,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -57,7 +57,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarRandomised",
-        base_numeric_id=35860,
+        base_numeric_id=29970,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarRandomised",
-        base_numeric_id=40890,
+        base_numeric_id=24250,
         gen=5,
         subtype="C",
         sprites_complete=True,

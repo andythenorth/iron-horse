@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarHood",
-        base_numeric_id=35680,
+        base_numeric_id=30110,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -35,7 +35,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarHood",
-        base_numeric_id=35620,
+        base_numeric_id=30130,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -59,7 +59,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarHood",
-        base_numeric_id=35640,
+        base_numeric_id=30150,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -85,7 +85,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarHood",
-        base_numeric_id=35660,
+        base_numeric_id=30170,
         gen=5,
         subtype="C",
         sprites_complete=True,

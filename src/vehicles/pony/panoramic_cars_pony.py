@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PanoramicCar",
-        base_numeric_id=35130,
+        base_numeric_id=25940,
         gen=4,
         subtype="B",
         base_track_type="NG",
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PanoramicCar",
-        base_numeric_id=35140,
+        base_numeric_id=25960,
         gen=4,
         subtype="C",
         base_track_type="NG",

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=34790,
+        base_numeric_id=23390,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -24,7 +24,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=31880,
+        base_numeric_id=23960,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=31890,
+        base_numeric_id=24090,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=36940,
+        base_numeric_id=23050,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=31320,
+        base_numeric_id=23080,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -104,7 +104,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=32610,
+        base_numeric_id=23230,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -120,7 +120,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ReeferCarType2",
-        base_numeric_id=32620,
+        base_numeric_id=23370,
         gen=5,
         subtype="C",
         sprites_complete=True,

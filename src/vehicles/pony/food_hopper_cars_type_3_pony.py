@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FoodHopperCarType3",
-        base_numeric_id=34200,
+        base_numeric_id=25260,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -73,7 +73,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FoodHopperCarType3",
-        base_numeric_id=35070,
+        base_numeric_id=25240,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -85,7 +85,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FoodHopperCarType3",
-        base_numeric_id=33040,
+        base_numeric_id=25270,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -99,7 +99,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FoodHopperCarType3",
-        base_numeric_id=36970,
+        base_numeric_id=25250,
         gen=5,
         subtype="C",
         sprites_complete=True,

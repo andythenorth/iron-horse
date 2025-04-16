@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerRailbusTrailerCar",
-        base_numeric_id=28150,
+        base_numeric_id=20260,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -27,7 +27,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerRailbusTrailerCar",
-        base_numeric_id=26190,
+        base_numeric_id=20270,
         gen=4,
         subtype="U",
         base_track_type="NG",

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TarpaulinCarRandomised",
-        base_numeric_id=41130,
+        base_numeric_id=26680,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TarpaulinCarRandomised",
-        base_numeric_id=41150,
+        base_numeric_id=23940,
         gen=5,
         subtype="C",
         sprites_complete=True,

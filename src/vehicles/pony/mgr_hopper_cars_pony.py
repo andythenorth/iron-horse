@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarMGR",
-        base_numeric_id=30240,
+        base_numeric_id=26880,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -33,7 +33,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarMGR",
-        base_numeric_id=36260,
+        base_numeric_id=26800,
         gen=5,
         subtype="A",
         sprites_complete=True,

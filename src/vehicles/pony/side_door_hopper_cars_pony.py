@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarSideDoor",
-        base_numeric_id=35350,
+        base_numeric_id=29950,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarSideDoor",
-        base_numeric_id=35880,
+        base_numeric_id=29930,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -96,7 +96,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="HopperCarSideDoor",
-        base_numeric_id=35390,
+        base_numeric_id=30090,
         gen=5,
         subtype="C",
         sprites_complete=True,

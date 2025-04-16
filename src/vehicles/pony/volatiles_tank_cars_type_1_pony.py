@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarVolatilesType1",
-        base_numeric_id=32900,
+        base_numeric_id=24300,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarVolatilesType1",
-        base_numeric_id=32920,
+        base_numeric_id=24330,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarVolatilesType1",
-        base_numeric_id=32940,
+        base_numeric_id=24600,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -181,7 +181,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarVolatilesType1",
-        base_numeric_id=37870,
+        base_numeric_id=24620,
         gen=5,
         subtype="C",
         sprites_complete=True,

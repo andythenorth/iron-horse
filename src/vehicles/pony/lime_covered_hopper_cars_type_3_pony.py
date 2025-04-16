@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarLimeType3",
-        base_numeric_id=34840,
+        base_numeric_id=24640,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarLimeType3",
-        base_numeric_id=33820,
+        base_numeric_id=24660,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarLimeType3",
-        base_numeric_id=33030,
+        base_numeric_id=24680,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarLimeType3",
-        base_numeric_id=34850,
+        base_numeric_id=24700,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarLimeType3",
-        base_numeric_id=36340,
+        base_numeric_id=24720,
         gen=5,
         subtype="C",
         sprites_complete=True,

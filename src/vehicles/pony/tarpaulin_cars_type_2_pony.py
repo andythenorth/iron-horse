@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TarpaulinCarType2",
-        base_numeric_id=41090,
+        base_numeric_id=25300,
         gen=5,
         subtype="C",
         sprites_complete=True,

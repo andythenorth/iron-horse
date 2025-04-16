@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarType2",
-        base_numeric_id=36560,
+        base_numeric_id=27750,
         gen=5,
         subtype="C",
         sprites_complete=True,

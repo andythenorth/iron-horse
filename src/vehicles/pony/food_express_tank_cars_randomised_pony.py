@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ExpressFoodTankCarRandomised",
-        base_numeric_id=28160,
+        base_numeric_id=27940,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="ExpressFoodTankCarRandomised",
-        base_numeric_id=28170,
+        base_numeric_id=27960,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -123,7 +123,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=40090,
+        base_numeric_id=26440,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -151,7 +151,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarRandomised",
-        base_numeric_id=40110,
+        base_numeric_id=26560,
         gen=5,
         subtype="C",
         sprites_complete=True,

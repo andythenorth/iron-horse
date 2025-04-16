@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarType1",
-        base_numeric_id=27040,
+        base_numeric_id=22590,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -66,7 +66,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarType1",
-        base_numeric_id=37050,
+        base_numeric_id=22570,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -142,7 +142,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarType1",
-        base_numeric_id=24250,
+        base_numeric_id=22610,
         gen=5,
         subtype="B",
         sprites_complete=True,

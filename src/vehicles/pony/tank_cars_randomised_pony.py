@@ -88,7 +88,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarStandardRandomised",
-        base_numeric_id=35960,
+        base_numeric_id=29910,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarStandardRandomised",
-        base_numeric_id=35980,
+        base_numeric_id=27830,
         gen=5,
         subtype="B",
         sprites_complete=True,

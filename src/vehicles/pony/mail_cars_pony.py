@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30000,
+        base_numeric_id=19120,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30010,
+        base_numeric_id=19140,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30020,
+        base_numeric_id=19160,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -49,7 +49,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30030,
+        base_numeric_id=19180,
         gen=4,
         subtype="A",
         base_track_type="NG",
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30260,
+        base_numeric_id=17450,
         gen=4,
         subtype="B",
         base_track_type="NG",
@@ -77,7 +77,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30040,
+        base_numeric_id=17470,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30050,
+        base_numeric_id=17490,
         gen=1,
         subtype="B",
         sprites_complete=True,
@@ -105,7 +105,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30060,
+        base_numeric_id=17510,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -119,7 +119,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30070,
+        base_numeric_id=17530,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -133,7 +133,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30080,
+        base_numeric_id=17550,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -147,7 +147,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30090,
+        base_numeric_id=17750,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -161,7 +161,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30100,
+        base_numeric_id=17910,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -175,7 +175,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30110,
+        base_numeric_id=17930,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -189,7 +189,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30140,
+        base_numeric_id=17950,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -203,7 +203,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30150,
+        base_numeric_id=18030,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -217,7 +217,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30160,
+        base_numeric_id=18050,
         gen=5,
         subtype="A",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
@@ -232,7 +232,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30170,
+        base_numeric_id=18110,
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
@@ -247,7 +247,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailCar",
-        base_numeric_id=30180,
+        base_numeric_id=18130,
         gen=5,
         subtype="C",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt

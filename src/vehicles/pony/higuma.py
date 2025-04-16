@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="SimpleEngine",
         model_id="higuma",
-        base_numeric_id=30870,
+        base_numeric_id=16910,
         name="Higuma",
         subrole="universal",
         subrole_child_branch_num=-6,

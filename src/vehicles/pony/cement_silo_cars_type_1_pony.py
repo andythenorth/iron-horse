@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30270,
+        base_numeric_id=27380,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30280,
+        base_numeric_id=27870,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30300,
+        base_numeric_id=27900,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30310,
+        base_numeric_id=27320,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30380,
+        base_numeric_id=27340,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarCementType1",
-        base_numeric_id=30980,
+        base_numeric_id=27360,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarProductType2",
-        base_numeric_id=35370,
+        base_numeric_id=28710,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -45,7 +45,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TankCarProductType2",
-        base_numeric_id=33110,
+        base_numeric_id=28730,
         gen=3,
         subtype="B",
         sprites_complete=True,

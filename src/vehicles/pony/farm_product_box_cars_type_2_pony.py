@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=35470,
+        base_numeric_id=25980,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=35480,
+        base_numeric_id=26050,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=35300,
+        base_numeric_id=26150,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=35600,
+        base_numeric_id=26190,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=35120,
+        base_numeric_id=26220,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -96,7 +96,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=28430,
+        base_numeric_id=26320,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -110,7 +110,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmProductsBoxCarType2",
-        base_numeric_id=32960,
+        base_numeric_id=26340,
         gen=5,
         subtype="C",
         sprites_complete=True,

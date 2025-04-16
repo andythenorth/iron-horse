@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerHSTCar",
-        base_numeric_id=30330,
+        base_numeric_id=18170,
         gen=4,
         subtype="U",
         intro_year_offset=0,  # match to Firebird
@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerHSTCar",
-        base_numeric_id=30340,
+        base_numeric_id=18150,
         gen=5,
         subtype="U",
         intro_year_offset=-10,  # match to Blaze HST

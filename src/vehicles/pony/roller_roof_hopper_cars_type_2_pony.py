@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarRollerRoofType2",
-        base_numeric_id=34730,
+        base_numeric_id=22950,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarRollerRoofType2",
-        base_numeric_id=33010,
+        base_numeric_id=27920,
         gen=5,
         subtype="B",
         sprites_complete=True,

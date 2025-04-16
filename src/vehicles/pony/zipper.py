@@ -43,7 +43,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="PassengerEngineRailbus",
         model_id="zipper_single",
-        base_numeric_id=25270,
+        base_numeric_id=22310,
         name="Zipper",
         subrole="pax_railbus",
         subrole_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)

@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarSalt",
-        base_numeric_id=37850,
+        base_numeric_id=26780,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -49,7 +49,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarSalt",
-        base_numeric_id=39870,
+        base_numeric_id=30330,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarSalt",
-        base_numeric_id=36880,
+        base_numeric_id=26380,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -85,7 +85,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarSalt",
-        base_numeric_id=36900,
+        base_numeric_id=24990,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MineralCoveredHopperCarSalt",
-        base_numeric_id=36920,
+        base_numeric_id=24970,
         gen=5,
         subtype="C",
         sprites_complete=True,

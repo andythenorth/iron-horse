@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="SimpleEngine",
         model_id="high_power_railcar_2",
-        base_numeric_id=32640,
+        base_numeric_id=26540,
         name="SBB Ce 4/6",
         subrole="high_power_railcar",
         subrole_child_branch_num=1,

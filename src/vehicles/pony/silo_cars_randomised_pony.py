@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37140,
+        base_numeric_id=30260,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37240,
+        base_numeric_id=30410,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37220,
+        base_numeric_id=31880,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37200,
+        base_numeric_id=30870,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37180,
+        base_numeric_id=33020,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SiloCarRandomised",
-        base_numeric_id=37160,
+        base_numeric_id=33270,
         gen=5,
         subtype="C",
         sprites_complete=True,

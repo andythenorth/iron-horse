@@ -13,7 +13,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29900,
+        base_numeric_id=19200,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -25,7 +25,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29910,
+        base_numeric_id=19220,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29920,
+        base_numeric_id=19240,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -49,7 +49,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29930,
+        base_numeric_id=19260,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29940,
+        base_numeric_id=19930,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -73,7 +73,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29950,
+        base_numeric_id=19950,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -85,7 +85,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29960,
+        base_numeric_id=20240,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29970,
+        base_numeric_id=20370,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -109,7 +109,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29980,
+        base_numeric_id=20830,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -123,7 +123,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=29990,
+        base_numeric_id=20850,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerSuburbanCar",
-        base_numeric_id=30120,
+        base_numeric_id=20870,
         gen=6,
         subtype="C",
         sprites_complete=True,

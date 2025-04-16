@@ -97,7 +97,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CoveredHopperCarType1",
-        base_numeric_id=36980,
+        base_numeric_id=27550,
         gen=5,
         subtype="A",
         sprites_complete=True,

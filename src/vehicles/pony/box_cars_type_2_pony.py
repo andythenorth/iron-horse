@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BoxCarType2",
-        base_numeric_id=34610,
+        base_numeric_id=27540,
         gen=3,
         subtype="A",
         base_track_type="NG",
