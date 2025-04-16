@@ -361,19 +361,6 @@ class ModelVariantFactory:
 
 
     @cached_property
-    def _model_quacks_like_a_clone(self):
-        # convenience boolean for things that either are clones, or can be treated like clones for docs etc
-        # public access via catalogue
-        if self.model_def.cloned_from_model_def is not None:
-            return True
-        if self.model_def.quacks_like_a_clone:
-            return True
-        if getattr(self.model_type_cls, "quacks_like_a_clone", False):
-            return True
-        else:
-            return False
-
-    @cached_property
     def _model_is_randomised_wagon_type(self):
         # public access via catalogue
         # depends on looking up class name, but should be ok
@@ -419,6 +406,7 @@ class Catalogue(list):
 
     def __init__(self, factory):
         self.factory = factory
+        self.clone_quacker = CloneQuacker(catalogue=self)
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
@@ -590,11 +578,6 @@ class Catalogue(list):
         return self[0]
 
     @cached_property
-    def model_quacks_like_a_clone(self):
-        # public access better via catalogue, not factory
-        return self.factory._model_quacks_like_a_clone
-
-    @cached_property
     def model_is_randomised_wagon_type(self):
         # public access better via catalogue, not factory
         return self.factory._model_is_randomised_wagon_type
@@ -663,23 +646,6 @@ class Catalogue(list):
             return self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(catalogue=self)
         # empty list if nothing found
         return []
-
-    def get_upstream_catalogue(self, permissive=False):
-        # possibly expensive, but not often required option to get the catalogue for the model a clone was sourced from
-        # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
-        if not self.model_quacks_like_a_clone:
-            raise ValueError(f"{self.model_id} does not quack like a clone, don't call get_upstream_catalogue on it.")
-        if permissive == False and self.model_def.cloned_from_model_def is None:
-            raise ValueError(f"{self.model_id} is not a clone, don't call get_upstream_catalogue on it with permissive={permissive}")
-        # if it's an actual clone get the factory for the model the clone was derived from
-        if self.model_def.cloned_from_model_def is not None:
-            for candidate_catalogue in self.factory.roster.catalogues:
-                if candidate_catalogue.model_def == self.model_def.cloned_from_model_def:
-                    return candidate_catalogue
-        # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
-        return self.factory.roster.model_variants_by_catalogue[self.factory.vehicle_family_id]['catalogue']
-        # otherwise raise
-        raise LookupError(f"upstream_catalogue not found for {self.model_id}")
 
     @cached_property
     def intro_year(self):
@@ -822,3 +788,56 @@ class ModelDefCloner:
         if model_def.produced_unit_total > 1:
             model_def.show_decor_in_purchase_for_variants = None
         return model_def
+
+
+class CloneQuacker:
+    """
+    Utility for affordances on models that either:
+    - are clones,
+    - or are treated like clones (e.g., for docs, grouping, etc).
+    """
+
+    def __init__(self, catalogue):
+        self.catalogue = catalogue
+        self.factory = self.catalogue.factory
+
+    @cached_property
+    def quack(self):
+        # convenience boolean for things that either are clones, or can be treated like clones for docs etc
+        # public access via catalogue
+        if self.factory.model_def.cloned_from_model_def is not None:
+            return True
+        if self.factory.model_def.quacks_like_a_clone:
+            return True
+        if getattr(self.factory.model_type_cls, "quacks_like_a_clone", False):
+            return True
+        # fall through to 'does not quack like a clone'
+        return False
+
+    def _get_upstream_catalogue(self, permissive):
+        if not self.quack:
+            raise ValueError(f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it.")
+        if permissive == False and self.factory.model_def.cloned_from_model_def is None:
+            raise ValueError(f"{self.catalogue.model_id} is not a clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}")
+        # if it's an actual clone get the factory for the model the clone was derived from
+        # possibly expensive, but not often required
+        # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
+        if self.factory.model_def.cloned_from_model_def is not None:
+            for candidate_catalogue in self.factory.roster.catalogues:
+                if candidate_catalogue.model_def == self.factory.model_def.cloned_from_model_def:
+                    return candidate_catalogue
+        # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
+        try:
+            return self.factory.roster.model_variants_by_catalogue[
+                self.factory.vehicle_family_id
+            ]["catalogue"]
+        except (KeyError, TypeError):
+            raise LookupError(
+                f"Upstream catalogue not found for {self.catalogue.model_id}; "
+                f"vehicle_family_id={self.factory.vehicle_family_id}"
+            )
+
+    def resolve_catalogue(self, permissive):
+        if not self.quack:
+            return self.catalogue
+        return self._get_upstream_catalogue(permissive)

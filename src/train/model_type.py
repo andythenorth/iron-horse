@@ -1185,7 +1185,7 @@ class EngineModelTypeBase(ModelTypeBase):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.catalogue.model_quacks_like_a_clone:
+        if self.catalogue.clone_quacker.quack:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0
@@ -1206,7 +1206,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.get_upstream_catalogue(permissive=False).example_model_variant.buy_cost
+                self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.buy_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 
@@ -1258,7 +1258,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.get_upstream_catalogue(permissive=False).example_model_variant.running_cost
+                self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.running_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 

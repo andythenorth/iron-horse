@@ -578,7 +578,7 @@ class TechTree(dict):
         return instance
 
     def add_model(self, catalogue):
-        if catalogue.model_quacks_like_a_clone:
+        if catalogue.clone_quacker.quack:
             # clones don't get added to the tree
             return
 
@@ -667,9 +667,8 @@ class TechTree(dict):
         # find the catalogue a catalogue is replaced by in the next generation, if any
         # catalogues (model) have exactly 1 replacement catalogue (model) or None
 
-        # clones don't get added to the tree, don't try and access them directly
-        if catalogue.model_quacks_like_a_clone:
-            catalogue = catalogue.get_upstream_catalogue(permissive=True)
+        # clones don't get added to the tree, so we swap the catalogue if it's a clone
+        catalogue = catalogue.clone_quacker.resolve_catalogue(permissive=True)
 
         # this method might not work for wagons, callers should guard against calling in that case
         if catalogue.model_def.replacement_model_id is not None:
@@ -697,9 +696,8 @@ class TechTree(dict):
         # find the catalogues a catalogue replaces in the previous generation, if any
         # a catalogue (model) can replace multiple catalogues (models) or None
 
-        # clones don't get added to the tree, don't try and access them directly
-        if catalogue.model_quacks_like_a_clone:
-            catalogue = catalogue.get_upstream_catalogue(permissive=True)
+        # clones don't get added to the tree, so we swap the catalogue if it's a clone
+        catalogue = catalogue.clone_quacker.resolve_catalogue(permissive=True)
 
         result = []
 
@@ -728,8 +726,8 @@ class TechTree(dict):
         - Always look at previous gen catalogues with no replacement.
         - Freight engines may also consider express engines (but not vice versa).
         """
-        if catalogue.model_quacks_like_a_clone:
-            catalogue = catalogue.get_upstream_catalogue(permissive=True)
+        # clones don't get added to the tree, so we swap the catalogue if it's a clone
+        catalogue = catalogue.clone_quacker.resolve_catalogue(permissive=True)
 
         base_track_type = catalogue.base_track_type
         role = catalogue.example_model_variant.role
@@ -764,7 +762,7 @@ class TechTree(dict):
         def is_similar_candidate(candidate):
             if not candidate or candidate is catalogue:
                 return False
-            if candidate.model_quacks_like_a_clone:
+            if candidate.clone_quacker.quack:
                 return False
             if target_power is not None:
                 candidate_power = getattr(candidate.example_model_variant, "power", None)

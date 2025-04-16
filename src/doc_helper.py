@@ -55,7 +55,7 @@ class DocHelper(object):
                 == base_track_type
             ):
                 continue
-            if catalogue.model_quacks_like_a_clone:
+            if catalogue.clone_quacker.quack:
                 # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
@@ -71,7 +71,7 @@ class DocHelper(object):
                 == base_track_type
             ):
                 continue
-            if catalogue.model_quacks_like_a_clone:
+            if catalogue.clone_quacker.quack:
                 # exclude cloned models or things that act like clones
                 continue
             result.append(catalogue)
@@ -94,7 +94,7 @@ class DocHelper(object):
         really_engines = []
         not_really_engines = []
         for catalogue in roster.engine_catalogues:
-            if catalogue.model_quacks_like_a_clone:
+            if catalogue.clone_quacker.quack:
                 continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
