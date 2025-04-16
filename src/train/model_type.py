@@ -791,7 +791,9 @@ class ModelTypeBase(object):
         # all true wagons don't
         # wagons that add power aren't true wagons
         # some subclasses handle this directly (e.g. pax trailers for specific railcars)
-        if self.power > 0:
+
+        # !! CABBAGE this is a refactoring shim, but we need to be cautious about recursive loops from EngineQuacker and WagonQuacker calling each other
+        if self.catalogue.engine_quacker.quack:
             return False
         elif self.distributed_power_wagon:
             return False
@@ -1112,7 +1114,7 @@ class ModelTypeBase(object):
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
-        if self.power > 0: # CABBAGE again we don't have a way to trivially find engines
+        if self.catalogue.engine_quacker.quack:
             if len(self.model_def.description) == 0:
                 utils.echo_message(self.model_id + " has no description")
             if len(self.model_def.foamer_facts) == 0:

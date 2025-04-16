@@ -405,6 +405,8 @@ class Catalogue(list):
 
     def __init__(self, factory):
         self.factory = factory
+        self.engine_quacker = EngineQuacker(catalogue=self)
+        self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
@@ -621,9 +623,7 @@ class Catalogue(list):
     @cached_property
     def next_gen_catalogue(self):
         # note that there's just one replacement catalogue in the next gen (has to be this way for model life calculations)
-        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
-        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
-        if self.example_model_variant.power > 0:
+        if self.engine_quacker.quack:
             return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(
                 catalogue=self
             )
@@ -632,9 +632,7 @@ class Catalogue(list):
     @cached_property
     def previous_gen_catalogues(self):
         # note a catalogue can replace multiple catalogues in the previous gen (as tree branches can merge)
-        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
-        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
-        if self.example_model_variant.power > 0:
+        if self.engine_quacker.quack:
             return (
                 self.factory.roster.engine_model_tech_tree.get_previous_gen_catalogues(
                     catalogue=self
@@ -645,9 +643,7 @@ class Catalogue(list):
 
     @cached_property
     def similar_model_catalogues(self):
-        # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
-        # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
-        if self.example_model_variant.power > 0:
+        if self.engine_quacker.quack:
             return (
                 self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(
                     catalogue=self
@@ -799,6 +795,76 @@ class ModelDefCloner:
         return model_def
 
 
+class EngineQuacker:
+    """
+    Utility for detecting if models
+    - are engines,
+    - or behave like engines in some circumstances (e.g., for docs, grouping, etc).
+    """
+
+    def __init__(self, catalogue):
+        self.catalogue = catalogue
+        self.factory = self.catalogue.factory
+
+    def _validate(self, test_result):
+        # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
+        # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
+        # doing it this way prevents conceptual blur enforceably
+        assert (
+            self.catalogue.wagon_quacker._quack() != test_result
+        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+
+    def _quack(self):
+        # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
+        # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
+        return any(
+            base.__name__ == "EngineModelTypeBase"
+            for base in self.catalogue.factory.model_type_cls.__mro__
+        )
+
+    @cached_property
+    def quack(self):
+        # wraps _quack so we can run _validate without recursion loop
+        result = self._quack()
+        self._validate(result)
+        return result
+
+
+class WagonQuacker:
+    """
+    Utility for detecting if models
+    - are wagons,
+    - or behave like wagons in some circumstances (e.g., for docs, grouping, etc).
+    """
+
+    def __init__(self, catalogue):
+        self.catalogue = catalogue
+        self.factory = self.catalogue.factory
+
+    def _validate(self, test_result):
+        # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
+        # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
+        assert (
+            self.catalogue.engine_quacker._quack() != test_result
+        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+
+    def _quack(self):
+        # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
+        # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
+        # doing it this way prevents conceptual blur enforceably
+        return any(
+            base.__name__ == "CarModelTypeBase"
+            for base in self.catalogue.factory.model_type_cls.__mro__
+        )
+
+    @cached_property
+    def quack(self):
+        # wraps _quack so we can run _validate without recursion loop
+        result = self._quack()
+        self._validate(result)
+        return result
+
+
 class CloneQuacker:
     """
     Utility for affordances on models that either:
@@ -810,7 +876,7 @@ class CloneQuacker:
         self.catalogue = catalogue
         self.factory = self.catalogue.factory
 
-    @cached_property
+    @property
     def quack(self):
         # convenience boolean for things that either are clones, or can be treated like clones for docs etc
         # public access via catalogue
