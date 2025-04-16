@@ -25,7 +25,7 @@ class BadgeGraphicsGenerator:
 
     def render_livery_badges(self):
         livery_badge_spritesheet = Image.open(
-            os.path.join(self.graphics_input_path, "badges", "cabbage_badge.png")
+            os.path.join(self.graphics_input_path, "badges", "livery_recolour_maps.png")
         )
         DOS_PALETTE = Image.open("palette_key.png").palette
         if "icc_profile" in livery_badge_spritesheet.info:
