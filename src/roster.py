@@ -418,6 +418,8 @@ class Roster:
 
         # this structure is used to test for duplicate ids
         model_variant_id_counts = Counter(self.model_variants)
+        # we defer collisions until they're all found
+        collision_errors = []
 
         for model_variant in self.model_variants:
             """
@@ -456,30 +458,51 @@ class Roster:
                             f"Unused IDs might be found in build_logs/id_report.py.log"
                         )
             for numeric_id in model_variant.catalogue_entry.unit_numeric_ids:
+                if numeric_id % 10 != 0:
+                    continue  # only care about block-starting IDs
                 if numeric_id in numeric_id_defender:
                     colliding_model_variant = numeric_id_defender[numeric_id]
-                    # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
-                    # if model_id_root matches both model variants have been instantiated from the same source module...
                     if hasattr(model_variant, "model_id_root"):
                         if (
                             getattr(colliding_model_variant, "model_id_root", None)
                             == model_variant.model_id_root
+                            and colliding_model_variant.roster.id != model_variant.roster.id
                         ):
-                            # it's fine if both model variants are then in different rosters, as they will not conflict
-                            if (
-                                colliding_model_variant.roster.id
-                                != model_variant.roster.id
-                            ):
-                                continue
-                    raise ValueError(
-                        f"Error: model variant {model_variant.id} has a unit variant with a numeric_id that collides "
-                        f"({numeric_id}) with a numeric_id of a unit variant in model variant {colliding_model_variant.id}\n"
-                        f"{model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in model_variant.catalogue]}\n"
-                        f"{colliding_model_variant.id} {[catalogue_entry.unit_numeric_ids for catalogue_entry in colliding_model_variant.catalogue]}\n"
-                        f"Unused IDs might be found in build_logs/id_report.py.log"
+                            continue
+                    # Collect all block-starting IDs (multiples of 10) for both variants
+                    this_blocks = sorted({
+                        nid for entry in model_variant.catalogue
+                        for nid in entry.unit_numeric_ids
+                        if nid % 10 == 0
+                    })
+                    other_blocks = sorted({
+                        nid for entry in colliding_model_variant.catalogue
+                        for nid in entry.unit_numeric_ids
+                        if nid % 10 == 0
+                    })
+                    collision_errors.append(
+                        {
+                            "numeric_id": numeric_id,
+                            "model_variant": model_variant.id,
+                            "collides_with": colliding_model_variant.id,
+                            "this_blocks": this_blocks,
+                            "other_blocks": other_blocks
+                        }
                     )
                 else:
                     numeric_id_defender[numeric_id] = model_variant
+
+        if collision_errors:
+            error_msg = ["Vehicle ID collisions detected (only multiple-of-10 IDs shown):"]
+            for err in collision_errors:
+                error_msg.append(
+                    f"{err['model_variant']} and {err['collides_with']} share numeric_id {err['numeric_id']}"
+                )
+                error_msg.append(f"    {err['model_variant']}: {err['this_blocks']}")
+                error_msg.append(f"    {err['collides_with']}: {err['other_blocks']}")
+                error_msg.append(f"") # just a spacer
+            error_msg.append(f"Unused numeric IDs might be found in build_logs/id_report.py.log")
+            raise ValueError("\n".join(error_msg))
         # no return value needed
 
     def add_variant_groups(self):
