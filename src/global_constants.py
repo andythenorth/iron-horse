@@ -721,7 +721,7 @@ freight_wagon_liveries = {
             "freight_pewter",
             "freight_pewter",  # double pewter for random balance
         ],
-        "purchase_swatch_colour_set_names": ["freight_silver"],
+        "purchase_swatch_colour_set_names": ["freight_silver", "freight_pewter"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
