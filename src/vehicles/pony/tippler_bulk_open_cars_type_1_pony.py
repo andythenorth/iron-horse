@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BulkOpenCarTipplerType1",
-        base_numeric_id=35430,
+        base_numeric_id=28990,
         gen=3,
         subtype="B",
         base_track_type="NG",

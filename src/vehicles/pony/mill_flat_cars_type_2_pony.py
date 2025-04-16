@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25930,
+        base_numeric_id=34510,
         gen=2,
         subtype="A",
         base_track_type="NG",
@@ -35,7 +35,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25950,
+        base_numeric_id=34900,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FlatCarMillType2",
-        base_numeric_id=25970,
+        base_numeric_id=32870,
         gen=3,
         subtype="B",
         sprites_complete=True,

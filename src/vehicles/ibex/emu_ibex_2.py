@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="PassengerEngineRailcar",
         model_id="emu_ibex_2",
-        base_numeric_id=35310,
+        base_numeric_id=28430,
         name="BLS Ce 2/4",
         subrole="pax_railcar",
         subrole_child_branch_num=2,

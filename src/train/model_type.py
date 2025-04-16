@@ -4647,13 +4647,15 @@ class FlatCarMillBase(FlatCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
         "FREIGHT_BONUS_OXIDE_RUST",
-        # didn't bother with teal or obsidian, marginal benefit
+        # didn't bother with teal, marginal benefit, wagons have limited coloured pixels, looks same as silver/teal
     ]
 
     vehicle_family_id = "mill_flat_car"

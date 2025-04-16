@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PipeCar",
-        base_numeric_id=34830,
+        base_numeric_id=30460,
         gen=5,
         subtype="C",
         sprites_complete=True,
