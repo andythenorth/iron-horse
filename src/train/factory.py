@@ -359,7 +359,6 @@ class ModelVariantFactory:
         # should never be reached
         raise ValueError(f"variant_group_id not found for {self.model_id}")
 
-
     @cached_property
     def _model_is_randomised_wagon_type(self):
         # public access via catalogue
@@ -625,7 +624,9 @@ class Catalogue(list):
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
         if self.example_model_variant.power > 0:
-            return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(catalogue=self)
+            return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(
+                catalogue=self
+            )
         return None
 
     @cached_property
@@ -634,7 +635,11 @@ class Catalogue(list):
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
         if self.example_model_variant.power > 0:
-            return self.factory.roster.engine_model_tech_tree.get_previous_gen_catalogues(catalogue=self)
+            return (
+                self.factory.roster.engine_model_tech_tree.get_previous_gen_catalogues(
+                    catalogue=self
+                )
+            )
         # empty list if nothing found
         return []
 
@@ -643,7 +648,11 @@ class Catalogue(list):
         # CABBAGE !!! JFDI engine detection - REPLACE WITH SOMETHING MORE ROBUST
         # CABBAGE DOES THIS NEED TO JUST EARLY RETURN NONE FOR WAGONS?
         if self.example_model_variant.power > 0:
-            return self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(catalogue=self)
+            return (
+                self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(
+                    catalogue=self
+                )
+            )
         # empty list if nothing found
         return []
 
@@ -816,15 +825,22 @@ class CloneQuacker:
 
     def _get_upstream_catalogue(self, permissive):
         if not self.quack:
-            raise ValueError(f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it.")
+            raise ValueError(
+                f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
+            )
         if permissive == False and self.factory.model_def.cloned_from_model_def is None:
-            raise ValueError(f"{self.catalogue.model_id} is not a clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}")
+            raise ValueError(
+                f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
+            )
         # if it's an actual clone get the factory for the model the clone was derived from
         # possibly expensive, but not often required
         # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
         if self.factory.model_def.cloned_from_model_def is not None:
             for candidate_catalogue in self.factory.roster.catalogues:
-                if candidate_catalogue.model_def == self.factory.model_def.cloned_from_model_def:
+                if (
+                    candidate_catalogue.model_def
+                    == self.factory.model_def.cloned_from_model_def
+                ):
                     return candidate_catalogue
         # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
         try:
