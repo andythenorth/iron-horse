@@ -214,11 +214,15 @@ engine_module_names = [
     "driving_cab_panoramic_passenger_ng_pony_gen_4",
 ]
 
-# these can be alphabetised, the buy menu order is enforced in global constants
 # these can delegate to another module for reuse of wagons; this is not a common case, but used for things like torpedo cars
 # explicit wagon module lists per roster are better;
 # implicit modules lists were tried (just using global_constants list and allowing failing imports), but was no less maintenance, and was faff
 wagon_module_names_with_roster_ids = {
+    # any engine-specific wagons go first
+    "blaze_middle_cars": "pony",
+    "firebird_middle_cars": "pony",
+    # generic wagons
+    # these can be alphabetised, the buy menu order is enforced in global constants
     "acid_tank_cars_randomised": "pony",
     "acid_tank_cars_type_1": "pony",
     "acid_tank_cars_type_2": "pony",
@@ -301,8 +305,6 @@ wagon_module_names_with_roster_ids = {
     "hopper_cars": "pony",
     "hopper_cars_high_side": "pony",
     "hopper_cars_randomised": "pony",
-    "hst_mail_cars": "pony",
-    "hst_passenger_cars": "pony",
     "ingot_cars": "pony",
     "intermodal_cars": "pony",
     "kaolin_hopper_cars": "pony",

@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="PassengerEngineHSTCab",
         model_id="blaze_cab",
-        vehicle_family_id="blaze", # vehicle_family_id required for HST
+        vehicle_family_id="blaze",  # vehicle_family_id required for HST
         base_numeric_id=21640,
         name="Blaze HST",
         subrole="hst",  # quite a specific role, may or may not scale to other rosters
