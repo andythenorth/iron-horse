@@ -5625,8 +5625,6 @@ class MailHSTMiddleCar(MailCarBase):
 
     model_id_root = "hst_mail_car"
     dedicated_tgv_hst_formation = True
-    # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"] # CABBAGE SHIM
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6562,7 +6560,6 @@ class PassengerHSTMiddleCar(PassengerCarBase):
 
     model_id_root = "hst_passenger_car"
     dedicated_tgv_hst_formation = True
-    formation_ruleset_equivalence_flags = ["any_generic_pax_car"] # CABBAGE SHIM
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
