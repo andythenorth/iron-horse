@@ -102,7 +102,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-    <tal:livery define="livery model_variant.catalogue_entry.livery_def"><!--! CABBAGE -->
+    <tal:livery define="livery model_variant.catalogue_entry.livery_def">
         <tal:optional_forced_recolour switch="getattr(model_variant.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
             <tal:block case="True">
                 <!--! recolour CC2 to arbitrary other CC as defined by livery -->
