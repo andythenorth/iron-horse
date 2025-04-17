@@ -19,10 +19,6 @@ def main(**kwargs):
         intro_year_offset=-2,  # let's be a little earlier for this one
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
-            ("COLOUR_PINK", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

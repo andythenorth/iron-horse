@@ -30,12 +30,6 @@ def main(**kwargs):
             "DB_SCHENKER",
             "FREIGHTLINER_GBRF",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_WHITE", "COLOUR_BLUE"),
-            ("COLOUR_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
-            ("COLOUR_WHITE", "COLOUR_RED"),
-        ],
         sprites_complete=True,
     )
 

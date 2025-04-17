@@ -22,10 +22,6 @@ def main(**kwargs):
         # intercity, railfreight?
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "SWOOSH", "FREIGHTLINER_GBRF", "RES"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

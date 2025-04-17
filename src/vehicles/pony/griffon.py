@@ -26,12 +26,6 @@ def main(**kwargs):
             "DB_SCHENKER",
             "BANGER_BLUE",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_GREY", "COLOUR_YELLOW"),
-            ("COLOUR_WHITE", "COLOUR_GREY"),
-            ("COLOUR_GREY", "COLOUR_GREY"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-        ],
         decor_spriterow_num=5,
         show_decor_in_purchase_for_variants=[0, 1, 2],
         sprites_complete=True,

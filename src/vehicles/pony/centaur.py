@@ -29,14 +29,6 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY",
             "RES",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_GREY", "COLOUR_YELLOW"),
-            ("COLOUR_WHITE", "COLOUR_GREY"),
-            ("COLOUR_GREY", "COLOUR_GREY"),
-            ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_YELLOW", "COLOUR_YELLOW"),
-        ],
         caboose_family="railfreight_2",
         sprites_complete=True,
     )

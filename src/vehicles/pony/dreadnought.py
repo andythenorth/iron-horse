@@ -18,10 +18,6 @@ def main(**kwargs):
         gen=5,
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PURPLE", "COLOUR_WHITE"),
-            ("COLOUR_GREEN", "COLOUR_ORANGE"),
-        ],
         sprites_complete=True,
     )
 

@@ -26,13 +26,6 @@ def main(**kwargs):
             "SWOOSH",
             "DB_SCHENKER",
         ],  # "RAILFREIGHT_TRIPLE_GREY"
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_PINK", "COLOUR_WHITE"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_CREAM", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

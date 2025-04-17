@@ -17,10 +17,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
-            ("COLOUR_BLUE", "COLOUR_GREY"),
-        ],
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=3,

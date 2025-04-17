@@ -16,10 +16,6 @@ def main(**kwargs):
         },
         base_track_type="METRO",
         gen=3,
-        default_livery_extra_docs_examples=[
-            ("COLOUR_BLUE", "COLOUR_RED"),
-            ("COLOUR_RED", "COLOUR_BLUE"),
-        ],
         sprites_complete=True,
     )
 

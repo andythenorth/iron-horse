@@ -29,9 +29,6 @@ def main(**kwargs):
             "RAILFREIGHT_RED_STRIPE",
             "DUTCH_1986",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-        ],
         decor_spriterow_num=5,
         sprites_complete=True,
     )

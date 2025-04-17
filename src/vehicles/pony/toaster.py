@@ -23,11 +23,6 @@ def main(**kwargs):
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_GREEN", "COLOUR_YELLOW"),
-            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

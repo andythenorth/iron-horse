@@ -29,7 +29,6 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "LOADHAUL",
         ],
-        default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
         sprites_complete=True,
     )
 

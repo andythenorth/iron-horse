@@ -20,10 +20,6 @@ def main(**kwargs):
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
-            ("COLOUR_PINK", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

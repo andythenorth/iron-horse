@@ -19,7 +19,6 @@ def main(**kwargs):
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine
         intro_year_offset=6,  # let's be later for this one
         extended_vehicle_life=True,
-        default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         caboose_family="railfreight_1",
         # add triple grey railfreight
         # note that livery names are metadata only and can repeat for different spriterows

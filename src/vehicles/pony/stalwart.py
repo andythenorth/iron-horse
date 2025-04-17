@@ -27,10 +27,6 @@ def main(**kwargs):
             "SWOOSH",
             "RAILFREIGHT_RED_STRIPE",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

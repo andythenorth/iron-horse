@@ -21,10 +21,6 @@ def main(**kwargs):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         liveries=["VANILLA"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_WHITE", "COLOUR_GREEN"),
-            ("COLOUR_ORANGE", "COLOUR_RED"),
-        ],
         requires_high_clearance=True,
         sprites_complete=False,
     )

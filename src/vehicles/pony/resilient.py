@@ -29,9 +29,6 @@ def main(**kwargs):
             "DB_SCHENKER",
             "BANGER_BLUE",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_BLUE", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

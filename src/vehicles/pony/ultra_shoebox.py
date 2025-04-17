@@ -19,15 +19,6 @@ def main(**kwargs):
         extended_vehicle_life=True,  # because long time until replaced
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "SWOOSH", "DB_SCHENKER", "BANGER_BLUE"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_RED", "COLOUR_RED"),
-            ("COLOUR_PINK", "COLOUR_WHITE"),
-            ("COLOUR_PURPLE", "COLOUR_WHITE"),
-            ("COLOUR_CREAM", "COLOUR_MAUVE"),
-            ("COLOUR_YELLOW", "COLOUR_YELLOW"),
-            ("COLOUR_DARK_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-        ],
         sprites_complete=True,
     )
 

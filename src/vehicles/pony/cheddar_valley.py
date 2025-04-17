@@ -23,10 +23,6 @@ def main(**kwargs):
         # unfinished EWS livery exists, but eh
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "YEOMAN", "DB_SCHENKER", "FREIGHTLINER_GBRF", "ARC"],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_WHITE", "COLOUR_GREEN"),
-            ("COLOUR_ORANGE", "COLOUR_RED"),
-        ],
         sprites_complete=True,
     )
 
