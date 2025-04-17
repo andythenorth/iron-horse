@@ -113,12 +113,11 @@ class GestaltGraphics(object):
         self, pipeline, catalogue_entry, unit_counter, unit
     ):
         # override in subclasses as needed
-        # CABBAGE - unit_variant_row_num is legacy name?
-        unit_variant_row_num = (unit.rel_spriterow_index * len(pipeline.catalogue)) + (
+        result = (unit.rel_spriterow_index * len(pipeline.catalogue)) + (
             catalogue_entry.livery_def.relative_spriterow_num
             * self.num_load_state_or_similar_spriterows
         )
-        return unit_variant_row_num
+        return result
 
 
 class GestaltGraphicsEngine(GestaltGraphics):
@@ -463,12 +462,11 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, pipeline, catalogue_entry, unit_counter, unit
     ):
-        # CABBAGE - unit_variant_row_num is legacy name?
-        unit_variant_row_num = unit.rel_spriterow_index + (
+        result = unit.rel_spriterow_index + (
             (catalogue_entry.livery_def.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )
-        return unit_variant_row_num
+        return result
 
 
 class GestaltGraphicsCaboose(GestaltGraphics):
@@ -1004,17 +1002,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
 
     @cached_property
     def num_spritesheet_liveries_per_formation_position(self):
-        # this counts liveries in the spritesheet, the actual number of liveries may be higher due to sprite reuse with recolouring
-        # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
-        # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
-        spriterow_nums_seen = []
-        for livery_counter, livery_def in enumerate(self.catalogue):
-            # CABBAGE SHIM
-            if getattr(livery_def, "relative_spriterow_num", None) is None:
-                spriterow_nums_seen.append(livery_counter)
-            else:
-                spriterow_nums_seen.append(livery_def.relative_spriterow_num)
-        return len(set(spriterow_nums_seen))
+        return len(self.catalogue)
 
     @cached_property
     def total_spriterow_count(self):
@@ -1071,8 +1059,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                     formation_position_row_offset = (
                         self.formation_position_spriterow_map["special"]
                     )
-                    # CABBAGE - unit_variant_row_num is legacy name?
-                    unit_variant_row_num = (
+                    result = (
                         self.num_spritesheet_liveries_per_formation_position
                         * formation_position_row_offset
                         * self.num_load_state_or_similar_spriterows
@@ -1080,7 +1067,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                         catalogue_entry.livery_def.relative_spriterow_num
                         * self.num_load_state_or_similar_spriterows
                     )
-                    return unit_variant_row_num
+                    return result
             else:
                 raise BaseException(
                     "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): catalogue "
@@ -1097,10 +1084,9 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 "last"
             ]
         if pipeline.is_pantographs_pipeline:
-            # CABBAGE - unit_variant_row_num is legacy name?
-            unit_variant_row_num = formation_position_row_offset
+            result = formation_position_row_offset
         else:
-            unit_variant_row_num = (
+            result = (
                 self.num_spritesheet_liveries_per_formation_position
                 * formation_position_row_offset
                 * self.num_load_state_or_similar_spriterows
@@ -1109,7 +1095,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 * self.num_load_state_or_similar_spriterows
             )
 
-        return unit_variant_row_num
+        return result
 
 
 class GestaltGraphicsCustom(GestaltGraphics):
