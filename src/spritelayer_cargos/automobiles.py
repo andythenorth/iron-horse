@@ -12,7 +12,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            catalogue_entry=None,  # CABBAGE
+            catalogue_entry=None,  # CABBADGE
         )
 
     @property
@@ -495,7 +495,7 @@ def main():
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsAutomobilesTransporter(
-            catalogue_entry=None,  # CABBAGE
+            catalogue_entry=None,  # CABBADGE
         ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere

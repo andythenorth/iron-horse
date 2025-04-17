@@ -31,7 +31,7 @@
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
-                <!--! CABBAGE SHOULD BE has_badge BADGES NOT UNIT IDS -->
+                <!--! CABBADGE SHOULD BE has_badge BADGES NOT UNIT IDS -->
                 <tal:has_cab_consist condition="getattr(model_variant, 'cab_engine_model', None) is not None">
                     ||
                     count_veh_id(${catalogue.cab_engine_model.units[0].id}) > 0
@@ -223,8 +223,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
     dedicated colour remapping for CC, as defined by the livery, no flip support
 -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-    <!--! CABBAGE SHIM-->
-    <tal:forced_remap switch="getattr(model_variant.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
+    <tal:forced_remap switch="model_variant.catalogue_entry.livery_def.remap_to_cc is not None">
         <tal:remap case="True">
             ${unit.numeric_id}: return base_sprite_2cc + 16 * ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
         </tal:remap>

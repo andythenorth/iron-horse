@@ -76,8 +76,8 @@ class LiverySupplier(dict):
 
         # regrettable special case handling of detecting weathering, as we want to use only simple constants to fetch liveries
         # we weather all liveries by default, and use livery_name sufix to specify when to not weather
-        # CABBAGE - many liveries are not weathered as they don't use the remap callback
-        # CABBAGE - so for strict behaviour this should only be applied to liveries that have colour_set_names??
+        # CABBADGE - many liveries are not weathered as they don't use the remap callback
+        # CABBADGE - so for strict behaviour this should only be applied to liveries that have colour_set_names??
         force_no_weathering = False
         if livery_name.endswith("_NO_WEATHERING"):
             livery_name = livery_name.removesuffix("_NO_WEATHERING")
