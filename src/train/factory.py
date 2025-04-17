@@ -396,10 +396,6 @@ class ModelVariantFactory:
                 )
             else:
                 input_spritesheet_name_stem = self.model_id
-                if "blaze" in self.model_id:
-                    print("CABBAGE 102")
-                    print(self.model_id)
-                    print(input_spritesheet_name_stem)
 
         # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
@@ -1094,6 +1090,11 @@ class TGVHSTQuacker:
         for suffix in ("_cab", "_middle_passenger", "_middle_mail"):
             if self.catalogue.model_id.endswith(suffix):
                 return self.catalogue.model_id.removesuffix(suffix)
+
+    @cached_property
+    def cabbage_middle_part_name(self):
+        print(self.catalogue.model_id)
+        return self.catalogue.model_id
 
     """
     @cached_property

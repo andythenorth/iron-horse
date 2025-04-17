@@ -5618,7 +5618,7 @@ class MailHighSpeedCar(MailCarBase):
         return True
 
 
-class MailHSTCar(MailCarBase):
+class MailHSTMiddleCar(MailCarBase):
     """
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
     """
@@ -5626,7 +5626,7 @@ class MailHSTCar(MailCarBase):
     model_id_root = "hst_mail_car"
     dedicated_tgv_hst_formation = True
     # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"] # CABBAGE SHIM
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6553,7 +6553,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         )
 
 
-class PassengerHSTCar(PassengerCarBase):
+class PassengerHSTMiddleCar(PassengerCarBase):
     """
     Trailer dedicated for HST-type trains (no wagon attach, but matching stats and livery).
     Moderately improved decay rate compared to standard pax car.
@@ -6562,7 +6562,7 @@ class PassengerHSTCar(PassengerCarBase):
 
     model_id_root = "hst_passenger_car"
     dedicated_tgv_hst_formation = True
-    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"] # CABBAGE SHIM
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

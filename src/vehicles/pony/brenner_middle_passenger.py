@@ -1,5 +1,6 @@
 from train.factory import ModelDef
 
+# !! can we do both middle parts in one module?
 
 def main(**kwargs):
     result = []

@@ -147,8 +147,8 @@ engine_module_names = [
     "chronos",
     "nimbus",
     # brit high speed pax
-    "firebird",
-    "blaze",
+    "firebird_cab",
+    "blaze_cab",
     "helm_wind_cab",
     "helm_wind_middle_passenger",
     "helm_wind_middle_mail",
