@@ -1001,6 +1001,10 @@ class CloneQuacker:
             )
 
     def resolve_catalogue(self, permissive):
+        # does not act like a clone, early return
         if not self.quack:
             return self.catalogue
+        # we handle trains with cab engines like clones, so get the cab catalogue
+        if permissive and self.factory.cab_factory is not None:
+            return self.factory.cab_factory.catalogue
         return self._get_upstream_catalogue(permissive)

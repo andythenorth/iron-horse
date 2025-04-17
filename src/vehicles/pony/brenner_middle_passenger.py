@@ -8,6 +8,7 @@ def main(**kwargs):
         class_name="TGVMiddlePassengerEngine",
         model_id="brenner_middle_passenger",
         cab_id="brenner_cab",
+        vehicle_family_id="brenner", # vehicle_family_id required for TGV
         base_numeric_id=2880,
         name="Brenner Passenger Coach",
         subrole="very_high_speed",
