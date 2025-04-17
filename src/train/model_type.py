@@ -2866,7 +2866,7 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        """ # CABBAGE
+        """ # CABBAGE - intent is to improve appearance of this wagon type
         if self.base_track_type == "NG":
             self.roof_type = "freight_cc1"
         else:
@@ -2893,7 +2893,8 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # CABBAGE THIS IS WEIRD !!
+
+        # !! IS THIS WISE ??
         """
         self.randomised_candidate_groups.extend(
             ["piece_goods_car_manufacturing_parts_randomised"]

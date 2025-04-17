@@ -1088,7 +1088,7 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
-        # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
+        # !! no clue what this random trigger issue is, maybe an old commit knows?
         if (
             self.model_variant.is_default_model_variant
             and self.model_variant.gen == 5
@@ -1113,7 +1113,7 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
-        # CABBAGE no clue what this random trigger issue is, maybe an old commit knows?
+        # !! no clue what this random trigger issue is, maybe an old commit knows?
         if (
             self.model_variant.is_default_model_variant
             and self.model_variant.gen == 5
