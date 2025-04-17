@@ -713,7 +713,7 @@ class Catalogue(list):
             return "RAIL"
 
     @property
-    def formation_ruleset_equivalence_flags(self):
+    def formation_reporting_labels(self):
         # THESE ARE THE FLAGS *SET* on the vehicle
         # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBAGE
         result = []
@@ -721,18 +721,32 @@ class Catalogue(list):
             result.append(self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag)
 
         # !! cabbage - this should definitely be a factory thing, as it needs to consider model_def
-        if getattr(self.factory.model_type_cls, "formation_ruleset_equivalence_flags", None) is not None:
-            result.extend(self.factory.model_type_cls.formation_ruleset_equivalence_flags)
+        if getattr(self.factory.model_type_cls, "formation_reporting_labels", None) is not None:
+            result.extend(self.factory.model_type_cls.formation_reporting_labels)
+        # !! adding family might have unexpected results, it's a JFDI thing
+        result.append(self.factory.vehicle_family_id)
         return result
+
+    def get_formation_ruleset_reporting_label(self, reporting_label_map):
+        # CABBAGE JFDI, unclear where the domain boundary is - should the gestalt take care of asking the catalogue for what it needs or just pass the label?
+        # seems the special class of target_reporting_labels that get passsed are signals to the catalogue
+        if reporting_label_map["label"] == "vehicle_family":
+            return {"label": self.factory.vehicle_family_id}
+        if reporting_label_map["label"] == "tgv_hst":
+            return {"label": self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag}
+        # temp fall through
+        raise ValueError(f"get_formation_ruleset_reporting_label passed reporting_label_map={reporting_label_map} which isn't a valid value")
 
     @property
     def formation_ruleset_equivalence_badge(self):
         # THIS IS THE BADGE *READ* BY THE FORMATION RULESET CHECK TO DETECT EQUIVALENT VEHICLES
         # NAMING IS JFDI CABBAGE
         if self.tgv_hst_quacker.is_tgv_hst_middle_part:
-            return f"ih_formation_ruleset/equivalence/{self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag}"
+            return f"ih_formation_ruleset/vehicle_reports_as/{self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag}"
         # fall through
-        return self.factory._vehicle_family_badge
+        # TEMP CABBAGE SHIM TO MAKE THIS WORK - NEED TO MOVE THESE TO FORMATION RULESETS
+        return f"ih_formation_ruleset/vehicle_reports_as/generic_pax_car"
+        return #self.factory._vehicle_family_badge
 
     @property
     def vehicle_family_badge(self):

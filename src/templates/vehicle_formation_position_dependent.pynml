@@ -31,7 +31,6 @@
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
-                <!--! CABBADGE 993 - this should possibly be reading a dedicated badge, specific to the cab ID?  Distributed power alone won't do it -->
                 <tal:has_cab_consist condition="catalogue.cab_engine_model is not None">
                     ||
                     count_has_badge("ih_pantograph_display/is_cab/${catalogue.cab_engine_model.model_id}") > 0
@@ -135,8 +134,8 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
             }
         </tal:position_ruleset>
 
-        <tal:position_ruleset case="'tgv'">
-            switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_tgv_ruleset()) {
+        <tal:position_ruleset case="'tgv_hst'">
+            switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, switch_graphics_tgv_hst_ruleset()) {
                 0: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['default']};
                 1: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['first']};
                 2: return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['last']};
@@ -168,7 +167,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
-    <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">switch_initialise_var_41_but_badges_not_ids(badgetype("${catalogue.formation_ruleset_equivalence_badge}"))</tal:fill_temp_storage>
+    <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">switch_initialise_var_41_but_badges_not_ids(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
     <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
     ) {
     return ${unit.id}_switch_graphics_position_in_formation_entry_point;

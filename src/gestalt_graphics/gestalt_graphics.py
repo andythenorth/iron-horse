@@ -9,6 +9,20 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
+formation_ruleset_reporting_label_maps = {
+    "1_unit_sets": {"label": "foobar"},
+    "2_unit_sets": {"label": "foobar"},
+    "4_unit_sets": {"label": "foobar"},
+    "driving_cab_cars": {"label": "generic_pax_car"},
+    "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
+    "mail_cars": {"label": "generic_mail_car"},
+    "pax_cars": {"label": "generic_pax_car"},
+    "railcars_2_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
+    "railcars_3_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
+    "railcars_4_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
+    "railcars_6_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
+    "tgv_hst": {"label": "tgv_hst", "delegate_to_catalogue": True},
+}
 
 class GestaltGraphics(object):
     """
@@ -117,6 +131,19 @@ class GestaltGraphics(object):
             * self.num_load_state_or_similar_spriterows
         )
         return result
+
+    @property
+    def formation_ruleset_target_reporting_label(self):
+        if self.formation_ruleset is None:
+            return None
+        # CABBAGE unclear how much we handle directly here, and how much we delegate to the factory to resolve
+        # !! the factory should NOT know too much about rulesets
+        # !! BUT the rulesets should not know too much the model type
+        # !! so yeah domain boundary issues
+        reporting_label_map = formation_ruleset_reporting_label_maps[self.formation_ruleset]
+        if reporting_label_map.get("delegate_to_catalogue", False):
+            reporting_label_map = self.catalogue.get_formation_ruleset_reporting_label(reporting_label_map)
+        return reporting_label_map["label"]
 
 
 class GestaltGraphicsEngine(GestaltGraphics):
