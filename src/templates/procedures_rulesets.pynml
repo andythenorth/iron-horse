@@ -349,7 +349,7 @@
     }
 
     <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/flags/report_as_pax_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/equivalence/any_generic_pax_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
         <!--! don't show last if following vehicle is also a valid pax car -->
         1: return ${default};
         return ${last};
@@ -360,7 +360,7 @@
     }
 
     <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/flags/report_as_pax_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/equivalence/any_generic_pax_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
         <!--! don't show first if preceeding vehicle is also a valid pax car -->
         1: return ${default};
         return ${first};
@@ -400,7 +400,7 @@
     }
 
     <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/flags/report_as_mail_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/equivalence/any_generic_mail_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
         <!--! don't show first if preceeding vehicle is also a valid pax car -->
         1: return ${default};
         return ${first};
@@ -416,7 +416,7 @@
     }
 
     <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/flags/report_as_mail_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/equivalence/any_generic_mail_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
         <!--! don't show last if following vehicle is also a valid pax car -->
         1: return ${default};
         return ${last};

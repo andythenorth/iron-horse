@@ -703,6 +703,12 @@ class Catalogue(list):
             return "RAIL"
 
     @property
+    def formation_ruleset_equivalence_badge(self):
+        # convenience method, catalogue method is public, factory is not
+        # CABBAGE
+        return self.factory._vehicle_family_badge
+
+    @property
     def vehicle_family_badge(self):
         # convenience method, catalogue method is public, factory is not
         return self.factory._vehicle_family_badge

@@ -239,9 +239,9 @@ class ModelTypeBase(object):
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
-        if self.gestalt_graphics.formation_ruleset_flags is not None:
-            for flag in self.gestalt_graphics.formation_ruleset_flags:
-                result.append(f"ih_formation_ruleset/flags/{flag}")
+        if self.gestalt_graphics.formation_ruleset_equivalence_flags is not None:
+            for flag in self.gestalt_graphics.formation_ruleset_equivalence_flags:
+                result.append(f"ih_formation_ruleset/equivalence/{flag}")
         return result
 
     @property
@@ -1441,11 +1441,11 @@ class MailEngineCabbageDVT(MailEngineBase):
             "special": 0,
         }
         # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1717,11 +1717,11 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             "special": 0,
         }
         # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5514,11 +5514,11 @@ class MailCar(MailCarBase):
             "special": bonus_sprites,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5602,11 +5602,11 @@ class MailHighSpeedCar(MailCarBase):
             "special": 2,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5645,11 +5645,11 @@ class MailHSTCar(MailCarBase):
             "special": 0,
         }
         # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_flags = ["report_as_pax_car", "report_as_mail_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6395,11 +6395,11 @@ class PanoramicCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6448,11 +6448,11 @@ class PassengerCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6497,11 +6497,11 @@ class PassengerHighSpeedCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6588,11 +6588,11 @@ class PassengerHSTCar(PassengerCarBase):
             "last": 2,
             "special": 3,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6727,11 +6727,11 @@ class PassengerRestaurantCar(PassengerCarBase):
             "last": 0,
             "special": 0,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6779,11 +6779,11 @@ class PassengerSuburbanCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_flags = ["report_as_pax_car"]
+        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_flags=formation_ruleset_flags,
+            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
