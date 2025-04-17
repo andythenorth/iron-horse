@@ -713,9 +713,25 @@ class Catalogue(list):
             return "RAIL"
 
     @property
+    def formation_ruleset_equivalence_flags(self):
+        # THESE ARE THE FLAGS *SET* on the vehicle
+        # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBAGE
+        result = []
+        if self.tgv_hst_quacker.is_tgv_hst_middle_part:
+            result.append(self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag)
+
+        # !! cabbage - this should definitely be a factory thing, as it needs to consider model_def
+        if getattr(self.factory.model_type_cls, "formation_ruleset_equivalence_flags", None) is not None:
+            result.extend(self.factory.model_type_cls.formation_ruleset_equivalence_flags)
+        return result
+
+    @property
     def formation_ruleset_equivalence_badge(self):
-        # convenience method, catalogue method is public, factory is not
-        # CABBAGE
+        # THIS IS THE BADGE *READ* BY THE FORMATION RULESET CHECK TO DETECT EQUIVALENT VEHICLES
+        # NAMING IS JFDI CABBAGE
+        if self.tgv_hst_quacker.is_tgv_hst_middle_part:
+            return f"ih_formation_ruleset/equivalence/{self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag}"
+        # fall through
         return self.factory._vehicle_family_badge
 
     @property
@@ -1092,12 +1108,7 @@ class TGVHSTQuacker:
                 return self.catalogue.model_id.removesuffix(suffix)
 
     @cached_property
-    def cabbage_middle_part_name(self):
-        print(self.catalogue.model_id)
-        return self.catalogue.model_id
-
-    """
-    @cached_property
-    def formation_ruleset_equivalence_flag:
-        pass
-    """
+    def formation_ruleset_middle_part_equivalence_flag(self):
+        if not self.quack:
+            return None
+        return f"{self.vehicle_family_id}_middle"

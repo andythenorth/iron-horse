@@ -234,14 +234,14 @@ class ModelTypeBase(object):
 
     @property
     def formation_ruleset_badges(self):
+        # possibly should be delegated to catalogue, but really not clear, so eh JFDI
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
-        if getattr(self, "formation_ruleset_equivalence_flags", None) is not None:
-            for flag in self.formation_ruleset_equivalence_flags:
-                result.append(f"ih_formation_ruleset/equivalence/{flag}")
+        for flag in self.catalogue.formation_ruleset_equivalence_flags:
+            result.append(f"ih_formation_ruleset/equivalence/{flag}")
         return result
 
     @property
