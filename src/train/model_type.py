@@ -211,14 +211,6 @@ class ModelTypeBase(object):
             return "role/" + self.role
         return None
 
-    """
-    # CABBAGE commented out - IHA_ is used for RAIL, but no railtype is defined for RAIL or IHA_, as it relies on default game railtype
-    # that can be changed, but eh, risk of unexpected behaviour from redefining RAIL so needs care
-    @property
-    def track_type_badge(self):
-        # just for debug
-        return f"ih_railtype/{self.track_type}"
-    """
     @property
     def power_source_badges(self):
         # stub only, over-ride in subclasses as appropriate
@@ -362,7 +354,6 @@ class ModelTypeBase(object):
         result.extend(self.randomised_wagon_badges)
         result.extend(self.special_flags_badges)
         result.extend(self.tech_tree_badges)
-        # result.append(self.track_type_badge) # CABBAGE nerfed off - not quite working
         result.extend(self.variant_handling_badges)
         result.extend([self.catalogue.vehicle_family_badge])
 
@@ -2866,7 +2857,7 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        """ # CABBAGE - intent is to improve appearance of this wagon type
+        """ # !!! - intent is to improve appearance of this wagon type
         if self.base_track_type == "NG":
             self.roof_type = "freight_cc1"
         else:
@@ -6145,7 +6136,7 @@ class OpenCarHood(OpenCarBase):
 
     model_id_root = "hood_open_car"
     variant_group_id_root = "wagon_group_open_cars"
-    # CABBAGE THIS IS WEIRD !!!!
+    # !! WOULD THIS BE WISE ??
     # randomised_candidate_groups.extend(["piece_goods_car_covered_randomised"])
 
     def __init__(self, **kwargs):
