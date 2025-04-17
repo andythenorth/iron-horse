@@ -545,14 +545,6 @@ def main():
     )
     logger.set_colour("reset")
 
-    # CABBAGE - THIS IS USED TO HANDLE VISIBLE CARGO ONLY SUPPORTING ONE UNIT?
-    """
-    for model_variant in model_variants:
-        if model_variant.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":
-            if len(set(model_variant.units)) > 1:
-                raise Exception(model_variant.id)
-    """
-
 
 if __name__ == "__main__":
     main()
