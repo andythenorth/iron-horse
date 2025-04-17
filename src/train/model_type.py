@@ -276,7 +276,9 @@ class ModelTypeBase(object):
     def distributed_power_badges(self):
         result = []
         if self.is_distributed_power_wagon:
-            result.append(f"ih_distributed_power/powered_by/{self.catalogue.cab_engine_model.model_id}")
+            result.append(
+                f"ih_distributed_power/powered_by/{self.catalogue.cab_engine_model.model_id}"
+            )
         if self.is_distributed_power_cab:
             result.append(f"ih_distributed_power/is_power_cab/{self.model_id}")
         return result
@@ -286,9 +288,7 @@ class ModelTypeBase(object):
         # specific handling of indentation level 1
         result = []
         if self.use_name_callback:
-            result.append(
-                f"ih_name_cb_flags/purchase_level_1_has_more_nested_variants"
-            )
+            result.append(f"ih_name_cb_flags/purchase_level_1_has_more_nested_variants")
         return list(set(result))
 
     @property
@@ -356,6 +356,7 @@ class ModelTypeBase(object):
         result.extend(self.tech_tree_badges)
         result.extend(self.variant_handling_badges)
         result.extend([self.catalogue.vehicle_family_badge])
+        result.extend(self.catalogue.vehicle_family_pantograph_display_badges)
 
         # 1. badge display order in OpenTTD is *not* guaranteed (as of April 2025)....so just do a basic alpha sort for now
         # 2. alpha sort is better than default append order
@@ -370,7 +371,7 @@ class ModelTypeBase(object):
     def engine_varies_power_by_power_source(self):
         # note that we use self.cab_engine_model to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (self.power_by_power_source is not None) and (
-            getattr(self.catalogue, "cab_engine_model", None) is None
+            self.catalogue.cab_engine_model is None
         ):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
@@ -541,7 +542,9 @@ class ModelTypeBase(object):
         if self.catalogue.next_gen_catalogue is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.catalogue.next_gen_catalogue.intro_year - self.catalogue.intro_year
+            return (
+                self.catalogue.next_gen_catalogue.intro_year - self.catalogue.intro_year
+            )
 
     @property
     def retire_early(self):
@@ -553,9 +556,7 @@ class ModelTypeBase(object):
     @property
     def track_type_name(self):
         if self.requires_electric_rails:
-            result = (
-                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
-            )
+            result = self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
         else:
             result = self.base_track_type
         return result
@@ -1148,7 +1149,9 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.buy_cost
+                self.catalogue.clone_quacker.resolve_catalogue(
+                    permissive=False
+                ).example_model_variant.buy_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 
@@ -1200,7 +1203,9 @@ class EngineModelTypeBase(ModelTypeBase):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             return int(
-                self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.running_cost
+                self.catalogue.clone_quacker.resolve_catalogue(
+                    permissive=False
+                ).example_model_variant.running_cost
                 * self.model_def.clone_stats_adjustment_factor
             )
 
@@ -1261,7 +1266,6 @@ class EngineModelTypeBase(ModelTypeBase):
         # cap to int for nml
         return int(run_cost)
 
-
     @property
     def receives_easter_egg_haulage_speed_bonus(self):
         # just a passthrough for convenience
@@ -1272,11 +1276,11 @@ class EngineModelTypeBase(ModelTypeBase):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         # the list is deliberately a little generous and includes driving cab cars for lolz reasons
         if self.role in [
-                "express",
-                "driving_cab",
-                "express_railcar",
-                "high_power_railcar",
-            ]:
+            "express",
+            "driving_cab",
+            "express_railcar",
+            "high_power_railcar",
+        ]:
             return True
         return False
 
@@ -3450,7 +3454,7 @@ class CabooseCar(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = ["VANILLA"] # no recolours
+    liveries = ["VANILLA"]  # no recolours
 
     model_id_root = "caboose_car"
 
@@ -3623,6 +3627,7 @@ class CoilCarBase(CarModelTypeBase):
     """
     Coil car - for finished metals (steel, copper etc).
     """
+
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
@@ -4181,7 +4186,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     Bae for farm type cargos - box cars / vans.
     """
 
-    liveries = ["VANILLA"] # no recolours
+    liveries = ["VANILLA"]  # no recolours
 
     vehicle_family_id = "farm_product_box_car"
     variant_group_id_root = "wagon_group_farm_product_box_cars"
@@ -4264,7 +4269,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     Farm type cargos - covered hoppers.
     """
 
-    liveries = ["VANILLA"] # no recolours
+    liveries = ["VANILLA"]  # no recolours
 
     vehicle_family_id = "farm_product_hopper_car"
     variant_group_id_root = "wagon_group_farm_product_hopper_cars"
@@ -4730,7 +4735,7 @@ class GasTankCarBase(CarModelTypeBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = ["VANILLA"] # no recolours
+    liveries = ["VANILLA"]  # no recolours
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -5187,7 +5192,7 @@ class IntermodalCarBase(CarModelTypeBase):
     """
 
     # as of April 2025, company colour isn't used for default intermodal sprites
-    liveries = ["VANILLA"] # no recolours
+    liveries = ["VANILLA"]  # no recolours
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5455,7 +5460,10 @@ class MailRailcarTrailerCarBase(MailCarBase):
     @cached_property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {key: 0 for key in self.catalogue.cab_engine_model.power_by_power_source.keys()}
+        return {
+            key: 0
+            for key in self.catalogue.cab_engine_model.power_by_power_source.keys()
+        }
 
     @property
     def intro_year_offset(self):
@@ -6331,7 +6339,10 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     @cached_property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {key: 0 for key in self.catalogue.cab_engine_model.power_by_power_source.keys()}
+        return {
+            key: 0
+            for key in self.catalogue.cab_engine_model.power_by_power_source.keys()
+        }
 
     @property
     def pantograph_type(self):
@@ -7855,7 +7866,7 @@ class TorpedoCarUnit(CarModelTypeBase):
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
-        #"RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR", # exceeds IDs, too much faff to adjust
+        # "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR", # exceeds IDs, too much faff to adjust
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",

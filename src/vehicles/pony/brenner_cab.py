@@ -13,6 +13,7 @@ def main(**kwargs):
         name="Brenner",
         subrole="very_high_speed",
         subrole_child_branch_num=-2,
+        pantograph_type="z-shaped-single-with-base", # brenner shows no pan on cab, but needed for trailers to resolve badges
         power_by_power_source={
             "AC": 3000,
         },

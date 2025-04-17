@@ -31,11 +31,13 @@
             [
                 <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
-                <!--! CABBADGE SHOULD BE has_badge BADGES NOT UNIT IDS -->
-                <tal:has_cab_consist condition="getattr(model_variant, 'cab_engine_model', None) is not None">
+                <!--! CABBADGE 993 - this should possibly be reading a dedicated badge, specific to the cab ID?  Distributed power alone won't do it -->
+                <tal:has_cab_consist condition="catalogue.cab_engine_model is not None">
                     ||
-                    count_veh_id(${catalogue.cab_engine_model.units[0].id}) > 0
+                    count_has_badge("ih_pantograph_display/is_cab/${catalogue.cab_engine_model.model_id}") > 0
+
                 </tal:has_cab_consist>
+
             ]
         ) {
             1: return ${unit.id}_switch_graphics_pantographs_state_${formation_position_rule_num};

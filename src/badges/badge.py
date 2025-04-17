@@ -69,6 +69,7 @@ class BadgeManager(list):
         self.produce_formation_ruleset_badges(**kwargs)
         self.produce_randomised_wagon_candidate_badges(**kwargs)
         self.produce_tech_tree_badges(**kwargs)
+        self.produce_pantograph_display_badges(**kwargs)
 
     def produce_badges_from_static_config(self, **kwargs):
         # purely static badges
@@ -139,6 +140,15 @@ class BadgeManager(list):
                 label=f"power_source/{power_source.lower()}",
                 name=f"STR_BADGE_POWER_SOURCE_{power_source}",
             )
+
+    def produce_pantograph_display_badges(self, **kwargs):
+        roster_manager = kwargs["roster_manager"]
+        for roster in roster_manager:
+            for catalogue in roster.catalogues:
+                for badge in catalogue.vehicle_family_pantograph_display_badges:
+                    self.add_badge(
+                        label=f"{badge}",
+                    )
 
     def produce_distributed_power_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]

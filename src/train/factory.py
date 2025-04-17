@@ -315,6 +315,21 @@ class ModelVariantFactory:
         return f"ih_vehicle_family/{self.vehicle_family_id}"
 
     @property
+    def _vehicle_family_pantograph_display_badges(self):
+        # accessed via catalogue
+        result = []
+        # first find out if we're a trailer, and if we need pans
+        if self.cab_factory is not None:
+            if self.cab_factory.model_def.pantograph_type is not None:
+                result.append(f"ih_pantograph_display/requires_cab_present/{self.model_id}")
+        # now find out if we're a cab, and if we need pans
+        if len(self.catalogue.dedicated_trailer_catalogue_model_variant_mappings) > 0:
+            if self.model_def.pantograph_type is not None:
+                result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
+        # strictly we should never need both results and could return early, but eh, this also works
+        return result
+
+    @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
         if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
@@ -614,6 +629,9 @@ class Catalogue(list):
     def cab_engine_model(self):
         # fetch a model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
+        # considered moving to WagonQuacker, as it's only used for wagons as of April 2025, but not clear that's wise
+        if self.factory.cab_factory is None:
+            return None
         return self.factory.cab_factory.catalogue.example_model_variant
 
     @cached_property
@@ -688,6 +706,11 @@ class Catalogue(list):
     def vehicle_family_badge(self):
         # convenience method, catalogue method is public, factory is not
         return self.factory._vehicle_family_badge
+
+    @property
+    def vehicle_family_pantograph_display_badges(self):
+        # convenience method, catalogue method is public, factory is not
+        return self.factory._vehicle_family_pantograph_display_badges
 
     @property
     def cite(self):
