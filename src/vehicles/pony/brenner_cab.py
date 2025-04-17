@@ -9,7 +9,6 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="TGVCabEngine",
         model_id="brenner_cab",
-        vehicle_family_id="brenner", # vehicle_family_id required for TGV
         base_numeric_id=17090,
         name="Brenner",
         subrole="very_high_speed",

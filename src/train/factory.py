@@ -296,15 +296,21 @@ class ModelVariantFactory:
         if self.model_def.vehicle_family_id is not None:
             return self.model_def.vehicle_family_id
 
-        # delegate to cab_id if prsent
-        if self.model_def.cab_id is not None:
-            return self.model_def.cab_id
+        # tgv and hst model types have specific handling
+        if self.catalogue.tgv_hst_quacker.quack:
+            return self.catalogue.tgv_hst_quacker.vehicle_family_id
+
+        # general methods for wagons
         if self.catalogue.wagon_quacker.quack:
+            # trailers can delegate to cab_id if prsent
+            if self.model_def.cab_id is not None:
+                return self.model_def.cab_id
             # wagon can optionally set vehicle_family_id as class property
             if getattr(self.model_type_cls, "vehicle_family_id", None) is not None:
                 return self.model_type_cls.vehicle_family_id
             # wagons otherwise fall through to just model_id
             return self.model_type_cls.model_id_root
+
         # otherwise fall through to just model_id
         return self.model_id
 
@@ -323,7 +329,7 @@ class ModelVariantFactory:
             if self.cab_factory.model_def.pantograph_type is not None:
                 result.append(f"ih_pantograph_display/requires_cab_present/{self.model_id}")
         # now find out if we're a cab, and if we need pans
-        if len(self.catalogue.dedicated_trailer_catalogue_model_variant_mappings) > 0:
+        if self.catalogue.engine_quacker.is_cab_with_dedicated_trailers:
             if self.model_def.pantograph_type is not None:
                 result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
         # strictly we should never need both results and could return early, but eh, this also works
@@ -390,6 +396,10 @@ class ModelVariantFactory:
                 )
             else:
                 input_spritesheet_name_stem = self.model_id
+                if "blaze" in self.model_id:
+                    print("CABBAGE 102")
+                    print(self.model_id)
+                    print(input_spritesheet_name_stem)
 
         # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
@@ -435,6 +445,7 @@ class Catalogue(list):
         self.engine_quacker = EngineQuacker(catalogue=self)
         self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
+        self.tgv_hst_quacker = TGVHSTQuacker(catalogue=self)
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
@@ -629,7 +640,7 @@ class Catalogue(list):
     def cab_engine_model(self):
         # fetch a model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
-        # considered moving to WagonQuacker, as it's only used for wagons as of April 2025, but not clear that's wise
+        # considered moving to WagonQuacker, as it's only used for wagons as of April 2025, but not sure yet (EngineQuacker is supposed to be 'is?' not 'here are...')
         if self.factory.cab_factory is None:
             return None
         return self.factory.cab_factory.catalogue.example_model_variant
@@ -637,6 +648,9 @@ class Catalogue(list):
     @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
+        # this is _expected_ to fail if called too early - there won't be any wagons
+        # - there's no guard against that as of April 2025, just don't it
+        # considered moving to EngineQuacker, as it's only used for engines as of April 2025, but not sure yet (WagonQuacker is supposed to be 'is?' not 'here are...')
         result = []
         for (
             catalogue_id,
@@ -877,6 +891,16 @@ class EngineQuacker:
         # anything that's not a wagon for availability params is treated as an engine
         return not self.catalogue.wagon_quacker.availability_controlled_by_wagon_param
 
+    @cached_property
+    def is_cab_with_dedicated_trailers(self):
+        # predicate for engines which act as cabs for dedicated trailers
+        if not self._quack():
+            return False
+        if len(self.catalogue.dedicated_trailer_catalogue_model_variant_mappings) > 0:
+            return True
+        # fall through
+        return False
+
 
 class WagonQuacker:
     """
@@ -1008,3 +1032,71 @@ class CloneQuacker:
         if permissive and self.factory.cab_factory is not None:
             return self.factory.cab_factory.catalogue
         return self._get_upstream_catalogue(permissive)
+
+
+class TGVHSTQuacker:
+    """
+    Utility for affordances on models that act like TGV or HST, with dual-head cab and dedicated middle vehicles
+    *Not* used for generic railcars and trailers.
+    """
+
+    def __init__(self, catalogue):
+        self.catalogue = catalogue
+        self.factory = self.catalogue.factory
+
+    def _validate(self):
+        # specific name format is required for TGV and HST parts
+        assert self.is_tgv_hst_cab != self.is_tgv_hst_middle_part, (
+            f"TGVHSTQuacker: {self.catalogue.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
+        )
+        if self.is_tgv_hst_cab:
+            assert self.catalogue.model_id.endswith("_cab"), (
+                f"TGVHSTQuacker: {self.catalogue.model_id} cab part must end with '_cab'"
+            )
+        if self.is_tgv_hst_middle_part:
+            assert self.catalogue.model_id.endswith(("_middle_passenger", "middle_mail")), (
+                f"TGVHSTQuacker: {self.catalogue.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
+            )
+
+    @property
+    def quack(self):
+        # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
+        if getattr(self.catalogue.factory.model_type_cls, "dedicated_tgv_hst_formation", False):
+            return True
+        # fall through
+        return False
+
+    @cached_property
+    def is_tgv_hst_cab(self):
+        # predicate to find cabs
+        if not self.quack:
+            return False
+        # cab parts are created before middle parts, so we can't rely on detecting middle parts for cab
+        # instead we have to rely on absence of cab_factory as that can be used at init time
+        if self.factory.cab_factory is None:
+            return True
+        # fall through
+        return False
+
+    @cached_property
+    def is_tgv_hst_middle_part(self):
+        # predicate to find middle_parts
+        if not self.quack:
+            return False
+        if self.factory.cab_factory is not None:
+            return True
+        # fall through
+        return False
+
+    @cached_property
+    def vehicle_family_id(self):
+        self._validate()
+        for suffix in ("_cab", "_middle_passenger", "_middle_mail"):
+            if self.catalogue.model_id.endswith(suffix):
+                return self.catalogue.model_id.removesuffix(suffix)
+
+    """
+    @cached_property
+    def formation_ruleset_equivalence_flag:
+        pass
+    """

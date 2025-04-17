@@ -1753,6 +1753,7 @@ class PassengerEngineHSTCab(PassengerEngineBase):
 
     # non-standard cite
     cite = "Dr Constance Speed"
+    dedicated_tgv_hst_formation = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2006,6 +2007,7 @@ class TGVCabEngine(EngineModelTypeBase):
 
     # non-standard cite
     cite = "Dr Constance Speed"
+    dedicated_tgv_hst_formation = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2053,6 +2055,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
     quacks_like_a_clone = True
+    dedicated_tgv_hst_formation = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5625,6 +5628,7 @@ class MailHSTCar(MailCarBase):
     """
 
     model_id_root = "hst_mail_car"
+    dedicated_tgv_hst_formation = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6565,6 +6569,7 @@ class PassengerHSTCar(PassengerCarBase):
     """
 
     model_id_root = "hst_passenger_car"
+    dedicated_tgv_hst_formation = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

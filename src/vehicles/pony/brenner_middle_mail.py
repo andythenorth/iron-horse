@@ -8,7 +8,6 @@ def main(**kwargs):
         class_name="TGVMiddleMailEngine",
         model_id="brenner_middle_mail",
         cab_id="brenner_cab",
-        vehicle_family_id="brenner", # vehicle_family_id required for TGV
         base_numeric_id=6780,
         name="Brenner Mail Van",
         subrole="very_high_speed",
