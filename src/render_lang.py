@@ -100,7 +100,7 @@ def main():
             continue
         if file_name.endswith(".toml"):
             lang_name = file_name.split(".")[0]
-            render_lang(roster, lang_name, lang_dst, utils.git_tag_or_version())
+            render_lang(roster, lang_name, lang_dst, utils.get_git_tag_or_version())
 
     logger.set_colour("cyan")
     logger.info(

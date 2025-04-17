@@ -39,25 +39,25 @@ def get_command_line_args():
 
 
 @lru_cache(maxsize=None)
-def git_tag_or_version():
+def get_git_tag_or_version():
     # expensive if repeated due to git lookup, pre-compute and cache it
     return git_info.get_monorepo_tag_parts()[1]
 
 
 @lru_cache(maxsize=None)
-def docs_base_url():
+def get_docs_base_url():
     # not convinced this belongs in utils, but I can't find anywhere better to put it
     # could be in polar fox - method will be common to all grfs? - pass the project name as a var?
     # not convinced it's big enough to bother centralising TBH, too much close coupling has costs
     result = [global_constants.metadata["docs_url"]]
     if git_info.get_tag_exact_match() != "undefined":
-        result.append(git_tag_or_version)
+        result.append(get_git_tag_or_version())
     return "/".join(result)
 
 
 @lru_cache(maxsize=None)
-def docs_url():
-    return docs_base_url + "/index.html"
+def get_docs_url():
+    return get_docs_base_url() + "/index.html"
 
 
 def get_offsets(length):

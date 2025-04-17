@@ -1,15 +1,15 @@
 ==================================
-${roster.str_grf_name} ${utils.git_tag_or_version()}
+${roster.str_grf_name} ${utils.get_git_tag_or_version()}
 ==================================
 Trains, for OpenTTD
 
 ${roster.str_grf_name} docs are published online:
-  ${utils.docs_url}
+  ${utils.get_docs_url()}
 
 =======
 GRF Name: ${roster.str_grf_name}
 
-This version of ${roster.str_grf_name} is created using repository version ${utils.git_tag_or_version()}
+This version of ${roster.str_grf_name} is created using repository version ${utils.get_git_tag_or_version()}
 
 Thanks to *all* who helped create ${roster.str_grf_name}.
 

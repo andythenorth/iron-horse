@@ -2,6 +2,8 @@
 
 from collections import defaultdict
 import json
+from html.parser import HTMLParser
+from html import unescape
 
 import global_constants
 import utils
@@ -394,21 +396,52 @@ class DocHelper(object):
         # could fetch from lang strings, but eh, JFDI, it's docs
         return {"RAIL": "Standard Gauge", "NG": "Narrow Gauge", "METRO": "Metro"}
 
-    def get_og_tags_content(self, doc_name, optional_model_variant):
-        description = "CABBAGE"
+    def get_og_tags_content(self, doc_name, optional_title, optional_model_variant):
 
-        # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by utils.docs_base_url
-        # as of July 2024, utils.docs_base_url relies on detecting git tags, read that to understand what it's doing
-        base_url = utils.docs_base_url
+        # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by utils.get_docs_base_url
+        # as of July 2024, utils.get_docs_base_url relies on detecting git tags, read that to understand what it's doing
+        base_url = utils.get_docs_base_url()
 
         # generic or vehicle-specific image
         if optional_model_variant is not None:
-            image_filename = optional_model_variant.id + "_red_white.png"
+            image_filename = optional_model_variant.model_id + "_red_white.png"
+            title = optional_title
+            quote = self.strip_html(optional_model_variant.catalogue.factory.model_def.description)
+            quote = self.wrap_in_smart_quotes(quote)
+            cite = self.strip_html(optional_model_variant.catalogue.cite)
+            description = f"{quote} - {cite}"
+            print(description)
         else:
             image_filename = "og_tags_default.png"
+            title = optional_title
+            description = optional_title
+
+        print(description)
 
         return {
+            "title": title,
             "description": description,
             "base_url": base_url,
             "image_filename": image_filename,
         }
+
+    def wrap_in_smart_quotes(self, text):
+        return f'“{text}”'
+
+    def strip_html(self, html_string):
+        """Strip all HTML tags and unescape HTML entities from a string."""
+        stripper = HTMLStripper()
+        stripper.feed(html_string)
+        return unescape(stripper.get_data())
+
+
+class HTMLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.fed = []
+
+    def handle_data(self, d):
+        self.fed.append(d)
+
+    def get_data(self):
+        return ''.join(self.fed)

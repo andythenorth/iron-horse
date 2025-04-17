@@ -8,15 +8,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <tal:og_tags define="optional_model_variant default_model_variant | None;
-                         og_tags_content doc_helper.get_og_tags_content(doc_name, optional_model_variant);">
+    <tal:og_tags define="optional_title title | roster.str_grf_name;
+                         optional_model_variant example_model_variant | None;
+                         og_tags_content doc_helper.get_og_tags_content(doc_name, optional_title, optional_model_variant);">
         <!--! note that og tags require an absolute url, which we have to predict at compile time -->
         <meta property="og:site_name" content="grf.farm">
-        <meta property="og:title" content="${title | roster.str_grf_name}">
+        <meta property="og:title" content="${og_tags_content['title']}">
         <meta property="og:type" content="website">
         <meta property="og:url" content="${og_tags_content['base_url']}/html/${doc_name}.html">
         <meta property="og:image" content="${og_tags_content['base_url']}/html/static/img/${og_tags_content['image_filename']}">
-        <meta property="og:description" content="${title | roster.str_grf_name}">
+        <meta property="og:description" content="${og_tags_content['description']}">
     </tal:og_tags>
 
     <link type="text/css" href="static/css/bootstrap.min.css" rel="stylesheet">
