@@ -134,9 +134,6 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        self.default_livery_extra_docs_examples = kwargs.get(
-            "default_livery_extra_docs_examples", []
-        )
         # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
             self.pipelines.extend(
@@ -939,10 +936,6 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # - spriterow numbers are zero-indexed *relative* to the start of the formation-cargo block, to reduce shuffling them all if new rows are inserted in future
         # - *all* of the keys must be provided in the mapping, set values to 0 if unused
         self.formation_position_spriterow_map = formation_position_spriterow_map
-        # liveries provided by subclass calling gestalt_graphics
-        self.default_livery_extra_docs_examples = kwargs.get(
-            "default_livery_extra_docs_examples", []
-        )
         # we'll generate spriterows for doors closed and doors open
         self.num_load_state_or_similar_spriterows = 2
         # colour mapping stuff...

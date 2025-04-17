@@ -36,9 +36,6 @@ class ModelDef:
     vehicle_family_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
-    default_livery_extra_docs_examples: List[Any] = (
-        None  # CABBAGE - DOES THIS DO ANYTHNG CURRENTLY? - *SHOULD* BE USED BY vehicle_details_engine
-    )
     receives_easter_egg_haulage_speed_bonus: bool = False
     extended_vehicle_life: bool = False
     fixed_run_cost_points: Optional[int] = None
