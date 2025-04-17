@@ -145,8 +145,14 @@
                         </tr>
                         <tr>
                             <th>Weight</th>
-                            <td>${example_model_variant.weight} t</td>
+                            <td>${example_model_variant.weight} tonnes</td>
                         </tr>
+                        <tal:optional_capacity condition="doc_helper.capacity_formatted_for_docs(catalogue) is not None">
+                            <tr>
+                                <th>Capacity</th>
+                                <td>${doc_helper.capacity_formatted_for_docs(catalogue)}</td>
+                            </tr>
+                        </tal:optional_capacity>
                         <tr>
                             <th>Track type</th>
                             <td>${example_model_variant.track_type}</td>

@@ -342,6 +342,8 @@ class DocHelper(object):
                 for unit in catalogue.example_model_variant.units
             ]
         )
+        if capacity == 0:
+            return None
 
         if "PASS" in catalogue.example_model_variant.default_cargos:
             return f"{capacity} passengers"
