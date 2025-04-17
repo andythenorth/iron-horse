@@ -342,9 +342,15 @@ class DocHelper(object):
                 for unit in catalogue.example_model_variant.units
             ]
         )
-        # CABBAGE - we could attempt to find better units from the model type subclass?  At least for pax and mail?
-        # default to t for tonnes, although this doesn't work for liquids, passengers etc
-        return f"{capacity} t"
+
+        if "PASS" in catalogue.example_model_variant.default_cargos:
+            return f"{capacity} passengers"
+        if "MAIL" in catalogue.example_model_variant.default_cargos:
+            return f"{global_constants.mail_multiplier * capacity} bags of mail"
+        if "liquids_non_food_grade" in catalogue.example_model_variant.class_refit_groups:
+            return f"{capacity} litres"
+        # default to tonnes
+        return f"{capacity} tonnes"
 
     def fetch_prop(self, result, prop_name, value):
         result[prop_name].append(value)
