@@ -4,8 +4,8 @@ wagon_module_name_stems = [
     # # only comment in if needed for debugging
     # "alignment_cars",
     # """
-    "hst_passenger_cars",
-    "hst_mail_cars",
+    "blaze_middle_cars", # CABBAGE THIS IS UNFORTUNATE NEEDING TO ADD THESE HERE
+    "firebird_middle_cars", # CABBAGE THIS IS UNFORTUNATE NEEDING TO ADD THESE HERE
     "railbus_passenger_trailer_cars",
     "railcar_passenger_trailer_cars",
     "express_railcar_mail_trailer_cars",
