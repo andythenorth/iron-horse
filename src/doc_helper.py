@@ -410,13 +410,10 @@ class DocHelper(object):
             quote = self.wrap_in_smart_quotes(quote)
             cite = self.strip_html(optional_model_variant.catalogue.cite)
             description = f"{quote} - {cite}"
-            print(description)
         else:
             image_filename = "og_tags_default.png"
             title = optional_title
             description = optional_title
-
-        print(description)
 
         return {
             "title": title,
