@@ -239,8 +239,8 @@ class ModelTypeBase(object):
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
-        if self.gestalt_graphics.formation_ruleset_equivalence_flags is not None:
-            for flag in self.gestalt_graphics.formation_ruleset_equivalence_flags:
+        if getattr(self, "formation_ruleset_equivalence_flags", None) is not None:
+            for flag in self.formation_ruleset_equivalence_flags:
                 result.append(f"ih_formation_ruleset/equivalence/{flag}")
         return result
 
@@ -1424,6 +1424,8 @@ class MailEngineCabbageDVT(MailEngineBase):
     """
 
     livery_group_name = "dvt_mail_liveries"
+    # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1440,12 +1442,9 @@ class MailEngineCabbageDVT(MailEngineBase):
             "last": 1,
             "special": 0,
         }
-        # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1700,6 +1699,8 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
+    # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1716,12 +1717,9 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             "last": 1,
             "special": 0,
         }
-        # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5494,6 +5492,8 @@ class MailCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "mail_car"
+    # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5516,12 +5516,9 @@ class MailCar(MailCarBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
-        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5585,6 +5582,8 @@ class MailHighSpeedCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "high_speed_mail_car"
+    # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5604,12 +5603,9 @@ class MailHighSpeedCar(MailCarBase):
             "last": 1,
             "special": 2,
         }
-        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5629,6 +5625,8 @@ class MailHSTCar(MailCarBase):
 
     model_id_root = "hst_mail_car"
     dedicated_tgv_hst_formation = True
+    # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5648,12 +5646,9 @@ class MailHSTCar(MailCarBase):
             "last": 2,
             "special": 0,
         }
-        # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car", "any_generic_mail_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="mail_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6380,6 +6375,7 @@ class PanoramicCar(PassengerCarBase):
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "panoramic_car"
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6399,11 +6395,9 @@ class PanoramicCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6428,6 +6422,7 @@ class PassengerCar(PassengerCarBase):
     livery_group_name = "default_pax_liveries"
 
     model_id_root = "passenger_car"
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6452,11 +6447,9 @@ class PassengerCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6482,6 +6475,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "high_speed_passenger_car"
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6501,11 +6495,9 @@ class PassengerHighSpeedCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6570,6 +6562,7 @@ class PassengerHSTCar(PassengerCarBase):
 
     model_id_root = "hst_passenger_car"
     dedicated_tgv_hst_formation = True
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6593,11 +6586,9 @@ class PassengerHSTCar(PassengerCarBase):
             "last": 2,
             "special": 3,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6715,6 +6706,7 @@ class PassengerRestaurantCar(PassengerCarBase):
     livery_group_name = "default_pax_liveries"
 
     model_id_root = "restaurant_car"
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6732,11 +6724,9 @@ class PassengerRestaurantCar(PassengerCarBase):
             "last": 0,
             "special": 0,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6758,6 +6748,7 @@ class PassengerSuburbanCar(PassengerCarBase):
     livery_group_name = "suburban_pax_liveries"
 
     model_id_root = "suburban_passenger_car"
+    formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6784,11 +6775,9 @@ class PassengerSuburbanCar(PassengerCarBase):
             "last": 2,
             "special": 0,
         }
-        formation_ruleset_equivalence_flags = ["any_generic_pax_car"]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
             formation_ruleset="pax_cars",
-            formation_ruleset_equivalence_flags=formation_ruleset_equivalence_flags,
             catalogue_entry=self.catalogue_entry,
         )
 
