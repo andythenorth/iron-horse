@@ -1,5 +1,7 @@
 <!--! position rulesets for formation-position-dependent vehicles -->
 
+<!--! CABBAGE - may need converted to badge predicates?  Unclear what the goal is yet -->
+
 // intermodal platform 2 unit sets
 <tal:ruleset define="default 0; first 1; last 2;">
     <!--! if 1 unit in sequence -->

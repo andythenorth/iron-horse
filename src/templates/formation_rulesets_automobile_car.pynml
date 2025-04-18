@@ -1,5 +1,7 @@
 <!--! position rulesets for formation-position-dependent vehicles -->
 
+<!--! CABBAGE - may need converted to badge predicates?  Unclear what the goal is yet -->
+
 // automobile transporter articulated permanent twin set
 <tal:ruleset define="first 0; last 1;">
     <!--! first / last; NOTE use of position_in_articulated_veh not position_in_vehid_chain -->
