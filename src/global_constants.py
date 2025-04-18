@@ -831,7 +831,7 @@ power_sources = {
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(
-    id_of_neighbouring_vehicle=0,  # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID
+    # deprecated=0,  # no longer used
     # deprecated=1,  # no longer used
     # deprecated=2,  # no longer used
     # deprecated=3,  # no longer used
