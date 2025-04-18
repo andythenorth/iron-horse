@@ -30,7 +30,7 @@ class SpritelayerCargo(object):
         template_name = "spritelayer_cargo.pynml"
         template = templates[template_name]
         nml_result = template(
-            temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
+            temp_storage_map=global_constants.temp_storage_map,  # convenience measure
             graphics_path=graphics_path,
             spritelayer_cargo=self,
         )

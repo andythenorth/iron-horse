@@ -830,7 +830,7 @@ power_sources = {
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
-temp_storage_ids = dict(
+temp_storage_map = dict(
     # deprecated=0,  # no longer used
     # deprecated=1,  # no longer used
     # deprecated=2,  # no longer used

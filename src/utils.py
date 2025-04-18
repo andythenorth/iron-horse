@@ -86,6 +86,15 @@ def unpack_colour(colour_name, cc_to_remap):
             + str(1 if cc_to_remap == 2 else 2)
         )
 
+def load_av41(field_name):
+    # just why?
+    # because reasons...
+    # - alt_var_41 is only safe to call once due to massive loop-unroll; results are stored in temp registers
+    # - alt_var_41 registers can't be safely read via neat little procedures because 15-bit callback returns can silently drop negatives
+    # this wrapper avoids LOAD_TEMP(${temp_storage_map.long_map_lookup}) boilerplate and prevents future refactor traps
+    # load_av41 is for template brevity, much as I am against `i = foo` type naming
+    temp_storage_number = global_constants.temp_storage_map[field_name]
+    return f"LOAD_TEMP({temp_storage_number})"
 
 def convert_flat_list_to_pairs_of_tuples(flat_list):
     # used to create a list suitable for iterating over and pushing values to the text stack

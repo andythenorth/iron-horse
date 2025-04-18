@@ -4,11 +4,13 @@
     This use var 61 many many times in graphics chains, and var 61 is not cached, so this _may_ introduce performance problems
     To use:
         * initialise_alt_var_41_with_badge_predicate() at start of graphics chain
-        * read appropriate temp registers to use the alt var
         * the available values are similar to var 41: position from start of chain, position from end of chain, num vehicles in chain
-        * LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain})
-        * LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_from_end})
-        * LOAD_TEMP(${temp_storage_ids.num_vehs_in_badge_predicate_chain})
+        * use appropriate temp registers to store/read the alt var
+        # can't wrap the LOAD_TEMP in a procedure due to 15 bit returns nerfing negative results
+        # so there's a template shorthand util to get them
+        * ${alt_var_41.position_in_badge_predicate_chain}
+        * ${alt_var_41.position_in_badge_predicate_chain_from_end}
+        * ${alt_var_41.num_vehs_in_badge_predicate_chain}
 -->
 
 <!--!
@@ -44,7 +46,7 @@
     Sum of positions from start and end, plus 1 for current vehicle
 -->
 switch (FEAT_TRAINS, SELF, switch_var_41_num_vehs_in_badge_predicate_chain, 1) {
-    return 1 + LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain}) + LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_from_end});
+    return 1 + LOAD_TEMP(${temp_storage_map.position_in_badge_predicate_chain}) + LOAD_TEMP(${temp_storage_map.position_in_badge_predicate_chain_from_end});
 }
 
 <!--!
@@ -52,11 +54,11 @@ switch (FEAT_TRAINS, SELF, switch_var_41_num_vehs_in_badge_predicate_chain, 1) {
 -->
 switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_results_to_temps, [
         STORE_TEMP(switch_var_41_position_in_badge_predicate_chain_1(),
-                   ${temp_storage_ids.position_in_badge_predicate_chain}),
+                   ${temp_storage_map.position_in_badge_predicate_chain}),
         STORE_TEMP(switch_var_41_position_in_badge_predicate_chain_from_end_1(),
-                   ${temp_storage_ids.position_in_badge_predicate_chain_from_end}),
+                   ${temp_storage_map.position_in_badge_predicate_chain_from_end}),
         STORE_TEMP(switch_var_41_num_vehs_in_badge_predicate_chain(),
-                   ${temp_storage_ids.num_vehs_in_badge_predicate_chain}),
+                   ${temp_storage_map.num_vehs_in_badge_predicate_chain}),
 
         ]) {
     return;

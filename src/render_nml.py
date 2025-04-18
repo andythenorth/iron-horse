@@ -40,7 +40,7 @@ def render_header_item_nml(
         template(
             roster=roster,
             global_constants=global_constants,
-            temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
+            temp_storage_map=global_constants.temp_storage_map,  # convenience measure
             utils=utils,
             livery_supplier=iron_horse.livery_supplier,
             badge_manager=iron_horse.badge_manager,
@@ -49,6 +49,7 @@ def render_header_item_nml(
             graphics_path=graphics_path,
             git_revision=git_revision,
             pseudo_random_vehicle_maps=pseudo_random_vehicle_maps,
+            load_av41=utils.load_av41,
         )
     )
     # write the nml per item to disk, it aids debugging
