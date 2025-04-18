@@ -108,3 +108,9 @@ sort(FEAT_TRAINS, [
 // fix depot view for trains
 traininfo_y_offset = 2;
 train_width_32_px = 1;
+
+// constants for accessing temp storage addresses by token rather than number
+// 'k_' is a convention to indicate constant rather than uppercasing
+<tal:temp_storage_access_constants repeat="item_pair global_constants.temp_storage_map.items()">
+    const k_addr_${item_pair[0]} = ${item_pair[1]};
+</tal:temp_storage_access_constants>

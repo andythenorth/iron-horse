@@ -45,7 +45,7 @@ switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_livery_num_from_badge,
 <!--! up to 8 random liveries (all 8 must be passed as params when initing the wagon chain -->
 switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_random_livery_from_candidates, random_bits_wagon_random_remap_livery()) {
      <tal:available_liveries repeat="livery_num range(8)">
-         ${livery_num}: return LOAD_TEMP(${temp_storage_map.get("wagon_recolour_livery_num_" + str(livery_num))});
+         ${livery_num}: return LOAD_TEMP(k_addr_wagon_recolour_livery_num_${livery_num});
      </tal:available_liveries>
 }
 
@@ -82,9 +82,9 @@ switch (FEAT_TRAINS, SELF, switch_freight_wagon_livery_set_params,
             wagon_recolour_livery_num_${livery_num},
         </tal:available_liveries>
                 [
-                 STORE_TEMP(flag_context_is_purchase, ${temp_storage_map.flag_context_is_purchase}),
+                 STORE_TEMP(flag_context_is_purchase, k_addr_flag_context_is_purchase),
                  <tal:available_liveries repeat="livery_num range(8)">
-                     STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_map.get("wagon_recolour_livery_num_" + str(livery_num))}),
+                     STORE_TEMP(wagon_recolour_livery_num_${livery_num}, k_addr_wagon_recolour_livery_num_${livery_num}),
                  </tal:available_liveries>
                 ]) {
     switch_freight_wagon_livery_select_colour_set;

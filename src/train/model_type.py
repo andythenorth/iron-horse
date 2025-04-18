@@ -1106,7 +1106,6 @@ class ModelTypeBase(object):
             catalogue=self.catalogue,
             global_constants=global_constants,
             utils=utils,
-            temp_storage_map=global_constants.temp_storage_map,  # convenience measure
             graphics_path=graphics_path,
             spritelayer_cargos=spritelayer_cargos,
         )

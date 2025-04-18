@@ -49,7 +49,7 @@
       this does *not* try to handle variant ID in the same switch - that approach was removed as it caused concurrent varact2 IDs to be exhausted with higher numbers of variants -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_doors,
         [
-            (10 * LOAD_TEMP(${temp_storage_map.formation_position_rule_num}))
+            (10 * LOAD_TEMP(k_addr_formation_position_rule_num))
             +
             (1 * alt_var_loaded_loading_state_opening_doors())
         ]
@@ -63,7 +63,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 <tal:formation_position_rules repeat="formation_position_rule_num python:range(model_variant.gestalt_graphics.num_unique_formation_positions)">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_layers_${formation_position_rule_num},
             [
-                STORE_TEMP(${formation_position_rule_num}, ${temp_storage_map.formation_position_rule_num}),
+                STORE_TEMP(${formation_position_rule_num}, k_addr_formation_position_rule_num),
                 getbits(extra_callback_info1, 8, 8)
             ]
         ){

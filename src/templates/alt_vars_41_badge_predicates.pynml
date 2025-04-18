@@ -8,9 +8,9 @@
         * use appropriate temp registers to store/read the alt var
         # can't wrap the LOAD_TEMP in a procedure due to 15 bit returns nerfing negative results
         # so there's a template shorthand util to get them
-        * ${load_av41('position_in_badge_predicate_chain')}
-        * ${load_av41('position_in_badge_predicate_chain_from_end')}
-        * ${load_av41('num_vehs_in_badge_predicate_chain')}
+        * LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
+        * LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end)
+        * LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)
 -->
 
 <!--!
@@ -46,7 +46,7 @@
     Sum of positions from start and end, plus 1 for current vehicle
 -->
 switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_badge_predicate_chain, 1) {
-    return 1 + ${load_av41('position_in_badge_predicate_chain')} + ${load_av41('position_in_badge_predicate_chain_from_end')};
+    return 1 + LOAD_TEMP(k_addr_position_in_badge_predicate_chain) + LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end);
 }
 
 <!--!
@@ -54,11 +54,11 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_badge_predicate_chain, 
 -->
 switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_results_to_temps, [
         STORE_TEMP(switch_alt_var_41_position_in_badge_predicate_chain_1(),
-                   ${temp_storage_map.position_in_badge_predicate_chain}),
+                   k_addr_position_in_badge_predicate_chain),
         STORE_TEMP(switch_alt_var_41_position_in_badge_predicate_chain_from_end_1(),
-                   ${temp_storage_map.position_in_badge_predicate_chain_from_end}),
+                   k_addr_position_in_badge_predicate_chain_from_end),
         STORE_TEMP(switch_alt_var_41_num_vehs_in_badge_predicate_chain(),
-                   ${temp_storage_map.num_vehs_in_badge_predicate_chain}),
+                   k_addr_num_vehs_in_badge_predicate_chain),
 
         ]) {
     return;
