@@ -17,11 +17,11 @@
     spriteset(${unit.id}_ss_doors_open_${reversed}_1, "${graphics_path}${model_variant.model_id}.png") {
         ${unit.get_spriteset_template_name(reversed, 100)}
     }
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${reversed}_0, switch_graphics_opening_doors()) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${reversed}_0, alt_var_loaded_loading_state_opening_doors()) {
         0: return ${unit.id}_ss_doors_closed_${reversed}_0;
         1: return ${unit.id}_ss_doors_open_${reversed}_0;
     }
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${reversed}_1, switch_graphics_opening_doors()) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${reversed}_1, alt_var_loaded_loading_state_opening_doors()) {
         0: return ${unit.id}_ss_doors_closed_${reversed}_1;
         1: return ${unit.id}_ss_doors_open_${reversed}_1;
     }

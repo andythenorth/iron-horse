@@ -10,7 +10,7 @@
     }
 
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_${weathered_state},
-            [switch_graphics_opening_doors()]) {
+            [alt_var_loaded_loading_state_opening_doors()]) {
         <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
         0: return ${unit.id}_ss_${weathered_state}_doors_closed;
         1: return ${unit.id}_ss_${weathered_state}_doors_open;

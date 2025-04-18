@@ -51,7 +51,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
         [
             (10 * LOAD_TEMP(${temp_storage_ids.formation_position_rule_num}))
             +
-            (1 * switch_graphics_opening_doors())
+            (1 * alt_var_loaded_loading_state_opening_doors())
         ]
     ) {
     <tal:formation_position_rules repeat="formation_position_rule_num python:range(model_variant.gestalt_graphics.num_unique_formation_positions)">
@@ -167,7 +167,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle,
-    <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">switch_initialise_var_41_but_badges_not_ids(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
+    <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
     <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
     ) {
     return ${unit.id}_switch_graphics_position_in_formation_entry_point;

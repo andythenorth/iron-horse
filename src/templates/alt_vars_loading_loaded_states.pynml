@@ -3,7 +3,7 @@
 <!--! no cover variant, sprite states are empty, loading 0-99%, loaded -->
 <!--! return silly integer stuffing for flip + load state -->
 <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_no_cover_percent_loaded, (cargo_count*100)/cargo_capacity) {
+switch (FEAT_TRAINS, SELF, alt_var_loaded_loading_state_visible_cargo_no_cover, (cargo_count*100)/cargo_capacity) {
         0: return 0;
         1..99: return 1;
     return 2;
@@ -11,15 +11,15 @@ switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_no_cover_percent_loaded
 
 <!--! has cover variant, sprite states are empty, cover shown, loading 0-66%, loading 66-99% -->
 <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_has_cover_percent_loaded, (cargo_count*100)/cargo_capacity) {
+switch (FEAT_TRAINS, SELF, switch_loaded_loading_state_visible_cargo_has_cover_load_amount, (cargo_count*100)/cargo_capacity) {
         0: return 1;
         1..66: return 2;
         67..99: return 3;
     return 0;
 }
 <!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do -->
-switch (FEAT_TRAINS, PARENT, switch_graphics_visible_cargo_has_cover, var[0x8A, 0, 0xF]) {
-        3: return switch_graphics_visible_cargo_has_cover_percent_loaded;
+switch (FEAT_TRAINS, PARENT, alt_var_loaded_loading_state_visible_cargo_has_cover, var[0x8A, 0, 0xF]) {
+        3: return switch_loaded_loading_state_visible_cargo_has_cover_load_amount;
     return 0; <!--! not in a load / unload state, show cover -->
 }
 
@@ -31,7 +31,7 @@ switch (FEAT_TRAINS, SELF, switch_graphics_opening_doors_check_percent_loaded, (
 <!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do
       note that scope for this is correctly PARENT (I didn't look why, just appears to work, kinda makes sense)
  -->
-switch (FEAT_TRAINS, PARENT, switch_graphics_opening_doors, var[0x8A, 0, 0xF]) {
+switch (FEAT_TRAINS, PARENT, alt_var_loaded_loading_state_opening_doors, var[0x8A, 0, 0xF]) {
         3: return switch_graphics_opening_doors_check_percent_loaded;
     return 0; <!--! not in a load / unload state, don't open doors -->
 }
