@@ -1,6 +1,6 @@
 <!--!
     Var 41 checks consecutive chains for a single ID
-    This provides an alternative checking consecutive chains using a single badge
+    alt_var_41 provides an alternative checking consecutive chains using a single badge
     This use var 61 many many times in graphics chains, and var 61 is not cached, so this _may_ introduce performance problems
     To use:
         * initialise_alt_var_41_with_badge_predicate() at start of graphics chain
@@ -8,9 +8,9 @@
         * use appropriate temp registers to store/read the alt var
         # can't wrap the LOAD_TEMP in a procedure due to 15 bit returns nerfing negative results
         # so there's a template shorthand util to get them
-        * ${alt_var_41.position_in_badge_predicate_chain}
-        * ${alt_var_41.position_in_badge_predicate_chain_from_end}
-        * ${alt_var_41.num_vehs_in_badge_predicate_chain}
+        * ${load_av41('position_in_badge_predicate_chain')}
+        * ${load_av41('position_in_badge_predicate_chain_from_end')}
+        * ${load_av41('num_vehs_in_badge_predicate_chain')}
 -->
 
 <!--!
@@ -18,11 +18,11 @@
     Walks forward from vehicle towards engine, checking if the badge predicate is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
-    switch (FEAT_TRAINS, SELF, switch_var_41_position_in_badge_predicate_chain_${counter}, [
+    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_badge_predicate_chain_${counter}, [
             <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
             STORE_TEMP(${-1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
         ]) {
-        <tal:block condition="not:repeat.counter.start">1: switch_var_41_position_in_badge_predicate_chain_${counter + 1};</tal:block>
+        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_badge_predicate_chain_${counter + 1};</tal:block>
         return ${counter - 1};
     }
 </tal:switches>
@@ -32,11 +32,11 @@
     Walks backward from vehicle away from engine, checking if the badge predicate is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
-    switch (FEAT_TRAINS, SELF, switch_var_41_position_in_badge_predicate_chain_from_end_${counter}, [
+    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_badge_predicate_chain_from_end_${counter}, [
             <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
             STORE_TEMP(${1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
         ]) {
-        <tal:block condition="not:repeat.counter.start">1: switch_var_41_position_in_badge_predicate_chain_from_end_${counter + 1};</tal:block>
+        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_badge_predicate_chain_from_end_${counter + 1};</tal:block>
         return ${counter - 1};
     }
 </tal:switches>
@@ -45,19 +45,19 @@
     Num vehicles in consecutive badge predicate chain
     Sum of positions from start and end, plus 1 for current vehicle
 -->
-switch (FEAT_TRAINS, SELF, switch_var_41_num_vehs_in_badge_predicate_chain, 1) {
-    return 1 + LOAD_TEMP(${temp_storage_map.position_in_badge_predicate_chain}) + LOAD_TEMP(${temp_storage_map.position_in_badge_predicate_chain_from_end});
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_badge_predicate_chain, 1) {
+    return 1 + ${load_av41('position_in_badge_predicate_chain')} + ${load_av41('position_in_badge_predicate_chain_from_end')};
 }
 
 <!--!
     Store 3 results in temp storage mimicking what built-in var 41 provides
 -->
 switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_results_to_temps, [
-        STORE_TEMP(switch_var_41_position_in_badge_predicate_chain_1(),
+        STORE_TEMP(switch_alt_var_41_position_in_badge_predicate_chain_1(),
                    ${temp_storage_map.position_in_badge_predicate_chain}),
-        STORE_TEMP(switch_var_41_position_in_badge_predicate_chain_from_end_1(),
+        STORE_TEMP(switch_alt_var_41_position_in_badge_predicate_chain_from_end_1(),
                    ${temp_storage_map.position_in_badge_predicate_chain_from_end}),
-        STORE_TEMP(switch_var_41_num_vehs_in_badge_predicate_chain(),
+        STORE_TEMP(switch_alt_var_41_num_vehs_in_badge_predicate_chain(),
                    ${temp_storage_map.num_vehs_in_badge_predicate_chain}),
 
         ]) {
