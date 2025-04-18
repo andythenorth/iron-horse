@@ -29,25 +29,25 @@
 <tal:ruleset define="default 0; first 1; last 2; middle 3;">
     <!--! if 1 unit in sequence -->
     <!--! 0 = first, 1 = middle, 2 = last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_1, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_1, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: return ${default};
     }
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_2, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_2, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: return ${first};
         return ${last};
     }
 
     <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_3, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_3, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: return ${first};
         1: return ${middle};
         return ${last};
     }
 
     <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_4, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_4, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${middle};
@@ -55,7 +55,7 @@
     }
 
     <!--! if 5 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_5, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_5, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${last};
@@ -64,7 +64,7 @@
     }
 
     <!--! if 6 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_6, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_6, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${last};
@@ -74,7 +74,7 @@
     }
 
     <!--! if 7 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_7, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_7, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${middle};
@@ -85,7 +85,7 @@
     }
 
     <!--! if 7 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8, LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${middle};
@@ -98,7 +98,7 @@
 
     <!--! this is a remainder block, how many units are in it? -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length, [
-            (num_vehs_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset})) % 8
+            (num_vehs_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_base_offset})) % 8
         ]) {
         1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_1;
         2: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_2;
@@ -115,7 +115,7 @@
               we use 8 rather than 4 to allow special handling of special sprites (if needed) alternate blocks of 4, in A, B, A, B type pattern -->
             STORE_TEMP(
                 position_in_vehid_chain % 8,
-                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+                ${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied}
             ),
         ){
         return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
@@ -124,8 +124,8 @@
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position,
             STORE_TEMP(
                 <!--! store the vehicle position in equivalent-id chain, but with the base offset applied -->
-                position_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}),
-                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+                position_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_base_offset}),
+                ${temp_storage_ids.position_in_badge_predicate_chain_with_base_offset_applied}
             ),
         ){
         return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length;
@@ -148,9 +148,9 @@
                         4 * ((num_vehs_in_vehid_chain / 4) - 1)
                         :
                         0,
-                    ${temp_storage_ids.position_in_vehid_chain_base_offset}
+                    ${temp_storage_ids.position_in_badge_predicate_chain_base_offset}
                 ),
-                (position_in_vehid_chain >= LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}))
+                (position_in_vehid_chain >= LOAD_TEMP(${temp_storage_ids.position_in_badge_predicate_chain_base_offset}))
             ]) {
         1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position;
         return switch_graphics_intermodal_platform_ruleset_4_unit_sets_whole_divisor_block;
