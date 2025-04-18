@@ -3,10 +3,10 @@
     For articulated vehicles this is not useful when we want the same random result for all parts.
     This provides an alternative to random_bits, which offsets to get the bits from the lead part of the articulated vehicle.
         To use:
-        * switch_alternative_var_random_bits(bits_offset, bits_count)
+        * switch_alt_var_random_bits(bits_offset, bits_count)
 -->
 
-switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits_count,
+switch (FEAT_TRAINS, SELF, alt_var_articulated_lead_random_bits, bits_offset, bits_count,
                                             [STORE_TEMP(-1 * position_in_articulated_veh, 0x10F),
                                              getbits(var[0x61, 8, 0x00FFFFFF, 0x5F], bits_offset, bits_count)]) {
     <!--! return with nothing else will yield the computed value -->
@@ -20,11 +20,11 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits
 -->
 
 <!--! colour set and weathered state are ok to overlap (probably gets best visual result where vehicles use both together) -->
-switch (FEAT_TRAINS, SELF, random_bits_colour_set, switch_alternative_var_random_bits(0, 1)) {
+switch (FEAT_TRAINS, SELF, random_bits_colour_set, alt_var_articulated_lead_random_bits(0, 1)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
-switch (FEAT_TRAINS, SELF, random_bits_weathered_state, switch_alternative_var_random_bits(0, 1)) {
+switch (FEAT_TRAINS, SELF, random_bits_weathered_state, alt_var_articulated_lead_random_bits(0, 1)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
@@ -32,7 +32,7 @@ switch (FEAT_TRAINS, SELF, random_bits_weathered_state, switch_alternative_var_r
 <!--! up to 8 random liveries for wagon recolour/remaps
       these may overlap random wagon choices due to shortage of bits, but eh, JFDI
 -->
-switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alternative_var_random_bits(9, 3)) {
+switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, alt_var_articulated_lead_random_bits(9, 3)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
@@ -40,7 +40,7 @@ switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alterna
 <!--! randomised decor (on / off)
       - this needs to be independent from random reverse
 -->
-switch (FEAT_TRAINS, SELF, random_bits_engine_show_decor, switch_alternative_var_random_bits(3, 1)) {
+switch (FEAT_TRAINS, SELF, random_bits_engine_show_decor, alt_var_articulated_lead_random_bits(3, 1)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
