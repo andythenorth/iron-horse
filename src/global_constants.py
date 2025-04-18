@@ -848,9 +848,9 @@ temp_storage_ids = dict(
     # deprecated=14,  # no longer used
     # deprecated=15,  # no longer used
     # deprecated=16,  # no longer used
-    num_vehs_in_vehid_chain_multiple_ids=17,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-    position_in_vehid_chain_multiple_ids=18,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-    position_in_vehid_chain_from_end_multiple_ids=19,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+    num_vehs_in_badge_predicate_chain=17,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+    position_in_badge_predicate_chain=18,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+    position_in_badge_predicate_chain_from_end=19,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
     # deprecated=20,  # no longer used
     # deprecated=21,  # no longer used
     unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
@@ -866,8 +866,8 @@ temp_storage_ids = dict(
     wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
     flag_context_is_purchase=33,  # used in procedures_wagon_recolour_strategies
     # deprecated=34,  # no longer used
-    position_in_vehid_chain_base_offset=35,  # used in position rulesets, an offset into position_in_vehid_chain_multiple_ids
-    position_in_vehid_chain_multiple_ids_with_base_offset_applied=36,  # position_in_vehid_chain_multiple_ids, with a base offset applied
+    position_in_vehid_chain_base_offset=35,  # used in position rulesets, an offset into position_in_badge_predicate_chain
+    position_in_vehid_chain_multiple_ids_with_base_offset_applied=36,  # position_in_badge_predicate_chain, with a base offset applied
 )
 
 # standard offsets for trains
