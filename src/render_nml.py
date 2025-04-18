@@ -98,28 +98,31 @@ def main():
     # expensive if repeatedly computed
     git_revision = git_info.get_revision()
 
+    # order of header items is significant (for most, not all)
     header_items = [
         "header",
+        # mostly like constants
         "cargo_table",
         "signals",
         "railtypes",
         "badges",
+        "pseudo_random_vehicle_maps",
+        "colour_names_table",
+        "recolour_sprites",
         "spriteset_templates",
         "spritelayer_cargo_empty_ss",
         "tail_lights",
-        "recolour_sprites",
-        "name",
-        "procedures_var_41_but_badges_not_ids",
-        "procedures_alternative_var_random_bits",
+        # alt vars
+        "alt_vars_41_badge_predicates",
+        "alt_vars_loading_loaded_states",
+        "alt_vars_powered_by_railtype",
+        "alt_vars_random_bits",
+        # procedures
         "procedures_capacity",
         "procedures_cargo_subtypes",
-        "procedures_colour_names",
-        "procedures_opening_doors",
-        "procedures_powered_by_railtype",
-        "procedures_rulesets",
-        "procedures_visible_cargo",
+        "procedures_formation_rulesets",
+        "procedures_name",
         "procedures_wagon_recolour_strategies",
-        "pseudo_random_vehicle_maps",
     ]
 
     render_header_item_nml_start = time()

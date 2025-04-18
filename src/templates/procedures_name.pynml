@@ -1,4 +1,4 @@
-<!--! shared globally, but not a procedure -->
+<!--! not really a procedure, but acts like one -->
 
 switch (FEAT_TRAINS, SELF, switch_name_purchase_level_1, [
         has_badge("ih_name_cb_flags/purchase_level_1_has_more_nested_variants")
