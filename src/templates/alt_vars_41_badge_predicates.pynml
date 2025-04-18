@@ -19,7 +19,8 @@
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
     switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_badge_predicate_chain_${counter}, [
-            <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
+            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
+            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
             STORE_TEMP(${-1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
         ]) {
         <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_badge_predicate_chain_${counter + 1};</tal:block>
@@ -33,7 +34,8 @@
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
     switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_badge_predicate_chain_from_end_${counter}, [
-            <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
+            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
+            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
             STORE_TEMP(${1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
         ]) {
         <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_badge_predicate_chain_from_end_${counter + 1};</tal:block>
@@ -67,6 +69,6 @@ switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_results_to_temps, 
 <!--!
     To be called at start of graphics chain for current vehicle, with param containing the badge predicate
 -->
-switch (FEAT_TRAINS, SELF, initialise_alt_var_41_with_badge_predicate, badge, [STORE_TEMP(badge, 0x10E)]){
+switch (FEAT_TRAINS, SELF, initialise_alt_var_41_with_badge_predicate, badge, [STORE_TEMP(badge, k_addr_badge_for_alt_var_41_predicate)]){
     return switch_initialise_alt_var_41_store_results_to_temps;
 }

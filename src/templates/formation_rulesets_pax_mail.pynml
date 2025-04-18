@@ -7,44 +7,53 @@
     }
 
     <!--! if special -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_special_check_length, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_special_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
         <!--! don't show 'special' if same id chain < 4 vehicles -->
         0..3: return switch_graphics_pax_car_ruleset_position_default;
         return ${special};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_special, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
         0..1: return switch_graphics_pax_car_ruleset_position_special_check_length;
         switch_graphics_pax_car_ruleset_position_default;
     }
 
     <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/generic_pax_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [
+            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
+            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
+            STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
+        ]) {
         <!--! don't show last if following vehicle is also a valid pax car -->
         1: return ${default};
         return ${last};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
+    <!--! CABBAGE - WE COULD COUNT A BADGE FOR BRAKE COACHES TO ENSURE THERE IS ALWAYS AT LEAST ONE IN THE FORMATION?? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end)) {
         0: switch_graphics_pax_car_ruleset_position_check_last_neighbouring;
         switch_graphics_pax_car_ruleset_position_check_special;
     }
 
     <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/generic_pax_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [
+            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
+            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
+            STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
+        ]) {
         <!--! don't show first if preceeding vehicle is also a valid pax car -->
         1: return ${default};
         return ${first};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
         <!--! don't show 'first' if same id chain < 5 vehicles -->
         0..4: return switch_graphics_pax_car_ruleset_position_default;
         return switch_graphics_pax_car_ruleset_position_check_first_neighbouring;
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, position_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
         0: return switch_graphics_pax_car_ruleset_position_first_check_length;
         switch_graphics_pax_car_ruleset_position_check_last;
     }
 
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
         <!--! always show default if same id chain < 2 vehicles -->
         0..1: return switch_graphics_pax_car_ruleset_position_default;
         return switch_graphics_pax_car_ruleset_position_check_first;
