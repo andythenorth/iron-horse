@@ -8,12 +8,12 @@
 
     <!--! if special -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_special_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! don't show 'special' if same id chain < 4 vehicles -->
-        0..3: return switch_graphics_pax_car_ruleset_position_default;
+        <!--! don't show 'special' if badge chain < 4 vehicles -->
+        0..3: switch_graphics_pax_car_ruleset_position_default;
         return ${special};
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_special, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
-        0..1: return switch_graphics_pax_car_ruleset_position_special_check_length;
+        0..1: switch_graphics_pax_car_ruleset_position_special_check_length;
         switch_graphics_pax_car_ruleset_position_default;
     }
 
@@ -44,69 +44,46 @@
         return ${first};
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! don't show 'first' if same id chain < 5 vehicles -->
-        0..4: return switch_graphics_pax_car_ruleset_position_default;
-        return switch_graphics_pax_car_ruleset_position_check_first_neighbouring;
+        <!--! don't show 'first' if badge chain < 5 vehicles -->
+        0..4: switch_graphics_pax_car_ruleset_position_default;
+        switch_graphics_pax_car_ruleset_position_check_first_neighbouring;
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
-        0: return switch_graphics_pax_car_ruleset_position_first_check_length;
+        0: switch_graphics_pax_car_ruleset_position_first_check_length;
         switch_graphics_pax_car_ruleset_position_check_last;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! always show default if same id chain < 2 vehicles -->
-        0..1: return switch_graphics_pax_car_ruleset_position_default;
-        return switch_graphics_pax_car_ruleset_position_check_first;
+        <!--! always show default if badge chain < 2 vehicles -->
+        0..1: switch_graphics_pax_car_ruleset_position_default;
+        switch_graphics_pax_car_ruleset_position_check_first;
     }
 </tal:ruleset>
 
 
-// mail car ruleset
+// mail car ruleset - delegates to pre-generated pseudo-random maps
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_default, 0) {
-        return ${default};
+    <!--! we do a couple of specific things here to get an appropriate weight fom the pseudo random maps:
+          - we *don't* switch the target map for all vehicles as the length changes, it looks weird because the consist changes as vehicles are added removed
+          - we do offset into specific maps depending on vehicle position, as it's guaranteed that e.g.
+             - short lengths such as 3 or 6 will have a good vehicle mix (this is enforced in the generator)
+             - whereas offsetting short chains straight into the 32 map might not be pleasing result, as the first part of the map may have low entropy
+          -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_select_appropriate_map_length, [
+            LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
+        ]) {
+        0..3: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(3);
+        4..7: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(8);
+        8..15: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(16);
+        return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(32);
     }
-
-    <!--! if special -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_special_check_length, num_vehs_in_vehid_chain) {
-        <!--! don't show 'special' if same id chain < 4 vehicles -->
-        0..3: return switch_graphics_mail_car_ruleset_position_default;
-        return ${special};
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
-        0..1: return switch_graphics_mail_car_ruleset_position_special_check_length;
-        switch_graphics_mail_car_ruleset_position_default;
-    }
-
-    <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/generic_mail_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
-        <!--! don't show first if preceeding vehicle is also a valid pax car -->
-        1: return ${default};
-        return ${first};
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
-        <!--! don't show 'first' if same id chain < 5 vehicles -->
-        0..4: return switch_graphics_mail_car_ruleset_position_default;
-        return switch_graphics_mail_car_ruleset_position_check_first_neighbouring;
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first, position_in_vehid_chain) {
-        0: return switch_graphics_mail_car_ruleset_position_first_check_length;
-        switch_graphics_mail_car_ruleset_position_check_special;
-    }
-
-    <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/generic_mail_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
-        <!--! don't show last if following vehicle is also a valid pax car -->
-        1: return ${default};
-        return ${last};
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
-        0: switch_graphics_mail_car_ruleset_position_check_last_neighbouring;
-        switch_graphics_mail_car_ruleset_position_check_first;
-    }
-
-    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset, 0) {
-        return switch_graphics_mail_car_ruleset_position_check_last;
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset, [
+            switch_graphics_mail_car_ruleset_select_appropriate_map_length()
+        ]) {
+        0: return ${first};
+        1: return ${last};
+        2: return ${special};
+        return ${default}; <!--! shouldn't be reached, maps are pre-determined to 0, 1, 2 -->
     }
 </tal:ruleset>
 
@@ -196,17 +173,17 @@
             (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset)) % 12
         ) {
         <!--! there is never 1 unit for this ruleset, always minimum 2 -->
-        2: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_2;
+        2: switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_2;
         <!--! there are never 3 units for this ruleset, always multiple of 2 -->
-        4: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_4;
+        4: switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_4;
         <!--! there are never 5 units for this ruleset, always multiple of 2 -->
-        6: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_6;
+        6: switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_6;
         <!--! there are never 7 units for this ruleset, always multiple of 2 -->
-        8: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_8;
+        8: switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_8;
         <!--! there are never 9 units for this ruleset, always multiple of 2 -->
-        10: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_10;
+        10: switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_10;
         <!--! there are never 11 units for this ruleset, always multiple of 2 -->
-        return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_12;
+        switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_12;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_whole_divisor_block,
@@ -219,7 +196,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_12;
+        switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_formation_12;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_check_remainder_block_apply_base_offset_to_position,
@@ -229,7 +206,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_6_unit_sets_check_remainder_block_length;
+        switch_graphics_railcar_ruleset_6_unit_sets_check_remainder_block_length;
     }
 
     <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block?
@@ -253,8 +230,8 @@
                 ),
                 (LOAD_TEMP(k_addr_position_in_badge_predicate_chain) > LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset))
             ]) {
-        1: return switch_graphics_railcar_ruleset_6_unit_sets_check_remainder_block_apply_base_offset_to_position;
-        return switch_graphics_railcar_ruleset_6_unit_sets_whole_divisor_block;
+        1: switch_graphics_railcar_ruleset_6_unit_sets_check_remainder_block_apply_base_offset_to_position;
+        switch_graphics_railcar_ruleset_6_unit_sets_whole_divisor_block;
     }
 
 </tal:ruleset>
@@ -334,14 +311,14 @@
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_length,
             (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset)) % 8
         ) {
-        1: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_1;
-        2: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_2;
-        3: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_3;
-        4: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_4;
-        5: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_5;
-        6: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_6;
-        7: return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_7;
-        return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
+        1: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_1;
+        2: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_2;
+        3: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_3;
+        4: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_4;
+        5: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_5;
+        6: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_6;
+        7: switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_7;
+        switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_4_unit_sets_whole_divisor_block,
@@ -354,7 +331,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
+        switch_graphics_railcar_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position,
@@ -364,7 +341,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_length;
+        switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_length;
     }
 
     <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block?
@@ -388,8 +365,8 @@
                 ),
                 (LOAD_TEMP(k_addr_position_in_badge_predicate_chain) >= LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset))
             ]) {
-        1: return switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position;
-        return switch_graphics_railcar_ruleset_4_unit_sets_whole_divisor_block;
+        1: switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position;
+        switch_graphics_railcar_ruleset_4_unit_sets_whole_divisor_block;
     }
 </tal:ruleset>
 
@@ -444,12 +421,12 @@
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_length,
             (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset)) % 6
         ) {
-        1: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_1;
-        2: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_2;
-        3: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_3;
-        4: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_4;
-        5: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_5;
-        return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_6;
+        1: switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_1;
+        2: switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_2;
+        3: switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_3;
+        4: switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_4;
+        5: switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_5;
+        switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_6;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_whole_divisor_block,
@@ -462,7 +439,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_6;
+        switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_6;
     }
 
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_apply_base_offset_to_position,
@@ -472,7 +449,7 @@
                 k_addr_position_in_badge_predicate_chain_with_base_offset_applied
             ),
         ){
-        return switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_length;
+        switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_length;
     }
 
     <!--! given the consist, how many blocks of 3 units are there?  Is the unit within a block of 4, or a remainder block?
@@ -496,8 +473,8 @@
                 ),
                 (LOAD_TEMP(k_addr_position_in_badge_predicate_chain) >= LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset))
             ]) {
-        1: return switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_apply_base_offset_to_position;
-        return switch_graphics_railcar_ruleset_3_unit_sets_whole_divisor_block;
+        1: switch_graphics_railcar_ruleset_3_unit_sets_check_remainder_block_apply_base_offset_to_position;
+        switch_graphics_railcar_ruleset_3_unit_sets_whole_divisor_block;
     }
 </tal:ruleset>
 
@@ -532,16 +509,16 @@
 
     <!--! this is a remainder block, how many units are in it? -->
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_less_than_4_remaining, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) % 4) {
-        1: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_1;
-        2: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_2;
-        3: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_3;
-        return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_4;
+        1: switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_1;
+        2: switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_2;
+        3: switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_3;
+        switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_formation_4;
     }
 
     <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block? -->
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets, LOAD_TEMP(k_addr_position_in_badge_predicate_chain) >= (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) - (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) % 4))) {
-        1: return switch_graphics_railcar_ruleset_2_unit_sets_less_than_4_remaining;
-        return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_4;
+        1: switch_graphics_railcar_ruleset_2_unit_sets_less_than_4_remaining;
+        switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_formation_4;
     }
 </tal:ruleset>
 
@@ -555,14 +532,14 @@
     <!--! if special -->
     switch (FEAT_TRAINS, SELF, switch_graphics_tgv_hst_ruleset_position_special_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
         <!--! don't show 'special' if equivalent id chain < 4 vehicles -->
-        0..3: return switch_graphics_tgv_hst_ruleset_position_default;
+        0..3: switch_graphics_tgv_hst_ruleset_position_default;
         return ${special};
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_tgv_hst_ruleset_position_check_special, [
                 LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
             ]
         ) {
-        0..1: return switch_graphics_tgv_hst_ruleset_position_special_check_length;
+        0..1: switch_graphics_tgv_hst_ruleset_position_special_check_length;
         switch_graphics_tgv_hst_ruleset_position_default;
     }
 
@@ -597,7 +574,7 @@
 
 // metro ruleset
 <tal:ruleset define="first 0; last 1;">
-    switch (FEAT_TRAINS, SELF, switch_graphics_metro_ruleset, position_in_vehid_chain % 2) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_metro_ruleset, LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % 2) {
         0: return ${first};
         return ${last};
     }

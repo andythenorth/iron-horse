@@ -22,3 +22,45 @@
     }
 
 </tal:deterministic_random_maps>
+
+
+
+
+
+<tal:CABBAGE_deterministic_random_maps_MAIL repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_MAIL_CABBAGE.get_all_mail_maps()">
+    <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps['maps']">
+        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_mail_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.CABBAGE_map.index}, [
+                LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
+            ]) {
+            <tal:map_items repeat="map_item CABBAGE_map">
+                ${repeat.map_item.index}: ${map_item};
+            </tal:map_items>
+        }
+    </tal:cabbage_chain_length>
+
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_length_${CABBAGE_random_maps['chain_length']}, [
+            <!--! up to 32 values -->
+            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 5) % ${len(CABBAGE_random_maps['maps'])}
+        ]) {
+        <tal:map_indexes repeat="map_index CABBAGE_random_maps['maps']">
+            ${repeat.map_index.index}: switch_deterministic_random_vehicle_map_mail_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.map_index.index};
+        </tal:map_indexes>
+    }
+</tal:CABBAGE_deterministic_random_maps_MAIL>
+
+<!--! old CABBAGE
+switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE, [
+            LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) % ${len(pseudo_random_vehicle_maps_MAIL_CABBAGE.get_all_mail_maps())}
+        ]) {
+    <tal:length_indexes repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_MAIL_CABBAGE.get_all_mail_maps()">
+        ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_length_${CABBAGE_random_maps['chain_length']};
+    </tal:length_indexes>
+
+}
+-->
+switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE, target_map_length, [target_map_length]) {
+    <tal:length_indexes repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_MAIL_CABBAGE.get_all_mail_maps()">
+        ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_length_${CABBAGE_random_maps['chain_length']};
+    </tal:length_indexes>
+
+}

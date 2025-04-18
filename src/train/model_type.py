@@ -5517,8 +5517,8 @@ class MailCar(MailCarBase):
         brake_car_sprites = 1 if self.subtype in ["B", "C"] else 0
         bonus_sprites = 2 if self.subtype in ["C"] else 0
         formation_position_spriterow_map = {
-            "default": 0,
-            "first": brake_car_sprites,
+            "default": 0, # default cars actually randomise for mail
+            "first": 0,
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
