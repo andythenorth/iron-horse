@@ -1,6 +1,6 @@
 <tal:units repeat="unit model_variant.unique_units">
 
-    <!--! Conditional -->
+    <!--! Graphics chains - conditional on gestalt graphics -->
 
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_visible_cargo.pynml'">
       <tal:include metal:use-macro="load: vehicle_with_visible_cargo.pynml" />
@@ -58,7 +58,7 @@
       <tal:include metal:use-macro="load: vehicle_with_simple_body_colour_remaps.pynml" />
     </tal:block>
 
-    <!--! Common -->
+    <!--! Properties and callback chains - conditional on model type and properties -->
 
     <tal:graphics_entry_switches condition="not catalogue.wagon_quacker.is_randomised_wagon_type">
        <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
