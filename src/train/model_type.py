@@ -5509,16 +5509,13 @@ class MailCar(MailCarBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
-        # * solid block can be used, but looks like freight cars, so duotone liveries are preferred (see caboose cars for inspiration)
         # longer mail cars get an additional sprite option in the formation ruleset; shorter mail cars don't as it's TMWFTLB
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         brake_car_sprites = 1 if self.subtype in ["B", "C"] else 0
         bonus_sprites = 2 if self.subtype in ["C"] else 0
         formation_position_spriterow_map = {
-            "default": 0, # default cars actually randomise for mail
-            "first": 0,
+            "default": 0,
+            "first": 0, # default and first synonymous currently for mail cars
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
@@ -5600,12 +5597,10 @@ class MailHighSpeedCar(MailCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # Graphics configuration
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # formation position rules:
         formation_position_spriterow_map = {
             "default": 0,
-            "first": 1,
+            "first": 0, # default and first synonymous currently
             "last": 1,
             "special": 2,
         }
