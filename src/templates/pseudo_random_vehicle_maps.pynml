@@ -33,30 +33,32 @@
 
 <!--! intermodal cars -->
 
-<tal:deterministic_random_maps repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_INTERMODAL_CABBAGE.get_all_intermodal_maps().items()">
-    // ${CABBAGE_random_maps[0]}
-    <tal:deterministic_random_maps_by_type repeat="CABBAGE_map CABBAGE_random_maps[1]">
-        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}_${repeat.CABBAGE_map.index}, [
-                LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
-            ]) {
-            <tal:map_items repeat="map_item CABBAGE_map">
-                ${repeat.map_item.index}: return ${map_item};
-            </tal:map_items>
-        }
-    </tal:deterministic_random_maps_by_type>
+<tal:deterministic_random_maps repeat="ruleset_map_items pseudo_random_vehicle_maps_intermodal.generate_map_for_ruleset().items()">
+    <tal:block define="ruleset_type ruleset_map_items[0];
+                       ruleset_maps ruleset_map_items[1]">
+        <tal:deterministic_random_maps_by_type repeat="ruleset_map ruleset_maps">
+            switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_INTERMODAL_${ruleset_type}_${repeat.ruleset_map.index}, [
+                    LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(ruleset_map)}
+                ]) {
+                <tal:map_entries repeat="map_entry ruleset_map">
+                    ${repeat.map_entry.index}: return ${map_entry};
+                </tal:map_entries>
+            }
+        </tal:deterministic_random_maps_by_type>
 
-    switch (FEAT_TRAINS, PARENT, switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}, [
-            <!--! pick 6 bits to choose 1 of 64 maps -->
-            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
-        ]) {
-        <tal:map_indexes repeat="map_index range(64)">
-            ${map_index}: switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}_${map_index};
-        </tal:map_indexes>
-    }
+        switch (FEAT_TRAINS, PARENT, switch_deterministic_random_vehicle_map_INTERMODAL_${ruleset_type}, [
+                <!--! 64 maps so pick 6 bits -->
+                getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
+            ]) {
+            <tal:map_indexes repeat="map_index range(len(ruleset_maps))">
+                ${map_index}: switch_deterministic_random_vehicle_map_INTERMODAL_${ruleset_type}_${map_index};
+            </tal:map_indexes>
+        }
+    </tal:block>
 </tal:deterministic_random_maps>
 
-<!--! mail cars -->
 
+<!--! mail cars -->
 
 <tal:CABBAGE_deterministic_random_maps_MAIL repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_MAIL_CABBAGE.get_all_mail_maps()">
     <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps['maps']">
@@ -88,7 +90,6 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
 
 
 <!--! pax cars -->
-
 
 <tal:CABBAGE_deterministic_random_maps_PAX repeat="CABBAGE_random_maps_by_category pseudo_random_vehicle_maps_PAX_CABBAGE.get_all_pax_maps().items()">
     <tal:maps_by_category repeat="CABBAGE_random_maps_container CABBAGE_random_maps_by_category[1]"
