@@ -34,7 +34,7 @@
 
     <!--! more than two in chain, inner location -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_not_first_or_last, [
-                switch_deterministic_random_vehicle_map_INTERMODAL_max_4_unit_sets()
+                switch_deterministic_random_ruleset_map_intermodal_max_4_unit_sets()
             ]) {
         0: return ${default};
         1: return ${first};
@@ -43,7 +43,7 @@
     }
     <!--! last, more than one in chain -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_last, [
-                switch_deterministic_random_vehicle_map_INTERMODAL_max_4_unit_sets()
+                switch_deterministic_random_ruleset_map_intermodal_max_4_unit_sets()
             ]) {
         0: ${default};
         1: ${default};
@@ -52,7 +52,7 @@
     }
     <!--! first, more than one in chain -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_first, [
-                switch_deterministic_random_vehicle_map_INTERMODAL_max_4_unit_sets()
+                switch_deterministic_random_ruleset_map_intermodal_max_4_unit_sets()
             ]) {
         0: ${default};
         1: ${first};
