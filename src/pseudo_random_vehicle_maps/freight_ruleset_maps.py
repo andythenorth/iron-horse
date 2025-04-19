@@ -1,15 +1,42 @@
+"""
+Deterministic entropic formation maps for ruleset-based vehicle rendering.
+
+This module generates fixed-length formations of 64 vehicles, structured into
+run-lengths of 1–4. Each run is built with sprite roles:
+  0 = single
+  1 = first
+  2 = last
+  3 = inner
+
+Two formation categories:
+  - "max_4_unit_sets": uses all sprite roles (1–3)
+  - "max_2_unit_sets": excludes inners (only 1 + 2)
+
+Used in NML rulesets to drive:
+  - Sprite role selection
+  - Consistent recolor groups per run
+  - Consistent base vehicle type per run
+
+All maps are deterministic (seed = index). Run groupings can be derived
+via `generate_map_for_random_choices(...)`.
+
+Note: The first and last vehicles in a sliced formation may not be correct.
+Consumers must explicitly reassign sprite roles at formation edges.
+"""
+
 from random import Random
 
-# Constants for intermodal car sprite types
+# Constants for sprite types
 VALUE_SINGLE = 0
 VALUE_FIRST = 1
 VALUE_LAST = 2
 VALUE_INNER = 3
 
-INTERMODAL_FORMATION_COUNT = 64
-INTERMODAL_MAX_LENGTH = 64
+DEFAULT_FORMATION_COUNT = 64
+DEFAULT_MAX_LENGTH = 64
 
-def generate_intermodal_run(run_length: int, allow_inner: bool = True) -> list[int]:
+
+def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int]:
     if run_length == 1:
         return [VALUE_SINGLE]
     elif run_length == 2:
@@ -20,9 +47,10 @@ def generate_intermodal_run(run_length: int, allow_inner: bool = True) -> list[i
         else:
             return [VALUE_FIRST] + [VALUE_LAST] * (run_length - 2) + [VALUE_LAST]
 
-def generate_intermodal_base(seed_index: int, allow_inner: bool = True) -> list[int]:
+
+def generate_base_maps_for_ruleset(seed_index: int, allow_inner: bool = True) -> list[int]:
     rng = Random(seed_index)
-    remaining = INTERMODAL_MAX_LENGTH
+    remaining = DEFAULT_MAX_LENGTH
     formation = []
 
     while remaining > 0:
@@ -35,17 +63,17 @@ def generate_intermodal_base(seed_index: int, allow_inner: bool = True) -> list[
             run_len = rng.choice([1, 2, 3, 4])
             run_len = min(run_len, remaining)
 
-        run = generate_intermodal_run(run_len, allow_inner=allow_inner)
+        run = generate_entropic_run(run_len, allow_inner=allow_inner)
         formation.extend(run)
         remaining -= run_len
 
-    # Ensure no formation ends in VALUE_FIRST
     if formation[-1] == VALUE_FIRST:
         formation[-1] = VALUE_SINGLE
     elif formation[-1] == VALUE_INNER:
         formation[-1] = VALUE_LAST
 
-    return formation[:INTERMODAL_MAX_LENGTH]
+    return formation[:DEFAULT_MAX_LENGTH]
+
 
 def generate_run_randomization_map(formation: list[int], max_value: int, rng: Random) -> list[int]:
     if max_value < 2:
@@ -76,16 +104,18 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
 
     return output
 
+
 def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
     output = {
         "max_4_unit_sets": [],
         "max_2_unit_sets": []
     }
-    for i in range(INTERMODAL_FORMATION_COUNT):
+    for i in range(DEFAULT_FORMATION_COUNT):
         for key, allow_inner in [("max_4_unit_sets", True), ("max_2_unit_sets", False)]:
-            formation = generate_intermodal_base(i, allow_inner=allow_inner)
+            formation = generate_base_maps_for_ruleset(i, allow_inner=allow_inner)
             output[key].append(formation)
     return output
+
 
 def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[list[int]]]:
     base_maps = generate_map_for_ruleset()
@@ -100,6 +130,7 @@ def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[lis
             output[category].append(run_map)
     return output
 
+
 # Preview and validation
 if __name__ == "__main__":
     all_ok = True
@@ -107,7 +138,7 @@ if __name__ == "__main__":
     for category, formations in result.items():
         print(f"\nValidating {category}...")
         for map_index, formation in enumerate(formations):
-            if len(formation) != INTERMODAL_MAX_LENGTH:
+            if len(formation) != DEFAULT_MAX_LENGTH:
                 print(f"  ❌ Map {map_index} is length {len(formation)}")
                 all_ok = False
             elif formation[-1] == VALUE_FIRST:
