@@ -20,14 +20,13 @@ MAP_COUNTS = {
 
 SPECIAL_RUN_WEIGHTS = [1, 1, 2, 2, 2, 3]
 
+
 def generate_empty_map_structure():
     """
     Generate an empty map structure: {chain_length: [[], [], ...]}
     """
-    return {
-        length: [[] for _ in range(MAP_COUNTS[length])]
-        for length in MAP_LENGTHS
-    }
+    return {length: [[] for _ in range(MAP_COUNTS[length])] for length in MAP_LENGTHS}
+
 
 def generate_mail_map(length: int, seed: int) -> list[int]:
     if length == 3:
@@ -68,10 +67,11 @@ def generate_mail_map(length: int, seed: int) -> list[int]:
             result[i] = rnd.choices(
                 population=[VALUE_FIRST, VALUE_LAST, VALUE_SPECIAL],
                 weights=[3, 3, 2],
-                k=1
+                k=1,
             )[0]
 
     return result
+
 
 def validate_map(length: int, map_values: list[int]) -> bool:
     if length != len(map_values):
@@ -81,6 +81,7 @@ def validate_map(length: int, map_values: list[int]) -> bool:
     if length > 3 and VALUE_SPECIAL not in map_values[1:-1]:
         return False
     return True
+
 
 def get_all_mail_maps() -> list[dict]:
     """
@@ -105,9 +106,10 @@ def get_all_mail_maps() -> list[dict]:
         output.append({"chain_length": length, "maps": maps})
     return output
 
+
 if __name__ == "__main__":
     all_maps = get_all_mail_maps()
     for entry in all_maps:
         print(f"Chain length {entry['chain_length']}:")
-        for i, m in enumerate(entry['maps']):
+        for i, m in enumerate(entry["maps"]):
             print(f"  Map {i}: {m}")

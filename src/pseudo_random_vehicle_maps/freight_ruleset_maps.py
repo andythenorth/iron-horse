@@ -48,7 +48,9 @@ def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int
             return [VALUE_FIRST] + [VALUE_LAST] * (run_length - 2) + [VALUE_LAST]
 
 
-def generate_base_maps_for_ruleset(seed_index: int, allow_inner: bool = True) -> list[int]:
+def generate_base_maps_for_ruleset(
+    seed_index: int, allow_inner: bool = True
+) -> list[int]:
     rng = Random(seed_index)
     remaining = DEFAULT_MAX_LENGTH
     formation = []
@@ -75,7 +77,9 @@ def generate_base_maps_for_ruleset(seed_index: int, allow_inner: bool = True) ->
     return formation[:DEFAULT_MAX_LENGTH]
 
 
-def generate_run_randomization_map(formation: list[int], max_value: int, rng: Random) -> list[int]:
+def generate_run_randomization_map(
+    formation: list[int], max_value: int, rng: Random
+) -> list[int]:
     if max_value < 2:
         raise ValueError("max_value must be at least 2")
 
@@ -87,7 +91,10 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
             run_len = 1
         elif formation[i] == VALUE_FIRST:
             run_len = 1
-            while i + run_len < len(formation) and formation[i + run_len] in (VALUE_INNER, VALUE_LAST):
+            while i + run_len < len(formation) and formation[i + run_len] in (
+                VALUE_INNER,
+                VALUE_LAST,
+            ):
                 if formation[i + run_len] == VALUE_LAST:
                     run_len += 1
                     break
@@ -106,10 +113,7 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
 
 
 def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
-    output = {
-        "max_4_unit_sets": [],
-        "max_2_unit_sets": []
-    }
+    output = {"max_4_unit_sets": [], "max_2_unit_sets": []}
     for i in range(DEFAULT_FORMATION_COUNT):
         for key, allow_inner in [("max_4_unit_sets", True), ("max_2_unit_sets", False)]:
             formation = generate_base_maps_for_ruleset(i, allow_inner=allow_inner)
@@ -117,12 +121,11 @@ def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
     return output
 
 
-def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[list[int]]]:
+def generate_map_for_random_choices(
+    max_random_value: int,
+) -> dict[str, list[list[int]]]:
     base_maps = generate_map_for_ruleset()
-    output = {
-        "max_4_unit_sets": [],
-        "max_2_unit_sets": []
-    }
+    output = {"max_4_unit_sets": [], "max_2_unit_sets": []}
     for category, formations in base_maps.items():
         for i, formation in enumerate(formations):
             rng = Random(i)

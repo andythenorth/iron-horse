@@ -12,6 +12,7 @@ FORMATION_CLASSES = {
     "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 17))},
 }
 
+
 def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
     length = len(base_map)
     if length < 5:
@@ -27,8 +28,11 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
     attempted_positions = set()
 
     for _ in range(num_special):
-        valid_positions = [i for i in range(1, length - 1)
-                           if mod_map[i] == VALUE_STANDARD and i not in attempted_positions]
+        valid_positions = [
+            i
+            for i in range(1, length - 1)
+            if mod_map[i] == VALUE_STANDARD and i not in attempted_positions
+        ]
         if not valid_positions:
             break
 
@@ -48,13 +52,17 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
 
     return mod_map
 
+
 def generate_type_a(length: int) -> list[int]:
     if length == 1:
         return [VALUE_BRAKE_FRONT]
     elif length == 2:
         return [VALUE_BRAKE_FRONT, VALUE_BRAKE_REAR]
     else:
-        return [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
+        return (
+            [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
+        )
+
 
 def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
@@ -72,6 +80,7 @@ def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
         formation[pos1 + 1] = VALUE_BRAKE_REAR
         family[length] = formation
     return family
+
 
 def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
@@ -93,6 +102,7 @@ def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
         family[length] = formation
     return family
 
+
 def get_all_pax_maps() -> dict[str, list[dict]]:
     output = {
         "brakes_outer_ends": [],
@@ -113,11 +123,9 @@ def get_all_pax_maps() -> dict[str, list[dict]]:
                     continue
                 mod_map = insert_special_variants(base, seed=i)
                 maps.append(mod_map)
-            output[template_name].append({
-                "chain_length": length,
-                "maps": maps
-            })
+            output[template_name].append({"chain_length": length, "maps": maps})
     return output
+
 
 # Preview and validation
 if __name__ == "__main__":
@@ -125,9 +133,9 @@ if __name__ == "__main__":
     result = get_all_pax_maps()
     for template, entries in result.items():
         for entry in entries:
-            expected_len = entry['chain_length']
+            expected_len = entry["chain_length"]
             print(f"Template {template} – Chain length {expected_len}:")
-            for i, m in enumerate(entry['maps']):
+            for i, m in enumerate(entry["maps"]):
                 if len(m) != expected_len:
                     print(f"  ❌ Map {i} has length {len(m)}")
                     all_ok = False
