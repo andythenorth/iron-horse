@@ -10,7 +10,9 @@
     <tal:deterministic_random_maps_by_type repeat="random_map pseudo_random_vehicle_maps.get_deterministic_random_vehicle_maps(random_map_type)">
         <!--! (position_in_consist -1) here because we can assume there's at least one engine ...
                ...we don't try to do anything fancier than that, but this prevents high incidence of a run of just 2 at start of wagons -->
-        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_${random_map_type}_${repeat.random_map.index}, (position_in_consist - 1) % 64) {
+        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_${random_map_type}_${repeat.random_map.index}, [
+                (position_in_consist - 1) % 64
+            ]) {
             <tal:map_items repeat="map_item random_map">
                 ${repeat.map_item.index}: ${map_item};
             </tal:map_items>
@@ -18,7 +20,9 @@
     </tal:deterministic_random_maps_by_type>
 
     <!--! pick 6 bits to choose 1 of 64 maps; the bits do possibly overlap with the variant selection bits in 1 of 10 cases, but we'll live with that -->
-    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_${random_map_type}, getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)) {
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_${random_map_type}, [
+            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
+        ]) {
         <tal:map_indexes repeat="map_index range(64)">
             ${map_index}: switch_deterministic_random_vehicle_map_${random_map_type}_${map_index};
         </tal:map_indexes>
@@ -26,6 +30,30 @@
 
 </tal:deterministic_random_maps>
 
+
+<!--! intermodal cars -->
+
+<tal:deterministic_random_maps repeat="CABBAGE_random_maps pseudo_random_vehicle_maps_INTERMODAL_CABBAGE.get_all_intermodal_maps().items()">
+    // ${CABBAGE_random_maps[0]}
+    <tal:deterministic_random_maps_by_type repeat="CABBAGE_map CABBAGE_random_maps[1]">
+        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}_${repeat.CABBAGE_map.index}, [
+                LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
+            ]) {
+            <tal:map_items repeat="map_item CABBAGE_map">
+                ${repeat.map_item.index}: return ${map_item};
+            </tal:map_items>
+        }
+    </tal:deterministic_random_maps_by_type>
+
+    switch (FEAT_TRAINS, PARENT, switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}, [
+            <!--! pick 6 bits to choose 1 of 64 maps -->
+            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
+        ]) {
+        <tal:map_indexes repeat="map_index range(64)">
+            ${map_index}: switch_deterministic_random_vehicle_map_INTERMODAL_category_${CABBAGE_random_maps[0]}_${map_index};
+        </tal:map_indexes>
+    }
+</tal:deterministic_random_maps>
 
 <!--! mail cars -->
 

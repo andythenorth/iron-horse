@@ -54,9 +54,17 @@
     }
 </tal:spritelayer_cargo_layers>
 
+<!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41,
+    <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
+    <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
+    ) {
+    return ${unit.id}_switch_graphics_platform_position_in_formation_entry_point;
+}
+
 <!--! switch layers: base platform / spritelayer cargo -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${unit.id}_switch_graphics_platform_position_in_formation_entry_point;
+    0: return ${unit.id}_switch_graphics_vehicle_init_alt_var_41;
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
 }
 

@@ -240,6 +240,11 @@ class ModelTypeBase(object):
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
+            # CABBAGE SHIM TO INTERMODAL
+            result.append(
+                f"ih_formation_ruleset/vehicle_reports_as/{self.gestalt_graphics.formation_ruleset}"
+            )
+
         # specifically the ruleset can take one and only one (as of April 2025) badge to look for across the formation
         # that's used by alt_var_41, so let's just be explicit
         alt_var_41_predicate = self.gestalt_graphics.formation_ruleset_target_reporting_label
@@ -6444,7 +6449,7 @@ class PassengerCar(PassengerCarBase):
             "default": 0,
             "first": 1,
             "last": 2,
-            "special": 0,
+            "special": 3,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,

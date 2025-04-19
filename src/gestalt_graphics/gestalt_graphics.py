@@ -10,9 +10,9 @@ from utils import timing
 command_line_args = utils.get_command_line_args()
 
 formation_ruleset_reporting_label_maps = {
-    "1_unit_sets": {"label": "foobar"},
-    "2_unit_sets": {"label": "foobar"},
-    "4_unit_sets": {"label": "foobar"},
+    "1_unit_sets": {"label": "1_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "2_unit_sets": {"label": "2_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "4_unit_sets": {"label": "4_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
     "mail_cars": {"label": "generic_mail_car"},

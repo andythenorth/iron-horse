@@ -58,8 +58,9 @@
         0: return ${default};
         1: return ${first};
         2: return ${last};
+        3: return ${special};
         <!--!4: return switch_graphics_pax_car_ruleset_position_check_first;-->
-        return ${default}; <!--! shouldn't be reached, maps are pre-determined to 0, 1, 2 -->
+        return ${default}; <!--! shouldn't be reached, maps are pre-determined -->
     }
 
 </tal:ruleset>

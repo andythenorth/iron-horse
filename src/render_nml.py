@@ -11,6 +11,7 @@ import utils
 from utils import timing
 import global_constants
 import pseudo_random_vehicle_maps
+import pseudo_random_vehicle_maps_intermodal
 import pseudo_random_vehicle_maps_mail
 import pseudo_random_vehicle_maps_pax
 from polar_fox import git_info
@@ -50,6 +51,7 @@ def render_header_item_nml(
             graphics_path=graphics_path,
             git_revision=git_revision,
             pseudo_random_vehicle_maps=pseudo_random_vehicle_maps,
+            pseudo_random_vehicle_maps_INTERMODAL_CABBAGE=pseudo_random_vehicle_maps_intermodal,
             pseudo_random_vehicle_maps_MAIL_CABBAGE=pseudo_random_vehicle_maps_mail,
             pseudo_random_vehicle_maps_PAX_CABBAGE=pseudo_random_vehicle_maps_pax,
         )

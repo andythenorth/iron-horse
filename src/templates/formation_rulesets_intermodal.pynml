@@ -29,132 +29,47 @@
 
 // intermodal platform 4 unit sets
 <tal:ruleset define="default 0; first 1; last 2; middle 3;">
-    <!--! if 1 unit in sequence -->
-    <!--! 0 = first, 1 = middle, 2 = last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_1, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: return ${default};
-    }
 
-    <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_2, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: return ${first};
-        return ${last};
-    }
+    <!--! CABBAGE `4_unit_sets` vs `max_4_unit_sets` token names -->
 
-    <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_3, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: return ${first};
-        1: return ${middle};
-        return ${last};
-    }
-
-    <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_4, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: ${first};
-        1: ${middle};
-        2: ${middle};
-        return ${last};
-    }
-
-    <!--! if 5 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_5, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: ${first};
-        1: ${middle};
-        2: ${last};
-        3: ${first};
-        return ${last};
-    }
-
-    <!--! if 6 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_6, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: ${first};
-        1: ${middle};
-        2: ${last};
-        3: ${first};
-        4: ${middle};
-        return ${last};
-    }
-
-    <!--! if 7 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_7, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: ${first};
-        1: ${middle};
-        2: ${middle};
-        3: ${last};
-        4: ${first};
-        5: ${middle};
-        return ${last};
-    }
-
-    <!--! if 7 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_with_base_offset_applied)) {
-        0: ${first};
-        1: ${middle};
-        2: ${middle};
-        3: ${last};
-        4: ${first};
-        5: ${middle};
-        6: ${middle};
-        return ${last};
-    }
-
-    <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length, [
-            (num_vehs_in_vehid_chain - LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset)) % 8
-        ]) {
-        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_1;
-        2: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_2;
-        3: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_3;
-        4: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_4;
-        5: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_5;
-        6: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_6;
-        7: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_7;
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
-    }
-
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_whole_divisor_block,
-        <!--! for whole blocks of 4, just modulo 8 will get the result we need
-              we use 8 rather than 4 to allow special handling of special sprites (if needed) alternate blocks of 4, in A, B, A, B type pattern -->
-            STORE_TEMP(
-                position_in_vehid_chain % 8,
-                k_addr_position_in_badge_predicate_chain_with_base_offset_applied
-            ),
-        ){
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_formation_8;
-    }
-
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position,
-            STORE_TEMP(
-                <!--! store the vehicle position in equivalent-id chain, but with the base offset applied -->
-                position_in_vehid_chain - LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset),
-                k_addr_position_in_badge_predicate_chain_with_base_offset_applied
-            ),
-        ){
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length;
-    }
-
-    <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block?
-          we actually control positions out to 8 units, as we want specific combinations up to that limit -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets,
-            [
-                STORE_TEMP(
-                    <!--! how many blocks of 4 will fit in the total consist?
-                          then remove one, because we want
-                          - n whole blocks of 4 (divisor = 4)
-                          - a remainder amount which is at least 4 (and won't be more than 8), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
-                          note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
-                    -->
-                    num_vehs_in_vehid_chain > 4
-                        ?
-                        4 * ((num_vehs_in_vehid_chain / 4) - 1)
-                        :
-                        0,
-                    k_addr_position_in_badge_predicate_chain_base_offset
-                ),
-                (position_in_vehid_chain >= LOAD_TEMP(k_addr_position_in_badge_predicate_chain_base_offset))
+    <!--! more than two in chain, inner location -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_not_first_or_last, [
+                switch_deterministic_random_vehicle_map_INTERMODAL_category_max_4_unit_sets()
             ]) {
-        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position;
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_whole_divisor_block;
+        0: return ${default};
+        1: return ${first};
+        2: return ${last};
+        3: return ${middle};
     }
+    <!--! last, more than one in chain -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_last, [
+                switch_deterministic_random_vehicle_map_INTERMODAL_category_max_4_unit_sets()
+            ]) {
+        0: ${default};
+        1: ${default};
+        2: ${last};
+        3: ${last};
+    }
+    <!--! first, more than one in chain -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_first, [
+                switch_deterministic_random_vehicle_map_INTERMODAL_category_max_4_unit_sets()
+            ]) {
+        0: ${default};
+        1: ${first};
+        2: ${default};
+        3: ${first};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets, [
+                <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3 (for single unit consist) -->
+                ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain) == 0) ? 1 : 0)
+                +
+                ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) == 0) ? 2 : 0)
+            ]) {
+        0: switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_not_first_or_last;
+        1: switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_first;
+        2: switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_last;
+        3: ${default}; <!--! single unit -->
+    }
+
+
 </tal:ruleset>

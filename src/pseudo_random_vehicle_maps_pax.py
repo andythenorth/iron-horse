@@ -12,8 +12,41 @@ FORMATION_CLASSES = {
     "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 17))},
 }
 
-def insert_special_variants(base_map: list[int], num_special: int = 1, seed: int = 0) -> list[int]:
-    return base_map[:]
+def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
+    length = len(base_map)
+    if length < 5:
+        return base_map[:]
+    elif length < 9:
+        num_special = 1
+    else:
+        num_special = 2
+
+    rng = Random(seed)
+    mod_map = base_map[:]
+    special_inserted = 0
+    attempted_positions = set()
+
+    for _ in range(num_special):
+        valid_positions = [i for i in range(1, length - 1)
+                           if mod_map[i] == VALUE_STANDARD and i not in attempted_positions]
+        if not valid_positions:
+            break
+
+        idx = rng.choice(valid_positions)
+        attempted_positions.add(idx)
+
+        if mod_map[idx] == VALUE_STANDARD:
+            mod_map[idx] = VALUE_SPECIAL
+            special_inserted += 1
+        else:
+            # walk forwards until standard is found
+            for j in range(idx + 1, length - 1):
+                if mod_map[j] == VALUE_STANDARD:
+                    mod_map[j] = VALUE_SPECIAL
+                    special_inserted += 1
+                    break
+
+    return mod_map
 
 def generate_type_a(length: int) -> list[int]:
     if length == 1:
@@ -35,8 +68,8 @@ def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
         mid = length // 2
         offset = max(-mid + 1, min(base_offset, length - 3 - mid))
         pos1 = max(1, min(length - 3, mid + offset))
-        formation[pos1] = VALUE_BRAKE_REAR
-        formation[pos1 + 1] = VALUE_BRAKE_FRONT
+        formation[pos1] = VALUE_BRAKE_FRONT
+        formation[pos1 + 1] = VALUE_BRAKE_REAR
         family[length] = formation
     return family
 
@@ -78,7 +111,7 @@ def get_all_pax_maps() -> dict[str, list[dict]]:
                     base = generate_type_c_family(i)[length]
                 else:
                     continue
-                mod_map = insert_special_variants(base, num_special=2, seed=i)
+                mod_map = insert_special_variants(base, seed=i)
                 maps.append(mod_map)
             output[template_name].append({
                 "chain_length": length,
