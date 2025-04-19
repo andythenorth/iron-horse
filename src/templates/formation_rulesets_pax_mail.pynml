@@ -18,46 +18,50 @@
     }
 
     <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [
-            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
-            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
-            STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
-        ]) {
-        <!--! don't show last if following vehicle is also a valid pax car -->
-        1: return ${default};
-        return ${last};
-    }
-    <!--! CABBAGE - WE COULD COUNT A BADGE FOR BRAKE COACHES TO ENSURE THERE IS ALWAYS AT LEAST ONE IN THE FORMATION?? -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end)) {
-        0: switch_graphics_pax_car_ruleset_position_check_last_neighbouring;
+        0: ${last};
         switch_graphics_pax_car_ruleset_position_check_special;
     }
 
     <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [
-            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
-            STORE_TEMP(LOAD_TEMP(k_addr_badge_for_alt_var_41_predicate), 0x10E),
-            STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
-        ]) {
-        <!--! don't show first if preceeding vehicle is also a valid pax car -->
-        1: return ${default};
-        return ${first};
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! don't show 'first' if badge chain < 5 vehicles -->
-        0..4: switch_graphics_pax_car_ruleset_position_default;
-        switch_graphics_pax_car_ruleset_position_check_first_neighbouring;
-    }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
-        0: switch_graphics_pax_car_ruleset_position_first_check_length;
+        0: return ${first};
         switch_graphics_pax_car_ruleset_position_check_last;
     }
 
+    <!--! always show default if badge chain < 2 vehicles -->
+    <!--!
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! always show default if badge chain < 2 vehicles -->
         0..1: switch_graphics_pax_car_ruleset_position_default;
         switch_graphics_pax_car_ruleset_position_check_first;
     }
+    -->
+    switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_random_category, [
+            <!--! 3 categories, but pick 3 bits and distribute the random weight across 8 entries -->
+            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3)
+        ]) {
+        <!--! most common -->
+        0: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        1: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        2: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+
+        3: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        4: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        5: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        <!--! least common -->
+        6: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        7: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, [
+            switch_graphics_pax_car_ruleset_random_category()
+        ]) {
+        0: return ${default};
+        1: return ${first};
+        2: return ${last};
+        <!--!4: return switch_graphics_pax_car_ruleset_position_check_first;-->
+        return ${default}; <!--! shouldn't be reached, maps are pre-determined to 0, 1, 2 -->
+    }
+
 </tal:ruleset>
 
 
