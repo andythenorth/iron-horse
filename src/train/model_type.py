@@ -235,6 +235,7 @@ class ModelTypeBase(object):
     @property
     def formation_ruleset_badges(self):
         # possibly should be delegated to catalogue, but really not clear, so eh JFDI
+        # CABBAGE definitely JFDI, not clear whose domain these are - model, gestalt, catalogue?
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(
@@ -3979,6 +3980,8 @@ class ExpressCarUnit(CarModelTypeBase):
 
     model_id_root = "express_car"
     randomised_candidate_groups = ["express_food_car_randomised"]
+    # express cars treated as mail car for rulesets (but not as pax car - tested that, better to not)
+    formation_reporting_labels = ["generic_mail_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5631,6 +5634,7 @@ class MailHSTMiddleCar(MailCarBase):
 
     model_id_root = "hst_mail_car"
     dedicated_tgv_hst_formation = True
+    # formation_reporting_labels are via vehicle family rules
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
