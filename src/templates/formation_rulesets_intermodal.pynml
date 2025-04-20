@@ -1,29 +1,51 @@
-<!--! position rulesets for formation-position-dependent vehicles -->
-
-<!--! CABBAGE - may need converted to badge predicates?  Unclear what the goal is yet -->
+<!--! position rulesets for formation-position-dependent intermodal vehicles -->
 
 // intermodal platform 2 unit sets
 <tal:ruleset define="default 0; first 1; last 2;">
-    <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_formation_1, position_in_vehid_chain % 2) {
+
+    <!--! CABBAGE `2_unit_sets` vs `max_2_unit_sets` token names -->
+
+    <!--! more than two in chain, inner location -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_not_first_or_last, [
+                switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
+            ]) {
         0: return ${default};
+        1: return ${first};
+        2: return ${last};
+    }
+    <!--! last, more than one in chain -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_is_last, [
+                switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
+            ]) {
+        0: ${default};
+        1: ${default};
+        2: ${last};
+    }
+    <!--! first, more than one in chain -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_is_first, [
+                switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
+            ]) {
+        0: ${default};
+        1: ${first};
+        2: ${default};
+        3: ${first};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets, [
+                <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3
+                    (a single unit chain will be 3 as it is both first and last)
+                    the results of this ternary are *NOT* related to the position results from the ruleset procedure
+                    -->
+                ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain) == 0) ? 1 : 0)
+                +
+                ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) == 0) ? 2 : 0)
+            ]) {
+        0: switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_not_first_or_last;
+        1: switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_is_first;
+        2: switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_is_last;
+        3: ${default}; <!--! single unit -->
     }
 
-    <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_formation_2, position_in_vehid_chain % 2) {
-        0: return ${first};
-        return ${last};
-    }
 
-    <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_less_than_2_remaining, num_vehs_in_vehid_chain % 2) {
-        1: return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_formation_1;
-        return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_formation_2;
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 2))) {
-        1: return switch_graphics_intermodal_platform_ruleset_2_unit_sets_less_than_2_remaining;
-        return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_formation_2;
-    }
 </tal:ruleset>
 
 
@@ -60,7 +82,10 @@
         3: ${first};
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets, [
-                <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3 (for single unit consist) -->
+                <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3
+                    (a single unit chain will be 3 as it is both first and last)
+                    the results of this ternary are *NOT* related to the position results from the ruleset procedure
+                    -->
                 ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain) == 0) ? 1 : 0)
                 +
                 ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) == 0) ? 2 : 0)

@@ -8,9 +8,9 @@ run-lengths of 1–4. Each run is built with sprite roles:
   2 = last
   3 = inner
 
-Two formation categories:
-  - "max_4_unit_sets": uses all sprite roles (1–3)
-  - "max_2_unit_sets": excludes inners (only 1 + 2)
+Each ruleset defines its own constraints:
+  - "max_4_unit_sets": allows inner vehicles, max run length 4
+  - "max_2_unit_sets": no inner vehicles, max run length 2
 
 Used in NML rulesets to drive:
   - Sprite role selection
@@ -35,6 +35,10 @@ VALUE_INNER = 3
 DEFAULT_FORMATION_COUNT = 64
 DEFAULT_MAX_LENGTH = 64
 
+RULESET_CONFIG = {
+    "max_4_unit_sets": {"allow_inner": True, "max_run_length": 4},
+    "max_2_unit_sets": {"allow_inner": False, "max_run_length": 2},
+}
 
 def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int]:
     if run_length == 1:
@@ -45,27 +49,26 @@ def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int
         if allow_inner:
             return [VALUE_FIRST] + [VALUE_INNER] * (run_length - 2) + [VALUE_LAST]
         else:
-            return [VALUE_FIRST] + [VALUE_LAST] * (run_length - 2) + [VALUE_LAST]
+            raise ValueError("Run length > 2 is not allowed when inners are disabled")
 
-
-def generate_base_maps_for_ruleset(
-    seed_index: int, allow_inner: bool = True
-) -> list[int]:
+def generate_base_maps_for_ruleset(seed_index: int, config: dict) -> list[int]:
     rng = Random(seed_index)
     remaining = DEFAULT_MAX_LENGTH
     formation = []
 
     while remaining > 0:
-        max_run = min(4, remaining)
-        if remaining == 1:
-            run_len = 1
-        elif remaining == 3:
-            run_len = 3
+        if config["allow_inner"]:
+            if remaining == 1:
+                run_len = 1
+            elif remaining == 3:
+                run_len = 3
+            else:
+                run_len = rng.choice([1, 2, 3, 4])
+                run_len = min(run_len, config["max_run_length"], remaining)
         else:
-            run_len = rng.choice([1, 2, 3, 4])
-            run_len = min(run_len, remaining)
+            run_len = rng.choice([1, 2]) if remaining >= 2 else 1
 
-        run = generate_entropic_run(run_len, allow_inner=allow_inner)
+        run = generate_entropic_run(run_len, allow_inner=config["allow_inner"])
         formation.extend(run)
         remaining -= run_len
 
@@ -76,25 +79,18 @@ def generate_base_maps_for_ruleset(
 
     return formation[:DEFAULT_MAX_LENGTH]
 
-
-def generate_run_randomization_map(
-    formation: list[int], max_value: int, rng: Random
-) -> list[int]:
+def generate_run_randomization_map(formation: list[int], max_value: int, rng: Random) -> list[int]:
     if max_value < 2:
         raise ValueError("max_value must be at least 2")
 
     output = []
     i = 0
     while i < len(formation):
-        start = i
         if formation[i] == VALUE_SINGLE:
             run_len = 1
         elif formation[i] == VALUE_FIRST:
             run_len = 1
-            while i + run_len < len(formation) and formation[i + run_len] in (
-                VALUE_INNER,
-                VALUE_LAST,
-            ):
+            while i + run_len < len(formation) and formation[i + run_len] in (VALUE_INNER, VALUE_LAST):
                 if formation[i + run_len] == VALUE_LAST:
                     run_len += 1
                     break
@@ -111,28 +107,23 @@ def generate_run_randomization_map(
 
     return output
 
-
 def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
-    output = {"max_4_unit_sets": [], "max_2_unit_sets": []}
+    output = {key: [] for key in RULESET_CONFIG}
     for i in range(DEFAULT_FORMATION_COUNT):
-        for key, allow_inner in [("max_4_unit_sets", True), ("max_2_unit_sets", False)]:
-            formation = generate_base_maps_for_ruleset(i, allow_inner=allow_inner)
+        for key, config in RULESET_CONFIG.items():
+            formation = generate_base_maps_for_ruleset(i, config)
             output[key].append(formation)
     return output
 
-
-def generate_map_for_random_choices(
-    max_random_value: int,
-) -> dict[str, list[list[int]]]:
+def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[list[int]]]:
     base_maps = generate_map_for_ruleset()
-    output = {"max_4_unit_sets": [], "max_2_unit_sets": []}
+    output = {key: [] for key in RULESET_CONFIG}
     for category, formations in base_maps.items():
         for i, formation in enumerate(formations):
             rng = Random(i)
             run_map = generate_run_randomization_map(formation, max_random_value, rng)
             output[category].append(run_map)
     return output
-
 
 # Preview and validation
 if __name__ == "__main__":
@@ -152,7 +143,7 @@ if __name__ == "__main__":
 
     print("\nRun-level randomization preview:")
     run_maps = generate_map_for_random_choices(8)
-    for i, category in enumerate(["max_4_unit_sets", "max_2_unit_sets"]):
+    for i, category in enumerate(RULESET_CONFIG):
         sample_form = result[category][0]
         sample_runs = run_maps[category][0]
         print(f"  → {category} map 0:")
