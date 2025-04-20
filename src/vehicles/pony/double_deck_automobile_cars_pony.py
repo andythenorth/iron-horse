@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileDoubleDeckCar",
-        base_numeric_id=30890,
+        base_numeric_id=36610,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileDoubleDeckCar",
-        base_numeric_id=26770,
+        base_numeric_id=35090,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileDoubleDeckCar",
-        base_numeric_id=17330,
+        base_numeric_id=35190,
         gen=5,
         subtype="C",
         sprites_complete=True,

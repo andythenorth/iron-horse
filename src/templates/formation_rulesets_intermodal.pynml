@@ -44,8 +44,6 @@
         2: switch_graphics_intermodal_platform_ruleset_2_unit_sets_not_single_is_last;
         3: ${default}; <!--! single unit -->
     }
-
-
 </tal:ruleset>
 
 
@@ -95,6 +93,4 @@
         2: switch_graphics_intermodal_platform_ruleset_4_unit_sets_not_single_is_last;
         3: ${default}; <!--! single unit -->
     }
-
-
 </tal:ruleset>

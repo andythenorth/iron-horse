@@ -54,25 +54,19 @@
     }
 </tal:spritelayer_cargo_layers>
 
-<!--! TEMP SHIM ???? -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_freight_wagon_livery_select_colour_set_CABBAGE,
-                    switch_pseudo_random_freight_ruleset_map_for_random_choice_max_4_unit_sets()
-                ) {
-    <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
-        <!--! this relies on order matching the order of company colours per nml / openttd constants;
-              e.g. COLOUR_DARK_BLUE = 0, COLOUR_WHITE= 15
-              we then extend our own custom colour sets after the default colours -->
-        <!--! // debug: ${colour_set[1][0]}, ${colour_set[1][1]} -->
-        ${repeat.colour_set.index}: switch_colour_set_${colour_set[0]}_1cc;
-    </tal:colour_sets>
-}
+<!--! CABBAGE SHIM - fetching the ruleset target might be fragile - also 'max_unit_sets' vs '4_unit_sets' ???? -->
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice, [
+            switch_pseudo_random_freight_ruleset_map_for_random_choice_max_${model_variant.gestalt_graphics.formation_ruleset}()
+        ]) {
+    return;
+    }
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41, [
         <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
         <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
         ,
-         STORE_TEMP(${unit.id}_switch_freight_wagon_livery_select_colour_set_CABBAGE(), 0x100),
+         STORE_TEMP(switch_freight_wagon_livery_entry_point(${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice()), 0x100)
     ]) {
     return ${unit.id}_switch_graphics_platform_position_in_formation_entry_point;
 }

@@ -43,7 +43,9 @@ switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_livery_num_from_badge,
     return;
 }
 <!--! up to 8 random liveries (all 8 must be passed as params when initing the wagon chain -->
-switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_random_livery_from_candidates, random_bits_wagon_random_remap_livery()) {
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_get_random_livery_from_candidates, [
+        LOAD_TEMP(k_addr_wagon_recolour_random_livery_choice_num)
+    ]) {
      <tal:available_liveries repeat="livery_num range(8)">
          ${livery_num}: return LOAD_TEMP(k_addr_wagon_recolour_livery_num_${livery_num});
      </tal:available_liveries>
@@ -97,10 +99,11 @@ switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_serialised_liveries, liver
     </tal:wagon_recolour_set>
 }
 
-switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_entry_point,
+switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_entry_point, wagon_recolour_random_livery_choice_num, [
+        STORE_TEMP(wagon_recolour_random_livery_choice_num, k_addr_wagon_recolour_random_livery_choice_num),
         <!--! the 0 here is an offset which can be used to access purchase liveries, but in this non-purchase case offset is 0 -->
         switch_freight_wagon_livery_serialised_liveries(0)
-    ) {
+    ]) {
     return;
 }
 switch(FEAT_TRAINS, SELF, switch_freight_wagon_livery_entry_point_purchase,

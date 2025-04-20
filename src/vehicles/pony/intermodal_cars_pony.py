@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="IntermodalCarUnit",
-        base_numeric_id=28360,
+        base_numeric_id=35490,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="IntermodalCarUnit",
-        base_numeric_id=28380,
+        base_numeric_id=35510,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="IntermodalCarUnit",
-        base_numeric_id=28400,
+        base_numeric_id=34840,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="IntermodalCarUnit",
-        base_numeric_id=28420,
+        base_numeric_id=34860,
         gen=5,
         subtype="C",
         sprites_complete=True,

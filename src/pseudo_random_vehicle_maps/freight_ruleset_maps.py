@@ -1,3 +1,4 @@
+""
 """
 Deterministic entropic formation maps for ruleset-based vehicle rendering.
 
@@ -11,6 +12,7 @@ run-lengths of 1–4. Each run is built with sprite roles:
 Each ruleset defines its own constraints:
   - "max_4_unit_sets": allows inner vehicles, max run length 4
   - "max_2_unit_sets": no inner vehicles, max run length 2
+  - "max_1_unit_sets": single units only, no runs (each vehicle is separate)
 
 Used in NML rulesets to drive:
   - Sprite role selection
@@ -38,6 +40,7 @@ DEFAULT_MAX_LENGTH = 64
 RULESET_CONFIG = {
     "max_4_unit_sets": {"allow_inner": True, "max_run_length": 4},
     "max_2_unit_sets": {"allow_inner": False, "max_run_length": 2},
+    "max_1_unit_sets": {"allow_inner": False, "max_run_length": 1},
 }
 
 def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int]:
@@ -66,7 +69,7 @@ def generate_base_maps_for_ruleset(seed_index: int, config: dict) -> list[int]:
                 run_len = rng.choice([1, 2, 3, 4])
                 run_len = min(run_len, config["max_run_length"], remaining)
         else:
-            run_len = rng.choice([1, 2]) if remaining >= 2 else 1
+            run_len = min(rng.choice([1, 2]), config["max_run_length"], remaining)
 
         run = generate_entropic_run(run_len, allow_inner=config["allow_inner"])
         formation.extend(run)
@@ -143,7 +146,7 @@ if __name__ == "__main__":
 
     print("\nRun-level randomization preview:")
     run_maps = generate_map_for_random_choices(8)
-    for i, category in enumerate(RULESET_CONFIG):
+    for category in RULESET_CONFIG:
         sample_form = result[category][0]
         sample_runs = run_maps[category][0]
         print(f"  → {category} map 0:")

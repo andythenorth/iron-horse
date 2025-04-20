@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileLowFloorCar",
-        base_numeric_id=26730,
+        base_numeric_id=33040,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -52,7 +52,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutomobileLowFloorCar",
-        base_numeric_id=26750,
+        base_numeric_id=35070,
         gen=5,
         subtype="C",
         sprites_complete=True,
