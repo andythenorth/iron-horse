@@ -1,7 +1,7 @@
 <tal:model_common condition="model_variant.is_default_model_variant">
     <!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
     switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_variant_choose_randomised_wagon, [
-                                pseudo_random_value_from_deterministic_random_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
+                                pseudo_random_value_from_freight_entropic_map_${model_variant.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                 %
                                 ${len(model_variant.wagon_randomisation_candidates)}

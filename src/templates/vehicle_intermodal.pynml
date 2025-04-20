@@ -56,7 +56,7 @@
 
 <!--! TEMP SHIM ???? -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_freight_wagon_livery_select_colour_set_CABBAGE,
-                    switch_deterministic_random_value_map_intermodal_max_4_unit_sets()
+                    switch_pseudo_random_freight_ruleset_map_for_random_choice_max_4_unit_sets()
                 ) {
     <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
         <!--! this relies on order matching the order of company colours per nml / openttd constants;

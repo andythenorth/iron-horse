@@ -1,5 +1,5 @@
 
-<!--! wagons -->
+<!--! ====== Sequences for wagons randomised with varying levels of entropy to suit the type of train ====== -->
 
 <!--! For some randomised cases, we want runs of the same 'random' vehicle for count n (usually between 2 and 5).
       Then we switch to another 'random' vehicle.
@@ -10,7 +10,7 @@
     <tal:deterministic_random_maps_by_type repeat="random_map pseudo_random_vehicle_maps.freight_entropic_maps.get_deterministic_random_vehicle_maps(random_map_type)">
         <!--! (position_in_consist -1) here because we can assume there's at least one engine ...
                ...we don't try to do anything fancier than that, but this prevents high incidence of a run of just 2 at start of wagons -->
-        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_${random_map_type}_${repeat.random_map.index}, [
+        switch (FEAT_TRAINS, SELF, switch_pseudo_random_freight_entropic_map_${random_map_type}_${repeat.random_map.index}, [
                 (position_in_consist - 1) % 64
             ]) {
             <tal:map_items repeat="map_item random_map">
@@ -19,25 +19,26 @@
         }
     </tal:deterministic_random_maps_by_type>
 
-    <!--! pick 6 bits to choose 1 of 64 maps; the bits do possibly overlap with the variant selection bits in 1 of 10 cases, but we'll live with that -->
-    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_${random_map_type}, [
+    <!--! 64 maps - pick 6 bits from the lead engine - the bits do possibly overlap with the variant selection bits in 1 of 10 cases, but we'll live with that -->
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_freight_entropic_map_${random_map_type}, [
             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
         ]) {
         <tal:map_indexes repeat="map_index range(64)">
-            ${map_index}: switch_deterministic_random_vehicle_map_${random_map_type}_${map_index};
+            ${map_index}: switch_pseudo_random_freight_entropic_map_${random_map_type}_${map_index};
         </tal:map_indexes>
     }
 
 </tal:deterministic_random_maps>
 
 
-<!--! intermodal cars -->
+<!--! ====== Sequences for ruleset-based wagons ====== -->
 
+<!--! random maps of n-length rulesets, in runs of 1-n, for e.g. intermodal and automotive type wagons that are multi-wagon sets -->
 <tal:deterministic_random_maps repeat="ruleset_map_items pseudo_random_vehicle_maps.freight_ruleset_maps.generate_map_for_ruleset().items()">
     <tal:block define="ruleset_type ruleset_map_items[0];
                        ruleset_maps ruleset_map_items[1]">
         <tal:deterministic_random_maps_by_type repeat="ruleset_map ruleset_maps">
-            switch (FEAT_TRAINS, SELF, switch_deterministic_random_ruleset_map_intermodal_${ruleset_type}_${repeat.ruleset_map.index}, [
+            switch (FEAT_TRAINS, SELF, switch_pseudo_random_freight_ruleset_map_${ruleset_type}_${repeat.ruleset_map.index}, [
                     LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(ruleset_map)}
                 ]) {
                 <tal:map_entries repeat="map_entry ruleset_map">
@@ -46,22 +47,23 @@
             }
         </tal:deterministic_random_maps_by_type>
 
-        switch (FEAT_TRAINS, PARENT, switch_deterministic_random_ruleset_map_intermodal_${ruleset_type}, [
-                <!--! 64 maps so pick 6 bits - make sure it's the same bits as the ruleset switch -->
+        switch (FEAT_TRAINS, PARENT, switch_pseudo_random_freight_ruleset_map_${ruleset_type}, [
+                <!--! 64 maps - pick 6 bits from lead engine - make sure it's the same bits as the random values switch -->
                 getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
             ]) {
             <tal:map_indexes repeat="map_index range(len(ruleset_maps))">
-                ${map_index}: switch_deterministic_random_ruleset_map_intermodal_${ruleset_type}_${map_index};
+                ${map_index}: switch_pseudo_random_freight_ruleset_map_${ruleset_type}_${map_index};
             </tal:map_indexes>
         }
     </tal:block>
 </tal:deterministic_random_maps>
 
-<tal:deterministic_random_maps repeat="random_value_map_items pseudo_random_vehicle_maps.freight_ruleset_maps.generate_map_for_random_choices(8).items()">
+<!--! now the same pattern as the ruleset, but seeded with random values so we can choose random recolours or do wagon type randomisation, whilst matching the ruleset pattern -->
+<tal:deterministic_random_maps repeat="random_value_map_items pseudo_random_vehicle_maps.freight_ruleset_maps.generate_map_for_random_choices(max_random_value=8).items()">
     <tal:block define="ruleset_type random_value_map_items[0];
                        random_value_maps random_value_map_items[1]">
         <tal:deterministic_random_maps_by_type repeat="random_value_map random_value_maps">
-            switch (FEAT_TRAINS, SELF, switch_deterministic_random_value_map_intermodal_${ruleset_type}_${repeat.random_value_map.index}, [
+            switch (FEAT_TRAINS, SELF, switch_pseudo_random_freight_ruleset_map_for_random_choice_${ruleset_type}_${repeat.random_value_map.index}, [
                     LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(random_value_map)}
                 ]) {
                 <tal:map_entries repeat="map_entry random_value_map">
@@ -70,23 +72,24 @@
             }
         </tal:deterministic_random_maps_by_type>
 
-        switch (FEAT_TRAINS, PARENT, switch_deterministic_random_value_map_intermodal_${ruleset_type}, [
-                <!--! 64 maps so pick 6 bits - make sure it's the same bits as the ruleset switch -->
+        switch (FEAT_TRAINS, PARENT, switch_pseudo_random_freight_ruleset_map_for_random_choice_${ruleset_type}, [
+                <!--! 64 maps - pick 6 bits from lead engine - make sure it's the same bits as the ruleset switch -->
                 getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)
             ]) {
             <tal:map_indexes repeat="map_index range(len(random_value_maps))">
-                ${map_index}: switch_deterministic_random_value_map_intermodal_${ruleset_type}_${map_index};
+                ${map_index}: switch_pseudo_random_freight_ruleset_map_for_random_choice_${ruleset_type}_${map_index};
             </tal:map_indexes>
         }
     </tal:block>
 </tal:deterministic_random_maps>
 
 
-<!--! mail cars -->
+<!--! ====== Sequences for mail cars ====== -->
 
+<!--! specific ruleset with randomisation suitable for mail train formations (and mail vans in passenger trains) -->
 <tal:CABBAGE_deterministic_random_maps_MAIL repeat="CABBAGE_random_maps pseudo_random_vehicle_maps.mail_ruleset_maps.get_all_mail_maps()">
     <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps['maps']">
-        switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.CABBAGE_map.index}, [
+        switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.CABBAGE_map.index}, [
                 LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
             ]) {
             <tal:map_items repeat="map_item CABBAGE_map">
@@ -96,11 +99,11 @@
     </tal:cabbage_chain_length>
 
     switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_chain_length_${CABBAGE_random_maps['chain_length']}, [
-            <!--! up to 32 maps -->
+            <!--! up to 32 maps - pick 5 random bits from lead engine -->
             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 5) % ${len(CABBAGE_random_maps['maps'])}
         ]) {
         <tal:map_indexes repeat="map_index CABBAGE_random_maps['maps']">
-            ${repeat.map_index.index}: switch_deterministic_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.map_index.index};
+            ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.map_index.index};
         </tal:map_indexes>
     }
 </tal:CABBAGE_deterministic_random_maps_MAIL>
@@ -113,13 +116,14 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
 }
 
 
-<!--! pax cars -->
+<!--! ====== Sequences for pasenger cars ====== -->
 
+<!--! multiple types of map with relatively low entropy, to create interesting passenger formations -->
 <tal:CABBAGE_deterministic_random_maps_PAX repeat="CABBAGE_random_maps_by_category pseudo_random_vehicle_maps.pax_ruleset_maps.get_all_pax_maps().items()">
     <tal:maps_by_category repeat="CABBAGE_random_maps_container CABBAGE_random_maps_by_category[1]"
                           define="category CABBAGE_random_maps_by_category[0]">
         <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps_container['maps']">
-            switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.CABBAGE_map.index}, [
+            switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.CABBAGE_map.index}, [
                     LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
                 ]) {
                 <tal:map_items repeat="map_item CABBAGE_map">
@@ -130,11 +134,11 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
 
 
         switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}, [
-                <!--! up to 8 maps -->
+                <!--! up to 8 maps, pick 3 random bits from lead engine -->
                 getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3) % ${len(CABBAGE_random_maps_container['maps'])}
             ]) {
             <tal:map_indexes repeat="map_index CABBAGE_random_maps_container['maps']">
-                ${repeat.map_index.index}: switch_deterministic_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.map_index.index};
+                ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.map_index.index};
             </tal:map_indexes>
         }
 
