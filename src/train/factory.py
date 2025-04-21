@@ -351,7 +351,7 @@ class ModelVariantFactory:
         # group trailers with their cabs - needs to be done before generic wagon handling
         # there are a few ways this could be done, doesn't matter which as of Apr 2025
         if self.cab_factory is not None:
-            return self.cab_factory.model_id
+            return self.cab_factory.vehicle_family_id
 
         # default grouping for wagons not otherwise handled above
         if self.catalogue.wagon_quacker.quack:

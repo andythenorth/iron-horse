@@ -349,6 +349,9 @@ class ModelTypeBase(object):
             result.append(self.role_badge)
         if getattr(self, "subtype", None) is not None:
             result.append("ih_wagon_subtype/" + self.subtype.lower())
+        # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
+        if self.catalogue_entry.variant_group_id is not None:
+            result.append("ih_variant_group_id/" + self.catalogue_entry.variant_group_id)
         return result
 
     @cached_property

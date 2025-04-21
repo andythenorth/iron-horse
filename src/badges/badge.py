@@ -67,6 +67,7 @@ class BadgeManager(list):
         self.produce_livery_badges(**kwargs)
         self.produce_vehicle_family_badges(**kwargs)
         self.produce_formation_ruleset_badges(**kwargs)
+        self.produce_general_metadata_badges(**kwargs)
         self.produce_randomised_wagon_candidate_badges(**kwargs)
         self.produce_tech_tree_badges(**kwargs)
         self.produce_pantograph_display_badges(**kwargs)
@@ -197,6 +198,14 @@ class BadgeManager(list):
         for roster in roster_manager:
             for catalogue in roster.catalogues:
                 for badge in catalogue.example_model_variant.formation_ruleset_badges:
+                    self.add_badge(f"{badge}")
+
+    def produce_general_metadata_badges(self, **kwargs):
+        # model variants not catalogues here, metadata can vary per model variant
+        roster_manager = kwargs["roster_manager"]
+        for roster in roster_manager:
+            for model_variant in roster.model_variants:
+                for badge in model_variant.general_metadata_badges:
                     self.add_badge(f"{badge}")
 
     def produce_tech_tree_badges(self, **kwargs):
