@@ -144,9 +144,9 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
 
     </tal:maps_by_category>
 
-    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}, target_map_length,
-            [target_map_length]
-        ) {
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}, target_map_length, [
+            target_map_length % 24 <!--! 24 is max formation length for pax, this is for wraparound on 4/8 vehicles to get more brakes -->
+        ]) {
         <tal:length_indexes repeat="CABBAGE_random_maps CABBAGE_random_maps_by_category[1]">
             ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}_chain_length_${CABBAGE_random_maps['chain_length']};
         </tal:length_indexes>

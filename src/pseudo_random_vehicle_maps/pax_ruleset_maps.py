@@ -6,10 +6,11 @@ VALUE_BRAKE_FRONT = 1
 VALUE_BRAKE_REAR = 2
 VALUE_SPECIAL = 3
 
+# 25 relates to map max length of 24 vehicles, to get wrap around on formations of 4/8, to get more brakes, without editing the generation logic
 FORMATION_CLASSES = {
-    "brakes_outer_ends": {"count": 8, "lengths": list(range(1, 17))},
-    "brakes_inner_paired": {"count": 8, "lengths": list(range(1, 17))},
-    "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 17))},
+    "brakes_outer_ends": {"count": 8, "lengths": list(range(1, 25))},
+    "brakes_inner_paired": {"count": 8, "lengths": list(range(1, 25))},
+    "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 25))},
 }
 
 
@@ -68,7 +69,7 @@ def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
     base_offset = seed_index - 4  # bias middle slightly left or right
     family = {}
-    for length in range(1, 17):
+    for length in range(1, 25):
         if length < 3:
             family[length] = [VALUE_STANDARD] * length
             continue
@@ -87,7 +88,7 @@ def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
     base_first_pos = rng.randint(1, 4)
     second_brake_delta = rng.randint(1, 3)
     family = {}
-    for length in range(1, 17):
+    for length in range(1, 25):
         formation = [VALUE_STANDARD] * length
         if length < 2:
             formation[0] = VALUE_BRAKE_REAR
