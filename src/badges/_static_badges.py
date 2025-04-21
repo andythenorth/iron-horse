@@ -15,6 +15,7 @@ static_badges = {
             "c": {},  # {"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
             "d": {},  # {"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
             "u": {},  # {"name": "STR_EMPTY"},
+            "z": {},  # CABBAGE 3/8 temp
         },
     },
     "ih_name_cb_flags": {

@@ -639,6 +639,9 @@ base = "Cube Wagon"
 [STR_WAGON_NAME_SLIDING_WALL_CAR]
 base = "Sliding Wall Van"
 
+[STR_WAGON_NAME_SPACER_CAR]
+base = "Spacer Wagon"
+
 [STR_WAGON_NAME_SUBURBAN_PASSENGER_CAR]
 base = "Suburban Coach"
 

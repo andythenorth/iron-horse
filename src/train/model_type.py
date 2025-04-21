@@ -3668,6 +3668,17 @@ class CabooseCar(CarModelTypeBase):
         return True
 
 
+class SpacerCar(CabooseCar):
+    """
+    CABBAGE - EXPERIMENTAL
+    """
+
+    model_id_root = "spacer_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class CaneBinCar(CarModelTypeBase):
     """
     Specialist transporter (narrow gauge bin) for (sugar) cane
