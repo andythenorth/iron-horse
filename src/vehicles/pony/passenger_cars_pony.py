@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_16px")
@@ -25,7 +25,7 @@ def main(**kwargs):
         gen=1,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_24px")
@@ -40,7 +40,7 @@ def main(**kwargs):
         gen=3,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_16px")
@@ -53,7 +53,7 @@ def main(**kwargs):
         gen=3,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_24px")
@@ -66,7 +66,7 @@ def main(**kwargs):
         gen=3,
         subtype="C",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_32px")
@@ -81,7 +81,7 @@ def main(**kwargs):
         gen=4,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_24px")
@@ -94,7 +94,7 @@ def main(**kwargs):
         gen=4,
         subtype="C",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_ng_32px")
@@ -111,7 +111,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="PaxCarUnit", chassis="2_axle_solid_express_16px")
+    model_def.add_unit_def(class_name="PaxCarUnit", chassis="3_axle_solid_express_16px")
 
     result.append(model_def)
 
@@ -180,7 +180,7 @@ def main(**kwargs):
         base_numeric_id=18270,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="PaxCarUnit", chassis="3_axle_solid_express_16px")
