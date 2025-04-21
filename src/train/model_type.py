@@ -1340,6 +1340,7 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
     """
 
     liveries = ["VANILLA"]
+    formation_reporting_labels = ["generic_mail_car", "generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1439,8 +1440,8 @@ class MailEngineCabbageDVT(MailEngineBase):
     """
 
     livery_group_name = "dvt_mail_liveries"
-    # report *mail* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-    formation_reporting_labels = ["generic_pax_car"]
+    # report *mail* cab cars also as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
+    formation_reporting_labels = ["generic_mail_car", "generic_pax_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
