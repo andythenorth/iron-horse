@@ -325,11 +325,11 @@ class ModelVariantFactory:
         # accessed via catalogue
         result = []
         # first find out if we're a trailer, and if we need pans
-        if self.cab_factory is not None:
+        if (self.cab_factory is not None) and (not self.catalogue.example_model_variant.is_distributed_power_wagon):
             if self.cab_factory.model_def.pantograph_type is not None:
                 result.append(f"ih_pantograph_display/requires_cab_present/{self.model_id}")
         # now find out if we're a cab, and if we need pans
-        if self.catalogue.engine_quacker.is_cab_with_dedicated_trailers:
+        if (self.catalogue.engine_quacker.is_cab_with_dedicated_trailers):
             if self.model_def.pantograph_type is not None:
                 result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
         # strictly we should never need both results and could return early, but eh, this also works
