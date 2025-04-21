@@ -267,14 +267,17 @@ base = "YEOMAN"
 [STR_BADGE_BEHAVIOUR]
 base = "Behaviour"
 
-[STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
-base = "Randomised choice of wagon"
-
 [STR_BADGE_BEHAVIOUR_CABOOSE]
 base = "No gameplay effect"
 
 [STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS]
 base = "Express haulable"
+
+[STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
+base = "Randomised choice of wagon"
+
+[STR_BADGE_BEHAVIOUR_RESTAURANT_CAR]
+base = "Eliminates running costs for all Passenger Coaches and High Speed Coaches in the train"
 
 # role badges
 
@@ -304,9 +307,6 @@ base = "Lolz"
 
 [STR_BADGE_ROLE_METRO]
 base = "Very High Capacity Urban"
-
-[STR_BADGE_ROLE_RESTAURANT_CAR]
-base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 
 [STR_BADGE_ROLE_SUBURBAN]
 base = "General Purpose / High Capacity"

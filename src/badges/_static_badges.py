@@ -46,7 +46,6 @@ static_badges = {
             "lolz": {"name": "STR_BADGE_ROLE_LOLZ"},
             "mail_railcar": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE"},
             "metro": {"name": "STR_BADGE_ROLE_METRO"},
-            "restaurant_car": {"name": "STR_BADGE_ROLE_RESTAURANT_CAR"},
             "suburban_or_universal_railcar": {"name": "STR_BADGE_ROLE_SUBURBAN"},
             "universal": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE"},
             "very_high_speed": {"name": "STR_BADGE_ROLE_INTERCITY_EXPRESS"},
@@ -63,12 +62,13 @@ static_badges = {
     "ih_behaviour": {
         "name": "STR_BADGE_BEHAVIOUR",
         "sublabels": {
-            "randomised_wagon": {"name": "STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON"},
             "caboose": {"name": "STR_BADGE_BEHAVIOUR_CABOOSE"},
+            "provides_easter_egg_haulage_speed_bonus": {},
+            "restaurant_car": {"name": "STR_BADGE_BEHAVIOUR_RESTAURANT_CAR"},
+            "randomised_wagon": {"name": "STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON"},
             "receives_easter_egg_haulage_speed_bonus": {
                 "name": "STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS"
             },
-            "provides_easter_egg_haulage_speed_bonus": {},
         },
     },
 }

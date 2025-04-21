@@ -269,6 +269,13 @@ class ModelTypeBase(object):
         return set(result)
 
     @property
+    def restaurant_car_badges(self):
+        result = []
+        if self.catalogue.wagon_quacker.is_restaurant_car:
+            result.append(f"ih_behaviour/restaurant_car")
+        return result
+
+    @property
     def caboose_badges(self):
         result = []
         if self.catalogue.wagon_quacker.is_caboose:
@@ -368,6 +375,7 @@ class ModelTypeBase(object):
         result.extend(self.livery_badges)
         result.extend(self.power_source_badges)
         result.extend(self.randomised_wagon_badges)
+        result.extend(self.restaurant_car_badges)
         result.extend(self.special_flags_badges)
         result.extend(self.tech_tree_badges)
         result.extend(self.variant_handling_badges)
@@ -6764,11 +6772,6 @@ class PassengerRestaurantCar(PassengerCarBase):
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["restaurant"]
-
-    @property
-    def subrole(self):
-        return "restaurant_car"
-
 
 class PassengerSuburbanCar(PassengerCarBase):
     """
