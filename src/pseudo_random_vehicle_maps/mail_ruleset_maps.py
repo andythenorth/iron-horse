@@ -4,14 +4,14 @@ from collections import defaultdict
 from itertools import product
 
 # Constants
-MAP_LENGTHS = [3, 8, 16, 32]  # Only generate maps for these lengths
+MAP_LENGTHS = [1, 3, 8, 16, 32]  # Added 1
 VALUE_FIRST = 0
 VALUE_LAST = 1
 VALUE_SPECIAL = 2
 
 # Number of maps to generate per length
-# We don't need all lengths, just a selection, and we'll offset into them via vehicle position as needed
 MAP_COUNTS = {
+    1: 2,     # Special case: only two values
     3: 16,
     8: 32,
     16: 32,
@@ -20,15 +20,16 @@ MAP_COUNTS = {
 
 SPECIAL_RUN_WEIGHTS = [1, 1, 2, 2, 2, 3]
 
-
 def generate_empty_map_structure():
     """
     Generate an empty map structure: {chain_length: [[], [], ...]}
     """
     return {length: [[] for _ in range(MAP_COUNTS[length])] for length in MAP_LENGTHS}
 
-
 def generate_mail_map(length: int, seed: int) -> list[int]:
+    if length == 1:
+        return [VALUE_FIRST if seed % 2 == 0 else VALUE_LAST]
+
     if length == 3:
         valid = [list(p) for p in product([0, 1, 2], repeat=3) if 2 in p]
         return valid[seed % len(valid)]
@@ -72,16 +73,16 @@ def generate_mail_map(length: int, seed: int) -> list[int]:
 
     return result
 
-
 def validate_map(length: int, map_values: list[int]) -> bool:
     if length != len(map_values):
         return False
+    if length == 1:
+        return map_values[0] in (VALUE_FIRST, VALUE_LAST)
     if length == 3:
         return VALUE_SPECIAL in map_values
     if length > 3 and VALUE_SPECIAL not in map_values[1:-1]:
         return False
     return True
-
 
 def get_all_mail_maps() -> list[dict]:
     """
@@ -105,7 +106,6 @@ def get_all_mail_maps() -> list[dict]:
             index += 1
         output.append({"chain_length": length, "maps": maps})
     return output
-
 
 if __name__ == "__main__":
     all_maps = get_all_mail_maps()

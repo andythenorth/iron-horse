@@ -62,22 +62,24 @@
         <!--!4: return switch_graphics_pax_car_ruleset_position_check_first;-->
         return ${default}; <!--! shouldn't be reached, maps are pre-determined -->
     }
-
 </tal:ruleset>
 
 
 // mail car ruleset - delegates to pre-generated pseudo-random maps
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
+
     <!--! we do a couple of specific things here to get an appropriate weight fom the pseudo random maps:
           - we *don't* switch the target map for all vehicles as the length changes, it looks weird because the consist changes as vehicles are added removed
           - we do offset into specific maps depending on vehicle position, as it's guaranteed that e.g.
              - short lengths such as 3 or 6 will have a good vehicle mix (this is enforced in the generator)
              - whereas offsetting short chains straight into the 32 map might not be pleasing result, as the first part of the map may have low entropy
           -->
+    <!--! cabbage - this could probably just have used a set of 64 length maps, with better map gen rules, like pax cars distribute brake coaches -->
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_select_appropriate_map_length, [
             LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
         ]) {
-        0..3: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(3);
+        0: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(1); <!--! no special sprites for length 1, by design (relies on the maps) -->
+        1..3: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(3);
         4..7: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(8);
         8..15: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(16);
         return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(32);
