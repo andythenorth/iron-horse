@@ -2,40 +2,6 @@
 
 // pax car ruleset
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_default, 0) {
-        return ${default};
-    }
-
-    <!--! if special -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_special_check_length, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        <!--! don't show 'special' if badge chain < 4 vehicles -->
-        0..3: switch_graphics_pax_car_ruleset_position_default;
-        return ${special};
-    }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_special, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
-        0..1: switch_graphics_pax_car_ruleset_position_special_check_length;
-        switch_graphics_pax_car_ruleset_position_default;
-    }
-
-    <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end)) {
-        0: ${last};
-        switch_graphics_pax_car_ruleset_position_check_special;
-    }
-
-    <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, LOAD_TEMP(k_addr_position_in_badge_predicate_chain)) {
-        0: return ${first};
-        switch_graphics_pax_car_ruleset_position_check_last;
-    }
-
-    <!--! always show default if badge chain < 2 vehicles -->
-    <!--!
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain)) {
-        0..1: switch_graphics_pax_car_ruleset_position_default;
-        switch_graphics_pax_car_ruleset_position_check_first;
-    }
-    -->
     switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_random_category, [
             <!--! 3 categories, but pick 3 bits and distribute the random weight across 8 entries -->
             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3)
@@ -59,7 +25,6 @@
         1: return ${first};
         2: return ${last};
         3: return ${special};
-        <!--!4: return switch_graphics_pax_car_ruleset_position_check_first;-->
         return ${default}; <!--! shouldn't be reached, maps are pre-determined -->
     }
 </tal:ruleset>
@@ -542,8 +507,11 @@
         0..3: switch_graphics_tgv_hst_ruleset_position_default;
         return ${special};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_hst_ruleset_position_check_special, [
-                LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
+    switch (FEAT_TRAINS, PARENT, switch_graphics_tgv_hst_ruleset_position_check_special, [
+                (LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain))
+                +
+                <!--! pick a random bit from the engine to provide a minimal amount of variation in special sprite position between consists -->
+                getbits(var[0x5F, 8, 0x00FFFFFF], 0, 1)
             ]
         ) {
         0..1: switch_graphics_tgv_hst_ruleset_position_special_check_length;
