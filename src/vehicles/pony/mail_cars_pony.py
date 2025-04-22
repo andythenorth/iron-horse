@@ -73,6 +73,19 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    model_def = ModelDef(
+        class_name="MailCar",
+        base_numeric_id=21170,
+        gen=4,
+        subtype="C",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_32px")
+
+    result.append(model_def)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
