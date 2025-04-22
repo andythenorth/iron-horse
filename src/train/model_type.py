@@ -5549,14 +5549,11 @@ class MailCar(MailCarBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
-        # longer mail cars get an additional sprite option in the formation ruleset; shorter mail cars don't as it's TMWFTLB
-        # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
-        brake_car_sprites = 1 if self.subtype in ["B", "C"] else 0
         bonus_sprites = 2 if (self.subtype in ["C"]) and (self.base_track_type != "NG") else 0
         formation_position_spriterow_map = {
             "default": 0,
             "first": 0, # default and first synonymous currently for mail cars
-            "last": brake_car_sprites,
+            "last": 1,
             "special": bonus_sprites,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
