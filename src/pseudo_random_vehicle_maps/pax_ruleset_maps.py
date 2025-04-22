@@ -1,3 +1,4 @@
+from math import floor, ceil
 from random import Random
 
 # Constants for coach type codes (adjusted for spriterow logic)
@@ -26,30 +27,20 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
     rng = Random(seed)
     mod_map = base_map[:]
     special_inserted = 0
-    attempted_positions = set()
 
-    for _ in range(num_special):
-        valid_positions = [
-            i
-            for i in range(1, length - 1)
-            if mod_map[i] == VALUE_STANDARD and i not in attempted_positions
-        ]
-        if not valid_positions:
+    # Exclude ends and any position with brakes
+    candidate_indexes = [
+        i for i in range(1, length - 1)
+        if base_map[i] == VALUE_STANDARD
+    ]
+
+    rng.shuffle(candidate_indexes)
+
+    for idx in candidate_indexes:
+        if special_inserted >= num_special:
             break
-
-        idx = rng.choice(valid_positions)
-        attempted_positions.add(idx)
-
-        if mod_map[idx] == VALUE_STANDARD:
-            mod_map[idx] = VALUE_SPECIAL
-            special_inserted += 1
-        else:
-            # walk forwards until standard is found
-            for j in range(idx + 1, length - 1):
-                if mod_map[j] == VALUE_STANDARD:
-                    mod_map[j] = VALUE_SPECIAL
-                    special_inserted += 1
-                    break
+        mod_map[idx] = VALUE_SPECIAL
+        special_inserted += 1
 
     return mod_map
 
@@ -67,19 +58,29 @@ def generate_type_a(length: int) -> list[int]:
 
 def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
-    base_offset = seed_index - 4  # bias middle slightly left or right
     family = {}
+
     for length in range(1, 25):
-        if length < 3:
-            family[length] = [VALUE_STANDARD] * length
-            continue
         formation = [VALUE_STANDARD] * length
-        mid = length // 2
-        offset = max(-mid + 1, min(base_offset, length - 3 - mid))
-        pos1 = max(1, min(length - 3, mid + offset))
+
+        if length <= 5:
+            # One brake, placed near center
+            pos = min(length // 2, length - 1)
+            formation[pos] = VALUE_BRAKE_FRONT
+            family[length] = formation
+            continue
+
+        # Normal paired-brake logic for length >= 6
+        start = floor(length / 3)
+        end = max(start, ceil(2 * length / 3) - 1)
+        valid_positions = list(range(start, min(end, length - 2) + 1))
+        pos1 = rng.choice(valid_positions)
+
         formation[pos1] = VALUE_BRAKE_FRONT
         formation[pos1 + 1] = VALUE_BRAKE_REAR
+
         family[length] = formation
+
     return family
 
 
@@ -91,15 +92,15 @@ def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
     for length in range(1, 25):
         formation = [VALUE_STANDARD] * length
         if length < 2:
-            formation[0] = VALUE_BRAKE_REAR
+            formation[0] = VALUE_BRAKE_FRONT
             family[length] = formation
             continue
         first_pos = min(base_first_pos, length - 2)
-        formation[first_pos] = VALUE_BRAKE_FRONT
+        formation[first_pos] = VALUE_BRAKE_REAR
         if length >= 4:
             second_pos = min(length - 2, first_pos + second_brake_delta + (length // 8))
             if second_pos != first_pos:
-                formation[second_pos] = VALUE_BRAKE_REAR
+                formation[second_pos] = VALUE_BRAKE_FRONT
         family[length] = formation
     return family
 
