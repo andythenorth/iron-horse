@@ -5549,7 +5549,8 @@ class MailCar(MailCarBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
-        bonus_sprites = 2 if (self.subtype in ["C"]) and (self.base_track_type != "NG") else 0
+        # special (TPO) sprites only for larger types from gen 3 onwards (non-NG)
+        bonus_sprites = 2 if (self.subtype in ["B", "C"]) and (self.base_track_type != "NG") else 0
         formation_position_spriterow_map = {
             "default": 0,
             "first": 0, # default and first synonymous currently for mail cars
