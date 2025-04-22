@@ -124,6 +124,8 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
                           define="category CABBAGE_random_maps_by_category[0]">
         <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps_container['maps']">
             switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.CABBAGE_map.index}, [
+                    <!--! the modulo will cause a wraparound for formations longer than the map - this will cause repeating patterns, but it's probably fine
+                          (should only apply for formations > 24 which is max map length) -->
                     LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
                 ]) {
                 <tal:map_items repeat="map_item CABBAGE_map">
@@ -145,13 +147,12 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
     </tal:maps_by_category>
 
     switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}, target_map_length, [
-            target_map_length % 24 <!--! 24 is max formation length for pax, this is for wraparound on 4/8 vehicles to get more brakes -->
+            <!--! 24 is max formation length for pax, above 24 we'll use the 24 map, but with a wraparound -->
+            min(target_map_length, 24)
         ]) {
         <tal:length_indexes repeat="CABBAGE_random_maps CABBAGE_random_maps_by_category[1]">
             ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}_chain_length_${CABBAGE_random_maps['chain_length']};
         </tal:length_indexes>
     }
-
-
 </tal:CABBAGE_deterministic_random_maps_PAX>
 
