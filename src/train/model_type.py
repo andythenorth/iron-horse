@@ -6800,7 +6800,7 @@ class PassengerSuburbanCar(PassengerCarBase):
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        #   * I removed special coaches from PassengerCarBase Dec 2018, overkill
+        #   * no special sprite for suburban pax coach, not worth drawing
         formation_position_spriterow_map = {
             "default": 0,
             "first": 1,
