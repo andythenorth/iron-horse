@@ -58,7 +58,14 @@ def generate_type_a(length: int) -> dict[int, list[int]]:
         family = {2: [VALUE_BRAKE_FRONT, VALUE_BRAKE_REAR]}
     else:
         base = [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
-        family = {length: insert_special_variants(base)}
+
+        if length >= 6:
+            base[1] = VALUE_CONDITIONAL_BRAKE_BEFORE
+            base[-2] = VALUE_CONDITIONAL_BRAKE_AFTER
+
+        modified = insert_special_variants(base)
+        family = {length: modified}
+
     return apply_family_offset(family, 100)
 
 def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:

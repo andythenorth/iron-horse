@@ -27,6 +27,21 @@
         return;
     }
 
+    <!--! special case for outer *end* brakes to handle case of adjacent restaurant, by recovering brake via a latent pair provided in the map -->
+    <!--! does *not* use explicit brake limiter, by design - outer end brake limiting if pax coach is not at end of formation (e.g. cab car or mail van is)  -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_preceding_recover_brake_outer_ends, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-1)
+        ]) {
+        1: return ${first};
+        return ${special};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_following_recover_brake_outer_ends, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(1)
+        ]) {
+        1: return ${last};
+        return ${special};
+    }
+
     <!--! special case for inner *spaced* brakes to handle case of adjacent restaurant, by recovering brake via a latent pair provided in the map -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_preceding_recover_brake_inner_spaced, [
             switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-1)
@@ -76,12 +91,11 @@
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, [
             switch_graphics_pax_car_ruleset_random_category()
         ]) {
-        <!--! type A: paired inner brakes; with minimal magic
-              - end brake will disappear anyway if adjacent cab car or mail car
-              - restaurant special handling not worth the candle as of April 2025
-        -->
+        <!--! type A: paired inner brakes; with more magic -->
         100: return ${default};
         101: return ${first};
+        104: switch_graphics_pax_car_ruleset_if_restaurant_preceding_recover_brake_outer_ends;
+        105: switch_graphics_pax_car_ruleset_if_restaurant_following_recover_brake_outer_ends;
         102: return ${last};
         103: return ${special};
         <!--! type B: paired inner brakes, with more magic -->
