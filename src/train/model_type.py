@@ -6478,7 +6478,7 @@ class PassengerCar(PassengerCarBase):
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        #   * I removed special coaches from PassengerCar Feb 2021, as Restaurant cars were added
+        #   * special coach
         formation_position_spriterow_map = {
             "default": 0,
             "first": 1,
@@ -6757,13 +6757,13 @@ class PassengerRestaurantCar(PassengerCarBase):
         # formation position rules do not actually do anything for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         formation_position_spriterow_map = {
             "default": 0,
-            "first": 0,
-            "last": 0,
+            "first": 1,
+            "last": 2,
             "special": 0,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
-            formation_ruleset="pax_cars",
+            formation_ruleset="restaurant_cars",
             catalogue_entry=self.catalogue_entry,
         )
 

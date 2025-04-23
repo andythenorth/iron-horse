@@ -103,6 +103,18 @@
 </tal:ruleset>
 
 
+// restaurant car ruleset
+<tal:ruleset define="first 1; last 2;">
+    <!--! for simple variety, restaurant cars abuse first / last to random reverse the sprites in the ruleset (the vehicle is *not* reversed) -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_restaurant_car_ruleset, [
+             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 1)
+        ]) {
+        1: return ${first};
+        return ${last};
+    }
+</tal:ruleset>
+
+
 // mail car ruleset - delegates to pre-generated pseudo-random maps
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
 

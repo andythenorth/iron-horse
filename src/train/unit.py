@@ -1010,6 +1010,8 @@ class PaxRestaurantCarUnit(PaxCarUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # restaurant cars may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
 
     @cached_property
     def weight(self):
