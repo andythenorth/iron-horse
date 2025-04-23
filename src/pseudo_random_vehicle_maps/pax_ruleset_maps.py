@@ -6,6 +6,8 @@ VALUE_STANDARD = 0
 VALUE_BRAKE_FRONT = 1
 VALUE_BRAKE_REAR = 2
 VALUE_SPECIAL = 3
+VALUE_CONDITIONAL_BRAKE_BEFORE = 4  # Shows brake if one of the previous 2 vehicles is a restaurant car
+VALUE_CONDITIONAL_BRAKE_AFTER = 5  # Shows brake if one of the following 2 vehicles is a restaurant car
 
 # 25 relates to map max length of 24 vehicles, to get wrap around on formations of 4/8, to get more brakes, without editing the generation logic
 FORMATION_CLASSES = {
@@ -13,7 +15,6 @@ FORMATION_CLASSES = {
     "brakes_inner_paired": {"count": 8, "lengths": list(range(1, 25))},
     "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 25))},
 }
-
 
 def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
     length = len(base_map)
@@ -44,17 +45,21 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
 
     return mod_map
 
+def apply_family_offset(family: dict[int, list[int]], offset: int) -> dict[int, list[int]]:
+    return {
+        length: [value + offset for value in formation]
+        for length, formation in family.items()
+    }
 
-def generate_type_a(length: int) -> list[int]:
+def generate_type_a(length: int) -> dict[int, list[int]]:
     if length == 1:
-        return [VALUE_BRAKE_FRONT]
+        family = {1: [VALUE_BRAKE_FRONT]}
     elif length == 2:
-        return [VALUE_BRAKE_FRONT, VALUE_BRAKE_REAR]
+        family = {2: [VALUE_BRAKE_FRONT, VALUE_BRAKE_REAR]}
     else:
-        return (
-            [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
-        )
-
+        base = [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
+        family = {length: insert_special_variants(base)}
+    return apply_family_offset(family, 100)
 
 def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
@@ -64,46 +69,72 @@ def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
         formation = [VALUE_STANDARD] * length
 
         if length <= 5:
-            # One brake, placed near center
             pos = min(length // 2, length - 1)
             formation[pos] = VALUE_BRAKE_FRONT
-            family[length] = formation
+            family[length] = insert_special_variants(formation, seed_index)
             continue
 
-        # Normal paired-brake logic for length >= 6
-        start = floor(length / 3)
-        end = max(start, ceil(2 * length / 3) - 1)
-        valid_positions = list(range(start, min(end, length - 2) + 1))
-        pos1 = rng.choice(valid_positions)
+        # Brake placement: fixed front+rear with one fallback
+        mid_start = floor(length / 3)
+        mid_end = ceil(2 * length / 3)
+        valid_positions = [i for i in range(mid_start, mid_end - 2) if i < length - 2]
+
+        if not valid_positions:
+            pos1 = min(length - 3, mid_start)
+        else:
+            pos1 = rng.choice(valid_positions)
 
         formation[pos1] = VALUE_BRAKE_FRONT
         formation[pos1 + 1] = VALUE_BRAKE_REAR
+        formation[pos1 + 2] = VALUE_CONDITIONAL_BRAKE_BEFORE
 
-        family[length] = formation
+        family[length] = insert_special_variants(formation, seed_index)
 
-    return family
-
+    return apply_family_offset(family, 200)
 
 def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
-    base_first_pos = rng.randint(1, 4)
-    second_brake_delta = rng.randint(1, 3)
     family = {}
+
     for length in range(1, 25):
         formation = [VALUE_STANDARD] * length
-        if length < 2:
-            formation[0] = VALUE_BRAKE_FRONT
-            family[length] = formation
-            continue
-        first_pos = min(base_first_pos, length - 2)
-        formation[first_pos] = VALUE_BRAKE_REAR
-        if length >= 4:
-            second_pos = min(length - 2, first_pos + second_brake_delta + (length // 8))
-            if second_pos != first_pos:
-                formation[second_pos] = VALUE_BRAKE_FRONT
-        family[length] = formation
-    return family
 
+        if length < 5:
+            mid = length // 2
+            formation[mid] = VALUE_BRAKE_REAR
+            family[length] = insert_special_variants(formation, seed_index)
+            continue
+
+        if length <= 6:
+            mid = (length - 2) // 2
+            formation[mid] = VALUE_CONDITIONAL_BRAKE_AFTER
+            formation[mid + 1] = VALUE_BRAKE_REAR
+            family[length] = insert_special_variants(formation, seed_index)
+            continue
+
+        start_range = 1
+        end_range = length - 6
+        if end_range < start_range:
+            family[length] = insert_special_variants(formation, seed_index)
+            continue
+
+        pos1 = rng.randint(start_range, end_range)
+        pos2_min = pos1 + 3
+        pos2_max = length - 3
+        if pos2_min > pos2_max:
+            family[length] = insert_special_variants(formation, seed_index)
+            continue
+
+        pos2 = rng.randint(pos2_min, pos2_max)
+
+        formation[pos1] = VALUE_CONDITIONAL_BRAKE_AFTER
+        formation[pos1 + 1] = VALUE_BRAKE_REAR
+        formation[pos2] = VALUE_BRAKE_FRONT
+        formation[pos2 + 1] = VALUE_CONDITIONAL_BRAKE_BEFORE
+
+        family[length] = insert_special_variants(formation, seed_index)
+
+    return apply_family_offset(family, 300)
 
 def get_all_pax_maps() -> dict[str, list[dict]]:
     output = {
@@ -116,18 +147,16 @@ def get_all_pax_maps() -> dict[str, list[dict]]:
             maps = []
             for i in range(meta["count"]):
                 if template_name == "brakes_outer_ends":
-                    base = generate_type_a(length)
+                    base = generate_type_a(length)[length]
                 elif template_name == "brakes_inner_paired":
                     base = generate_type_b_family(i)[length]
                 elif template_name == "brakes_inner_spaced":
                     base = generate_type_c_family(i)[length]
                 else:
                     continue
-                mod_map = insert_special_variants(base, seed=i)
-                maps.append(mod_map)
+                maps.append(base)
             output[template_name].append({"chain_length": length, "maps": maps})
     return output
-
 
 # Preview and validation
 if __name__ == "__main__":

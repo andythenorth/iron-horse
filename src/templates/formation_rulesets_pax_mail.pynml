@@ -2,6 +2,61 @@
 
 // pax car ruleset
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
+
+    <!--! special case to avoid too many things that look like brake coaches, can't be done in the map, has to check actual consist -->
+    switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_brake_limiter_last, [
+            count_has_badge("ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
+        ]) {
+        0: return ${last};
+        return ${special};
+    }
+    switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_brake_limiter_first, [
+            count_has_badge("ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
+        ]) {
+        0: return ${first};
+        return ${special};
+    }
+
+    <!--! utility to check for restaurant cars -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset, offset, [
+            <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
+            STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/restaurant_car"), 0x10E),
+            STORE_TEMP(offset, 0x10F),
+            var[0x61, 0, 0x00000001, 0x7A],
+        ]) {
+        return;
+    }
+
+    <!--! special case for inner *spaced* brakes to handle case of adjacent restaurant, by recovering brake via a latent pair provided in the map -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_preceding_recover_brake_inner_spaced, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-1)
+        ]) {
+        1: return ${first};
+        return ${special};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_following_recover_brake_inner_spaced, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(1)
+        ]) {
+        1: return switch_graphics_pax_car_ruleset_brake_limiter_last;
+        return ${special};
+    }
+
+    <!--! special case for inner *paired* brakes to handle case of adjacent restaurant, by recovering pair via a latent triple provided in the map -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_adjacent_flip_brake_inner_paired, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-1)
+        ]) {
+        1: return ${first};
+        return switch_graphics_pax_car_ruleset_brake_limiter_last;
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_if_restaurant_adjacent_recover_brake_inner_paired, [
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-1)
+            ||
+            switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset(-2)
+        ]) {
+        1: return switch_graphics_pax_car_ruleset_brake_limiter_last;
+        return ${special};
+    }
+
     switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_random_category, [
             <!--! 3 categories, but pick 3 bits and distribute the random weight across 8 entries -->
             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3)
@@ -21,11 +76,29 @@
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, [
             switch_graphics_pax_car_ruleset_random_category()
         ]) {
-        0: return ${default};
-        1: return ${first};
-        2: return ${last};
-        3: return ${special};
-        return ${default}; <!--! shouldn't be reached, maps are pre-determined -->
+        <!--! type A: paired inner brakes; with minimal magic
+              - end brake will disappear anyway if adjacent cab car or mail car
+              - restaurant special handling not worth the candle as of April 2025
+        -->
+        100: return ${default};
+        101: return ${first};
+        102: return ${last};
+        103: return ${special};
+        <!--! type B: paired inner brakes, with more magic -->
+        200: return ${default};
+        201: return ${first};
+        202: switch_graphics_pax_car_ruleset_if_restaurant_adjacent_flip_brake_inner_paired;
+        204: switch_graphics_pax_car_ruleset_if_restaurant_adjacent_recover_brake_inner_paired;
+        203: return ${special};
+        <!--! type C: spaced inner brakes, with more magic -->
+        300: return ${default};
+        301: ${first};
+        304: switch_graphics_pax_car_ruleset_if_restaurant_preceding_recover_brake_inner_spaced;
+        305: switch_graphics_pax_car_ruleset_if_restaurant_following_recover_brake_inner_spaced;
+        302: switch_graphics_pax_car_ruleset_brake_limiter_last;
+        303: return ${special};
+        <!--! shouldn't be reached, maps are pre-determined -->
+        return ${default};
     }
 </tal:ruleset>
 

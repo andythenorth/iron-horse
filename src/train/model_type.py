@@ -1448,8 +1448,8 @@ class MailEngineCabbageDVT(MailEngineBase):
     """
 
     livery_group_name = "dvt_mail_liveries"
-    # report *mail* cab cars also as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-    formation_reporting_labels = ["generic_mail_car", "generic_pax_car"]
+    # report *mail* cab cars also as *pax* cars for formation rulesets
+    formation_reporting_labels = ["generic_mail_car", "generic_pax_car", "looks_like_pax_brake_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1723,8 +1723,8 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-    # report *pax* cab cars as *pax* cars for formation rulesets - this prevents a brake coach being added adjacent
-    formation_reporting_labels = ["generic_pax_car"]
+    # report *pax* cab cars as *pax* cars for formation rulesets
+    formation_reporting_labels = ["generic_pax_car", "looks_like_pax_brake_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5538,8 +5538,8 @@ class MailCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "mail_car"
-    # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
-    formation_reporting_labels = ["generic_pax_car", "generic_mail_car"]
+    # mail cars treated as both pax and mail for rulesets
+    formation_reporting_labels = ["generic_mail_car", "generic_pax_car", "looks_like_pax_brake_car"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
