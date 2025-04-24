@@ -251,9 +251,26 @@ def render_docs_images(
             else:
                 CC1_remap = cc_remap_pair[0]
                 CC2_remap = cc_remap_pair[1]
+
             cc_remap_indexes = doc_helper.remap_company_colours(
                 {"CC1": CC1_remap, "CC2": CC2_remap}
             )
+
+            # CABBAGE - need to support non-CC defaults via purchase_swatch_colour_set_names
+            # cabbage - this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
+            # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
+            custom_remap_indexes = None
+            if len(model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names) > 0:
+                colour_set_name = model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names[0]
+                if colour_set_name in global_constants.colour_sets:
+                    colour_set = global_constants.colour_sets[colour_set_name]
+                    custom_remap_indexes = {}
+                    for i in range (8):
+                        custom_remap_indexes[198 + i] = global_constants.custom_wagon_recolour_sprite_maps[colour_set[0]][i]
+            # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
+            if custom_remap_indexes is not None:
+                for k,v in custom_remap_indexes.items():
+                    cc_remap_indexes[k] = v
 
             dest_image = intermediate_image.copy().point(
                 lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
