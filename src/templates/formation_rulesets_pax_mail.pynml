@@ -607,13 +607,18 @@
         return ${special};
     }
     switch (FEAT_TRAINS, PARENT, switch_graphics_tgv_hst_ruleset_position_check_special, [
-                (LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) - LOAD_TEMP(k_addr_position_in_badge_predicate_chain))
-                +
-                <!--! pick a random bit from the engine to provide a minimal amount of variation in special sprite position between consists -->
-                getbits(var[0x5F, 8, 0x00FFFFFF], 0, 1)
+                <!--! +1 to offset towards the start of the formation, random jitter is then applied to move it towards the rear -->
+                (LOAD_TEMP(k_addr_position_in_badge_predicate_chain) + 1)
+                ==
+                (
+                    (LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain) / 2)
+                    +
+                    <!--! pick randoms bit from the engine to provide an offset of 0..2 minimal amount of variation in special sprite position between consists -->
+                    min(getbits(var[0x5F, 8, 0x00FFFFFF], 0, 2), 2)
+                )
             ]
         ) {
-        0..1: switch_graphics_tgv_hst_ruleset_position_special_check_length;
+        1: switch_graphics_tgv_hst_ruleset_position_special_check_length;
         switch_graphics_tgv_hst_ruleset_position_default;
     }
 
