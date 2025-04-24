@@ -66,7 +66,7 @@ def main(**kwargs):
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_ng_8px")
@@ -82,7 +82,7 @@ def main(**kwargs):
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_ng_16px")
@@ -204,19 +204,85 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SpacerCar",
-        base_numeric_id=23360,
+        base_numeric_id=36630,
         gen=1,
         subtype="Z",
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=3,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
 
     result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="SpacerCar",
+        base_numeric_id=38790,
+        gen=1,
+        subtype="A",
+        spriterow_labels=spriterow_labels,
+        caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="SpacerCar",
+        base_numeric_id=36190,
+        gen=1,
+        subtype="Y",
+        spriterow_labels=spriterow_labels,
+        caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_20px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="SpacerCar",
+        base_numeric_id=33380,
+        gen=1,
+        subtype="B",
+        spriterow_labels=spriterow_labels,
+        caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="SpacerCar",
+        base_numeric_id=31780,
+        gen=1,
+        subtype="X",
+        spriterow_labels=spriterow_labels,
+        caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_28px")
+
+    result.append(model_def)
+
+
     """
     model_def = ModelDef(
         class_name="SpacerCar",
@@ -227,7 +293,7 @@ def main(**kwargs):
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=3,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_caboose_24px")

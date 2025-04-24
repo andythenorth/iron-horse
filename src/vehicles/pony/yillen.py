@@ -42,7 +42,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def_clone = model_def.begin_clone(base_numeric_id=25880, unit_repeats=[1, 0])
+    model_def_clone = model_def.begin_clone(base_numeric_id=29080, unit_repeats=[1, 0])
 
     # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
     model_def_clone.random_reverse = True
