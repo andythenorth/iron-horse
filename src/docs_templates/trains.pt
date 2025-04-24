@@ -35,7 +35,7 @@
                             <li>
                                 <a href="#${base_track_type_with_display_name[0]}-wagons">
                                     <i class="icon-circle-arrow-right"></i>
-                                    ${len(doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name))}
+                                    ${len(doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0]))}
                                     ${base_track_type_with_display_name[1].lower()} wagons
                                 </a>
                             </li>
