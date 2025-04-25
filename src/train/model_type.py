@@ -3980,7 +3980,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         )
 
 
-class ExpressCarUnit(CarModelTypeBase):
+class ExpressCarBase(CarModelTypeBase):
     """
     Express cars - express freight, valuables, mails.
     """
@@ -3998,8 +3998,10 @@ class ExpressCarUnit(CarModelTypeBase):
         "FREIGHT_RED_NO_WEATHERING",  # because royal mail livery
     ]
 
-    model_id_root = "express_car"
+
+    vehicle_family_id = "express_car"
     randomised_candidate_groups = ["express_food_car_randomised"]
+    variant_group_id_root = "express_cars"
     # express cars treated as mail car for rulesets (but not as pax car - tested that, better to not)
     formation_reporting_labels = ["generic_mail_car"]
 
@@ -4032,6 +4034,28 @@ class ExpressCarUnit(CarModelTypeBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class ExpressCarType1(ExpressCarBase):
+    """
+    Express cars - express freight, valuables, mails.
+    """
+
+    model_id_root = "express_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class ExpressCarType2(ExpressCarBase):
+    """
+    Express cars - express freight, valuables, mails.
+    """
+
+    model_id_root = "express_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class ExpressFoodCarBase(CarModelTypeBase):
