@@ -2427,7 +2427,7 @@ class AutomobileCarBase(CarModelTypeBase):
         self.speed_class = "express"
         # no classes, use explicit labels
         self.class_refit_groups = []
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"] # probably don't add mail eh?
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special case pax capacity, with integer maths faff
@@ -2552,7 +2552,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
     Fully enclosed automobile transporter with, no vehicle sprites shown.
     """
 
-    livery_group_name = "default_pax_liveries"
+    livery_group_name = "motorail_liveries"
 
     model_id_root = "motorail_automobile_car"
 

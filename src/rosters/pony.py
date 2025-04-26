@@ -790,6 +790,7 @@ def main():
                 ("VANILLA", 1),
                 ("ROYAL_MAIL", 2),
             ],
+            "motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("VANILLA", 2)],
         },
         engine_module_names=engine_module_names,
         wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,
