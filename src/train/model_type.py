@@ -6448,9 +6448,6 @@ class PanoramicCar(PassengerCarBase):
 
     livery_group_name = "default_pax_liveries"
 
-    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
-    # !! this will need made more general if e.g. motorail or observation cars are added
-    # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "panoramic_car"
@@ -6493,9 +6490,6 @@ class PassengerCar(PassengerCarBase):
     Position-dependent sprites for brake car etc.
     """
 
-    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
-    # !! this will need made more general if e.g. motorail or observation cars are added
-    # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
     livery_group_name = "default_pax_liveries"
@@ -6548,9 +6542,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
 
     livery_group_name = "default_pax_liveries"
 
-    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
-    # !! this will need made more general if e.g. motorail or observation cars are added
-    # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "high_speed_passenger_car"
