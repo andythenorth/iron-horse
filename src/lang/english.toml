@@ -456,8 +456,8 @@ base = "Drop End Flat Wagon"
 [STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
 base = "Drop Side Flat Wagon"
 
-[STR_WAGON_NAME_ENCLOSED_AUTOMOBILE_CAR]
-base = "Enclosed Vehicle Transporter"
+[STR_WAGON_NAME_MOTORAIL_AUTOMOBILE_CAR]
+base = "Motorail Van"
 
 [STR_WAGON_NAME_EXPRESS_CAR]
 base = "Express Van"

@@ -2435,31 +2435,6 @@ class AutomobileCarBase(CarModelTypeBase):
         ]
 
 
-class AutomobileSingleDeckCar(AutomobileCarBase):
-    """
-    Automobile transporter with single flat deck at conventional height.
-    """
-
-    model_id_root = "automobile_car"
-    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._joker = True
-        # Graphics configuration
-        formation_ruleset = "1_unit_sets"
-        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
-            formation_ruleset=formation_ruleset,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["default"]
-
-
 class AutomobileLowFloorCar(AutomobileCarBase):
     """
     Automobile transporter with single deck at lowered height.
@@ -2486,6 +2461,31 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         return ["low_floor"]
+
+
+class AutomobileSingleDeckCar(AutomobileCarBase):
+    """
+    Automobile transporter with single flat deck at conventional height.
+    """
+
+    model_id_root = "automobile_car"
+    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # Graphics configuration
+        formation_ruleset = "1_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset=formation_ruleset,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["default"]
 
 
 class AutomobileDoubleDeckCar(AutomobileCarBase):
@@ -2548,10 +2548,9 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         return []
 
 
-class AutomobileEnclosedCar(CarModelTypeBase):
+class AutomobileMotorailCar(CarModelTypeBase):
     """
     Fully enclosed automobile transporter with, no vehicle sprites shown.
-    CABBAGE - CONVERT TO MOTORAIL CAR
     """
 
     liveries = [
@@ -2561,7 +2560,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
-    model_id_root = "enclosed_automobile_car"
+    model_id_root = "motorail_automobile_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2584,7 +2583,6 @@ class AutomobileEnclosedCar(CarModelTypeBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
-
 
 
 class BolsterCarBase(CarModelTypeBase):

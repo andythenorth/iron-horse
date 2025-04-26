@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="AutomobileEnclosedCar",
+        class_name="AutomobileMotorailCar",
         base_numeric_id=20820,
         gen=3,
         subtype="B",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileEnclosedCar",
+        class_name="AutomobileMotorailCar",
         base_numeric_id=18000,
         gen=3,
         subtype="C",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileEnclosedCar",
+        class_name="AutomobileMotorailCar",
         base_numeric_id=34420,
         gen=4,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileEnclosedCar",
+        class_name="AutomobileMotorailCar",
         base_numeric_id=18010,
         gen=4,
         subtype="C",
@@ -63,7 +63,7 @@ def main(**kwargs):
     result.append(model_def)
 
 #     model_def = ModelDef(
-#         class_name="AutomobileEnclosedCar",
+#         class_name="AutomobileMotorailCar",
 #         base_numeric_id=34430,
 #         gen=5,
 #         subtype="B",
@@ -77,7 +77,7 @@ def main(**kwargs):
 #     result.append(model_def)
 #
 #     model_def = ModelDef(
-#         class_name="AutomobileEnclosedCar",
+#         class_name="AutomobileMotorailCar",
 #         base_numeric_id=18060,
 #         gen=5,
 #         subtype="C",
