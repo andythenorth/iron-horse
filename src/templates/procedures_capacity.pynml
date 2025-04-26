@@ -4,6 +4,8 @@
     switch (FEAT_TRAINS, SELF, switch_cargo_capacity_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
         bitmask(CC_MAIL): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
         bitmask(CC_ARMOURED): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
+        <!--! special case for pax, per model override, used for e.g. automobile carriers -->
+        bitmask(CC_PASSENGERS): return (LOAD_TEMP(5) * LOAD_TEMP(${param_value})) / 8;
         return LOAD_TEMP(${param_value});
     }
 </tal:capacity>

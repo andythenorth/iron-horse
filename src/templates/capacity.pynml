@@ -8,7 +8,9 @@
              STORE_TEMP(${unit.capacities[1]}, 1),
              STORE_TEMP(${unit.capacities[2]}, 2),
              STORE_TEMP(${unit.capacities[3]}, 3),
-             STORE_TEMP(${unit.capacities[4]}, 4)
+             STORE_TEMP(${unit.capacities[4]}, 4),
+             <!--! option to force a pax multiplier for e.g. automobile carriers -->
+             STORE_TEMP(${model_variant.pax_capacity_multiplier_as_fraction_of_8}, 5),
             ]) {
         return switch_cargo_capacity();
     }

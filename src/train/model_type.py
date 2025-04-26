@@ -55,6 +55,8 @@ class ModelTypeBase(object):
         self._vehicle_life = None
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
+        # override in subclasses as needed, used for special case pax capacity, e.g. automobile carriers, has to handle integer maths so n/8
+        self.pax_capacity_multiplier_as_fraction_of_8 = 8
         # some engines require pantograph sprites composited, don't bother setting this unless required
         # some vehicle models don't show pans in the buy menu (usually unpowered)
         self.suppress_pantograph_if_no_engine_attached = False
@@ -2428,6 +2430,8 @@ class AutomobileCarBase(CarModelTypeBase):
         self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
+        # special case pax capacity, with integer maths faff
+        self.pax_capacity_multiplier_as_fraction_of_8 = 14
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
         # self.use_cargo_subytpes_VEHI = True
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
