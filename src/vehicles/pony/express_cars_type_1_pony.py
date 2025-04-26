@@ -19,7 +19,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="3_axle_solid_express_16px"
+        class_name="ExpressCarUnit",
+        #suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_16px",
     )
 
     result.append(model_def)
@@ -33,7 +35,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="3_axle_solid_express_16px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_16px",
     )
 
     result.append(model_def)
@@ -47,7 +51,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_24px",
     )
 
     result.append(model_def)
@@ -61,7 +67,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="3_axle_solid_express_16px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_16px",
     )
 
     result.append(model_def)
@@ -75,7 +83,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_24px",
     )
 
     result.append(model_def)
@@ -89,7 +99,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_solid_express_32px",
     )
 
     result.append(model_def)
@@ -103,7 +115,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="2_axle_solid_express_16px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_filled_16px",
     )
 
     result.append(model_def)
@@ -117,7 +131,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_filled_24px",
     )
 
     result.append(model_def)
@@ -131,21 +147,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
-    )
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="ExpressCarType1",
-        base_numeric_id=24290,
-        gen=5,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="2_axle_solid_express_16px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_solid_express_32px",
     )
 
     result.append(model_def)
@@ -159,7 +163,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_1cc_filled_24px",
     )
 
     result.append(model_def)
@@ -173,7 +179,9 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
+        class_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_1cc_filled_32px",
     )
 
     result.append(model_def)
