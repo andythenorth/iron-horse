@@ -2491,7 +2491,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
 class AutomobileDoubleDeckCar(AutomobileCarBase):
     """
     Automobile transporter with double deck, visible cargo.
-    Cars only, no supplies cargo.
+    For gameplay reasons, refits supplies cargos also, IRL should only be cars but eh.
     """
 
     model_id_root = "double_deck_automobile_car"
@@ -2500,8 +2500,6 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # blah blah, more restrictive refits for double deck, cars only
-        self.label_refits_allowed = ["PASS", "VEHI"]
         # Graphics configuration
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
@@ -2524,7 +2522,6 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
 class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
     """
     Automobile transporter with double deck, fully enclosed, no visible cargo.
-    Cars only, no supplies cargo.
     """
 
     model_id_root = "double_deck_enclosed_automobile_car"
@@ -2533,8 +2530,6 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # blah blah, more restrictive refits for double deck, cars only
-        self.label_refits_allowed = ["PASS", "VEHI"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
@@ -2548,7 +2543,7 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         return []
 
 
-class AutomobileMotorailCar(CarModelTypeBase):
+class AutomobileMotorailCar(AutomobileCarBase):
     """
     Fully enclosed automobile transporter with, no vehicle sprites shown.
     """
@@ -2564,13 +2559,6 @@ class AutomobileMotorailCar(CarModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.speed_class = "express"
-        # no classes, use explicit labels
-        self.class_refit_groups = []
-        self.label_refits_allowed = ["PASS", "VEHI"]
-        self.label_refits_disallowed = []
-        self.default_cargos = ["VEHI"]
-        self._joker = True
         # Graphics configuration
         if self.gen in [3]:
             self.roof_type = "pax_mail_ridged"

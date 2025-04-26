@@ -122,9 +122,6 @@ base = "Wagon à rideau latéral"
 [STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles"
 
-[STR_WAGON_NAME_ENCLOSED_AUTOMOBILE_CAR]
-base = "Wagon porte-automobiles fermé"
-
 [STR_WAGON_NAME_EXPRESS_CAR]
 base = "Fourgon express"
 
