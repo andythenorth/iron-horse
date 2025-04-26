@@ -26,7 +26,7 @@ def main(**kwargs):
         class_name="ElectricHighSpeedPaxUnit",
         weight=42,
         rel_spriterow_index=0,
-        chassis="4_axle_solid_express_32px",
+        chassis="high_speed_32px",
         repeat=2,
         effects={},  # suppress visual effects
     )
@@ -58,7 +58,7 @@ def main(**kwargs):
         class_name="ElectricHighSpeedMailUnit",
         weight=42,
         rel_spriterow_index=0,
-        chassis="4_axle_solid_express_32px",
+        chassis="high_speed_32px",
         repeat=2,
         effects={},  # suppress visual effects
     )
