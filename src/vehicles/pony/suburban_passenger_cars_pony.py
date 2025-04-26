@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="PaxCarUnit", chassis="4_axle_solid_express_24px")
+    model_def.add_unit_def(class_name="PaxCarUnit", chassis="3_axle_solid_express_24px")
 
     result.append(model_def)
 
