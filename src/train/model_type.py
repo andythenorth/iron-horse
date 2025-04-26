@@ -2486,10 +2486,7 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
 
     @property
     def _formation_ruleset(self):
-        if self.subtype == "B":
-            return "2_unit_sets"
-        else:
-            return "4_unit_sets"
+        return "4_unit_sets"
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
@@ -2511,10 +2508,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
 
     @property
     def _formation_ruleset(self):
-        if self.subtype == "B":
-            return "2_unit_sets"
-        else:
-            return "4_unit_sets"
+        return "4_unit_sets"
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)

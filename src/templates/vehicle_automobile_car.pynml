@@ -8,9 +8,17 @@
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
+<!--! CABBAGE SHIM - fetching the ruleset target might be fragile - also 'max_unit_sets' vs '4_unit_sets' ???? -->
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice, [
+            switch_pseudo_random_freight_ruleset_map_for_random_choice_max_${model_variant.gestalt_graphics.formation_ruleset}()
+        ]) {
+    return;
+}
+
 <tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name model_variant.gestalt_graphics.vehicle_spritelayer_names">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_formation_entry_point,
         [
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_freight_wagon_livery_entry_point(${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice()), 0x100),
             10 + switch_graphics_automobile_transporter_ruleset_${model_variant.gestalt_graphics.formation_ruleset}()
         ]
     ) {
@@ -35,26 +43,20 @@
     }
 </tal:spritelayer_cargo_layers>
 
-<!--! CABBAGE SHIM - fetching the ruleset target might be fragile - also 'max_unit_sets' vs '4_unit_sets' ???? -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice, [
-            switch_pseudo_random_freight_ruleset_map_for_random_choice_max_${model_variant.gestalt_graphics.formation_ruleset}()
-        ]) {
-    return;
-    }
-
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41, [
         <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
         <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
-        ,
-        STORE_TEMP(switch_freight_wagon_livery_entry_point(${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice()), 0x100)
     ]) {
-    return ${unit.id}_switch_graphics_base_platform_position_in_formation_entry_point;
+    return;
 }
 
 <!--! switch layers: base platform / spritelayer cargo -->
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${unit.id}_switch_graphics_vehicle_init_alt_var_41;
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, [
+        ${unit.id}_switch_graphics_vehicle_init_alt_var_41(),
+        getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: return ${unit.id}_switch_graphics_base_platform_position_in_formation_entry_point;
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
     <tal:optional_masked_overlay condition="model_variant.gestalt_graphics.add_masked_overlay">
         2: return ${unit.id}_switch_graphics_masked_overlay_position_in_formation_entry_point;
