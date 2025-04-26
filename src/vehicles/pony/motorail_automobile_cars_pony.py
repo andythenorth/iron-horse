@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=20820,
         gen=3,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -25,7 +25,7 @@ def main(**kwargs):
         base_numeric_id=18000,
         gen=3,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -43,7 +43,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+        class_name="ExpressCarUnit", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(model_def)

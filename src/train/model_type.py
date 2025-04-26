@@ -2552,27 +2552,32 @@ class AutomobileMotorailCar(AutomobileCarBase):
     Fully enclosed automobile transporter with, no vehicle sprites shown.
     """
 
-    liveries = [
-        "COMPANY_COLOUR_NO_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
-        "FREIGHT_GREY_NO_WEATHERING",
-        "FREIGHT_BONUS_TEAL",
-    ]
+    livery_group_name = "default_pax_liveries"
 
     model_id_root = "motorail_automobile_car"
+
+    #formation_reporting_labels = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        if self.gen in [3]:
+        # roof configuration
+        if self.gen in [1]:
+            self.roof_type = "pax_mail_clerestory"
+        elif self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
-        elif self.gen in [4]:
+        else:
             self.roof_type = "pax_mail_smooth"
-        elif self.gen in [5]:
-            self.roof_type = None
-        weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
+        # just the one position variant for these (please don't add more)
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 0,
+            "special": 0,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="mail_cars",
             catalogue_entry=self.catalogue_entry,
         )
 
