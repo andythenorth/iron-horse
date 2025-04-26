@@ -2556,7 +2556,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
 
     model_id_root = "motorail_automobile_car"
 
-    #formation_reporting_labels = []
+    formation_reporting_labels = ["motorail_car"] # just a boilerplate entry in the case of motorail cars
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2577,7 +2577,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
-            formation_ruleset="mail_cars",
+            formation_ruleset="motorail_cars",
             catalogue_entry=self.catalogue_entry,
         )
 

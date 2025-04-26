@@ -164,6 +164,12 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
             }
         </tal:position_ruleset>
 
+        <tal:position_ruleset case="'motorail_cars'">
+            switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, 0) {
+                return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
+            }
+        </tal:position_ruleset>
+
         <tal:position_ruleset case="None">
             switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_position_in_formation_entry_point, 0) {
                 return ${unit.id}_switch_graphics_vehicle_layers_${formation_position_labels['special']};
