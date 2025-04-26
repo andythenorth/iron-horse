@@ -2433,18 +2433,6 @@ class AutomobileCarBase(CarModelTypeBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
         ]
-        if self.subtype == "D":
-            formation_ruleset = "articulated_permanent_twin_sets"
-        else:
-            formation_ruleset = self._formation_ruleset
-        # automobile cars can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
-        # ...wouldn't be desirable anyway because they are pseudo-articulated units
-        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
-            formation_ruleset=formation_ruleset,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
 class AutomobileSingleDeckCar(AutomobileCarBase):
@@ -2458,40 +2446,18 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
-
-    @property
-    def _formation_ruleset(self):
-        return "1_unit_sets"
+        # Graphics configuration
+        formation_ruleset = "1_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset=formation_ruleset,
+            catalogue_entry=self.catalogue_entry,
+        )
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         return ["default"]
-
-
-class AutomobileDoubleDeckCar(AutomobileCarBase):
-    """
-    Automobile transporter with double deck, cars only.
-    """
-
-    model_id_root = "double_deck_automobile_car"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # blah blah, more restrictive refits for double deck, cars only
-        self.label_refits_allowed = ["PASS", "VEHI"]
-        self.use_cargo_subytpes_VEHI = False
-        # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
-        self.gestalt_graphics.add_masked_overlay = True
-
-    @property
-    def _formation_ruleset(self):
-        return "4_unit_sets"
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["double_deck_lower", "double_deck_upper"]
 
 
 class AutomobileLowFloorCar(AutomobileCarBase):
@@ -2505,10 +2471,16 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
-
-    @property
-    def _formation_ruleset(self):
-        return "4_unit_sets"
+        # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset=formation_ruleset,
+            catalogue_entry=self.catalogue_entry,
+        )
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
@@ -2516,9 +2488,70 @@ class AutomobileLowFloorCar(AutomobileCarBase):
         return ["low_floor"]
 
 
+class AutomobileDoubleDeckCar(AutomobileCarBase):
+    """
+    Automobile transporter with double deck, visible cargo.
+    Cars only, no supplies cargo.
+    """
+
+    model_id_root = "double_deck_automobile_car"
+    vehicle_family_id = "double_deck_automobile_car"
+    variant_group_id_root = "wagon_group_double_deck_automobile_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # blah blah, more restrictive refits for double deck, cars only
+        self.label_refits_allowed = ["PASS", "VEHI"]
+        # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset=formation_ruleset,
+            # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
+            add_masked_overlay = True,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["double_deck_lower", "double_deck_upper"]
+
+
+class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
+    """
+    Automobile transporter with double deck, fully enclosed, no visible cargo.
+    Cars only, no supplies cargo.
+    """
+
+    model_id_root = "double_deck_enclosed_automobile_car"
+    vehicle_family_id = "double_deck_automobile_car"
+    variant_group_id_root = "wagon_group_double_deck_automobile_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # blah blah, more restrictive refits for double deck, cars only
+        self.label_refits_allowed = ["PASS", "VEHI"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset="4_unit_sets",
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    # layers for spritelayer cargos - this is nerfed off for enclosed cars, no visible cargo
+    def spritelayer_cargo_layers(self):
+        return []
+
+
 class AutomobileEnclosedCar(CarModelTypeBase):
     """
     Fully enclosed automobile transporter with, no vehicle sprites shown.
+    CABBAGE - CONVERT TO MOTORAIL CAR
     """
 
     liveries = [
@@ -2529,14 +2562,13 @@ class AutomobileEnclosedCar(CarModelTypeBase):
     ]
 
     model_id_root = "enclosed_automobile_car"
-    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.speed_class = "express"
         # no classes, use explicit labels
         self.class_refit_groups = []
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_allowed = ["PASS", "VEHI"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         self._joker = True
@@ -2552,6 +2584,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
 
 
 class BolsterCarBase(CarModelTypeBase):

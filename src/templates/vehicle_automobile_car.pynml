@@ -57,7 +57,9 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, [
         getbits(extra_callback_info1, 8, 8)
     ]) {
     0: return ${unit.id}_switch_graphics_base_platform_position_in_formation_entry_point;
+    <tal:optional_lower_deck condition="len(model_variant.spritelayer_cargo_layers) > 0">
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
+    </tal:optional_lower_deck>
     <tal:optional_masked_overlay condition="model_variant.gestalt_graphics.add_masked_overlay">
         2: return ${unit.id}_switch_graphics_masked_overlay_position_in_formation_entry_point;
     </tal:optional_masked_overlay>

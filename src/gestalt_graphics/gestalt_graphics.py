@@ -729,6 +729,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
     def __init__(self, spritelayer_cargo_layers=["default"], **kwargs):
         super().__init__(**kwargs)
+        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
             [

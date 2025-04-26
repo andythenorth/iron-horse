@@ -262,6 +262,7 @@ wagon_module_names_with_roster_ids = {
     "curtain_side_box_cars": "pony",
     "dedicated_coil_cars_randomised": "pony",
     "double_deck_automobile_cars": "pony",
+    "double_deck_enclosed_automobile_cars": "pony",
     "drop_end_flat_cars": "pony",
     "drop_side_flat_cars": "pony",
     "mineral_open_cars": "pony",
