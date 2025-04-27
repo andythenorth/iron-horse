@@ -48,6 +48,32 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    model_def = ModelDef(
+        class_name="ExpressFoodTankCarType1",
+        base_numeric_id=24800,
+        gen=4,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="ExpressFoodTankCarType1",
+        base_numeric_id=24290,
+        gen=4,
+        subtype="B",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_24px")
+
+    result.append(model_def)
+
     # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1 for food tank cars - straight to gen 2
 
