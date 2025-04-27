@@ -237,7 +237,7 @@ class ModelTypeBase(object):
     @property
     def formation_ruleset_badges(self):
         # possibly should be delegated to catalogue, but really not clear, so eh JFDI
-        # CABBAGE definitely JFDI, not clear whose domain these are - model, gestalt, catalogue?
+        # CABBADGE definitely JFDI, not clear whose domain these are - model, gestalt, catalogue?
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(

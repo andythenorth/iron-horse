@@ -2,7 +2,6 @@
 
 // intermodal platform max 2 unit sets
 <tal:ruleset define="default 0; first 1; last 2;">
-
     <!--! more than two in chain, inner location -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_max_2_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
@@ -44,10 +43,8 @@
     }
 </tal:ruleset>
 
-
 // intermodal platform max 4 unit sets
 <tal:ruleset define="default 0; first 1; last 2; middle 3;">
-
     <!--! more than two in chain, inner location -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_max_4_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_4_unit_sets()

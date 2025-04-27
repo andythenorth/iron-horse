@@ -62,7 +62,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_r
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41, [
-        <!--! CABBAGE SHIM TO GET PREDICATE -->
         initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"))
         ,
          STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_freight_wagon_livery_entry_point(${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice()), 0x100)

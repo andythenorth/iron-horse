@@ -715,7 +715,7 @@ class Catalogue(list):
     @property
     def formation_reporting_labels(self):
         # THESE ARE THE FLAGS *SET* on the vehicle
-        # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBAGE
+        # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBADGE
         result = []
         if self.tgv_hst_quacker.is_tgv_hst_middle_part:
             result.append(self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag)

@@ -4,8 +4,11 @@ wagon_module_name_stems = [
     # # only comment in if needed for debugging
     # "alignment_cars",
     # """
-    "blaze_middle_cars", # CABBAGE THIS IS UNFORTUNATE NEEDING TO ADD THESE HERE
-    "firebird_middle_cars", # CABBAGE THIS IS UNFORTUNATE NEEDING TO ADD THESE HERE
+    # HST middle cars have to be added specific to each roster
+    # !! this is unfortunate, but JFDI for now, slavish consistency hobgoblin etc
+    "blaze_middle_cars", #
+    "firebird_middle_cars",
+    # standard modules
     "railbus_passenger_trailer_cars",
     "railcar_passenger_trailer_cars",
     "express_railcar_mail_trailer_cars",

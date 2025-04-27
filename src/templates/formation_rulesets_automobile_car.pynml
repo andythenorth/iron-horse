@@ -1,7 +1,5 @@
 <!--! position rulesets for formation-position-dependent vehicles -->
 
-<!--! CABBAGE - needs converted to badge predicates-->
-
 // automobile transporter articulated permanent twin set
 <tal:ruleset define="first 0; last 1;">
     <!--! first / last; NOTE use of position_in_articulated_veh not position_in_vehid_chain -->
@@ -10,9 +8,6 @@
         return ${last};
     }
 </tal:ruleset>
-
-
-<!--! CABBAGE - needs converted to badge predicates-->
 
 // automobile transporter 1 unit sets
 <tal:ruleset define="default 0;">
@@ -25,10 +20,8 @@
     }
 </tal:ruleset>
 
-
 // automobile transporter max 2 unit sets
 <tal:ruleset define="default 0; first 1; last 2;">
-
     <!--! more than two in chain, inner location -->
     switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
@@ -73,7 +66,6 @@
 
 // automobile transporter max 4 unit sets
 <tal:ruleset define="default 0; first 1; last 2; middle 3;">
-
     switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_4_unit_sets()
             ]) {
