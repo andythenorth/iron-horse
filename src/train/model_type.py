@@ -4022,7 +4022,7 @@ class ExpressCarBase(CarModelTypeBase):
 
 
     vehicle_family_id = "express_car"
-    randomised_candidate_groups = ["express_food_car_randomised"]
+    randomised_candidate_groups = ["express_car_randomised", "express_food_car_randomised"]
     variant_group_id_root = "express_cars"
     # express cars treated as mail car for rulesets (but not as pax car - tested that, better to not)
     formation_reporting_labels = ["generic_mail_car"]
@@ -4045,12 +4045,7 @@ class ExpressCarBase(CarModelTypeBase):
             "express_core"
         ]
         # Graphics configuration
-        if self.gen in [1]:
-            self.roof_type = "pax_mail_clerestory"
-        elif self.gen in [2, 3]:
-            self.roof_type = "pax_mail_ridged"
-        else:
-            self.roof_type = "pax_mail_smooth"
+        self.roof_type = "freight"
         weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_states=weathered_states,
@@ -4078,6 +4073,24 @@ class ExpressCarType2(ExpressCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class ExpressCarRandomised(RandomisedCarMixin, ExpressCarBase):
+    """
+    Random choice of express car sprite.
+    """
+
+    model_id_root = "express_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class ExpressFoodCarBase(CarModelTypeBase):

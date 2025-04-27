@@ -271,6 +271,7 @@ wagon_module_names_with_roster_ids = {
     "mineral_open_cars_randomised": "pony",
     "express_cars_type_1": "pony",
     "express_cars_type_2": "pony",
+    "express_cars_randomised": "pony",
     "express_food_cars_randomised": "pony",
     "express_intermodal_cars": "pony",
     "express_railcar_mail_trailer_cars": "pony",
