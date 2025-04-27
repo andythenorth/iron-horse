@@ -115,8 +115,8 @@ class BadgeManager(list):
 
     def produce_vehicle_family_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 # vehicle_family_badge should always be found, just allow unhandled error if not
                 self.add_badge(
                     label=catalogue.vehicle_family_badge,
@@ -125,8 +125,8 @@ class BadgeManager(list):
     def produce_randomised_wagon_candidate_badges(self, **kwargs):
         # this is for debug use
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 if catalogue.wagon_quacker.is_randomised_wagon_type:
                     for (
                         badge
@@ -144,8 +144,8 @@ class BadgeManager(list):
 
     def produce_pantograph_display_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 for badge in catalogue.vehicle_family_pantograph_display_badges:
                     self.add_badge(
                         label=f"{badge}",
@@ -153,8 +153,8 @@ class BadgeManager(list):
 
     def produce_distributed_power_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 for badge in catalogue.example_model_variant.distributed_power_badges:
                     self.add_badge(
                         label=f"{badge}",
@@ -195,16 +195,16 @@ class BadgeManager(list):
 
     def produce_formation_ruleset_badges(self, **kwargs):
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 for badge in catalogue.example_model_variant.formation_ruleset_badges:
                     self.add_badge(f"{badge}")
 
     def produce_general_metadata_badges(self, **kwargs):
         # model variants not catalogues here, metadata can vary per model variant
         roster_manager = kwargs["roster_manager"]
-        for roster in roster_manager:
-            for model_variant in roster.model_variants:
+        if roster_manager.active_roster is not None:
+            for model_variant in roster_manager.active_roster.model_variants:
                 for badge in model_variant.general_metadata_badges:
                     self.add_badge(f"{badge}")
 
@@ -215,7 +215,7 @@ class BadgeManager(list):
 
         self.add_badge(label="ih_tech_tree")
 
-        for roster in roster_manager:
-            for catalogue in roster.catalogues:
+        if roster_manager.active_roster is not None:
+            for catalogue in roster_manager.active_roster.catalogues:
                 for badge in catalogue.example_model_variant.tech_tree_badges:
                     self.add_badge(f"{badge}")
