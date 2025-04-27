@@ -2569,6 +2569,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # roof configuration
         if self.gen in [1]:
@@ -4269,7 +4270,6 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
             "express_core"
         ]
         self._joker = True
-        self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the formation_ruleset conditionally by checking roster
         # intermodal container wagons can't use random colour swaps on the wagons...
@@ -5324,9 +5324,6 @@ class IntermodalCarBase(CarModelTypeBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
-        # intermodal containers can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
-        self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # various rulesets are supported, per formation, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
