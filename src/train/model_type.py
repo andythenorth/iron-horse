@@ -977,14 +977,7 @@ class ModelTypeBase(object):
         )
 
     @property
-    def buy_menu_additional_text_hint_distributed_power(self):
-        if self.is_distributed_power_wagon:
-            return True
-        if self.is_distributed_power_cab:
-            return True
-        return False
-
-    def get_buy_menu_additional_text(self):
+    def buy_menu_additional_text(self):
         result = []
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_power_source:
@@ -1025,13 +1018,14 @@ class ModelTypeBase(object):
             + str(len(result))
         )
 
-    def get_buy_menu_additional_text_format(self):
+    @property
+    def buy_menu_additional_text_format_type(self):
         # keep the template logic simple, present strings for a switch/case tree
         # variable_power and is_distributed_power_wagon are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
         if self.engine_varies_power_by_power_source:
-            # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
-            # !!! we need a better tree, similar to get_name_parts
-            # !! this is not solved by badges (unusually) as it needs to support string formatting of numeric values
+            # !! this combinatorial handling of power, lgv capable etc is a bad sign
+            # !! this is not solved by badges as it needs to support string formatting of numeric values
+            # !!! a walkable tree would be better, similar to get_name_parts, but eh, JFDI, this works
             if self.lgv_capable:
                 return "variable_power_and_lgv_capable"
             else:
@@ -1047,10 +1041,16 @@ class ModelTypeBase(object):
 
     @property
     def uses_buy_menu_additional_text(self):
-        if self.power_by_power_source is not None:
-            if len(self.power_by_power_source) > 1:
-                return True
-        if self.buy_menu_additional_text_hint_distributed_power:
+        # just a convenience wrapper to get a boolean instead of checking "is None" in templates
+        if self.buy_menu_additional_text_format_type is not None:
+            return True
+        return False
+
+    @property
+    def buy_menu_additional_text_hint_distributed_power(self):
+        if self.is_distributed_power_wagon:
+            return True
+        if self.is_distributed_power_cab:
             return True
         return False
 

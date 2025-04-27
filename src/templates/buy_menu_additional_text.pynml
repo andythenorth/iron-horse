@@ -1,4 +1,4 @@
-<tal:block switch="model_variant.get_buy_menu_additional_text_format()">
+<tal:block switch="model_variant.buy_menu_additional_text_format_type">
     <tal:variable_power case="'variable_power'">
         <!--! for variable power, we need to stuff the text stack with the values for power -->
         switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_buy_menu_additional_text, [
@@ -10,7 +10,7 @@
                 ),
             </tal:power_by_power_source>
         ]) {
-            return string(${model_variant.get_buy_menu_additional_text()});
+            return string(${model_variant.buy_menu_additional_text});
         }
     </tal:variable_power>
     <tal:variable_power_and_lgv_capable case="'variable_power_and_lgv_capable'">
@@ -32,7 +32,7 @@
                 0x102 <!--! this will absolutely break on wrong register number if there are more than two power sources -->
             )
         ]) {
-            return string(${model_variant.get_buy_menu_additional_text()});
+            return string(${model_variant.buy_menu_additional_text});
         }
     </tal:variable_power_and_lgv_capable>
     <tal:lgv_capable case="'lgv_capable'">
@@ -43,7 +43,7 @@
                 0x100
             )
         ]) {
-            return string(${model_variant.get_buy_menu_additional_text()});
+            return string(${model_variant.buy_menu_additional_text});
         }
     </tal:lgv_capable>
     <tal:lgv_capable_and_wagons_add_power case="'lgv_capable_and_wagons_add_power'">
@@ -59,7 +59,7 @@
                 0x101
             )
         ]) {
-            return string(${model_variant.get_buy_menu_additional_text()});
+            return string(${model_variant.buy_menu_additional_text});
         }
     </tal:lgv_capable_and_wagons_add_power>
 </tal:block>
