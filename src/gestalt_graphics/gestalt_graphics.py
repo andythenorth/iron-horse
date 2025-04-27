@@ -10,9 +10,9 @@ from utils import timing
 command_line_args = utils.get_command_line_args()
 
 formation_ruleset_reporting_label_maps = {
-    "1_unit_sets": {"label": "1_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
-    "2_unit_sets": {"label": "2_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
-    "4_unit_sets": {"label": "4_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "max_1_unit_sets": {"label": "max_1_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "max_2_unit_sets": {"label": "max_2_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "max_4_unit_sets": {"label": "max_4_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
     "motorail_cars": {"label": "motorail_car"},
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
@@ -701,10 +701,10 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     @cached_property
     def formation_position_labels(self):
         # used in spriteset templating
-        if self.formation_ruleset == "1_unit_sets":
+        if self.formation_ruleset == "max_1_unit_sets":
             # 1 unit articulated sets only need 1 position rule
             return ["default"]
-        elif self.formation_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "max_2_unit_sets":
             # 2 unit articulated sets only need 3 position rules
             return ["default", "first", "last"]
         else:
@@ -752,15 +752,15 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
         # 2 liveries * 4 formation position rules, so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        if self.formation_ruleset == "1_unit_sets":
+        if self.formation_ruleset == "max_1_unit_sets":
             result = ["empty"]
-        elif self.formation_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "max_2_unit_sets":
             result = [
                 "empty",
                 "empty",
                 "empty",
             ]
-        elif self.formation_ruleset == "4_unit_sets":
+        elif self.formation_ruleset == "max_4_unit_sets":
             result = [
                 "empty",
                 "empty",
@@ -878,10 +878,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         if self.formation_ruleset == "articulated_permanent_twin_sets":
             # permanent articulated twin sets only need 2 formation position rules
             return ["first", "last"]
-        elif self.formation_ruleset == "1_unit_sets":
+        elif self.formation_ruleset == "max_1_unit_sets":
             # 1 unit articulated sets only need 1 position rule
             return ["default"]
-        elif self.formation_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "max_2_unit_sets":
             # 2 unit articulated sets only need 3 position rules
             return ["default", "first", "last"]
         else:

@@ -20,19 +20,17 @@
         if 1 unit in sequence
         - note that this just yields a constant result and will likely be optimised out by nmlc but eh, consistency with other switches for now
     -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_1_unit_sets, 0) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_1_unit_sets, 0) {
         0: return ${default};
     }
 </tal:ruleset>
 
 
-// automobile transporter 2 unit sets
+// automobile transporter max 2 unit sets
 <tal:ruleset define="default 0; first 1; last 2;">
 
-    <!--! CABBAGE `2_unit_sets` vs `max_2_unit_sets` token names -->
-
     <!--! more than two in chain, inner location -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_not_first_or_last, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
             ]) {
         0: return ${default};
@@ -40,7 +38,7 @@
         2: return ${last};
     }
     <!--! last, more than one in chain -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_is_last, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_is_last, [
                 switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
             ]) {
         0: ${default};
@@ -48,7 +46,7 @@
         2: ${last};
     }
     <!--! first, more than one in chain -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_is_first, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_is_first, [
                 switch_pseudo_random_freight_ruleset_map_max_2_unit_sets()
             ]) {
         0: ${default};
@@ -56,7 +54,7 @@
         2: ${default};
         3: ${first};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_2_unit_sets, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_2_unit_sets, [
                 <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3
                     (a single unit chain will be 3 as it is both first and last)
                     the results of this ternary are *NOT* related to the position results from the ruleset procedure
@@ -65,21 +63,18 @@
                 +
                 ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) == 0) ? 2 : 0)
             ]) {
-        0: switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_not_first_or_last;
-        1: switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_is_first;
-        2: switch_graphics_automobile_transporter_ruleset_2_unit_sets_not_single_is_last;
+        0: switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_not_first_or_last;
+        1: switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_is_first;
+        2: switch_graphics_automobile_transporter_ruleset_max_2_unit_sets_not_single_is_last;
         3: ${default}; <!--! single unit -->
     }
 </tal:ruleset>
 
 
-// automobile transporter 4 unit sets
+// automobile transporter max 4 unit sets
 <tal:ruleset define="default 0; first 1; last 2; middle 3;">
 
-    <!--! CABBAGE `4_unit_sets` vs `max_4_unit_sets` token names -->
-
-    <!--! more than two in chain, inner location -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_not_first_or_last, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_not_first_or_last, [
                 switch_pseudo_random_freight_ruleset_map_max_4_unit_sets()
             ]) {
         0: return ${default};
@@ -88,7 +83,7 @@
         3: return ${middle};
     }
     <!--! last, more than one in chain -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_is_last, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_is_last, [
                 switch_pseudo_random_freight_ruleset_map_max_4_unit_sets()
             ]) {
         0: ${default};
@@ -97,7 +92,7 @@
         3: ${last};
     }
     <!--! first, more than one in chain -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_is_first, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_is_first, [
                 switch_pseudo_random_freight_ruleset_map_max_4_unit_sets()
             ]) {
         0: ${default};
@@ -105,7 +100,7 @@
         2: ${default};
         3: ${first};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_4_unit_sets, [
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_max_4_unit_sets, [
                 <!--! this is a daft ternary, but will only evaluate to 0, 1, 2, or 3
                     (a single unit chain will be 3 as it is both first and last)
                     the results of this ternary are *NOT* related to the position results from the ruleset procedure
@@ -114,9 +109,9 @@
                 +
                 ((LOAD_TEMP(k_addr_position_in_badge_predicate_chain_from_end) == 0) ? 2 : 0)
             ]) {
-        0: switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_not_first_or_last;
-        1: switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_is_first;
-        2: switch_graphics_automobile_transporter_ruleset_4_unit_sets_not_single_is_last;
+        0: switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_not_first_or_last;
+        1: switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_is_first;
+        2: switch_graphics_automobile_transporter_ruleset_max_4_unit_sets_not_single_is_last;
         3: ${default}; <!--! single unit -->
     }
 </tal:ruleset>

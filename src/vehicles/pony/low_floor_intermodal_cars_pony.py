@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=5,
         subtype="A",
         sprites_complete=True,
-        formation_ruleset="2_unit_sets",  # special case for single unit low-floor intermodals (they're PFAs eh)
+        formation_ruleset="max_2_unit_sets",  # special case for single unit low-floor intermodals (they're PFAs eh)
     )
 
     model_def.add_unit_def(
@@ -27,7 +27,7 @@ def main(**kwargs):
         gen=5,
         subtype="B",
         sprites_complete=True,
-        formation_ruleset="2_unit_sets",  # special case for 2 unit low-floor intermodals (they're FLAs eh)
+        formation_ruleset="max_2_unit_sets",  # special case for 2 unit low-floor intermodals (they're FLAs eh)
     )
     model_def.add_unit_def(
         class_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_24px"

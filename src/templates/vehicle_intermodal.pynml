@@ -14,14 +14,14 @@
     }
 </tal:formation_positions>
 
-<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == '1_unit_sets'">
+<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_1_unit_sets'">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, 0) {
         return ${unit.id}_ss_default;
     }
 </tal:position_ruleset>
 
-<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == '2_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_2_unit_sets()) {
+<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_2_unit_sets'">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_max_2_unit_sets()) {
         0: return ${unit.id}_ss_default;
         1: return ${unit.id}_ss_first;
         2: return ${unit.id}_ss_last;
@@ -29,8 +29,8 @@
     }
 </tal:position_ruleset>
 
-<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == '4_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
+<tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_4_unit_sets'">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_max_4_unit_sets()) {
         0: ${unit.id}_ss_default;
         1: return ${unit.id}_ss_first;
         2: return ${unit.id}_ss_last;
@@ -54,9 +54,8 @@
     }
 </tal:spritelayer_cargo_layers>
 
-<!--! CABBAGE SHIM - fetching the ruleset target might be fragile - also 'max_unit_sets' vs '4_unit_sets' ???? -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice, [
-            switch_pseudo_random_freight_ruleset_map_for_random_choice_max_${model_variant.gestalt_graphics.formation_ruleset}()
+            switch_pseudo_random_freight_ruleset_map_for_random_choice_${model_variant.gestalt_graphics.formation_ruleset}()
         ]) {
     return;
     }

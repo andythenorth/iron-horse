@@ -2454,7 +2454,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
         else:
-            formation_ruleset = "4_unit_sets"
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
@@ -2479,7 +2479,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         super().__init__(**kwargs)
         self._joker = True
         # Graphics configuration
-        formation_ruleset = "1_unit_sets"
+        formation_ruleset = "max_1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
@@ -2508,7 +2508,7 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
         else:
-            formation_ruleset = "4_unit_sets"
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
@@ -2537,7 +2537,7 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
-            formation_ruleset="4_unit_sets",
+            formation_ruleset="max_4_unit_sets",
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4264,7 +4264,7 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
         # intermodal container wagons can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            formation_ruleset="2_unit_sets",
+            formation_ruleset="max_2_unit_sets",
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5322,7 +5322,7 @@ class IntermodalCarBase(CarModelTypeBase):
         if self.model_def.formation_ruleset is not None:
             formation_ruleset = self.model_def.formation_ruleset
         else:
-            formation_ruleset = "4_unit_sets"
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,

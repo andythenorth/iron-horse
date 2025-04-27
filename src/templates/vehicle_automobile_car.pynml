@@ -8,9 +8,8 @@
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
-<!--! CABBAGE SHIM - fetching the ruleset target might be fragile - also 'max_unit_sets' vs '4_unit_sets' ???? -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice, [
-            switch_pseudo_random_freight_ruleset_map_for_random_choice_max_${model_variant.gestalt_graphics.formation_ruleset}()
+            switch_pseudo_random_freight_ruleset_map_for_random_choice_${model_variant.gestalt_graphics.formation_ruleset}()
         ]) {
     return;
 }
