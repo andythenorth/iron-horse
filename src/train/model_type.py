@@ -5325,7 +5325,17 @@ class IntermodalCarBase(CarModelTypeBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
-        # *Note* graphics configuration defered to subclasses so that randomised type can subclass base
+        # Graphics configuration
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
+        else:
+            formation_ruleset = "max_4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
+            formation_ruleset=formation_ruleset,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class IntermodalCar(IntermodalCarBase):
@@ -5342,17 +5352,6 @@ class IntermodalCar(IntermodalCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Graphics configuration
-        # various rulesets are supported, per formation, (or could be extended to checks per roster)
-        # this wasn't moved to @property due to laziness, as of Jan 2025
-        if self.model_def.formation_ruleset is not None:
-            formation_ruleset = self.model_def.formation_ruleset
-        else:
-            formation_ruleset = "max_4_unit_sets"
-        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            formation_ruleset=formation_ruleset,
-            catalogue_entry=self.catalogue_entry,
-        )
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
@@ -5379,17 +5378,6 @@ class IntermodalLowFloorCar(IntermodalCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
-        # Graphics configuration
-        # various rulesets are supported, per formation, (or could be extended to checks per roster)
-        # this wasn't moved to @property due to laziness, as of Jan 2025
-        if self.model_def.formation_ruleset is not None:
-            formation_ruleset = self.model_def.formation_ruleset
-        else:
-            formation_ruleset = "max_4_unit_sets"
-        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            formation_ruleset=formation_ruleset,
-            catalogue_entry=self.catalogue_entry,
-        )
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
@@ -5397,9 +5385,10 @@ class IntermodalLowFloorCar(IntermodalCarBase):
         return ["low_floor"]
 
 
-class IntermodalCarRandomised(RandomisedCarMixin, IntermodalCarBase):
+class IntermodalCarRandomised(IntermodalCarBase):
     """
     Random choice of intermodal car sprite.
+    CABBAGE - DOES NOT USE RANDOM MIXIN OR GESTALT
     """
 
     model_id_root = "intermodal_car_randomised"
@@ -5409,13 +5398,13 @@ class IntermodalCarRandomised(RandomisedCarMixin, IntermodalCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=1,
-            catalogue_entry=self.catalogue_entry,
-        )
+        # CABBAGE SHIM
+        self.cabbage_random_intermodal = True
 
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["default"]
 
 class KaolinHopperCar(CarModelTypeBase):
     """

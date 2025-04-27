@@ -3,11 +3,14 @@
 <!--! note that this does not yet account for (masked) overlays which will be needed for well cars
       masks *are* provided for double deck automobile carriers
 -->
-<tal:formation_positions repeat="formation_position_label model_variant.gestalt_graphics.formation_position_labels">
-    spriteset(${unit.id}_ss_${formation_position_label}, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.formation_position_label.index * 30))}
-    }
-</tal:formation_positions>
+
+<tal:cabbage_random_intermodal condition="not hasattr(model_variant, 'cabbage_random_intermodal')">
+    <tal:formation_positions repeat="formation_position_label model_variant.gestalt_graphics.formation_position_labels">
+        spriteset(${unit.id}_ss_${formation_position_label}, "${graphics_path}${model_variant.model_id}.png") {
+            ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.formation_position_label.index * 30))}
+        }
+    </tal:formation_positions>
+</tal:cabbage_random_intermodal>
 
 <tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_1_unit_sets'">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, 0) {
@@ -70,12 +73,18 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
     1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
 }
 
-<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+<tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part and (not hasattr(model_variant, 'cabbage_random_intermodal'))">
     spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
         ${model_variant.get_nml_for_spriteset_template(y_offset=0)}
     }
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
         return ${unit.id}_ss_vehicle_purchase;
+    }
+</tal:buy_menu_lead_unit_only>
+
+<tal:buy_menu_lead_unit_only condition="hasattr(model_variant, 'cabbage_random_intermodal')">
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
+        return intermodal_car_pony_gen_5C_switch_graphics_purchase; <!--! CABBAGE SHIM -->
     }
 </tal:buy_menu_lead_unit_only>
 

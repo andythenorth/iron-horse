@@ -18,7 +18,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_1cc_filled_16px"
+        class_name="IntermodalCarUnit", chassis="2_axle_1cc_filled_16px"
     )
 
     result.append(model_def)
@@ -32,7 +32,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_1cc_filled_24px"
+        class_name="IntermodalCarUnit", chassis="4_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
@@ -46,7 +46,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_1cc_filled_32px"
+        class_name="IntermodalCarUnit", chassis="4_axle_1cc_filled_32px"
     )
 
     result.append(model_def)
