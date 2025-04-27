@@ -14,7 +14,6 @@ def main(**kwargs):
         base_numeric_id=18150,
         gen=5,
         subtype="U",
-        intro_year_offset=-10,  # match to Blaze HST # CABBAGE GET THIS FROM cab
         lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
@@ -30,7 +29,6 @@ def main(**kwargs):
         base_numeric_id=26180,
         gen=5,
         subtype="U",
-        intro_year_offset=-10,  # match to Blaze HST # CABBAGE GET THIS FROM cab
         lgv_capable=True,  # for lolz
         sprites_complete=True,
     )

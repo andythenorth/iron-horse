@@ -15,7 +15,6 @@ def main(**kwargs):
         base_numeric_id=18170,
         gen=4,
         subtype="U",
-        intro_year_offset=0,  # match to Firebird # CABBAGE GET THIS FROM cab
         sprites_complete=True,
     )
 
@@ -30,7 +29,6 @@ def main(**kwargs):
         base_numeric_id=16880,
         gen=4,
         subtype="U",
-        intro_year_offset=0,  # match to Firebird # CABBAGE GET THIS FROM cab
         sprites_complete=True,
     )
 
