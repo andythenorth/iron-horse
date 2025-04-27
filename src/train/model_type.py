@@ -4240,7 +4240,7 @@ class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
         )
 
 
-class ExpressIntermodalCarUnit(CarModelTypeBase):
+class ExpressIntermodalCar(CarModelTypeBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
     """
@@ -5338,7 +5338,7 @@ class IntermodalCarBase(CarModelTypeBase):
         )
 
 
-class IntermodalCarUnit(IntermodalCarBase):
+class IntermodalCar(IntermodalCarBase):
     """
     Default intermodal car - simple flat platform at default height.
     """
