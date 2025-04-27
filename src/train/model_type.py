@@ -236,14 +236,12 @@ class ModelTypeBase(object):
 
     @property
     def formation_ruleset_badges(self):
-        # possibly should be delegated to catalogue, but really not clear, so eh JFDI
-        # CABBADGE definitely JFDI, not clear whose domain these are - model, gestalt, catalogue?
+        # model type intermediates here between gestalt_graphics and catalogue, rulesets cross domains, so eh JFDI
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
-
         # specifically the ruleset can take one and only one (as of April 2025) badge to look for across the formation
         # that's used by alt_var_41, so let's just be explicit
         if self.gestalt_graphics.badge_slug_for_alt_var_41_predicate is not None:

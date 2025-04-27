@@ -718,15 +718,16 @@ class Catalogue(list):
 
     @property
     def formation_reporting_labels(self):
-        # THESE ARE THE FLAGS *SET* on the vehicle
-        # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBADGE
+        # these are used for the badges that the vehicle will report *to* alt var 41 predicates
+        # the predicate to check *for* is handled elsewhere
+        # !! there is some degree of JFDI in this as of April 2025
         result = []
         if self.tgv_hst_quacker.is_tgv_hst_middle_part:
             result.append(
                 self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
             )
 
-        # !! cabbage - this should definitely be a factory thing, as it needs to consider model_def
+        # !! attr lookup like this is a sign that this might need delegated to factory properly, but eh
         if (
             getattr(self.factory.model_type_cls, "formation_reporting_labels", None)
             is not None
