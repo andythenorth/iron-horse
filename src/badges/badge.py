@@ -4,6 +4,7 @@ from utils import timing
 from badges import _static_badges
 from badges.graphics_generator import BadgeGraphicsGenerator
 
+
 # could be @dataclass but eh
 class Badge(object):
     """Simple generic class for badges"""

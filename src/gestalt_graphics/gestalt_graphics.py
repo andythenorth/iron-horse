@@ -27,6 +27,7 @@ formation_ruleset_reporting_label_maps = {
     "tgv_hst": {"label": "tgv_hst", "delegate_to_catalogue": True},
 }
 
+
 class GestaltGraphics(object):
     """
     Simple class, which is extended in subclasses to configure:
@@ -100,9 +101,7 @@ class GestaltGraphics(object):
         else:
             # dest_spriterows is equivalent to liveries in catalogue
             dest_spriterows = pipeline.catalogue
-        for dest_spriterow_counter, catalogue_entry in enumerate(
-            dest_spriterows
-        ):
+        for dest_spriterow_counter, catalogue_entry in enumerate(dest_spriterows):
             source_vehicles_and_input_spriterow_nums = []
 
             for unit_counter, unit in enumerate(pipeline.example_model_variant.units):
@@ -146,14 +145,18 @@ class GestaltGraphics(object):
         # the result is a bit conditional / indirect, but the domain boundaries are faffy here
         if self.formation_ruleset is None:
             return None
-        reporting_label_map = formation_ruleset_reporting_label_maps[self.formation_ruleset]
+        reporting_label_map = formation_ruleset_reporting_label_maps[
+            self.formation_ruleset
+        ]
         if reporting_label_map.get("delegate_to_catalogue", False):
             if reporting_label_map["label"] == "model_id":
                 return self.catalogue.model_id
             if reporting_label_map["label"] == "vehicle_family":
                 return self.catalogue.factory.vehicle_family_id
             if reporting_label_map["label"] == "tgv_hst":
-                return self.catalogue.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
+                return (
+                    self.catalogue.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
+                )
         return reporting_label_map["label"]
 
 
@@ -1153,7 +1156,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
         self._nml_template = _nml_template
-        self._variants_use_common_graphics_switch_chain = variants_use_common_graphics_switch_chain
+        self._variants_use_common_graphics_switch_chain = (
+            variants_use_common_graphics_switch_chain
+        )
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets

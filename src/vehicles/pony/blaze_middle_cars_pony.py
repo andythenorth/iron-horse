@@ -2,6 +2,7 @@ from train.factory import ModelDef
 
 # HST middle parts are not engines, unlike TGV middle parts
 
+
 def main(**kwargs):
     result = []
 

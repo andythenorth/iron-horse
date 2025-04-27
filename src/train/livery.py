@@ -149,9 +149,7 @@ class LiverySupplier(dict):
             colour_set_indexes = []
             for colour_set_name in livery.colour_set_names:
                 colour_set_indexes.append(
-                    self.freight_livery_colour_set_indexes_and_names[
-                        colour_set_name
-                    ]
+                    self.freight_livery_colour_set_indexes_and_names[colour_set_name]
                 )
             serialized_params = self.serialize_livery_params(
                 flag_context_is_purchase=False,
@@ -172,11 +170,9 @@ class LiverySupplier(dict):
             else:
                 # otherwise take the first colour set as default for purchase
                 colour_set_name = livery.colour_set_names[0]
-            purchase_livery_index = (
-                self.freight_livery_colour_set_indexes_and_names[
-                    colour_set_name
-                ]
-            )
+            purchase_livery_index = self.freight_livery_colour_set_indexes_and_names[
+                colour_set_name
+            ]
             # we still use the list of colour set indexes, but one entry is enough for purchase, the entries will be auto-repeated by the serializer
             colour_set_indexes = [purchase_livery_index]
             serialized_params = self.serialize_livery_params(

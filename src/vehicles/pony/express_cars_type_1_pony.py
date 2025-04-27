@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         class_name="ExpressCarUnit",
-        #suppress_roof_sprite=True,  # non-standard roof for this wagon
+        # suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_16px",
     )
 

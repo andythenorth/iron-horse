@@ -358,7 +358,9 @@ class ModelTypeBase(object):
             result.append("ih_wagon_subtype/" + self.subtype.lower())
         # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
         if self.catalogue_entry.variant_group_id is not None:
-            result.append("ih_variant_group_id/" + self.catalogue_entry.variant_group_id)
+            result.append(
+                "ih_variant_group_id/" + self.catalogue_entry.variant_group_id
+            )
         return result
 
     @cached_property
@@ -1449,7 +1451,11 @@ class MailEngineCabbageDVT(MailEngineBase):
 
     livery_group_name = "dvt_mail_liveries"
     # report *mail* cab cars also as *pax* cars for formation rulesets
-    formation_reporting_labels = ["generic_mail_car", "generic_pax_car", "looks_like_pax_brake_car"]
+    formation_reporting_labels = [
+        "generic_mail_car",
+        "generic_pax_car",
+        "looks_like_pax_brake_car",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2425,7 +2431,12 @@ class AutomobileCarBase(CarModelTypeBase):
         self.speed_class = "express"
         # no classes, use explicit labels
         self.class_refit_groups = []
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"] # probably don't add mail eh?
+        self.label_refits_allowed = [
+            "PASS",
+            "VEHI",
+            "ENSP",
+            "FMSP",
+        ]  # probably don't add mail eh?
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special case pax capacity, with integer maths faff
@@ -2511,7 +2522,7 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
-            add_masked_overlay = True,
+            add_masked_overlay=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2554,7 +2565,9 @@ class AutomobileMotorailCar(AutomobileCarBase):
 
     model_id_root = "motorail_automobile_car"
 
-    formation_reporting_labels = ["motorail_car"] # just a boilerplate entry in the case of motorail cars
+    formation_reporting_labels = [
+        "motorail_car"
+    ]  # just a boilerplate entry in the case of motorail cars
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4018,9 +4031,11 @@ class ExpressCarBase(CarModelTypeBase):
         "FREIGHT_RED_NO_WEATHERING",  # because royal mail livery
     ]
 
-
     vehicle_family_id = "express_car"
-    randomised_candidate_groups = ["express_car_randomised", "express_food_car_randomised"]
+    randomised_candidate_groups = [
+        "express_car_randomised",
+        "express_food_car_randomised",
+    ]
     variant_group_id_root = "express_cars"
     # express cars treated as mail car for rulesets (but not as pax car - tested that, better to not)
     formation_reporting_labels = ["generic_mail_car"]
@@ -5596,7 +5611,11 @@ class MailCar(MailCarBase):
 
     model_id_root = "mail_car"
     # mail cars treated as both pax and mail for rulesets
-    formation_reporting_labels = ["generic_mail_car", "generic_pax_car", "looks_like_pax_brake_car"]
+    formation_reporting_labels = [
+        "generic_mail_car",
+        "generic_pax_car",
+        "looks_like_pax_brake_car",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5607,10 +5626,12 @@ class MailCar(MailCarBase):
             "express_core"
         ]
         # special (TPO) sprites only for larger types from gen 3 onwards (non-NG)
-        bonus_sprites = 2 if (self.subtype in ["B", "C"]) and (self.base_track_type != "NG") else 0
+        bonus_sprites = (
+            2 if (self.subtype in ["B", "C"]) and (self.base_track_type != "NG") else 0
+        )
         formation_position_spriterow_map = {
             "default": 0,
-            "first": 0, # default and first synonymous currently for mail cars
+            "first": 0,  # default and first synonymous currently for mail cars
             "last": 1,
             "special": bonus_sprites,
         }
@@ -5695,7 +5716,7 @@ class MailHighSpeedCar(MailCarBase):
         # formation position rules:
         formation_position_spriterow_map = {
             "default": 0,
-            "first": 0, # default and first synonymous currently
+            "first": 0,  # default and first synonymous currently
             "last": 1,
             "special": 2,
         }
@@ -6818,6 +6839,7 @@ class PassengerRestaurantCar(PassengerCarBase):
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["restaurant"]
+
 
 class PassengerSuburbanCar(PassengerCarBase):
     """

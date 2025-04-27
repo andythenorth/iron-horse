@@ -325,11 +325,15 @@ class ModelVariantFactory:
         # accessed via catalogue
         result = []
         # first find out if we're a trailer, and if we need pans
-        if (self.cab_factory is not None) and (not self.catalogue.example_model_variant.is_distributed_power_wagon):
+        if (self.cab_factory is not None) and (
+            not self.catalogue.example_model_variant.is_distributed_power_wagon
+        ):
             if self.cab_factory.model_def.pantograph_type is not None:
-                result.append(f"ih_pantograph_display/requires_cab_present/{self.model_id}")
+                result.append(
+                    f"ih_pantograph_display/requires_cab_present/{self.model_id}"
+                )
         # now find out if we're a cab, and if we need pans
-        if (self.catalogue.engine_quacker.is_cab_with_dedicated_trailers):
+        if self.catalogue.engine_quacker.is_cab_with_dedicated_trailers:
             if self.model_def.pantograph_type is not None:
                 result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
         # strictly we should never need both results and could return early, but eh, this also works
@@ -718,10 +722,15 @@ class Catalogue(list):
         # unclear if this should delegate to factory, quite possibly, but eh JFDI CABBADGE
         result = []
         if self.tgv_hst_quacker.is_tgv_hst_middle_part:
-            result.append(self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag)
+            result.append(
+                self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
+            )
 
         # !! cabbage - this should definitely be a factory thing, as it needs to consider model_def
-        if getattr(self.factory.model_type_cls, "formation_reporting_labels", None) is not None:
+        if (
+            getattr(self.factory.model_type_cls, "formation_reporting_labels", None)
+            is not None
+        ):
             result.extend(self.factory.model_type_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
         result.append(self.factory.vehicle_family_id)
@@ -972,7 +981,10 @@ class WagonQuacker:
         if self._quack() == False:
             return False
         # depends on looking up class name, but should be ok
-        return self.catalogue.example_model_variant.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
+        return (
+            self.catalogue.example_model_variant.gestalt_graphics.__class__.__name__
+            == "GestaltGraphicsCaboose"
+        )
 
     @cached_property
     def is_restaurant_car(self):
@@ -1063,22 +1075,24 @@ class TGVHSTQuacker:
 
     def _validate(self):
         # specific name format is required for TGV and HST parts
-        assert self.is_tgv_hst_cab != self.is_tgv_hst_middle_part, (
-            f"TGVHSTQuacker: {self.catalogue.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
-        )
+        assert (
+            self.is_tgv_hst_cab != self.is_tgv_hst_middle_part
+        ), f"TGVHSTQuacker: {self.catalogue.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
         if self.is_tgv_hst_cab:
-            assert self.catalogue.model_id.endswith("_cab"), (
-                f"TGVHSTQuacker: {self.catalogue.model_id} cab part must end with '_cab'"
-            )
+            assert self.catalogue.model_id.endswith(
+                "_cab"
+            ), f"TGVHSTQuacker: {self.catalogue.model_id} cab part must end with '_cab'"
         if self.is_tgv_hst_middle_part:
-            assert self.catalogue.model_id.endswith(("_middle_passenger", "middle_mail")), (
-                f"TGVHSTQuacker: {self.catalogue.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
-            )
+            assert self.catalogue.model_id.endswith(
+                ("_middle_passenger", "middle_mail")
+            ), f"TGVHSTQuacker: {self.catalogue.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
 
     @property
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
-        if getattr(self.catalogue.factory.model_type_cls, "dedicated_tgv_hst_formation", False):
+        if getattr(
+            self.catalogue.factory.model_type_cls, "dedicated_tgv_hst_formation", False
+        ):
             return True
         # fall through
         return False

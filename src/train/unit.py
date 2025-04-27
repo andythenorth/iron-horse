@@ -350,7 +350,9 @@ class UnitBase(object):
 
     @property
     def graphics_switch_entry_point_stem(self):
-        if self.model_variant.gestalt_graphics.variants_use_common_graphics_switch_chain:
+        if (
+            self.model_variant.gestalt_graphics.variants_use_common_graphics_switch_chain
+        ):
             return self.unit_id_from_common_model_id
         else:
             return self.id

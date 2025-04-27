@@ -20,20 +20,20 @@ def main(**kwargs):
 
     result.append(model_def)
 
-#     model_def = ModelDef(
-#         class_name="AutomobileMotorailCar",
-#         base_numeric_id=38760,
-#         gen=2,
-#         subtype="C",
-#         sprites_complete=False,
-#     )
-#
-#     model_def.add_unit_def(
-#         class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
-#     )
-#
-#     result.append(model_def)
-#
+    #     model_def = ModelDef(
+    #         class_name="AutomobileMotorailCar",
+    #         base_numeric_id=38760,
+    #         gen=2,
+    #         subtype="C",
+    #         sprites_complete=False,
+    #     )
+    #
+    #     model_def.add_unit_def(
+    #         class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
+    #     )
+    #
+    #     result.append(model_def)
+    #
     model_def = ModelDef(
         class_name="AutomobileMotorailCar",
         base_numeric_id=20820,
