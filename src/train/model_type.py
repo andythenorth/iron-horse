@@ -243,17 +243,15 @@ class ModelTypeBase(object):
             result.append(
                 f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
-            # CABBAGE SHIM TO INTERMODAL
-            result.append(
-                f"ih_formation_ruleset/vehicle_reports_as/{self.gestalt_graphics.formation_ruleset}"
-            )
 
         # specifically the ruleset can take one and only one (as of April 2025) badge to look for across the formation
         # that's used by alt_var_41, so let's just be explicit
-        alt_var_41_predicate = self.gestalt_graphics.formation_ruleset_target_reporting_label
-        if alt_var_41_predicate is not None:
+        if self.gestalt_graphics.badge_slug_for_alt_var_41_predicate is not None:
             result.append(
-                f"ih_formation_ruleset/alt_var_41_predicate/{alt_var_41_predicate}"
+                f"ih_formation_ruleset/alt_var_41_predicate/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
+            )
+            result.append(
+                f"ih_formation_ruleset/vehicle_reports_as/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
             )
         for flag in self.catalogue.formation_reporting_labels:
             result.append(f"ih_formation_ruleset/vehicle_reports_as/{flag}")

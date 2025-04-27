@@ -44,8 +44,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_r
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41, [
-        <tal:fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is not None">initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.formation_ruleset_target_reporting_label}"))</tal:fill_temp_storage>
-        <tal:no_fill_temp_storage condition="catalogue.formation_ruleset_equivalence_badge is None">1</tal:no_fill_temp_storage>
+        initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"))
     ]) {
     return;
 }

@@ -9,10 +9,11 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
+# possibly move to graphics constants?
 formation_ruleset_reporting_label_maps = {
-    "max_1_unit_sets": {"label": "max_1_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
-    "max_2_unit_sets": {"label": "max_2_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
-    "max_4_unit_sets": {"label": "max_4_unit_sets"}, # CABBAGE, this needs to be e.g. 'intermodal_4_unit_sets' or whatever
+    "max_1_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
+    "max_2_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
+    "max_4_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "motorail_cars": {"label": "motorail_car"},
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
@@ -135,16 +136,24 @@ class GestaltGraphics(object):
         return result
 
     @property
-    def formation_ruleset_target_reporting_label(self):
+    def badge_slug_for_alt_var_41_predicate(self):
+        # we use a badge as a predicate to detect 'same formation' for rulesets
+        # this gets a slug for assembling the badge
+        # we go via gestalt_graphics as that's the proper domain for rulesets...
+        # ...factory and catalogue should not know about rulesets
+        # however gestalt_graphics equally doesn't know about specific model types...
+        # ...so it delegates back to catalogue methods or properties
+        # the result is a bit conditional / indirect, but the domain boundaries are faffy here
         if self.formation_ruleset is None:
             return None
-        # CABBAGE unclear how much we handle directly here, and how much we delegate to the factory to resolve
-        # !! the factory should NOT know too much about rulesets
-        # !! BUT the rulesets should not know too much the model type
-        # !! so yeah domain boundary issues
         reporting_label_map = formation_ruleset_reporting_label_maps[self.formation_ruleset]
         if reporting_label_map.get("delegate_to_catalogue", False):
-            reporting_label_map = self.catalogue.get_formation_ruleset_reporting_label(reporting_label_map)
+            if reporting_label_map["label"] == "model_id":
+                return self.catalogue.model_id
+            if reporting_label_map["label"] == "vehicle_family":
+                return self.catalogue.factory.vehicle_family_id
+            if reporting_label_map["label"] == "tgv_hst":
+                return self.catalogue.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
         return reporting_label_map["label"]
 
 
