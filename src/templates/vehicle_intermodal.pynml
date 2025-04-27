@@ -1,16 +1,11 @@
 <!--! graphics chain for vehicle platform -->
 <!--! position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on formation_ruleset -->
 <!--! note that this does not yet account for (masked) overlays which will be needed for well cars
-      the sprites for those are provided manually in the cargo sprinter as it's a single case
-      but if they are added here, the pipeline should generate the mask automatically using a pink mask sprite
-      will need the spritesheet format figuring out - intermodal cars are asymmetric, so probably interleave the masks with each row, like opening doors on pax cars
+      masks *are* provided for double deck automobile carriers
 -->
 <tal:formation_positions repeat="formation_position_label model_variant.gestalt_graphics.formation_position_labels">
-    <!--! as of June 2023, the spritesheets contain an alternative livery which was not included in initial variant wagons release
-          hence the row offset of 60, not 30
-    -->
     spriteset(${unit.id}_ss_${formation_position_label}, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.formation_position_label.index * 60))}
+        ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.formation_position_label.index * 30))}
     }
 </tal:formation_positions>
 
