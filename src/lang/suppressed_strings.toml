@@ -114,7 +114,7 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_BULK_CAR_HOPPER_RANDOMISED]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_BULK_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_BULK_CAR_MIXED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_CABOOSE_CAR]
@@ -123,13 +123,10 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_CANE_BIN_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_CHEMICAL_TANK_CAR_RANDOMISED]
+[STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_COIL_BUGGY_CAR]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_WAGON_NAME_COVERED_BULK_CAR_RANDOMISED]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_CURTAIN_SIDE_BOX_CAR]
@@ -183,13 +180,13 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_MAIL_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_METAL_PRODUCT_CAR_COVERED_RANDOMISED]
+[STR_WAGON_NAME_METAL_PRODUCT_COVERED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED]
+[STR_WAGON_NAME_METAL_PRODUCT_UNCOVERED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
@@ -199,6 +196,9 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
+suppressed_rosters = ["moose", "ibex"]
+
+[STR_WAGON_NAME_MINERAL_COVERED_HOPPER_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_MGR_HOPPER_CAR]
@@ -225,13 +225,13 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_PEAT_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_PIECE_GOODS_CAR_COVERED_RANDOMISED]
+[STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_PIECE_GOODS_CAR_MANUFACTURING_PARTS_RANDOMISED]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_PIECE_GOODS_CAR_MIXED_RANDOMISED]
+[STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_RESTAURANT_CAR]

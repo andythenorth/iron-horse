@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=25930,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20640,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -19,20 +19,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=26370,
-        gen=2,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=25880,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20650,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -43,8 +31,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=24470,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20660,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -55,8 +43,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=23360,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20670,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -67,8 +55,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=18060,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20680,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -79,8 +67,32 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=30820,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20690,
+        gen=4,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_32px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20700,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20710,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -91,8 +103,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombosRandomised",
-        base_numeric_id=31010,
+        class_name="ChemicalCargoTankCombos",
+        base_numeric_id=20720,
         gen=5,
         subtype="C",
         sprites_complete=True,

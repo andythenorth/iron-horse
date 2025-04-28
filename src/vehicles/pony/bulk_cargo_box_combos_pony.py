@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=25950,
         gen=3,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=25740,
         gen=3,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=24510,
         gen=4,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=24520,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=22160,
         gen=5,
         subtype="A",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=16500,
         gen=5,
         subtype="B",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCargoBoxCombosRandomised",
+        class_name="BulkCargoBoxCombos",
         base_numeric_id=16470,
         gen=5,
         subtype="C",

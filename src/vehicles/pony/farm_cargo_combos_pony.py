@@ -7,9 +7,9 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16750,
-        gen=1,
+        class_name="FarmCargoCombos",
+        base_numeric_id=25930,
+        gen=2,
         subtype="A",
         sprites_complete=True,
     )
@@ -18,11 +18,9 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    # no new type A for gen 2, gen 1 type A continues
-
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16760,
+        class_name="FarmCargoCombos",
+        base_numeric_id=26370,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -33,8 +31,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16770,
+        class_name="FarmCargoCombos",
+        base_numeric_id=25880,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -45,8 +43,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16780,
+        class_name="FarmCargoCombos",
+        base_numeric_id=24470,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -57,8 +55,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16790,
+        class_name="FarmCargoCombos",
+        base_numeric_id=23360,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -69,8 +67,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16800,
+        class_name="FarmCargoCombos",
+        base_numeric_id=18060,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -81,24 +79,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16810,
-        gen=4,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(
-        class_name="FreightCarUnit",
-        suppress_roof_sprite=True,  # non-standard roof for this wagon
-        chassis="empty_32px",
-    )
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16820,
+        class_name="FarmCargoCombos",
+        base_numeric_id=30820,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -109,8 +91,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCombosMixedRandomised",
-        base_numeric_id=16830,
+        class_name="FarmCargoCombos",
+        base_numeric_id=31010,
         gen=5,
         subtype="C",
         sprites_complete=True,
