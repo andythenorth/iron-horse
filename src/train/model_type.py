@@ -4330,6 +4330,7 @@ class FarmProductsBoxCarType1(FarmProductsBoxCarBase):
     model_id_root = "farm_product_box_car_type_1"
     randomised_candidate_groups = [
         "farm_product_box_car_randomised",
+        "farm_product_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -4344,6 +4345,7 @@ class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
     model_id_root = "farm_product_box_car_type_2"
     randomised_candidate_groups = [
         "farm_product_box_car_randomised",
+        "farm_product_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -4412,6 +4414,7 @@ class FarmProductsHopperCarType1(FarmProductsHopperCarBase):
     model_id_root = "farm_product_hopper_car_type_1"
     randomised_candidate_groups = [
         "farm_product_hopper_car_randomised",
+        "farm_product_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -4426,6 +4429,7 @@ class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
     model_id_root = "farm_product_hopper_car_type_2"
     randomised_candidate_groups = [
         "farm_product_hopper_car_randomised",
+        "farm_product_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -4534,6 +4538,39 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FarmProductsCarRandomised(RandomisedCarMixin, CarModelTypeBase):
+    """
+    Random choice of farm products car.
+    """
+
+    liveries = ["VANILLA"]  # no recolours
+
+    model_id_root = "farm_product_car_randomised"
+    vehicle_family_id = "farm_product_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["covered_hopper_freight_food_grade"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_food_products"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
+        self._joker = True
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=1,
             catalogue_entry=self.catalogue_entry,
         )
 

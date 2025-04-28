@@ -152,6 +152,7 @@ wagon_module_name_stems = [
     "farm_product_box_cars_type_1",
     "farm_product_box_cars_type_2",
     "farm_product_box_cars_randomised",
+    "farm_product_cars_randomised",
     "livestock_cars",
     "log_cars",
     "silo_cars_type_1",

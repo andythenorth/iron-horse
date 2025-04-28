@@ -474,6 +474,9 @@ base = "Farm Product Van"
 [STR_WAGON_NAME_FARM_PRODUCT_HOPPER_CAR]
 base = "Farm Product Hopper"
 
+[STR_WAGON_NAME_FARM_PRODUCT_CAR_RANDOMISED]
+base = "Farm Product Wagon"
+
 [STR_WAGON_NAME_FLAT_CAR]
 base = "Flat Wagon"
 
