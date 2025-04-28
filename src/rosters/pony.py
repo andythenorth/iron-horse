@@ -299,6 +299,7 @@ wagon_module_names_with_roster_ids = {
     "farm_product_hopper_cars_type_2": "pony",
     "flat_cars": "pony",
     "flat_cars_randomised": "pony",
+    "flatbed_cargo_cars_randomised": "pony",
     "food_hopper_cars_type_1": "pony",
     "food_hopper_cars_type_2": "pony",
     "food_hopper_cars_type_3": "pony",

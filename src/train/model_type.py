@@ -2617,6 +2617,7 @@ class BolsterCarBase(CarModelTypeBase):
     variant_group_id_root = "wagon_group_bolster_cars"
     randomised_candidate_groups = [
         "bolster_car_randomised",
+        "flatbed_cargo_car_randomised",
         "metal_product_car_mixed_randomised",
         "metal_product_car_uncovered_randomised",
     ]
@@ -2673,7 +2674,6 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
@@ -3248,7 +3248,6 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
@@ -3319,7 +3318,6 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
@@ -3412,7 +3410,6 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
@@ -4097,7 +4094,6 @@ class ExpressCarRandomised(RandomisedCarMixin, ExpressCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
@@ -4363,7 +4359,6 @@ class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
@@ -4446,7 +4441,6 @@ class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarB
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
@@ -4534,7 +4528,6 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
@@ -4567,7 +4560,6 @@ class FarmProductsCarRandomised(RandomisedCarMixin, CarModelTypeBase):
         ]
         self._joker = True
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
@@ -4620,7 +4612,7 @@ class FlatCarBulkheadBase(FlatCarBase):
     """
 
     variant_group_id_root = "wagon_group_bulkhead_flat_cars"
-    randomised_candidate_groups = ["bulkhead_flat_car_randomised"]
+    randomised_candidate_groups = ["bulkhead_flat_car_randomised", "flatbed_cargo_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4670,7 +4662,6 @@ class FlatCarBulkheadRandomised(RandomisedCarMixin, FlatCarBulkheadBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
@@ -4688,6 +4679,7 @@ class FlatCarDropEnd(FlatCarBase):
     variant_group_id_root = "wagon_group_flat_cars"
     randomised_candidate_groups = [
         "flat_car_randomised",
+        "flatbed_cargo_car_randomised",
         "metal_product_car_mixed_randomised",
         "metal_product_car_uncovered_randomised",
     ]
@@ -4710,6 +4702,7 @@ class FlatCarDropSide(FlatCarBase):
     variant_group_id_root = "wagon_group_flat_cars"
     randomised_candidate_groups = [
         "flat_car_randomised",
+        "flatbed_cargo_car_randomised",
         "metal_product_car_mixed_randomised",
         "metal_product_car_uncovered_randomised",
         "piece_goods_car_mixed_randomised",
@@ -4733,6 +4726,7 @@ class FlatCar(FlatCarBase):
     variant_group_id_root = "wagon_group_flat_cars"
     randomised_candidate_groups = [
         "flat_car_randomised",
+        "flatbed_cargo_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -4799,6 +4793,7 @@ class FlatCarMillBase(FlatCarBase):
     vehicle_family_id = "mill_flat_car"
     variant_group_id_root = "wagon_group_mill_flat_cars"
     randomised_candidate_groups = [
+        "flatbed_cargo_car_randomised",
         "metal_product_car_uncovered_randomised",
         "mill_flat_car_randomised",
     ]
@@ -4846,7 +4841,6 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
@@ -4856,7 +4850,7 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
 
 class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     """
-    Random choice of flat car sprite, from available coil cars, bolster cars etc.
+    Random choice of flat car.
     """
 
     model_id_root = "flat_car_randomised"
@@ -4866,7 +4860,36 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FlatBedCargoCarRandomised(RandomisedCarMixin, FlatCarBase):
+    """
+    Random choice of flatbed cargo car, from available flat cars, bolster cars etc.
+    """
+
+    model_id_root = "flatbed_cargo_car_randomised"
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
@@ -6017,7 +6040,6 @@ class MineralCoveredHopperCarLimeRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
@@ -6134,7 +6156,6 @@ class MineralCoveredHopperCarRollerRoofRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
@@ -6221,7 +6242,6 @@ class MineralCoveredHopperCarSaltRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
@@ -7075,7 +7095,9 @@ class PipeCar(FlatCarBase):
     ]
 
     model_id_root = "pipe_car"
-    randomised_candidate_groups = []
+    randomised_candidate_groups = [
+        "flatbed_cargo_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7162,7 +7184,6 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
             "unweathered": graphics_constants.refrigerated_livery_recolour_map,
             "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
@@ -7616,7 +7637,6 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
@@ -7734,7 +7754,6 @@ class TankCarProductRandomised(RandomisedCarMixin, TankCarProductBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,

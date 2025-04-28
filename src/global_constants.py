@@ -74,6 +74,7 @@ wagon_module_name_stems = [
     "mill_flat_cars_type_1",
     "mill_flat_cars_type_2",
     "mill_flat_cars_randomised",
+    "flatbed_cargo_cars_randomised",
     "coil_cars_covered",
     "coil_cars_covered_asymmetric",
     "coil_cars_uncovered",
