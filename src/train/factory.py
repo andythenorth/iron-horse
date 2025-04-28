@@ -971,7 +971,7 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ == "RandomisedCarMixin"
+            base.__name__ == "RandomisedCarMixinBase"
             for base in self.factory.model_type_cls.__mro__
         )
 

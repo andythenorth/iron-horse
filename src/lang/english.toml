@@ -459,9 +459,6 @@ base = "Motorail Van"
 [STR_WAGON_NAME_EXPRESS_CAR]
 base = "Express Van"
 
-[STR_WAGON_NAME_EXPRESS_FOOD_CAR_RANDOMISED]
-base = "Express Food Wagon"
-
 [STR_WAGON_NAME_EXPRESS_INTERMODAL_CAR]
 base = "Express Container Wagon"
 
@@ -480,11 +477,17 @@ base = "Flat Wagon"
 [STR_WAGON_NAME_FLATBED_CARGO_CAR_RANDOMISED]
 base = "Flatbed Cargo Combos"
 
-[STR_WAGON_NAME_FOOD_HOPPER_CAR]
-base = "Food Hopper"
+[STR_WAGON_NAME_FOOD_EXPRESS_BOX_COMBOS]
+base = "Express Food Van Combos"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_LIQUID_COMBOS]
+base = "Express Food Liquid Combos"
 
 [STR_WAGON_NAME_FOOD_EXPRESS_TANK_CAR]
 base = "Express Food Tanker"
+
+[STR_WAGON_NAME_FOOD_HOPPER_CAR]
+base = "Food Hopper"
 
 [STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
 base = "Heavy Duty Bulk Wagon"
