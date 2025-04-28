@@ -218,9 +218,6 @@ base = "Wagon-citerne à produits chimiques"
 [STR_WAGON_NAME_DEDICATED_COIL_CAR_RANDOMISED]
 base = "Wagon porte-bobines"
 
-[STR_WAGON_NAME_FLAT_CAR_RANDOMISED]
-base = "Wagon plat"
-
 [STR_WAGON_NAME_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
 base = "Wagon porte-bobines"
 

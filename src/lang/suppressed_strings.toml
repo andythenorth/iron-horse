@@ -285,9 +285,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_CRYO_TANK_CAR]
 suppressed_rosters = ["moose"]
 
-[STR_WAGON_NAME_DROP_END_FLAT_CAR]
-suppressed_rosters = ["moose"]
-
 [STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
 suppressed_rosters = ["moose"]
 
@@ -303,7 +300,7 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_FLAT_CAR]
 suppressed_rosters = ["moose"]
 
-[STR_WAGON_NAME_FLAT_CAR_RANDOMISED]
+[STR_WAGON_NAME_FLATBED_CARGO_CAR_RANDOMISED]
 suppressed_rosters = ["moose"]
 
 [STR_WAGON_NAME_FOOD_HOPPER_CAR]

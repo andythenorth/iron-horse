@@ -450,9 +450,6 @@ base = "Coil Carrier"
 [STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Car Transporter"
 
-[STR_WAGON_NAME_DROP_END_FLAT_CAR]
-base = "Drop End Flat Wagon"
-
 [STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
 base = "Drop Side Flat Wagon"
 
@@ -480,8 +477,8 @@ base = "Farm Product Wagon"
 [STR_WAGON_NAME_FLAT_CAR]
 base = "Flat Wagon"
 
-[STR_WAGON_NAME_FLAT_CAR_RANDOMISED]
-base = "Flatbed Wagon"
+[STR_WAGON_NAME_FLATBED_CARGO_CAR_RANDOMISED]
+base = "Flatbed Cargo Combos"
 
 [STR_WAGON_NAME_FOOD_HOPPER_CAR]
 base = "Food Hopper"

@@ -4684,6 +4684,7 @@ class FlatCarDropEnd(FlatCarBase):
     """
 
     model_id_root = "drop_end_flat_car"
+    vehicle_family_id = "flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
     randomised_candidate_groups = [
         "flat_car_randomised",
@@ -4859,6 +4860,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     """
 
     model_id_root = "flat_car_randomised"
+    vehicle_family_id = "flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
 
     def __init__(self, **kwargs):
