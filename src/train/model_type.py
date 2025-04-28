@@ -4153,7 +4153,7 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, ExpressFoodCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",
+            random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
