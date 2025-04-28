@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="MetalProductCarCoveredRandomised",
+        class_name="MetalProductCombosCoveredRandomised",
         base_numeric_id=25670,
         gen=4,
         subtype="C",
@@ -26,7 +26,7 @@ def main(**kwargs):
     """
 
     model_def = ModelDef(
-        class_name="MetalProductCarCoveredRandomised",
+        class_name="MetalProductCombosCoveredRandomised",
         base_numeric_id=25680,
         gen=5,
         subtype="B",
@@ -38,7 +38,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarCoveredRandomised",
+        class_name="MetalProductCombosCoveredRandomised",
         base_numeric_id=25690,
         gen=5,
         subtype="C",

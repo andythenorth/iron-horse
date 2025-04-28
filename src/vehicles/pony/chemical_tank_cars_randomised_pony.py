@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20640,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20650,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20660,
         gen=3,
         subtype="B",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20670,
         gen=4,
         subtype="A",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20680,
         gen=4,
         subtype="B",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20690,
         gen=4,
         subtype="C",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20700,
         gen=5,
         subtype="A",
@@ -91,7 +91,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20710,
         gen=5,
         subtype="B",
@@ -103,7 +103,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarChemicalRandomised",
+        class_name="TankChemicalCargoCombosRandomised",
         base_numeric_id=20720,
         gen=5,
         subtype="C",

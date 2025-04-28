@@ -3418,7 +3418,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
 
 
 # not in alphabetical order as it depends on subclassing BulkOpenCarBase
-class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
+class BulkCargoBoxCombosRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / box open cars.
     """
@@ -3448,7 +3448,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         )
 
 
-class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
+class BulkCarHopperCombosRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -3480,7 +3480,7 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
 
 
 # not in alphabetical order as it depends on subclassing BulkOpenCarBase
-class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
+class BulkCarMixedCombosRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -4127,7 +4127,39 @@ class ExpressFoodCarBase(CarModelTypeBase):
         ]
 
 
-class ExpressFoodCarRandomised(RandomisedCarMixin, ExpressFoodCarBase):
+class ExpressFoodBoxCombosRandomised(RandomisedCarMixin, ExpressFoodCarBase):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+    ]
+
+    model_id_root = "express_food_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class ExpressFoodLiquidCombosRandomised(RandomisedCarMixin, ExpressFoodCarBase):
     """
     Random choice of food car sprite, noting limited refits because it includes food tankers.
     """
@@ -4535,7 +4567,7 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
         )
 
 
-class FarmProductsCarRandomised(RandomisedCarMixin, CarModelTypeBase):
+class FarmCargoCombosRandomised(RandomisedCarMixin, CarModelTypeBase):
     """
     Random choice of farm products car.
     """
@@ -4612,7 +4644,10 @@ class FlatCarBulkheadBase(FlatCarBase):
     """
 
     variant_group_id_root = "wagon_group_bulkhead_flat_cars"
-    randomised_candidate_groups = ["bulkhead_flat_car_randomised", "flatbed_cargo_car_randomised"]
+    randomised_candidate_groups = [
+        "bulkhead_flat_car_randomised",
+        "flatbed_cargo_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4867,7 +4902,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
         )
 
 
-class FlatBedCargoCarRandomised(RandomisedCarMixin, FlatCarBase):
+class FlatBedCargoCombosRandomised(RandomisedCarMixin, FlatCarBase):
     """
     Random choice of flatbed cargo car, from available flat cars, bolster cars etc.
     """
@@ -5844,7 +5879,7 @@ class MailHSTMiddleCar(MailCarBase):
         return result
 
 
-class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
+class MetalProductCombosRandomisedBase(RandomisedCarMixin, CoilCarBase):
     """
     Base class for randomised cold metal car sprite.
     """
@@ -5872,7 +5907,7 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         return True
 
 
-class MetalProductCarCoveredRandomised(MetalProductCarRandomisedBase):
+class MetalProductCombosCoveredRandomised(MetalProductCombosRandomisedBase):
     """
     Random choice of cold metal car sprite, from suitable covered coil cars, vans etc.
     """
@@ -5889,7 +5924,7 @@ class MetalProductCarCoveredRandomised(MetalProductCarRandomisedBase):
         )
 
 
-class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
+class MetalProductCombosMixedRandomised(MetalProductCombosRandomisedBase):
     """
     Random choice of cold metal car sprite, from all suitable metal carrying wagons cars etc.
     """
@@ -5906,7 +5941,7 @@ class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
         )
 
 
-class MetalProductCarUncoveredRandomised(MetalProductCarRandomisedBase):
+class MetalProductCombosUncoveredRandomised(MetalProductCombosRandomisedBase):
     """
     Random choice of cold metal car sprite, from suitable bolster, flat, open cars etc.
     """
@@ -6048,7 +6083,7 @@ class MineralCoveredHopperCarLimeRandomised(
 
 
 # not in alphabetical order as it depends on subclassing CoveredHopperCarBase
-class MineralCoveredHopperCarRandomised(
+class MineralCoveredHopperCombosRandomised(
     RandomisedCarMixin, MineralCoveredHopperCarBase
 ):
     """
@@ -7022,7 +7057,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
         self._joker = True
 
 
-class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
+class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised (piece goods) cargo wagon, using covered sprites - mostly vans.
     """
@@ -7039,7 +7074,7 @@ class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
         )
 
 
-class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
+class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised general (piece goods) cargo wagon.
     """
@@ -7056,7 +7091,7 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
         )
 
 
-class PieceGoodsCarManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
+class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised general (piece goods) cargo wagon - using vehicles suitable for auto parts and similar manufacturing cargos.
     """
@@ -7644,38 +7679,6 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
         )
 
 
-class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
-    """
-    Random choice of tank car sprite, from available acid / product tank cars.
-    """
-
-    # best to not have too many livery options for these
-    # generally we want liveries with a couple of distinct colours
-    # - too many colours is confusing...because the sprites are also so varied
-    # - too few colours looks unnatural...because the sprites are so varied
-    liveries = [
-        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",  # bump to top for visual effect
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_SULPHUR_OCHRE",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "FREIGHT_BONUS_OBSIDIAN",  # base tankers don't use nightshade, but random do, for increased visual variation
-    ]
-
-    model_id_root = "chemical_tank_car_randomised"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_block_train_with_minor_variation",
-            dice_colour=3,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
 class TankCarProductBase(TankCarBase):
     """
     Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
@@ -7892,6 +7895,38 @@ class TankCarVolatilesType1(TankCarVolatilesBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class TankChemicalCargoCombosRandomised(RandomisedCarMixin, TankCarBase):
+    """
+    Random choice of tank car sprite, from available acid / product tank cars.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",  # bump to top for visual effect
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "FREIGHT_BONUS_OBSIDIAN",  # base tankers don't use nightshade, but random do, for increased visual variation
+    ]
+
+    model_id_root = "chemical_tank_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_block_train_with_minor_variation",
+            dice_colour=3,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class TarpaulinCarBase(BoxCarBase):

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=34600,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=34620,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=34640,
         gen=3,
         subtype="B",
@@ -50,7 +50,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=34660,
         gen=1,
         subtype="A",
@@ -64,7 +64,7 @@ def main(**kwargs):
     # no gen 2A, gen 1A continues in pony
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35250,
         gen=2,
         subtype="B",
@@ -76,7 +76,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35270,
         gen=3,
         subtype="A",
@@ -88,7 +88,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35410,
         gen=3,
         subtype="B",
@@ -100,7 +100,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35290,
         gen=3,
         subtype="C",
@@ -112,7 +112,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35310,
         gen=4,
         subtype="A",
@@ -124,7 +124,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35330,
         gen=4,
         subtype="B",
@@ -136,7 +136,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35350,
         gen=4,
         subtype="C",
@@ -148,7 +148,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35370,
         gen=5,
         subtype="B",
@@ -162,7 +162,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatBedCargoCarRandomised",
+        class_name="FlatBedCargoCombosRandomised",
         base_numeric_id=35390,
         gen=5,
         subtype="C",

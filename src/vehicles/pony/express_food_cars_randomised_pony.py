@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31380,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31950,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31960,
         gen=3,
         subtype="B",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31970,
         gen=4,
         subtype="A",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31980,
         gen=4,
         subtype="B",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=31990,
         gen=4,
         subtype="C",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=32000,
         gen=5,
         subtype="B",
@@ -91,7 +91,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodCarRandomised",
+        class_name="ExpressFoodLiquidCombosRandomised",
         base_numeric_id=32010,
         gen=5,
         subtype="C",

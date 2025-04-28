@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16750,
         gen=1,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16760,
         gen=2,
         subtype="B",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16770,
         gen=3,
         subtype="A",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16780,
         gen=3,
         subtype="B",
@@ -57,7 +57,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16790,
         gen=4,
         subtype="A",
@@ -69,7 +69,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16800,
         gen=4,
         subtype="B",
@@ -81,7 +81,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16810,
         gen=4,
         subtype="C",
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16820,
         gen=5,
         subtype="B",
@@ -109,7 +109,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MetalProductCarMixedRandomised",
+        class_name="MetalProductCombosMixedRandomised",
         base_numeric_id=16830,
         gen=5,
         subtype="C",
