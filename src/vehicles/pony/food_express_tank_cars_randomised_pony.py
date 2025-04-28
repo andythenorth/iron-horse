@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="ExpressFoodTankCarRandomised",
+        class_name="FoodExpressTankCarRandomised",
         base_numeric_id=27940,
         gen=5,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodTankCarRandomised",
+        class_name="FoodExpressTankCarRandomised",
         base_numeric_id=27960,
         gen=5,
         subtype="C",

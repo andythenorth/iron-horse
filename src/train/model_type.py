@@ -4101,173 +4101,6 @@ class ExpressCarRandomised(RandomisedCarMixin, ExpressCarBase):
         )
 
 
-class ExpressFoodCarBase(CarModelTypeBase):
-    """
-    Random choice of food car sprite, noting limited refits because it includes food tankers.
-    """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPLEMENT_COMPANY_COLOUR",
-        "COMPANY_COLOUR",
-        "FREIGHT_BONUS_TEAL",
-    ]
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.speed_class = "express"
-        self._loading_speed_multiplier = 1.5
-        self.buy_cost_adjustment_factor = 1.33
-        self.floating_run_cost_multiplier = 1.5
-        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
-            "food_wagons"
-        ]
-
-
-class ExpressFoodBoxCombosRandomised(RandomisedCarMixin, ExpressFoodCarBase):
-    """
-    Random choice of food car sprite, noting limited refits because it includes food tankers.
-    """
-
-    # best to not have too many livery options for these
-    # generally we want liveries with a couple of distinct colours
-    # - too many colours is confusing...because the sprites are also so varied
-    # - too few colours looks unnatural...because the sprites are so varied
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-    ]
-
-    model_id_root = "express_food_car_randomised"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["liquids_food_grade"]
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_segmented_block_train",
-            dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class ExpressFoodLiquidCombosRandomised(RandomisedCarMixin, ExpressFoodCarBase):
-    """
-    Random choice of food car sprite, noting limited refits because it includes food tankers.
-    """
-
-    # best to not have too many livery options for these
-    # generally we want liveries with a couple of distinct colours
-    # - too many colours is confusing...because the sprites are also so varied
-    # - too few colours looks unnatural...because the sprites are so varied
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-    ]
-
-    model_id_root = "express_food_car_randomised"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["liquids_food_grade"]
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_segmented_block_train",
-            dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class ExpressFoodTankCarBase(ExpressFoodCarBase):
-    """
-    Wine, milk, water etc.
-    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
-    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
-    """
-
-    vehicle_family_id = "food_express_tank_car"
-    variant_group_id_root = "wagon_group_food_express_tank_cars"
-    randomised_candidate_groups = [
-        "food_express_tank_car_randomised",
-        "express_food_car_randomised",
-    ]
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["liquids_food_grade"]
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
-            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class ExpressFoodTankCarType1(ExpressFoodTankCarBase):
-    """
-    Wine, milk, water etc.
-    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
-    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
-    """
-
-    model_id_root = "food_express_tank_car_type_1"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-
-class ExpressFoodTankCarType2(ExpressFoodTankCarBase):
-    """
-    Wine, milk, water etc.
-    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
-    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
-    """
-
-    model_id_root = "food_express_tank_car_type_2"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._joker = True
-
-
-class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
-    """
-    Random choice of express food tanker.
-    """
-
-    model_id_root = "food_express_tank_car_randomised"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
 class ExpressIntermodalCar(CarModelTypeBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
@@ -4562,6 +4395,174 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FoodExpressCarBase(CarModelTypeBase):
+    """
+    CABBAGE - IS THIS NEEDED?
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPLEMENT_COMPANY_COLOUR",
+        "COMPANY_COLOUR",
+        "FREIGHT_BONUS_TEAL",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "food_wagons"
+        ]
+
+
+class FoodExpressBoxCombosRandomised(RandomisedCarMixin, FoodExpressCarBase):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+    ]
+
+    model_id_root = "food_express_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FoodExpressLiquidCombosRandomised(RandomisedCarMixin, FoodExpressCarBase):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+    ]
+
+    model_id_root = "express_food_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FoodExpressTankCarBase(FoodExpressCarBase):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    vehicle_family_id = "food_express_tank_car"
+    variant_group_id_root = "wagon_group_food_express_tank_cars"
+    randomised_candidate_groups = [
+        "food_express_tank_car_randomised",
+        "express_food_car_randomised",
+    ]
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FoodExpressTankCarType1(FoodExpressTankCarBase):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    model_id_root = "food_express_tank_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class FoodExpressTankCarType2(FoodExpressTankCarBase):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    model_id_root = "food_express_tank_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class FoodExpressTankCarRandomised(RandomisedCarMixin, FoodExpressTankCarBase):
+    """
+    Random choice of express food tanker.
+    """
+
+    model_id_root = "food_express_tank_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
@@ -7149,7 +7150,7 @@ class PipeCar(FlatCarBase):
         )
 
 
-class ReeferCarBase(ExpressFoodCarBase):
+class ReeferCarBase(FoodExpressCarBase):
     """
     Refrigerated cargos.
     No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
