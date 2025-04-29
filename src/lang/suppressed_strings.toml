@@ -30,9 +30,6 @@ suppressed_rosters = ["pony", "ibex", "moose"]
 # docs only
 suppressed_rosters = ["pony", "ibex", "moose"]
 
-[STR_BADGE_POWER_SOURCE_ELECTRIC_DC]
-suppressed_rosters = ["pony", "moose"]
-
 [STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC]
 suppressed_rosters = ["pony", "moose"]
 
@@ -108,15 +105,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_BOLSTER_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_BULK_CAR_BOX_RANDOMISED]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_WAGON_NAME_BULK_CAR_HOPPER_RANDOMISED]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_WAGON_NAME_BULK_CAR_MIXED_COMBOS]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_WAGON_NAME_CABOOSE_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
@@ -142,9 +130,6 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_EXPRESS_CAR]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_WAGON_NAME_EXPRESS_FOOD_CAR_RANDOMISED]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]
@@ -228,9 +213,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_PIECE_GOODS_CAR_MANUFACTURING_PARTS_RANDOMISED]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
@@ -254,9 +236,6 @@ suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_SWING_ROOF_HOPPER_CAR]
 suppressed_rosters = ["moose", "ibex"]
-
-[STR_BADGE_POWER_SOURCE_ELECTRIC_AC]
-suppressed_rosters = ["moose"]
 
 [STR_WAGON_NAME_ACID_TANK_CAR]
 suppressed_rosters = ["moose"]
@@ -298,9 +277,6 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_FLAT_CAR]
-suppressed_rosters = ["moose"]
-
-[STR_WAGON_NAME_FLATBED_CARGO_CAR_RANDOMISED]
 suppressed_rosters = ["moose"]
 
 [STR_WAGON_NAME_FOOD_HOPPER_CAR]

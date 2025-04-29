@@ -394,13 +394,13 @@ base = "Bolster Wagon"
 base = "Box Van"
 
 [STR_WAGON_NAME_BULK_CARGO_BOX_COMBOS]
-base = "Open Bulk Wagon"
+base = "Bulk Open Combos"
 
 [STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
-base = "Hopper Bulk Wagon"
+base = "Bulk Hopper Combos"
 
 [STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
-base = "Mixed Bulk Wagon"
+base = "Bulk Mixed Combos"
 
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
 base = "Bulkhead Flat Wagon"
@@ -421,7 +421,7 @@ base = "Carbon Black Hopper"
 base = "Cement Wagon"
 
 [STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
-base = "Chemical Tanker"
+base = "Chemical Cargo Combos"
 
 [STR_WAGON_NAME_COIL_BUGGY_CAR]
 base = "Coil Buggies"
@@ -460,7 +460,7 @@ base = "Express Van"
 base = "Express Container Wagon"
 
 [STR_WAGON_NAME_FARM_CARGO_COMBOS]
-base = "Farm Product Wagon"
+base = "Farm Cargo Combos"
 
 [STR_WAGON_NAME_FARM_PRODUCT_BOX_CAR]
 base = "Farm Product Van"
@@ -547,13 +547,13 @@ base = "Mail Van"
 base = "Merchandise Van"
 
 [STR_WAGON_NAME_METAL_PRODUCT_COVERED_COMBOS]
-base = "Covered Metal Product Wagon"
+base = "Metal Product Covered Combos"
 
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
-base = "Mixed Metal Product Wagon"
+base = "Metal Product Mixed Combos"
 
 [STR_WAGON_NAME_METAL_PRODUCT_UNCOVERED_COMBOS]
-base = "Uncovered Metal Product Wagon"
+base = "Metal Product Uncovered Combos"
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
 base = "Mineral Wagon"
@@ -595,13 +595,13 @@ base = "Passenger Coach"
 base = "Peat Wagon"
 
 [STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
-base = "Covered Goods Wagon"
+base = "Goods Covered Combos"
 
 [STR_WAGON_NAME_PIECE_GOODS_MANUFACTURING_PARTS_COMBOS]
-base = "Parts Cargo Wagon"
+base = "Parts Cargo Combos"
 
 [STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
-base = "Mixed Goods Wagon"
+base = "Goods Mixed Combos"
 
 [STR_WAGON_NAME_PIPE_CAR]
 base = "Pipe Wagon"
