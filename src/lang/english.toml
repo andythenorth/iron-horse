@@ -552,9 +552,6 @@ base = "Metal Product Covered Combos"
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
 base = "Metal Product Mixed Combos"
 
-[STR_WAGON_NAME_METAL_PRODUCT_UNCOVERED_COMBOS]
-base = "Metal Product Uncovered Combos"
-
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
 base = "Mineral Wagon"
 

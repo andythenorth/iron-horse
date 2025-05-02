@@ -2639,7 +2639,6 @@ class BolsterCarBase(CarModelTypeBase):
         "bolster_car_randomised",
         "flatbed_cargo_combos",
         "metal_product_mixed_combos",
-        "metal_product_uncovered_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4739,7 +4738,6 @@ class FlatCarDropEnd(FlatCarBase):
         "flat_car_randomised",
         "flatbed_cargo_combos",
         "metal_product_mixed_combos",
-        "metal_product_uncovered_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4762,7 +4760,6 @@ class FlatCarDropSide(FlatCarBase):
         "flat_car_randomised",
         "flatbed_cargo_combos",
         "metal_product_mixed_combos",
-        "metal_product_uncovered_combos",
         "piece_goods_mixed_combos",
     ]
 
@@ -4852,7 +4849,6 @@ class FlatCarMillBase(FlatCarBase):
     variant_group_id_root = "wagon_group_mill_flat_cars"
     randomised_candidate_groups = [
         "flatbed_cargo_combos",
-        "metal_product_uncovered_combos",
         "mill_flat_car_randomised",
     ]
 
@@ -5964,23 +5960,6 @@ class MetalProductMixedCombos(MetalProductCombosBase):
         )
 
 
-class MetalProductUncoveredCombos(MetalProductCombosBase):
-    """
-    Random choice of cold metal car sprite, from suitable bolster, flat, open cars etc.
-    """
-
-    model_id_root = "metal_product_uncovered_combos"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",
-            dice_colour=3,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
 class MineralCoveredHopperCarBase(CarModelTypeBase):
     """
     Bulk mineral cargos needing covered protection.
@@ -6459,7 +6438,6 @@ class OpenCarMill(OpenCarBase):
     model_id_root = "mill_open_car"
     randomised_candidate_groups = [
         "metal_product_mixed_combos",
-        "metal_product_uncovered_combos",
         "piece_goods_mixed_combos",
     ]
 
