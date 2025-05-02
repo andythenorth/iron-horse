@@ -5913,8 +5913,6 @@ class MetalProductCombosBase(RandomisedCarComboMixin, CoilCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
-    variant_group_id_root = "wagon_group_metal_product_combos"
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -7036,8 +7034,6 @@ class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarModelTypeBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
-
-    variant_group_id_root = "wagon_group_piece_goods_cars_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

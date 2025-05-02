@@ -394,13 +394,13 @@ base = "Bolster Wagon"
 base = "Box Van"
 
 [STR_WAGON_NAME_BULK_CARGO_BOX_COMBOS]
-base = "Bulk Open Combos"
+base = "Bulk Cargo Combos - Box Open"
 
 [STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
-base = "Bulk Hopper Combos"
+base = "Hopper Cargo Combos"
 
 [STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
-base = "Bulk Mixed Combos"
+base = "Bulk Cargo Combos - Mixed"
 
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
 base = "Bulkhead Flat Wagon"
@@ -475,10 +475,10 @@ base = "Flat Wagon"
 base = "Flatbed Cargo Combos"
 
 [STR_WAGON_NAME_FOOD_EXPRESS_BOX_COMBOS]
-base = "Express Food Van Combos"
+base = "Express Food Combos - Vans"
 
 [STR_WAGON_NAME_FOOD_EXPRESS_LIQUID_COMBOS]
-base = "Express Food Liquid Combos"
+base = "Express Food Combos - Liquids"
 
 [STR_WAGON_NAME_FOOD_EXPRESS_TANK_CAR]
 base = "Express Food Tanker"
@@ -547,10 +547,10 @@ base = "Mail Van"
 base = "Merchandise Van"
 
 [STR_WAGON_NAME_METAL_PRODUCT_COVERED_COMBOS]
-base = "Metal Product Covered Combos"
+base = "Metal Cargo Combos - Covered"
 
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
-base = "Metal Product Mixed Combos"
+base = "Metal Cargo Combos - Mixed"
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
 base = "Mineral Wagon"
@@ -592,13 +592,13 @@ base = "Passenger Coach"
 base = "Peat Wagon"
 
 [STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
-base = "Goods Covered Combos"
+base = "Goods Cargo Combos - Covered"
 
 [STR_WAGON_NAME_PIECE_GOODS_MANUFACTURING_PARTS_COMBOS]
 base = "Parts Cargo Combos"
 
 [STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
-base = "Goods Mixed Combos"
+base = "Goods Cargo Combos - Mixed"
 
 [STR_WAGON_NAME_PIPE_CAR]
 base = "Pipe Wagon"
