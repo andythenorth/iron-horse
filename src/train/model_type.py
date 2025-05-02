@@ -3456,7 +3456,6 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_box_combos"
-    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3486,7 +3485,6 @@ class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_hopper_combos"
-    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3518,7 +3516,6 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_mixed_combos"
-    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
