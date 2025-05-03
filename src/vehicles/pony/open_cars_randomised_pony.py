@@ -49,44 +49,6 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarRandomised",
-        base_numeric_id=27610,
-        gen=1,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
-
-    result.append(model_def)
-
-    # no new type A for gen 2, gen 1 type A continues
-
-    model_def = ModelDef(
-        class_name="OpenCarRandomised",
-        base_numeric_id=16990,
-        gen=3,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="OpenCarRandomised",
-        base_numeric_id=27630,
-        gen=3,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="OpenCarRandomised",
         base_numeric_id=27650,
         gen=4,
         subtype="A",

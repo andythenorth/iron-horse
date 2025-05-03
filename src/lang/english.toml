@@ -432,7 +432,7 @@ base = "Coil Buggies"
 [STR_WAGON_NAME_COIL_CAR_COVERED]
 base = "Covered Coil Carrier"
 
-[STR_WAGON_NAME_COIL_CAR_UNCOVERED]
+[STR_WAGON_NAME_COIL_CAR]
 base = "Coil Carrier"
 
 [STR_WAGON_NAME_COVERED_HOPPER_CAR]
@@ -565,7 +565,7 @@ base = "Mineral Wagon"
 base = "High Side Mineral Wagon"
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
-base = "Low Side Mineral Wagon"
+base = "Sand Wagon"
 
 [STR_WAGON_NAME_MINERAL_COVERED_HOPPER_COMBOS]
 base = "Covered Bulk Cargo Combos"

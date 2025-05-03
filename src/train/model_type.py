@@ -2475,6 +2475,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     """
 
     model_id_root = "low_floor_automobile_car"
+    vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
@@ -2503,6 +2504,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     """
 
     model_id_root = "automobile_car"
+    vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
     def __init__(self, **kwargs):
@@ -2815,9 +2817,7 @@ class BoxCarCurtainSide(BoxCarBase):
 
     model_id_root = "curtain_side_box_car"
     vehicle_family_id = "curtain_side_box_car"
-    variant_group_id_root = "wagon_group_box_cars"
     randomised_candidate_groups = [
-        "box_car_randomised",
         "piece_goods_covered_combos",
         "piece_goods_manufacturing_parts_combos",
         "piece_goods_mixed_combos",
@@ -3241,7 +3241,6 @@ class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
-    vehicle_family_id = "mineral_bulk_open_car_high_side"
     model_id_root = "mineral_bulk_open_car_high_side"
 
     def __init__(self, **kwargs):
@@ -3255,6 +3254,12 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
 
     vehicle_family_id = "mineral_bulk_open_car_low_side"
     model_id_root = "mineral_bulk_open_car_low_side"
+    # CABBAGE, THIS SUBCLASS SHOULD BE SPLIT AWAY REALLY
+    variant_group_id_root = "mineral_bulk_open_car_low_side"
+    randomised_candidate_groups = [
+        "bulk_cargo_box_combos",
+        "bulk_cargo_mixed_combos",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3416,7 +3421,6 @@ class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_rotary_bulk_open_car_type_1"
-    vehicle_family_id = "tippler_rotary_bulk_open_car"
     # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
     randomised_candidate_groups = []
 
@@ -3752,7 +3756,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
     """
 
     model_id_root = "coil_car_covered_asymmetric"
-    vehicle_family_id = "coil_car_covered"
+    vehicle_family_id = "coil_car"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3787,7 +3791,7 @@ class CoilCarCovered(CoilCarBase):
     """
 
     model_id_root = "coil_car_covered"
-    vehicle_family_id = "coil_car_covered"
+    vehicle_family_id = "coil_car"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3815,7 +3819,7 @@ class CoilCarTarpaulin(CoilCarBase):
     """
 
     model_id_root = "coil_car_tarpaulin"
-    vehicle_family_id = "coil_car_covered"
+    vehicle_family_id = "coil_car"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3846,6 +3850,7 @@ class CoilCarUncovered(CoilCarBase):
     """
 
     model_id_root = "coil_car_uncovered"
+    vehicle_family_id = "coil_car"
     variant_group_id_root = "wagon_group_coil_cars"
     randomised_candidate_groups = [
         "dedicated_coil_car_randomised",
@@ -3869,6 +3874,7 @@ class DedicatedCoilCarRandomised(RandomisedCarVanillaMixin, CoilCarBase):
     """
 
     model_id_root = "dedicated_coil_car_randomised"
+    vehicle_family_id = "coil_car"
     variant_group_id_root = "wagon_group_coil_cars"
 
     def __init__(self, **kwargs):
@@ -4801,6 +4807,7 @@ class FlatCarDropSide(FlatCarBase):
     """
 
     model_id_root = "drop_side_flat_car"
+    vehicle_family_id = "flat_car"
     variant_group_id_root = "wagon_group_flat_cars"
     randomised_candidate_groups = [
         "flat_car_randomised",
@@ -5202,6 +5209,7 @@ class HopperCar(HopperCarBase):
     """
 
     model_id_root = "hopper_car"
+    vehicle_family_id = "hopper_car"
     variant_group_id_root = "wagon_group_hopper_cars"
     randomised_candidate_groups = [
         "bulk_cargo_hopper_combos",
@@ -5220,6 +5228,7 @@ class HopperCarHighSide(HopperCarBase):
     """
 
     model_id_root = "hopper_car_high_side"
+    vehicle_family_id = "hopper_car"
     variant_group_id_root = "wagon_group_hopper_cars"
     randomised_candidate_groups = [
         "bulk_cargo_hopper_combos",
@@ -5248,6 +5257,7 @@ class HopperCarMGRBase(HopperCarBase):
         "FREIGHT_BONUS_OXIDE_RUST",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
+    vehicle_family_id = "mgr_hopper_car"
     # don't include MGR hoppers in randomised lists, they don't look good
     randomised_candidate_groups = []
 
@@ -5506,6 +5516,7 @@ class IntermodalCar(IntermodalCarBase):
     """
 
     model_id_root = "intermodal_car"
+    vehicle_family_id = "intermodal_car"
     variant_group_id_root = "wagon_group_intermodal_cars"
 
     def __init__(self, **kwargs):
@@ -5527,6 +5538,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
     """
 
     model_id_root = "low_floor_intermodal_car"
+    vehicle_family_id = "intermodal_car"
     variant_group_id_root = "wagon_group_intermodal_cars"
 
     def __init__(self, **kwargs):
@@ -6394,9 +6406,9 @@ class OpenCarHood(OpenCarBase):
     """
 
     model_id_root = "hood_open_car"
-    variant_group_id_root = "wagon_group_open_cars"
-    # !! WOULD THIS BE WISE ??
-    # randomised_candidate_groups.extend(["piece_goods_covered_combos"])
+    randomised_candidate_groups = [
+        "piece_goods_mixed_combos",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
