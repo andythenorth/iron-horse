@@ -47,7 +47,8 @@ wagon_module_name_stems = [
     "farm_product_box_cars_type_1",
     "farm_product_box_cars_type_2",
     "farm_product_box_cars_randomised",
-    "farm_cargo_combos",
+    "farm_cargo_hopper_combos",
+    "farm_cargo_mixed_combos",
     "livestock_cars",
     "intermodal_cars",
     "low_floor_intermodal_cars",
@@ -333,6 +334,7 @@ purchase_variant_group_base_model_ids_by_group_name = {
     "wagon_group_lime_covered_hopper_cars": "lime_covered_hopper_car_type_1",
     "wagon_group_open_cars": "open_car",
     "wagon_group_passenger_cars": "passenger_car",
+    "wagon_group_piece_goods_combos": "piece_goods_mixed_combos",
     "wagon_group_pressure_tank_cars": "pressure_tank_car",
     "wagon_group_product_tank_cars": "product_tank_car_type_1",
     "wagon_group_reefer_cars": "reefer_car_type_1",
@@ -622,6 +624,23 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_SILVER_PEWTER": {
         "colour_set_names": ["freight_silver", "freight_pewter"],
         "purchase_swatch_colour_set_names": ["freight_silver"],
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR": {
+        "colour_set_names": [
+            "freight_clover",
+            "freight_clover",
+            "freight_clover",
+            "freight_clover",
+            "freight_silver",
+            "freight_silver",
+            "freight_ochre",
+            "freight_sulphur",
+        ],
+        "purchase_swatch_colour_set_names": ["freight_clover", "freight_silver", "freight_sulphur"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

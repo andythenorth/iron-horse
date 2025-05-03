@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=25930,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=30210,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -19,8 +19,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=26370,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=30610,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -31,8 +31,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=25880,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=30630,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -43,8 +43,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=24470,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=31060,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -55,8 +55,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=23360,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=31090,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -67,8 +67,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=18060,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=31150,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -79,8 +79,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=30820,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=31320,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -91,8 +91,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmCargoCombos",
-        base_numeric_id=31010,
+        class_name="FarmCargoHopperCombos",
+        base_numeric_id=31440,
         gen=5,
         subtype="C",
         sprites_complete=True,

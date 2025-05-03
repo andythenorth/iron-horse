@@ -260,7 +260,9 @@ class ModelTypeBase(object):
         result = []
         if self.catalogue.wagon_quacker.is_randomised_wagon_type:
             result.append(f"ih_behaviour/randomised_wagon")
-            result.append(f"ih_randomised_wagon/type/{self.badge_slug_randomised_wagon_type}")
+            result.append(
+                f"ih_randomised_wagon/type/{self.badge_slug_randomised_wagon_type}"
+            )
             for (
                 candidate_name
             ) in self.wagon_randomisation_candidate_assortment_unique_names:
@@ -2387,6 +2389,7 @@ class RandomisedCarVanillaMixin(RandomisedCarMixinBase):
     """
     Sparse subclass for very minimal handling of different randomised behaviouers
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.badge_slug_randomised_wagon_type = "vanilla"
@@ -2865,6 +2868,7 @@ class BoxCarMerchandise(BoxCarBase):
     vehicle_family_id = "merchandise_box_car"
     # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
     randomised_candidate_groups = [
+        "farm_cargo_mixed_combos",
         "piece_goods_covered_combos",
         "piece_goods_manufacturing_parts_combos",
         "piece_goods_mixed_combos",
@@ -3130,7 +3134,9 @@ class BulkOpenCarAggregateType3(BulkOpenCarAggregateBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarAggregateRandomised(RandomisedCarVanillaMixin, BulkOpenCarAggregateBase):
+class BulkOpenCarAggregateRandomised(
+    RandomisedCarVanillaMixin, BulkOpenCarAggregateBase
+):
     """
     Random choice of aggregate car.
     """
@@ -3327,7 +3333,9 @@ class BulkOpenCarScrapMetalType2(BulkOpenCarScrapMetalBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarScrapMetalRandomised(RandomisedCarVanillaMixin, BulkOpenCarScrapMetalBase):
+class BulkOpenCarScrapMetalRandomised(
+    RandomisedCarVanillaMixin, BulkOpenCarScrapMetalBase
+):
     """
     Random choice of scrap metal car sprite.
     """
@@ -3456,6 +3464,7 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_box_combos"
+    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3516,6 +3525,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_mixed_combos"
+    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3929,7 +3939,10 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_1"
-    randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    randomised_candidate_groups = [
+        "covered_hopper_car_randomised",
+        "farm_cargo_hopper_combos",
+    ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -3943,7 +3956,10 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_2"
-    randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    randomised_candidate_groups = [
+        "covered_hopper_car_randomised",
+        "farm_cargo_hopper_combos",
+    ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -3958,7 +3974,10 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
     """
 
     model_id_root = "covered_hopper_car_type_3"
-    randomised_candidate_groups = ["covered_hopper_car_randomised"]
+    randomised_candidate_groups = [
+        "covered_hopper_car_randomised",
+        "farm_cargo_hopper_combos",
+    ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
     def __init__(self, **kwargs):
@@ -4208,7 +4227,7 @@ class FarmProductsBoxCarType1(FarmProductsBoxCarBase):
     model_id_root = "farm_product_box_car_type_1"
     randomised_candidate_groups = [
         "farm_product_box_car_randomised",
-        "farm_cargo_combos",
+        "farm_cargo_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4223,7 +4242,7 @@ class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
     model_id_root = "farm_product_box_car_type_2"
     randomised_candidate_groups = [
         "farm_product_box_car_randomised",
-        "farm_cargo_combos",
+        "farm_cargo_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4291,7 +4310,8 @@ class FarmProductsHopperCarType1(FarmProductsHopperCarBase):
     model_id_root = "farm_product_hopper_car_type_1"
     randomised_candidate_groups = [
         "farm_product_hopper_car_randomised",
-        "farm_cargo_combos",
+        "farm_cargo_hopper_combos",
+        "farm_cargo_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4306,14 +4326,17 @@ class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
     model_id_root = "farm_product_hopper_car_type_2"
     randomised_candidate_groups = [
         "farm_product_hopper_car_randomised",
-        "farm_cargo_combos",
+        "farm_cargo_hopper_combos",
+        "farm_cargo_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class FarmProductsHopperCarRandomised(RandomisedCarVanillaMixin, FarmProductsHopperCarBase):
+class FarmProductsHopperCarRandomised(
+    RandomisedCarVanillaMixin, FarmProductsHopperCarBase
+):
     """
     Random choice of farm products hopper sprite.
     """
@@ -4586,15 +4609,13 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         )
 
 
-class FarmCargoCombos(RandomisedCarComboMixin, CarModelTypeBase):
+class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
     """
     Random choice of farm products car.
     """
 
-    liveries = ["VANILLA"]  # no recolours
-
-    model_id_root = "farm_cargo_combos"
-    vehicle_family_id = "farm_cargo_combos"
+    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
+    variant_group_id_root = "farm_cargo_mixed_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4610,9 +4631,37 @@ class FarmCargoCombos(RandomisedCarComboMixin, CarModelTypeBase):
             "freight_core"
         ]
         self._joker = True
+
+
+class FarmCargoMixedCombos(FarmCargoCombosBase):
+    """
+    Random choice of farm products car from hoppers, vans etc.
+    """
+
+    model_id_root = "farm_cargo_mixed_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FarmCargoHopperCombos(FarmCargoCombosBase):
+    """
+    Random choice of farm products hopper.
+    """
+
+    model_id_root = "farm_cargo_hopper_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
         )
@@ -5913,6 +5962,8 @@ class MetalProductCombosBase(RandomisedCarComboMixin, CoilCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
+    variant_group_id_root = "wagon_group_metal_product_combos"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -6080,9 +6131,7 @@ class MineralCoveredHopperCarLimeRandomised(
 
 
 # not in alphabetical order as it depends on subclassing CoveredHopperCarBase
-class MineralCoveredHopperCombos(
-    RandomisedCarComboMixin, MineralCoveredHopperCarBase
-):
+class MineralCoveredHopperCombos(RandomisedCarComboMixin, MineralCoveredHopperCarBase):
     """
     Random choice of mineral covered hopper car sprite.
     """
@@ -7057,6 +7106,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_covered_combos"
+    variant_group_id_root = "wagon_group_piece_goods_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7074,6 +7124,7 @@ class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_mixed_combos"
+    variant_group_id_root = "wagon_group_piece_goods_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
