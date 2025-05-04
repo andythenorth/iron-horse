@@ -483,6 +483,12 @@ base = "Express Food Tanker"
 [STR_WAGON_NAME_FOOD_HOPPER_CAR]
 base = "Food Product Hopper"
 
+[STR_WAGON_NAME_FOOD_INGREDIENTS_HOPPER_COMBOS]
+base = "Food Ingredients Hopper"
+
+[STR_WAGON_NAME_FOOD_INGREDIENTS_MIXED_COMBOS]
+base = "Food Ingredients Wagon"
+
 [STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
 base = "Heavy Duty Bulk Wagon"
 

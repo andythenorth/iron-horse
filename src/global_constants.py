@@ -50,6 +50,8 @@ wagon_module_name_stems = [
     "food_hopper_cars_type_2",
     "food_hopper_cars_type_3",
     "food_hopper_cars_randomised",
+    "food_ingredients_hopper_combos",
+    "food_ingredients_mixed_combos",
     "intermodal_cars",
     "low_floor_intermodal_cars",
     "open_cars",

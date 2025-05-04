@@ -2869,6 +2869,7 @@ class BoxCarMerchandise(BoxCarBase):
     # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
     randomised_candidate_groups = [
         "farm_cargo_mixed_combos",
+        "food_ingredients_mixed_combos",
         "piece_goods_covered_combos",
         "piece_goods_manufacturing_parts_combos",
         "piece_goods_mixed_combos",
@@ -3946,6 +3947,9 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
     randomised_candidate_groups = [
         "covered_hopper_car_randomised",
         "farm_cargo_hopper_combos",
+        "farm_cargo_mixed_combos",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
@@ -3963,6 +3967,9 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
     randomised_candidate_groups = [
         "covered_hopper_car_randomised",
         "farm_cargo_hopper_combos",
+        "farm_cargo_mixed_combos",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
@@ -3981,6 +3988,9 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
     randomised_candidate_groups = [
         "covered_hopper_car_randomised",
         "farm_cargo_hopper_combos",
+        "farm_cargo_mixed_combos",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
     variant_group_id_root = "wagon_group_covered_hopper_cars"
 
@@ -4419,7 +4429,11 @@ class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
     Random choice of farm products car.
     """
 
-    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4442,7 +4456,7 @@ class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
     Random choice of farm products car from hoppers, vans etc.
     """
 
-    model_id_root = "farm_cargo_mixed_combos"
+    model_id_root = "food_ingredients_mixed_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4459,7 +4473,7 @@ class FoodIngredientsHopperCombos(FoodIngredientsCombosBase):
     Random choice of farm products hopper.
     """
 
-    model_id_root = "farm_cargo_hopper_combos"
+    model_id_root = "food_ingredients_hopper_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4508,6 +4522,8 @@ class FoodProductsHopperCarType1(FoodProductsHopperCarBase):
     model_id_root = "food_hopper_car_type_1"
     randomised_candidate_groups = [
         "food_hopper_car_randomised",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4522,6 +4538,8 @@ class FoodProductsHopperCarType2(FoodProductsHopperCarBase):
     model_id_root = "food_hopper_car_type_2"
     randomised_candidate_groups = [
         "food_hopper_car_randomised",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -4536,6 +4554,8 @@ class FoodProductsHopperCarType3(FoodProductsHopperCarBase):
     model_id_root = "food_hopper_car_type_3"
     randomised_candidate_groups = [
         "food_hopper_car_randomised",
+        "food_ingredients_hopper_combos",
+        "food_ingredients_mixed_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -8066,6 +8086,7 @@ class TarpaulinCarBase(BoxCarBase):
     vehicle_family_id = "tarpaulin_car"
     variant_group_id_root = "wagon_group_tarpaulin_cars"
     randomised_candidate_groups = [
+        "food_ingredients_mixed_combos",
         "metal_product_covered_combos",
         "metal_product_mixed_combos",
         "piece_goods_covered_combos",

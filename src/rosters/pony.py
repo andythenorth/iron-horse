@@ -308,6 +308,8 @@ wagon_module_names_with_roster_ids = {
     "food_hopper_cars_type_3": "pony",
     "food_express_box_combos": "pony",
     "food_express_liquid_combos": "pony",
+    "food_ingredients_hopper_combos": "pony",
+    "food_ingredients_mixed_combos": "pony",
     "heavy_duty_dump_cars": "pony",
     "heavy_duty_flat_cars": "pony",
     "high_end_open_cars": "pony",

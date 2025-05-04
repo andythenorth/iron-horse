@@ -301,9 +301,14 @@ class Roster:
             for model_variant in self.wagon_model_variants_by_catalogue[catalogue.model_id][
                 "model_variants"
             ]:
-                model_variant.wagon_randomisation_candidates = tmp_randomisation_candidates_map[
-                    tmp_uid
-                ]
+                try:
+                    model_variant.wagon_randomisation_candidates = tmp_randomisation_candidates_map[
+                        tmp_uid
+                    ]
+                except KeyError as e:
+                    raise KeyError(
+                        f"UID {tmp_uid} not found in randomisation map, possibly there are no matching wagons for base_id/length/gen"
+                    ) from e
 
                 if len(model_variant.wagon_randomisation_candidates) == 0:
                     raise BaseException(
