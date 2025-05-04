@@ -107,9 +107,6 @@ base = "Fourgon-frein"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Wagon-trémie à noir de carbone"
 
-[STR_WAGON_NAME_COIL_CAR_UNCOVERED]
-base = "Wagon porte-bobines"
-
 [STR_WAGON_NAME_CRYO_TANK_CAR]
 base = "Wagon-citerne cryogénique"
 

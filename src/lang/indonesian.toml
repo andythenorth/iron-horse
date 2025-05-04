@@ -50,9 +50,6 @@ base = "Van Rem"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Gerbong Hopper"
 
-[STR_WAGON_NAME_COIL_CAR_UNCOVERED]
-base = "Gerbong Koil"
-
 [STR_WAGON_NAME_CRYO_TANK_CAR]
 base = "Gerbong Tanker Cryo"
 

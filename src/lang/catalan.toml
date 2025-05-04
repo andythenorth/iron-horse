@@ -51,9 +51,6 @@ base = "Furgó de Cua"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Vagó carboner"
 
-[STR_WAGON_NAME_COIL_CAR_UNCOVERED]
-base = "Cotxe de bobinat obert"
-
 [STR_WAGON_NAME_CRYO_TANK_CAR]
 base = "Tanc d'hidrògen líquid"
 
