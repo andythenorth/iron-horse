@@ -3258,8 +3258,8 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
     # CABBAGE, THIS SUBCLASS SHOULD BE SPLIT AWAY REALLY
     variant_group_id_root = "mineral_bulk_open_car_low_side"
     randomised_candidate_groups = [
-        "bulk_cargo_box_combos",
         "bulk_cargo_mixed_combos",
+        # by design, does not randomise with the other box opens, visually jarring due to size difference
     ]
 
     def __init__(self, **kwargs):
