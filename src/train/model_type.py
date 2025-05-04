@@ -4621,7 +4621,6 @@ class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
     """
 
     liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
-    variant_group_id_root = "farm_cargo_mixed_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5974,7 +5973,7 @@ class MetalProductCombosBase(RandomisedCarComboMixin, CoilCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
-    variant_group_id_root = "wagon_group_metal_product_combos"
+    #variant_group_id_root = "wagon_group_metal_product_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7118,6 +7117,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_covered_combos"
+    vehicle_family_id = "piece_goods_covered_combos"
     variant_group_id_root = "wagon_group_piece_goods_combos"
 
     def __init__(self, **kwargs):
@@ -7136,7 +7136,6 @@ class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_mixed_combos"
-    variant_group_id_root = "wagon_group_piece_goods_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7154,6 +7153,8 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_manufacturing_parts_combos"
+    vehicle_family_id = "piece_goods_covered_combos"
+    variant_group_id_root = "wagon_group_piece_goods_combos" # deliberately group with the covered goods wagons as limited difference
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
