@@ -51,9 +51,6 @@ base = "Vagón de cola"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Vagón carbonero"
 
-[STR_WAGON_NAME_COIL_CAR_COVERED]
-base = "Vagón de bobinado cubierto"
-
 [STR_WAGON_NAME_COIL_CAR_UNCOVERED]
 base = "Vagón de bobinado abierto"
 
@@ -90,9 +87,6 @@ base = "Vagón de ganado"
 [STR_WAGON_NAME_LOG_CAR]
 base = "Vagón de madera"
 
-[STR_WAGON_NAME_LOW_FLOOR_INTERMODAL_CAR]
-base = "Vagón contenedor bajo"
-
 [STR_WAGON_NAME_MAIL_CAR]
 base = "Vagón de correo"
 
@@ -101,9 +95,6 @@ base = "Vagón abierto"
 
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Vagón de pasaje"
-
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Vagón platero"
 
 [STR_WAGON_NAME_RESTAURANT_CAR]
 base = "Vagón restaurante"

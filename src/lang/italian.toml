@@ -58,9 +58,6 @@ base = "Carro aperto"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Carrozza passeggeri"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Carro piatto"
-
 [STR_BADGE_ROLE]
 base = "Ruolo"
 

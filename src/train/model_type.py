@@ -3468,7 +3468,6 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_box_combos"
-    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3529,7 +3528,6 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_cargo_mixed_combos"
-    variant_group_id_root = "wagon_group_bulk_cargo_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4189,6 +4187,63 @@ class ExpressIntermodalCar(CarModelTypeBase):
         return ["default"]
 
 
+class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
+    """
+    Random choice of farm products car.
+    """
+
+    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["covered_hopper_freight_food_grade"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_food_products"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
+        self._joker = True
+
+
+class FarmCargoMixedCombos(FarmCargoCombosBase):
+    """
+    Random choice of farm products car from hoppers, vans etc.
+    """
+
+    model_id_root = "farm_cargo_mixed_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FarmCargoHopperCombos(FarmCargoCombosBase):
+    """
+    Random choice of farm products hopper.
+    """
+
+    model_id_root = "farm_cargo_hopper_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
 class FarmProductsBoxCarBase(CarModelTypeBase):
     """
     Bae for farm type cargos - box cars / vans.
@@ -4359,7 +4414,65 @@ class FarmProductsHopperCarRandomised(
         )
 
 
-class FoodHopperCarBase(FarmProductsHopperCarBase):
+class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
+    """
+    Random choice of farm products car.
+    """
+
+    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["covered_hopper_freight_food_grade"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_food_products"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
+        self._joker = True
+
+
+class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
+    """
+    Random choice of farm products car from hoppers, vans etc.
+    """
+
+    model_id_root = "farm_cargo_mixed_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class FoodIngredientsHopperCombos(FoodIngredientsCombosBase):
+    """
+    Random choice of farm products hopper.
+    """
+
+    model_id_root = "farm_cargo_hopper_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+
+class FoodProductsHopperCarBase(FarmProductsHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -4387,7 +4500,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         )
 
 
-class FoodHopperCarType1(FoodHopperCarBase):
+class FoodProductsHopperCarType1(FoodProductsHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -4401,7 +4514,7 @@ class FoodHopperCarType1(FoodHopperCarBase):
         super().__init__(**kwargs)
 
 
-class FoodHopperCarType2(FoodHopperCarBase):
+class FoodProductsHopperCarType2(FoodProductsHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -4415,7 +4528,7 @@ class FoodHopperCarType2(FoodHopperCarBase):
         super().__init__(**kwargs)
 
 
-class FoodHopperCarType3(FoodHopperCarBase):
+class FoodProductsHopperCarType3(FoodProductsHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -4429,7 +4542,7 @@ class FoodHopperCarType3(FoodHopperCarBase):
         super().__init__(**kwargs)
 
 
-class FoodHopperCarRandomised(RandomisedCarVanillaMixin, FoodHopperCarBase):
+class FoodProductsHopperCarRandomised(RandomisedCarVanillaMixin, FoodProductsHopperCarBase):
     """
     Random choice of food hopper sprite.
     """
@@ -4611,63 +4724,6 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
-    """
-    Random choice of farm products car.
-    """
-
-    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["covered_hopper_freight_food_grade"]
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_food_products"
-        ]
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
-        self._loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
-            "freight_core"
-        ]
-        self._joker = True
-
-
-class FarmCargoMixedCombos(FarmCargoCombosBase):
-    """
-    Random choice of farm products car from hoppers, vans etc.
-    """
-
-    model_id_root = "farm_cargo_mixed_combos"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_segmented_block_train",
-            dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class FarmCargoHopperCombos(FarmCargoCombosBase):
-    """
-    Random choice of farm products hopper.
-    """
-
-    model_id_root = "farm_cargo_hopper_combos"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",
-            dice_colour=1,
             catalogue_entry=self.catalogue_entry,
         )
 

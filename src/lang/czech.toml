@@ -67,9 +67,6 @@ base = "Otevřený vůz"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Vůz pro cestující"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Plošinový vůz"
-
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "Torpédový vůz"
 

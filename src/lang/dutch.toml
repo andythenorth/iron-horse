@@ -65,9 +65,6 @@ base = "Open wagon"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Passagiersrijtuig"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Plaatwagon"
-
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "Torpedowagen"
 

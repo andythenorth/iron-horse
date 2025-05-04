@@ -64,9 +64,6 @@ base = "Otvoreni vagon"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Putnički vagon"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Plato-vagon"
-
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "Vagon-torpedo"
 

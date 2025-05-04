@@ -59,9 +59,6 @@ base = "Laidallinen avovaunu"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Matkustajavaunu"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Järeän tavaran vaunu"
-
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "Torpedovaunu"
 

@@ -107,9 +107,6 @@ base = "Fourgon-frein"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Wagon-trémie à noir de carbone"
 
-[STR_WAGON_NAME_COIL_CAR_COVERED]
-base = "Wagon porte-bobines couvert"
-
 [STR_WAGON_NAME_COIL_CAR_UNCOVERED]
 base = "Wagon porte-bobines"
 
@@ -149,9 +146,6 @@ base = "Wagon-tombereau bâché"
 [STR_WAGON_NAME_HOPPER_CAR]
 base = "Wagon-trémie"
 
-[STR_WAGON_NAME_HOPPER_CAR_HIGH_SIDE]
-base = "Wagon-trémie haut"
-
 [STR_WAGON_NAME_HST_MAIL_CAR]
 base = "Fourgon postal"
 
@@ -173,12 +167,6 @@ base = "Wagon à bétail"
 [STR_WAGON_NAME_LOG_CAR]
 base = "Wagon porte-bûches"
 
-[STR_WAGON_NAME_LOW_FLOOR_AUTOMOBILE_CAR]
-base = "Wagon porte-automobiles surbaissé"
-
-[STR_WAGON_NAME_LOW_FLOOR_INTERMODAL_CAR]
-base = "Wagon porte-container surbaissé"
-
 [STR_WAGON_NAME_MAIL_CAR]
 base = "Fourgon postal"
 
@@ -187,9 +175,6 @@ base = "Fourgon de marchandise"
 
 [STR_WAGON_NAME_MGR_HOPPER_CAR]
 base = "Wagon-trémie «{NBSP}carrousel{NBSP}»"
-
-[STR_WAGON_NAME_MGR_TOP_HOOD_HOPPER_CAR]
-base = "Wagon-trémie «{NBSP}carrousel{NBSP}» bâché"
 
 [STR_WAGON_NAME_OPEN_CAR]
 base = "Wagon-tombereau"
@@ -203,17 +188,11 @@ base = "Voiture"
 [STR_WAGON_NAME_PEAT_CAR]
 base = "Wagon à tourbe"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Wagon porte-tôles"
-
 [STR_WAGON_NAME_PRESSURE_TANK_CAR]
 base = "Wagon-citerne pressurisé"
 
 [STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
 base = "Wagon-citerne à produits chimiques"
-
-[STR_WAGON_NAME_DEDICATED_COIL_CAR_RANDOMISED]
-base = "Wagon porte-bobines"
 
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
 base = "Wagon porte-bobines"

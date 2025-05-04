@@ -51,9 +51,6 @@ base = "Furgó de Cua"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Vagó carboner"
 
-[STR_WAGON_NAME_COIL_CAR_COVERED]
-base = "Cotxe de bobinat cobert"
-
 [STR_WAGON_NAME_COIL_CAR_UNCOVERED]
 base = "Cotxe de bobinat obert"
 
@@ -90,9 +87,6 @@ base = "Vagó ramader"
 [STR_WAGON_NAME_LOG_CAR]
 base = "Cotxe transportador de fusta"
 
-[STR_WAGON_NAME_LOW_FLOOR_INTERMODAL_CAR]
-base = "Cotxe contenidor baix"
-
 [STR_WAGON_NAME_MAIL_CAR]
 base = "Cotxe de correu"
 
@@ -101,9 +95,6 @@ base = "Cotxe obert"
 
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Cotxe de passatge"
-
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Cotxe plater"
 
 [STR_WAGON_NAME_RESTAURANT_CAR]
 base = "Cotxe restaurant"

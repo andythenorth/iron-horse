@@ -60,9 +60,6 @@ base = "무개차"
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "승객 수송 차량"
 
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "평판화차"
-
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "어뢰 화차"
 

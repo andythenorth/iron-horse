@@ -50,9 +50,6 @@ base = "Van Rem"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Gerbong Hopper"
 
-[STR_WAGON_NAME_COIL_CAR_COVERED]
-base = "Gerbong Koil Tertutup"
-
 [STR_WAGON_NAME_COIL_CAR_UNCOVERED]
 base = "Gerbong Koil"
 
@@ -89,9 +86,6 @@ base = "Gerbong Ternak"
 [STR_WAGON_NAME_LOG_CAR]
 base = "Gerbong Kayu"
 
-[STR_WAGON_NAME_LOW_FLOOR_INTERMODAL_CAR]
-base = "Gerbong Kontainer Rendah"
-
 [STR_WAGON_NAME_MAIL_CAR]
 base = "Gerbong Surat/Parcel"
 
@@ -100,9 +94,6 @@ base = "Gerbong Terbuka"
 
 [STR_WAGON_NAME_PASSENGER_CAR]
 base = "Gerbong Penumpang"
-
-[STR_WAGON_NAME_DROP_SIDE_FLAT_CAR]
-base = "Gerbong Piring"
 
 [STR_WAGON_NAME_RESTAURANT_CAR]
 base = "Gerbong Restoran"
