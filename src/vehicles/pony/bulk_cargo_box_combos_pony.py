@@ -56,18 +56,6 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="BulkCargoBoxCombos",
-        base_numeric_id=22160,
-        gen=5,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="BulkCargoBoxCombos",
         base_numeric_id=16500,
         gen=5,
         subtype="B",

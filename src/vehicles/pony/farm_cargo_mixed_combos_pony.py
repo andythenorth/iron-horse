@@ -8,30 +8,6 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FarmCargoMixedCombos",
-        base_numeric_id=25930,
-        gen=2,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="FarmCargoMixedCombos",
-        base_numeric_id=26370,
-        gen=2,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="FarmCargoMixedCombos",
         base_numeric_id=25880,
         gen=3,
         subtype="A",

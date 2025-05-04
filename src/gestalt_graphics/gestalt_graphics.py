@@ -220,6 +220,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
+        self.buy_menu_id_pairs = kwargs.get("buy_menu_id_pairs", None)
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.render_pass_num = 2
 
@@ -238,18 +239,47 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             pipeline.example_model_variant.wagon_randomisation_candidates
         )
 
-        # this just slices out the first and last items of the list to make a pair of buy menu sprites
-        # note that for randomised wagons, the list of candidates is compile time non-deterministic
-        # so the resulting sprites may vary between compiles - this is accepted as of August 2022
+        if self.buy_menu_id_pairs is not None:
+            for candidate in wagon_randomisation_candidates:
+                if candidate.model_id_root in self.buy_menu_id_pairs[0]:
+                    candidate_1 = candidate
+                    continue
+                if candidate.model_id_root in self.buy_menu_id_pairs[1]:
+                    candidate_2 = candidate
+                    continue
+            try:
+                candidate_1
+                candidate_2
+            except:
+                raise Exception(
+                    f"{self.catalogue.model_id} \n"
+                    f"Probably at least one of the candidates in buy_menu_id_pairs is not found. Options: \n"
+                    f"- extend buy_menu_id_pairs with more types \n"
+                    f"- this may not be a valid combo for this generation due to not actually having properly different candidates \n"
+                    f"buy_menu_id_pairs: {self.buy_menu_id_pairs} \n"
+                    f"wagon_randomisation_candidates: {[i.model_id_root for i in wagon_randomisation_candidates]} \n"
+                )
+
+        else:
+            # we don't specify buy_menu_id_pair for simple cases e.g. livery randomisation of same base model
+            # so this just slices out the first and last items of the list to make a pair of buy menu sprites
+            # note that for randomised wagons, the list of candidates might be compile time non-deterministic
+            # so the resulting sprites may vary between compiles - this is accepted as of August 2022
+            candidate_1 = wagon_randomisation_candidates[0]
+            candidate_2 = wagon_randomisation_candidates[-1]
+            if pipeline.example_model_variant.badge_slug_randomised_wagon_type == "combo":
+                print([i.model_id_root for i in wagon_randomisation_candidates])
+
         source_vehicles_and_input_spriterow_nums = [
             # vehicle unit, y offset (num spriterows) to buy menu input row
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
+            # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
             (
-                wagon_randomisation_candidates[0].units[0],
+                candidate_2.units[0],
                 0,
             ),
             (
-                wagon_randomisation_candidates[-1].units[0],
+                candidate_1.units[0],
                 0,
             ),
         ]
@@ -520,7 +550,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         spriterow_labels,
         caboose_families,
         buy_menu_sprite_pairs,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
@@ -1152,7 +1182,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         cargo_label_mapping=None,
         weathered_states=None,
         num_extra_layers_for_spritelayer_cargos=None,
-        **kwargs
+        **kwargs,
     ):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
