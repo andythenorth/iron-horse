@@ -5677,7 +5677,7 @@ class KaolinHopperCar(CarModelTypeBase):
         )
 
 
-class LivestockCar(CarModelTypeBase):
+class LivestockCarBase(CarModelTypeBase):
     """
     Specialist transporter for livestock.
     """
@@ -5694,8 +5694,6 @@ class LivestockCar(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
     ]
-
-    model_id_root = "livestock_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5719,6 +5717,36 @@ class LivestockCar(CarModelTypeBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class LivestockCar(LivestockCarBase):
+    """
+    Specialist transporter for livestock.
+    """
+
+    model_id_root = "livestock_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class LivestockExpressCar(LivestockCarBase):
+    """
+    Specialist express transporter for livestock.
+    """
+
+    model_id_root = "livestock_express_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
+        self.weight_factor = polar_fox.constants.mail_multiplier
+        # keep matched to MailCar
+        self.floating_run_cost_multiplier = 2.33
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "food_wagons"
+        ]
 
 
 class LogCar(CarModelTypeBase):

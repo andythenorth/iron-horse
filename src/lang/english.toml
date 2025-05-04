@@ -531,6 +531,9 @@ base = "Lime Hopper"
 [STR_WAGON_NAME_LIVESTOCK_CAR]
 base = "Livestock Wagon"
 
+[STR_WAGON_NAME_LIVESTOCK_EXPRESS_CAR]
+base = "Livestock Express Van"
+
 [STR_WAGON_NAME_LOG_CAR]
 base = "Log Carrier"
 
