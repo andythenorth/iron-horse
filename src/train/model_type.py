@@ -3886,6 +3886,7 @@ class DedicatedCoilCarRandomised(RandomisedCarVanillaMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
+            buy_menu_id_pairs=[['coil_car_uncovered'], ['coil_car_covered']],
             catalogue_entry=self.catalogue_entry,
         )
 
