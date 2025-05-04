@@ -4255,7 +4255,7 @@ class FarmCargoHopperCombos(FarmCargoCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            buy_menu_id_pairs=[['covered_hopper_car_type_2'], ['farm_product_hopper_car_type_2', 'farm_product_hopper_car_type_1']],
+            buy_menu_id_pairs=[['covered_hopper_car_type_2', 'covered_hopper_car_type_1'], ['farm_product_hopper_car_type_2', 'farm_product_hopper_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
