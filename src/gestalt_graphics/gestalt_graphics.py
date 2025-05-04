@@ -237,7 +237,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         wagon_randomisation_candidates = (
             pipeline.example_model_variant.wagon_randomisation_candidates
         )
-        # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
+
+        # this just slices out the first and last items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         source_vehicles_and_input_spriterow_nums = [
@@ -248,7 +249,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 0,
             ),
             (
-                wagon_randomisation_candidates[1].units[0],
+                wagon_randomisation_candidates[-1].units[0],
                 0,
             ),
         ]
