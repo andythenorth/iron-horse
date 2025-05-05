@@ -345,6 +345,7 @@ wagon_module_names_with_roster_ids = {
     "mill_flat_cars_type_2": "pony",
     "mill_open_cars": "pony",
     "motorail_automobile_cars": "pony",
+    "open_car_combos": "pony",
     "open_cars_type_1": "pony",
     "open_cars_type_2": "pony",
     "open_cars_randomised": "pony",

@@ -49,6 +49,54 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarRandomised",
+        base_numeric_id=32950,
+        gen=1,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="OpenCarRandomised",
+        base_numeric_id=34670,
+        gen=2,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="OpenCarRandomised",
+        base_numeric_id=32910,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="OpenCarRandomised",
+        base_numeric_id=32930,
+        gen=3,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="OpenCarRandomised",
         base_numeric_id=27650,
         gen=4,
         subtype="A",

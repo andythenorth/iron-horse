@@ -570,6 +570,9 @@ base = "Mill Open Wagon"
 [STR_WAGON_NAME_OPEN_CAR]
 base = "General Open Wagon"
 
+[STR_WAGON_NAME_OPEN_CAR_COMBOS]
+base = "Open Wagon"
+
 [STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
 base = "General Open Wagon"
 

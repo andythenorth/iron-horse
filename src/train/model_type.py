@@ -6480,6 +6480,7 @@ class OpenCarBase(CarModelTypeBase):
 
     randomised_candidate_groups = [
         "open_car_randomised",
+        "open_car_combos",
         "piece_goods_mixed_combos",
     ]
 
@@ -6550,6 +6551,7 @@ class OpenCarHoodType1(OpenCarBase):
 
     model_id_root = "hood_open_car_type_1"
     randomised_candidate_groups = [
+        "open_car_combos",
         "piece_goods_mixed_combos",
     ]
 
@@ -6617,7 +6619,7 @@ class OpenCarMill(OpenCarBase):
 
 class OpenCarRandomised(RandomisedCarVanillaMixin, OpenCarBase):
     """
-    Random choice of open car sprite, from available open cars.
+    Random choice of open car sprite, from available (general) open cars.
     """
 
     model_id_root = "open_car_randomised"
@@ -6629,6 +6631,38 @@ class OpenCarRandomised(RandomisedCarVanillaMixin, OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class OpenCarCombos(RandomisedCarComboMixin, OpenCarBase):
+    """
+    Random choice of open car.
+    """
+
+    # possibly ambiguous with OpenCarRandomised but eh
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",  # might be odd, but intended for farm stuff
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+    ]
+
+    model_id_root = "open_car_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            dice_colour=1,
+            buy_menu_id_pairs=[['open_car_type_1'], ['hood_open_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
