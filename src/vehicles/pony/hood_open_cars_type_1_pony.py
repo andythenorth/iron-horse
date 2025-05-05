@@ -8,7 +8,7 @@ def main(**kwargs):
     # only type A for gen 1
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=30110,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no type A for gen 2, gen 1 type A continues, also no gen 2 type B
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=16540,
         gen=3,
         subtype="A",
@@ -34,7 +34,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=30130,
         gen=3,
         subtype="B",
@@ -46,7 +46,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=16560,
         gen=4,
         subtype="A",
@@ -58,7 +58,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=30150,
         gen=4,
         subtype="B",
@@ -70,7 +70,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=16580,
         gen=5,
         subtype="B",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHood",
+        class_name="OpenCarHoodType1",
         base_numeric_id=30170,
         gen=5,
         subtype="C",

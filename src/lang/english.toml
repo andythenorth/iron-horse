@@ -501,7 +501,7 @@ base = "High Speed Mail Van"
 [STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
 base = "High Speed Coach"
 
-[STR_WAGON_NAME_HOOD_OPEN_CAR]
+[STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
 base = "Hood Open Wagon"
 
 [STR_WAGON_NAME_HOPPER_CAR]

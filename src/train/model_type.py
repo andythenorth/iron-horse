@@ -6497,12 +6497,12 @@ class OpenCarBase(CarModelTypeBase):
         ]
 
 
-class OpenCar(OpenCarBase):
+class OpenCarType1(OpenCarBase):
     """
     Standard open car
     """
 
-    model_id_root = "open_car"
+    model_id_root = "open_car_type_1"
     vehicle_family_id = "open_car"
     variant_group_id_root = "wagon_group_open_cars"
 
@@ -6517,12 +6517,38 @@ class OpenCar(OpenCarBase):
         )
 
 
-class OpenCarHood(OpenCarBase):
+class OpenCarType2(OpenCarBase):
+    """
+    Standard open car with alternative appearance
+    """
+
+    model_id_root = "open_car_type_2"
+    vehicle_family_id = "open_car"  # intended
+    variant_group_id_root = "wagon_group_open_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            piece="open",
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class OpenCarHoodType1(OpenCarBase):
     """
     Open car with a hood when fully loaded
     """
 
-    model_id_root = "hood_open_car"
+    model_id_root = "hood_open_car_type_1"
     randomised_candidate_groups = [
         "piece_goods_mixed_combos",
     ]
@@ -6542,47 +6568,6 @@ class OpenCarHood(OpenCarBase):
             piece="open",
             weathered_states=weathered_states,
             has_cover=True,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class OpenCarHighEnd(OpenCarBase):
-    """
-    Open car with alternative livery
-    """
-
-    # adjusted set
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        # "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 open car in same livery
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "COMPLEMENT_COMPANY_COLOUR",
-        "COMPANY_COLOUR",
-        "FREIGHT_BONUS_OXIDE_RUST",
-        "FREIGHT_BONUS_TEAL",
-    ]
-
-    model_id_root = "high_end_open_car"
-    vehicle_family_id = "open_car"  # intended
-    variant_group_id_root = "wagon_group_open_cars"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["open"]
-        self._joker = True
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
-            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            bulk=True,
-            piece="open",
-            weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7245,7 +7230,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             # CABBAGE SET THESE
-            #buy_menu_id_pairs=[['open_car'], ['box_car_type_1']],
+            #buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7285,7 +7270,7 @@ class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            buy_menu_id_pairs=[['open_car'], ['box_car_type_1']],
+            buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7306,7 +7291,7 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             # CABBAGE SET THESE
-            #buy_menu_id_pairs=[['open_car'], ['box_car_type_1']],
+            #buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 

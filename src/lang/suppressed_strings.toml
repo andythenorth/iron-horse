@@ -135,7 +135,7 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_HOOD_OPEN_CAR]
+[STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_NAME_HOPPER_CAR]

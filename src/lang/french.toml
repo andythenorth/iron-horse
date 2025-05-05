@@ -137,7 +137,7 @@ base= "Fourgon postal à grande vitesse"
 [STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
 base= "Voiture à grande vitesse"
 
-[STR_WAGON_NAME_HOOD_OPEN_CAR]
+[STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
 base = "Wagon-tombereau bâché"
 
 [STR_WAGON_NAME_HOPPER_CAR]

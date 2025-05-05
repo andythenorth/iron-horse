@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- metro -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=15260,
         gen=1,
         subtype="U",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=27770,
         gen=2,
         subtype="U",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22810,
         gen=3,
         subtype="U",
@@ -50,7 +50,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22830,
         gen=1,
         subtype="A",
@@ -65,7 +65,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22850,
         gen=3,
         subtype="A",
@@ -78,7 +78,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22870,
         gen=3,
         subtype="B",
@@ -94,7 +94,7 @@ def main(**kwargs):
     # only type A for gen 1
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22890,
         gen=1,
         subtype="A",
@@ -108,7 +108,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=29870,
         gen=2,
         subtype="B",
@@ -120,7 +120,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22910,
         gen=3,
         subtype="A",
@@ -132,7 +132,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=26110,
         gen=3,
         subtype="B",
@@ -144,7 +144,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=22930,
         gen=4,
         subtype="A",
@@ -156,7 +156,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=26130,
         gen=4,
         subtype="B",
@@ -168,7 +168,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=28150,
         gen=4,
         subtype="C",
@@ -180,7 +180,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=27570,
         gen=5,
         subtype="A",
@@ -192,7 +192,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=26160,
         gen=5,
         subtype="B",
@@ -206,7 +206,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCar",
+        class_name="OpenCarType1",
         base_numeric_id=27590,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
+        class_name="OpenCarType2",
         base_numeric_id=23590,
         gen=1,
         subtype="A",
@@ -20,8 +20,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
-        base_numeric_id=23600,
+        class_name="OpenCarType2",
+        base_numeric_id=16990,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -33,8 +33,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
-        base_numeric_id=23610,
+        class_name="OpenCarType2",
+        base_numeric_id=23090,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
+        class_name="OpenCarType2",
         base_numeric_id=23620,
         gen=4,
         subtype="A",
@@ -60,8 +60,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
-        base_numeric_id=23630,
+        class_name="OpenCarType2",
+        base_numeric_id=23110,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
+        class_name="OpenCarType2",
         base_numeric_id=23640,
         gen=5,
         subtype="A",
@@ -86,8 +86,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
-        base_numeric_id=23650,
+        class_name="OpenCarType2",
+        base_numeric_id=23130,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -100,8 +100,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarHighEnd",
-        base_numeric_id=23660,
+        class_name="OpenCarType2",
+        base_numeric_id=23150,
         gen=5,
         subtype="C",
         sprites_complete=True,
