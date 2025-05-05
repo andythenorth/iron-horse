@@ -7250,6 +7250,28 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
         )
 
 
+class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
+    """
+    Randomised general (piece goods) cargo wagon - with sliding roof or tarp.
+    """
+
+    model_id_root = "piece_goods_easiloader_combos"
+    vehicle_family_id = "piece_goods_covered_combos"
+    variant_group_id_root = "wagon_group_piece_goods_combos" # deliberately group with the covered goods wagons as limited difference
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=1,
+            # CABBAGE SET THESE
+            buy_menu_id_pairs=[['tarpaulin_car_type_2'], ['sliding_roof_car']],
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+
 class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised general (piece goods) cargo wagon.
@@ -7623,6 +7645,7 @@ class SlidingRoofCar(BoxCarBase):
         "metal_product_covered_combos",
         "metal_product_mixed_combos",
         "piece_goods_covered_combos",
+        "piece_goods_easiloader_combos",
         "piece_goods_mixed_combos",
     ]
 
@@ -8138,6 +8161,7 @@ class TarpaulinCarBase(BoxCarBase):
         "metal_product_covered_combos",
         "metal_product_mixed_combos",
         "piece_goods_covered_combos",
+        "piece_goods_easiloader_combos",
         "piece_goods_mixed_combos",
         "tarpaulin_car_randomised",
     ]

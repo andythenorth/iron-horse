@@ -77,6 +77,7 @@ wagon_module_name_stems = [
     "piece_goods_mixed_combos",
     "piece_goods_covered_combos",
     "piece_goods_manufacturing_parts_combos",
+    "piece_goods_easiloader_combos",
     "flat_cars",
     "drop_end_flat_cars",
     "drop_side_flat_cars",
