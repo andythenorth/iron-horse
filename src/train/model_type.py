@@ -2787,7 +2787,6 @@ class BoxCarType2(BoxCarBase):
     ]
 
     model_id_root = "box_car_type_2"
-    input_spritesheet_delegate_id_root = "box_car_type_1"
     variant_group_id_root = "wagon_group_box_cars"
     randomised_candidate_groups = [
         "box_car_randomised",

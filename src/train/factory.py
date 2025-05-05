@@ -389,6 +389,7 @@ class ModelVariantFactory:
             getattr(self.model_type_cls, "input_spritesheet_delegate_id_root", None)
             is not None
         ):
+            # CABBAGE - THIS MAY BE UNUSED
             input_spritesheet_name_stem = self.get_wagon_id(
                 self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def
             )
