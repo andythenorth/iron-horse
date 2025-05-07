@@ -57,6 +57,7 @@ wagon_module_name_stems = [
     "low_floor_intermodal_cars",
     "open_cars_type_1",
     "open_cars_type_2",
+    "open_cars_type_3",
     "open_cars_randomised",
     "hood_open_cars_type_1",
     "open_car_combos",

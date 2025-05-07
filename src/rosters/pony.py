@@ -348,6 +348,7 @@ wagon_module_names_with_roster_ids = {
     "open_car_combos": "pony",
     "open_cars_type_1": "pony",
     "open_cars_type_2": "pony",
+    "open_cars_type_3": "pony",
     "open_cars_randomised": "pony",
     "panoramic_cars": "pony",
     "passenger_cars": "pony",

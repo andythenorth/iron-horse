@@ -121,6 +121,18 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="OpenCarRandomised",
+        base_numeric_id=36330,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="OpenCarRandomised",
         base_numeric_id=17040,
         gen=5,
         subtype="B",

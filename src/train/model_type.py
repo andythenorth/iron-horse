@@ -6543,6 +6543,32 @@ class OpenCarType2(OpenCarBase):
         )
 
 
+class OpenCarType3(OpenCarBase):
+    """
+    Standard open car with alternative appearance
+    """
+
+    model_id_root = "open_car_type_3"
+    vehicle_family_id = "open_car"  # intended
+    variant_group_id_root = "wagon_group_open_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            piece="open",
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
 class OpenCarHoodType1(OpenCarBase):
     """
     Open car with a hood when fully loaded
