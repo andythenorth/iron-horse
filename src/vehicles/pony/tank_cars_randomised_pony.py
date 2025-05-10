@@ -45,11 +45,11 @@ def main(**kwargs):
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
-
+    """
 
     model_def =ModelDef(
         class_name="TankCarStandardRandomised",
-        base_numeric_id=35900,
+        base_numeric_id=32310,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         class_name="TankCarStandardRandomised",
-        base_numeric_id=35920,
+        base_numeric_id=32330,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -75,7 +75,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         class_name="TankCarStandardRandomised",
-        base_numeric_id=35940,
+        base_numeric_id=32350,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -84,7 +84,6 @@ def main(**kwargs):
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_32px")
 
     result.append(model_def)
-    """
 
     model_def = ModelDef(
         class_name="TankCarStandardRandomised",

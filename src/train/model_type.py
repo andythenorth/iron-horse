@@ -4775,7 +4775,7 @@ class FoodExpressBoxCombos(RandomisedCarComboMixin, FoodExpressCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ["liquids_food_grade"]
+        self.class_refit_groups = ["refrigerated_freight"]
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
