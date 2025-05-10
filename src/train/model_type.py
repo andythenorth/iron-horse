@@ -5817,19 +5817,17 @@ class LogCar(CarModelTypeBase):
     Specialist transporter for logs
     """
 
+    # dark grey and rust colours don't have enough contrast, dropped
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
-        "RANDOM_LIVERIES_OXIDE_RUST",
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
-        # didn't bother with teal, marginal benefit
+        "FREIGHT_BONUS_TEAL",
     ]
 
     model_id_root = "log_car"
