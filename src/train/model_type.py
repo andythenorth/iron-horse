@@ -2834,15 +2834,15 @@ class BoxCarType3(BoxCarBase):
         )
 
 
-
-class BoxCarCurtainSide(BoxCarBase):
+class BoxCarCurtainSideBase(BoxCarBase):
     """
     Curtain side box car - same refits as box car.
     """
 
-    model_id_root = "curtain_side_box_car"
     vehicle_family_id = "curtain_side_box_car"
+    variant_group_id_root = "wagon_group_curtain_side_box_cars"
     randomised_candidate_groups = [
+        "curtain_side_box_car_randomised",
         "piece_goods_covered_combos",
         "piece_goods_manufacturing_parts_combos",
         "piece_goods_mixed_combos",
@@ -2866,6 +2866,44 @@ class BoxCarCurtainSide(BoxCarBase):
             catalogue_entry=self.catalogue_entry,
         )
 
+
+class BoxCarCurtainSideType1(BoxCarCurtainSideBase):
+    """
+    Curtain side box car - same refits as box car.
+    """
+
+    model_id_root = "curtain_side_box_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BoxCarCurtainSideType2(BoxCarCurtainSideBase):
+    """
+    Curtain side box car - same refits as box car.
+    """
+
+    model_id_root = "curtain_side_box_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BoxCarCurtainSideRandomised(RandomisedCarVanillaMixin, BoxCarCurtainSideBase):
+    """
+    Random choice of curtain side box car sprite.
+    """
+
+    model_id_root = "curtain_side_box_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 class BoxCarMerchandise(BoxCarBase):
     """
