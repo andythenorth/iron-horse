@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=29000,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=30280,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=30430,
         gen=3,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     # only type A for gen 1
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=34270,
         gen=1,
         subtype="A",
@@ -63,7 +63,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=38620,
         gen=2,
         subtype="B",
@@ -75,7 +75,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=23020,
         gen=3,
         subtype="A",
@@ -87,7 +87,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=38640,
         gen=3,
         subtype="B",
@@ -99,7 +99,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=23040,
         gen=4,
         subtype="A",
@@ -111,7 +111,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=38660,
         gen=4,
         subtype="B",
@@ -123,7 +123,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=39930,
         gen=4,
         subtype="C",
@@ -135,7 +135,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=34800,
         gen=5,
         subtype="B",
@@ -149,7 +149,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarMill",
+        class_name="OpenCarMillType1",
         base_numeric_id=39950,
         gen=5,
         subtype="C",

@@ -61,7 +61,7 @@ wagon_module_name_stems = [
     "open_cars_randomised",
     "hood_open_cars_type_1",
     "open_car_combos",
-    "mill_open_cars",
+    "mill_open_cars_type_1",
     "box_cars_type_1",
     "box_cars_type_2",
     "curtain_side_box_cars",
