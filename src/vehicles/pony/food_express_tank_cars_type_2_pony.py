@@ -122,7 +122,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_24px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_greebled_alt_24px")
 
     result.append(model_def)
 
@@ -134,7 +134,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_32px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_greebled_alt_32px")
 
     result.append(model_def)
 
