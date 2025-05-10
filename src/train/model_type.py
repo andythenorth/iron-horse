@@ -6620,8 +6620,11 @@ class OpenCarMillBase(OpenCarBase):
         "FREIGHT_BONUS_TEAL",
     ]
 
+    vehicle_family_id = "mill_open_car"
+    variant_group_id_root = "wagon_group_mill_open_cars"
     randomised_candidate_groups = [
         "metal_product_mixed_combos",
+        "mill_open_car_randomised",
         "piece_goods_mixed_combos",
     ]
 
@@ -6646,12 +6649,38 @@ class OpenCarMillType1(OpenCarMillBase):
     Open car for use in the steel industry, but widely repurposed and refittable.
     """
 
-    vehicle_family_id = "mill_open_car"
     model_id_root = "mill_open_car_type_1"
-    #variant_group_id_root = "wagon_group_open_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class OpenCarMillType2(OpenCarMillBase):
+    """
+    Open car for use in the steel industry, but widely repurposed and refittable.
+    """
+
+    model_id_root = "mill_open_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class OpenCarMillRandomised(RandomisedCarVanillaMixin, OpenCarMillBase):
+    """
+    Random choice of mill open car.
+    """
+
+    model_id_root = "mill_open_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class OpenCarRandomised(RandomisedCarVanillaMixin, OpenCarBase):
