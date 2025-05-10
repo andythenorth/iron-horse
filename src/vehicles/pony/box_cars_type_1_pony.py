@@ -163,7 +163,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_1cc_filled_32px"
+        class_name="FreightCarUnit", chassis="4_axle_filled_greebled_alt_32px"
     )
 
     result.append(model_def)

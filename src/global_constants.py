@@ -66,6 +66,7 @@ wagon_module_name_stems = [
     "mill_open_cars_randomised",
     "box_cars_type_1",
     "box_cars_type_2",
+    "box_cars_type_3",
     "curtain_side_box_cars",
     "box_cars_randomised",
     "merchandise_box_cars",

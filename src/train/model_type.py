@@ -2809,6 +2809,32 @@ class BoxCarType2(BoxCarBase):
         )
 
 
+class BoxCarType3(BoxCarBase):
+    """
+    Standard box car / van
+    """
+
+    model_id_root = "box_car_type_3"
+    variant_group_id_root = "wagon_group_box_cars"
+    randomised_candidate_groups = [
+        "box_car_randomised",
+        "piece_goods_covered_combos",
+        "piece_goods_mixed_combos",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
+        # teal before pewter to ensure it appears in buy menu order for mixed version
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+
 class BoxCarCurtainSide(BoxCarBase):
     """
     Curtain side box car - same refits as box car.
