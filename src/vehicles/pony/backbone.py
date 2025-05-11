@@ -6,9 +6,9 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="smirr",
+        model_id="backbone",
         base_numeric_id=15300,
-        name="2-8-2 Smirr", # Surtr
+        name="2-8-2 Backbone",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
         replacement_model_id="lion",
