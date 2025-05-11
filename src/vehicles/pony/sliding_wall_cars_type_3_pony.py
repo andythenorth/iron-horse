@@ -28,7 +28,7 @@ def main(**kwargs):
         gen=4,
         subtype="C",
         intro_year_offset=5,  # let's be a little bit later for this one
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -44,7 +44,7 @@ def main(**kwargs):
         base_numeric_id=28680,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -60,7 +60,7 @@ def main(**kwargs):
         base_numeric_id=28700,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -76,7 +76,7 @@ def main(**kwargs):
         base_numeric_id=6750,
         gen=5,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
