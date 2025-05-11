@@ -2978,13 +2978,11 @@ class BoxCarSlidingWallBase(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "COMPLEMENT_COMPANY_COLOUR",
         "COMPANY_COLOUR",
-        "FREIGHT_BONUS_OXIDE_RUST",
-        "FREIGHT_BONUS_TEAL",
     ]
 
     vehicle_family_id = "sliding_wall_car"
@@ -2992,6 +2990,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
     randomised_candidate_groups = [
         "piece_goods_covered_combos",
         "piece_goods_mixed_combos",
+        "sliding_wall_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -3001,6 +3000,19 @@ class BoxCarSlidingWallBase(BoxCarBase):
             "non_core_wagons"
         ]
         self._joker = True
+        # Graphics configuration
+        if self.base_track_type == "NG":
+            self.roof_type = "freight_cc1"
+        else:
+            self.roof_type = "freight"
+        weathered_states = {
+            "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
+            "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
@@ -3012,23 +3024,6 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Graphics configuration
-        """ # !!! - intent is to improve appearance of this wagon type
-        if self.base_track_type == "NG":
-            self.roof_type = "freight_cc1"
-        else:
-            self.roof_type = "freight"
-        """
-        self.roof_type = "freight_cc1"
-        weathered_states = {
-            "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
-            "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
-        }
-        # teal before pewter to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
 class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
@@ -3041,18 +3036,31 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # !! IS THIS WISE ??
-        """
-        self.randomised_candidate_groups.extend(
-            ["piece_goods_manufacturing_parts_combos"]
-        )
-        """
+
+class BoxCarSlidingWallType3(BoxCarSlidingWallBase):
+    """
+    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
+    """
+
+    model_id_root = "sliding_wall_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BoxCarSlidingWallRandomised(RandomisedCarVanillaMixin, BoxCarSlidingWallBase):
+    """
+    Random choice of sliding wall van.
+    """
+
+    model_id_root = "sliding_wall_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # Graphics configuration
-        self.roof_type = "freight"
-        weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
-        # teal before pewter to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            weathered_states=weathered_states,
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
 
