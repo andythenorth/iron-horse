@@ -16,7 +16,11 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(
+        class_name="FreightCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_ng_16px",
+    )
 
     result.append(model_def)
 
@@ -30,7 +34,11 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(
+        class_name="FreightCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_ng_24px",
+    )
 
     result.append(model_def)
 
@@ -74,7 +82,7 @@ def main(**kwargs):
         base_numeric_id=27020,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -90,7 +98,7 @@ def main(**kwargs):
         base_numeric_id=22120,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -106,7 +114,7 @@ def main(**kwargs):
         base_numeric_id=5190,
         gen=5,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

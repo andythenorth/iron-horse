@@ -10,12 +10,17 @@ def main(**kwargs):
         class_name="BoxCarSlidingWallType2",
         base_numeric_id=20920,
         gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
         base_track_type="NG",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(
+        class_name="FreightCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_ng_16px",
+    )
 
     result.append(model_def)
 
@@ -23,12 +28,17 @@ def main(**kwargs):
         class_name="BoxCarSlidingWallType2",
         base_numeric_id=31430,
         gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type="NG",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(
+        class_name="FreightCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_ng_24px",
+    )
 
     result.append(model_def)
 
@@ -40,7 +50,7 @@ def main(**kwargs):
         base_numeric_id=18300,
         gen=4,
         subtype="B",
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=False,
     )
 
@@ -55,7 +65,7 @@ def main(**kwargs):
         base_numeric_id=23380,
         gen=4,
         subtype="C",
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=False,
     )
 

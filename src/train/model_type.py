@@ -3059,6 +3059,7 @@ class BoxCarSlidingWallRandomised(RandomisedCarVanillaMixin, BoxCarSlidingWallBa
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            # block train isn't most realistic, but looks best - too much variation in roof colour is visually confusing
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
