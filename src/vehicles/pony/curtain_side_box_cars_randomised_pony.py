@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=36510,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
@@ -23,7 +23,7 @@ def main(**kwargs):
         base_numeric_id=36530,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")
@@ -35,7 +35,7 @@ def main(**kwargs):
         base_numeric_id=36550,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -51,7 +51,7 @@ def main(**kwargs):
         base_numeric_id=36570,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -65,7 +65,7 @@ def main(**kwargs):
         base_numeric_id=38940,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
