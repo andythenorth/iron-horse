@@ -18,17 +18,17 @@ def main(**kwargs):
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
-        decor_spriterow_num=3,
+        liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "RAILFREIGHT_RED_STRIPE"],
+        decor_spriterow_num=4,
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=82, vehicle_length=6, repeat=2
+        class_name="DieselEngineUnit", weight=78, vehicle_length=6, repeat=2
     )
 
-    model_def.define_description("""It's a rat pack. What more do you want?""")
-    model_def.define_foamer_facts("""BR Class 24, BR Class 25""")
+    model_def.define_description("""""")
+    model_def.define_foamer_facts("""""") # BR Class 23, QR 1250 class, Ghana Henschel
 
     result.append(model_def)
 
