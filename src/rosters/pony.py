@@ -538,6 +538,7 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                 ],
             },
             "DB_SCHENKER": {
@@ -578,6 +579,7 @@ def main():
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
