@@ -22,7 +22,7 @@ def main(**kwargs):
         caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
-        decor_spriterow_num=4,
+        decor_spriterow_num=3,
         show_decor_in_purchase_for_variants=[3],
         sprites_complete=False,
     )
