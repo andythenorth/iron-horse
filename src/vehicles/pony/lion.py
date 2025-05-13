@@ -20,7 +20,6 @@ def main(**kwargs):
         intro_year_offset=11,  # let's be later for this one
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "SWOOSH"],
-        docs_image_spriterow=3,
         sprites_complete=True,
     )
 
