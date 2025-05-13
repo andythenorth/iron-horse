@@ -8,7 +8,7 @@ def main(**kwargs):
         class_name="SimpleEngine",
         model_id="shearwater",
         base_numeric_id=15290,
-        name="0-6-0 Shearwater",
+        name="0-6-0 Gwynt",
         subrole="freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
@@ -42,6 +42,8 @@ def main(**kwargs):
     model_def.define_foamer_facts(
         """NER Class C 0-6-0 (LNER J21)"""
     )  # ACTUALLY GWR 2251 CABBAGE, LNER J36 (NBR Class C)
+    # NOPE - swap to 2-6-0 https://en.wikipedia.org/wiki/SECR_N1_class
+    # AND - https://en.wikipedia.org/wiki/SECR_N_class
 
     result.append(model_def)
 

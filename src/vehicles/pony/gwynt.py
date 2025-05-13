@@ -8,7 +8,7 @@ def main(**kwargs):
         class_name="SimpleEngine",
         model_id="gwynt",
         base_numeric_id=30670,
-        name="0-4-0+0-4-0 Gwynt",
+        name="0-4-0+0-4-0 Pika",
         subrole="branch_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
