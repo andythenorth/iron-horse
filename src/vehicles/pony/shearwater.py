@@ -14,7 +14,7 @@ def main(**kwargs):
         power_by_power_source={
             "STEAM": 1250,
         },
-        speed=60, # bumped to last 2 generations
+        speed=60,  # bumped to last 2 generations
         tractive_effort_coefficient=0.24,
         gen=2,
         intro_year_offset=5,  # let's be a little bit later for this one
@@ -32,13 +32,16 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit", weight=31, vehicle_length=3, rel_spriterow_index=1
+        class_name="SteamEngineTenderUnit",
+        weight=31,
+        vehicle_length=3,
+        rel_spriterow_index=1,
     )
 
-    model_def.define_description(
-        """"""
-    )
-    model_def.define_foamer_facts("""NER Class C 0-6-0 (LNER J21)""") # ACTUALLY GWR 2251 CABBAGE, LNER J36 (NBR Class C)
+    model_def.define_description("""""")
+    model_def.define_foamer_facts(
+        """NER Class C 0-6-0 (LNER J21)"""
+    )  # ACTUALLY GWR 2251 CABBAGE, LNER J36 (NBR Class C)
 
     result.append(model_def)
 

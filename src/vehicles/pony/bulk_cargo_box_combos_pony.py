@@ -32,7 +32,6 @@ def main(**kwargs):
 
     result.append(model_def)
 
-
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(

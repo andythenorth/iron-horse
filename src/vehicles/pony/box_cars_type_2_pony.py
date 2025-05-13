@@ -60,7 +60,6 @@ def main(**kwargs):
 
     result.append(model_def)
 
-
     model_def = ModelDef(
         class_name="BoxCarType2",
         base_numeric_id=35340,

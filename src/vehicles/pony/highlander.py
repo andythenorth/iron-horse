@@ -22,16 +22,28 @@ def main(**kwargs):
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE", "FREIGHT_BLACK", "RAILFREIGHT_RED_STRIPE", "LARGE_LOGO"],
+        liveries=[
+            "VANILLA",
+            "BANGER_BLUE",
+            "FREIGHT_BLACK",
+            "RAILFREIGHT_RED_STRIPE",
+            "LARGE_LOGO",
+        ],
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=79, vehicle_length=6, rel_spriterow_index=0, repeat=2
+        class_name="DieselEngineUnit",
+        weight=79,
+        vehicle_length=6,
+        rel_spriterow_index=0,
+        repeat=2,
     )
 
     model_def.define_description("""""")
-    model_def.define_foamer_facts("""CIÉ (Irish Transport System) 141 Class and 181 Class""")
+    model_def.define_foamer_facts(
+        """CIÉ (Irish Transport System) 141 Class and 181 Class"""
+    )
 
     result.append(model_def)
 

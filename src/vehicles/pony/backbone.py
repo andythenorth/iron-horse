@@ -31,15 +31,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, rel_spriterow_index=1
+        class_name="SteamEngineTenderUnit",
+        weight=50,
+        vehicle_length=4,
+        rel_spriterow_index=1,
     )
 
-    model_def.define_description(
-        """"""
-    )
-    model_def.define_foamer_facts(
-        """LMS Stanier 8F, WD Austerity 2-10-0"""
-    )
+    model_def.define_description("""""")
+    model_def.define_foamer_facts("""LMS Stanier 8F, WD Austerity 2-10-0""")
 
     result.append(model_def)
 

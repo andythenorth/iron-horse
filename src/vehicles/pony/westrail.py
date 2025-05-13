@@ -25,14 +25,15 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectroDieselEngineUnit", weight=98, vehicle_length=8, rel_spriterow_index=0
+        class_name="ElectroDieselEngineUnit",
+        weight=98,
+        vehicle_length=8,
+        rel_spriterow_index=0,
     )
 
-    model_def.define_description(
-        """"""
-    )
+    model_def.define_description("""""")
     model_def.define_foamer_facts(
-        """Westrail P Class""" # https://en.wikipedia.org/wiki/Westrail_P_class
+        """Westrail P Class"""  # https://en.wikipedia.org/wiki/Westrail_P_class
     )
 
     result.append(model_def)

@@ -2905,6 +2905,7 @@ class BoxCarCurtainSideRandomised(RandomisedCarVanillaMixin, BoxCarCurtainSideBa
             catalogue_entry=self.catalogue_entry,
         )
 
+
 class BoxCarMerchandise(BoxCarBase):
     """
     Alternative appearance for standard box car / van
@@ -3547,7 +3548,10 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            buy_menu_id_pairs=[['mineral_bulk_open_car'], ['aggregate_bulk_open_car_type_2', 'tippler_bulk_open_car_type_1']],
+            buy_menu_id_pairs=[
+                ["mineral_bulk_open_car"],
+                ["aggregate_bulk_open_car_type_2", "tippler_bulk_open_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3578,7 +3582,7 @@ class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            buy_menu_id_pairs=[['hopper_car'], ['aggregate_hopper_car_type_1']],
+            buy_menu_id_pairs=[["hopper_car"], ["aggregate_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3610,7 +3614,10 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
-            buy_menu_id_pairs=[['mineral_bulk_open_car'], ['aggregate_hopper_car_type_1', 'hopper_car']],
+            buy_menu_id_pairs=[
+                ["mineral_bulk_open_car"],
+                ["aggregate_hopper_car_type_1", "hopper_car"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3958,7 +3965,7 @@ class DedicatedCoilCarRandomised(RandomisedCarVanillaMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            buy_menu_id_pairs=[['coil_car_uncovered'], ['coil_car_covered']],
+            buy_menu_id_pairs=[["coil_car_uncovered"], ["coil_car_covered"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4278,7 +4285,9 @@ class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
     Random choice of farm products car.
     """
 
-    liveries = ["RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"]  # only one livery, as farm product cars have fixed colour
+    liveries = [
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR"
+    ]  # only one livery, as farm product cars have fixed colour
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4309,7 +4318,10 @@ class FarmCargoMixedCombos(FarmCargoCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            buy_menu_id_pairs=[['farm_product_hopper_car_type_1'], ['merchandise_box_car']],
+            buy_menu_id_pairs=[
+                ["farm_product_hopper_car_type_1"],
+                ["merchandise_box_car"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4327,7 +4339,10 @@ class FarmCargoHopperCombos(FarmCargoCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            buy_menu_id_pairs=[['covered_hopper_car_type_2', 'covered_hopper_car_type_1'], ['farm_product_hopper_car_type_2', 'farm_product_hopper_car_type_1']],
+            buy_menu_id_pairs=[
+                ["covered_hopper_car_type_2", "covered_hopper_car_type_1"],
+                ["farm_product_hopper_car_type_2", "farm_product_hopper_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4542,7 +4557,10 @@ class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            buy_menu_id_pairs=[['food_hopper_car_type_3', 'food_hopper_car_type_1'], ['merchandise_box_car']],
+            buy_menu_id_pairs=[
+                ["food_hopper_car_type_3", "food_hopper_car_type_1"],
+                ["merchandise_box_car"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4560,10 +4578,12 @@ class FoodIngredientsHopperCombos(FoodIngredientsCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            buy_menu_id_pairs=[['covered_hopper_car_type_2', 'covered_hopper_car_type_1'], ['food_hopper_car_type_2']],
+            buy_menu_id_pairs=[
+                ["covered_hopper_car_type_2", "covered_hopper_car_type_1"],
+                ["food_hopper_car_type_2"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
-
 
 
 class FoodProductsHopperCarBase(FarmProductsHopperCarBase):
@@ -4642,7 +4662,9 @@ class FoodProductsHopperCarType3(FoodProductsHopperCarBase):
         super().__init__(**kwargs)
 
 
-class FoodProductsHopperCarRandomised(RandomisedCarVanillaMixin, FoodProductsHopperCarBase):
+class FoodProductsHopperCarRandomised(
+    RandomisedCarVanillaMixin, FoodProductsHopperCarBase
+):
     """
     Random choice of food hopper sprite.
     """
@@ -4792,7 +4814,10 @@ class FoodExpressBoxCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            buy_menu_id_pairs=[['reefer_car_type_2', 'reefer_car_type_1'], ['express_car_type_2', 'express_car_type_1']],
+            buy_menu_id_pairs=[
+                ["reefer_car_type_2", "reefer_car_type_1"],
+                ["express_car_type_2", "express_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4825,7 +4850,10 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            buy_menu_id_pairs=[['express_car_type_1'], ['food_express_tank_car_type_1']],
+            buy_menu_id_pairs=[
+                ["express_car_type_1"],
+                ["food_express_tank_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5158,7 +5186,10 @@ class FlatBedCargoCombos(RandomisedCarComboMixin, FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            buy_menu_id_pairs=[['drop_end_flat_car', 'flat_car'], ['pipe_car', 'bolster_car']],
+            buy_menu_id_pairs=[
+                ["drop_end_flat_car", "flat_car"],
+                ["pipe_car", "bolster_car"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6159,7 +6190,7 @@ class MetalProductCombosBase(RandomisedCarComboMixin, CoilCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
-    #variant_group_id_root = "wagon_group_metal_product_combos"
+    # variant_group_id_root = "wagon_group_metal_product_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6182,9 +6213,13 @@ class MetalProductCoveredCombos(MetalProductCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            buy_menu_id_pairs=[['coil_car_covered_asymmetric', 'coil_car_covered'], ['tarpaulin_car_type_1', 'sliding_roof_car']],
+            buy_menu_id_pairs=[
+                ["coil_car_covered_asymmetric", "coil_car_covered"],
+                ["tarpaulin_car_type_1", "sliding_roof_car"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
+
 
 class MetalProductMixedCombos(MetalProductCombosBase):
     """
@@ -6199,7 +6234,15 @@ class MetalProductMixedCombos(MetalProductCombosBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            buy_menu_id_pairs=[['mill_open_car_type_1'], ['coil_car_tarpaulin', 'coil_car_covered', 'mill_flat_car_type_2', 'bolster_car']],
+            buy_menu_id_pairs=[
+                ["mill_open_car_type_1"],
+                [
+                    "coil_car_tarpaulin",
+                    "coil_car_covered",
+                    "mill_flat_car_type_2",
+                    "bolster_car",
+                ],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6356,7 +6399,10 @@ class MineralCoveredHopperCombos(RandomisedCarComboMixin, MineralCoveredHopperCa
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
-            buy_menu_id_pairs=[['salt_covered_hopper_car'], ['lime_covered_hopper_car_type_3', 'lime_covered_hopper_car_type_1']],
+            buy_menu_id_pairs=[
+                ["salt_covered_hopper_car"],
+                ["lime_covered_hopper_car_type_3", "lime_covered_hopper_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6799,7 +6845,7 @@ class OpenCarCombos(RandomisedCarComboMixin, OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            buy_menu_id_pairs=[['open_car_type_1'], ['hood_open_car_type_1']],
+            buy_menu_id_pairs=[["open_car_type_1"], ["hood_open_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7401,7 +7447,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             # CABBAGE SET THESE
-            #buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
+            # buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7413,7 +7459,7 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
 
     model_id_root = "piece_goods_easiloader_combos"
     vehicle_family_id = "piece_goods_covered_combos"
-    variant_group_id_root = "wagon_group_piece_goods_combos" # deliberately group with the covered goods wagons as limited difference
+    variant_group_id_root = "wagon_group_piece_goods_combos"  # deliberately group with the covered goods wagons as limited difference
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7422,10 +7468,9 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             # CABBAGE SET THESE
-            buy_menu_id_pairs=[['tarpaulin_car_type_2'], ['sliding_roof_car']],
+            buy_menu_id_pairs=[["tarpaulin_car_type_2"], ["sliding_roof_car"]],
             catalogue_entry=self.catalogue_entry,
         )
-
 
 
 class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
@@ -7441,7 +7486,7 @@ class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
+            buy_menu_id_pairs=[["open_car_type_1"], ["box_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7453,7 +7498,7 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
 
     model_id_root = "piece_goods_manufacturing_parts_combos"
     vehicle_family_id = "piece_goods_covered_combos"
-    variant_group_id_root = "wagon_group_piece_goods_combos" # deliberately group with the covered goods wagons as limited difference
+    variant_group_id_root = "wagon_group_piece_goods_combos"  # deliberately group with the covered goods wagons as limited difference
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7462,7 +7507,7 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             # CABBAGE SET THESE
-            #buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
+            # buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8286,7 +8331,7 @@ class ChemicalCargoTankCombos(RandomisedCarComboMixin, TankCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            buy_menu_id_pairs=[['acid_tank_car_type_1'], ['product_tank_car_type_2']],
+            buy_menu_id_pairs=[["acid_tank_car_type_1"], ["product_tank_car_type_2"]],
             catalogue_entry=self.catalogue_entry,
         )
 

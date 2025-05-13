@@ -28,10 +28,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """"""
+    model_def.define_description("""""")
+    model_def.define_foamer_facts(
+        """BR Class 124 DMU, using turbine from SNCF Class T 1000 ETG Turbotrain"""
     )
-    model_def.define_foamer_facts("""BR Class 124 DMU, using turbine from SNCF Class T 1000 ETG Turbotrain""")
 
     result.append(model_def)
 

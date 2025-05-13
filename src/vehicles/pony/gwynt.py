@@ -32,9 +32,7 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description(
-        """"""
-    )
+    model_def.define_description("""""")
     model_def.define_foamer_facts("""""")
 
     result.append(model_def)

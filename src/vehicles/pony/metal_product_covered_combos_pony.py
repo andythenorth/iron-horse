@@ -5,25 +5,6 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    """
-
-    model_def =ModelDef(
-        class_name="MetalProductCoveredCombos",
-        base_numeric_id=25670,
-        gen=4,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(
-        class_name="FreightCarUnit",
-        suppress_roof_sprite=True,  # non-standard roof for this wagon
-        chassis="empty_32px",
-    )
-
-    result.append(model_def)
-
-    """
 
     model_def = ModelDef(
         class_name="MetalProductCoveredCombos",

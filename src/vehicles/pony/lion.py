@@ -14,7 +14,7 @@ def main(**kwargs):
         power_by_power_source={
             "DIESEL": 3650,  # first high HP diesel in this roster??
         },
-        speed=87, # these don't *have* to be replaced at game end
+        speed=87,  # these don't *have* to be replaced at game end
         random_reverse=True,
         gen=4,
         intro_year_offset=11,  # let's be later for this one

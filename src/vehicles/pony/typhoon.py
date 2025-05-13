@@ -28,9 +28,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """"""
-    )
+    model_def.define_description("""""")
     model_def.define_foamer_facts("""BR Class 210 DEMU, NIR 450 Class DEMU""")
 
     result.append(model_def)

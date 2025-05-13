@@ -28,7 +28,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""""")
-    model_def.define_foamer_facts("""""") # BR Class 23, QR 1250 class, Ghana Henschel
+    model_def.define_foamer_facts("""""")  # BR Class 23, QR 1250 class, Ghana Henschel
 
     result.append(model_def)
 

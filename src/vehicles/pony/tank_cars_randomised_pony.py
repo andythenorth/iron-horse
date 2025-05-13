@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
     """
 
-    model_def =ModelDef(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomised",
         base_numeric_id=32310,
         gen=4,
@@ -59,8 +59,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-
-    model_def =ModelDef(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomised",
         base_numeric_id=32330,
         gen=4,
@@ -72,8 +71,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-
-    model_def =ModelDef(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomised",
         base_numeric_id=32350,
         gen=4,

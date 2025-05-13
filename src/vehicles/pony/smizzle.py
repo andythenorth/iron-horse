@@ -18,12 +18,21 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-1,  # introduce earlier by design
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE", "INDUSTRIAL_YELLOW", "INDUSTRIAL_YELLOW"],
+        liveries=[
+            "VANILLA",
+            "BANGER_BLUE",
+            "RAILFREIGHT_RED_STRIPE",
+            "INDUSTRIAL_YELLOW",
+            "INDUSTRIAL_YELLOW",
+        ],
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=97, vehicle_length=8, rel_spriterow_index=0
+        class_name="DieselEngineUnit",
+        weight=97,
+        vehicle_length=8,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""""")

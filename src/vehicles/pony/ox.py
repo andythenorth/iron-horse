@@ -18,7 +18,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=2,
-        intro_year_offset=-5, # more earlier trains are good eh?
+        intro_year_offset=-5,  # more earlier trains are good eh?
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
         sprites_complete=False,
@@ -31,10 +31,10 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description(
+    model_def.define_description("""""")
+    model_def.define_foamer_facts(
         """"""
-    )
-    model_def.define_foamer_facts("""""") # SOME SORT OF LNER 0-6-2t, but as 2-6-2t https://www.lner.info/locos/N/n10.php
+    )  # SOME SORT OF LNER 0-6-2t, but as 2-6-2t https://www.lner.info/locos/N/n10.php
 
     result.append(model_def)
 

@@ -6,7 +6,7 @@ wagon_module_name_stems = [
     # """
     # HST middle cars have to be added specific to each roster
     # !! this is unfortunate, but JFDI for now, slavish consistency hobgoblin etc
-    "blaze_middle_cars", #
+    "blaze_middle_cars",  #
     "firebird_middle_cars",
     # standard modules
     "railbus_passenger_trailer_cars",
@@ -556,7 +556,10 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR": {
         "colour_set_names": ["company_colour", "complement_company_colour"],
-        "purchase_swatch_colour_set_names": ["company_colour", "complement_company_colour"],
+        "purchase_swatch_colour_set_names": [
+            "company_colour",
+            "complement_company_colour",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -574,7 +577,11 @@ freight_wagon_liveries = {
             "freight_ocean_teal",
             "freight_mist",
         ],
-        "purchase_swatch_colour_set_names": ["freight_violet", "freight_cloud", "freight_ocean_teal"],
+        "purchase_swatch_colour_set_names": [
+            "freight_violet",
+            "freight_cloud",
+            "freight_ocean_teal",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -583,7 +590,7 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_VARIETY_LIMEWASH": {
         "colour_set_names": [
             "freight_sand",
-            "freight_sand", # random weighting balance
+            "freight_sand",  # random weighting balance
             "freight_mist",
             "freight_cloud",
         ],
@@ -605,7 +612,11 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sand",
         ],
-        "purchase_swatch_colour_set_names": ["freight_sand", "freight_oil_black", "freight_ochre"],
+        "purchase_swatch_colour_set_names": [
+            "freight_sand",
+            "freight_oil_black",
+            "freight_ochre",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -615,10 +626,14 @@ freight_wagon_liveries = {
         "colour_set_names": [
             "freight_grey",
             "freight_rust",
-            "freight_rust", # for random weighting balance
+            "freight_rust",  # for random weighting balance
             "freight_nightshade",
         ],
-        "purchase_swatch_colour_set_names": ["freight_grey", "freight_oil_black", "freight_rust"],
+        "purchase_swatch_colour_set_names": [
+            "freight_grey",
+            "freight_oil_black",
+            "freight_rust",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -655,7 +670,11 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sulphur",
         ],
-        "purchase_swatch_colour_set_names": ["freight_clover", "freight_silver", "freight_sulphur"],
+        "purchase_swatch_colour_set_names": [
+            "freight_clover",
+            "freight_silver",
+            "freight_sulphur",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -668,7 +687,11 @@ freight_wagon_liveries = {
             "freight_ochre",
             "freight_sulphur",
         ],
-        "purchase_swatch_colour_set_names": ["freight_clover", "freight_ochre", "freight_sulphur"],
+        "purchase_swatch_colour_set_names": [
+            "freight_clover",
+            "freight_ochre",
+            "freight_sulphur",
+        ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -733,7 +756,7 @@ freight_wagon_liveries = {
     "RANDOM_LIVERIES_TEAL_PEWTER_SILVER": {
         "colour_set_names": [
             "freight_teal",
-            "freight_teal", # double teal for random balance, don't bother using freight_ocean_teal, too much variation then
+            "freight_teal",  # double teal for random balance, don't bother using freight_ocean_teal, too much variation then
             "freight_pewter",
             "freight_silver",
         ],
@@ -770,7 +793,9 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_OXIDE_RUST": {
         "colour_set_names": ["freight_oxide", "freight_rust"],
-        "purchase_swatch_colour_set_names": ["freight_oxide"], # best choice, contrasts with rust if used in random mix
+        "purchase_swatch_colour_set_names": [
+            "freight_oxide"
+        ],  # best choice, contrasts with rust if used in random mix
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -793,7 +818,9 @@ freight_wagon_liveries = {
     # often we want to nest the rust livery when there are lots of others, or it doesn't look so good
     "FREIGHT_BONUS_OXIDE_RUST": {
         "colour_set_names": ["freight_oxide", "freight_rust"],
-        "purchase_swatch_colour_set_names": ["freight_oxide"], # best choice, contrasts with rust if used in random mix
+        "purchase_swatch_colour_set_names": [
+            "freight_oxide"
+        ],  # best choice, contrasts with rust if used in random mix
         "group_as_static_livery": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -906,7 +933,7 @@ temp_storage_map = dict(
     wagon_recolour_livery_num_6=31,  # used in procedures_wagon_recolour_strategies
     wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
     flag_context_is_purchase=33,  # used in procedures_wagon_recolour_strategies
-    badge_for_alt_var_41_predicate=34, # stores the badge that we use in alt_var_41
+    badge_for_alt_var_41_predicate=34,  # stores the badge that we use in alt_var_41
     position_in_badge_predicate_chain_base_offset=35,  # used in position rulesets, an offset into position_in_badge_predicate_chain
     position_in_badge_predicate_chain_with_base_offset_applied=36,  # position_in_badge_predicate_chain, with a base offset applied
 )
