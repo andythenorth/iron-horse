@@ -81,7 +81,7 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    "shearwater",
+    "abernant",
     "haar",
     "trojan",
     "smizzle",

@@ -6,21 +6,22 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_id="shearwater",
+        model_id="abernant",
         base_numeric_id=30080,
-        name="0-8-4 Gwynt",
+        name="0-8-4 Abernant",
         subrole="freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 1250,
         },
+        random_reverse=True,
         speed=60,  # bumped to last 2 generations
         tractive_effort_coefficient=0.24,
         gen=2,
         intro_year_offset=5,  # let's be a little bit later for this one
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "SWOOSH", "FREIGHT_BLACK"],
+        liveries=["VANILLA", "SWOOSH", "INDUSTRIAL_YELLOW"],
         sprites_complete=False,
     )
 
@@ -33,11 +34,8 @@ def main(**kwargs):
 
     model_def.define_description("""""")
     model_def.define_foamer_facts(
-        """NER Class C 0-6-0 (LNER J21)"""
-    )  # ACTUALLY GWR 2251 CABBAGE, LNER J36 (NBR Class C)
-    # NOPE - swap to 2-6-0 https://en.wikipedia.org/wiki/SECR_N1_class
-    # AND - https://en.wikipedia.org/wiki/SECR_N_class
-    # NOPE GWR 7200 ish
+        """LNWR 380 Class 'Beames Tank', Port Talbot Railway Cooke Tank"""
+    )
 
     result.append(model_def)
 
