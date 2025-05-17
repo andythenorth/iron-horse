@@ -13,7 +13,7 @@ def main(**kwargs):
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -31,7 +31,7 @@ def main(**kwargs):
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -51,7 +51,7 @@ def main(**kwargs):
         gen=4,
         subtype="B",
         intro_year_offset=5,  # let's be a little bit later for this one
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

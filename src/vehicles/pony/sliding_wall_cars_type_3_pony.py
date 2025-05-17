@@ -13,7 +13,7 @@ def main(**kwargs):
         gen=4,
         subtype="B",
         intro_year_offset=5,  # let's be a little bit later for this one
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")

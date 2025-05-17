@@ -40,7 +40,7 @@ def main(**kwargs):
         gen=3,
         subtype="U",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_metro_32px")
