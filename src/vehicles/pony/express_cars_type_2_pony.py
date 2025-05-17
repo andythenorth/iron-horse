@@ -175,7 +175,7 @@ def main(**kwargs):
         base_numeric_id=17330,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
