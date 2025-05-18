@@ -3670,7 +3670,56 @@ class CabooseCarType1(CabooseCarBase):
         super().__init__(**kwargs)
 
 
-class SpacerCar(CabooseCarBase):
+class SpacerCarBase(CarModelTypeBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    liveries = ["VANILLA"]  # no recolours
+
+    vehicle_family_id = "spacer_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # no speed limit
+        self.speed_class = None
+        # refit nothing, don't mess with this, it breaks auto-replace
+        self.class_refit_groups = []
+        # label refits are just to get caboose to use freight car livery group
+        # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
+        self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
+        self.label_refits_disallowed = []
+        # chop down caboose costs, they're just eye candy eh
+        self.buy_cost_adjustment_factor = 0.75
+        self.use_colour_randomisation_strategies = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCaboose(
+            recolour_map=graphics_constants.caboose_car_body_recolour_map,
+            spriterow_labels=self.model_def.spriterow_labels,
+            caboose_families=self.model_def.caboose_families,
+            buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+    # !! needed? copied from caboose
+    @cached_property
+    def buy_menu_variants_by_date(self):
+        # map buy menu variants and date ranges to show them for
+        result = []
+        for counter, date_range in enumerate(
+            self.roster.intro_year_ranges(self.base_track_type)
+        ):
+            result.append((counter, date_range))
+        return result
+
+    # !! needed? copied from caboose
+    @property
+    def random_reverse(self):
+        return True
+
+
+class SpacerCar(SpacerCarBase):
     """
     CABBAGE - EXPERIMENTAL
     """
