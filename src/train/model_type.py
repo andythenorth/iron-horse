@@ -3622,14 +3622,15 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         )
 
 
-class CabooseCar(CarModelTypeBase):
+class CabooseCarBase(CarModelTypeBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
     liveries = ["VANILLA"]  # no recolours
 
-    model_id_root = "caboose_car"
+    model_id_root = "caboose_car_type_1"
+    vehicle_family_id = "caboose_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3668,7 +3669,18 @@ class CabooseCar(CarModelTypeBase):
         return True
 
 
-class SpacerCar(CabooseCar):
+class CabooseCarType1(CabooseCarBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    model_id_root = "caboose_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class SpacerCar(CabooseCarBase):
     """
     CABBAGE - EXPERIMENTAL
     """
