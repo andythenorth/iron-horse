@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=3,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
@@ -25,7 +25,7 @@ def main(**kwargs):
         gen=3,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
@@ -40,7 +40,7 @@ def main(**kwargs):
         base_numeric_id=36170,
         gen=1,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
@@ -54,7 +54,7 @@ def main(**kwargs):
         base_numeric_id=33800,
         gen=2,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="3_axle_gapped_24px")
@@ -66,7 +66,7 @@ def main(**kwargs):
         base_numeric_id=36070,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
@@ -78,7 +78,7 @@ def main(**kwargs):
         base_numeric_id=36090,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_filled_24px")
@@ -90,7 +90,7 @@ def main(**kwargs):
         base_numeric_id=36110,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
@@ -102,7 +102,7 @@ def main(**kwargs):
         base_numeric_id=36130,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")
@@ -114,7 +114,7 @@ def main(**kwargs):
         base_numeric_id=36150,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_filled_32px")
