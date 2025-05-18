@@ -23,7 +23,7 @@ def main(**kwargs):
         liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=3,
         show_decor_in_purchase_for_variants=[3],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

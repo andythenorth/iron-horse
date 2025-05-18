@@ -20,7 +20,7 @@ def main(**kwargs):
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=4,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
