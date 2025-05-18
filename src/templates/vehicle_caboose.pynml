@@ -24,15 +24,6 @@ switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id
 <!--! this doesn't check grfid currently - add later if needed
       this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster)
       or repeat over families, and provide the engine IDs matching each family -->
-    <!--!
-    CABBADGE - NERFED OFF BECAUSE RANGES EXCEED DUE TO CHANGING FROM BUYABLE VARIANTS TO MODEL VARIANTS
-    !! - just convert to vehicle_family badge check on parent (will need recursive loop)
-    !! - BUT I want to rework caboose handling, so JFDI, leaving this without families as of April 2025
-    OR badge engines for their caboose family, still needs recursive loop, but shorter
-    <tal:engine_models repeat="engine_model [engine_model for engine_model in model_variant.roster.engine_model_variants if engine_model.base_track_type == model_variant.base_track_type]">
-        ${engine_model.base_numeric_id}..${engine_model.base_numeric_id + len(engine_model.buyable_variants)}: return ${unit.id}_switch_graphics_caboose_family_${engine_model.caboose_family};
-    </tal:engine_models>
-    -->
     return ${unit.id}_switch_graphics_default_fallback;
 }
 

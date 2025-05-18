@@ -17,7 +17,6 @@ def main(**kwargs):
         random_reverse=True,
         intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
-        caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",

@@ -1159,16 +1159,6 @@ class EngineModelTypeBase(ModelTypeBase):
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0
 
-    @property
-    def caboose_family(self):
-        # caboose families are used to match engines to caboose variants
-        # can be forced on a per engine basis
-        # otherwise use default for base track type and vehicle gen
-        if self.model_def.caboose_family is not None:
-            return self.model_def.caboose_family
-        else:
-            return "default_" + str(self.gen)
-
     @cached_property
     def buy_cost(self):
         # first check if this is a clone, because then we just take the costs from the clone source

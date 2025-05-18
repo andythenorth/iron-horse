@@ -18,7 +18,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         intro_year_offset=1,  # let's be a littler later for this one
-        caboose_family="gwr_1",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,

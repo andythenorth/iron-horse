@@ -29,7 +29,6 @@ def main(**kwargs):
             "SWOOSH",
             "BANGER_BLUE",
         ],
-        caboose_family="railfreight_2",
         decor_spriterow_num=8,
         show_decor_in_purchase_for_variants=[2, 3],
         sprites_complete=True,

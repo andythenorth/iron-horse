@@ -17,7 +17,6 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-1,  # let's not have everything turn up in 1960
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE", "SWOOSH"],
         sprites_complete=True,

@@ -17,7 +17,6 @@ def main(**kwargs):
         random_reverse=True,
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
-        caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",

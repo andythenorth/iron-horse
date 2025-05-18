@@ -20,7 +20,6 @@ def main(**kwargs):
         gen=5,
         pantograph_type="z-shaped-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
-        caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "RAILFREIGHT_TRIPLE_GREY", "DB_SCHENKER"],
         sprites_complete=True,

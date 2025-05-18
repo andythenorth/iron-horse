@@ -55,7 +55,6 @@ class ModelDef:
 
     # Optional esoteric fields (lexically sorted)
     buy_menu_sprite_pairs: Optional[Any] = None
-    caboose_family: Optional[Any] = None
     caboose_families: Optional[Any] = None
     formation_ruleset: Optional[str] = None
     docs_image_spriterow: Optional[int] = None

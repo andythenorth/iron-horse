@@ -18,7 +18,6 @@ def main(**kwargs):
         gen=4,
         fixed_run_cost_points=150,  # give a small bonus so this can be a genuine mixed-traffic engine
         liveries=["VANILLA"],
-        caboose_family="gwr_1",
         sprites_complete=True,
     )
 

@@ -20,7 +20,6 @@ def main(**kwargs):
         extended_vehicle_life=True,
         speed=87,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",

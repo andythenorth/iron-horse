@@ -29,7 +29,6 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY",
             "RES",
         ],
-        caboose_family="railfreight_2",
         sprites_complete=True,
     )
 

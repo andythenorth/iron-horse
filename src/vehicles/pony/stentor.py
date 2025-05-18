@@ -20,7 +20,6 @@ def main(**kwargs):
         intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
-        caboose_family="railfreight_2",
         # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
