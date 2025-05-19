@@ -3670,6 +3670,28 @@ class CabooseCarType1(CabooseCarBase):
         super().__init__(**kwargs)
 
 
+class CabooseCarType2(CabooseCarBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    model_id_root = "caboose_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class CabooseCarType3(CabooseCarBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    model_id_root = "caboose_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class SpacerCarBase(CarModelTypeBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
