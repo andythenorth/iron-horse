@@ -54,15 +54,12 @@ class ModelDef:
     tractive_effort_coefficient: Optional[float] = None
 
     # Optional esoteric fields (lexically sorted)
-    buy_menu_sprite_pairs: Optional[Any] = None
-    caboose_families: Optional[Any] = None
     formation_ruleset: Optional[str] = None
     docs_image_spriterow: Optional[int] = None
     livery_group_name: Optional[Any] = None
     quacks_like_a_clone: bool = False
     requires_high_clearance: bool = False
     show_decor_in_purchase_for_variants: List[Any] = None
-    spriterow_labels: Optional[Any] = None
     tilt_bonus: bool = False
 
     # Internal attributes (not provided via __init__) (lexically sorted)
@@ -977,14 +974,26 @@ class WagonQuacker:
 
     @cached_property
     def is_caboose(self):
-        # predicate for wagons which act as caboose
+        # predicate for wagons which act as caboose (or similar)
         # if it's not a wagon at all, return early
         if self._quack() == False:
             return False
         # depends on looking up class name, but should be ok
-        return (
-            self.catalogue.example_model_variant.gestalt_graphics.__class__.__name__
-            == "GestaltGraphicsCaboose"
+        return any(
+            base.__name__ == "GestaltGraphicsCaboose"
+            for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
+        )
+
+    @cached_property
+    def is_randomised_caboose(self):
+        # predicate for wagons which act as random choice of caboose (or similar)
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # depends on looking up class name, but should be ok
+        return any(
+            base.__name__ == "GestaltGraphicsCabooseRandomised"
+            for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
         )
 
     @cached_property

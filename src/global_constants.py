@@ -190,6 +190,10 @@ wagon_module_name_stems = [
     "heavy_duty_dump_cars",
     "heavy_duty_flat_cars",
     "caboose_cars_type_1",
+    "caboose_cars_type_2",
+    "caboose_cars_type_3",
+    "caboose_cars_type_4",
+    "caboose_cars_randomised",
     "spacer_cars",
 ]
 

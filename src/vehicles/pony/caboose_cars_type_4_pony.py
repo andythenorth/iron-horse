@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
-        base_numeric_id=23690,
+        class_name="CabooseCarType4",
+        base_numeric_id=29110,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -20,8 +20,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
-        base_numeric_id=26270,
+        class_name="CabooseCarType4",
+        base_numeric_id=29120,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -35,8 +35,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
-        base_numeric_id=23270,
+        class_name="CabooseCarType4",
+        base_numeric_id=29130,
         gen=1,
         subtype="A",
         docs_image_spriterow=3,
@@ -48,8 +48,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
-        base_numeric_id=23280,
+        class_name="CabooseCarType4",
+        base_numeric_id=29140,
         gen=1,
         subtype="B",
         docs_image_spriterow=3,

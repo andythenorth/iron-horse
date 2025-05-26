@@ -1,46 +1,51 @@
-<!--! this is the template for caboose cars -->
+<!--! this is the template for caboose cars, also spacer cars etc
+      this handles both randomised and non-randomised variants
+-->
 
-<tal:caboose_variants repeat="caboose_variant model_variant.gestalt_graphics.spriterow_labels">
-    spriteset(${unit.id}_ss_${caboose_variant}, "${graphics_path}${model_variant.model_id}.png") {
-        ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
-    }
-</tal:caboose_variants>
+<tal:random_or_not switch="catalogue.wagon_quacker.is_randomised_caboose">
 
-<tal:caboose_families repeat="caboose_family model_variant.gestalt_graphics.caboose_families.items()">
-    random_switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
-        <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
-            1: return ${unit.id}_ss_${caboose_variant};
-        </tal:caboose_family_variants>
-    }
-</tal:caboose_families>
+    <tal:case case="False">
+        <tal:model_common condition="model_variant.is_default_model_variant">
+            <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
+                spriteset(${unit.unit_id_from_common_model_id}_ss_${variant_date_range[0]}, "${graphics_path}${model_variant.model_id}.png") {
+                    ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.variant_date_range.index * 30))}
+                }
+            </tal:caboose_variants>
+        </tal:model_common>
 
-switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_default_fallback, current_year) {
-    <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
-        ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_switch_graphics_caboose_family_default_${variant_date_range[0] + 1};
-    </tal:caboose_variants>
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, current_year) {
+            <!--! CABBAGE - ADD SOME RANDOM JITTER HERE FROM VEHICLE RANDOM BITS -->
+            <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
+                ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.unit_id_from_common_model_id}_ss_${variant_date_range[0]};
+            </tal:caboose_variants>
 
-}
-switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_graphics_vehicle, vehicle_type_id) {
-<!--! this doesn't check grfid currently - add later if needed
-      this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster)
-      or repeat over families, and provide the engine IDs matching each family -->
-    return ${unit.id}_switch_graphics_default_fallback;
-}
+        }
+    </tal:case>
 
-<!--! this uses buy_menu_sprite_pairs *only* to get the count of buy menu sprites, the actual data from buy_menu_sprite_pairs isn't used -->
-<tal:caboose_variants repeat="buy_menu_sprite_pair model_variant.gestalt_graphics.buy_menu_sprite_pairs">
-    spriteset(${unit.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${model_variant.model_id}.png") {
-        ${model_variant.get_nml_for_spriteset_template(y_offset=repeat.buy_menu_sprite_pair.index * 30)}
-    }
-</tal:caboose_variants>
+    <tal:case case="True">
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, current_year) {
+            return caboose_car_randomised_ng_pony_gen_1A_unit_0_ss_purchase_0; <!--! CABBAGE SHIM -->
+        }
+    </tal:case>
+
+</tal:random_or_not>
+
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+
+    <tal:model_common condition="model_variant.is_default_model_variant">
+        <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
+            spriteset(${unit.unit_id_from_common_model_id}_ss_purchase_${variant_date_range[0]}, "${graphics_path}${model_variant.model_id}.png") {
+                ${model_variant.get_nml_for_spriteset_template(y_offset=repeat.variant_date_range.index * 30)}
+            }
+        </tal:caboose_variants>
+    </tal:model_common>
+
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, current_year) {
         <tal:caboose_variants repeat="variant_date_range model_variant.buy_menu_variants_by_date">
-            ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.id}_ss_purchase_${variant_date_range[0]};
+            <!--! CABBAGE SHIMMED TO MAIN CHAIN -->
+            ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${unit.unit_id_from_common_model_id}_ss_purchase_${variant_date_range[0]};
         </tal:caboose_variants>
     }
+
 </tal:buy_menu_lead_unit_only>
-
-
-

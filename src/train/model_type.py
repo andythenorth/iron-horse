@@ -20,6 +20,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
     GestaltGraphicsCaboose,
+    GestaltGraphicsCabooseRandomised,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
     GestaltGraphicsFormationDependent,
@@ -872,7 +873,7 @@ class ModelTypeBase(object):
             return True
         if self.catalogue.wagon_quacker.is_randomised_wagon_type:
             return True
-        if self.catalogue.wagon_quacker.is_caboose:
+        if self.catalogue.wagon_quacker.is_randomised_caboose:
             return True
         if self.dual_headed:
             return True
@@ -3617,9 +3618,20 @@ class CabooseCarBase(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = ["VANILLA"]  # no recolours
+    # hmm do we want lots of brake van colour choices, or just a few?
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+    ]
 
-    model_id_root = "caboose_car_type_1"
     vehicle_family_id = "caboose_car"
 
     def __init__(self, **kwargs):
@@ -3638,9 +3650,6 @@ class CabooseCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            spriterow_labels=self.model_def.spriterow_labels,
-            caboose_families=self.model_def.caboose_families,
-            buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3664,6 +3673,8 @@ class CabooseCarType1(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
+    # !! NE / LNER ish
+
     model_id_root = "caboose_car_type_1"
 
     def __init__(self, **kwargs):
@@ -3675,7 +3686,9 @@ class CabooseCarType2(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    model_id_root = "caboose_car_type_1"
+    # !! LMS / Midland ish
+
+    model_id_root = "caboose_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3686,10 +3699,68 @@ class CabooseCarType3(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    model_id_root = "caboose_car_type_1"
+    # !! GWR ish
+
+    model_id_root = "caboose_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class CabooseCarType4(CabooseCarBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    # !! SR ish
+
+    model_id_root = "caboose_car_type_4"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class CabooseCarRandomised(CabooseCarBase):
+    """
+    Random choice of caboose, brake van etc
+    """
+
+    # note that this uses caboose-specific randomisation methods
+
+    model_id_root = "caboose_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # CABBAGE HAX SHIM
+        spriterow_labels = [
+            "cc_enclosed_1",
+            "cc_enclosed_2",
+            "cc_enclosed_3",
+            "cc_asymmetric_1",
+            "cc_asymmetric_2",
+            "cc_asymmetric_3",
+            "brown_enclosed_1",
+            "brown_enclosed_2",
+            "brown_enclosed_3",
+            "brown_asymmetric_1",
+            "brown_asymmetric_2",
+            "brown_asymmetric_3",
+        ]
+        # CABBAGE HAX SHIM
+        buy_menu_sprite_pairs = [
+            ("cc_enclosed_1", "brown_enclosed_1"),
+            ("cc_enclosed_2", "brown_enclosed_3"),
+            ("cc_enclosed_3", "brown_enclosed_3"),
+            ("cc_enclosed_3", "brown_enclosed_3"),
+        ]
+
+        self.gestalt_graphics = GestaltGraphicsCabooseRandomised(
+            recolour_map=graphics_constants.caboose_car_body_recolour_map,
+            spriterow_labels=spriterow_labels,
+            buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class SpacerCarBase(CarModelTypeBase):
@@ -3715,11 +3786,32 @@ class SpacerCarBase(CarModelTypeBase):
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
+        # CABBAGE HAX SHIM
+        spriterow_labels = [
+            "cc_enclosed_1",
+            "cc_enclosed_2",
+            "cc_enclosed_3",
+            "cc_asymmetric_1",
+            "cc_asymmetric_2",
+            "cc_asymmetric_3",
+            "brown_enclosed_1",
+            "brown_enclosed_2",
+            "brown_enclosed_3",
+            "brown_asymmetric_1",
+            "brown_asymmetric_2",
+            "brown_asymmetric_3",
+        ]
+        # CABBAGE HAX SHIM
+        buy_menu_sprite_pairs = [
+            ("cc_enclosed_1", "brown_enclosed_1"),
+            ("cc_enclosed_2", "brown_enclosed_3"),
+            ("cc_enclosed_3", "brown_enclosed_3"),
+            ("cc_enclosed_3", "brown_enclosed_3"),
+        ]
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            spriterow_labels=self.model_def.spriterow_labels,
-            caboose_families=self.model_def.caboose_families,
-            buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
+            spriterow_labels=spriterow_labels,
+            buy_menu_sprite_pairs=buy_menu_sprite_pairs,
             catalogue_entry=self.catalogue_entry,
         )
 

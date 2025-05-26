@@ -547,8 +547,55 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     def __init__(
         self,
         recolour_map,
+        **kwargs,
+    ):
+        super().__init__(**kwargs)
+        self.pipelines = pipelines.get_pipelines(
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+            ]
+        )
+        self.recolour_map = recolour_map
+        self.dice_colour = 1
+        self.num_variations = 6 # CABBAGE SHIM
+
+    @property
+    def generic_rows(self):
+        utils.echo_message(
+            "generic_rows not implemented in GestaltGraphicsCaboose (by design)"
+        )
+        return None
+
+    @property
+    def nml_template(self):
+        return "vehicle_caboose.pynml"
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return False
+
+    def get_output_row_types(self):
+        return ["caboose_spriterows"]
+
+    @property
+    def cargo_row_map(self):
+        utils.echo_message(
+            "cargo_row_map not implemented in GestaltGraphicsCaboose (by design)"
+        )
+        return None
+
+
+class GestaltGraphicsCabooseRandomised(GestaltGraphics):
+    """
+    Used to handle specific rules for caboose cars
+    - colour remap
+    - specific livery variants (pixels, not just colour remap) for specific engine IDs
+    """
+
+    def __init__(
+        self,
+        recolour_map,
         spriterow_labels,
-        caboose_families,
         buy_menu_sprite_pairs,
         **kwargs,
     ):
@@ -560,7 +607,6 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             ]
         )
         self.spriterow_labels = spriterow_labels
-        self.caboose_families = caboose_families
         self.buy_menu_sprite_pairs = buy_menu_sprite_pairs
         self.num_variations = len(self.spriterow_labels)
         self.recolour_map = recolour_map
