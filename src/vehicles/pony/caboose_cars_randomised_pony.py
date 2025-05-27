@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_ng_8px")
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="empty_8px")
 
     result.append(model_def)
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
@@ -36,13 +36,25 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CabooseCarRandomised",
-        base_numeric_id=32430,
+        base_numeric_id=29310,
         gen=1,
-        subtype="A",
+        subtype="aA",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="empty_12px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        class_name="CabooseCarRandomised",
+        base_numeric_id=32430,
+        gen=1,
+        subtype="aB",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
@@ -50,11 +62,11 @@ def main(**kwargs):
         class_name="CabooseCarRandomised",
         base_numeric_id=33460,
         gen=1,
-        subtype="B",
+        subtype="aC",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 

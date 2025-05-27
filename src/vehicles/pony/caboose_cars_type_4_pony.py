@@ -38,7 +38,7 @@ def main(**kwargs):
         class_name="CabooseCarType4",
         base_numeric_id=29130,
         gen=1,
-        subtype="A",
+        subtype="aB",
         docs_image_spriterow=3,
         sprites_complete=False,
     )
@@ -51,7 +51,7 @@ def main(**kwargs):
         class_name="CabooseCarType4",
         base_numeric_id=29290,
         gen=1,
-        subtype="B",
+        subtype="aC",
         docs_image_spriterow=3,
         sprites_complete=False,
     )

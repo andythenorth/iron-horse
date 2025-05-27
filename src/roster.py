@@ -519,6 +519,7 @@ class Roster:
         # for every buyable variant for every model_variant
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
+
         for model_variant in self.model_variants:
             variant_group_id = model_variant.catalogue_entry.variant_group_id
             if variant_group_id is None:

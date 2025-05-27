@@ -3752,7 +3752,7 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         # note that this uses caboose-specific randomisation methods
         self.gestalt_graphics = GestaltGraphicsCabooseRandomised(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_4"]],
+            buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_2"]],
             buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
         )
