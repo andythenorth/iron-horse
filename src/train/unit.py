@@ -950,7 +950,7 @@ class AlignmentCarUnit(CarUnitBase):
 
 class CabooseCarUnit(CarUnitBase):
     """
-    Caboose Car. This subclass only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
+    Caboose Car. This subclass only exists to set asymmetry and weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """
 
     def __init__(self, **kwargs):
@@ -962,6 +962,25 @@ class CabooseCarUnit(CarUnitBase):
     def weight(self):
         # special handling of weight
         weight_factor = 3 if self.model_variant.base_track_type == "NG" else 5
+        return weight_factor * self.vehicle_length
+
+    @property
+    def capacity(self):
+        return 0
+
+
+class SpacerCarUnit(CarUnitBase):
+    """
+    Spacer Car. This subclass only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    @cached_property
+    def weight(self):
+        # special handling of weight
+        weight_factor = 1 if self.model_variant.base_track_type == "NG" else 2
         return weight_factor * self.vehicle_length
 
     @property

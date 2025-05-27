@@ -8094,8 +8094,9 @@ class SpacerCabbageCarBase(CarModelTypeBase):
         # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
         self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
         self.label_refits_disallowed = []
-        # chop down caboose costs, they're just eye candy eh
-        self.buy_cost_adjustment_factor = 0.75
+        # chop down spacer car costs, they're just eye candy eh
+        self.buy_cost_adjustment_factor = 0.25
+        self.floating_run_cost_multiplier = 0.5
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCabooseLike(
@@ -8108,8 +8109,10 @@ class SpacerCabbageCarBase(CarModelTypeBase):
     def buy_menu_variants_by_date_cabbage(self):
         # map buy menu variants and date ranges to show them for
         result = []
+        # !! probably overkill?
         # CABBAGE - THIS WON'T WORK FOR NG
-        ranges = [[0, 2], [3, 5]]
+        ranges = [[0, 5]]
+        #ranges = [[0, 2], [3, 5]]
         for counter, generations in enumerate(ranges):
             result.append([
                 counter,
@@ -8119,11 +8122,6 @@ class SpacerCabbageCarBase(CarModelTypeBase):
                 )
             ])
         return result
-
-    # !! needed? copied from caboose
-    @property
-    def random_reverse(self):
-        return True
 
 
 class SpacerCabbageCarType1(SpacerCabbageCarBase):
