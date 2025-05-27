@@ -8,7 +8,7 @@ def main(**kwargs):
 
     """
     model_def = ModelDef(
-        class_name="SpacerCar",
+        class_name="SpacerCabbageCarType1",
         base_numeric_id=23690,
         gen=1,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SpacerCar",
+        class_name="SpacerCabbageCarType1",
         base_numeric_id=26270,
         gen=1,
         subtype="B",
@@ -36,11 +36,10 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SpacerCar",
+        class_name="SpacerCabbageCarType1",
         base_numeric_id=36630,
         gen=1,
-        subtype="Z",
-        docs_image_spriterow=3,
+        subtype="aA",
         sprites_complete=False,
     )
 
@@ -49,11 +48,10 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SpacerCar",
+        class_name="SpacerCabbageCarType1",
         base_numeric_id=38790,
         gen=1,
-        subtype="A",
-        docs_image_spriterow=3,
+        subtype="aB",
         sprites_complete=False,
     )
 
@@ -61,58 +59,18 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelDef(
-        class_name="SpacerCar",
-        base_numeric_id=36190,
-        gen=1,
-        subtype="Y",
-        docs_image_spriterow=3,
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_20px")
-
-    result.append(model_def)
+    # 5/8 length tried, not needed
 
     model_def = ModelDef(
-        class_name="SpacerCar",
+        class_name="SpacerCabbageCarType1",
         base_numeric_id=33380,
         gen=1,
-        subtype="B",
-        docs_image_spriterow=3,
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        class_name="SpacerCar",
-        base_numeric_id=31780,
-        gen=1,
-        subtype="X",
-        docs_image_spriterow=3,
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_28px")
-
-    result.append(model_def)
-
-
-    """
-    model_def = ModelDef(
-        class_name="SpacerCar",
-        base_numeric_id=23280,
-        gen=1,
-        subtype="B",
-        docs_image_spriterow=3,
+        subtype="aC",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
 
     result.append(model_def)
-    """
+
     return result

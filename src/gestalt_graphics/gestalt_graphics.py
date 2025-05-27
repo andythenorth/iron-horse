@@ -537,11 +537,9 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsCaboose(GestaltGraphics):
+class GestaltGraphicsCabooseLike(GestaltGraphics):
     """
-    Used to handle specific rules for caboose cars
-    - colour remap
-    - specific livery variants (pixels, not just colour remap) for specific engine IDs
+    Used to handle specific rules for caboose cars and similar vehicles
     """
 
     def __init__(
@@ -564,13 +562,13 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     @property
     def generic_rows(self):
         utils.echo_message(
-            "generic_rows not implemented in GestaltGraphicsCaboose (by design)"
+            "generic_rows not implemented in GestaltGraphicsCabooseLike (by design)"
         )
         return None
 
     @property
     def nml_template(self):
-        return "vehicle_caboose.pynml"
+        return "vehicle_caboose_like.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):
@@ -582,16 +580,14 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     @property
     def cargo_row_map(self):
         utils.echo_message(
-            "cargo_row_map not implemented in GestaltGraphicsCaboose (by design)"
+            "cargo_row_map not implemented in GestaltGraphicsCabooseLike (by design)"
         )
         return None
 
 
-class GestaltGraphicsCabooseRandomised(GestaltGraphics):
+class GestaltGraphicsCabooseLikeRandomised(GestaltGraphics):
     """
-    Used to handle specific rules for caboose cars
-    - colour remap
-    - specific livery variants (pixels, not just colour remap) for specific engine IDs
+    Used to handle specific rules for randomised caboose cars and similar vehicles
     """
 
     def __init__(
@@ -624,13 +620,13 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
     @property
     def generic_rows(self):
         utils.echo_message(
-            "generic_rows not implemented in GestaltGraphicsCaboose (by design)"
+            "generic_rows not implemented in GestaltGraphicsCabooseLike (by design)"
         )
         return None
 
     @property
     def nml_template(self):
-        return "vehicle_caboose.pynml"
+        return "vehicle_caboose_like.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):
@@ -642,7 +638,7 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
     @property
     def cargo_row_map(self):
         utils.echo_message(
-            "cargo_row_map not implemented in GestaltGraphicsCaboose (by design)"
+            "cargo_row_map not implemented in GestaltGraphicsCabooseLike (by design)"
         )
         return None
 

@@ -980,7 +980,7 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ == "GestaltGraphicsCaboose"
+            base.__name__ == "GestaltGraphicsCabooseLike"
             for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
         )
 
@@ -992,7 +992,7 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ == "GestaltGraphicsCabooseRandomised"
+            base.__name__ == "GestaltGraphicsCabooseLikeRandomised"
             for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
         )
 

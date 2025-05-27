@@ -18,8 +18,8 @@
       <tal:include metal:use-macro="load: vehicle_box_car_with_opening_doors.pynml" />
     </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_caboose.pynml'">
-      <tal:include metal:use-macro="load: vehicle_caboose.pynml" />
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_caboose_like.pynml'">
+      <tal:include metal:use-macro="load: vehicle_caboose_like.pynml" />
     </tal:block>
 
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_cargo_sprinter.pynml'">

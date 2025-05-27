@@ -194,7 +194,8 @@ wagon_module_name_stems = [
     "caboose_cars_type_2",
     "caboose_cars_type_3",
     "caboose_cars_type_4",
-    "spacer_cars",
+    "spacer_cars_type_1",
+    "spacer_cars_type_2",
 ]
 
 # mapping of railtype labels to the vehicle track type names
@@ -364,6 +365,7 @@ purchase_variant_group_base_model_ids_by_group_name = {
     "wagon_group_scrap_metal_cars": "scrap_metal_car_type_1",
     "wagon_group_silo_cars": "silo_car_type_1",
     "wagon_group_sliding_wall_cars": "sliding_wall_car_type_1",
+    "wagon_group_spacer_cars": "spacer_car_type_1",
     "wagon_group_tank_cars": "tank_car_type_1",
     "wagon_group_tarpaulin_cars": "tarpaulin_car_type_1",
     "wagon_group_tippler_bulk_open_cars": "tippler_bulk_open_car_type_1",

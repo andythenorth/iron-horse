@@ -19,8 +19,8 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsVisibleCargo,
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
-    GestaltGraphicsCaboose,
-    GestaltGraphicsCabooseRandomised,
+    GestaltGraphicsCabooseLike,
+    GestaltGraphicsCabooseLikeRandomised,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
     GestaltGraphicsFormationDependent,
@@ -3664,7 +3664,7 @@ class CabooseCarBase(CarModelTypeBase):
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCaboose(
+        self.gestalt_graphics = GestaltGraphicsCabooseLike(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
             buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
@@ -3750,68 +3750,12 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         # note that this uses caboose-specific randomisation methods
-        self.gestalt_graphics = GestaltGraphicsCabooseRandomised(
+        self.gestalt_graphics = GestaltGraphicsCabooseLikeRandomised(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
             buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_2"]],
             buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
         )
-
-
-class SpacerCarBase(CarModelTypeBase):
-    """
-    Caboose, brake van etc - no gameplay purpose, just eye candy.
-    """
-
-    liveries = ["VANILLA"]  # no recolours
-
-    vehicle_family_id = "spacer_car"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # no speed limit
-        self.speed_class = None
-        # refit nothing, don't mess with this, it breaks auto-replace
-        self.class_refit_groups = []
-        # label refits are just to get caboose to use freight car livery group
-        # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
-        self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
-        self.label_refits_disallowed = []
-        # chop down caboose costs, they're just eye candy eh
-        self.buy_cost_adjustment_factor = 0.75
-        self.use_colour_randomisation_strategies = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCaboose(
-            recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-    # !! needed? copied from caboose
-    @cached_property
-    def buy_menu_variants_by_date_cabbage(self):
-        # map buy menu variants and date ranges to show them for
-        result = []
-        for counter, date_range in enumerate(
-            self.roster.intro_year_ranges(self.base_track_type)
-        ):
-            result.append((counter, date_range))
-        return result
-
-    # !! needed? copied from caboose
-    @property
-    def random_reverse(self):
-        return True
-
-
-class SpacerCar(SpacerCarBase):
-    """
-    CABBAGE - EXPERIMENTAL
-    """
-
-    model_id_root = "spacer_car"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
 
 
 class CaneBinCar(CarModelTypeBase):
@@ -8115,6 +8059,93 @@ class SlagLadleCarUnit(CarModelTypeBase):
             ],
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class SpacerCabbageCarBase(CarModelTypeBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    # deliberately not more choices here
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
+        "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPLEMENT_COMPANY_COLOUR",
+        "COMPANY_COLOUR",
+        # didn't bother with teal, marginal benefit
+    ]
+
+    vehicle_family_id = "spacer_car"
+    variant_group_id_root = "wagon_group_spacer_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # no speed limit
+        self.speed_class = None
+        # refit nothing, don't mess with this, it breaks auto-replace
+        self.class_refit_groups = []
+        # label refits are just to get caboose to use freight car livery group
+        # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
+        self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
+        self.label_refits_disallowed = []
+        # chop down caboose costs, they're just eye candy eh
+        self.buy_cost_adjustment_factor = 0.75
+        self.use_colour_randomisation_strategies = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCabooseLike(
+            recolour_map=graphics_constants.caboose_car_body_recolour_map,
+            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @cached_property
+    def buy_menu_variants_by_date_cabbage(self):
+        # map buy menu variants and date ranges to show them for
+        result = []
+        # CABBAGE - THIS WON'T WORK FOR NG
+        ranges = [[0, 2], [3, 5]]
+        for counter, generations in enumerate(ranges):
+            result.append([
+                counter,
+                (
+                    self.roster.intro_year_ranges(self.base_track_type)[generations[0]][0],
+                    self.roster.intro_year_ranges(self.base_track_type)[generations[1]][1]
+                )
+            ])
+        return result
+
+    # !! needed? copied from caboose
+    @property
+    def random_reverse(self):
+        return True
+
+
+class SpacerCabbageCarType1(SpacerCabbageCarBase):
+    """
+    CABBAGE - EXPERIMENTAL
+    """
+
+    model_id_root = "spacer_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class SpacerCabbageCarType2(SpacerCabbageCarBase):
+    """
+    CABBAGE - EXPERIMENTAL
+    """
+
+    model_id_root = "spacer_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class TankCarBase(CarModelTypeBase):
