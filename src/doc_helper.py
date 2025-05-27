@@ -269,7 +269,7 @@ class DocHelper(object):
 
             if (
                 catalogue.wagon_quacker.is_randomised_wagon_type
-                or catalogue.wagon_quacker.is_caboose
+                or catalogue.wagon_quacker.is_randomised_caboose
             ):
                 result.append("- Random")
             return " ".join(result)

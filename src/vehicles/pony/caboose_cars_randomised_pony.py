@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CabooseCarRandomised",
-        base_numeric_id=32420,
+        base_numeric_id=33440,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CabooseCarRandomised",
-        base_numeric_id=32440,
+        base_numeric_id=33460,
         gen=1,
         subtype="B",
         sprites_complete=False,

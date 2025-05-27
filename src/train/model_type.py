@@ -2396,6 +2396,16 @@ class RandomisedCarComboMixin(RandomisedCarMixinBase):
         self.badge_slug_randomised_wagon_type = "combo"
 
 
+class RandomisedCarCabooseMixin(RandomisedCarMixinBase):
+    """
+    Sparse subclass for very minimal handling of different randomised behaviouers
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.badge_slug_randomised_wagon_type = "caboose"
+
+
 class AlignmentCarUnit(CarModelTypeBase):
     """
     For checking sprite alignment
@@ -3623,16 +3633,22 @@ class CabooseCarBase(CarModelTypeBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_MUTED_EARTH",
         "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
-        "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPLEMENT_COMPANY_COLOUR",
+        "COMPANY_COLOUR",
+        "FREIGHT_BONUS_OBSIDIAN",
+        "FREIGHT_BONUS_OXIDE_RUST",
     ]
 
     vehicle_family_id = "caboose_car"
+    variant_group_id_root = "wagon_group_caboose_cars"
+    randomised_candidate_groups = [
+        "caboose_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3650,11 +3666,12 @@ class CabooseCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
+            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
         )
 
     @cached_property
-    def buy_menu_variants_by_date(self):
+    def buy_menu_variants_by_date_cabbage(self):
         # map buy menu variants and date ranges to show them for
         result = []
         for counter, date_range in enumerate(
@@ -3720,45 +3737,23 @@ class CabooseCarType4(CabooseCarBase):
         super().__init__(**kwargs)
 
 
-class CabooseCarRandomised(CabooseCarBase):
+class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
     """
     Random choice of caboose, brake van etc
     """
 
-    # note that this uses caboose-specific randomisation methods
-
     model_id_root = "caboose_car_randomised"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # CABBAGE HAX SHIM
-        spriterow_labels = [
-            "cc_enclosed_1",
-            "cc_enclosed_2",
-            "cc_enclosed_3",
-            "cc_asymmetric_1",
-            "cc_asymmetric_2",
-            "cc_asymmetric_3",
-            "brown_enclosed_1",
-            "brown_enclosed_2",
-            "brown_enclosed_3",
-            "brown_asymmetric_1",
-            "brown_asymmetric_2",
-            "brown_asymmetric_3",
-        ]
-        # CABBAGE HAX SHIM
-        buy_menu_sprite_pairs = [
-            ("cc_enclosed_1", "brown_enclosed_1"),
-            ("cc_enclosed_2", "brown_enclosed_3"),
-            ("cc_enclosed_3", "brown_enclosed_3"),
-            ("cc_enclosed_3", "brown_enclosed_3"),
-        ]
-
+        # note that this uses caboose-specific randomisation methods
         self.gestalt_graphics = GestaltGraphicsCabooseRandomised(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            spriterow_labels=spriterow_labels,
-            buy_menu_sprite_pairs=buy_menu_sprite_pairs,
+            buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_4"]],
+            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3786,39 +3781,14 @@ class SpacerCarBase(CarModelTypeBase):
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
-        # CABBAGE HAX SHIM
-        spriterow_labels = [
-            "cc_enclosed_1",
-            "cc_enclosed_2",
-            "cc_enclosed_3",
-            "cc_asymmetric_1",
-            "cc_asymmetric_2",
-            "cc_asymmetric_3",
-            "brown_enclosed_1",
-            "brown_enclosed_2",
-            "brown_enclosed_3",
-            "brown_asymmetric_1",
-            "brown_asymmetric_2",
-            "brown_asymmetric_3",
-        ]
-        # CABBAGE HAX SHIM
-        buy_menu_sprite_pairs = [
-            ("cc_enclosed_1", "brown_enclosed_1"),
-            ("cc_enclosed_2", "brown_enclosed_3"),
-            ("cc_enclosed_3", "brown_enclosed_3"),
-            ("cc_enclosed_3", "brown_enclosed_3"),
-        ]
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            spriterow_labels=spriterow_labels,
-            buy_menu_sprite_pairs=buy_menu_sprite_pairs,
             catalogue_entry=self.catalogue_entry,
         )
 
-
     # !! needed? copied from caboose
     @cached_property
-    def buy_menu_variants_by_date(self):
+    def buy_menu_variants_by_date_cabbage(self):
         # map buy menu variants and date ranges to show them for
         result = []
         for counter, date_range in enumerate(

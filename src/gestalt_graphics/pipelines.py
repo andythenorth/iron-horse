@@ -625,6 +625,26 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
 
+        randomised_buy_menu_sprites_output_image = Image.new(
+            "P",
+            (
+                graphics_constants.spritesheet_width,
+                (
+                    len(self.example_model_variant.gestalt_graphics.buy_menu_row_map(self))
+                    * graphics_constants.spriterow_height
+                )
+                + 10,
+            ),
+            255,
+        )
+        randomised_buy_menu_sprites_output_image.putpalette(DOS_PALETTE)
+
+        randomised_buy_menu_sprites_output_image_as_spritesheet = (
+            pixa.make_spritesheet_from_image(
+                randomised_buy_menu_sprites_output_image, DOS_PALETTE
+            )
+        )
+
         # !! example_model_variant looks like it could be using catalogue.model_def here, but eh
         if len(self.example_model_variant.units) > 1:
             raise BaseException(
@@ -695,7 +715,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     26 + y_offset_dest,
                 )
                 custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_input)
-                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
 
             dice_image = Image.open(
                 os.path.join(
@@ -730,7 +750,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 360 + x_offset_dest + dice_image_width,
                 10 + y_offset_dest + dice_image_height,
             )
-            spritesheet.sprites.paste(dice_image, crop_box_dest)
+            randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(dice_image, crop_box_dest)
 
             fade_image = Image.open(
                 os.path.join(
@@ -752,16 +772,16 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     360 + x_offset_dest + fade_image_width,
                     10 + y_offset_dest + dice_image_height,
                 )
-                spritesheet.sprites.paste(fade_image, crop_box_dest, fade_image_mask)
+                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(fade_image, crop_box_dest, fade_image_mask)
                 # flip the image for the next time we paste it (this creates a better symmetry at each side of the image)
                 fade_image = ImageOps.mirror(fade_image)
                 fade_image_mask = ImageOps.mirror(fade_image_mask)
 
         # if self.example_model_variant.id == "randomised_box_car_pony_gen_5B":
-        # spritesheet.sprites.show()
+        # randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.show()
         # pass
 
-        return spritesheet
+        return randomised_buy_menu_sprites_output_image_as_spritesheet
 
     def render(self, target_config, global_constants, graphics_output_path):
         self.catalogue = target_config["catalogue"]

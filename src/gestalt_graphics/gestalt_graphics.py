@@ -547,6 +547,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     def __init__(
         self,
         recolour_map,
+        buy_menu_variants_by_date_cabbage,
         **kwargs,
     ):
         super().__init__(**kwargs)
@@ -557,7 +558,8 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         )
         self.recolour_map = recolour_map
         self.dice_colour = 1
-        self.num_variations = 6 # CABBAGE SHIM
+        self.buy_menu_variants_by_date_cabbage = buy_menu_variants_by_date_cabbage
+        self.num_variations = len(self.buy_menu_variants_by_date_cabbage)
 
     @property
     def generic_rows(self):
@@ -572,7 +574,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
 
     @property
     def variants_use_common_graphics_switch_chain(self):
-        return False
+        return True
 
     def get_output_row_types(self):
         return ["caboose_spriterows"]
@@ -595,20 +597,20 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
     def __init__(
         self,
         recolour_map,
-        spriterow_labels,
-        buy_menu_sprite_pairs,
+        buy_menu_id_pairs,
+        buy_menu_variants_by_date_cabbage,
         **kwargs,
     ):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
             [
-                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_empty_spritesheet",
                 "generate_buy_menu_sprite_from_randomisation_candidates",
             ]
         )
-        self.spriterow_labels = spriterow_labels
-        self.buy_menu_sprite_pairs = buy_menu_sprite_pairs
-        self.num_variations = len(self.spriterow_labels)
+        self.buy_menu_id_pairs = buy_menu_id_pairs
+        self.buy_menu_variants_by_date_cabbage = buy_menu_variants_by_date_cabbage
+        self.num_variations = len(self.buy_menu_variants_by_date_cabbage)
         self.recolour_map = recolour_map
         self.dice_colour = 1
         self.buy_menu_width_addition = (
@@ -616,6 +618,8 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
             + 1
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
+        # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
+        self.render_pass_num = 2
 
     @property
     def generic_rows(self):
@@ -630,7 +634,7 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
 
     @property
     def variants_use_common_graphics_switch_chain(self):
-        return False
+        return True
 
     def get_output_row_types(self):
         return ["caboose_spriterows"]
@@ -643,26 +647,52 @@ class GestaltGraphicsCabooseRandomised(GestaltGraphics):
         return None
 
     def buy_menu_row_map(self, pipeline):
+        wagon_randomisation_candidates = (
+            pipeline.example_model_variant.wagon_randomisation_candidates
+        )
+
+        for candidate in wagon_randomisation_candidates:
+            if candidate.model_id_root in self.buy_menu_id_pairs[0]:
+                candidate_1 = candidate
+                continue
+            if candidate.model_id_root in self.buy_menu_id_pairs[1]:
+                candidate_2 = candidate
+                continue
+        try:
+            candidate_1
+            candidate_2
+        except:
+            raise Exception(
+                f"{self.catalogue.model_id} \n"
+                f"Probably at least one of the candidates in buy_menu_id_pairs is not found. Options: \n"
+                f"- extend buy_menu_id_pairs with more types \n"
+                f"- this may not be a valid combo for this generation due to not actually having properly different candidates \n"
+                f"buy_menu_id_pairs: {self.buy_menu_id_pairs} \n"
+                f"wagon_randomisation_candidates: {[i.model_id_root for i in wagon_randomisation_candidates]} \n"
+            )
+
         result = []
-        for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
-            row_config = {"spriterow_num_dest": counter}
-            # vehicle unit, y offset (num spriterows) to buy menu input row
-            # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
+
+        for date_variant_num, date_range in self.buy_menu_variants_by_date_cabbage:
             source_vehicles_and_input_spriterow_nums = [
+                # vehicle unit, y offset (num spriterows) to buy menu input row
+                # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
+                # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
                 (
-                    pipeline.example_model_variant.units[0],
-                    self.spriterow_labels.index(buy_menu_sprite_pair[0]),
+                    candidate_2.units[0],
+                    date_variant_num,
                 ),
                 (
-                    pipeline.example_model_variant.units[0],
-                    self.spriterow_labels.index(buy_menu_sprite_pair[1]),
+                    candidate_1.units[0],
+                    date_variant_num,
                 ),
             ]
-
-            row_config["source_vehicles_and_input_spriterow_nums"] = (
-                source_vehicles_and_input_spriterow_nums
+            result.append(
+                {
+                    "spriterow_num_dest": date_variant_num,
+                    "source_vehicles_and_input_spriterow_nums": source_vehicles_and_input_spriterow_nums,
+                }
             )
-            result.append(row_config)
         return result
 
 

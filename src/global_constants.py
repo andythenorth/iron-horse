@@ -189,11 +189,11 @@ wagon_module_name_stems = [
     "slag_ladle_cars",
     "heavy_duty_dump_cars",
     "heavy_duty_flat_cars",
+    "caboose_cars_randomised",
     "caboose_cars_type_1",
     "caboose_cars_type_2",
     "caboose_cars_type_3",
     "caboose_cars_type_4",
-    "caboose_cars_randomised",
     "spacer_cars",
 ]
 
@@ -334,6 +334,7 @@ purchase_variant_group_base_model_ids_by_group_name = {
     "wagon_group_bolster_cars": "bolster_car",
     "wagon_group_box_cars": "box_car_type_1",
     "wagon_group_bulkhead_flat_cars": "bulkhead_flat_car_type_1",
+    "wagon_group_caboose_cars": "caboose_car_type_1",
     "wagon_group_cement_silo_cars": "cement_silo_car_type_1",
     "wagon_group_coil_cars": "coil_car_mixed",
     "wagon_group_covered_hopper_cars": "covered_hopper_car_type_1",

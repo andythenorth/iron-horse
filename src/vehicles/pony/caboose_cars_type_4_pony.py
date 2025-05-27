@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CabooseCarType4",
-        base_numeric_id=29120,
+        base_numeric_id=29270,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -49,7 +49,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="CabooseCarType4",
-        base_numeric_id=29140,
+        base_numeric_id=29290,
         gen=1,
         subtype="B",
         docs_image_spriterow=3,
