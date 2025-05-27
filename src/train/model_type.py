@@ -8107,21 +8107,8 @@ class SpacerCabbageCarBase(CarModelTypeBase):
 
     @cached_property
     def buy_menu_variants_by_date_cabbage(self):
-        # map buy menu variants and date ranges to show them for
-        result = []
-        # !! probably overkill?
-        # CABBAGE - THIS WON'T WORK FOR NG
-        ranges = [[0, 5]]
-        #ranges = [[0, 2], [3, 5]]
-        for counter, generations in enumerate(ranges):
-            result.append([
-                counter,
-                (
-                    self.roster.intro_year_ranges(self.base_track_type)[generations[0]][0],
-                    self.roster.intro_year_ranges(self.base_track_type)[generations[1]][1]
-                )
-            ])
-        return result
+        # only one version
+        return [[0, (0, global_constants.max_game_date)]]
 
 
 class SpacerCabbageCarType1(SpacerCabbageCarBase):

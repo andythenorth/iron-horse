@@ -6,14 +6,13 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    """
     model_def = ModelDef(
         class_name="SpacerCabbageCarType1",
-        base_numeric_id=23690,
+        base_numeric_id=33420,
         gen=1,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="SpacerCarUnit", chassis="2_axle_ng_8px")
@@ -22,17 +21,17 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SpacerCabbageCarType1",
-        base_numeric_id=26270,
+        base_numeric_id=33430,
         gen=1,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="SpacerCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
-    """
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
