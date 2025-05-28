@@ -15,8 +15,8 @@
         1: return ${int(1.60934 * consist.speed_on_lgv)};
         return ${int(1.60934 * consist.speed)};
     }
-    <!--! there is a hard-coded assumption here that lgv and lgv_electrified must always both be available for this check to proceed, what could go wrong eh? -->
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
+    <!--! there is a hard-coded assumption here that lgv or lgv_electrified must always both be available for this check to proceed, this is so that the trains go at full speed if the railtype set doesn't have dedicated high speed tracks? -->
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, [railtype_available("IHAA") || railtype_available("IHBA")]) {
         1: return ${vehicle.id}_switch_speed_by_tile_railtype;
         return ${int(1.60934 * consist.speed_on_lgv)};
     }
