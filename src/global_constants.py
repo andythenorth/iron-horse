@@ -469,8 +469,6 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
     "custom_sulphur": (62, 62 + 1, 62 + 2, 62 + 3, 62 + 4, 62 + 5, 62 + 6, 62 + 7),
     "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
-    "custom_ruby": (40, 41, 42, 43, 44, 45, 46, 47),
-    "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
     "custom_obsidian": (1, 2, 24, 4, 5, 6, 7, 8),
     "custom_faded_obsidian": (1, 70, 16, 4, 26, 6, 19, 8),
     "custom_oil_black": (1, 2, 106, 4, 5, 6, 7, 8),
@@ -514,7 +512,6 @@ colour_sets = {
     "freight_silver": ["custom_silver", "custom_dark_silver"],
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
-    "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
     "freight_obsidian": ["custom_obsidian", "custom_faded_obsidian"],
     "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
     "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
@@ -707,18 +704,6 @@ freight_wagon_liveries = {
     },
     "RANDOM_LIVERIES_SULPHUR_OCHRE": {
         "colour_set_names": ["freight_sulphur", "freight_ochre"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "RANDOM_LIVERIES_RUBY_GREY_NIGHTSHADE": {
-        "colour_set_names": [
-            "freight_ruby",
-            "freight_grey",
-            "freight_nightshade",
-        ],
-        "purchase_swatch_colour_set_names": ["freight_ruby", "freight_nightshade"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
