@@ -605,7 +605,7 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_VARIETY_MUTED_EARTH": {
+    "RANDOM_LIVERIES_BUMBLEBEE": {
         # colour set names weighted for random weighting
         "colour_set_names": [
             "freight_oil_black",
@@ -613,8 +613,8 @@ freight_wagon_liveries = {
             "freight_nightshade",
             "freight_nightshade",
             "freight_ochre",
-            "freight_ochre",
-            "freight_ochre",
+            "freight_sulphur",
+            "freight_sulphur",
             "freight_sand",
         ],
         "purchase_swatch_colour_set_names": [
