@@ -22,4 +22,5 @@ def main(disabled=False):
         powered_railtype_list=[],
         alternative_railtype_list=[],
         extends_RAIL=True,
+        extends_ELRL=True,
     )
