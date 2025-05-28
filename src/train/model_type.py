@@ -7442,6 +7442,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarModelTypeBase):
     # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_BUMBLEBEE",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",  # might be odd, but intended for farm stuff
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",

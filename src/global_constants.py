@@ -609,9 +609,9 @@ freight_wagon_liveries = {
         # colour set names weighted for random weighting
         "colour_set_names": [
             "freight_oil_black",
-            "freight_oil_black",
             "freight_nightshade",
             "freight_nightshade",
+            "freight_obsidian",
             "freight_ochre",
             "freight_sulphur",
             "freight_sulphur",
