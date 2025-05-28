@@ -212,11 +212,11 @@ railtype_labels_by_vehicle_track_type_name = {
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "RAIL_ELECTRIFIED_AC_DC": ["IHG_", "ELRL"],
     "RAIL_ELECTRIFIED_DC": ["IHF_"],  # no fallback for DC if not present
-    "RAIL_HIGH_CLEARANCE": ["IHAB"],
     "METRO": [
         "IHC_",
         "MTRO",
-    ],  # no other fallbacks, metro is a segregated network, not just normal 3rd rail trains, and standardised scheme does not appear to support that case
+        "SMA3", # agreed label for generic metro in standardised scheme
+    ],
     "NG": ["IHD_", "NGRL", "NAAN"],
     "NG_ELECTRIFIED_AC": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
