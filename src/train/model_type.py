@@ -466,11 +466,6 @@ class ModelTypeBase(object):
         return self.model_def.lgv_capable
 
     @property
-    def requires_high_clearance(self):
-        # just a passthrough for convenience
-        return self.model_def.requires_high_clearance
-
-    @property
     def receives_easter_egg_haulage_speed_bonus(self):
         # over-ride in subclasses as needed
         return False
@@ -610,9 +605,6 @@ class ModelTypeBase(object):
         modifier = "_"
         if self.lgv_capable:
             modifier = "A"
-        elif self.requires_high_clearance:
-            print(self.model_id, " has requires_high_clearance set - needs cleared")
-            modifier = "B"
         result = result[0:3] + modifier
         return result
 

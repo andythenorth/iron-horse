@@ -37,7 +37,6 @@ railtype_module_names = [
     "rail_electrified_ac",
     "rail_electrified_ac_dc",
     "rail_electrified_dc",
-    "rail_high_clearance",
 ]
 
 # comment out any unfinished rosters here as needed

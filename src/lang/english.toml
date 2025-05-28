@@ -811,26 +811,6 @@ base = "Electrified Narrow Gauge Vehicles"
 base = "electrified narrow gauge rail vehicle"
 
 
-# high clearance track strings
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME]
-base = "High Clearance Railway"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_TOOLBAR_CAPTION]
-base = "High Clearance Railway Construction"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_MENU_TEXT]
-base = "high clearance railway construction"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_BUILD_WINDOW_CAPTION]
-base = "New High Clearance Vehicles"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_AUTOREPLACE_TEXT]
-base = "High Clearance Vehicles"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT]
-base = "high clearance rail vehicle"
-
-
 # electrified AC track strings
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME]
 base = "AC Electrified Railway"

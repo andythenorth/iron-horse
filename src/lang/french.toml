@@ -407,26 +407,6 @@ base = "Véhicules ferroviaires électriques à écartement faible"
 base = "véhicule ferroviaire électrique à écartement faible"
 
 
-# high clearance track strings
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME]
-base = "Voie ferrée de grande taille"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_TOOLBAR_CAPTION]
-base = "Construction de voie ferrée de grande taille"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_MENU_TEXT]
-base = "Construction de voie ferrée de grande taille"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_BUILD_WINDOW_CAPTION]
-base = "Nouveaux véhicules de grande taille"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_AUTOREPLACE_TEXT]
-base = "Véhicules de grande taille"
-
-[STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT]
-base = "véhicule ferroviaire de grande taille"
-
-
 # electrified AC track strings
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME]
 base = "Voie ferrée électrifiée en courant alternatif"
