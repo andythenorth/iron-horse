@@ -6,18 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelDef(
-        class_name="CabooseCarType4",
-        base_numeric_id=29110,
-        gen=1,
-        subtype="A",
-        base_track_type="NG",
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_ng_8px")
-
-    result.append(model_def)
+    # really can't find 4 meaningful variants at 2/8
 
     model_def = ModelDef(
         class_name="CabooseCarType4",
@@ -33,6 +22,19 @@ def main(**kwargs):
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
+
+    model_def = ModelDef(
+        class_name="CabooseCarType4",
+        base_numeric_id=29370,
+        gen=1,
+        subtype="aA",
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
+
+    result.append(model_def)
 
     model_def = ModelDef(
         class_name="CabooseCarType4",

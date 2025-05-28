@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_ng_8px")
@@ -33,6 +33,19 @@ def main(**kwargs):
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
+
+    model_def = ModelDef(
+        class_name="CabooseCarType3",
+        base_numeric_id=29110,
+        gen=1,
+        subtype="aA",
+        docs_image_spriterow=3,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
+
+    result.append(model_def)
 
     model_def = ModelDef(
         class_name="CabooseCarType3",
