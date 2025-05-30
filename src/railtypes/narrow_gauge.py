@@ -7,9 +7,8 @@ def main(disabled=False):
         vehicle_track_type_name="NG",
         label="IHD_",
         base_label_in_standardised_scheme="NAAN",
-        non_standardised_rtt_fallback_labels=[
-            "NGRL"
-        ],  # "ELNG" if this is duplicated to electrified NG in future
+        # just use the standardised label, no legacy railtype support
+        non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=5,
         maintenance_cost=7,
