@@ -28,6 +28,7 @@ class Railtype(object):
         self.construction_cost = kwargs.get("construction_cost", None)
         self.maintenance_cost = kwargs.get("construction_cost", None)
         self.sort_order = kwargs.get("sort_order", None)
+        self.is_lgv_railtype = kwargs.get("is_lgv_railtype", False)
         self.extends_RAIL = kwargs.get("extends_RAIL", False)
         self.extends_ELRL = kwargs.get("extends_ELRL", False)
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
@@ -92,5 +93,11 @@ class RailTypeManager(list):
         raise ValueError(f"Not found: {label}")
 
     @property
-    def lgv_capable_railtype_labels(self):
-        return ["IHAA", "IHBA"]
+    def lgv_railtype_labels(self):
+        result = []
+        for railtype in self:
+            if railtype.is_lgv_railtype:
+                # take the IH and standardised labels
+                result.append(railtype.label)
+                result.append(railtype.base_label_in_standardised_scheme)
+        return result

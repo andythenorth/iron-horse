@@ -10,13 +10,18 @@ def main(disabled=False):
         vehicle_track_type_name="LGV_ELECTRIFIED_AC",
         label="IHBA",
         base_label_in_standardised_scheme="HAAA",
-        non_standardised_rtt_fallback_labels=["ELRL"],
+        # we don't fallback to RAIL or ELRL for LGV, because
+        # (1) LGV is a specific type, if it's not in the game, these trains don't appear
+        # (2) it causes the speed switch to return the higher value on RAIL or ELRL due to fallback, which is confusing and unwanted
+        # there's no practical way to support a corner case where player has both disabled IH railtypes and not loaded an appropriate railtype grf
+        non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
         railtype_flags=["RAILTYPE_FLAG_CATENARY", "RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         curve_speed_multiplier=1.66,  # decimal value seems to work?  I expected int would be required, but eh.
         sort_order=26,
+        is_lgv_railtype=True,
         # TGVs can go on ELRL etc, but this won't allow RAIL / ELRL onto the TGV tracks
         compatible_railtype_list=[
             "IHA_",

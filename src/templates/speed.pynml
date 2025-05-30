@@ -11,20 +11,15 @@
 <!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
       *cannot* be combined with any other variable speed effects  -->
 <tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part">
-    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed_by_tile_railtype, [
-        <tal:lgv_capable_railtype_labels repeat="label railtype_manager.lgv_capable_railtype_labels">
+    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, [
+        <tal:lgv_railtype_labels repeat="label railtype_manager.lgv_railtype_labels">
             tile_is_railtype("${label}")
             <tal:block condition="not repeat.label.end">
                 ||
             </tal:block>
-        </tal:lgv_capable_railtype_labels>
+        </tal:lgv_railtype_labels>
         ]) {
         1: return ${int(1.60934 * model_variant.speed_on_lgv)};
         return ${int(1.60934 * model_variant.speed)};
-    }
-    <!--! there is a hard-coded assumption here that lgv and lgv_electrified_ac must always both be available for this check to proceed, what could go wrong eh? -->
-    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
-        1: return ${model_variant.model_id}_switch_speed_by_tile_railtype;
-        return ${int(1.60934 * model_variant.speed_on_lgv)};
     }
 </tal:lgv_capable_speed_bonus>
