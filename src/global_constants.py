@@ -189,13 +189,14 @@ wagon_module_name_stems = [
     "slag_ladle_cars",
     "heavy_duty_dump_cars",
     "heavy_duty_flat_cars",
+    "spacer_cars_type_1",
+    "spacer_cars_type_2",
+    # caboose cars at end for ease of scrolling to them
     "caboose_cars_randomised",
     "caboose_cars_type_1",
     "caboose_cars_type_2",
     "caboose_cars_type_3",
     "caboose_cars_type_4",
-    "spacer_cars_type_1",
-    "spacer_cars_type_2",
 ]
 
 # mapping of railtype labels to the vehicle track type names
