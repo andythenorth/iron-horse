@@ -8,7 +8,7 @@ def main(disabled=False):
         label="IHC_",
         # power assumes generic metro is 3rd rail, should be fine, just a game
         base_label_in_standardised_scheme="YAA3",
-        non_standardised_rtt_fallback_labels=["MTRO"],
+        non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=10,
         maintenance_cost=10,
