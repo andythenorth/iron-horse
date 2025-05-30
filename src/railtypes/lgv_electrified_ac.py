@@ -14,6 +14,7 @@ def main(disabled=False):
         # (1) LGV is a specific type, if it's not in the game, these trains don't appear
         # (2) it causes the speed switch to return the higher value on RAIL or ELRL due to fallback, which is confusing and unwanted
         # there's no practical way to support a corner case where player has both disabled IH railtypes and not loaded an appropriate railtype grf
+        # whilst railtype_available can handle the behaviour, the buy menu text is way too complicated to make more conditional
         non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
