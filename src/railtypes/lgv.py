@@ -7,6 +7,7 @@ from railtype import Railtype
 def main(disabled=False):
     return Railtype(
         id="lgv",
+        vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
         label="IHAA",
         base_label_in_standardised_scheme = "HAAN",
@@ -37,3 +38,5 @@ def main(disabled=False):
         use_custom_sprites=False,
         alternative_railtype_list=[],
     )
+
+

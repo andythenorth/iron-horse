@@ -213,5 +213,7 @@ template template_depots(x, y) {
 
 <!--! there's no specific render action for railtypes, abstraction overkill, just do it via a template loop -->
 <tal:railtypes repeat="railtype [railtype for railtype in railtype_manager if roster.id in railtype.rosters]">
-    <tal:include metal:use-macro="load: railtype.pynml" />
+    <tal:railtype_for_nml condition="not railtype.suppress_for_nml">
+        <tal:include metal:use-macro="load: railtype.pynml" />
+    </tal:railtype_for_nml>
 </tal:railtypes>

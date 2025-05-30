@@ -4,6 +4,7 @@ from railtype import Railtype
 def main(disabled=False):
     return Railtype(
         id="metro",
+        vehicle_track_type_name="METRO",
         label="IHC_",
         # power assumes generic metro is 3rd rail, should be fine, just a game
         base_label_in_standardised_scheme = "YAA3",

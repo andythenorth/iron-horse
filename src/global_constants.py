@@ -199,20 +199,6 @@ wagon_module_name_stems = [
     "caboose_cars_type_4",
 ]
 
-# basic mapping of railtype labels to the vehicle track type names
-# CABBAGE: move to the railtype defs, callers already go via railtype_labels_by_vehicle_track_type_name_cabbage
-railtype_labels_by_vehicle_track_type_name = {
-    "RAIL": "IHA_",
-    "RAIL_ELECTRIFIED_AC": "IHB_",
-    "RAIL_ELECTRIFIED_AC_DC": "IHG_",
-    "RAIL_ELECTRIFIED_DC": "IHF_",
-    "METRO": "IHC_",
-    "NG": "IHD_",
-    "NG_ELECTRIFIED_AC": "IHE_",
-    "LGV": "IHAA",
-    "LGV_ELECTRIFIED_AC_AC": "IHBA",
-}
-
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.33, 0.67, 1, 1.33, 1.77]
 

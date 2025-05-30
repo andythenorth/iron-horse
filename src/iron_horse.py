@@ -34,6 +34,7 @@ railtype_module_names = [
     "lgv_electrified_ac",
     "metro",
     "narrow_gauge",
+    "rail",
     "rail_electrified_ac",
     "rail_electrified_ac_dc",
     "rail_electrified_dc",

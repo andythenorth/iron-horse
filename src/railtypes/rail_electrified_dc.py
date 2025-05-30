@@ -7,6 +7,7 @@ from railtype import Railtype
 def main(disabled=False):
     return Railtype(
         id="rail_electrified_dc",
+        vehicle_track_type_name="RAIL_ELECTRIFIED_DC",
         label="IHF_",
         base_label_in_standardised_scheme = "SAAD",
         non_standardised_rtt_fallback_labels = [], # no non-standard fallbacks for DC if not present, none known

@@ -7,6 +7,7 @@ from railtype import Railtype
 def main(disabled=False):
     return Railtype(
         id="rail_electrified_ac",
+        vehicle_track_type_name="RAIL_ELECTRIFIED_AC",
         label="IHB_",
         base_label_in_standardised_scheme = "SAAA",
         non_standardised_rtt_fallback_labels = ["ELRL"],

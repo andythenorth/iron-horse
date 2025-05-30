@@ -828,7 +828,7 @@ class ModelTypeBase(object):
                     if self.lgv_capable:
                         result.append(
                             "tile_powers_track_type_name_"
-                            + "LGV_ELECTRIFIED_AC_"
+                            + "LGV_ELECTRIFIED_"
                             + electrification_type
                             + "()"
                         )

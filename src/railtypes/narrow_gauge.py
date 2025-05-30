@@ -4,6 +4,7 @@ from railtype import Railtype
 def main(disabled=False):
     return Railtype(
         id="narrow_gauge",
+        vehicle_track_type_name="NG",
         label="IHD_",
         base_label_in_standardised_scheme = "NAAN",
         non_standardised_rtt_fallback_labels = ["NGRL"], # "ELNG" if this is duplicated to electrified NG in future
@@ -26,3 +27,4 @@ def main(disabled=False):
         use_custom_sprites=True,
         alternative_railtype_list=["NAAN"],
     )
+
