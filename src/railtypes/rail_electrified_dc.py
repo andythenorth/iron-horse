@@ -9,6 +9,7 @@ def main(disabled=False):
         id="rail_electrified_dc",
         label="IHF_",
         base_label_in_standardised_scheme = "SAAD",
+        non_standardised_rtt_fallback_labels = [], # no non-standard fallbacks for DC if not present, none known
         rosters=["ibex"],
         construction_cost=12,
         maintenance_cost=12,

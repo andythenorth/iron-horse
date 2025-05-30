@@ -6,6 +6,7 @@ def main(disabled=False):
         id="narrow_gauge",
         label="IHD_",
         base_label_in_standardised_scheme = "NAAN",
+        non_standardised_rtt_fallback_labels = ["NGRL"], # "ELNG" if this is duplicated to electrified NG in future
         rosters=["ibex", "moose", "pony"],
         construction_cost=5,
         maintenance_cost=7,

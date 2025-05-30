@@ -9,6 +9,7 @@ def main(disabled=False):
         id="lgv_electrified_ac",
         label="IHBA",
         base_label_in_standardised_scheme = "HAAA",
+        non_standardised_rtt_fallback_labels = ["ELRL"],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,

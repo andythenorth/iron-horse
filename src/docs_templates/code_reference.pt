@@ -72,7 +72,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tal:railtype_mapping repeat="railtype_mapping global_constants.railtype_labels_by_vehicle_track_type_name.items()">
+                            <tal:railtype_mapping repeat="railtype_mapping iron_horse.railtype_manager.railtype_labels_by_vehicle_track_type_name_cabbage.items()">
                                 <!--!
                                     note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
                                     we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
@@ -117,7 +117,7 @@
                         The uses of labels specific to ${roster.str_grf_name} means that railtype authors can control precisely how they wish to map ${roster.str_grf_name} vehicles to railtypes in their railtype grf.  This is done using the railtypes property <code>alternative_railtype_list</code>.
                     </p>
                     <p>
-                        For some vehicle types, ${roster.str_grf_name} may also set labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>.
+                        Iron Horse ${roster.str_grf_name} also sets labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>, for the case where Iron Horse railtypes are disabled by player parameter choice.
                         ${roster.str_grf_name} is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
                     </p>
                 </section>

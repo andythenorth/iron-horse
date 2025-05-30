@@ -9,6 +9,7 @@ def main(disabled=False):
         id="rail_electrified_ac_dc",
         label="IHG_",
         base_label_in_standardised_scheme = "SAAE",
+        non_standardised_rtt_fallback_labels = ["ELRL"],
         rosters=["ibex"],
         construction_cost=12,
         maintenance_cost=12,

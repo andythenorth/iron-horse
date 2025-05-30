@@ -9,6 +9,7 @@ def main(disabled=False):
         id="rail_electrified_ac",
         label="IHB_",
         base_label_in_standardised_scheme = "SAAA",
+        non_standardised_rtt_fallback_labels = ["ELRL"],
         rosters=["ibex", "moose", "pony"],
         construction_cost=12,
         maintenance_cost=12,

@@ -592,7 +592,7 @@ class ModelTypeBase(object):
         # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         valid_railtype_labels = (
-            global_constants.railtype_labels_by_vehicle_track_type_name[
+            iron_horse.railtype_manager.railtype_labels_by_vehicle_track_type_name_cabbage[
                 self.track_type_name
             ]
         )

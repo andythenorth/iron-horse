@@ -10,6 +10,7 @@ def main(disabled=False):
         introduction_date="1989,06,22",
         label="IHAA",
         base_label_in_standardised_scheme = "HAAN",
+        non_standardised_rtt_fallback_labels = ["RAIL"],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,

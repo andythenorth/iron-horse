@@ -13,6 +13,7 @@ class Railtype(object):
         self.id = kwargs.get("id")
         self.label = kwargs.get("label")
         self.base_label_in_standardised_scheme = kwargs.get("base_label_in_standardised_scheme")
+        self.non_standardised_rtt_fallback_labels = kwargs.get("non_standardised_rtt_fallback_labels")
         self.introduction_date = kwargs.get("introduction_date", None)  # "yyyy,mm,dd"
         self.rosters = kwargs.get("rosters", None)
         # 0 is no limit
@@ -52,6 +53,10 @@ class RailTypeManager(list):
             self.append(railtype)
 
     @property
+    def railtype_labels_by_vehicle_track_type_name_cabbage(self):
+        return {k: [v] for k, v in global_constants.railtype_labels_by_vehicle_track_type_name.items()}
+
+    @property
     def railtype_labels_for_railtypetable(self):
         # the railtypetable needs both lists of fallbacks by track_type_name, and all of the labels from each list so we can refer to them in e.g. tile checks
         # note that this is using the nml fallbacks for *vehicle* track_type NOT the compatible or powered powered properties for the railtypes
@@ -59,11 +64,11 @@ class RailTypeManager(list):
         result = {}
         for (
             labels
-        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        ) in self.railtype_labels_by_vehicle_track_type_name_cabbage.values():
             result[labels[0]] = labels
         for (
             labels
-        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        ) in self.railtype_labels_by_vehicle_track_type_name_cabbage.values():
             for label in labels:
                 if label not in result.keys():
                     result[label] = None

@@ -199,29 +199,17 @@ wagon_module_name_stems = [
     "caboose_cars_type_4",
 ]
 
-# mapping of railtype labels to the vehicle track type names
-# used when determining track_type property for vehicles
-# the *first item* must be the actual label provided by an appropriate Iron Horse railtype
-# the rest are fallbacks, in order, for use with other railtype grfs
-# railtype authors need to be able to control mapping IHXX types to their preferred scheme, which they can do using railtype alternative_railtype_list property
-# see the docs Code Reference page for further explanation of the Iron Horse label schema
-# Standardised Railtype Scheme (SRS) labels are *only* to be used as *fallbacks*, and only where appropriate
-# Iron Horse only partially complies with the SRS, using the Innsbruck 2022 Convention, where axle load is always set to A, equivalent to 'undefined'
-# see https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance
+# basic mapping of railtype labels to the vehicle track type names
 railtype_labels_by_vehicle_track_type_name = {
-    "RAIL": ["IHA_", "RAIL"],
-    "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
-    "RAIL_ELECTRIFIED_AC_DC": ["IHG_", "ELRL"],
-    "RAIL_ELECTRIFIED_DC": ["IHF_"],  # no fallback for DC if not present
-    "METRO": [
-        "IHC_",
-        "MTRO",
-        "SMA3", # agreed label for generic metro in standardised scheme
-    ],
-    "NG": ["IHD_", "NGRL", "NAAN"],
-    "NG_ELECTRIFIED_AC": ["IHE_", "ELNG", "NAAE"],
-    "LGV": ["IHAA", "RAIL"],
-    "LGV_ELECTRIFIED_AC_AC": ["IHBA", "ELRL"],
+    "RAIL": "IHA_",
+    "RAIL_ELECTRIFIED_AC": "IHB_",
+    "RAIL_ELECTRIFIED_AC_DC": "IHG_",
+    "RAIL_ELECTRIFIED_DC": "IHF_",
+    "METRO": "IHC_",
+    "NG": "IHD_",
+    "NG_ELECTRIFIED_AC": "IHE_",
+    "LGV": "IHAA",
+    "LGV_ELECTRIFIED_AC_AC": "IHBA",
 }
 
 # capacity multipliers for user-configurable capacity parameter
