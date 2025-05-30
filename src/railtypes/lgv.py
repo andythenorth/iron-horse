@@ -10,8 +10,8 @@ def main(disabled=False):
         vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
         label="IHAA",
-        base_label_in_standardised_scheme = "HAAN",
-        non_standardised_rtt_fallback_labels = ["RAIL"],
+        base_label_in_standardised_scheme="HAAN",
+        non_standardised_rtt_fallback_labels=["RAIL"],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
@@ -38,5 +38,3 @@ def main(disabled=False):
         use_custom_sprites=False,
         alternative_railtype_list=[],
     )
-
-
