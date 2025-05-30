@@ -1121,6 +1121,7 @@ class ModelTypeBase(object):
             utils=utils,
             graphics_path=graphics_path,
             spritelayer_cargos=spritelayer_cargos,
+            railtype_manager=iron_horse.railtype_manager,
         )
         return nml_result
 

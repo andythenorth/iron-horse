@@ -90,3 +90,7 @@ class RailTypeManager(list):
                 return railtype
         # no default return, error if not found
         raise ValueError(f"Not found: {label}")
+
+    @property
+    def lgv_capable_railtype_labels(self):
+        return ["IHAA", "IHBA"]
