@@ -328,22 +328,22 @@ base = "Véhicules dédiés à grande vitesse"
 base = "véhicule ferroviaire à grande vitesse"
 
 # lgv electrified track strings
-[STR_RAILTYPE_LGV_ELECTRIFIED_NAME]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_NAME]
 base = "Ligne à grande vitesse dédiée"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_TOOLBAR_CAPTION]
 base = "Construction de voie ferrée à grande vitesse dédiée"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_MENU_TEXT]
 base = "Construction de voie ferrée à grande vitesse dédiée"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION]
 base = "Nouveaux véhicules dédiés à grande vitesse"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_AUTOREPLACE_TEXT]
 base = "Véhicules dédiés à grande vitesse"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
 base = "véhicule ferroviaire à grande vitesse"
 
 

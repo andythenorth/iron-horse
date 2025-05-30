@@ -6,8 +6,9 @@ from railtype import Railtype
 
 def main(disabled=False):
     return Railtype(
-        id="lgv_electrified",
+        id="lgv_electrified_ac",
         label="IHBA",
+        base_label_in_standardised_scheme = "HAAA",
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,

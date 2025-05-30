@@ -221,7 +221,7 @@ railtype_labels_by_vehicle_track_type_name = {
     "NG": ["IHD_", "NGRL", "NAAN"],
     "NG_ELECTRIFIED_AC": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
-    "LGV_ELECTRIFIED_AC": ["IHBA", "ELRL"],
+    "LGV_ELECTRIFIED_AC_AC": ["IHBA", "ELRL"],
 }
 
 # capacity multipliers for user-configurable capacity parameter

@@ -15,7 +15,7 @@
         1: return ${int(1.60934 * model_variant.speed_on_lgv)};
         return ${int(1.60934 * model_variant.speed)};
     }
-    <!--! there is a hard-coded assumption here that lgv and lgv_electrified must always both be available for this check to proceed, what could go wrong eh? -->
+    <!--! there is a hard-coded assumption here that lgv and lgv_electrified_ac must always both be available for this check to proceed, what could go wrong eh? -->
     switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
         1: return ${model_variant.model_id}_switch_speed_by_tile_railtype;
         return ${int(1.60934 * model_variant.speed_on_lgv)};

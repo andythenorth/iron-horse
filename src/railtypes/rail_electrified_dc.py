@@ -8,6 +8,7 @@ def main(disabled=False):
     return Railtype(
         id="rail_electrified_dc",
         label="IHF_",
+        base_label_in_standardised_scheme = "SAAD",
         rosters=["ibex"],
         construction_cost=12,
         maintenance_cost=12,

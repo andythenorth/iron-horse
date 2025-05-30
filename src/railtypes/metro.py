@@ -5,13 +5,13 @@ def main(disabled=False):
     return Railtype(
         id="metro",
         label="IHC_",
+        # power assumes generic metro is 3rd rail, should be fine, just a game
+        base_label_in_standardised_scheme = "YAA3",
         rosters=["ibex", "moose", "pony"],
         construction_cost=10,
         maintenance_cost=10,
         railtype_flags=["RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         sort_order=41,
-        # as of April 2022 there are no obvious appropriate labels for metro in the standardised scheme, so there are no compatible, powered or alternate types
-        # this could be changed if a clear label was agreed (metro isn't just standard gauge 3rd rail like SAA3, it's an isolated dedicated system)
         compatible_railtype_list=[
             "MTRO",
         ],

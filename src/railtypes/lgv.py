@@ -9,6 +9,7 @@ def main(disabled=False):
         id="lgv",
         introduction_date="1989,06,22",
         label="IHAA",
+        base_label_in_standardised_scheme = "HAAN",
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,

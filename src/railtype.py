@@ -12,6 +12,7 @@ class Railtype(object):
     def __init__(self, **kwargs):
         self.id = kwargs.get("id")
         self.label = kwargs.get("label")
+        self.base_label_in_standardised_scheme = kwargs.get("base_label_in_standardised_scheme")
         self.introduction_date = kwargs.get("introduction_date", None)  # "yyyy,mm,dd"
         self.rosters = kwargs.get("rosters", None)
         # 0 is no limit

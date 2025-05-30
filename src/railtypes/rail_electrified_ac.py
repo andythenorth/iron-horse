@@ -8,6 +8,7 @@ def main(disabled=False):
     return Railtype(
         id="rail_electrified_ac",
         label="IHB_",
+        base_label_in_standardised_scheme = "SAAA",
         rosters=["ibex", "moose", "pony"],
         construction_cost=12,
         maintenance_cost=12,
