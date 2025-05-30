@@ -83,3 +83,10 @@ class RailTypeManager(list):
                 if label not in result.keys():
                     result[label] = None
         return result
+
+    def get_railtype_by_label(self, label):
+        for railtype in self:
+            if railtype.label == label:
+                return railtype
+        # no default return, error if not found
+        raise ValueError(f"Not found: {label}")

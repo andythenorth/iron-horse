@@ -22,7 +22,7 @@ railtypetable {
             ${railtype_mapping[0]},
         </tal:single_label>
         <tal:fallback_list condition="railtype_mapping[1] is not None">
-            ${railtype_mapping[0]}: [${','.join('"' + i + '"' for i in railtype_mapping[1])}],
+            ${railtype_mapping[0]}: [${','.join('"' + i + '"' for i in railtype_mapping[1])}], // ${railtype_manager.get_railtype_by_label(railtype_mapping[0]).id}
         </tal:fallback_list>
     </tal:railtype_mapping>
 }
