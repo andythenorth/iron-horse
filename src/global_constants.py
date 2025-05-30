@@ -200,6 +200,7 @@ wagon_module_name_stems = [
 ]
 
 # basic mapping of railtype labels to the vehicle track type names
+# CABBAGE: move to the railtype defs, callers already go via railtype_labels_by_vehicle_track_type_name_cabbage
 railtype_labels_by_vehicle_track_type_name = {
     "RAIL": "IHA_",
     "RAIL_ELECTRIFIED_AC": "IHB_",
