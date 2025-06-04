@@ -160,11 +160,11 @@ base = "Rustbelt"
 [STR_BADGE_LIVERY_FREIGHT_BONUS_TEAL]
 base = "Ocean Teal"
 
-[STR_BADGE_LIVERY_FREIGHT_BONUS_MIST]
-base = "Mist"
-
 [STR_BADGE_LIVERY_FREIGHT_GREY]
 base = "Grey"
+
+[STR_BADGE_LIVERY_FREIGHT_MIST]
+base = "Mist"
 
 [STR_BADGE_LIVERY_FREIGHT_NIGHTSHADE]
 base = "Nightshade"

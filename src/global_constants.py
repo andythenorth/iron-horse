@@ -770,32 +770,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    # sometimes we want to nest the black livery options, sometimes we don't, this is for when we do
-    "FREIGHT_BONUS_OBSIDIAN": {
-        "colour_set_names": [
-            "freight_oil_black",
-            "freight_obsidian",
-            "freight_nightshade",
-        ],
-        "purchase_swatch_colour_set_names": ["freight_obsidian"],
-        "group_as_static_livery": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    # often we want to nest the rust livery when there are lots of others, or it doesn't look so good
-    "FREIGHT_BONUS_OXIDE_RUST": {
-        "colour_set_names": ["freight_oxide", "freight_rust"],
-        "purchase_swatch_colour_set_names": [
-            "freight_oxide"
-        ],  # best choice, contrasts with rust if used in random mix
-        "group_as_static_livery": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "FREIGHT_BONUS_TEAL": {
         "colour_set_names": [
             "freight_ocean_teal",
@@ -808,13 +782,12 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BONUS_MIST": {
+    "FREIGHT_MIST": {
         "colour_set_names": [
             "freight_mist",
             "freight_cloud",
         ],
         "purchase_swatch_colour_set_names": ["freight_mist"],
-        "group_as_static_livery": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
