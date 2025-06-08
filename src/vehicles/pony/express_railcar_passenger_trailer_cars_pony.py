@@ -49,7 +49,7 @@ def main(**kwargs):
         gen=4,
         subtype="U",
         cab_id="turbulent",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
