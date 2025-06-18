@@ -48,7 +48,7 @@ def main(**kwargs):
         base_numeric_id=30000,
         gen=4,
         subtype="B",
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 
@@ -61,7 +61,7 @@ def main(**kwargs):
         base_numeric_id=30020,
         gen=4,
         subtype="C",
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 
