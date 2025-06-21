@@ -25,10 +25,10 @@ def main(**kwargs):
             "VANILLA",
             "BANGER_BLUE",
             "FREIGHT_BLACK",
-            "RAILFREIGHT_RED_STRIPE",
-            "LARGE_LOGO",
+            #"RAILFREIGHT_RED_STRIPE",
+            #"LARGE_LOGO",
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
