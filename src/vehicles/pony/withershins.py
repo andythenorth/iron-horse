@@ -17,10 +17,10 @@ def main(**kwargs):
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         # note that livery names are metadata only and can repeat for different spriterows
-        liveries=["VANILLA", "BANGER_BLUE"],
+        liveries=["VANILLA"],
         #liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "RAILFREIGHT_RED_STRIPE"],
-        decor_spriterow_num=4,
-        sprites_complete=False,
+        decor_spriterow_num=2,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
