@@ -11,7 +11,6 @@ def main(**kwargs):
         name="2-8-2 Backbone",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
-        replacement_model_id="lion",
         power_by_power_source={
             "STEAM": 2400,
         },
