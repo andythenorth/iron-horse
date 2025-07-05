@@ -16,7 +16,7 @@ def main(**kwargs):
             "AC": 3450,
         },
         pantograph_type="z-shaped-single",
-        random_reverse=True,
+        # no random reverse
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
