@@ -12,7 +12,7 @@ class CargoClassManager(object):
         self.cargo_class_scheme = CargoClassScheme("cargo_classes_FIRS")
 
     def render_nml(self):
-        # render out nml with `const foo = bar` for current scheme
+        # render out nml with `const foo = bar` for currend scheme
         nml_template = PageTemplateLoader(current_dir, format="text")[
             "nml_cargo_class_constants.pt"
         ]
