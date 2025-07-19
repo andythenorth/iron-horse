@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="super_heavy_freight",
         subrole_child_branch_num=3,
         power_by_power_source={
-            "DIESEL": 3650,  # first high HP diesel in this roster??
+            "DIESEL": 3500,  # first high HP diesel in this roster - not too high because replaced by 3450 HP diesels in gen 5
         },
         speed=87,  # these don't *have* to be replaced at game end
         random_reverse=True,

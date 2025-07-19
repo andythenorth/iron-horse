@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="super_heavy_freight",
         subrole_child_branch_num=-3,
         power_by_power_source={
-            "DIESEL": 3650,
+            "DIESEL": 3500,
         },
         speed=87,  # these don't *have* to be replaced at game end
         random_reverse=True,
