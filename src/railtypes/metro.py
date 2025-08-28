@@ -6,8 +6,8 @@ def main(disabled=False):
         id="metro",
         vehicle_track_type_name="METRO",
         label="IHC_",
-        # fallback assumes generic metro is 4th rail, should be fine, just a game
-        base_label_in_standardised_scheme="SAA4",
+        # MTRO used, not the SAA4 standardised label, for tragedy of the commons reasons (more likely MTRO is supported by large sets)
+        base_label_in_standardised_scheme="MTRO",
         non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=10,
@@ -16,8 +16,12 @@ def main(disabled=False):
         sort_order=41,
         compatible_railtype_list=[
             "MTRO",
+            "SAA4",
         ],
-        powered_railtype_list=["MTRO"],
+        powered_railtype_list=[
+            "MTRO",
+            "SAA4",
+        ],
         alternative_railtype_list=[
             "MTRO",
         ],
