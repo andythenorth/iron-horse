@@ -9,7 +9,7 @@
                     <li class="nav-header">Code Reference</li>
                     <li><a href="#source_code">Obtaining source code</a></li>
                     <li><a href="#compiling">Compiling</a></li>
-                    <li><a href="#railtypes_and_fallbacks">Railtypes and fallbacks</a></li>
+                    <li><a href="#railtypes_and_fallbacks">Railtypes</a></li>
                     <li><a href="#vehicle_properties">Vehicle properties</a></li>
                     <li><a href="#numeric_ids">Base numeric IDs in use</a></li>
                 </ul>
@@ -45,7 +45,7 @@
                 <br />
 
                 <section id="railtypes_and_fallbacks">
-                    <h3>Railtypes and fallbacks</h3>
+                    <h3>Railtypes</h3>
                     <p>${roster.str_grf_name} uses a very specific approach to railtypes.</p>
                     <ol>
                         <li>
@@ -54,13 +54,17 @@
                             ${roster.str_grf_name} provides <em>batteries-are-included</em> gameplay by including the appropriate railtypes.
                         </li>
                         <li>
-                            Players can turn off the included ${roster.str_grf_name} railtypes if they wish to via parameter setting
-                            (does not affect RAIL and ELRL which are provided as default by OpenTTD).
+                            Iron Horse ${roster.str_grf_name} sets labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>where suitable labels exist</strong>.
+                            ${roster.str_grf_name} is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
                         </li>
                         <li>
-                            ${roster.str_grf_name} uses the Iron Horse schema for vehicle track_type property (which sets the vehicle railtype).
-                            This schema makes it possible for railtype authors to detect different ${roster.str_grf_name} vehicle types and handle them as they see fit.
-                            Meanwhile the vehicles will fall back to more common railtypes if the specific ${roster.str_grf_name} labels are not available.
+                            Iron Horse uses other railtype labels if suitable labels are not available in the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a>.
+                        </li>
+                        <li>
+                            Iron Horse may have detection and behaviour for specific railtype grfs where there is co-operation with the author(s) of the railtype grf.
+                        </li>
+                        <li>
+                            The NML 'railtype fallback' approach is not used in Iron Horse. Iron Horse provides suitable railtypes for all vehicles by default. If another grf disables or modifies those railtypes, Iron Horse will either display an error, or some vehicles will not be available in game.
                         </li>
                     </ol>
                     <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
@@ -68,7 +72,6 @@
                             <tr>
                                 <th>Track type name</th>
                                 <th>Primary label</th>
-                                <th>Labels including fallbacks</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,39 +83,10 @@
                                 <tr>
                                     <th>${railtype_mapping[0]}</th>
                                     <td>${railtype_mapping[1][0]}</td>
-                                    <td>${', '.join(label for label in railtype_mapping[1])}</td>
                                 </tr>
                             </tal:railtype_mapping>
                        </tbody>
                     </table>
-                    <h4>${roster.str_grf_name} railtype scheme details / tips for railtype authors</h4>
-                    <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
-                    <p>${roster.str_grf_name} labels, characters 1 and 2 are always <code>IH</code></p>
-                    <p>Character 3 represents a general 'class' of vehicle</p>
-                    <!--! CABBAGE - but we actually want to use standardised or other labels, not Horse labels -->
-                    <ul>
-                        <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
-                        <li><code>B</code> vanilla rail vehicle, electric (overhead catenary), <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
-                        <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
-                        <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NAAN</code> and similar railtypes</li>
-                        <li><code>E</code> vanilla narrow gauge vehicle, electric (overhead catenary), suitable for <code>NAAE</code> and similar railtypes</li>
-                        <li>&hellip;more 'classes' added as needed</li>
-                    </ul>
-                    <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>
-                    <ul>
-                        <li><code>_</code> no modifier used (default)</li>
-                        <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
-                        <!--!<li><code>B</code> suitable for light or poorly maintained tracks</li>-->
-                        <!--!<li><code>C</code> requires a route cleared for tall vehicles</li>-->
-                        <li>&hellip;more modifiers added as needed</li>
-                    </ul>
-                    <p>
-                        The uses of labels specific to ${roster.str_grf_name} means that railtype authors can control precisely how they wish to map ${roster.str_grf_name} vehicles to railtypes in their railtype grf.  This is done using the railtypes property <code>alternative_railtype_list</code>.
-                    </p>
-                    <p>
-                        Iron Horse ${roster.str_grf_name} also sets labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>, for the case where Iron Horse railtypes are disabled by player parameter choice.
-                        ${roster.str_grf_name} is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
-                    </p>
                 </section>
             </div>
         </div>
