@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
-            "DC": 6000,
+            "AC": 6000,
         },
         random_reverse=True,
         gen=4,

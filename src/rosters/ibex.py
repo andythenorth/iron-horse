@@ -8,7 +8,6 @@ engine_module_names = [
     # express (electro-diesels with non-standard position in power/length tree)
     # foo,
     # express
-    ## AC
     "ae_3_5",
     "sbb_fb_4_4",
     "saas_be_4_4",
@@ -20,47 +19,38 @@ engine_module_names = [
     "re_4_4_i",
     "obb_1163",
     "vectron_dual_mode",
-    ## DC
     "hungarian_2d2_400",
-    ## AC
     "ae_4_7",
     "obb_1041",
     "obb_1141",
     "re_450",
     "obb_1014",
-    ## DC
     "fs_e330",
     "fs_e428",
     "fs_e444",
     "fs_e464",
     "fs_e464_upgrade",
-    ## AC
     "drg_e_16",
     "obb_1010",
     "obb_1042",
     "obb_1142",
     "fs_e412",
-    ## DC
     "fs_e636",
     "fs_e646",
     "fs_e656",
     "fs_e656_upgraded",
-    ## AC
     "bls_ae_6_8",
     "bls_ae_4_4",
     "bls_re_4_4",
     "sob_re_446",
-    ## DC
     "plm_2cc2_3400",
     "cc_7100",
     "bb_7200",
     "bb_22200",
     "bb_22200_upgraded",
-    ## AC
     "obb_1044",
     "re_460",
     "re_465",
-    ## DC
     "cc_6500",
     "bb_26000",
     "bb_26000_upgraded",
@@ -75,34 +65,26 @@ engine_module_names = [
     "de_6_6",
     # freight
     "trient",
-    ## AC
     "krokodil_ce_6_8",
     "krokodil_be_6_8",
     "sbb_ee_6_6_ii",
     "mthb_re_486",
-    ## DC
     "po_2d2_5500",
     "bb_25200",
     "bb_27000",
-    ## AC
     "sbb_ae_4_6",
     "sbb_re_4_4_ii",
     "re_430",
     "re_430_lion",
-    ## DC
     "fs_e633",
     "fs_e652",
     "traxx_e_494",
-    ## AC
     "bls_ae_8_8",
     "bls_re_475",
-    ## DC
     "bb_8100_duo",
     "bb_8500_duo",
-    ## AC
     "re_6_6",
     "re_6_6_ii",
-    ## DC
     # joker engines / snowploughs
     # "snowplough_ibex_gen_2",
     # cargo sprinter
@@ -114,17 +96,14 @@ engine_module_names = [
     # diesel railcars
     # foo,
     # electric railcars
-    ## AC
     "emu_ibex_2",
     "emu_ibex_3",
     "emu_ibex_4",
     "emu_ibex_5",
     "emu_ibex_6",
-    ## DC
     # express electric railcars
     # foo,
     # high speed pax
-    # AC
     "rapide_cab",
     "rapide_middle_mail",
     "rapide_middle_passenger",

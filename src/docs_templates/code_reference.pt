@@ -89,20 +89,13 @@
                     <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
                     <p>${roster.str_grf_name} labels, characters 1 and 2 are always <code>IH</code></p>
                     <p>Character 3 represents a general 'class' of vehicle</p>
+                    <!--! CABBAGE - but we actually want to use standardised or other labels, not Horse labels -->
                     <ul>
                         <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
-                        <li><code>B</code> vanilla rail vehicle, electric (AC), <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
+                        <li><code>B</code> vanilla rail vehicle, electric (overhead catenary), <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
                         <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
-                        <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
-                        <li><code>E</code> vanilla narrow gauge vehicle, electric (AC), suitable for <code>ELNG</code> and similar railtypes</li>
-                        <li><code>F</code> vanilla rail vehicle, electric (DC) <!--! (no subtype) --> <!--! no known substitutes --></li>
-                        <li><code>G</code> vanilla rail vehicle, electric (AC / DC) <!--! (no subtype) --> <!--! no known substitutes --></li>
-                        <!--!
-                            electrification subtypes e.g. AC, DC, are added as explicit classes in char 3
-                            multi-voltage locomotives would either
-                            (1) default to AC (preferred), or
-                            (2) and only if unavoidable, be a specific class representing the combined voltages they're capable of with the cross-compatibility managed by a hidden railtype
-                        -->
+                        <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NAAN</code> and similar railtypes</li>
+                        <li><code>E</code> vanilla narrow gauge vehicle, electric (overhead catenary), suitable for <code>NAAE</code> and similar railtypes</li>
                         <li>&hellip;more 'classes' added as needed</li>
                     </ul>
                     <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>

@@ -11,7 +11,7 @@ def main(**kwargs):
         name="PLM 2CC2 3400",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
-        power_by_power_source={"DC": 4600},
+        power_by_power_source={"AC": 4600},
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",

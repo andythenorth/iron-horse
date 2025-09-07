@@ -18,7 +18,6 @@ def main(disabled=False):
         sort_order=18,
         compatible_railtype_list=[
             "IHA_",
-            "IHF_",
             "RAIL",
             "ELRL",
         ],

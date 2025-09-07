@@ -16,7 +16,6 @@ def main(**kwargs):
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 5600,
-            "DC": 5600,
         },
         random_reverse=True,
         gen=5,

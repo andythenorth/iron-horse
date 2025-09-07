@@ -11,7 +11,7 @@ def main(**kwargs):
         name="CC 7100",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
-        power_by_power_source={"DC": 5300},
+        power_by_power_source={"AC": 5300},
         random_reverse=True,
         gen=3,
         pantograph_type="diamond-double",

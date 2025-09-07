@@ -55,12 +55,6 @@ base = "Diesel"
 [STR_BADGE_POWER_SOURCE_AC]
 base = "Électrique alternatif"
 
-[STR_BADGE_POWER_SOURCE_DC]
-base = "Électrique continu"
-
-[STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC]
-base = "Électrique universel"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Métro"
 
@@ -412,41 +406,3 @@ base = "Véhicules électriques en courant alternatif"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
 base = "Véhicule ferroviaire électrique en courant alternatif"
-
-# rail electrified ac dc
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME]
-base = "[inutilisé]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_TOOLBAR_CAPTION]
-base = "[inutilisé]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_MENU_TEXT]
-base = "[inutilisé]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_BUILD_WINDOW_CAPTION]
-base = "Nouveaux véhicules électriques universels"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_AUTOREPLACE_TEXT]
-base = "Véhicules électriques universels"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT]
-base = "Véhicule ferroviaire électrique universel"
-
-# rail electrified dc
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME]
-base = "Voie ferrée électrifiée en courant continu"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION]
-base = "Construction de voie ferrée électrifiée en courant continu"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT]
-base = "Construction de voie ferrée électrifiée en courant continu"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION]
-base = "Nouveaux véhicules électriques en courant continu"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_AUTOREPLACE_TEXT]
-base = "Véhicules électriques en courant continu"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT]
-base = "Véhicule ferroviaire électrique en courant continu"

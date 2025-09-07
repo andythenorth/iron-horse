@@ -36,8 +36,6 @@ railtype_module_names = [
     "narrow_gauge",
     "rail",
     "rail_electrified_ac",
-    "rail_electrified_ac_dc",
-    "rail_electrified_dc",
 ]
 
 # comment out any unfinished rosters here as needed

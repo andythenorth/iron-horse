@@ -341,9 +341,6 @@ base = "Diesel"
 [STR_BADGE_POWER_SOURCE_AC]
 base = "AC Electric"
 
-[STR_BADGE_POWER_SOURCE_DC]
-base = "DC Electric"
-
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
 
@@ -667,9 +664,6 @@ base = "Electric (AC)"
 [STR_POWER_SOURCE_BATTERY_HYBRID]
 base = "Battery Hybrid"
 
-[STR_POWER_SOURCE_DC]
-base = "Electric (DC)"
-
 [STR_POWER_SOURCE_METRO]
 base = "Metro"
 
@@ -817,42 +811,3 @@ base = "AC Electrified Vehicles"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
 base = "AC electric rail vehicle"
-
-# rail electrified ac dc
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME]
-base = "[unused]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_TOOLBAR_CAPTION]
-base = "[unused]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_MENU_TEXT]
-base = "[unused]"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_BUILD_WINDOW_CAPTION]
-base = "New AC / DC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_AUTOREPLACE_TEXT]
-base = "AC / DC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT]
-base = "AC / DC electric rail vehicle"
-
-# rail electrified dc
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME]
-base = "DC Electrified Railway"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION]
-base = "DC Electrified Railway Construction"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT]
-base = "DC electrified railway construction"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION]
-base = "New DC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_AUTOREPLACE_TEXT]
-base = "DC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT]
-base = "DC electric rail vehicle"
-

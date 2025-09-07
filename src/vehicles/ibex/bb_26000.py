@@ -11,7 +11,7 @@ def main(**kwargs):
         name="BB 26000 Sybic",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-4,
-        power_by_power_source={"AC": 8400, "DC": 8400},
+        power_by_power_source={"AC": 8400},
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

@@ -606,7 +606,7 @@ class ModelTypeBase(object):
         if self.power_by_power_source is None:
             return result
         # extend this as necessary for different power sources, there's no magic pattern, it's manually declared mappings
-        # NOTE that order is explicit - and assumes that power hierarchy is AC > DC > DIESEL
+        # NOTE that order is explicit - and assumes that power hierarchy is AC > DIESEL
         # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
         for power_source, optional_props in global_constants.power_sources.items():
             if power_source in self.power_by_power_source.keys():
@@ -633,7 +633,7 @@ class ModelTypeBase(object):
         if self.power_by_power_source is None:
             return False
         for power_source_name in self.power_by_power_source.keys():
-            if power_source_name not in ["AC", "DC"]:
+            if power_source_name not in ["AC"]:
                 # add any electric types here (not metro though)
                 return False
         return True
@@ -641,13 +641,7 @@ class ModelTypeBase(object):
     @property
     def electrification_type(self):
         if "AC" in self.power_by_power_source:
-            # handle multi-system first
-            if "DC" in self.power_by_power_source:
-                return "AC_DC"
-            else:
-                return "AC"
-        elif "DC" in self.power_by_power_source:
-            return "DC"
+            return "AC"
         else:
             raise BaseException(
                 "no valid electrification type found for "
@@ -677,10 +671,8 @@ class ModelTypeBase(object):
             elif "METRO" in self.power_by_power_source:
                 return self.power_by_power_source["METRO"]
             elif "AC" in self.power_by_power_source:
-                # AC is the default for multi-system AC/DC locos
+                # AC is the default for electrified locomotives
                 return self.power_by_power_source["AC"]
-            elif "DC" in self.power_by_power_source:
-                return self.power_by_power_source["DC"]
             else:
                 raise BaseException(
                     "no valid power source found when fetching default power for "
@@ -806,7 +798,7 @@ class ModelTypeBase(object):
         result = []
         if self.power_by_power_source is not None:
             # multisystem support
-            for electrification_type in ["AC", "DC"]:
+            for electrification_type in ["AC"]:
                 if electrification_type in self.power_by_power_source:
                     result.append(
                         "tile_powers_track_type_name_"
@@ -1301,11 +1293,6 @@ class EngineModelTypeBase(ModelTypeBase):
                 and "AC" in self.power_by_power_source.keys()
             ):
                 result.append("power_source/electro_diesel")
-            if (
-                "AC" in self.power_by_power_source.keys()
-                and "DC" in self.power_by_power_source.keys()
-            ):
-                result.append("power_source/dual_voltage")
         return result
 
 

@@ -11,7 +11,7 @@ def main(**kwargs):
         name="BB 22200 (upgraded)",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
-        power_by_power_source={"DC": 7400, "AC": 7400},
+        power_by_power_source={"AC": 7400},
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",
