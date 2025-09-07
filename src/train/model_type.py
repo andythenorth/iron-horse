@@ -591,22 +591,13 @@ class ModelTypeBase(object):
         # this is done by looking up a railtype mapping in global constants, via internal labels
         # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
-        valid_railtype_labels = (
+        railtype_labels_by_vehicle_track_type_name_cabbage = (
             iron_horse.railtype_manager.railtype_labels_by_vehicle_track_type_name_cabbage[
                 self.track_type_name
             ]
         )
         # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
-        result = valid_railtype_labels[0]
-        # set modifiers on the label by modifying the last byte
-        # modifiers are not orthogonal and the byte can only be set to a single value
-        # if multiple modifiers need to be combined, that needs to be explicitly handled
-        # generally that would be a sign we're doing something unwise and with combinatorial problems
-        modifier = "_"
-        if self.lgv_capable:
-            modifier = "A"
-        result = result[0:3] + modifier
-        return result
+        return railtype_labels_by_vehicle_track_type_name_cabbage[0]
 
     @cached_property
     def vehicle_power_source_tree(self):

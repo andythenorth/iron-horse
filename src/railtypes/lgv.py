@@ -10,7 +10,7 @@ def main(disabled=False):
         vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
         label="IHAA",
-        base_label_in_standardised_scheme="HAAN",
+        base_label_in_standardised_scheme="HAAN", # CABBAGE - just don't bother with standardised scheme here?
         # we don't fallback to RAIL or ELRL for LGV, because
         # (1) LGV is a specific type, if it's not in the game, these trains don't appear
         # (2) it causes the speed switch to return the higher value on RAIL or ELRL due to fallback, which is confusing and unwanted

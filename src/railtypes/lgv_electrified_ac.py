@@ -9,7 +9,7 @@ def main(disabled=False):
         id="lgv_electrified_ac",
         vehicle_track_type_name="LGV_ELECTRIFIED_AC",
         label="IHBA",
-        base_label_in_standardised_scheme="HAAA",
+        base_label_in_standardised_scheme="HAAA",  # CABBAGE - just don't bother with standardised scheme here?
         # we don't fallback to RAIL or ELRL for LGV, because
         # (1) LGV is a specific type, if it's not in the game, these trains don't appear
         # (2) it causes the speed switch to return the higher value on RAIL or ELRL due to fallback, which is confusing and unwanted
