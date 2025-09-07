@@ -6,19 +6,6 @@ gender = "m m2 f"
 [STR_GRF_DESCRIPTION]
 base = "Licence: {SILVER}GPL v2{}{BLACK}"
 
-# parameters (action 14 etc)
-[STR_PARAM_ADD_RAILTYPES]
-base = "Rails additionnels Iron Horse"
-# substrings of the grf name _could_ be used here
-ibex = "Rails additionnels Iron Ibex"
-moose = "Rails additionnels Iron Moose"
-
-[STR_PARAM_ADD_RAILTYPES_DESC]
-base = "Iron Horse inclut des trains nécessitant des types de rail additionnels, par exemple métro et faible écartement. Ces types peuvent aussi être fournis par des GRF alternatifs. Si ces derniers sont utilisés, les rails Iron Horse peuvent être désactivés avec ce paramètre."
-# substrings of the grf name _could_ be used here
-ibex = "Iron Ibex inclut des trains nécessitant des types de rail additionnels, par exemple métro et faible écartement. Ces types peuvent aussi être fournis par des GRF alternatifs. Si ces derniers sont utilisés, les rails Iron Horse peuvent être désactivés avec ce paramètre."
-moose = "Iron Moose inclut des trains nécessitant des types de rail additionnels, par exemple métro et faible écartement. Ces types peuvent aussi être fournis par des GRF alternatifs. Si ces derniers sont utilisés, les rails Iron Horse peuvent être désactivés avec ce paramètre."
-
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY]
 base = "Capacité des trains"
 

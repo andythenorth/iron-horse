@@ -30,18 +30,6 @@ base = "Simplified"
 [STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
 base = "None"
 
-[STR_PARAM_ADD_RAILTYPES]
-base = "Iron Horse extra railtypes"
-# substrings of the grf name _could_ be used here
-ibex = "Iron Ibex extra railtypes"
-moose = "Iron Moose extra railtypes"
-
-[STR_PARAM_ADD_RAILTYPES_DESC]
-base = "Iron Horse includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Horse railtypes can be turned off with this parameter setting."
-# substrings of the grf name _could_ be used here
-ibex = "Iron Ibex includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Ibex railtypes can be turned off with this parameter setting."
-moose = "Iron Moose includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Moose railtypes can be turned off with this parameter setting."
-
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY]
 base = "Train capacity"
 
