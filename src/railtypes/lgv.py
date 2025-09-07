@@ -25,7 +25,7 @@ def main(disabled=False):
             "HAAE",
             "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
             "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHBA",
+            "IHBA", # legacy Horse - needed for railtype grfs that supported Horse?
             "RAIL",
             "ELRL",
         ],
