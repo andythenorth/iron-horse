@@ -578,10 +578,13 @@ class ModelTypeBase(object):
 
     @property
     def track_type_name(self):
+        interpolated_track_type = self.base_track_type
+        if self.lgv_capable:
+            interpolated_track_type = "LGV"
         if self.requires_electric_rails:
-            result = self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+            result = interpolated_track_type + "_ELECTRIFIED_" + self.electrification_type
         else:
-            result = self.base_track_type
+            result = interpolated_track_type
         return result
 
     @cached_property

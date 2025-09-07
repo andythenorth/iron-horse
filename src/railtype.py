@@ -1,4 +1,5 @@
 import importlib
+import string
 
 import global_constants
 
@@ -29,13 +30,37 @@ class Railtype(object):
         self.maintenance_cost = kwargs.get("construction_cost", None)
         self.sort_order = kwargs.get("sort_order", None)
         self.is_lgv_railtype = kwargs.get("is_lgv_railtype", False)
-        self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
-        self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
         self.alternative_railtype_list = kwargs.get("alternative_railtype_list", [])
         self.use_custom_sprites = kwargs.get("use_custom_sprites", False)
         self.use_custom_signals = kwargs.get("use_custom_signals", False)
         self.suppress_for_nml = kwargs.get("suppress_for_nml", False)
         self.disabled = False
+        self.compatible_railtype_list = self.resolve_railtype_list(
+            kwargs.get("compatible_railtype_list", []),
+            kwargs.get("extend_compatible_railtype_list", []),
+        )
+        self.powered_railtype_list = self.resolve_railtype_list(
+            kwargs.get("powered_railtype_list", []),
+            kwargs.get("extend_powered_railtype_list", []),
+        )
+
+    def resolve_railtype_list(self, explicit_labels, extension_lists):
+        result = explicit_labels
+        for label_template in extension_lists:
+            result.extend(
+                self.generate_speed_appearance_variants_of_standardised_label(
+                    label_template
+                )
+            )
+        return result
+
+    def generate_speed_appearance_variants_of_standardised_label(self, label_template):
+        result = []
+        # assume only the folowing are valid in labels: a-z, A-Z, 0-9
+        chars = string.ascii_letters + string.digits
+        for char in chars:
+            result.append(label_template.replace("*", char, 1))
+        return result
 
     def make_nml_railtype_list(self, railtype_list):
         result = ",".join(['"' + railtype + '"' for railtype in railtype_list])

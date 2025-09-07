@@ -26,16 +26,20 @@ def main(disabled=False):
         is_lgv_railtype=True,
         # TGVs can go on ELRL etc, but this won't allow RAIL / ELRL onto the TGV tracks
         compatible_railtype_list=[
-            "IHA_",
-            "IHB_",
+            "HAAN",
+            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
             "RAIL",
             "ELRL",
         ],
+        # templates for generating variations of standard railtype labels
+        extend_compatible_railtype_list=["S*AN", "S*AE"],
         powered_railtype_list=[
-            "IHB_",
+            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
             "ELRL",
         ],
+        # templates for generating variations of standard railtype labels
+        extend_powered_railtype_list=["S*AE"],
         use_custom_sprites=True,
-        # fallback for unelectrified LGV which is hidden in-game and allows non-electric TGV-style trains onto LGV routes
-        alternative_railtype_list=["IHAA"],
+        alternative_railtype_list=[],
     )

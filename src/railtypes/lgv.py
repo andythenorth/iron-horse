@@ -22,19 +22,25 @@ def main(disabled=False):
         sort_order=25,
         is_lgv_railtype=True,
         compatible_railtype_list=[
-            "IHA_",
-            "IHB_",
+            "HAAE",
+            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
             "IHBA",
             "RAIL",
             "ELRL",
         ],
+        # templates for generating variations of standard railtype labels
+        extend_compatible_railtype_list=["S*AN", "S*AE"],
         powered_railtype_list=[
-            "IHA_",
-            "IHB_",
-            "IHBA",
+            "HAAE",
+            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHBA", # legacy Horse - needed for railtype grfs that supported Horse?
             "RAIL",
             "ELRL",
         ],
+        # templates for generating variations of standard railtype labels
+        extend_powered_railtype_list=["S*AN", "S*AE"],
         use_custom_sprites=False,
         alternative_railtype_list=[],
     )
