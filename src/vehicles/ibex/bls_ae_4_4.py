@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=2,
         power_by_power_source={
-            "AC": 5300,  # unrealistically high, to fit to BLS Re 4/4 progression, which leans towards Swiss
+            "OHLE": 5300,  # unrealistically high, to fit to BLS Re 4/4 progression, which leans towards Swiss
         },
         random_reverse=True,
         gen=3,

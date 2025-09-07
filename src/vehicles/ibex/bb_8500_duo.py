@@ -11,7 +11,7 @@ def main(**kwargs):
         name="BB 8500 / 16000 (duo)",
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-3,
-        power_by_power_source={"AC": 10700},
+        power_by_power_source={"OHLE": 10700},
         gen=5,
         pantograph_type="diamond-double",
         intro_year_offset=8,  # introduce later than gen epoch by design

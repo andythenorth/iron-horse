@@ -11,7 +11,7 @@ def main(**kwargs):
         name="BB 8100 / 9200 (duo)",
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-3,
-        power_by_power_source={"AC": 8700},
+        power_by_power_source={"OHLE": 8700},
         speed=75,  # for lolz
         random_reverse=True,
         gen=3,  # spans gen 4 as well

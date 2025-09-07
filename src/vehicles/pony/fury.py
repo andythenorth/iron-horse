@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="super_heavy_express",
         subrole_child_branch_num=-4,
         power_by_power_source={
-            "AC": 3600,  # supposed to be mid-powered, but maintains same hp/speed ratio of previous gen, or it will be too nerfed for 125mph
+            "OHLE": 3600,  # supposed to be mid-powered, but maintains same hp/speed ratio of previous gen, or it will be too nerfed for 125mph
         },
         random_reverse=True,
         gen=5,

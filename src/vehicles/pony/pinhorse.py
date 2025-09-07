@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="branch_express",
         subrole_child_branch_num=2,
         power_by_power_source={
-            "AC": 1050,  # matched to Stoat
+            "OHLE": 1050,  # matched to Stoat
         },
         random_reverse=True,
         pantograph_type="diamond-single",

@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 2200,
-            "AC": 3450,
+            "OHLE": 3450,
         },
         pantograph_type="z-shaped-single",
         # no random reverse

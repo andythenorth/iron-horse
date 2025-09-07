@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=3,
         power_by_power_source={
-            "AC": 8700,
+            "OHLE": 8700,
         },
         gen=3,
         pantograph_type="diamond-double",

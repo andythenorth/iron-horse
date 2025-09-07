@@ -338,8 +338,8 @@ base = "Battery Hybrid"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_AC]
-base = "AC Electric"
+[STR_BADGE_POWER_SOURCE_OHLE]
+base = "Electric"
 
 [STR_BADGE_POWER_SOURCE_METRO]
 base = "Metro"
@@ -658,8 +658,8 @@ base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOL
 [STR_POWER_SOURCE]
 base = "Power Source"
 
-[STR_POWER_SOURCE_AC]
-base = "Electric (AC)"
+[STR_POWER_SOURCE_OHLE]
+base = "Electric"
 
 [STR_POWER_SOURCE_BATTERY_HYBRID]
 base = "Battery Hybrid"
@@ -714,22 +714,22 @@ base = "Dedicated High Speed Vehicles"
 base = "high speed rail vehicle"
 
 # lgv electrified track strings
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_NAME]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NAME]
 base = "Dedicated High Speed Railway"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_TOOLBAR_CAPTION]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_TOOLBAR_CAPTION]
 base = "Dedicated High Speed Railway Construction"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_MENU_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_MENU_TEXT]
 base = "Dedicated high speed railway construction"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_BUILD_WINDOW_CAPTION]
 base = "New Dedicated High Speed Vehicles"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_AUTOREPLACE_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_AUTOREPLACE_TEXT]
 base = "Dedicated High Speed Vehicles"
 
-[STR_RAILTYPE_LGV_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NEW_ENGINE_TEXT]
 base = "high speed rail vehicle"
 
 
@@ -791,23 +791,3 @@ base = "Electrified Narrow Gauge Vehicles"
 
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
 base = "electrified narrow gauge rail vehicle"
-
-
-# electrified AC track strings
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME]
-base = "AC Electrified Railway"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION]
-base = "AC Electrified Railway Construction"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT]
-base = "AC electrified railway construction"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION]
-base = "New AC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT]
-base = "AC Electrified Vehicles"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
-base = "AC electric rail vehicle"

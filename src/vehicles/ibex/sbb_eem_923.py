@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 750,
-            "AC": 2000,
+            "OHLE": 2000,
         },  # IRL 400 HP at rail for diesel modes, but gets a bump for gameplay
         random_reverse=True,
         gen=5,

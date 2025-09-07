@@ -52,7 +52,7 @@ base = "Hybride"
 [STR_BADGE_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
-[STR_BADGE_POWER_SOURCE_AC]
+[STR_BADGE_POWER_SOURCE_OHLE]
 base = "Électrique alternatif"
 
 [STR_BADGE_POWER_SOURCE_METRO]
@@ -251,7 +251,7 @@ base = "Universel / Haute capacité"
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER}"
 
-[STR_POWER_SOURCE_AC]
+[STR_POWER_SOURCE_OHLE]
 base = "courant alternatif"
 
 [STR_POWER_SOURCE_BATTERY_HYBRID]
@@ -386,23 +386,3 @@ base = "Véhicules ferroviaires électriques à écartement faible"
 
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
 base = "véhicule ferroviaire électrique à écartement faible"
-
-
-# electrified AC track strings
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME]
-base = "Voie ferrée électrifiée en courant alternatif"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION]
-base = "Construction de voie ferrée électrifiée en courant alternatif"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT]
-base = "Construction de voie ferrée électrifiée en courant alternatif"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION]
-base = "Nouveaux véhicules électriques en courant alternatif"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT]
-base = "Véhicules électriques en courant alternatif"
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
-base = "Véhicule ferroviaire électrique en courant alternatif"

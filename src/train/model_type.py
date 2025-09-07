@@ -606,7 +606,7 @@ class ModelTypeBase(object):
         if self.power_by_power_source is None:
             return result
         # extend this as necessary for different power sources, there's no magic pattern, it's manually declared mappings
-        # NOTE that order is explicit - and assumes that power hierarchy is AC > DIESEL
+        # NOTE that order is explicit - and assumes that power hierarchy is OHLE > DIESEL
         # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
         for power_source, optional_props in global_constants.power_sources.items():
             if power_source in self.power_by_power_source.keys():
@@ -633,15 +633,15 @@ class ModelTypeBase(object):
         if self.power_by_power_source is None:
             return False
         for power_source_name in self.power_by_power_source.keys():
-            if power_source_name not in ["AC"]:
+            if power_source_name not in ["OHLE"]:
                 # add any electric types here (not metro though)
                 return False
         return True
 
     @property
     def electrification_type(self):
-        if "AC" in self.power_by_power_source:
-            return "AC"
+        if "OHLE" in self.power_by_power_source:
+            return "OHLE"
         else:
             raise BaseException(
                 "no valid electrification type found for "
@@ -670,9 +670,9 @@ class ModelTypeBase(object):
                 return self.power_by_power_source["BATTERY_HYBRID"]
             elif "METRO" in self.power_by_power_source:
                 return self.power_by_power_source["METRO"]
-            elif "AC" in self.power_by_power_source:
-                # AC is the default for electrified locomotives
-                return self.power_by_power_source["AC"]
+            elif "OHLE" in self.power_by_power_source:
+                # OHLE (catenary) is the default for electrified locomotives
+                return self.power_by_power_source["OHLE"]
             else:
                 raise BaseException(
                     "no valid power source found when fetching default power for "
@@ -798,7 +798,7 @@ class ModelTypeBase(object):
         result = []
         if self.power_by_power_source is not None:
             # multisystem support
-            for electrification_type in ["AC"]:
+            for electrification_type in ["OHLE"]:
                 if electrification_type in self.power_by_power_source:
                     result.append(
                         "tile_powers_track_type_name_"
@@ -1158,10 +1158,10 @@ class EngineModelTypeBase(ModelTypeBase):
             power_factor = self.power / 800
         # malus for complex electro-diesels, ~33% higher equipment costs, based on elrl power
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
-        # !! assumption of AC !!
+        # !! assumption of OHLE !!
         elif self.electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus * self.power_by_power_source["AC"]
+                self.electro_diesel_buy_cost_malus * self.power_by_power_source["OHLE"]
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:
@@ -1290,7 +1290,7 @@ class EngineModelTypeBase(ModelTypeBase):
             # special cases
             if (
                 "DIESEL" in self.power_by_power_source.keys()
-                and "AC" in self.power_by_power_source.keys()
+                and "OHLE" in self.power_by_power_source.keys()
             ):
                 result.append("power_source/electro_diesel")
         return result

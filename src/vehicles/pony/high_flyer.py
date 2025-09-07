@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="express_pax_railcar",
         subrole_child_branch_num=-2,  # joker to hide them from simplified mode
         power_by_power_source={
-            "AC": 1600,
+            "OHLE": 1600,
         },
         pantograph_type="diamond-single-with-base",
         gen=3,

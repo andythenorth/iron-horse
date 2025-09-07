@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Ultra Shoebox",
         subrole="heavy_express",
         subrole_child_branch_num=-3,
-        power_by_power_source={"DIESEL": 1650, "AC": 2800},
+        power_by_power_source={"DIESEL": 1650, "OHLE": 2800},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,

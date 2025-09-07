@@ -6,8 +6,8 @@ from railtype import Railtype
 
 def main(disabled=False):
     return Railtype(
-        id="lgv_electrified_ac",
-        vehicle_track_type_name="LGV_ELECTRIFIED_AC",
+        id="lgv_electrified_ohle",
+        vehicle_track_type_name="LGV_ELECTRIFIED_OHLE",
         label="IHBA",
         base_label_in_standardised_scheme="HAAA",  # CABBAGE - just don't bother with standardised scheme here?
         # we don't fallback to RAIL or ELRL for LGV, because

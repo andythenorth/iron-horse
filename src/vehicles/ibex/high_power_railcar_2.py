@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="high_power_railcar",
         subrole_child_branch_num=1,
         power_by_power_source={
-            "AC": 1000,
+            "OHLE": 1000,
         },
         random_reverse=True,
         gen=2,

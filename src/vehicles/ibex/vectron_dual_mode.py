@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2400,
-            "AC": 3200,
+            "OHLE": 3200,
         },  # IRL 2600 HP at rail for both modes, but for gameplay what's the point of electric if not more powerful?
         random_reverse=True,
         gen=6,

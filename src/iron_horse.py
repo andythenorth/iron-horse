@@ -31,11 +31,11 @@ spritelayer_cargo_module_names = [
 # in the rare case that an unfinished railtype won't init cleanly, comment it out here
 railtype_module_names = [
     "lgv",
-    "lgv_electrified_ac",
+    "lgv_electrified_ohle",
     "metro",
     "narrow_gauge",
     "rail",
-    "rail_electrified_ac",
+    "rail_electrified_ohle",
 ]
 
 # comment out any unfinished rosters here as needed

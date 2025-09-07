@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Booster",
         subrole="branch_express",
         subrole_child_branch_num=2,
-        power_by_power_source={"DIESEL": 600, "AC": 1600},
+        power_by_power_source={"DIESEL": 600, "OHLE": 1600},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,

@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="branch_freight",
         subrole_child_branch_num=-4,
         power_by_power_source={
-            "AC": 1600,
+            "OHLE": 1600,
         },
         speed=87,  # continues past gen 5, so go faster
         random_reverse=True,

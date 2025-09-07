@@ -831,7 +831,7 @@ freight_wagon_liveries = {
 }
 
 power_sources = {
-    "AC": {"suffix": "_ELECTRIFIED_AC"},
+    "OHLE": {"suffix": "_ELECTRIFIED_OHLE"},
     "METRO": {},
     "BATTERY_HYBRID": {},
     "DIESEL": {},

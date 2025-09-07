@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=4,
         power_by_power_source={
-            "AC": 7200,
+            "OHLE": 7200,
         },
         random_reverse=True,
         gen=6,

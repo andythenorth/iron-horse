@@ -86,22 +86,3 @@ if (railtype_available("${railtype.label}") || (loading_stage == LOADING_STAGE_R
         </tal:graphics>
     }
 }
-<!--! make this type compatible with RAIL / ELRL as required -->
-<tal:extend_RAIL condition="railtype.extends_RAIL">
-    item (FEAT_RAILTYPES, item_RAIL) {
-        property {
-            label:                          "RAIL";
-            compatible_railtype_list:       ["${railtype.label}"];
-            powered_railtype_list:          ["${railtype.label}"];
-        }
-    }
-</tal:extend_RAIL>
-<tal:extend_ELRL condition="railtype.extends_ELRL">
-    item (FEAT_RAILTYPES, item_ELRL) {
-        property {
-            label:                          "ELRL";
-            compatible_railtype_list:       ["${railtype.label}"];
-            powered_railtype_list:          ["${railtype.label}"];
-        }
-    }
-</tal:extend_ELRL>

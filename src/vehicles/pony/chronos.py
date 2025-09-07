@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Chronos",
         subrole="express_mail_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
-        power_by_power_source={"AC": 2800},
+        power_by_power_source={"OHLE": 2800},
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design

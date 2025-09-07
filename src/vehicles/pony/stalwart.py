@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=1,
         power_by_power_source={
-            "AC": 3800,  # clear separation from Roarer?
+            "OHLE": 3800,  # clear separation from Roarer?
         },
         random_reverse=True,
         gen=4,

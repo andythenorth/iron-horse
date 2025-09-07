@@ -11,7 +11,7 @@ def main(**kwargs):
         name="FS E.636",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-1,
-        power_by_power_source={"AC": 4200},
+        power_by_power_source={"OHLE": 4200},
         random_reverse=True,
         gen=3,
         # pantograph_type="diamond-double",

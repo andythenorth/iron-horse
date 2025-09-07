@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "AC": 2900,
+            "OHLE": 2900,
         },
         speed=75,  # continues a long way into gen 4, so go faster
         gen=3,

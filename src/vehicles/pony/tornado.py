@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Tornado",
         subrole="branch_express",
         subrole_child_branch_num=2,
-        power_by_power_source={"DIESEL": 750, "AC": 1900},
+        power_by_power_source={"DIESEL": 750, "OHLE": 1900},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,

@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 3450,
-            "AC": 4200,  # yes it's the very close on both, just the effect changes; this is a tech tree cheat to get an extra ~3450 hp diesel and to get a 4200 hp electric
+            "OHLE": 4200,  # yes it's the very close on both, just the effect changes; this is a tech tree cheat to get an extra ~3450 hp diesel and to get a 4200 hp electric
         },
         random_reverse=True,
         pantograph_type="z-shaped-single",

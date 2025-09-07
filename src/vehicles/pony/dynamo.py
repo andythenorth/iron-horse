@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="express",
         subrole_child_branch_num=-3,
         power_by_power_source={
-            "AC": 1900,  # matches or better than equivalent gen steam engines
+            "OHLE": 1900,  # matches or better than equivalent gen steam engines
         },
         random_reverse=True,
         gen=3,

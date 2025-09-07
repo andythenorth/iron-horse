@@ -51,42 +51,6 @@ suppressed_rosters = ["pony", "ibex", "moose"]
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_TOOLBAR_CAPTION]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_MENU_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_BUILD_WINDOW_CAPTION]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_AUTOREPLACE_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_AUTOREPLACE_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
-[STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT]
-suppressed_rosters = ["pony", "moose"]
-
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
@@ -339,7 +303,7 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 suppressed_rosters = ["moose"]
 
-[STR_POWER_SOURCE_AC]
+[STR_POWER_SOURCE_OHLE]
 suppressed_rosters = ["moose"]
 
 [STR_POWER_SOURCE_DIESEL]

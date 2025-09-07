@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="pax_railcar",
         subrole_child_branch_num=2,
         power_by_power_source={
-            "AC": 520,
+            "OHLE": 520,
         },
         pantograph_type="z-shaped-single-with-base",
         receives_easter_egg_haulage_speed_bonus=True,

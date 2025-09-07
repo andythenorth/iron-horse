@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,
         # !! maybe add last mile diesel?  tends to not be useful on high HP electrics, but eh...?
-        power_by_power_source={"AC": 7400, "DIESEL": 2000},
+        power_by_power_source={"OHLE": 7400, "DIESEL": 2000},
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",

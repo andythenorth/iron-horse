@@ -11,7 +11,7 @@ def main(**kwargs):
         name="PO 2D2 5500",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
-        power_by_power_source={"AC": 3700},
+        power_by_power_source={"OHLE": 3700},
         speed=75,
         random_reverse=True,
         gen=3,

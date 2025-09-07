@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "AC": 6200,  # match to Resistance
+            "OHLE": 6200,  # match to Resistance
         },
         # dibble for game balance, assume some slip control
         tractive_effort_coefficient=0.34,

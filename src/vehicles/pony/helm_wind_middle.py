@@ -14,7 +14,7 @@ def main(**kwargs):
         name="Helm Wind Passenger Coach",
         subrole="very_high_speed",
         power_by_power_source={
-            "AC": 0
+            "OHLE": 0
         },  # set power 0, when attached to correct cab, cab power will be increased
         # no pantographs for Helm Wind middle cars
         gen=5,
@@ -46,7 +46,7 @@ def main(**kwargs):
         name="Helm Wind Mail Van",
         subrole="very_high_speed",
         power_by_power_source={
-            "AC": 0
+            "OHLE": 0
         },  # set power 0, when attached to correct cab, cab power will be increased
         # no pantographs for Helm Wind middle cars
         gen=5,

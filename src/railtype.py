@@ -29,8 +29,6 @@ class Railtype(object):
         self.maintenance_cost = kwargs.get("construction_cost", None)
         self.sort_order = kwargs.get("sort_order", None)
         self.is_lgv_railtype = kwargs.get("is_lgv_railtype", False)
-        self.extends_RAIL = kwargs.get("extends_RAIL", False)
-        self.extends_ELRL = kwargs.get("extends_ELRL", False)
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
         self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
         self.alternative_railtype_list = kwargs.get("alternative_railtype_list", [])

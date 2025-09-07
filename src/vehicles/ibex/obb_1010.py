@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=1,
         power_by_power_source={
-            "AC": 4200,  # nerfed from IRL OBB 1010, to fit into an Austria-leaning tree of 1042, 1142 etc
+            "OHLE": 4200,  # nerfed from IRL OBB 1010, to fit into an Austria-leaning tree of 1042, 1142 etc
         },
         random_reverse=True,
         gen=3,

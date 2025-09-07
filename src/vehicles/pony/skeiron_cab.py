@@ -15,7 +15,7 @@ def main(**kwargs):
         subrole_child_branch_num=2,
         pantograph_type="z-shaped-single",
         power_by_power_source={
-            "AC": 3200,  # more than Brenner, but Brenner has pax capacity
+            "OHLE": 3200,  # more than Brenner, but Brenner has pax capacity
         },
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Brenner

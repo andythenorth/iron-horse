@@ -15,7 +15,7 @@ def main(**kwargs):
         subrole="super_heavy_freight",
         subrole_child_branch_num=2,
         power_by_power_source={
-            "AC": 5600,
+            "OHLE": 5600,
         },
         random_reverse=True,
         gen=5,

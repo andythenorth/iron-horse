@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="mail_railcar",
         subrole_child_branch_num=3,
         power_by_power_source={
-            "AC": 540,
+            "OHLE": 540,
         },
         pantograph_type="z-shaped-single-with-base",
         receives_easter_egg_haulage_speed_bonus=True,

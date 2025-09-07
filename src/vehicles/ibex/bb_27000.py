@@ -11,7 +11,7 @@ def main(**kwargs):
         name="BB 27000",
         subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
-        power_by_power_source={"AC": 5600},
+        power_by_power_source={"OHLE": 5600},
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

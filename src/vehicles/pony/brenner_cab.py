@@ -15,7 +15,7 @@ def main(**kwargs):
         subrole_child_branch_num=-2,
         pantograph_type="z-shaped-single-with-base",  # brenner shows no pan on cab, but needed for trailers to resolve badges
         power_by_power_source={
-            "AC": 3000,
+            "OHLE": 3000,
         },
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Skeiron

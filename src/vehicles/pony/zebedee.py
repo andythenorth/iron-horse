@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "AC": 4850,  # 4850 not 5000 simply for rapid and obvious distinction from the nearby 3800 and 5800 power bands
+            "OHLE": 4850,  # 4850 not 5000 simply for rapid and obvious distinction from the nearby 3800 and 5800 power bands
         },
         random_reverse=True,
         gen=4,

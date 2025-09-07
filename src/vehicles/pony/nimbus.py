@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=-3,
         power_by_power_source={
             "DIESEL": 1500,
-            "AC": 2500,
+            "OHLE": 2500,
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,

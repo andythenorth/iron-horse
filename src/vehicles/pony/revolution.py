@@ -13,7 +13,7 @@ def main(**kwargs):
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2250,  # lol, same as Shredder eh?
-            "AC": 5400,  # higher HP than Screamer, but heavier so similar HP / ton
+            "OHLE": 5400,  # higher HP than Screamer, but heavier so similar HP / ton
         },
         random_reverse=True,
         pantograph_type="z-shaped-single",

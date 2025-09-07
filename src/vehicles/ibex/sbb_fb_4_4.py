@@ -12,8 +12,8 @@ def main(**kwargs):
         subrole="branch_express",
         subrole_child_branch_num=2,
         power_by_power_source={
-            # "AC": 1700,
-            "AC": 10,
+            # "OHLE": 1700,
+            "OHLE": 10,
         },
         gen=2,
         pantograph_type="diamond-double",
