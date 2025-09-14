@@ -14,6 +14,7 @@ def main(disabled=False):
         maintenance_cost=10,
         railtype_flags=["RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         sort_order=41,
+        # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         compatible_railtype_list=[],
         powered_railtype_list=[],
         alternative_railtype_list=[],

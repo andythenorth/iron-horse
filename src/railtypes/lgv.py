@@ -22,6 +22,7 @@ def main(disabled=False):
         curve_speed_multiplier=1.66,  # decimal value seems to work?  I expected int would be required, but eh.
         sort_order=25,
         is_lgv_railtype=True,
+        # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         compatible_railtype_list=[
             "HAAE",
             "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?

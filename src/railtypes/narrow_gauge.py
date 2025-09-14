@@ -15,6 +15,7 @@ def main(disabled=False):
         railtype_flags=[],
         curve_speed_multiplier=1,  # small buff for narrow gauge (default value for RAIL is 0)
         sort_order=38,
+        # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         # as of May 2025, all extended labels for speed and axle load are removed, in the interests of "those are neither fun nor useful"
         # keep it simple
         compatible_railtype_list=[

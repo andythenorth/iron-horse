@@ -24,6 +24,7 @@ def main(disabled=False):
         curve_speed_multiplier=1.66,  # decimal value seems to work?  I expected int would be required, but eh.
         sort_order=26,
         is_lgv_railtype=True,
+        # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         # TGVs can go on ELRL etc, but this won't allow RAIL / ELRL onto the TGV tracks
         compatible_railtype_list=[
             "HAAN",
