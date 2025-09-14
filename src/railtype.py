@@ -52,12 +52,15 @@ class Railtype(object):
                     label_template
                 )
             )
+        print(self.id, len(result))
         return result
 
     def generate_speed_appearance_variants_of_standardised_label(self, label_template):
         result = []
-        # assume only the folowing are valid in labels: a-z, A-Z, 0-9
-        chars = string.ascii_letters + string.digits
+        # assume only the A-Z are valid in labels
+        # covering all of a-z, A-Z, 0-9 rapidly exceeds the property sizes (bytes)
+        # the lowercase labels are very niche, and can be ignored
+        chars = string.ascii_uppercase
         for char in chars:
             result.append(label_template.replace("*", char, 1))
         return result

@@ -33,13 +33,13 @@ def main(disabled=False):
             "ELRL",
         ],
         # templates for generating variations of standard railtype labels
-        extend_compatible_railtype_list=["S*AN", "S*AE"],
+        extend_compatible_railtype_list=["S*AN", "S*AE", "S*AA", "S*AD", "S*A3", "d*AN", "d*AE"],
         powered_railtype_list=[
             "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
             "ELRL",
         ],
         # templates for generating variations of standard railtype labels
-        extend_powered_railtype_list=["S*AE"],
+        extend_powered_railtype_list=["S*AE", "S*AA", "S*AD", "d*AE"],
         use_custom_sprites=True,
         alternative_railtype_list=[],
     )
