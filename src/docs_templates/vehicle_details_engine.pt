@@ -154,7 +154,7 @@
                             </tr>
                         </tal:optional_capacity>
                         <tr>
-                            <th>Track types</th>
+                            <th>Track type(s)</th>
                             <td>${", ".join(example_model_variant.track_types)}</td>
                         </tr>
                     </tbody>
