@@ -6,8 +6,6 @@ def main(disabled=False):
         id="narrow_gauge",
         vehicle_track_type_name="NG",
         label="NAAN",
-        # just use the standardised label, no legacy railtype support
-        non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=5,
         maintenance_cost=7,

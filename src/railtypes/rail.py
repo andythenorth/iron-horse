@@ -6,7 +6,6 @@ def main(disabled=False):
         id="rail",
         vehicle_track_type_name="RAIL",
         label="RAIL",
-        non_standardised_rtt_fallback_labels=["RAIL"],
         rosters=["pony", "ibex", "moose"],
         construction_cost=None,
         maintenance_cost=None,

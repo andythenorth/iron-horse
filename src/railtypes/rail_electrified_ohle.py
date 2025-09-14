@@ -9,7 +9,6 @@ def main(disabled=False):
         id="rail_electrified_ohle",
         vehicle_track_type_name="RAIL_ELECTRIFIED_OHLE",
         label="ELRL",
-        non_standardised_rtt_fallback_labels=["ELRL"],
         rosters=["pony", "ibex", "moose"],
         construction_cost=None,
         maintenance_cost=None,

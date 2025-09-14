@@ -7,7 +7,6 @@ def main(disabled=False):
         vehicle_track_type_name="METRO",
         # MTRO used, because metro is not equivalent to either SAA3 or SAA4 standardised labels - it's a specific type unrepresented in the standardised scheme
         label="MTRO",
-        non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=10,
         maintenance_cost=10,

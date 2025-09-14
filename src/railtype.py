@@ -14,9 +14,6 @@ class Railtype(object):
         self.id = kwargs.get("id")
         self.vehicle_track_type_name = kwargs.get("vehicle_track_type_name")
         self.label = kwargs.get("label")
-        self.non_standardised_rtt_fallback_labels = kwargs.get(
-            "non_standardised_rtt_fallback_labels"
-        )
         self.introduction_date = kwargs.get("introduction_date", None)  # "yyyy,mm,dd"
         self.rosters = kwargs.get("rosters", None)
         # 0 is no limit
@@ -61,7 +58,6 @@ class RailTypeManager(list):
         for railtype in self:
             labels_list = []
             labels_list.append(railtype.label)
-            labels_list.extend(railtype.non_standardised_rtt_fallback_labels)
             result[railtype.vehicle_track_type_name] = labels_list
 
         return result
