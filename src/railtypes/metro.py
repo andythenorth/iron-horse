@@ -14,17 +14,9 @@ def main(disabled=False):
         maintenance_cost=10,
         railtype_flags=["RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         sort_order=41,
-        compatible_railtype_list=[
-            "MTRO", # CABBAGE
-            "SAA4", # CABBAGE
-        ],
-        powered_railtype_list=[
-            "MTRO", # CABBAGE
-            "SAA4", # CABBAGE
-        ],
-        alternative_railtype_list=[
-            "MTRO", # CABBAGE
-        ],
+        compatible_railtype_list=[],
+        powered_railtype_list=[],
+        alternative_railtype_list=[],
         use_custom_sprites=True,
         use_custom_signals=True,
     )

@@ -5,13 +5,14 @@ from railtype import Railtype
 
 # unelectrifed LGV is a *hidden* compatibility railtype to ensure LGV capable but unelectrified HSTs etc can travel on LGV
 
+
 def main(disabled=False):
     return Railtype(
         id="lgv",
         vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
         label="HAAN",
-        base_label_in_standardised_scheme="HAAN", # CABBAGE - just don't bother with standardised scheme here?
+        base_label_in_standardised_scheme="HAAN",  # CABBAGE - just don't bother with standardised scheme here?
         non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
@@ -23,24 +24,16 @@ def main(disabled=False):
         is_lgv_railtype=True,
         compatible_railtype_list=[
             "HAAE",
-            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHBA", # legacy Horse - needed for railtype grfs that supported Horse?
-            "RAIL",
-            "ELRL",
+            "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHBA",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
-        # templates for generating variations of standard railtype labels
-        extend_compatible_railtype_list=["S*AN", "S*AE", "S*AA", "S*AD", "S*A3", "d*AN", "d*AE"],
         powered_railtype_list=[
             "HAAE",
-            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHBA", # legacy Horse - needed for railtype grfs that supported Horse?
-            "RAIL",
-            "ELRL",
+            "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHBA",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
-        # templates for generating variations of standard railtype labels
-        extend_powered_railtype_list=["S*AN", "S*AE", "S*AA", "S*AD", "S*A3", "d*AN", "d*AE"],
-        use_custom_sprites=False,
         alternative_railtype_list=[],
+        use_custom_sprites=False,
     )

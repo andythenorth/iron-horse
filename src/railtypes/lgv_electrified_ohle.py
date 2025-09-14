@@ -27,19 +27,12 @@ def main(disabled=False):
         # TGVs can go on ELRL etc, but this won't allow RAIL / ELRL onto the TGV tracks
         compatible_railtype_list=[
             "HAAN",
-            "IHA_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "RAIL",
-            "ELRL",
+            "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
+            "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
-        # templates for generating variations of standard railtype labels
-        extend_compatible_railtype_list=["S*AN", "S*AE", "S*AA", "S*AD", "S*A3", "d*AN", "d*AE"],
         powered_railtype_list=[
-            "IHB_", # legacy Horse - needed for railtype grfs that supported Horse?
-            "ELRL",
+            "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
-        # templates for generating variations of standard railtype labels
-        extend_powered_railtype_list=["S*AE", "S*AA", "S*AD", "d*AE"],
-        use_custom_sprites=True,
         alternative_railtype_list=[],
+        use_custom_sprites=True,
     )

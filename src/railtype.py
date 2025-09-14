@@ -35,35 +35,8 @@ class Railtype(object):
         self.use_custom_signals = kwargs.get("use_custom_signals", False)
         self.suppress_for_nml = kwargs.get("suppress_for_nml", False)
         self.disabled = False
-        self.compatible_railtype_list = self.resolve_railtype_list(
-            kwargs.get("compatible_railtype_list", []),
-            kwargs.get("extend_compatible_railtype_list", []),
-        )
-        self.powered_railtype_list = self.resolve_railtype_list(
-            kwargs.get("powered_railtype_list", []),
-            kwargs.get("extend_powered_railtype_list", []),
-        )
-
-    def resolve_railtype_list(self, explicit_labels, extension_lists):
-        result = explicit_labels
-        for label_template in extension_lists:
-            result.extend(
-                self.generate_speed_appearance_variants_of_standardised_label(
-                    label_template
-                )
-            )
-        print(self.id, len(result))
-        return result
-
-    def generate_speed_appearance_variants_of_standardised_label(self, label_template):
-        result = []
-        # assume only the A-Z are valid in labels
-        # covering all of a-z, A-Z, 0-9 rapidly exceeds the property sizes (bytes)
-        # the lowercase labels are very niche, and can be ignored
-        chars = string.ascii_uppercase
-        for char in chars:
-            result.append(label_template.replace("*", char, 1))
-        return result
+        self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
+        self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
 
     def make_nml_railtype_list(self, railtype_list):
         result = ",".join(['"' + railtype + '"' for railtype in railtype_list])

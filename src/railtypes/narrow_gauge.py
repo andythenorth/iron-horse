@@ -6,7 +6,7 @@ def main(disabled=False):
         id="narrow_gauge",
         vehicle_track_type_name="NG",
         label="NAAN",
-        base_label_in_standardised_scheme="NAAN", # CABBAGE
+        base_label_in_standardised_scheme="NAAN",  # CABBAGE
         # just use the standardised label, no legacy railtype support
         non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
@@ -18,13 +18,11 @@ def main(disabled=False):
         # as of May 2025, all extended labels for speed and axle load are removed, in the interests of "those are neither fun nor useful"
         # keep it simple
         compatible_railtype_list=[
-            "NAAN", # CABBAGE
-            "NAAE", # CABBAGE
+            "NAAE",
         ],
         powered_railtype_list=[
-            "NAAN", # CABBAGE
-            "NAAE", # CABBAGE
+            "NAAE",
         ],
+        alternative_railtype_list=[],
         use_custom_sprites=True,
-        alternative_railtype_list=["NAAN"],
     )
