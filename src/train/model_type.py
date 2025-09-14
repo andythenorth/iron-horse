@@ -588,7 +588,7 @@ class ModelTypeBase(object):
         return result
 
     @cached_property
-    def track_type(self):
+    def track_types(self):
         # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
         # track_type maps base_track_type and modifiers to an actual railtype label
         # this is done by looking up a railtype mapping in global constants, via internal labels
@@ -599,8 +599,7 @@ class ModelTypeBase(object):
                 self.track_type_name
             ]
         )
-        # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
-        return railtype_labels_by_vehicle_track_type_name_cabbage[0]
+        return railtype_labels_by_vehicle_track_type_name_cabbage
 
     @cached_property
     def vehicle_power_source_tree(self):

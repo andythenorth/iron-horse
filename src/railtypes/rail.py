@@ -6,7 +6,6 @@ def main(disabled=False):
         id="rail",
         vehicle_track_type_name="RAIL",
         label="RAIL",
-        base_label_in_standardised_scheme="RAIL",  # CABBAGE - just don't bother with standardised scheme here?
         non_standardised_rtt_fallback_labels=["RAIL"],
         rosters=["pony", "ibex", "moose"],
         construction_cost=None,

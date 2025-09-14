@@ -14,9 +14,6 @@ class Railtype(object):
         self.id = kwargs.get("id")
         self.vehicle_track_type_name = kwargs.get("vehicle_track_type_name")
         self.label = kwargs.get("label")
-        self.base_label_in_standardised_scheme = kwargs.get(
-            "base_label_in_standardised_scheme"
-        )
         self.non_standardised_rtt_fallback_labels = kwargs.get(
             "non_standardised_rtt_fallback_labels"
         )
@@ -64,7 +61,6 @@ class RailTypeManager(list):
         for railtype in self:
             labels_list = []
             labels_list.append(railtype.label)
-            labels_list.append(railtype.base_label_in_standardised_scheme)
             labels_list.extend(railtype.non_standardised_rtt_fallback_labels)
             result[railtype.vehicle_track_type_name] = labels_list
 
@@ -96,7 +92,5 @@ class RailTypeManager(list):
         result = []
         for railtype in self:
             if railtype.is_lgv_railtype:
-                # take the IH and standardised labels
                 result.append(railtype.label)
-                result.append(railtype.base_label_in_standardised_scheme)
         return result

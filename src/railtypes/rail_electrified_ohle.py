@@ -9,7 +9,6 @@ def main(disabled=False):
         id="rail_electrified_ohle",
         vehicle_track_type_name="RAIL_ELECTRIFIED_OHLE",
         label="ELRL",
-        base_label_in_standardised_scheme="ELRL",  # CABBAGE - just don't bother with standardised scheme here?
         non_standardised_rtt_fallback_labels=["ELRL"],
         rosters=["pony", "ibex", "moose"],
         construction_cost=None,

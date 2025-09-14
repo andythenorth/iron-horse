@@ -366,7 +366,7 @@ class DocHelper(object):
             example_model_variant = catalogue.example_model_variant
             self.fetch_prop(result, "Vehicle Name", self.unpack_name_string(catalogue))
             self.fetch_prop(result, "Gen", example_model_variant.gen)
-            self.fetch_prop(result, "Railtype", example_model_variant.track_type)
+            self.fetch_prop(result, "Railtypes", ", ".join(example_model_variant.track_types))
             self.fetch_prop(result, "HP", int(example_model_variant.power))
             self.fetch_prop(result, "Speed (mph)", example_model_variant.speed)
             self.fetch_prop(result, "Weight (t)", example_model_variant.weight)

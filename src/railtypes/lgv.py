@@ -12,7 +12,6 @@ def main(disabled=False):
         vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
         label="HAAN",
-        base_label_in_standardised_scheme="HAAN",  # CABBAGE - just don't bother with standardised scheme here?
         non_standardised_rtt_fallback_labels=[],
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
