@@ -71,16 +71,16 @@
                         <thead>
                             <tr>
                                 <th>Railtype label</th>
-                                <th>Name</th>
                                 <th>Internal ID</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tal:railtypes repeat="railtype iron_horse.railtype_manager">
                                 <tr>
                                     <td><code>${railtype.label}</code></td>
-                                    <td>${doc_helper.lang_strings.get('STR_RAILTYPE_' + railtype.id.upper() + '_NAME', 'name string undefined')}</td>
                                     <td><code>${railtype.id}</code></td>
+                                    <td>${doc_helper.get_railtype_display_name(railtype)}</td>
                                 </tr>
                             </tal:railtypes>
                        </tbody>

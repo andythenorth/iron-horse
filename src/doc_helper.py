@@ -396,6 +396,18 @@ class DocHelper(object):
         # could fetch from lang strings, but eh, JFDI, it's docs
         return {"RAIL": "Standard Gauge", "NG": "Narrow Gauge", "METRO": "Metro"}
 
+    def get_railtype_display_name(self, railtype):
+        # JFDI handling of base types, otherwise fall through to the lang string name
+        if "ohle" in railtype.id:
+            electrification_suffix = " (electrified with catenary)"
+        else:
+            electrification_suffix = ""
+        if railtype.label == "RAIL":
+            return "Standard gauge rail"
+        if railtype.label == "ELRL":
+            return "Standard gauge rail" + electrification_suffix
+        return self.lang_strings['STR_RAILTYPE_' + railtype.id.upper() + '_NAME'].capitalize() + electrification_suffix
+
     def get_og_tags_content(self, doc_name, optional_title, optional_model_variant):
 
         # base_url has to be predicted at compile time, assuming grf.farm or whatever is returned by utils.get_docs_base_url
