@@ -155,7 +155,14 @@
                         </tal:optional_capacity>
                         <tr>
                             <th>Track type(s)</th>
-                            <td>${", ".join([track_type.label for track_type in example_model_variant.track_types])}</td>
+                            <td>
+                                <tal:track_types repeat="track_type example_model_variant.track_types">
+                                    ${doc_helper.get_railtype_display_name(track_type)}
+                                    <tal:break condition="not:repeat.track_type.end">
+                                        <br />
+                                    </tal:break>
+                                </tal:track_types>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
