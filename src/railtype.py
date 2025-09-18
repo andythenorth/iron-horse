@@ -52,6 +52,12 @@ class RailTypeManager(list):
             railtype = railtype_module.main(disabled=False)
             self.append(railtype)
 
+    def get_railtype_by_vehicle_track_type_name(self, vehicle_track_type_name):
+        for railtype in self:
+            if railtype.vehicle_track_type_name == vehicle_track_type_name:
+                return railtype
+        raise ValueError(f"No railtype found with vehicle_track_type_name={vehicle_track_type_name}")
+
     @property
     def railtype_labels_by_vehicle_track_type_name_cabbage(self):
         result = {}

@@ -54,7 +54,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         extra_flags:                    bitmask(${unit.extra_flags});
         dual_headed:                    ${1 if model_variant.dual_headed else 0};
         length:                         ${unit.vehicle_length};
-        track_type:                     [${','.join(model_variant.track_types)}];
+        track_type:                     [${','.join([track_type.label for track_type in model_variant.track_types])}];
         effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; <!--! default to none to suppress effects, set in cb as needed -->
     }
     graphics {

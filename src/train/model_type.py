@@ -576,30 +576,29 @@ class ModelTypeBase(object):
         # retire at end of model life + 10 (fudge factor - no need to be more precise than that)
         return -10
 
-    @property
-    def track_type_name(self):
-        interpolated_track_type = self.base_track_type
-        if self.lgv_capable:
-            interpolated_track_type = "LGV"
-        if self.requires_electric_rails:
-            result = interpolated_track_type + "_ELECTRIFIED_" + self.electrification_type
-        else:
-            result = interpolated_track_type
-        return result
-
     @cached_property
     def track_types(self):
-        # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
-        # track_type maps base_track_type and modifiers to an actual railtype label
-        # this is done by looking up a railtype mapping in global constants, via internal labels
-        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
-        # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
-        railtype_labels_by_vehicle_track_type_name_cabbage = (
-            iron_horse.railtype_manager.railtype_labels_by_vehicle_track_type_name_cabbage[
-                self.track_type_name
-            ]
-        )
-        return railtype_labels_by_vehicle_track_type_name_cabbage
+        # creates an array of railtypes that the vehicle is compatible with in prop 34
+
+        track_type_names = []
+
+        # this assumes that all vehicles have a base track type, and a consistent pattern if that base track type has electrified variants
+        if self.requires_electric_rails:
+            track_type_names.append(self.base_track_type + "_ELECTRIFIED_" + self.electrification_type)
+        else:
+            track_type_names.append(self.base_track_type)
+
+        # LGV is handled as a specific special case
+        if self.lgv_capable:
+            if self.requires_electric_rails:
+                track_type_names.append("LGV_ELECTRIFIED_OHLE")
+            else:
+                track_type_names.append("LGV")
+
+        result = [
+            iron_horse.railtype_manager.get_railtype_by_vehicle_track_type_name(track_type_name) for track_type_name in track_type_names
+        ]
+        return result
 
     @cached_property
     def vehicle_power_source_tree(self):
