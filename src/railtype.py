@@ -60,6 +60,7 @@ class RailTypeManager(list):
 
     @property
     def railtype_labels_by_vehicle_track_type_name_cabbage(self):
+        # probably legacy, at minimum could be refactored as we no longer have lists of multiple labels
         result = {}
         for railtype in self:
             labels_list = []
