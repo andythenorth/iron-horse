@@ -584,7 +584,9 @@ class ModelTypeBase(object):
 
         # this assumes that all vehicles have a base track type, and a consistent pattern if that base track type has electrified variants
         if self.requires_electric_rails:
-            track_type_names.append(self.base_track_type + "_ELECTRIFIED_" + self.electrification_type)
+            track_type_names.append(
+                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+            )
         else:
             track_type_names.append(self.base_track_type)
 
@@ -596,7 +598,10 @@ class ModelTypeBase(object):
                 track_type_names.append("LGV")
 
         result = [
-            iron_horse.railtype_manager.get_railtype_by_vehicle_track_type_name(track_type_name) for track_type_name in track_type_names
+            iron_horse.railtype_manager.get_railtype_by_vehicle_track_type_name(
+                track_type_name
+            )
+            for track_type_name in track_type_names
         ]
         return result
 
