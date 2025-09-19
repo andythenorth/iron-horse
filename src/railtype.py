@@ -59,17 +59,6 @@ class RailTypeManager(list):
         raise ValueError(f"No railtype found with vehicle_track_type_name={vehicle_track_type_name}")
 
     @property
-    def railtype_labels_by_vehicle_track_type_name_cabbage(self):
-        # probably legacy, at minimum could be refactored as we no longer have lists of multiple labels
-        result = {}
-        for railtype in self:
-            labels_list = []
-            labels_list.append(railtype.label)
-            result[railtype.vehicle_track_type_name] = labels_list
-
-        return result
-
-    @property
     def lgv_railtype_labels(self):
         result = []
         for railtype in self:
