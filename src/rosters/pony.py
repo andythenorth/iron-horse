@@ -464,11 +464,11 @@ def main():
                     0,
                     0,
                     0,
-                    140,
-                    140,
+                    155, # keep aligned to TGV speed
+                    155,
                 ],
                 "hst": [0, 0, 0, 112, 128, 128],
-                "hst_on_lgv": [0, 0, 0, 0, 140, 140],
+                "hst_on_lgv": [0, 0, 0, 0, 155, 155], # keep aligned to TGV speed....HST theoretical top speed on 5000 hp is about 155 mph so eh
                 "very_high_speed": [0, 0, 0, 0, 128, 128],
                 "very_high_speed_on_lgv": [0, 0, 0, 0, 155, 186],
             },

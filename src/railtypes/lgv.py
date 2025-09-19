@@ -11,7 +11,7 @@ def main(disabled=False):
         id="lgv",
         vehicle_track_type_name="LGV",
         introduction_date="1989,06,22",
-        label="HAAN",
+        label="LGVN",
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
@@ -22,13 +22,13 @@ def main(disabled=False):
         is_lgv_railtype=True,
         # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         compatible_railtype_list=[
-            "HAAE",
+            "LGVE",
             "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
             "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
             "IHBA",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
         powered_railtype_list=[
-            "HAAE",
+            "LGVE",
             "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
             "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
             "IHBA",  # legacy Horse - needed for railtype grfs that supported Horse?

@@ -9,7 +9,7 @@ def main(disabled=False):
         id="lgv_electrified_ohle",
         vehicle_track_type_name="LGV_ELECTRIFIED_OHLE",
         # H is not a type in in the standardised scheme as of Sept 2025, but we're using it anyway, yolo
-        label="HAAE",
+        label="LGVE",
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
@@ -20,7 +20,7 @@ def main(disabled=False):
         # compatible and powered are minimal following https://github.com/OpenTTD/OpenTTD/pull/14357
         # TGVs can go on ELRL etc, but this is via the vehicle track_type
         compatible_railtype_list=[
-            "HAAN",
+            "LGVN",
             "IHA_",  # legacy Horse - needed for railtype grfs that supported Horse?
             "IHB_",  # legacy Horse - needed for railtype grfs that supported Horse?
         ],
