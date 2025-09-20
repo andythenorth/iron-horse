@@ -37,52 +37,70 @@
     }
 </tal:spritesets>
 
-if (railtype_available("${railtype.label}") || (loading_stage == LOADING_STAGE_RESERVE)) {
-    item (FEAT_RAILTYPES, item_${railtype.id}) {
-        property {
-            label:                          "${railtype.label}";
-            badges:                         ["ih_railtype/${railtype.label}"];
-            <tal:introduction_date condition="railtype.introduction_date is not None">
-                introduction_date:              date(${railtype.introduction_date});
-            </tal:introduction_date>
-            railtype_flags:                 bitmask(${",".join(railtype.railtype_flags)});
-            curve_speed_multiplier:         ${railtype.curve_speed_multiplier};
-            speed_limit:                    ${railtype.speed_limit};
-            acceleration_model:             ACC_MODEL_RAIL;
-            construction_cost:              ${railtype.construction_cost};
-            maintenance_cost:               ${railtype.maintenance_cost};
-            <!--! map colour deliberately unused - changing it means it doesn't match the minimap key, which is weird
-            map_colour:                     //;
-            -->
-            sort_order:                     ${railtype.sort_order};
-            compatible_railtype_list:       ${railtype.make_nml_railtype_list(railtype.compatible_railtype_list)};
-            powered_railtype_list:          ${railtype.make_nml_railtype_list(railtype.powered_railtype_list)};
-            alternative_railtype_list:      ${railtype.make_nml_railtype_list(railtype.alternative_railtype_list)};
-            station_graphics:               RAILTYPE_STATION_NORMAL;
-            name:                           string(STR_RAILTYPE_${railtype.id.upper()}_NAME);
-            menu_text:                      string(STR_RAILTYPE_${railtype.id.upper()}_MENU_TEXT);
-            build_window_caption:           string(STR_RAILTYPE_${railtype.id.upper()}_BUILD_WINDOW_CAPTION);
-            autoreplace_text:               string(STR_RAILTYPE_${railtype.id.upper()}_AUTOREPLACE_TEXT);
-            new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
-            toolbar_caption:                string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
-        }
-        <tal:graphics condition="railtype.use_custom_sprites">
-            graphics {
-                gui:                        spriteset_${railtype.id}_gui;
-                track_overlay:              spriteset_${railtype.id}_track_overlay;
-                underlay:                   spriteset_${railtype.id}_underlay;
-                tunnels:                    spriteset_${railtype.id}_tunnels;
-                //catenary_wire:
-                //catenary_pylons
-                bridge_surfaces:            spriteset_${railtype.id}_bridge_surfaces;
-                level_crossings:            switch_${railtype.id}_level_crossings;
-                depots:						spriteset_${railtype.id}_depot;
-                //fences:
-                //tunnel_overlay:
-                <tal:signals condition="railtype.use_custom_signals">
-                    signals:                    switch_signals;
-                </tal:signals>
+<!--! we try to auto-disable some railtypes if another grf provides them (to deconflict community opinions)
+    - this is load-order dependent, we'll only disable if we load after another grf that defines the same label
+    - if we load first, we'll define our type, then get overwritten later
+-->
+if ((loading_stage == LOADING_STAGE_RESERVE) || (loading_stage == LOADING_STAGE_INITIALIZE)) {
+    if (railtype_available("${railtype.label}") && ${1 if railtype.yield_to_other_railtype_grfs else 0}) {
+        param_railtype_disabled_${railtype.id} = 1;
+    } else {
+        param_railtype_disabled_${railtype.id} = 0;
+        item (FEAT_RAILTYPES, item_${railtype.id}) {
+            property {
+                label:                          "${railtype.label}";
             }
-        </tal:graphics>
+        }
+    }
+}
+else {
+    if (param_railtype_disabled_${railtype.id} == 0) {
+        item (FEAT_RAILTYPES, item_${railtype.id}) {
+            property {
+                label:                          "${railtype.label}";
+                badges:                         ["ih_railtype/${railtype.label}"];
+                <tal:introduction_date condition="railtype.introduction_date is not None">
+                    introduction_date:              date(${railtype.introduction_date});
+                </tal:introduction_date>
+                railtype_flags:                 bitmask(${",".join(railtype.railtype_flags)});
+                curve_speed_multiplier:         ${railtype.curve_speed_multiplier};
+                speed_limit:                    ${railtype.speed_limit};
+                acceleration_model:             ACC_MODEL_RAIL;
+                construction_cost:              ${railtype.construction_cost};
+                maintenance_cost:               ${railtype.maintenance_cost};
+                <!--! map colour deliberately unused - changing it means it doesn't match the minimap key, which is weird
+                map_colour:                     //;
+                -->
+                sort_order:                     ${railtype.sort_order};
+                compatible_railtype_list:       ${railtype.make_nml_railtype_list(railtype.compatible_railtype_list)};
+                powered_railtype_list:          ${railtype.make_nml_railtype_list(railtype.powered_railtype_list)};
+                alternative_railtype_list:      ${railtype.make_nml_railtype_list(railtype.alternative_railtype_list)};
+                station_graphics:               RAILTYPE_STATION_NORMAL;
+                name:                           string(STR_RAILTYPE_${railtype.id.upper()}_NAME);
+                menu_text:                      string(STR_RAILTYPE_${railtype.id.upper()}_MENU_TEXT);
+                build_window_caption:           string(STR_RAILTYPE_${railtype.id.upper()}_BUILD_WINDOW_CAPTION);
+                autoreplace_text:               string(STR_RAILTYPE_${railtype.id.upper()}_AUTOREPLACE_TEXT);
+                new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
+                toolbar_caption:                string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
+            }
+            <tal:graphics condition="railtype.use_custom_sprites">
+                graphics {
+                    gui:                        spriteset_${railtype.id}_gui;
+                    track_overlay:              spriteset_${railtype.id}_track_overlay;
+                    underlay:                   spriteset_${railtype.id}_underlay;
+                    tunnels:                    spriteset_${railtype.id}_tunnels;
+                    //catenary_wire:
+                    //catenary_pylons
+                    bridge_surfaces:            spriteset_${railtype.id}_bridge_surfaces;
+                    level_crossings:            switch_${railtype.id}_level_crossings;
+                    depots:						spriteset_${railtype.id}_depot;
+                    //fences:
+                    //tunnel_overlay:
+                    <tal:signals condition="railtype.use_custom_signals">
+                        signals:                    switch_signals;
+                    </tal:signals>
+                }
+            </tal:graphics>
+        }
     }
 }

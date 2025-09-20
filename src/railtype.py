@@ -29,6 +29,8 @@ class Railtype(object):
         self.use_custom_signals = kwargs.get("use_custom_signals", False)
         self.suppress_for_nml = kwargs.get("suppress_for_nml", False)
         self.disabled = False
+        # option to automatically disable if another grf already provides this type, to deconflict
+        self.yield_to_other_railtype_grfs = kwargs.get("yield_to_other_railtype_grfs", False)
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
         self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
 
