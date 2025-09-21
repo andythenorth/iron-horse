@@ -18,7 +18,6 @@ def main(**kwargs):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

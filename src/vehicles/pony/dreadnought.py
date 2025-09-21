@@ -16,7 +16,6 @@ def main(**kwargs):
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         gen=5,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

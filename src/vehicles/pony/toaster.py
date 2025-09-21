@@ -21,7 +21,6 @@ def main(**kwargs):
         # introduce as gen 6 by design, but then make it early
         intro_year_offset=-15,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

@@ -18,7 +18,6 @@ def main(**kwargs):
         base_track_type="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        # note that livery names are metadata only and can repeat for different spriterows
         # additional_liveries=["SWOOSH", "INDUSTRIAL_YELLOW"],
         liveries=["VANILLA"],
         sprites_complete=True,

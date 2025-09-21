@@ -20,7 +20,6 @@ def main(**kwargs):
         gen=6,
         fixed_run_cost_points=470,  # run cost nerf for bi-mode flexibility + high el-power
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA"],
         sprites_complete=True,
     )

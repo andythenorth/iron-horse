@@ -18,7 +18,6 @@ def main(**kwargs):
         fixed_run_cost_points=100,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=1,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

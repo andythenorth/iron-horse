@@ -17,7 +17,6 @@ def main(**kwargs):
         tractive_effort_coefficient=0.18,
         gen=3,
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "FREIGHT_BLACK"],
         sprites_complete=True,
     )

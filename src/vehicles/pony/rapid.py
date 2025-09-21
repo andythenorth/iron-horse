@@ -20,7 +20,6 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=2,  # let's not have everything turn up in 1990
         fixed_run_cost_points=45,  # give a bonus so this can be a genuine mixed-traffic engine
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "RES"],
         sprites_complete=True,
     )

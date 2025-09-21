@@ -21,7 +21,6 @@ def main(**kwargs):
         intro_year_offset=-4,  # earlier than the IRL introduction of this never-built train...
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "RAILFREIGHT_RED_STRIPE",

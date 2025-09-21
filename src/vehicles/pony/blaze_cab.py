@@ -18,7 +18,6 @@ def main(**kwargs):
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
         gen=5,
         lgv_capable=True,  # for lolz
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "BANGER_BLUE",

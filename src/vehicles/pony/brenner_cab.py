@@ -19,7 +19,6 @@ def main(**kwargs):
         },
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Skeiron
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "SWOOSH"],
         sprites_complete=True,
     )

@@ -16,7 +16,6 @@ def main(**kwargs):
         pantograph_type="z-shaped-single",
         gen=6,
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
-        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",

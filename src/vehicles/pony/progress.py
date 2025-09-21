@@ -21,7 +21,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

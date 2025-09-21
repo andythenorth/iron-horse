@@ -18,7 +18,6 @@ def main(**kwargs):
         tractive_effort_coefficient=0.2,
         gen=1,
         random_reverse=True,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

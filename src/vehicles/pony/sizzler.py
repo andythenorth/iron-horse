@@ -20,7 +20,6 @@ def main(**kwargs):
         lgv_capable=True,  # for lolz
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

@@ -19,7 +19,6 @@ def main(**kwargs):
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         lgv_capable=True,  # for lolz
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "WHITE_STRIPE",

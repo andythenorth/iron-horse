@@ -19,7 +19,6 @@ def main(**kwargs):
         intro_year_offset=1,  # introduce later than gen epoch by design
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

@@ -17,7 +17,6 @@ def main(**kwargs):
         random_reverse=True,
         fixed_run_cost_points=140,  # substantial cost bonus as a mixed traffic engine
         gen=4,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA"],
         sprites_complete=False,
     )

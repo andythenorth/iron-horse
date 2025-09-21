@@ -19,7 +19,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # let's be a little earlier for this one
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "SWOOSH"],
         sprites_complete=True,
     )

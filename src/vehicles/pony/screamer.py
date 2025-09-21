@@ -20,7 +20,6 @@ def main(**kwargs):
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         # railfreight grey, intercity, GNER?
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "BANGER_BLUE",

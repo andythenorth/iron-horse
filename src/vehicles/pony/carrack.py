@@ -19,7 +19,6 @@ def main(**kwargs):
         gen=2,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         extended_vehicle_life=True,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

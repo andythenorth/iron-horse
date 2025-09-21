@@ -20,7 +20,6 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-2,  # let's be a littler earlier for this one
         # add railfreight triple grey
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "BANGER_BLUE",

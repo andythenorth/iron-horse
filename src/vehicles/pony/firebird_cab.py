@@ -16,7 +16,6 @@ def main(**kwargs):
             "DIESEL": 3300,  # it's the Deltic that never was!  It's OP, but eh, it's just cartoon trains.
         },
         gen=4,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "SWOOSH"],
         sprites_complete=True,
     )

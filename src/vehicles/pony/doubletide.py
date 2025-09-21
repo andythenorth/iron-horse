@@ -18,7 +18,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

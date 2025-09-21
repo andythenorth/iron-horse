@@ -18,7 +18,6 @@ def main(**kwargs):
         gen=4,
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
     )

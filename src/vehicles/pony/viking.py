@@ -17,7 +17,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

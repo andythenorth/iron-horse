@@ -19,7 +19,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "SWOOSH",

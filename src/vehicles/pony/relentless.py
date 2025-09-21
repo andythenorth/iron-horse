@@ -19,7 +19,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=6,
         fixed_run_cost_points=190,  # run cost nerf as light weight throws the cost too cheap
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         sprites_complete=True,
     )

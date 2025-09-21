@@ -21,7 +21,6 @@ def main(**kwargs):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=[
             "VANILLA",
             "RAILFREIGHT_TRIPLE_GREY",

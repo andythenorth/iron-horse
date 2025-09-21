@@ -21,7 +21,6 @@ def main(**kwargs):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # unfinished EWS livery exists, but eh
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "YEOMAN", "DB_SCHENKER", "FREIGHTLINER_GBRF", "ARC"],
         sprites_complete=True,
     )

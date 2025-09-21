@@ -20,7 +20,6 @@ def main(**kwargs):
         gen=2,
         intro_year_offset=5,  # let's be a little bit later for this one
         extended_vehicle_life=True,
-        # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "SWOOSH", "INDUSTRIAL_YELLOW"],
         sprites_complete=False,
     )
