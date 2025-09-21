@@ -490,7 +490,7 @@ base = "Hood Open Wagon"
 base = "Coal Hopper"
 
 [STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
-base = "Hopper"
+base = "Coal Hopper"
 
 [STR_WAGON_NAME_HST_MAIL_CAR]
 base = "Mail Van"
