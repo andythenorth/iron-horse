@@ -64,11 +64,6 @@ base = "Vapeur"
 [STR_WAGON_NAME_TRAILER]
 base = "Remorque"
 
-# size suffixes
-[STR_WAGON_GROUP_MORE]
-# special case
-base = "Plus…"
-
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 [STR_WAGON_NAME_ALIGNMENT_CAR]
 base = "Fourgon d’alignement"

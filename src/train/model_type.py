@@ -173,14 +173,6 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def use_name_callback(self):
-        # single special case as of April 2025
-        return (
-            (self.variant_group.group_level == 1)
-            and (len(self.variant_group) > 0)
-        )
-
-    @property
     def subrole_child_branch_num(self):
         # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
         # 0 = null, no branch (for wagons etc)
@@ -305,14 +297,6 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def variant_handling_badges(self):
-        # specific handling of indentation level 1
-        result = []
-        if self.use_name_callback:
-            result.append(f"ih_name_cb_flags/purchase_level_1_has_more_nested_variants")
-        return list(set(result))
-
-    @property
     def tech_tree_badges(self):
         result = []
         result.append(f"ih_tech_tree/subrole/{self.subrole}")
@@ -381,7 +365,6 @@ class ModelTypeBase(object):
         result.extend(self.restaurant_car_badges)
         result.extend(self.special_flags_badges)
         result.extend(self.tech_tree_badges)
-        result.extend(self.variant_handling_badges)
         result.extend([self.catalogue.vehicle_family_badge])
         result.extend(self.catalogue.vehicle_family_pantograph_display_badges)
 

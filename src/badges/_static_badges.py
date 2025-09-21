@@ -18,11 +18,6 @@ static_badges = {
             "z": {},  # CABBAGE 3/8 temp
         },
     },
-    "ih_name_cb_flags": {
-        "sublabels": {
-            "purchase_level_1_has_more_nested_variants": {},
-        }
-    },
     "ih_gen": {
         "name": "STR_BADGE_GEN",
         "sublabels": {

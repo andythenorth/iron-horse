@@ -123,7 +123,6 @@ def main():
         # procedures
         "procedures_capacity",
         "procedures_cargo_subtypes",
-        "procedures_name",
         "procedures_wagon_recolour_strategies",
     ]
 
