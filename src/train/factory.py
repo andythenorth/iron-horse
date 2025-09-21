@@ -354,19 +354,16 @@ class ModelVariantFactory:
 
         # default grouping for wagons not otherwise handled above
         if self.catalogue.wagon_quacker.quack:
-            # we split groups for random and static liveries (group nesting will then be determined by roster)
-            livery_selection = "static"
-            if (
-                not livery_def.group_as_static_livery
-                and len(livery_def.colour_set_names) > 1
-            ):
-                livery_selection = "random"
+            if self.catalogue.livery_defs[0] == livery_def:
+                livery_suffix = "primary"
+            else:
+                livery_suffix = "secondary_" + str(self.catalogue.livery_defs.index(livery_def))
 
             return (
                 f"{self.variant_group_id_root}_"
                 f"{base_track_type.lower()}_"
                 f"gen_{self.model_def.gen}{self.model_def.subtype}_"
-                f"{livery_selection}"
+                f"{livery_suffix}"
             )
 
         # delegate to vehicle family

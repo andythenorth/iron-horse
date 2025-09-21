@@ -178,7 +178,6 @@ class ModelTypeBase(object):
         return (
             (self.variant_group.group_level == 1)
             and (len(self.variant_group) > 0)
-            and (not self.variant_group.flatten_short_group)
         )
 
     @property

@@ -529,22 +529,18 @@ class Roster:
             )
             variant_group.append(model_variant)
 
-        # handle nesting of static and random wagon groups
-        # logic: if both a `_static` and `_random` group exist for the same base ID,
-        #        then the static group is nested into the random group
+        # handle nesting of wagon groups by primary and secondary livery options
         for variant_group_id, variant_group in self.variant_groups.items():
-            if not variant_group_id.endswith("_static"):
+            if variant_group_id.endswith("_primary"):
                 continue
 
             # derive the base ID stem (everything before `_static`)
-            group_id_stem = variant_group_id.rsplit("_static", 1)[0]
-            random_group_id = f"{group_id_stem}_random"
-            random_group = self.variant_groups.get(random_group_id)
-
-            if random_group and len(random_group) > 0:
-                variant_group.parent_group = random_group
-                random_group.child_groups.append(variant_group)
-
+            group_id_stem = variant_group_id.rsplit("_secondary", 1)[0]
+            primary_group_id = f"{group_id_stem}_primary"
+            primary_group = self.variant_groups.get(primary_group_id, None)
+            if (primary_group is not None) and (len(variant_group) > 0):
+                variant_group.parent_group = primary_group
+                primary_group.child_groups.append(variant_group)
 
 class VariantGroup(list):
     """
@@ -562,7 +558,7 @@ class VariantGroup(list):
         # faff to find the group leader (typically the first variant)
         leader = self[0]
         if self.parent_group is not None:
-            if model_variant == self[0] or self.flatten_short_group:
+            if model_variant == self[0]:
                 leader = self.parent_group[0]
 
         # guard - don't assign a group reference to the leader itself
@@ -571,11 +567,6 @@ class VariantGroup(list):
 
         # for nml, we want the id of the first unit
         return leader.units[0].id
-
-    @property
-    def flatten_short_group(self):
-        # don't bother nesting short groups
-        return len(self) < 4
 
     @cached_property
     def group_level(self):
