@@ -182,7 +182,7 @@ base = "Bahn Cargo"
 base = "Double Dutch"
 
 [STR_BADGE_LIVERY_EWS]
-base = "Michigan Central"
+base = "Midwest Central"
 
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
 base = "Obsidian"
@@ -209,7 +209,7 @@ base = "Load All"
 base = "Metroland"
 
 [STR_BADGE_LIVERY_RAILFREIGHT_RED_STRIPE]
-base = "RAILFREIGHT_RED_STRIPE"
+base = "Railslate Grey"
 
 [STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY]
 base = "Sector Connector"
