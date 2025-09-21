@@ -3761,9 +3761,9 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         super().__init__(**kwargs)
         # none needed
         self.class_refit_groups = []
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "metal_products"
-        ]
+        # strictly coils for these, eh, just infeasible for them to carry plate, slab etc
+        # could add paper and copper, but no sprite support as of Sept 2025
+        self.label_refits_allowed = ["ALUM", "RBAR", "STEL", "STSH", "STPL", "STWR", "TYCO"]
         # none needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
