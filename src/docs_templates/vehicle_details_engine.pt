@@ -220,7 +220,11 @@
                 <table class="livery-or-trailers-table text-left">
                     <tal:catalogue_entries repeat="catalogue_entry catalogue">
                         <tr>
-                            <th class="livery-or-trailers-table-first-col"><div style="margin-top:12px;">Livery ${repeat.catalogue_entry.number} examples</div></th>
+                            <th class="livery-or-trailers-table-first-col">
+                                <div style="margin-top:4px; font-weight:500;">
+                                    &ldquo;${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}&rdquo;
+                                </div>
+                            </th>
                             <td class="livery-or-trailers-table-col-with-divider">
                                 <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
                                     <div class="livery-example-container">

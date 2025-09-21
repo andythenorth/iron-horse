@@ -23,8 +23,8 @@ def main(**kwargs):
             "VANILLA",
             "BANGER_BLUE",
             "WHITE_STRIPE_1995",
-            "SWOOSH_1995",
-            "SWOOSH_1995",
+            "SWOOSH",
+            "SWOOSH",
         ],
         sprites_complete=True,
     )

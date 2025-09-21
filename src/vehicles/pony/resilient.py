@@ -25,7 +25,7 @@ def main(**kwargs):
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",
             "FREIGHTLINER_GBRF",
-            "DUTCH_1986",
+            "DUTCH",
             "DB_SCHENKER",
             "BANGER_BLUE",
         ],

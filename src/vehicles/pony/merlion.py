@@ -26,7 +26,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "WHITE_STRIPE",
             "RAILFREIGHT_RED_STRIPE",
-            "DUTCH_1986",
+            "DUTCH",
         ],
         decor_spriterow_num=5,
         sprites_complete=True,

@@ -553,17 +553,6 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "DUTCH_1986": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_GREY",
-                    "company_colour2": "company_colour1",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
-                    ("COLOUR_GREY", "COLOUR_WHITE"),
-                ],
-            },
             "DUTCH": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_GREY",
@@ -694,14 +683,6 @@ def main():
                 ],
             },
             "SWOOSH": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "SWOOSH_1995": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_WHITE"),
