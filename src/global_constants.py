@@ -776,7 +776,6 @@ freight_wagon_liveries = {
             "freight_teal",
         ],
         "purchase_swatch_colour_set_names": ["freight_ocean_teal"],
-        "group_as_static_livery": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
