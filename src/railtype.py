@@ -30,7 +30,9 @@ class Railtype(object):
         self.suppress_for_nml = kwargs.get("suppress_for_nml", False)
         self.disabled = False
         # option to automatically disable if another grf already provides this type, to deconflict
-        self.yield_to_other_railtype_grfs = kwargs.get("yield_to_other_railtype_grfs", False)
+        self.yield_to_other_railtype_grfs = kwargs.get(
+            "yield_to_other_railtype_grfs", False
+        )
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
         self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
 
@@ -58,7 +60,9 @@ class RailTypeManager(list):
         for railtype in self:
             if railtype.vehicle_track_type_name == vehicle_track_type_name:
                 return railtype
-        raise ValueError(f"No railtype found with vehicle_track_type_name={vehicle_track_type_name}")
+        raise ValueError(
+            f"No railtype found with vehicle_track_type_name={vehicle_track_type_name}"
+        )
 
     @property
     def lgv_railtype_labels(self):

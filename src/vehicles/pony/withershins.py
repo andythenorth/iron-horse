@@ -17,7 +17,7 @@ def main(**kwargs):
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         liveries=["VANILLA"],
-        #liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "RAILFREIGHT_RED_STRIPE"],
+        # liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=2,
         sprites_complete=True,
     )
@@ -37,7 +37,9 @@ def main(**kwargs):
     )
 
     model_def.define_description("""""")
-    model_def.define_foamer_facts("""""")  # BR Class 16, QR 1270 class, BTH Explorer class
+    model_def.define_foamer_facts(
+        """"""
+    )  # BR Class 16, QR 1270 class, BTH Explorer class
 
     result.append(model_def)
 

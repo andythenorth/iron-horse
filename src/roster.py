@@ -187,7 +187,7 @@ class Roster:
 
         return result
 
-    #@timing
+    # @timing
     def produce_engines(self):
         self.engine_model_variants_by_catalogue = {}
         package_name = "vehicles." + self.id
@@ -216,7 +216,7 @@ class Roster:
                     ].append(model_variant)
                 self.engine_model_tech_tree.add_model(catalogue)
 
-    #@timing
+    # @timing
     def produce_wagons(self):
         # Iterate over wagon module name stems and warn if not in global_constants
         for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
@@ -298,13 +298,13 @@ class Roster:
             tmp_uid = get_tmp_uid(
                 catalogue.factory.model_type_cls.model_id_root, catalogue
             )
-            for model_variant in self.wagon_model_variants_by_catalogue[catalogue.model_id][
-                "model_variants"
-            ]:
+            for model_variant in self.wagon_model_variants_by_catalogue[
+                catalogue.model_id
+            ]["model_variants"]:
                 try:
-                    model_variant.wagon_randomisation_candidates = tmp_randomisation_candidates_map[
-                        tmp_uid
-                    ]
+                    model_variant.wagon_randomisation_candidates = (
+                        tmp_randomisation_candidates_map[tmp_uid]
+                    )
                 except KeyError as e:
                     raise KeyError(
                         f"UID {tmp_uid} not found in randomisation map, possibly there are no matching wagons for base_id/length/gen"
@@ -412,7 +412,7 @@ class Roster:
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
-    #@timing
+    # @timing
     def validate_vehicle_ids(self, numeric_id_defender):
         # has to be explicitly called after all model variants and units are registered to the roster
 
@@ -466,42 +466,53 @@ class Roster:
                         if (
                             getattr(colliding_model_variant, "model_id_root", None)
                             == model_variant.model_id_root
-                            and colliding_model_variant.roster.id != model_variant.roster.id
+                            and colliding_model_variant.roster.id
+                            != model_variant.roster.id
                         ):
                             continue
                     # Collect all block-starting IDs (multiples of 10) for both variants
-                    this_blocks = sorted({
-                        nid for entry in model_variant.catalogue
-                        for nid in entry.unit_numeric_ids
-                        if nid % 10 == 0
-                    })
-                    other_blocks = sorted({
-                        nid for entry in colliding_model_variant.catalogue
-                        for nid in entry.unit_numeric_ids
-                        if nid % 10 == 0
-                    })
+                    this_blocks = sorted(
+                        {
+                            nid
+                            for entry in model_variant.catalogue
+                            for nid in entry.unit_numeric_ids
+                            if nid % 10 == 0
+                        }
+                    )
+                    other_blocks = sorted(
+                        {
+                            nid
+                            for entry in colliding_model_variant.catalogue
+                            for nid in entry.unit_numeric_ids
+                            if nid % 10 == 0
+                        }
+                    )
                     collision_errors.append(
                         {
                             "numeric_id": numeric_id,
                             "model_variant": model_variant.id,
                             "collides_with": colliding_model_variant.id,
                             "this_blocks": this_blocks,
-                            "other_blocks": other_blocks
+                            "other_blocks": other_blocks,
                         }
                     )
                 else:
                     numeric_id_defender[numeric_id] = model_variant
 
         if collision_errors:
-            error_msg = ["Vehicle ID collisions detected (only multiple-of-10 IDs shown):"]
+            error_msg = [
+                "Vehicle ID collisions detected (only multiple-of-10 IDs shown):"
+            ]
             for err in collision_errors:
                 error_msg.append(
                     f"{err['model_variant']} and {err['collides_with']} share numeric_id {err['numeric_id']}"
                 )
                 error_msg.append(f"    {err['model_variant']}: {err['this_blocks']}")
                 error_msg.append(f"    {err['collides_with']}: {err['other_blocks']}")
-                error_msg.append(f"") # just a spacer
-            error_msg.append(f"Unused numeric IDs might be found in build_logs/id_report.py.log")
+                error_msg.append(f"")  # just a spacer
+            error_msg.append(
+                f"Unused numeric IDs might be found in build_logs/id_report.py.log"
+            )
             raise ValueError("\n".join(error_msg))
         # no return value needed
 
@@ -541,6 +552,7 @@ class Roster:
             if (primary_group is not None) and (len(variant_group) > 0):
                 variant_group.parent_group = primary_group
                 primary_group.child_groups.append(variant_group)
+
 
 class VariantGroup(list):
     """
@@ -585,7 +597,6 @@ class TechTree(dict):
     Dict, keyed on base_track_type.
     """
 
-
     # to avoid having a very complicated __init__ against (dict) we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
     def create(cls, *, roster=None):
@@ -616,7 +627,9 @@ class TechTree(dict):
 
         # mild optimisation of lookups for explicit manual replacement of catalogues
         if catalogue.model_def.replacement_model_id is not None:
-            self.explicit_replacements_cached.setdefault(catalogue.model_def.replacement_model_id, []).append(catalogue)
+            self.explicit_replacements_cached.setdefault(
+                catalogue.model_def.replacement_model_id, []
+            ).append(catalogue)
 
     def _ensure_role_dict(self, track_type, role):
         if track_type not in self:
@@ -696,11 +709,7 @@ class TechTree(dict):
             ]["catalogue"]
 
         # models can span generations, so walk forward to find if there's a replacement in the line
-        max_gen = max(
-            self._valid_gens_for_track_type(
-                catalogue.base_track_type
-            )
-        )
+        max_gen = max(self._valid_gens_for_track_type(catalogue.base_track_type))
         offset = 1
         while (catalogue.model_def.gen + offset) <= max_gen:
             candidate_catalogue = self.get_relative_catalogue(catalogue, offset)
@@ -773,7 +782,9 @@ class TechTree(dict):
                     continue
                 try:
                     branches = self[base_track_type][candidate_role][subrole_key]
-                    branch_dicts.extend(branches.values())  # <- pull each individual branch
+                    branch_dicts.extend(
+                        branches.values()
+                    )  # <- pull each individual branch
                 except KeyError:
                     continue
 
@@ -783,7 +794,9 @@ class TechTree(dict):
             if candidate.clone_quacker.quack:
                 return False
             if target_power is not None:
-                candidate_power = getattr(candidate.example_model_variant, "power", None)
+                candidate_power = getattr(
+                    candidate.example_model_variant, "power", None
+                )
                 if candidate_power is not None:
                     lower = target_power * (1 - power_tolerance_pct)
                     upper = target_power * (1 + power_tolerance_pct)
@@ -814,8 +827,8 @@ class TechTree(dict):
                     results.append(candidate)
 
         # comment this back in if needed for debugging
-#         if len(results) == 0:
-#             print(catalogue.model_id, "has no similar catalogues")
+        #         if len(results) == 0:
+        #             print(catalogue.model_id, "has no similar catalogues")
 
         return results
 
@@ -837,9 +850,11 @@ class TechTree(dict):
                 new_subroles = {}
                 for subrole, branches in subroles.items():
                     # Drop branches with subrole_child_branch_num < 0.
-                    new_branches = {branch: branch_dict
-                                    for branch, branch_dict in branches.items()
-                                    if branch >= 0}
+                    new_branches = {
+                        branch: branch_dict
+                        for branch, branch_dict in branches.items()
+                        if branch >= 0
+                    }
                     # Only add this subrole if there's at least one valid branch.
                     if new_branches:
                         new_subroles[subrole] = new_branches
