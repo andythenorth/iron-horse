@@ -17,7 +17,7 @@ def main(**kwargs):
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
         tractive_effort_coefficient=0.375,  # assume slip control magic
         random_reverse=True,
-        pantograph_type="z-shaped-double",
+        pantograph_type="z-shaped-single",
         gen=6,
         fixed_run_cost_points=640,  # run cost nerf for high power + dual mode
         intro_year_offset=2,  # introduce later than gen epoch by design
