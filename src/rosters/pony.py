@@ -632,6 +632,14 @@ def main():
                     ("COLOUR_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "METROLAND": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_DARK_BLUE"),
+                ],
+            },
             "RAILFREIGHT_RED_STRIPE": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_GREY",
@@ -680,6 +688,14 @@ def main():
                 },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                ],
+            },
+            "STEELMASTER": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
             "SWOOSH": {
@@ -756,7 +772,7 @@ def main():
         pax_mail_livery_groups={
             "default_pax_liveries": [("VANILLA", 0), ("VANILLA", 1)],
             "gen_5_and_6_pax_liveries": [
-                ("VANILLA", 0),
+                ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("VANILLA", 1),
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
@@ -807,11 +823,11 @@ def main():
             ],
             "metro_pax_liveries": [
                 ("TUBE", 0),
-                ("VANILLA", 1),
+                ("METROLAND", 1),
             ],
             "metro_mail_liveries": [
-                ("TUBE", 0),
-                ("VANILLA", 1),
+                ("METROLAND", 0),
+                ("TUBE", 1),
                 ("ROYAL_MAIL", 2),
             ],
             "motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("VANILLA", 2)],

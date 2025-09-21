@@ -26,7 +26,7 @@ def main(**kwargs):
             "SWOOSH",
             "DB_SCHENKER",
             "LOADHAUL",
-            "SWOOSH",
+            "STEELMASTER",
             "BANGER_BLUE",
         ],
         decor_spriterow_num=8,

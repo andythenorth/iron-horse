@@ -194,7 +194,7 @@ base = "LinerTrain"
 base = "INDUSTRIAL_BROWN"
 
 [STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
-base = "INDUSTRIAL_YELLOW"
+base = "Works Unit"
 
 [STR_BADGE_LIVERY_INTERCITY_RASPBERRY_RIPPLE]
 base = "Fruit Ripple"
@@ -203,22 +203,28 @@ base = "Fruit Ripple"
 base = "LARGE_LOGO"
 
 [STR_BADGE_LIVERY_LOADHAUL]
-base = "LOADHAUL"
+base = "Load All"
+
+[STR_BADGE_LIVERY_METROLAND]
+base = "Metroland"
 
 [STR_BADGE_LIVERY_RAILFREIGHT_RED_STRIPE]
 base = "RAILFREIGHT_RED_STRIPE"
 
 [STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY]
-base = "RAILFREIGHT_TRIPLE_GREY"
+base = "Sector Connector"
 
 [STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY_COAL]
-base = "RAILFREIGHT_TRIPLE_GREY_COAL"
+base = "Black Diamonds"
 
 [STR_BADGE_LIVERY_RES]
 base = "Rapid Express Systems"
 
 [STR_BADGE_LIVERY_ROYAL_MAIL]
 base = "Mail by Rail"
+
+[STR_BADGE_LIVERY_STEELMASTER]
+base = "Riverside Steelmaster"
 
 [STR_BADGE_LIVERY_SWOOSH]
 base = "Swoosh"
