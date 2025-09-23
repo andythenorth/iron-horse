@@ -19,7 +19,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,
-        liveries=["VANILLA", "BANGER_BLUE"],
+        liveries=["VANILLA", "STANDARD_ISSUE"],
         sprites_complete=True,
     )
 

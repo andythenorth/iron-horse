@@ -680,6 +680,14 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "REFINED_LINES": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -695,6 +703,14 @@ def main():
                 },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                ],
+            },
+            "STANDARD_ISSUE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "STEELMASTER": {

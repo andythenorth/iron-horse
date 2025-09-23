@@ -217,11 +217,17 @@ base = "Sector Connector"
 [STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY_COAL]
 base = "Black Diamonds"
 
+[STR_BADGE_LIVERY_REFINED_LINES]
+base = "Refined Lines"
+
 [STR_BADGE_LIVERY_RES]
 base = "Rapid Express Systems"
 
 [STR_BADGE_LIVERY_ROYAL_MAIL]
 base = "Mail by Rail"
+
+[STR_BADGE_LIVERY_STANDARD_ISSUE]
+base = "Standard Issue"
 
 [STR_BADGE_LIVERY_STEELMASTER]
 base = "Riverside Steelmaster"

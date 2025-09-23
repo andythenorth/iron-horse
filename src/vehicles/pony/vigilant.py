@@ -17,7 +17,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.32,
         fixed_run_cost_points=245,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
         gen=2,
-        liveries=["VANILLA", "SWOOSH", "BANGER_BLUE", "FREIGHT_BLACK"],
+        liveries=["VANILLA", "SWOOSH", "STANDARD_ISSUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
