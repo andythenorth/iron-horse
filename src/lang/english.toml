@@ -173,7 +173,7 @@ base = "Freight Red"
 base = "Acme Roadstone Co."
 
 [STR_BADGE_LIVERY_BANGER_BLUE]
-base = "Corporate Banger"
+base = "Basic Banger"
 
 [STR_BADGE_LIVERY_DB_SCHENKER]
 base = "Bahn Cargo"
@@ -183,6 +183,9 @@ base = "Double Dutch"
 
 [STR_BADGE_LIVERY_EWS]
 base = "Midwest Central"
+
+[STR_BADGE_LIVERY_FARMFLOW]
+base = "Farmflow"
 
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
 base = "Obsidian"

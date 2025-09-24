@@ -22,7 +22,7 @@ def main(**kwargs):
         gen=1,
         intro_year_offset=2,  # introduce later than gen epoch by design
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
-        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        liveries=["STANDARD_ISSUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

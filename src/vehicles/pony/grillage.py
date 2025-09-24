@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=12,  # let's be later for this one
         liveries=[
-            "VANILLA",
+            "STANDARD_ISSUE",
             "SWOOSH",
             "BANGER_BLUE",
             "RAILFREIGHT_RED_STRIPE",

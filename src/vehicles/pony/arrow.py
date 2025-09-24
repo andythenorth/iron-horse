@@ -18,7 +18,7 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
         fixed_run_cost_points=130,  # give a small bonus to bring closer to Strongbow cost
-        liveries=["VANILLA"],
+        liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

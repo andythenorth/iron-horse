@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=5,
         liveries=[
             "VANILLA",
-            "BANGER_BLUE",
+            "STANDARD_ISSUE",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",

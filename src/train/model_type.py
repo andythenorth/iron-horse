@@ -2542,7 +2542,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
     Fully enclosed automobile transporter with, no vehicle sprites shown.
     """
 
-    livery_group_name = "motorail_liveries"
+    livery_group_name = "default_motorail_liveries"
 
     model_id_root = "motorail_automobile_car"
 
@@ -4330,7 +4330,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     Bae for farm type cargos - box cars / vans.
     """
 
-    liveries = ["VANILLA"]  # no recolours
+    liveries = ["FARMFLOW"]  # no recolours
 
     vehicle_family_id = "farm_product_box_car"
     variant_group_id_root = "wagon_group_farm_product_box_cars"
@@ -4414,7 +4414,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     Farm type cargos - covered hoppers.
     """
 
-    liveries = ["VANILLA"]  # no recolours
+    liveries = ["FARMFLOW"]  # no recolours
 
     vehicle_family_id = "farm_product_hopper_car"
     variant_group_id_root = "wagon_group_farm_product_hopper_cars"

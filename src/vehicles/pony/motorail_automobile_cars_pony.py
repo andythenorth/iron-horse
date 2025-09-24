@@ -95,6 +95,7 @@ def main(**kwargs):
         base_numeric_id=36290,
         gen=5,
         subtype="B",
+        livery_group_name="gen_5_and_6_motorail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -109,6 +110,7 @@ def main(**kwargs):
         base_numeric_id=32780,
         gen=5,
         subtype="C",
+        livery_group_name="gen_5_and_6_motorail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

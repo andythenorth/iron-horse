@@ -577,6 +577,14 @@ def main():
                     ("COLOUR_PINK", "COLOUR_YELLOW"),
                 ],
             },
+            "FARMFLOW": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHT_BLACK": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -853,7 +861,8 @@ def main():
                 ("TUBE", 1),
                 ("ROYAL_MAIL", 2),
             ],
-            "motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("VANILLA", 2)],
+            "default_motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("VANILLA", 2)],
+            "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("VANILLA", 1), ("VANILLA", 2)],
         },
         engine_module_names=engine_module_names,
         wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,

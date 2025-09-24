@@ -16,7 +16,7 @@ def main(**kwargs):
         pantograph_type="z-shaped-single",
         gen=4,
         intro_year_offset=7,  # introduce later than gen epoch by design
-        liveries=["BANGER_BLUE"],
+        liveries=["STANDARD_ISSUE"],
         sprites_complete=True,
     )
 

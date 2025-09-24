@@ -17,7 +17,7 @@ def main(**kwargs):
         speed=75,  # for lolz
         tractive_effort_coefficient=0.29,
         gen=3,
-        liveries=["VANILLA", "BANGER_BLUE", "FREIGHT_BLACK"],
+        liveries=["VANILLA", "VANILLA", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
