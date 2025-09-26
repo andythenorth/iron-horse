@@ -21,7 +21,7 @@ def main(**kwargs):
         intro_year_offset=3,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
-        liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        liveries=["CLASSIC_LINES", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

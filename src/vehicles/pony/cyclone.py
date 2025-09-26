@@ -19,7 +19,7 @@ def main(**kwargs):
         pantograph_type="z-shaped-single",
         intro_year_offset=4,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
-        liveries=["VANILLA", "SWOOSH", "SWOOSH", "DB_SCHENKER", "INDUSTRIAL_YELLOW"],
+        liveries=["STOCK_STANDARD", "CLASSIC_LINES", "VANILLA", "DB_SCHENKER", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

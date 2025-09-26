@@ -22,10 +22,10 @@ def main(**kwargs):
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
         liveries=[
-            "VANILLA",
+            "CLASSIC_LINES",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
-            "SWOOSH",
+            "VANILLA",
         ],
         sprites_complete=True,
     )

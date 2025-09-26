@@ -21,7 +21,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=1,
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
-        liveries=["VANILLA", "INDUSTRIAL_BROWN"],
+        liveries=["CLASSIC_LINES", "INDUSTRIAL_BROWN"],
         sprites_complete=True,
     )
 

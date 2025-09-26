@@ -17,7 +17,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.18,
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
-        liveries=["REFINED_LINES", "STANDARD_ISSUE"],
+        liveries=["SWOOSH", "STOCK_STANDARD"],
         sprites_complete=True,
     )
 

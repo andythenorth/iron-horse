@@ -22,7 +22,7 @@ def main(**kwargs):
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",
             "RAILFREIGHT_TRIPLE_GREY",
-            "SWOOSH",
+            "CLASSIC_LINES",
             "DB_SCHENKER",
         ],  # "RAILFREIGHT_TRIPLE_GREY"
         sprites_complete=True,

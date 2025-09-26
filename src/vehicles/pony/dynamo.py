@@ -20,7 +20,7 @@ def main(**kwargs):
         intro_year_offset=5,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
-        liveries=["VANILLA"],
+        liveries=["STOCK_STANDARD"],
         sprites_complete=True,
     )
 

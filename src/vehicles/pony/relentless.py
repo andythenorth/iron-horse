@@ -19,7 +19,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=6,
         fixed_run_cost_points=190,  # run cost nerf as light weight throws the cost too cheap
-        liveries=["VANILLA", "STANDARD_ISSUE"],
+        liveries=["CLASSIC_LINES", "STOCK_STANDARD"],
         sprites_complete=True,
     )
 

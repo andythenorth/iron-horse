@@ -21,9 +21,9 @@ def main(**kwargs):
         intro_year_offset=-2,  # let's be a littler earlier for this one
         # add railfreight triple grey
         liveries=[
-            "STANDARD_ISSUE",
+            "STOCK_STANDARD",
             "BANGER_BLUE",
-            "WHITE_STRIPE",
+            "CLASSIC_LINES",
             "RAILFREIGHT_RED_STRIPE",
             "DUTCH",
         ],

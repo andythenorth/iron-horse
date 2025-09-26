@@ -18,7 +18,7 @@ def main(**kwargs):
         fixed_run_cost_points=140,  # substantial cost bonus as a mixed traffic engine
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
-        liveries=["VANILLA", "STANDARD_ISSUE", "RAILFREIGHT_RED_STRIPE"],
+        liveries=["CLASSIC_LINES", "STOCK_STANDARD", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=3,
         show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,

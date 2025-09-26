@@ -21,8 +21,8 @@ def main(**kwargs):
         intro_year_offset=12,  # introduce much later than gen epoch by design
         extended_vehicle_life=True,
         liveries=[
-            "VANILLA",
-            "WHITE_STRIPE",
+            "BANGER_BLUE",
+            "CLASSIC_LINES",
             "RES",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",

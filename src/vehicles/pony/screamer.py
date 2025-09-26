@@ -25,7 +25,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "FREIGHTLINER_GBRF",
             "RES",
-            "SWOOSH",
+            "VANILLA",
             "DB_SCHENKER",
             "FREIGHTLINER_GBRF",
         ],

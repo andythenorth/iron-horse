@@ -17,7 +17,7 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-1,  # let's not have everything turn up in 1960
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        liveries=["VANILLA", "STANDARD_ISSUE", "RAILFREIGHT_RED_STRIPE", "SWOOSH"],
+        liveries=["VANILLA", "STOCK_STANDARD", "RAILFREIGHT_RED_STRIPE", "SWOOSH"],
         sprites_complete=True,
     )
 

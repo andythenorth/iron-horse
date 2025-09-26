@@ -19,7 +19,7 @@ def main(**kwargs):
         additional_liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",
-            "SWOOSH",
+            "VANILLA",
             "DB_SCHENKER",
         ],  # "RAILFREIGHT_TRIPLE_GREY"
         decor_spriterow_num=6,

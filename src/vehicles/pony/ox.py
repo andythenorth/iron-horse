@@ -19,7 +19,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=2,
         intro_year_offset=-5,  # more earlier trains are good eh?
-        liveries=["STANDARD_ISSUE", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
+        liveries=["STOCK_STANDARD", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

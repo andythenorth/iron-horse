@@ -21,8 +21,8 @@ def main(**kwargs):
         lgv_capable=True,  # for lolz
         liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
-            "WHITE_STRIPE",
-            "SWOOSH",
+            "CLASSIC_LINES",
+            "VANILLA",
             "SWOOSH_2000",
             "SWOOSH_2000",
             "RAILFREIGHT_TRIPLE_GREY",

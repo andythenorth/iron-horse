@@ -22,7 +22,7 @@ def main(**kwargs):
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         liveries=[
-            "VANILLA",
+            "CLASSIC_LINES",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",

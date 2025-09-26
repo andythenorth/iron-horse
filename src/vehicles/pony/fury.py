@@ -20,7 +20,7 @@ def main(**kwargs):
         intro_year_offset=1,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         # intercity, railfreight?
-        liveries=["VANILLA", "SWOOSH", "FREIGHTLINER_GBRF", "RES"],
+        liveries=["VANILLA", "VANILLA", "FREIGHTLINER_GBRF", "RES"],
         sprites_complete=True,
     )
 

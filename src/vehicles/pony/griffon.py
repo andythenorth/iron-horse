@@ -22,7 +22,7 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "DB_SCHENKER",
-            "STANDARD_ISSUE",
+            "STOCK_STANDARD",
         ],
         decor_spriterow_num=5,
         show_decor_in_purchase_for_variants=[0, 1, 2],

@@ -18,7 +18,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
-        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        liveries=["CLASSIC_LINES", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

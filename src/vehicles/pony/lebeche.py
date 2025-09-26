@@ -18,7 +18,7 @@ def main(**kwargs):
         base_track_type="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        # additional_liveries=["SWOOSH", "INDUSTRIAL_YELLOW"],
+        # additional_liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
         liveries=["VANILLA"],
         sprites_complete=True,
     )

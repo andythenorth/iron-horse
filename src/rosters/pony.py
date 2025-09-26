@@ -554,6 +554,14 @@ def main():
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                 ],
             },
+            "CLASSIC_LINES": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "DB_SCHENKER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -632,13 +640,6 @@ def main():
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
                 ],
             },
-            "LARGE_LOGO": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
             "LOADHAUL": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -688,14 +689,6 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "REFINED_LINES": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
             "RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -713,7 +706,15 @@ def main():
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
-            "STANDARD_ISSUE": {
+            "STEELMASTER": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "STOCK_STANDARD": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -721,12 +722,12 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "STEELMASTER": {
+            "SUPERGRAPHIC": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
             "SWOOSH": {
@@ -771,14 +772,6 @@ def main():
                 ],
             },
             "WHITE_STRIPE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "WHITE_STRIPE_1995": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),

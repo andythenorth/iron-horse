@@ -20,7 +20,7 @@ def main(**kwargs):
         # introduce early by design
         intro_year_offset=-10,
         random_reverse=True,
-        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        liveries=["STOCK_STANDARD", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
