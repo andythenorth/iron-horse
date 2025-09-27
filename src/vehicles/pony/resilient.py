@@ -20,7 +20,7 @@ def main(**kwargs):
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
         # add RfD Euro style triple grey?
         liveries=[
-            "VANILLA",
+            "SUPERGRAPHIC",
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",
             "FREIGHTLINER_GBRF",

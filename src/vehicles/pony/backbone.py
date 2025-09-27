@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         tractive_effort_coefficient=0.29,
         gen=3,
-        liveries=["VANILLA", "STOCK_STANDARD", "FREIGHT_BLACK"],
+        liveries=["WORKHORSE", "STOCK_STANDARD", "FREIGHT_BLACK"],
         sprites_complete=False,
     )
 

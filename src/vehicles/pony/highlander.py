@@ -21,7 +21,7 @@ def main(**kwargs):
         speed=87,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         liveries=[
-            "VANILLA",
+            "WORKHORSE",
             "STOCK_STANDARD",
             "CLASSIC_LINES",
             # "RAILFREIGHT_RED_STRIPE",

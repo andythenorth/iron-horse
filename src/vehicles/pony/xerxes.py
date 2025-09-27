@@ -19,7 +19,7 @@ def main(**kwargs):
         intro_year_offset=20,  # introduce much later than gen epoch by design
         extended_vehicle_life=True,
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
-        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        liveries=["WORKHORSE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

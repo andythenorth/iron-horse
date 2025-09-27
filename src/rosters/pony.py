@@ -640,14 +640,6 @@ def main():
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
                 ],
             },
-            "LOADHAUL": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                ],
-            },
             "METROLAND": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -779,6 +771,15 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            "WORKHORSE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
+                ],
+            },
             "YEOMAN": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -797,7 +798,7 @@ def main():
             "default_pax_liveries": [("VANILLA", 0), ("VANILLA", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("VANILLA", 1),
+                ("CLASSIC_LINES", 1),
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
             ],
@@ -819,7 +820,7 @@ def main():
             "gen_5_and_6_mail_liveries": [
                 ("VANILLA", 5),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("VANILLA", 1),
+                ("CLASSIC_LINES", 1),
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
                 ("RES", 4),
@@ -854,8 +855,8 @@ def main():
                 ("TUBE", 1),
                 ("ROYAL_MAIL", 2),
             ],
-            "default_motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("VANILLA", 2)],
-            "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("VANILLA", 1), ("VANILLA", 2)],
+            "default_motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("STOCK_STANDARD", 2)],
+            "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("CLASSIC_LINES", 1), ("VANILLA", 2)],
         },
         engine_module_names=engine_module_names,
         wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,

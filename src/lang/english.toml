@@ -205,9 +205,6 @@ base = "Works Unit"
 [STR_BADGE_LIVERY_INTERCITY_RASPBERRY_RIPPLE]
 base = "Fruit Ripple"
 
-[STR_BADGE_LIVERY_LOADHAUL]
-base = "Load All"
-
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
 
@@ -233,7 +230,7 @@ base = "Riverside Steelmaster"
 base = "Stock Standard"
 
 [STR_BADGE_LIVERY_SWOOSH]
-base = "Swoosh"
+base = "SWOOSH"
 
 [STR_BADGE_LIVERY_SWOOSH_2000]
 base = "SWOOSH_2000"
@@ -252,6 +249,9 @@ base = "VANILLA"
 
 [STR_BADGE_LIVERY_WHITE_STRIPE]
 base = "WHITE_STRIPE"
+
+[STR_BADGE_LIVERY_WORKHORSE]
+base = "Workhorse"
 
 [STR_BADGE_LIVERY_YEOMAN]
 base = "Rocks by Rail"

@@ -24,7 +24,7 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "VANILLA",
             "DB_SCHENKER",
-            "LOADHAUL",
+            "WORKHORSE",
             "STEELMASTER",
             "BANGER_BLUE",
         ],

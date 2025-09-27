@@ -26,7 +26,7 @@ def main(**kwargs):
             "RES",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
-            "LOADHAUL",
+            "WORKHORSE",
         ],
         sprites_complete=True,
     )
