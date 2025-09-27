@@ -154,12 +154,6 @@ base = "Grey"
 [STR_BADGE_LIVERY_FREIGHT_MIST]
 base = "Mist"
 
-[STR_BADGE_LIVERY_FREIGHT_NIGHTSHADE]
-base = "Nightshade"
-
-[STR_BADGE_LIVERY_FREIGHT_OIL_BLACK]
-base = "Oil Black"
-
 [STR_BADGE_LIVERY_FREIGHT_PEWTER]
 base = "Pewter"
 

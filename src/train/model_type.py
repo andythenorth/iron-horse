@@ -3680,7 +3680,7 @@ class CaneBinCar(CarModelTypeBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_GREY",
-        "FREIGHT_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
     ]
 
     model_id_root = "cane_bin_car"
@@ -8199,7 +8199,7 @@ class TankCarVolatilesBase(TankCarBase):
     # these aren't worth full random, they look better with single colour livery types (or using 'bonus')
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "FREIGHT_OIL_BLACK",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "FREIGHT_RED",  # custom for this tanker type
@@ -8250,7 +8250,7 @@ class ChemicalCargoTankCombos(RandomisedCarComboMixin, TankCarBase):
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
-        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",  # base tankers don't use nightshade, but random do, for increased visual variation
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
     ]
 
     model_id_root = "chemical_cargo_tank_combos"

@@ -702,7 +702,7 @@ freight_wagon_liveries = {
             "freight_obsidian",
             "freight_nightshade",
         ],
-        "purchase_swatch_colour_set_names": ["freight_obsidian"],
+        "purchase_swatch_colour_set_names": ["freight_oil_black"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -794,20 +794,6 @@ freight_wagon_liveries = {
     },
     "FREIGHT_GREY": {
         "colour_set_names": ["freight_grey"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_NIGHTSHADE": {
-        "colour_set_names": ["freight_nightshade"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_OIL_BLACK": {
-        "colour_set_names": ["freight_oil_black"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
