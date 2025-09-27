@@ -165,11 +165,13 @@ class BadgeManager(list):
         # this includes some badges which could strictly be static, but we group all livery concerns together in this method
         livery_supplier = kwargs["livery_supplier"]
 
+        # we split the display/filter badge from the behaviour badges
+        # as we want to consolidate some badges for display, but leave them split for behaviour (for example, random vs. non-random freight wagons of same hue)
         self.add_badge(
             label=f"livery",
             name="STR_BADGE_LIVERY",
         )
-        for livery in livery_supplier.values():
+        for livery in livery_supplier.consolidated_liveries_for_badge_display:
             name = f"STR_BADGE_LIVERY_{livery.livery_name}"
             sprite = None
             if livery.is_freight_wagon_livery:
@@ -188,8 +190,10 @@ class BadgeManager(list):
             label=f"ih_livery_def/use_weathering/True",
         )
 
+        # internal names, no consolidation across liveries
         for livery in livery_supplier.values():
             self.add_badge(livery.internal_name_badge_label)
+        # colour sets
         for (
             colour_set_name
         ) in livery_supplier.freight_livery_colour_set_indexes_and_names:

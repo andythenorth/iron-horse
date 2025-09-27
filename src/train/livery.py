@@ -14,6 +14,7 @@ class LiveryDef:
     docs_image_input_cc: Optional[List] = None
     is_freight_wagon_livery: Optional[bool] = False
     purchase_swatch_colour_set_names: List = field(default_factory=list)
+    proxy_livery_for_badge_display_and_filter: Optional[str] = None
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
@@ -35,7 +36,11 @@ class LiveryDef:
             subcategory = "freight_wagon/"
         else:
             subcategory = ""
-        return f"livery/iron_horse/{subcategory}{self.livery_name.lower()}"
+        if self.proxy_livery_for_badge_display_and_filter is not None:
+            livery_name = self.proxy_livery_for_badge_display_and_filter
+        else:
+            livery_name = self.livery_name
+        return f"livery/iron_horse/{subcategory}{livery_name.lower()}"
 
     @property
     def internal_name_badge_label(self):
@@ -198,6 +203,31 @@ class LiverySupplier(dict):
                     "serialized_params": serialized_params,
                 }
             )
+        return result
+
+    @property
+    def consolidated_liveries_for_badge_display(self):
+        # some liveries are near-identical, differing only in random vs. non-random, or very minor differences in colour sets
+        # therefore we consolidate those to reduce badge noise when filtering vehicles
+        result = []
+        seen_purchase_swatches = []
+        for livery in self.values():
+            if not livery.is_freight_wagon_livery:
+                result.append(livery)
+            else:
+                if livery.purchase_swatch not in seen_purchase_swatches:
+                    result.append(livery)
+                    seen_purchase_swatches.append(livery.purchase_swatch)
+                else:
+                    if livery.proxy_livery_for_badge_display_and_filter is not None:
+                        #result.append(livery)
+                        result.append(self[livery.proxy_livery_for_badge_display_and_filter])
+                    else:
+                        # this is JFDI, and might choke on livery order, or multiple liveries declaring same proxy_livery_for_badge_display_and_filter
+                        raise Exception(
+                            f"Livery {livery.livery_name} will duplicate badges with another livery that uses {livery.purchase_swatch}"
+                            "\n to resolve this add proxy_livery_for_badge_display_and_filter value to the livery def"
+                        )
         return result
 
     def report_unused_liveries(self):
