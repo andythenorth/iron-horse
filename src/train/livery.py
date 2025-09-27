@@ -213,7 +213,11 @@ class LiverySupplier(dict):
         seen_purchase_swatches = []
         for livery in self.values():
             if not livery.is_freight_wagon_livery:
-                result.append(livery)
+                if livery.proxy_livery_for_badge_display_and_filter is not None:
+                    #result.append(livery)
+                    result.append(self[livery.proxy_livery_for_badge_display_and_filter])
+                else:
+                    result.append(livery)
             else:
                 if livery.purchase_swatch not in seen_purchase_swatches:
                     result.append(livery)

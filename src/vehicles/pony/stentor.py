@@ -25,7 +25,7 @@ def main(**kwargs):
             "CLASSIC_LINES",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
-            "VANILLA",
+            "SUPERGRAPHIC",
         ],
         sprites_complete=True,
     )

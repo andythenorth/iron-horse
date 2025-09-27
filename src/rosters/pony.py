@@ -587,6 +587,7 @@ def main():
                     "company_colour1": "COLOUR_YELLOW",
                     "company_colour2": "company_colour1",
                 },
+                "proxy_livery_for_badge_display_and_filter": "SUPERGRAPHIC",
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_MAUVE", "COLOUR_YELLOW"),
@@ -623,6 +624,7 @@ def main():
                     "company_colour1": "COLOUR_GREY",
                     "company_colour2": "company_colour1",
                 },
+                "proxy_livery_for_badge_display_and_filter": "SUPERGRAPHIC",
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PINK", "COLOUR_WHITE"),
@@ -635,6 +637,7 @@ def main():
                     "company_colour1": "COLOUR_WHITE",
                     "company_colour2": "company_colour1",
                 },
+                "proxy_livery_for_badge_display_and_filter": "SUPERGRAPHIC",
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),

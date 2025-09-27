@@ -23,7 +23,7 @@ def main(**kwargs):
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
-            "VANILLA",
+            "SUPERGRAPHIC",
         ],
         sprites_complete=True,
     )

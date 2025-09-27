@@ -20,9 +20,9 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
         liveries=[
-            "VANILLA",
+            "SUPERGRAPHIC",
             "STOCK_STANDARD",
-            "SWOOSH",
+            "SUPERGRAPHIC",
             "CLASSIC_LINES",
             "INDUSTRIAL_YELLOW",
         ],

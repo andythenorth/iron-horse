@@ -25,7 +25,7 @@ def main(**kwargs):
             "SLABSIDE",
             "CLASSIC_LINES",
             "WORKHORSE",
-            "SPECIAL_CIRCUMSTANCES",
+            "SUPERGRAPHIC",
             "BANGER_BLUE",
         ],
         decor_spriterow_num=8,
