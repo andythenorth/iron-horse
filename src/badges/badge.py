@@ -175,7 +175,7 @@ class BadgeManager(list):
             if livery.is_freight_wagon_livery:
                 sprite = f"{livery.livery_name.lower()}"
             self.add_badge(
-                label=livery.badge_label,
+                label=livery.display_and_filter_name_badge_label,
                 sprite=sprite,
                 name=name,
             )
@@ -187,6 +187,9 @@ class BadgeManager(list):
         self.add_badge(
             label=f"ih_livery_def/use_weathering/True",
         )
+
+        for livery in livery_supplier.values():
+            self.add_badge(livery.internal_name_badge_label)
         for (
             colour_set_name
         ) in livery_supplier.freight_livery_colour_set_indexes_and_names:

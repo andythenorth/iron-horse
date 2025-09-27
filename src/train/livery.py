@@ -29,13 +29,22 @@ class LiveryDef:
         return list(set(self.colour_set_names))
 
     @property
-    def badge_label(self):
+    def display_and_filter_name_badge_label(self):
         # conforms to draft livery spec in grf docs as of Apr 2025
         if self.is_freight_wagon_livery:
             subcategory = "freight_wagon/"
         else:
             subcategory = ""
         return f"livery/iron_horse/{subcategory}{self.livery_name.lower()}"
+
+    @property
+    def internal_name_badge_label(self):
+        # conforms to draft livery spec in grf docs as of Apr 2025
+        if self.is_freight_wagon_livery:
+            subcategory = "freight_wagon/"
+        else:
+            subcategory = ""
+        return f"ih_livery_def/internal_livery_name/{self.livery_name.lower()}"
 
     @property
     def weathering_badge_label(self):

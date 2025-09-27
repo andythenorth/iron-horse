@@ -214,7 +214,8 @@ class ModelTypeBase(object):
     @property
     def livery_badges(self):
         result = []
-        result.append(self.catalogue_entry.livery_def.badge_label)
+        result.append(self.catalogue_entry.livery_def.display_and_filter_name_badge_label)
+        result.append(self.catalogue_entry.livery_def.internal_name_badge_label)
         result.append(self.catalogue_entry.livery_def.weathering_badge_label)
         return result
 
