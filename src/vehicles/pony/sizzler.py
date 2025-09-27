@@ -20,7 +20,7 @@ def main(**kwargs):
         lgv_capable=True,  # for lolz
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
-        liveries=["VANILLA", "BANGER_BLUE"],
+        liveries=["SLABSIDE", "BANGER_BLUE"],
         sprites_complete=True,
     )
 

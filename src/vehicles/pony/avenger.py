@@ -22,7 +22,7 @@ def main(**kwargs):
         liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
             "CLASSIC_LINES",
-            "SUPERGRAPHIC",
+            "CLASSIC_LINES",
             "SWOOSH_2000",
             "SWOOSH_2000",
             "RAILFREIGHT_TRIPLE_GREY",

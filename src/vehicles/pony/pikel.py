@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=-2,  # introduce a bit earlier
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        liveries=["SLABSIDE", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

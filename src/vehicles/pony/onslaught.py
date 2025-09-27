@@ -18,7 +18,7 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         # additional_liveries=["BANGER_BLUE", "SUPERGRAPHIC", "VANILLA", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
-        liveries=["CLASSIC_LINES", "BANGER_BLUE", "DB_SCHENKER"],
+        liveries=["CLASSIC_LINES", "BANGER_BLUE", "CLASSIC_LINES"],
         decor_spriterow_num=8,
         sprites_complete=True,
     )

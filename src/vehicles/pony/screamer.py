@@ -23,10 +23,10 @@ def main(**kwargs):
         liveries=[
             "VANILLA",
             "BANGER_BLUE",
-            "FREIGHTLINER_GBRF",
-            "RES",
+            "ROYAL_MAIL_RES",
             "VANILLA",
-            "DB_SCHENKER",
+            "STOCK_STANDARD",
+            "FREIGHTLINER_GBRF",
             "FREIGHTLINER_GBRF",
         ],
         sprites_complete=True,

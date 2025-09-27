@@ -164,13 +164,13 @@ base = "Oil Black"
 base = "Pewter"
 
 [STR_BADGE_LIVERY_FREIGHT_RED]
-base = "Freight Red"
+base = "Flame Red"
 
 # other liveries
 # _might_ need to use roster-specific strings, but we'll see
 
-[STR_BADGE_LIVERY_ARC]
-base = "Acme Roadstone Co."
+[STR_BADGE_LIVERY_SPECIAL_CIRCUMSTANCES]
+base = "Special Circumstances"
 
 [STR_BADGE_LIVERY_BANGER_BLUE]
 base = "Basic Banger"
@@ -178,26 +178,17 @@ base = "Basic Banger"
 [STR_BADGE_LIVERY_CLASSIC_LINES]
 base = "Classic Lines"
 
-[STR_BADGE_LIVERY_DB_SCHENKER]
-base = "Bahn Cargo"
-
 [STR_BADGE_LIVERY_DUTCH]
 base = "Double Dutch"
-
-[STR_BADGE_LIVERY_EWS]
-base = "Midwest Central"
 
 [STR_BADGE_LIVERY_FARMFLOW]
 base = "Farmflow"
 
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
-base = "Obsidian"
+base = "Dark Horse"
 
 [STR_BADGE_LIVERY_FREIGHTLINER_GBRF]
 base = "BoxFreight"
-
-[STR_BADGE_LIVERY_INDUSTRIAL_BROWN]
-base = "INDUSTRIAL_BROWN"
 
 [STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
 base = "Works Unit"
@@ -214,17 +205,14 @@ base = "Railslate Grey"
 [STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY]
 base = "Sector Connector"
 
-[STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY_COAL]
-base = "Black Diamonds"
-
-[STR_BADGE_LIVERY_RES]
-base = "Rapid Express Systems"
-
-[STR_BADGE_LIVERY_ROYAL_MAIL]
+[STR_BADGE_LIVERY_ROYAL_MAIL_RES]
 base = "Mail by Rail"
 
-[STR_BADGE_LIVERY_STEELMASTER]
-base = "Riverside Steelmaster"
+[STR_BADGE_LIVERY_SHOW_PONY]
+base = "Show Pony"
+
+[STR_BADGE_LIVERY_SLABSIDE]
+base = "Conventional Wisdom"
 
 [STR_BADGE_LIVERY_STOCK_STANDARD]
 base = "Stock Standard"
@@ -238,12 +226,6 @@ base = "SWOOSH_2000"
 [STR_BADGE_LIVERY_SUPERGRAPHIC]
 base = "Supergraphic"
 
-[STR_BADGE_LIVERY_TGV_LA_POSTE]
-base = "Post Haste"
-
-[STR_BADGE_LIVERY_TUBE]
-base = "Underground Overground"
-
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
 
@@ -251,10 +233,7 @@ base = "VANILLA"
 base = "WHITE_STRIPE"
 
 [STR_BADGE_LIVERY_WORKHORSE]
-base = "Workhorse"
-
-[STR_BADGE_LIVERY_YEOMAN]
-base = "Rocks by Rail"
+base = "Work Horse"
 
 # behaviour badges (behaviour and role are different)
 

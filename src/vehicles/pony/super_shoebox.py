@@ -18,9 +18,9 @@ def main(**kwargs):
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
-            "RES",
+            "ROYAL_MAIL_RES",
             "VANILLA",
-            "DB_SCHENKER",
+            "CLASSIC_LINES",
         ],  # "RAILFREIGHT_TRIPLE_GREY"
         decor_spriterow_num=6,
         show_decor_in_purchase_for_variants=[1],

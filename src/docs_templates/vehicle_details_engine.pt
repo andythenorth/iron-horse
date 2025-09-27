@@ -167,10 +167,7 @@
                     </tbody>
                 </table>
 
-                <h3 id="appearance">Appearance</h3>
-                <div style="font-size:16px;">
-                    <p>This vehicle has ${len(catalogue)} ${"livery" if len(catalogue) == 1 else "liveries"}.</p>
-                </div>
+                <h3 id="appearance">Livery Options</h3>
 
                 <style>
                     table.livery-or-trailers-table {
@@ -218,40 +215,48 @@
                 </style>
 
                 <table class="livery-or-trailers-table text-left">
-                    <tal:catalogue_entries repeat="catalogue_entry catalogue">
+                    <thead>
                         <tr>
-                            <th class="livery-or-trailers-table-first-col">
-                                <div style="margin-top:4px; font-weight:500;">
-                                    &ldquo;${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}&rdquo;
-                                </div>
-                            </th>
-                            <td class="livery-or-trailers-table-col-with-divider">
-                                <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
-                                    <div class="livery-example-container">
-                                        <div class="vehicle-image"
-                                            style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                            <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                 width="${3 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
-                                                 height="${3 * doc_helper.docs_sprite_height}" />
-                                        </div>
-                                        <div style="display:block;">
-                                            <tal:colours repeat="company_colour cc_remap_pair">
-                                                <!--! !! probably should be a caption for a figure ?? -->
-                                                <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
-                                                             display:inline-block;
-                                                             vertical-align:middle;
-                                                             border:solid 1px #555;
-                                                             width:12px;
-                                                             height:12px;">
-                                                </span>
-                                                <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
-                                                <br />
-                                            </tal:colours>
-                                        </div>
-                                    </div>
-                                </tal:cc_recolour>
-                            </td>
+                            <th>Livery Name</th>
+                            <th>Company Colour Examples</th>
                         </tr>
+                    </thead>
+                    <tal:catalogue_entries repeat="catalogue_entry catalogue">
+                        <tbody>
+                            <tr>
+                                <th class="livery-or-trailers-table-first-col">
+                                    <div style="margin-top:4px; font-weight:500;">
+                                        &ldquo;${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}&rdquo;
+                                    </div>
+                                </th>
+                                <td class="livery-or-trailers-table-col-with-divider">
+                                    <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
+                                        <div class="livery-example-container">
+                                            <div class="vehicle-image"
+                                                style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                     width="${3 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
+                                                     height="${3 * doc_helper.docs_sprite_height}" />
+                                            </div>
+                                            <div style="display:block;">
+                                                <tal:colours repeat="company_colour cc_remap_pair">
+                                                    <!--! !! probably should be a caption for a figure ?? -->
+                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
+                                                                 display:inline-block;
+                                                                 vertical-align:middle;
+                                                                 border:solid 1px #555;
+                                                                 width:12px;
+                                                                 height:12px;">
+                                                    </span>
+                                                    <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
+                                                    <br />
+                                                </tal:colours>
+                                            </div>
+                                        </div>
+                                    </tal:cc_recolour>
+                                </td>
+                            </tr>
+                        </tbody>
                     </tal:catalogue_entries>
                 </table>
 

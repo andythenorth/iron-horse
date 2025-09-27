@@ -17,13 +17,13 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=3,  # introduce later than gen epoch by design
         liveries=[
-            "VANILLA",
+            "CLASSIC_LINES",
             "BANGER_BLUE",
             "INTERCITY_RASPBERRY_RIPPLE",
-            "RES",
+            "ROYAL_MAIL_RES",
             "RAILFREIGHT_TRIPLE_GREY",
             "CLASSIC_LINES",
-            "DB_SCHENKER",
+            "STOCK_STANDARD",
         ],  # "RAILFREIGHT_TRIPLE_GREY"
         sprites_complete=True,
     )

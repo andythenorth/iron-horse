@@ -24,7 +24,7 @@ def main(**kwargs):
         liveries=[
             "CLASSIC_LINES",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "RAILFREIGHT_TRIPLE_GREY", # coal
             "VANILLA",
         ],
         sprites_complete=True,

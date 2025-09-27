@@ -18,7 +18,7 @@ def main(**kwargs):
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
-        liveries=["CLASSIC_LINES", "VANILLA", "SWOOSH"],
+        liveries=["CLASSIC_LINES", "SHOW_PONY", "SWOOSH"],
         sprites_complete=True,
     )
 

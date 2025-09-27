@@ -23,7 +23,7 @@ def main(**kwargs):
             "STOCK_STANDARD",
             "CLASSIC_LINES",
             "VANILLA",
-            "DB_SCHENKER",
+            "CLASSIC_LINES",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,

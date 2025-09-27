@@ -18,10 +18,10 @@ def main(**kwargs):
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
         liveries=[
-            "VANILLA",
+            "SLABSIDE",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY_COAL",
-            "DB_SCHENKER",
+            "RAILFREIGHT_TRIPLE_GREY", # coal
+            "CLASSIC_LINES",
             "STOCK_STANDARD",
         ],
         decor_spriterow_num=5,

@@ -539,33 +539,20 @@ def main():
         # generally, reuse of these is encouraged, they're (mostly) just metadata and can be repeated multiple times for different spriterows of a vehicle
         # keep alphabetised
         engine_and_misc_car_liveries={
-            "ARC": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_GREY", "COLOUR_GREY"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
             "BANGER_BLUE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "CLASSIC_LINES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "DB_SCHENKER": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "DUTCH": {
@@ -577,19 +564,12 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_WHITE"),
-                ],
-            },
-            "EWS": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_PINK", "COLOUR_YELLOW"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "FARMFLOW": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -597,8 +577,8 @@ def main():
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "FREIGHTLINER_GBRF": {
@@ -608,19 +588,9 @@ def main():
                     "company_colour2": "company_colour1",
                 },
                 "docs_image_input_cc": [
-                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_MAUVE", "COLOUR_YELLOW"),
-                ],
-            },
-            "INDUSTRIAL_BROWN": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_BROWN",
-                    "company_colour2": "company_colour2",
-                },
-                "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_MAUVE", "COLOUR_YELLOW"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "INDUSTRIAL_YELLOW": {
@@ -636,16 +606,16 @@ def main():
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "METROLAND": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_DARK_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
@@ -656,6 +626,7 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PINK", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
@@ -666,127 +637,107 @@ def main():
                 },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "RAILFREIGHT_TRIPLE_GREY_COAL": {
-                # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_WHITE",
-                    "company_colour2": "company_colour1",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "RES": {
+            "ROYAL_MAIL_RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "ROYAL_MAIL": {
+            "ROYAL_MAIL_RES": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_RED",
                     "company_colour2": "company_colour2",
                 },
                 "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "STEELMASTER": {
+            "SHOW_PONY": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "SLABSIDE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "SPECIAL_CIRCUMSTANCES": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "STOCK_STANDARD": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "SUPERGRAPHIC": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "SWOOSH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "SWOOSH_2000": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "TGV_LA_POSTE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
-                ],
-            },
-            "TUBE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_DARK_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "WHITE_STRIPE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "WORKHORSE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
-                ],
-            },
-            "YEOMAN": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_GREY"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_GREY"),
-                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
         },
@@ -815,7 +766,7 @@ def main():
                 ("VANILLA", 0),
                 ("VANILLA", 1),
                 ("VANILLA", 2),
-                ("ROYAL_MAIL", 4),
+                ("ROYAL_MAIL_RES", 4),
             ],
             "gen_5_and_6_mail_liveries": [
                 ("VANILLA", 5),
@@ -823,22 +774,22 @@ def main():
                 ("CLASSIC_LINES", 1),
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
-                ("RES", 4),
-                ("ROYAL_MAIL", 6),
+                ("ROYAL_MAIL_RES", 4),
+                ("ROYAL_MAIL_RES", 6),
             ],
             "diesel_railcar_mail_liveries": [
-                ("RES", 2),
+                ("ROYAL_MAIL_RES", 2),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("WHITE_STRIPE", 1),
                 ("VANILLA", 3),
-                ("ROYAL_MAIL", 4),
+                ("ROYAL_MAIL_RES", 4),
             ],
             "electric_railcar_mail_liveries": [
                 ("VANILLA", 3),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("WHITE_STRIPE", 1),
-                ("RES", 2),
-                ("ROYAL_MAIL", 4),
+                ("ROYAL_MAIL_RES", 2),
+                ("ROYAL_MAIL_RES", 4),
             ],
             "dvt_mail_liveries": [
                 ("VANILLA", 0),
@@ -847,13 +798,13 @@ def main():
                 ("VANILLA", 3),
             ],
             "metro_pax_liveries": [
-                ("TUBE", 0),
+                ("METROLAND", 0),
                 ("METROLAND", 1),
             ],
             "metro_mail_liveries": [
                 ("METROLAND", 0),
-                ("TUBE", 1),
-                ("ROYAL_MAIL", 2),
+                ("METROLAND", 1),
+                ("ROYAL_MAIL_RES", 2),
             ],
             "default_motorail_liveries": [("VANILLA", 0), ("VANILLA", 1), ("STOCK_STANDARD", 2)],
             "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("CLASSIC_LINES", 1), ("VANILLA", 2)],

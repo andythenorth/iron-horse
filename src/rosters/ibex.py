@@ -259,26 +259,18 @@ def main():
             "SWOOSH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "TGV_LA_POSTE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
         },
