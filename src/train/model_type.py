@@ -3008,43 +3008,6 @@ class BoxCarSlidingWallRandomised(RandomisedCarVanillaMixin, BoxCarSlidingWallBa
         )
 
 
-class BoxCarVehicleParts(BoxCarBase):
-    """
-    Vehicle parts box car, van - same refits as box car, just a specific visual variation.
-    """
-
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_OXIDE_RUST",
-        "FREIGHT_PEWTER",
-    ]
-
-    model_id_root = "vehicle_parts_box_car"
-    variant_group_id_root = "wagon_group_sliding_wall_cars"
-    randomised_candidate_groups = [
-        "piece_goods_covered_combos",
-        "piece_goods_mixed_combos",
-    ]
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
-        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
-            "non_core_wagons"
-        ]
-        self._joker = True
-        # Graphics configuration
-        self.roof_type = "freight"
-        weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
-        # teal before pewter to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
 class BulkOpenCarBase(CarModelTypeBase):
     """
     Common base class for dump cars.
@@ -3679,7 +3642,6 @@ class CaneBinCar(CarModelTypeBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "FREIGHT_GREY",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
     ]
 

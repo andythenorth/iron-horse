@@ -792,20 +792,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_GREY": {
-        "colour_set_names": ["freight_grey"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_PEWTER": {
-        "colour_set_names": ["freight_pewter"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "FREIGHT_RED": {
         "colour_set_names": ["red"],
         "docs_image_input_cc": [
