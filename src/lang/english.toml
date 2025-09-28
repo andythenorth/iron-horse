@@ -148,6 +148,9 @@ base = "Basic Banger"
 [STR_BADGE_LIVERY_CLASSIC_LINES]
 base = "Classic Lines"
 
+[STR_BADGE_LIVERY_DYNAMIC_LINES]
+base = "Dynamic Lines"
+
 [STR_BADGE_LIVERY_FARMFLOW]
 base = "Farmflow"
 

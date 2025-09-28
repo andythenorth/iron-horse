@@ -568,6 +568,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "DYNAMIC_LINES": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "FARMFLOW": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -755,7 +763,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
-                ("VANILLA", 3),
+                ("DYNAMIC_LINES", 3),
             ],
             "CABBAGE_RAILCAR": [
                 ("VANILLA", 1),
@@ -774,7 +782,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
             ],
             "gen_6_suburban_pax_liveries": [
-                ("SWOOSH", 1),
+                ("DYNAMIC_LINES", 1),
                 ("VINYL_VECTOR", 0),
             ],
             "default_mail_liveries": [
@@ -796,7 +804,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
-                ("VANILLA", 3),
+                ("DYNAMIC_LINES", 3),
                 ("ROYAL_MAIL_RES", 4),
                 ("ROYAL_MAIL_RES", 6),
             ],

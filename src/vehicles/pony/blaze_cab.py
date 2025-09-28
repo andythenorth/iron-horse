@@ -23,7 +23,7 @@ def main(**kwargs):
             "SURE_PACE",
             "RIDEWELL",
             "VINYL_VECTOR",
-            "VANILLA",
+            "DYNAMIC_LINES",
         ],
         sprites_complete=True,
     )
