@@ -678,14 +678,6 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "SPECIAL_CIRCUMSTANCES": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             "STOCK_STANDARD": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -710,29 +702,12 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "SWOOSH_2000": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "WHITE_STRIPE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
@@ -750,12 +725,12 @@ def main():
         # - livery name comes from roster engine_and_misc_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
-            "default_pax_liveries": [("VANILLA", 0), ("VANILLA", 1)],
+            "default_pax_liveries": [("SLABSIDE", 0), ("CLASSIC_LINES", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("CLASSIC_LINES", 1),
-                ("SWOOSH_2000", 2),
-                ("SWOOSH_2000", 3),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
             ],
             "CABBAGE_RAILCAR": [
                 ("VANILLA", 1),
@@ -776,22 +751,22 @@ def main():
                 ("VANILLA", 5),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("CLASSIC_LINES", 1),
-                ("SWOOSH_2000", 2),
-                ("SWOOSH_2000", 3),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
                 ("ROYAL_MAIL_RES", 4),
                 ("ROYAL_MAIL_RES", 6),
             ],
             "diesel_railcar_mail_liveries": [
                 ("ROYAL_MAIL_RES", 2),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("WHITE_STRIPE", 1),
+                ("VANILLA", 1),
                 ("VANILLA", 3),
                 ("ROYAL_MAIL_RES", 4),
             ],
             "electric_railcar_mail_liveries": [
                 ("VANILLA", 3),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("WHITE_STRIPE", 1),
+                ("VANILLA", 1),
                 ("ROYAL_MAIL_RES", 2),
                 ("ROYAL_MAIL_RES", 4),
             ],

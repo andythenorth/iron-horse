@@ -142,9 +142,6 @@ base = "Flame Red"
 # other liveries
 # _might_ need to use roster-specific strings, but we'll see
 
-[STR_BADGE_LIVERY_SPECIAL_CIRCUMSTANCES]
-base = "Special Circumstances"
-
 [STR_BADGE_LIVERY_BANGER_BLUE]
 base = "Basic Banger"
 
@@ -170,7 +167,7 @@ base = "Metroland"
 base = "Mail by Rail"
 
 [STR_BADGE_LIVERY_SHOW_PONY]
-base = "Show Pony"
+base = "Racehorse"
 
 [STR_BADGE_LIVERY_SLABSIDE]
 base = "Conventional Wisdom"
@@ -181,17 +178,11 @@ base = "Stock Standard"
 [STR_BADGE_LIVERY_SWOOSH]
 base = "SWOOSH"
 
-[STR_BADGE_LIVERY_SWOOSH_2000]
-base = "SWOOSH_2000"
-
 [STR_BADGE_LIVERY_SUPERGRAPHIC]
 base = "Supergraphic"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
-
-[STR_BADGE_LIVERY_WHITE_STRIPE]
-base = "WHITE_STRIPE"
 
 [STR_BADGE_LIVERY_WORKHORSE]
 base = "Work Horse"

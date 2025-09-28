@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=3,
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
-        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        liveries=["METROLAND", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
