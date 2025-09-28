@@ -789,6 +789,7 @@ freight_wagon_liveries = {
             "freight_cloud",
         ],
         "purchase_swatch_colour_set_names": ["freight_mist"],
+        "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_SILVER_PEWTER",
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
