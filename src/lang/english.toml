@@ -181,9 +181,6 @@ base = "Conventional Wisdom"
 [STR_BADGE_LIVERY_STOCK_STANDARD]
 base = "Stock Standard"
 
-[STR_BADGE_LIVERY_SWOOSH]
-base = "SWOOSH"
-
 [STR_BADGE_LIVERY_SUPERGRAPHIC]
 base = "Supergraphic"
 

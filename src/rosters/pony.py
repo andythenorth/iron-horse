@@ -718,14 +718,6 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "SWOOSH": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
@@ -764,6 +756,10 @@ def main():
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
                 ("DYNAMIC_LINES", 3),
+            ],
+            "gen_6_pax_liveries": [
+                ("VINYL_VECTOR", 0),
+                ("DYNAMIC_LINES", 1),
             ],
             "CABBAGE_RAILCAR": [
                 ("VANILLA", 1),

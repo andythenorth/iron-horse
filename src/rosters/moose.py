@@ -149,14 +149,6 @@ def main():
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         engine_and_misc_car_liveries={
-            "SWOOSH": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,

@@ -21,7 +21,7 @@ def main(**kwargs):
             "ROYAL_MAIL_RES",
             "VANILLA",
             "CLASSIC_LINES",
-        ],  # "RAILFREIGHT_TRIPLE_GREY"
+        ],
         decor_spriterow_num=6,
         show_decor_in_purchase_for_variants=[1],
         sprites_complete=True,

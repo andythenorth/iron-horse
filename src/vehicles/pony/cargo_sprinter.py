@@ -20,7 +20,7 @@ def main(**kwargs):
         },
         gen=6,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        liveries=["VANILLA"],
+        liveries=["CLASSIC_LINES"],
         sprites_complete=True,
     )
 
