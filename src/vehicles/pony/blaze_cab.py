@@ -20,9 +20,9 @@ def main(**kwargs):
         lgv_capable=True,  # for lolz
         liveries=[
             "INTERCITY_RASPBERRY_RIPPLE",
-            "VANILLA",
-            "CLASSIC_LINES",
-            "VANILLA",
+            "SURE_PACE",
+            "RIDEWELL",
+            "VINYL_VECTOR",
             "VANILLA",
         ],
         sprites_complete=True,

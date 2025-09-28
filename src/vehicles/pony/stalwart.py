@@ -23,7 +23,7 @@ def main(**kwargs):
             "STOCK_STANDARD",
             "BANGER_BLUE",
             "CLASSIC_LINES",
-            "CLASSIC_LINES",
+            "RIDEWELL",
             "RAILFREIGHT_RED_STRIPE",
         ],
         sprites_complete=True,

@@ -727,6 +727,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "VINYL_VECTOR": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "WORKHORSE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -745,8 +753,8 @@ def main():
             "gen_2_pax_liveries": [("RIDEWELL", 0), ("SURE_PACE", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("CLASSIC_LINES", 1),
-                ("VANILLA", 2),
+                ("RIDEWELL", 1),
+                ("VINYL_VECTOR", 2),
                 ("VANILLA", 3),
             ],
             "CABBAGE_RAILCAR": [
@@ -760,6 +768,14 @@ def main():
             "gen_2_suburban_pax_liveries": [
                 ("SURE_PACE", 1),
                 ("RIDEWELL", 0),
+            ],
+            "gen_5_suburban_pax_liveries": [
+                ("RIDEWELL", 1),
+                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+            ],
+            "gen_6_suburban_pax_liveries": [
+                ("SWOOSH", 1),
+                ("VINYL_VECTOR", 0),
             ],
             "default_mail_liveries": [
                 ("ROYAL_MAIL_RES", 3),
@@ -778,8 +794,8 @@ def main():
             "gen_5_and_6_mail_liveries": [
                 ("VANILLA", 5),
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
-                ("CLASSIC_LINES", 1),
-                ("VANILLA", 2),
+                ("RIDEWELL", 1),
+                ("VINYL_VECTOR", 2),
                 ("VANILLA", 3),
                 ("ROYAL_MAIL_RES", 4),
                 ("ROYAL_MAIL_RES", 6),
@@ -815,7 +831,7 @@ def main():
             ],
             "default_motorail_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1), ("BANGER_BLUE", 2)],
             "gen_2_motorail_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1), ("BANGER_BLUE", 2)],
-            "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("CLASSIC_LINES", 1), ("VANILLA", 2)],
+            "gen_5_and_6_motorail_liveries": [("INTERCITY_RASPBERRY_RIPPLE", 0), ("RIDEWELL", 1), ("STOCK_STANDARD", 2)],
         },
         engine_module_names=engine_module_names,
         wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,
