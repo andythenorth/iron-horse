@@ -151,9 +151,6 @@ base = "Basic Banger"
 [STR_BADGE_LIVERY_CLASSIC_LINES]
 base = "Classic Lines"
 
-[STR_BADGE_LIVERY_DUTCH]
-base = "Double Dutch"
-
 [STR_BADGE_LIVERY_FARMFLOW]
 base = "Farmflow"
 

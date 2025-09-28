@@ -560,6 +560,7 @@ def main():
                     "company_colour1": "COLOUR_GREY",
                     "company_colour2": "company_colour1",
                 },
+                "proxy_livery_for_badge_display_and_filter": "SLABSIDE",
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
