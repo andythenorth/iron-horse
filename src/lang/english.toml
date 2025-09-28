@@ -101,7 +101,7 @@ base = "Limewash"
 base = "Bumblebee"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE]
-base = "Workday"
+base = "Rustbelt"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL]
 base = "Soap Bubbles"
@@ -117,9 +117,6 @@ base = "Pineapple"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_SULPHUR_OCHRE]
 base = "Sulphur Mix"
-
-[STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN]
-base = "Obsidian"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE]
 base = "Night Black"
@@ -137,25 +134,7 @@ base = "Ocean Teal"
 base = "Silver Smoke"
 
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_OXIDE_RUST]
-base = "Rustbelt"
-
-[STR_BADGE_LIVERY_FREIGHT_BONUS_OBSIDIAN]
-base = "Obsidian"
-
-[STR_BADGE_LIVERY_FREIGHT_BONUS_OXIDE_RUST]
-base = "Rustbelt"
-
-[STR_BADGE_LIVERY_FREIGHT_BONUS_TEAL]
-base = "Ocean Teal"
-
-[STR_BADGE_LIVERY_FREIGHT_GREY]
-base = "Grey"
-
-[STR_BADGE_LIVERY_FREIGHT_MIST]
-base = "Mist"
-
-[STR_BADGE_LIVERY_FREIGHT_PEWTER]
-base = "Pewter"
+base = "Oxide"
 
 [STR_BADGE_LIVERY_FREIGHT_RED]
 base = "Flame Red"
@@ -181,9 +160,6 @@ base = "Farmflow"
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
 base = "Dark Horse"
 
-[STR_BADGE_LIVERY_FREIGHTLINER_GBRF]
-base = "BoxFreight"
-
 [STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
 base = "Hazard Yellow"
 
@@ -192,12 +168,6 @@ base = "Fruit Ripple"
 
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
-
-[STR_BADGE_LIVERY_RAILFREIGHT_RED_STRIPE]
-base = "Railslate Grey"
-
-[STR_BADGE_LIVERY_RAILFREIGHT_TRIPLE_GREY]
-base = "Sector Connector"
 
 [STR_BADGE_LIVERY_ROYAL_MAIL_RES]
 base = "Mail by Rail"
