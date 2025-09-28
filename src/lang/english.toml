@@ -166,6 +166,9 @@ base = "Metroland"
 [STR_BADGE_LIVERY_ROYAL_MAIL_RES]
 base = "Mail by Rail"
 
+[STR_BADGE_LIVERY_RIDEWELL]
+base = "RIDEWELL"
+
 [STR_BADGE_LIVERY_SHOW_PONY]
 base = "Racehorse"
 
@@ -180,6 +183,9 @@ base = "SWOOSH"
 
 [STR_BADGE_LIVERY_SUPERGRAPHIC]
 base = "Supergraphic"
+
+[STR_BADGE_LIVERY_SURE_PACE]
+base = "SURE_PACE"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"

@@ -173,7 +173,7 @@ def main():
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
             "default_pax_liveries": [("VANILLA", 0)],
-            "suburban_pax_liveries": [
+            "default_suburban_pax_liveries": [
                 ("VANILLA", 0),
             ],
             "default_mail_liveries": [

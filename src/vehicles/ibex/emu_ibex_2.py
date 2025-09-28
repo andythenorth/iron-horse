@@ -18,7 +18,7 @@ def main(**kwargs):
         receives_easter_egg_haulage_speed_bonus=True,
         gen=2,
         # this railcar type specifies liveries per model_def for flexibility
-        livery_group_name="suburban_pax_liveries",
+        livery_group_name="default_suburban_pax_liveries",
         sprites_complete=False,
     )
 

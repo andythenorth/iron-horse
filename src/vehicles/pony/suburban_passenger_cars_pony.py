@@ -16,6 +16,7 @@ def main(**kwargs):
         base_numeric_id=19200,
         gen=2,
         subtype="A",
+        livery_group_name="gen_2_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -28,6 +29,7 @@ def main(**kwargs):
         base_numeric_id=19220,
         gen=2,
         subtype="B",
+        livery_group_name="gen_2_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

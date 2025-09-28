@@ -25,6 +25,7 @@ def main(**kwargs):
         base_numeric_id=21390,
         gen=2,
         subtype="U",
+        livery_group_name="gen_2_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

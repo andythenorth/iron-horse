@@ -121,6 +121,7 @@ def main(**kwargs):
         base_numeric_id=17510,
         gen=2,
         subtype="A",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -135,6 +136,7 @@ def main(**kwargs):
         base_numeric_id=17530,
         gen=2,
         subtype="B",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

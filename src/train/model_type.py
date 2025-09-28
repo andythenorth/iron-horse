@@ -7167,7 +7167,7 @@ class PassengerSuburbanCar(PassengerCarBase):
     Position-dependent sprites for brake car etc.
     """
 
-    livery_group_name = "suburban_pax_liveries"
+    livery_group_name = "default_suburban_pax_liveries"
 
     model_id_root = "suburban_passenger_car"
     formation_reporting_labels = ["generic_pax_car"]

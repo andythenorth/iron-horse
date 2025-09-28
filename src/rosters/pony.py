@@ -645,6 +645,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "RIDEWELL": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "ROYAL_MAIL_RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -694,6 +702,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "SURE_PACE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "SWOOSH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -725,7 +741,8 @@ def main():
         # - livery name comes from roster engine_and_misc_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
-            "default_pax_liveries": [("SLABSIDE", 0), ("CLASSIC_LINES", 1)],
+            "default_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
+            "gen_2_pax_liveries": [("RIDEWELL", 0), ("SURE_PACE", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("CLASSIC_LINES", 1),
@@ -736,15 +753,26 @@ def main():
                 ("VANILLA", 1),
                 ("VANILLA", 0),
             ],
-            "suburban_pax_liveries": [
-                ("VANILLA", 1),
-                ("VANILLA", 0),
+            "default_suburban_pax_liveries": [
+                ("RIDEWELL", 1),
+                ("SURE_PACE", 0),
+            ],
+            "gen_2_suburban_pax_liveries": [
+                ("SURE_PACE", 1),
+                ("RIDEWELL", 0),
             ],
             "default_mail_liveries": [
-                ("VANILLA", 3),
-                ("VANILLA", 0),
-                ("VANILLA", 1),
-                ("VANILLA", 2),
+                ("ROYAL_MAIL_RES", 3),
+                ("SURE_PACE", 0),
+                ("RIDEWELL", 1),
+                ("BANGER_BLUE", 2),
+                ("ROYAL_MAIL_RES", 4),
+            ],
+            "gen_2_mail_liveries": [
+                ("ROYAL_MAIL_RES", 3),
+                ("RIDEWELL", 1),
+                ("SURE_PACE", 0),
+                ("BANGER_BLUE", 2),
                 ("ROYAL_MAIL_RES", 4),
             ],
             "gen_5_and_6_mail_liveries": [
