@@ -30,17 +30,21 @@ class LiveryDef:
         return list(set(self.colour_set_names))
 
     @property
+    def display_and_filter_name(self):
+        if self.proxy_livery_for_badge_display_and_filter is not None:
+            livery_name = self.proxy_livery_for_badge_display_and_filter
+        else:
+            livery_name = self.livery_name
+        return livery_name
+
+    @property
     def display_and_filter_name_badge_label(self):
         # conforms to draft livery spec in grf docs as of Apr 2025
         if self.is_freight_wagon_livery:
             subcategory = "freight_wagon/"
         else:
             subcategory = ""
-        if self.proxy_livery_for_badge_display_and_filter is not None:
-            livery_name = self.proxy_livery_for_badge_display_and_filter
-        else:
-            livery_name = self.livery_name
-        return f"livery/iron_horse/{subcategory}{livery_name.lower()}"
+        return f"livery/iron_horse/{subcategory}{self.display_and_filter_name.lower()}"
 
     @property
     def internal_name_badge_label(self):

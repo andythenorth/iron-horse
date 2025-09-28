@@ -194,7 +194,7 @@ class DocHelper(object):
         return ("_").join(result).lower()
 
     def get_livery_display_name(self, livery_def):
-        return self.lang_strings["STR_BADGE_LIVERY_" + livery_def.livery_name]
+        return self.lang_strings["STR_BADGE_LIVERY_" + livery_def.display_and_filter_name]
 
     def get_subrole_child_branches(self, model_variants, base_track_type, role):
         result = []
