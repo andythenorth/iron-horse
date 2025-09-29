@@ -136,6 +136,17 @@ class Roster:
 
         return result
 
+    @cached_property
+    def model_variants_grouped_by_livery(self):
+        # for docs support
+        result = {}
+        for model_variant in self.model_variants:
+            if model_variant.catalogue_entry.livery_def.livery_name not in result:
+                result[model_variant.catalogue_entry.livery_def.livery_name] = []
+            result[model_variant.catalogue_entry.livery_def.livery_name].append(model_variant)
+        # sort on keys (livery string names)
+        return dict(sorted(result.items(), key=lambda item: item[0]))
+
     @property
     def model_variants_in_order_optimised_for_action_2_ids(self):
         # !! as of April 2025 this produces no improvement in action 2 ID consumption vs. just using model_variants

@@ -470,6 +470,7 @@ def main():
     html_docs = [
         "code_reference",  # 0.45 s?
         "get_started",  # 0.39 s?
+        "liveries",
         "translations",  # 0.40 s?
         "tech_tree_table_blue",  # 0.82 s?
         "tech_tree_table_red",  # 0.84 s?
