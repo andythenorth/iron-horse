@@ -141,9 +141,15 @@ class Roster:
         # for docs support
         result = {}
         for model_variant in self.model_variants:
-            if model_variant.catalogue_entry.livery_def.livery_name not in result:
-                result[model_variant.catalogue_entry.livery_def.livery_name] = []
-            result[model_variant.catalogue_entry.livery_def.livery_name].append(model_variant)
+            key = model_variant.catalogue_entry.livery_def.livery_name
+            if key not in result:
+                result[key] = []
+            result[key].append(model_variant)
+
+        # sort each group by intro_year
+        for key, variants in result.items():
+            variants.sort(key=lambda mv: mv.catalogue.intro_year)
+
         # sort on keys (livery string names)
         return dict(sorted(result.items(), key=lambda item: item[0]))
 

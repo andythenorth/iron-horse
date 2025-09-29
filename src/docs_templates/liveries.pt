@@ -12,6 +12,7 @@
                             <tal:model_variants repeat="model_variant livery_pair[1]">
                                 <li tal:condition="model_variant.catalogue.engine_quacker.quack">
                                     <a href="${model_variant.catalogue.model_id}.html#appearance">${doc_helper.unpack_name_string(model_variant.catalogue)}</a>
+                                    ${model_variant.catalogue.intro_year}
                                 </li>
                             </tal:model_variants>
                         </ul>
