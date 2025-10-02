@@ -149,7 +149,7 @@ base = "Basic Banger"
 base = "Classic Lines"
 
 [STR_BADGE_LIVERY_DYNAMIC_LINES]
-base = "Dynamic Lines"
+base = "Vapid Voyager"
 
 [STR_BADGE_LIVERY_FARMFLOW]
 base = "Farmflow"
@@ -176,7 +176,7 @@ base = "Metroland"
 base = "Mail by Rail"
 
 [STR_BADGE_LIVERY_RIDEWELL]
-base = "RIDEWELL"
+base = "Ridewell"
 
 [STR_BADGE_LIVERY_SHOW_PONY]
 base = "Specials"
@@ -191,13 +191,13 @@ base = "Stock Standard"
 base = "Supergraphic"
 
 [STR_BADGE_LIVERY_SURE_PACE]
-base = "SURE_PACE"
+base = "Sure Pace"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
 
 [STR_BADGE_LIVERY_VINYL_VECTOR]
-base = "VINYL_VECTOR"
+base = "Vinyl Vector"
 
 [STR_BADGE_LIVERY_WORKHORSE]
 base = "Work Horse"
