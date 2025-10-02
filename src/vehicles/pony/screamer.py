@@ -25,7 +25,7 @@ def main(**kwargs):
             "INTERCITY_RASPBERRY_RIPPLE",
             "BANGER_BLUE",
             "ROYAL_MAIL_RES",
-            "DYNAMIC_LINES",
+            "VAPID_VOYAGER",
             "STOCK_STANDARD",
             "FREIGHTLINER_GBRF",
             "FREIGHTLINER_GBRF",

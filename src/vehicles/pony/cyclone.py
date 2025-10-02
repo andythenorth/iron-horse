@@ -22,7 +22,7 @@ def main(**kwargs):
         liveries=[
             "STOCK_STANDARD",
             "SHOW_PONY",
-            "DYNAMIC_LINES",
+            "VAPID_VOYAGER",
             "LOWER_LINES",
             "INDUSTRIAL_YELLOW",
         ],

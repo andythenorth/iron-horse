@@ -568,14 +568,6 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "DYNAMIC_LINES": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             "FARMFLOW": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -743,6 +735,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "VAPID_VOYAGER": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "VINYL_VECTOR": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -771,7 +771,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
-                ("DYNAMIC_LINES", 3),
+                ("VAPID_VOYAGER", 3),
             ],
             "gen_5_pax_liveries": [
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
@@ -779,7 +779,7 @@ def main():
             ],
             "gen_6_pax_liveries": [
                 ("VINYL_VECTOR", 0),
-                ("DYNAMIC_LINES", 1),
+                ("VAPID_VOYAGER", 1),
             ],
             "gen_3_ng_pax_liveries": [
                 ("RIDEWELL", 0),
@@ -811,7 +811,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
             ],
             "gen_6_suburban_pax_liveries": [
-                ("DYNAMIC_LINES", 1),
+                ("VAPID_VOYAGER", 1),
                 ("VINYL_VECTOR", 0),
             ],
             "default_mail_liveries": [
@@ -833,7 +833,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
-                ("DYNAMIC_LINES", 3),
+                ("VAPID_VOYAGER", 3),
                 ("ROYAL_MAIL_RES", 4),
                 ("ROYAL_MAIL_RES", 6),
             ],
@@ -843,7 +843,7 @@ def main():
                 ("INTERCITY_RASPBERRY_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
-                ("DYNAMIC_LINES", 3),
+                ("VAPID_VOYAGER", 3),
                 ("ROYAL_MAIL_RES", 6),
             ],
             "gen_3_ng_mail_liveries": [
@@ -912,7 +912,7 @@ def main():
             "gen_6_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("VINYL_VECTOR", 0),
-                ("DYNAMIC_LINES", 1),
+                ("VAPID_VOYAGER", 1),
                 ("ROYAL_MAIL_RES", 2),
                 ("ROYAL_MAIL_RES", 4),
             ],
@@ -925,12 +925,12 @@ def main():
                 ("SHOW_PONY", 1),
             ],
             "gen_6_railbus_pax_liveries": [
-                ("DYNAMIC_LINES", 0),
+                ("VAPID_VOYAGER", 0),
                 ("VINYL_VECTOR", 1),
             ],
             "dvt_mail_liveries": [
                 ("VINYL_VECTOR", 0),
-                ("DYNAMIC_LINES", 1),
+                ("VAPID_VOYAGER", 1),
                 ("ROYAL_MAIL_RES", 2),
                 ("LOWER_LINES", 3),
             ],

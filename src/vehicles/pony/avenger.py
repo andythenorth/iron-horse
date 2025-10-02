@@ -24,7 +24,7 @@ def main(**kwargs):
             "RIDEWELL",
             "RIDEWELL",
             "VINYL_VECTOR",
-            "DYNAMIC_LINES",
+            "VAPID_VOYAGER",
             "RAILFREIGHT_TRIPLE_GREY",
         ],
         sprites_complete=True,
