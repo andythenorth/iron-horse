@@ -17,7 +17,7 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=3,  # introduce later than gen epoch by design
         liveries=[
-            "CLASSIC_LINES",
+            "LOWER_LINES",
             "BANGER_BLUE",
             "INTERCITY_RASPBERRY_RIPPLE",
             "ROYAL_MAIL_RES",

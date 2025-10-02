@@ -18,7 +18,7 @@ def main(**kwargs):
         gen=3,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # this railcar type specifies liveries per model_def for flexibility
-        livery_group_name="diesel_railcar_mail_liveries",
+        livery_group_name="gen_3_ng_diesel_railcar_mail_liveries",
         sprites_complete=True,
     )
 

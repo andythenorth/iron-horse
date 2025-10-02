@@ -16,8 +16,9 @@ def main(**kwargs):
             "DIESEL": 1200,  # corsica AMG 800 is 590hp per engine https://fr.wikipedia.org/wiki/AMG_800
         },
         gen=4,
-        tilt_bonus=True,  # for lolz
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
+        tilt_bonus=True,  # for lolz
+        livery_group_name="gen_4_reversed_ng_pax_liveries",  # override default liveries from gestalt
         formation_ruleset="railcars_4_unit_sets",  # special case
         sprites_complete=True,
     )

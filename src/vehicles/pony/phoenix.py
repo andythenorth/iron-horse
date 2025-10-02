@@ -23,9 +23,9 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
             "SLABSIDE",
-            "CLASSIC_LINES",
+            "LOWER_LINES",
             "WORKHORSE",
-            "SUPERGRAPHIC",
+            "SHOW_PONY",
             "BANGER_BLUE",
         ],
         decor_spriterow_num=8,

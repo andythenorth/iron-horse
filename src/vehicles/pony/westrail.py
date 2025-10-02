@@ -22,8 +22,8 @@ def main(**kwargs):
         liveries=[
             "SUPERGRAPHIC",
             "STOCK_STANDARD",
-            "SUPERGRAPHIC",
-            "CLASSIC_LINES",
+            "STOCK_STANDARD",
+            "LOWER_LINES",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=False,

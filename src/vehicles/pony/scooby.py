@@ -18,8 +18,7 @@ def main(**kwargs):
         gen=4,
         # introduce early by design
         intro_year_offset=-5,
-        # this railcar type specifies liveries per model_def for flexibility
-        livery_group_name="diesel_railcar_mail_liveries",
+        livery_group_name="gen_4_diesel_railcar_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

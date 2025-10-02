@@ -21,7 +21,7 @@ def main(**kwargs):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # unfinished EWS livery exists, but eh
-        liveries=["CLASSIC_LINES", "CLASSIC_LINES", "FREIGHTLINER_GBRF", "SUPERGRAPHIC", "SUPERGRAPHIC"],
+        liveries=["LOWER_LINES", "LOWER_LINES", "FREIGHTLINER_GBRF", "SHOW_PONY", "SHOW_PONY"],
         sprites_complete=True,
     )
 

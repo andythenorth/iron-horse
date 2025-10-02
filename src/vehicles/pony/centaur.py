@@ -23,7 +23,7 @@ def main(**kwargs):
             "RIDEWELL",
             "BANGER_BLUE",
             "SHOW_PONY",
-            "CLASSIC_LINES",
+            "LOWER_LINES",
             "STOCK_STANDARD",
             "RAILFREIGHT_TRIPLE_GREY",
             "ROYAL_MAIL_RES",

@@ -19,7 +19,7 @@ def main(**kwargs):
         },
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Brenner
-        liveries=["SHOW_PONY", "CLASSIC_LINES", "RIDEWELL"],
+        liveries=["SHOW_PONY", "SHOW_PONY", "RIDEWELL"],
         sprites_complete=True,
     )
 

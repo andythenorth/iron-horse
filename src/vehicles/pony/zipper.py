@@ -17,6 +17,7 @@ def main(**kwargs):
         gen=6,
         # introduce early by design
         intro_year_offset=-4,
+        livery_group_name="gen_6_railbus_pax_liveries",  # override default liveries from gestalt
         pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
@@ -53,6 +54,7 @@ def main(**kwargs):
         gen=6,
         # introduce early by design
         intro_year_offset=-4,
+        livery_group_name="gen_6_railbus_pax_liveries",  # override default liveries from gestalt
         # match to equivalent twin-unit railbus id
         vehicle_family_id="zipper",
         # it's too complex to clone these from the twin unit, but treat the result like a clone

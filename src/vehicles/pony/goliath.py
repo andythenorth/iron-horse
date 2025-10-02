@@ -19,7 +19,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=2,  # introduce later than gen epoch by design
-        liveries=["CLASSIC_LINES", "STOCK_STANDARD", "INDUSTRIAL_YELLOW"],
+        liveries=["LOWER_LINES", "STOCK_STANDARD", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

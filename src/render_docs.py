@@ -168,9 +168,17 @@ def render_docs_images(
             y_offset = 30 * model_variant.model_def.docs_image_spriterow
         # !! requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
-            y_offset = (
-                30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
-            )
+            # further possibly fragile special-casing
+            if getattr(model_variant, "livery_group_name", None) is not None:
+                # if a livery group is used, the custom buy menu sprites will have been generated in livery order, with row offsets already applied as needed
+                y_offset = (
+                    30 * model_variant.catalogue_entry.index
+                )
+            else:
+                # otherwise apply the row offset from the livery
+                y_offset = (
+                    30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+                )
         else:
             y_offset = (
                 30

@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         gen=5,
-        liveries=["SHOW_PONY", "STOCK_STANDARD"],
+        liveries=["LOWER_LINES", "STOCK_STANDARD"],
         sprites_complete=True,
     )
 

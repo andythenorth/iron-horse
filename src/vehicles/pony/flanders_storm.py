@@ -20,7 +20,7 @@ def main(**kwargs):
         gen=5,
         pantograph_type="z-shaped-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
-        liveries=["CLASSIC_LINES", "RAILFREIGHT_TRIPLE_GREY", "SLABSIDE"],
+        liveries=["LOWER_LINES", "RAILFREIGHT_TRIPLE_GREY", "SLABSIDE"],
         sprites_complete=True,
     )
 

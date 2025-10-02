@@ -228,6 +228,7 @@
                                     <div style="margin-top:4px; font-weight:500;">
                                         &ldquo;${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}&rdquo;
                                     </div>
+                                    ${catalogue_entry.livery_def.relative_spriterow_num}
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
                                     <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">

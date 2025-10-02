@@ -11,6 +11,7 @@ def main(**kwargs):
         name="High Speed Driving Trailer",
         subrole_child_branch_num=-3,  # driving cab cars are probably jokers?
         gen=6,
+        livery_group_name="gen_6_pax_liveries",  # override default liveries from gestalt
         lgv_capable=True,  # for lolz
         sprites_complete=True,
     )

@@ -13,6 +13,7 @@ def main(**kwargs):
         base_track_type="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
+        livery_group_name="gen_4_ng_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

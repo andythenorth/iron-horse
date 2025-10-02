@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         gen=4,
         intro_year_offset=1,  # introduce later by design
-        livery_group_name="CABBAGE_RAILCAR",  # override default liveries from gestalt # CABBAGE
+        livery_group_name="CABBAGE_RAILCAR",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

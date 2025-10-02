@@ -17,7 +17,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
-        liveries=["RIDEWELL", "BANGER_BLUE", "CLASSIC_LINES"],
+        liveries=["RIDEWELL", "BANGER_BLUE", "LOWER_LINES"],
         decor_spriterow_num=8,
         sprites_complete=True,
     )

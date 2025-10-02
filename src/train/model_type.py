@@ -1847,7 +1847,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
     Lightweight railbus (single unit, combinable).
     """
 
-    livery_group_name = "default_pax_liveries"
+    livery_group_name = "railbus_pax_liveries"
     # non-standard cite
     cite = "Arabella Unit"
 

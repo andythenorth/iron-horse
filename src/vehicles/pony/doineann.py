@@ -19,7 +19,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # let's be a little earlier for this one
-        liveries=["WORKHORSE", "STOCK_STANDARD", "SLABSIDE", "SUPERGRAPHIC"],
+        liveries=["WORKHORSE", "STOCK_STANDARD", "GREY_HORSE", "SHOW_PONY"],
         sprites_complete=True,
     )
 

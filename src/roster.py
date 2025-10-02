@@ -141,7 +141,7 @@ class Roster:
         # for docs support
         result = {}
         for model_variant in self.model_variants:
-            key = model_variant.catalogue_entry.livery_def.livery_name
+            key = model_variant.catalogue_entry.livery_def.display_and_filter_name
             if key not in result:
                 result[key] = []
             result[key].append(model_variant)

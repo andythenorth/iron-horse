@@ -22,7 +22,7 @@ def main(**kwargs):
         extended_vehicle_life=True,
         liveries=[
             "BANGER_BLUE",
-            "CLASSIC_LINES",
+            "RIDEWELL",
             "ROYAL_MAIL_RES",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal

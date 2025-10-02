@@ -25,7 +25,7 @@ def main(**kwargs):
             "ROYAL_MAIL_RES",
             "FREIGHTLINER_GBRF",
             "DUTCH",
-            "CLASSIC_LINES",
+            "LOWER_LINES",
             "BANGER_BLUE",
         ],
         sprites_complete=True,

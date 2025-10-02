@@ -15,7 +15,7 @@ def main(**kwargs):
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
-        livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_express_mail_railcar_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

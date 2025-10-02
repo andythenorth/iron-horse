@@ -3,21 +3,43 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <h1>Liveries</h1>
+                <h1>${len(roster.model_variants_grouped_by_livery)} Liveries</h1>
                 <p>[Engines only for now]</p>
-                <ul>
-                    <tal:liveries repeat="livery_pair roster.model_variants_grouped_by_livery.items()">
-                        <li>${doc_helper.get_livery_display_name(iron_horse.livery_supplier[livery_pair[0]])}</li>
-                        <ul>
-                            <tal:model_variants repeat="model_variant livery_pair[1]">
-                                <li tal:condition="model_variant.catalogue.engine_quacker.quack">
-                                    <a href="${model_variant.catalogue.model_id}.html#appearance">${doc_helper.unpack_name_string(model_variant.catalogue)}</a>
-                                    ${model_variant.catalogue.intro_year}
-                                </li>
-                            </tal:model_variants>
-                        </ul>
-                    </tal:liveries>
-                </ul>
+                <tal:liveries repeat="livery_pair roster.model_variants_grouped_by_livery.items()">
+                    <tal:block define="livery_obj iron_horse.livery_supplier[livery_pair[0]]">
+                        <h2 id="${doc_helper.get_livery_display_name(livery_obj)}">
+                            ${doc_helper.get_livery_display_name(livery_obj)}
+                        </h2>
+                        <table class="vehicle-table">
+                            <tbody>
+                                <tal:model_variants repeat="model_variant livery_pair[1]">
+                                    <tal:only_engines condition="model_variant.catalogue.engine_quacker.quack">
+                                        <tr>
+                                            <td>
+                                                ${model_variant.catalogue.intro_year}
+                                            </td>
+                                            <td>
+                                                <a href="${model_variant.catalogue.model_id}.html#appearance">${doc_helper.unpack_name_string(model_variant.catalogue)}</a>
+                                            </td>
+                                            <td>
+                                                <tal:cc_recolour define="cc_remap_pair model_variant.catalogue_entry.livery_def.docs_image_input_cc[0]">
+                                                    <div class="livery-example-container">
+                                                        <div class="vehicle-image"
+                                                            style="width:${2 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                            <img src="static/img/${model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                                 width="${2 * doc_helper.docs_sprite_width(catalogue=model_variant.catalogue)}"
+                                                                 height="${2 * doc_helper.docs_sprite_height}" />
+                                                        </div>
+                                                    </div>
+                                                </tal:cc_recolour>
+                                            </td>
+                                        <tr>
+                                    </tal:only_engines>
+                                </tal:model_variants>
+                            </tbody>
+                        </table>
+                    </tal:block>
+                </tal:liveries>
             </div>
         </div>
     </div>

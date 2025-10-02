@@ -21,9 +21,9 @@ def main(**kwargs):
         extended_vehicle_life=True,
         liveries=[
             "STOCK_STANDARD",
-            "CLASSIC_LINES",
-            "SUPERGRAPHIC",
-            "CLASSIC_LINES",
+            "SHOW_PONY",
+            "DYNAMIC_LINES",
+            "LOWER_LINES",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,

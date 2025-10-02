@@ -18,6 +18,7 @@ def main(**kwargs):
         gen=3,
         # extended vehicle life for all this generation of NG eh
         extended_vehicle_life=True,
+        livery_group_name="gen_3_ng_pax_liveries",  # override default liveries from gestalt
         pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
@@ -59,6 +60,7 @@ def main(**kwargs):
         gen=3,
         # extended vehicle life for all this generation of NG eh
         extended_vehicle_life=True,
+        livery_group_name="gen_3_ng_pax_liveries",  # override default liveries from gestalt
         # match to equivalent twin-unit railbus id
         vehicle_family_id="mumble",
         # it's too complex to clone these from the twin unit, but treat the result like a clone

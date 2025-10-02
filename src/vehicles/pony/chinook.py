@@ -22,7 +22,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "STOCK_STANDARD",
             "RAILFREIGHT_RED_STRIPE",
-            "SUPERGRAPHIC",
+            "SHOW_PONY",
         ],
         sprites_complete=True,
     )
