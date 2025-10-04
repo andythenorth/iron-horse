@@ -41,7 +41,8 @@ class LiveryDef:
     def display_and_filter_name_badge_label(self):
         # conforms to draft livery spec in grf docs as of Apr 2025
         if self.is_freight_wagon_livery:
-            subcategory = "freight_wagon/"
+            #subcategory = "freight_wagon/"
+            subcategory = ""
         else:
             subcategory = ""
         return f"livery/iron_horse/{subcategory}{self.display_and_filter_name.lower()}"

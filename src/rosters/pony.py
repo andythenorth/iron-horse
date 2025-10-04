@@ -573,6 +573,7 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
+                "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
             },
             "FREIGHT_BLACK": {
                 "remap_to_cc": None,
@@ -617,6 +618,14 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "INVERSIONS": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
@@ -815,7 +824,7 @@ def main():
                 ("VINYL_VECTOR", 0),
             ],
             "default_mail_liveries": [
-                ("SHOW_PONY", 3),
+                ("INVERSIONS", 3),
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
@@ -825,6 +834,13 @@ def main():
                 ("ROYAL_MAIL_RES", 3),
                 ("RIDEWELL", 1),
                 ("SURE_PACE", 0),
+                ("BANGER_BLUE", 2),
+                ("ROYAL_MAIL_RES", 4),
+            ],
+            "gen_4_mail_liveries": [
+                ("LOWER_LINES", 3),
+                ("SURE_PACE", 0),
+                ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
                 ("ROYAL_MAIL_RES", 4),
             ],
@@ -917,12 +933,12 @@ def main():
                 ("ROYAL_MAIL_RES", 4),
             ],
             "gen_4_railbus_pax_liveries": [
-                ("SHOW_PONY", 0),
+                ("INVERSIONS", 0),
                 ("SURE_PACE", 1),
             ],
             "gen_5_railbus_pax_liveries": [
                 ("SHOW_PONY", 0),
-                ("SHOW_PONY", 1),
+                ("INVERSIONS", 1),
             ],
             "gen_6_railbus_pax_liveries": [
                 ("VAPID_VOYAGER", 0),
