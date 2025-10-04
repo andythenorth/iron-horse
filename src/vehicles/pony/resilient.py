@@ -21,8 +21,8 @@ def main(**kwargs):
         # add RfD Euro style triple grey?
         liveries=[
             "RIDEWELL",
-            "INTERCITY_RASPBERRY_RIPPLE",
-            "ROYAL_MAIL_RES",
+            "FRUIT_RIPPLE",
+            "MAIL_BY_RAIL",
             "FREIGHTLINER_GBRF",
             "DUTCH",
             "LOWER_LINES",

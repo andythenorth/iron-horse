@@ -555,6 +555,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "CONVENTIONAL_WISDOM": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "DUTCH": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_GREY",
@@ -596,6 +604,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "FRUIT_RIPPLE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "GREY_HORSE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -611,14 +627,6 @@ def main():
                 },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "INTERCITY_RASPBERRY_RIPPLE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
             "INVERSIONS": {
@@ -678,7 +686,7 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "ROYAL_MAIL_RES": {
+            "MAIL_BY_RAIL": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -686,7 +694,7 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "ROYAL_MAIL_RES": {
+            "MAIL_BY_RAIL": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_RED",
                     "company_colour2": "company_colour2",
@@ -696,14 +704,6 @@ def main():
                 ],
             },
             "SHOW_PONY": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "SLABSIDE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -777,13 +777,13 @@ def main():
             "default_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
             "gen_2_pax_liveries": [("RIDEWELL", 0), ("SURE_PACE", 1)],
             "gen_5_and_6_pax_liveries": [
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
             ],
             "gen_5_pax_liveries": [
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
             ],
             "gen_6_pax_liveries": [
@@ -795,12 +795,12 @@ def main():
                 ("SURE_PACE", 1),
             ],
             "gen_4_ng_pax_liveries": [
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
             ],
             "gen_4_reversed_ng_pax_liveries": [
                 ("RIDEWELL", 0),
-                ("INTERCITY_RASPBERRY_RIPPLE", 1),
+                ("FRUIT_RIPPLE", 1),
             ],
             # CABBAGE
             "CABBAGE_RAILCAR": [
@@ -817,7 +817,7 @@ def main():
             ],
             "gen_5_suburban_pax_liveries": [
                 ("RIDEWELL", 1),
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
             ],
             "gen_6_suburban_pax_liveries": [
                 ("VAPID_VOYAGER", 1),
@@ -828,116 +828,116 @@ def main():
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 1),
                 ("SURE_PACE", 0),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_and_6_mail_liveries": [
                 ("LOWER_LINES", 5),
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
-                ("ROYAL_MAIL_RES", 4),
-                ("ROYAL_MAIL_RES", 6),
+                ("MAIL_BY_RAIL", 4),
+                ("MAIL_BY_RAIL", 6),
             ],
             "gen_5_and_6_express_mail_railcar_liveries": [
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
                 ("LOWER_LINES", 5),
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
-                ("ROYAL_MAIL_RES", 6),
+                ("MAIL_BY_RAIL", 6),
             ],
             "gen_1_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("SURE_PACE", 1),
                 ("RIDEWELL", 0),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("INTERCITY_RASPBERRY_RIPPLE", 1),
+                ("FRUIT_RIPPLE", 1),
                 ("RIDEWELL", 0),
-                ("ROYAL_MAIL_RES", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL", 4),
             ],
             "diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
                 ("INVERSIONS", 3),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("LOWER_LINES", 3),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_diesel_railcar_mail_liveries": [
-                ("ROYAL_MAIL_RES", 2),
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("MAIL_BY_RAIL", 2),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("LOWER_LINES", 3),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_ng_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
                 ("LOWER_LINES", 3),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_electric_railcar_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
-                ("ROYAL_MAIL_RES", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_6_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("VINYL_VECTOR", 0),
                 ("VAPID_VOYAGER", 1),
-                ("ROYAL_MAIL_RES", 2),
-                ("ROYAL_MAIL_RES", 4),
+                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_railbus_pax_liveries": [
                 ("INVERSIONS", 0),
@@ -954,7 +954,7 @@ def main():
             "dvt_mail_liveries": [
                 ("VINYL_VECTOR", 0),
                 ("VAPID_VOYAGER", 1),
-                ("ROYAL_MAIL_RES", 2),
+                ("MAIL_BY_RAIL", 2),
                 ("LOWER_LINES", 3),
             ],
             "metro_pax_liveries": [
@@ -964,7 +964,7 @@ def main():
             "metro_mail_liveries": [
                 ("METROLAND", 0),
                 ("METROLAND", 1),
-                ("ROYAL_MAIL_RES", 2),
+                ("MAIL_BY_RAIL", 2),
             ],
             "default_motorail_liveries": [
                 ("SURE_PACE", 0),
@@ -977,7 +977,7 @@ def main():
                 ("BANGER_BLUE", 2),
             ],
             "gen_5_and_6_motorail_liveries": [
-                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("FRUIT_RIPPLE", 0),
                 ("RIDEWELL", 1),
                 ("STOCK_STANDARD", 2),
             ],

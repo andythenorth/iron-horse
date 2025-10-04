@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        liveries=["SLABSIDE"],
+        liveries=["CONVENTIONAL_WISDOM"],
         decor_spriterow_num=2,
         sprites_complete=True,
     )

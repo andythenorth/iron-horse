@@ -22,7 +22,7 @@ def main(**kwargs):
             "SUPERGRAPHIC",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
-            "SLABSIDE",
+            "CONVENTIONAL_WISDOM",
             "LOWER_LINES",
             "WORKHORSE",
             "SHOW_PONY",

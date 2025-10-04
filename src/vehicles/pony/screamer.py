@@ -21,10 +21,10 @@ def main(**kwargs):
         pantograph_type="z-shaped-double",
         # railfreight grey, intercity, GNER?
         liveries=[
-            "INTERCITY_RASPBERRY_RIPPLE", # strictly not quite, but close enough
-            "INTERCITY_RASPBERRY_RIPPLE",
+            "FRUIT_RIPPLE", # strictly not quite, but close enough
+            "FRUIT_RIPPLE",
             "BANGER_BLUE",
-            "ROYAL_MAIL_RES",
+            "MAIL_BY_RAIL",
             "VAPID_VOYAGER",
             "STOCK_STANDARD",
             "FREIGHTLINER_GBRF",

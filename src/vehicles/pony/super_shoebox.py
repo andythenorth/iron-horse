@@ -17,8 +17,8 @@ def main(**kwargs):
         gen=6,
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=[
-            "INTERCITY_RASPBERRY_RIPPLE",
-            "ROYAL_MAIL_RES",
+            "FRUIT_RIPPLE",
+            "MAIL_BY_RAIL",
             "VANILLA",
             "CLASSIC_LINES",
         ],

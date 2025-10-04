@@ -21,7 +21,7 @@ def main(**kwargs):
         liveries=[
             "RIDEWELL",
             "SHOW_PONY",
-            "INTERCITY_RASPBERRY_RIPPLE",  # strictly not quite, but close enough
+            "FRUIT_RIPPLE",  # strictly not quite, but close enough
         ],
         sprites_complete=True,
     )

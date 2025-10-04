@@ -148,8 +148,8 @@ base = "Basic Banger"
 [STR_BADGE_LIVERY_CLASSIC_LINES]
 base = "Classic Lines"
 
-[STR_BADGE_LIVERY_VAPID_VOYAGER]
-base = "Vapid Voyager"
+[STR_BADGE_LIVERY_CONVENTIONAL_WISDOM]
+base = "Conventional Wisdom"
 
 [STR_BADGE_LIVERY_FARMFLOW]
 base = "Farmflow"
@@ -157,14 +157,14 @@ base = "Farmflow"
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
 base = "Dark Horse"
 
+[STR_BADGE_LIVERY_FRUIT_RIPPLE]
+base = "Fruit Ripple"
+
 [STR_BADGE_LIVERY_GREY_HORSE]
 base = "Grey Horse"
 
 [STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
 base = "Hazard Yellow"
-
-[STR_BADGE_LIVERY_INTERCITY_RASPBERRY_RIPPLE]
-base = "Fruit Ripple"
 
 [STR_BADGE_LIVERY_INVERSIONS]
 base = "Inversions"
@@ -172,20 +172,17 @@ base = "Inversions"
 [STR_BADGE_LIVERY_LOWER_LINES]
 base = "Lower Lines"
 
+[STR_BADGE_LIVERY_MAIL_BY_RAIL]
+base = "Mail by Rail"
+
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
-
-[STR_BADGE_LIVERY_ROYAL_MAIL_RES]
-base = "Mail by Rail"
 
 [STR_BADGE_LIVERY_RIDEWELL]
 base = "Ridewell"
 
 [STR_BADGE_LIVERY_SHOW_PONY]
 base = "Specials"
-
-[STR_BADGE_LIVERY_SLABSIDE]
-base = "Conventional Wisdom"
 
 [STR_BADGE_LIVERY_STOCK_STANDARD]
 base = "Stock Standard"
@@ -198,6 +195,9 @@ base = "Sure Pace"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
+
+[STR_BADGE_LIVERY_VAPID_VOYAGER]
+base = "Vapid Voyager"
 
 [STR_BADGE_LIVERY_VINYL_VECTOR]
 base = "Vinyl Vector"

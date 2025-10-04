@@ -23,7 +23,7 @@ def main(**kwargs):
         liveries=[
             "BANGER_BLUE",
             "RIDEWELL",
-            "ROYAL_MAIL_RES",
+            "MAIL_BY_RAIL",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
             "WORKHORSE",

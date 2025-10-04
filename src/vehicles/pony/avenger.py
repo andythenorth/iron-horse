@@ -20,7 +20,7 @@ def main(**kwargs):
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         lgv_capable=True,  # for lolz
         liveries=[
-            "INTERCITY_RASPBERRY_RIPPLE",
+            "FRUIT_RIPPLE",
             "RIDEWELL",
             "RIDEWELL",
             "VINYL_VECTOR",

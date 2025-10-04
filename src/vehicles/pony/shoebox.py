@@ -19,8 +19,8 @@ def main(**kwargs):
         liveries=[
             "LOWER_LINES",
             "BANGER_BLUE",
-            "INTERCITY_RASPBERRY_RIPPLE",
-            "ROYAL_MAIL_RES",
+            "FRUIT_RIPPLE",
+            "MAIL_BY_RAIL",
             "RAILFREIGHT_TRIPLE_GREY",
             "CLASSIC_LINES",
             "STOCK_STANDARD",

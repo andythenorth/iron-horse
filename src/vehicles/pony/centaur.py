@@ -26,7 +26,7 @@ def main(**kwargs):
             "LOWER_LINES",
             "STOCK_STANDARD",
             "RAILFREIGHT_TRIPLE_GREY",
-            "ROYAL_MAIL_RES",
+            "MAIL_BY_RAIL",
         ],
         sprites_complete=True,
     )

@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=3,
         pantograph_type="diamond-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
-        liveries=["SLABSIDE", "BANGER_BLUE", "DUTCH"],
+        liveries=["CONVENTIONAL_WISDOM", "BANGER_BLUE", "DUTCH"],
         sprites_complete=True,
     )
 
