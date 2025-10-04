@@ -887,7 +887,7 @@ def main():
                 ("BANGER_BLUE", 2),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
-                ("SHOW_PONY", 3),
+                ("INVERSIONS", 3),
                 ("ROYAL_MAIL_RES", 4),
             ],
             "gen_4_diesel_railcar_mail_liveries": [
