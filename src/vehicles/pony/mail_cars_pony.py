@@ -12,6 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         base_track_type="NG",
+        livery_group_name="gen_1_ng_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -126,7 +127,6 @@ def main(**kwargs):
         base_numeric_id=17510,
         gen=2,
         subtype="A",
-        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -141,7 +141,6 @@ def main(**kwargs):
         base_numeric_id=17530,
         gen=2,
         subtype="B",
-        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -156,6 +155,7 @@ def main(**kwargs):
         base_numeric_id=17550,
         gen=3,
         subtype="A",
+        livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -170,6 +170,7 @@ def main(**kwargs):
         base_numeric_id=17750,
         gen=3,
         subtype="B",
+        livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -184,6 +185,7 @@ def main(**kwargs):
         base_numeric_id=17910,
         gen=3,
         subtype="C",
+        livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

@@ -830,8 +830,8 @@ def main():
                 ("BANGER_BLUE", 2),
                 ("ROYAL_MAIL_RES", 4),
             ],
-            "gen_2_mail_liveries": [
-                ("ROYAL_MAIL_RES", 3),
+            "gen_3_mail_liveries": [
+                ("INVERSIONS", 3),
                 ("RIDEWELL", 1),
                 ("SURE_PACE", 0),
                 ("BANGER_BLUE", 2),
@@ -861,6 +861,13 @@ def main():
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
                 ("ROYAL_MAIL_RES", 6),
+            ],
+            "gen_1_ng_mail_liveries": [
+                ("LOWER_LINES", 3),
+                ("SURE_PACE", 0),
+                ("RIDEWELL", 1),
+                ("BANGER_BLUE", 2),
+                ("ROYAL_MAIL_RES", 4),
             ],
             "gen_3_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
@@ -905,7 +912,7 @@ def main():
                 ("ROYAL_MAIL_RES", 4),
             ],
             "gen_3_electric_railcar_mail_liveries": [
-                ("SHOW_PONY", 3),
+                ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
