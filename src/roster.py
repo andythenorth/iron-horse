@@ -137,10 +137,13 @@ class Roster:
         return result
 
     @cached_property
-    def model_variants_grouped_by_livery(self):
+    def engine_model_variants_grouped_by_livery(self):
         # for docs support
         result = {}
         for model_variant in self.model_variants:
+            # engines only currently
+            if not model_variant.catalogue.engine_quacker.quack:
+                continue
             key = model_variant.catalogue_entry.livery_def.display_and_filter_name
             if key not in result:
                 result[key] = []
