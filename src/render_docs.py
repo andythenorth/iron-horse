@@ -149,8 +149,10 @@ def render_docs_images(
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
             # we *do* want docs images for all trailer model variants
-            if (not model_variant.is_default_model_variant) and (
-                catalogue.cab_engine_model is None
+            if (
+                (not model_variant.is_default_model_variant)
+                and (catalogue.cab_engine_model is None)
+                and (not model_variant.catalogue.wagon_quacker.is_pax_or_mail_car)
             ):
                 continue
 
@@ -171,9 +173,7 @@ def render_docs_images(
             # further possibly fragile special-casing
             if getattr(model_variant, "livery_group_name", None) is not None:
                 # if a livery group is used, the custom buy menu sprites will have been generated in livery order, with row offsets already applied as needed
-                y_offset = (
-                    30 * model_variant.catalogue_entry.index
-                )
+                y_offset = 30 * model_variant.catalogue_entry.index
             else:
                 # otherwise apply the row offset from the livery
                 y_offset = (
@@ -268,16 +268,27 @@ def render_docs_images(
             # cabbage - this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
             # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
             custom_remap_indexes = None
-            if len(model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names) > 0:
-                colour_set_name = model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names[0]
+            if (
+                len(
+                    model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names
+                )
+                > 0
+            ):
+                colour_set_name = model_variant.catalogue_entry.livery_def.purchase_swatch_colour_set_names[
+                    0
+                ]
                 if colour_set_name in global_constants.colour_sets:
                     colour_set = global_constants.colour_sets[colour_set_name]
                     custom_remap_indexes = {}
-                    for i in range (8):
-                        custom_remap_indexes[198 + i] = global_constants.custom_wagon_recolour_sprite_maps[colour_set[0]][i]
+                    for i in range(8):
+                        custom_remap_indexes[198 + i] = (
+                            global_constants.custom_wagon_recolour_sprite_maps[
+                                colour_set[0]
+                            ][i]
+                        )
             # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
             if custom_remap_indexes is not None:
-                for k,v in custom_remap_indexes.items():
+                for k, v in custom_remap_indexes.items():
                     cc_remap_indexes[k] = v
 
             dest_image = intermediate_image.copy().point(

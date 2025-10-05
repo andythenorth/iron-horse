@@ -137,22 +137,33 @@ class Roster:
         return result
 
     @cached_property
-    def engine_model_variants_grouped_by_livery(self):
+    def model_variants_grouped_by_livery_for_docs(self):
         # for docs support
         result = {}
         for model_variant in self.model_variants:
-            # engines only currently
-            if not model_variant.catalogue.engine_quacker.quack:
-                continue
             key = model_variant.catalogue_entry.livery_def.display_and_filter_name
             if key not in result:
-                result[key] = []
-            result[key].append(model_variant)
+                result[key] = {"engines": [], "pax_mail_cars": []}
+            # engines only currently
+            if model_variant.catalogue.engine_quacker.quack:
+                result[key]["engines"].append(model_variant)
+            elif model_variant.catalogue.wagon_quacker.is_pax_or_mail_car:
+                result[key]["pax_mail_cars"].append(model_variant)
+
+        # drop any empty liveries
+        unused_liveries = []
+        for livery_name, livery_model_variants_by_type in result.items():
+            if (len(livery_model_variants_by_type["engines"]) == 0) and (
+                len(livery_model_variants_by_type["pax_mail_cars"]) == 0
+            ):
+                unused_liveries.append(livery_name)
+        for livery_name in unused_liveries:
+            del result[livery_name]
 
         # sort each group by intro_year
-        for key, variants in result.items():
-            variants.sort(key=lambda mv: mv.catalogue.intro_year)
-
+        for livery_model_variants_by_type in result.values():
+            for key, variants in livery_model_variants_by_type.items():
+                variants.sort(key=lambda mv: mv.catalogue.intro_year)
         # sort on keys (livery string names)
         return dict(sorted(result.items(), key=lambda item: item[0]))
 

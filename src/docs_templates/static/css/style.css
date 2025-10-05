@@ -122,8 +122,8 @@ table.livery-list-table tr:last-of-type td:first-child {
 }
 table.livery-list-table td {
     margin: 0;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 table.livery-list-table tbody tr:first-of-type td {
     padding-top: 12px;

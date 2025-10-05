@@ -1004,6 +1004,18 @@ class WagonQuacker:
             for base in self.catalogue.factory.model_type_cls.__mro__
         )
 
+    @cached_property
+    def is_pax_or_mail_car(self):
+        # predicate for wagons which are pax or mail
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # depends on looking up class name, but should be ok
+        return any(
+            base.__name__ in ["PassengerCarBase", "MailCarBase"]
+            for base in self.catalogue.factory.model_type_cls.__mro__
+        )
+
 
 class CloneQuacker:
     """
