@@ -151,9 +151,6 @@ base = "Classic Lines"
 [STR_BADGE_LIVERY_CONVENTIONAL_WISDOM]
 base = "Conventional Wisdom"
 
-[STR_BADGE_LIVERY_FARMFLOW]
-base = "Farmflow"
-
 [STR_BADGE_LIVERY_FREIGHT_BLACK]
 base = "Dark Horse"
 
@@ -742,3 +739,66 @@ base = "Electrified Narrow Gauge Vehicles"
 
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
 base = "electrified narrow gauge rail vehicle"
+
+
+# docs extra strings
+
+[STR_EXTRA_TEXT_LIVERY_BANGER_BLUE]
+base = "A very simple livery featuring mostly the first company colour, with small markings in the second company colour."
+
+[STR_EXTRA_TEXT_LIVERY_CLASSIC_LINES]
+base = "A livery featuring mostly the first company colour, with one or more horizontal stripes in the second company colour."
+
+[STR_EXTRA_TEXT_LIVERY_CONVENTIONAL_WISDOM]
+base = "A livery with alternating large blocks of both company colours, with minimalist markings (or none)."
+
+[STR_EXTRA_TEXT_LIVERY_FREIGHT_BLACK]
+base = "A livery for freight trains, mostly dark, grimy colours, with logos or markings in one or both company colours."
+
+[STR_EXTRA_TEXT_LIVERY_FRUIT_RIPPLE]
+base = "A livery for passenger and mail trains, inspired by British Rail InterCity 'Swallow' and 'Executive' liveries."
+
+[STR_EXTRA_TEXT_LIVERY_GREY_HORSE]
+base = "A livery for freight trains, featuring grey, with contrasting panels in yellow or other colours. Inspired by British Rail Railfreight 'Red Stripe' and Railfreight 'Triple Grey Sector' liveries."
+
+[STR_EXTRA_TEXT_LIVERY_INDUSTRIAL_YELLOW]
+base = "A livery for trains used in industrial settings such as steel mills and foundries."
+
+[STR_EXTRA_TEXT_LIVERY_INVERSIONS]
+base = "Varied liveries that primarily use the second company colour, with logos or markings in the first company colour."
+
+[STR_EXTRA_TEXT_LIVERY_LOWER_LINES]
+base = "A livery featuring mostly the first company colour, with a lower body or footplate stripe in the second company colour."
+
+[STR_EXTRA_TEXT_LIVERY_MAIL_BY_RAIL]
+base = "Varied liveries for mail trains, inspired by Royal Mail, Rail Express Systems, TGV La Poste, and other liveries."
+
+[STR_EXTRA_TEXT_LIVERY_METROLAND]
+base = "Varied liveries for metro trains, inspired by London Underground and other liveries."
+
+[STR_EXTRA_TEXT_LIVERY_RIDEWELL]
+base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
+
+[STR_EXTRA_TEXT_LIVERY_SHOW_PONY]
+base = "Liveries that are unique to one vehicle, or don't fit any other category."
+
+[STR_EXTRA_TEXT_LIVERY_STOCK_STANDARD]
+base = "A simple livery featuring mostly the first company colour, with company logos or markings in the second company colour."
+
+[STR_EXTRA_TEXT_LIVERY_SUPERGRAPHIC]
+base = "A bold livery featuring blocks of yellow and the first company colour, sometimes with logos or markings in the second company colour."
+
+[STR_EXTRA_TEXT_LIVERY_SURE_PACE]
+base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
+
+[STR_EXTRA_TEXT_LIVERY_VANILLA]
+base = "VANILLA"
+
+[STR_EXTRA_TEXT_LIVERY_VAPID_VOYAGER]
+base = "A livery for passenger and mail trains, inspired by Virgin Trains, Greater Anglia, and similar liveries."
+
+[STR_EXTRA_TEXT_LIVERY_VINYL_VECTOR]
+base = "A generic livery for passenger and mail trains, inspired by swoosh-like liveries from the late 1990s-2020s."
+
+[STR_EXTRA_TEXT_LIVERY_WORKHORSE]
+base = "A livery for freight trains, featuring a mix of solid black and both company colours."
