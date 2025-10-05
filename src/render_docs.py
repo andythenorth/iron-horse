@@ -171,7 +171,12 @@ def render_docs_images(
         # !! requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
             # further possibly fragile special-casing
-            if getattr(model_variant, "livery_group_name", None) is not None:
+            if (getattr(model_variant, "livery_group_name", None) is not None) or (
+                getattr(
+                    model_variant.catalogue.cab_engine_model, "livery_group_name", None
+                )
+                is not None
+            ):
                 # if a livery group is used, the custom buy menu sprites will have been generated in livery order, with row offsets already applied as needed
                 y_offset = 30 * model_variant.catalogue_entry.index
             else:
