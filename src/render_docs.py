@@ -125,8 +125,12 @@ def render_docs_vehicle_details(
         doc_file.write(doc)
         doc_file.close()
 
+def render_docs_badge_images(generated_graphics_path, static_dir_dst):
+    badge_sprites_dir_src = os.path.join(generated_graphics_path, "badges")
+    badge_sprites_dir_dst = os.path.join(static_dir_dst, "img", "badges")
+    shutil.copytree(badge_sprites_dir_src, badge_sprites_dir_dst)
 
-def render_docs_images(
+def render_docs_vehicle_images(
     model_variant_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
 ):
     # process vehicle buy menu sprites for reuse in docs
@@ -437,17 +441,22 @@ def main():
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # process images for use in docs
-    # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
     generated_graphics_path = os.path.join(
         iron_horse.generated_files_path, "graphics", roster.grf_name
     )
-    render_docs_images_start = time()
 
+    # we need to filesystem copy badge sprites
+    # untimed - probably fine?
+    render_docs_badge_images(generated_graphics_path, static_dir_dst)
+
+    # process vehicle images for docs use
+    # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
+    render_docs_vehicle_images_start = time()
     if not use_multiprocessing:
         for (
             model_variant_catalogue_mapping
         ) in roster.model_variants_by_catalogue.values():
-            render_docs_images(
+            render_docs_vehicle_images(
                 model_variant_catalogue_mapping,
                 static_dir_dst,
                 generated_graphics_path,
@@ -459,7 +468,7 @@ def main():
             model_variant_catalogue_mapping
         ) in roster.model_variants_by_catalogue.values():
             pool.apply_async(
-                render_docs_images,
+                render_docs_vehicle_images,
                 args=(
                     model_variant_catalogue_mapping,
                     static_dir_dst,
@@ -474,7 +483,7 @@ def main():
     # note that we can't trivially get the time to actually render the docs images due to async
     logger.info(
         f"docs images *dispatched* via async: "
-        f"{utils.string_format_compile_time_deltas(render_docs_images_start, time())}"
+        f"{utils.string_format_compile_time_deltas(render_docs_vehicle_images_start, time())}"
     )
 
     # note we remove any model variants that are clones, we don't need them in docs

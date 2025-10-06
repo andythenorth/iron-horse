@@ -19,6 +19,7 @@
                                define="livery_obj iron_horse.livery_supplier[livery_pair[0]];">
                         <h2 id="${doc_helper.get_livery_display_name(livery_obj)}">
                             ${doc_helper.get_livery_display_name(livery_obj)}
+                            <img style="width:128px; height:128px;" src="static/img/badges/livery_${livery_obj.livery_name.lower()}.png" />
                         </h2>
                         <p>${doc_helper.get_livery_extra_text(livery_obj)}</p>
                         <div class="container">

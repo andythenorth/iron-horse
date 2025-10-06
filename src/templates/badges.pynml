@@ -4,9 +4,9 @@ badgetable {
 </tal:badgetable>
 }
 
-<tal:spritesets repeat="livery_id livery_supplier.freight_wagon_liveries">
-    spriteset (spriteset_${livery_id.lower()}, "${graphics_path}badges/${livery_id.lower()}.png") {
-        [10, 10, 14, 12, 0, 0]
+<tal:spritesets repeat="livery_name livery_supplier.livery_names_with_badge_sprites">
+    spriteset (spriteset_livery_${livery_name.lower()}, "${graphics_path}badges/livery_${livery_name.lower()}.png") {
+        [10, 10, 14, 8, 0, 0]
     }
 </tal:spritesets>
 

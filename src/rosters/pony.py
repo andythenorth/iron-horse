@@ -541,6 +541,7 @@ def main():
         engine_and_misc_car_liveries={
             "BANGER_BLUE": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -606,6 +607,7 @@ def main():
             },
             "FRUIT_RIPPLE": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
@@ -639,10 +641,21 @@ def main():
             },
             "LOWER_LINES": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "MAIL_BY_RAIL": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "METROLAND": {
@@ -684,23 +697,6 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "MAIL_BY_RAIL": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "MAIL_BY_RAIL": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "SHOW_PONY": {
@@ -746,6 +742,7 @@ def main():
             },
             "VAPID_VOYAGER": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -754,6 +751,7 @@ def main():
             },
             "VINYL_VECTOR": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),

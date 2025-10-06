@@ -15,6 +15,7 @@ class LiveryDef:
     is_freight_wagon_livery: Optional[bool] = False
     purchase_swatch_colour_set_names: List = field(default_factory=list)
     proxy_livery_for_badge_display_and_filter: Optional[str] = None
+    has_predrawn_badge_sprite: Optional[bool] = False
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
@@ -118,6 +119,14 @@ class LiverySupplier(dict):
 
         self.delivered_liveries.append(livery_name)
         return livery
+
+    @cached_property
+    def livery_names_with_badge_sprites(self):
+        result = []
+        for livery in self.values():
+            if livery.is_freight_wagon_livery or livery.has_predrawn_badge_sprite:
+                result.append(livery.livery_name)
+        return result
 
     @cached_property
     def freight_wagon_liveries(self):

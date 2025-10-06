@@ -1,4 +1,5 @@
 import os
+import shutil
 from PIL import Image
 
 import global_constants
@@ -23,7 +24,19 @@ class BadgeGraphicsGenerator:
         # this should maybe be wrapped in an isolation method but eh, do it on init for now
         os.makedirs(self.badge_sprites_output_path, exist_ok=True)
 
-    def render_livery_badges(self):
+    def render_predrawn_livery_badges(self):
+        for (
+            livery_name,
+            livery,
+        ) in self.iron_horse.livery_supplier.items():
+            if not livery.has_predrawn_badge_sprite:
+                continue
+            badge_filename = f"livery_{livery_name.lower()}.png"
+            src = os.path.join(self.graphics_input_path, "badges", badge_filename)
+            dst = os.path.join(self.badge_sprites_output_path, badge_filename)
+            shutil.copyfile(src, dst)
+
+    def render_generated_livery_badges(self):
         livery_badge_spritesheet = Image.open(
             os.path.join(self.graphics_input_path, "badges", "livery_recolour_maps.png")
         )
@@ -37,7 +50,7 @@ class BadgeGraphicsGenerator:
         ) in self.iron_horse.livery_supplier.freight_wagon_liveries.items():
             output_path = os.path.join(
                 self.badge_sprites_output_path,
-                f"{livery.livery_name.lower()}.png",
+                f"livery_{livery.livery_name.lower()}.png",
             )
             # the dimensions of the spritesheet, with 10px padding around the actual sprite
             badge_spritesheet_dimensions = {"x": 34, "y": 32}

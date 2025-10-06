@@ -53,10 +53,9 @@ class BadgeManager(list):
         badge_graphics_generator = BadgeGraphicsGenerator(
             self, iron_horse, graphics_input_path, graphics_output_path
         )
-        # for now we only generate our own badge sprites for liveries
-        # more can be added if required
-        # badge sprites may be available from OpenTTD for some common cases
-        badge_graphics_generator.render_livery_badges()
+        # badge sprites may also be available from OpenTTD for some common cases
+        badge_graphics_generator.render_predrawn_livery_badges()
+        badge_graphics_generator.render_generated_livery_badges()
 
     def produce_badges(self, **kwargs):
         # explicit, not on __init__, more controllable
@@ -174,8 +173,8 @@ class BadgeManager(list):
         for livery in livery_supplier.consolidated_liveries_for_badge_display:
             name = f"STR_BADGE_LIVERY_{livery.livery_name}"
             sprite = None
-            if livery.is_freight_wagon_livery:
-                sprite = f"{livery.livery_name.lower()}"
+            if livery.is_freight_wagon_livery or livery.has_predrawn_badge_sprite:
+                sprite = f"livery_{livery.livery_name.lower()}"
             self.add_badge(
                 label=livery.display_and_filter_name_badge_label,
                 sprite=sprite,
