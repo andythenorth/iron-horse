@@ -125,10 +125,12 @@ def render_docs_vehicle_details(
         doc_file.write(doc)
         doc_file.close()
 
+
 def render_docs_badge_images(generated_graphics_path, static_dir_dst):
     badge_sprites_dir_src = os.path.join(generated_graphics_path, "badges")
     badge_sprites_dir_dst = os.path.join(static_dir_dst, "img", "badges")
     shutil.copytree(badge_sprites_dir_src, badge_sprites_dir_dst)
+
 
 def render_docs_vehicle_images(
     model_variant_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper

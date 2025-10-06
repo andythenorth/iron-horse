@@ -186,5 +186,6 @@ def main():
     )
     logger.set_colour("reset")
 
+
 if __name__ == "__main__":
     main()

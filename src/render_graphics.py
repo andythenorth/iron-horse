@@ -21,7 +21,9 @@ import global_constants
 
 
 def run_vehicle_pipelines(target_config, graphics_output_path):
-    pipelines = target_config["catalogue"].example_model_variant.gestalt_graphics.pipelines
+    pipelines = target_config[
+        "catalogue"
+    ].example_model_variant.gestalt_graphics.pipelines
     if len(pipelines) == 0:
         raise Exception("no pipelines")
     else:
