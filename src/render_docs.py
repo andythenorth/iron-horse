@@ -126,10 +126,59 @@ def render_docs_vehicle_details(
         doc_file.close()
 
 
-def render_docs_badge_images(generated_graphics_path, static_dir_dst):
+def render_docs_badge_images(generated_graphics_path, static_dir_dst, doc_helper):
     badge_sprites_dir_src = os.path.join(generated_graphics_path, "badges")
     badge_sprites_dir_dst = os.path.join(static_dir_dst, "img", "badges")
-    shutil.copytree(badge_sprites_dir_src, badge_sprites_dir_dst)
+    os.makedirs(badge_sprites_dir_dst)
+
+    dos_palette = Image.open("palette_key.png").palette
+
+    for livery_name, livery in iron_horse.livery_supplier.items():
+        if livery.has_predrawn_badge_sprite:
+            badge_spritesheet_filename = f"livery_{livery_name.lower()}.png"
+            badge_spritesheet = Image.open(
+                os.path.join(generated_graphics_path, "badges", badge_spritesheet_filename)
+            )
+
+            dest_image = Image.new(
+                "P",
+                (
+                    14,
+                    8,
+                ),
+                255,
+            )
+
+            badge_image_tmp = badge_spritesheet.crop(
+                box=(
+                    10,
+                    10,
+                    24,
+                    18
+                )
+            )
+            crop_box_dest = (
+                0,
+                0,
+                14,
+                8,
+            )
+            dest_image.paste(
+                badge_image_tmp.crop(crop_box_dest), crop_box_dest
+            )
+
+            dest_image.putpalette(dos_palette)
+
+            cc_remap_indexes = doc_helper.remap_company_colours(
+                {"CC1": "COLOUR_RED", "CC2": "COLOUR_WHITE"}
+            )
+            dest_image = dest_image.copy().point(
+                lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
+            )
+
+            output_path = os.path.join(badge_sprites_dir_dst, badge_spritesheet_filename)
+            dest_image.save(output_path, optimize=True, transparency=0)
+            dest_image.close()
 
 
 def render_docs_vehicle_images(
@@ -449,7 +498,7 @@ def main():
 
     # we need to filesystem copy badge sprites
     # untimed - probably fine?
-    render_docs_badge_images(generated_graphics_path, static_dir_dst)
+    render_docs_badge_images(generated_graphics_path, static_dir_dst, doc_helper)
 
     # process vehicle images for docs use
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)

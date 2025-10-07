@@ -550,6 +550,7 @@ def main():
             },
             "CLASSIC_LINES": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -558,6 +559,7 @@ def main():
             },
             "CONVENTIONAL_WISDOM": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -586,6 +588,7 @@ def main():
             },
             "FREIGHT_BLACK": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -616,6 +619,7 @@ def main():
             },
             "GREY_HORSE": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -627,12 +631,14 @@ def main():
                     "company_colour1": "COLOUR_YELLOW",
                     "company_colour2": "company_colour2",
                 },
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "INVERSIONS": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -660,6 +666,7 @@ def main():
             },
             "METROLAND": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -693,6 +700,7 @@ def main():
             },
             "RIDEWELL": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -701,6 +709,7 @@ def main():
             },
             "SHOW_PONY": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -709,6 +718,7 @@ def main():
             },
             "STOCK_STANDARD": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -717,6 +727,7 @@ def main():
             },
             "SUPERGRAPHIC": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -725,6 +736,7 @@ def main():
             },
             "SURE_PACE": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
@@ -760,6 +772,7 @@ def main():
             },
             "WORKHORSE": {
                 "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
