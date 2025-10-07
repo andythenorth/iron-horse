@@ -227,6 +227,11 @@
                                 <th class="livery-or-trailers-table-first-col">
                                     <div style="margin-top:4px; font-weight:500;">
                                         <a href="liveries.html#${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}">${doc_helper.get_livery_display_name(catalogue_entry.livery_def)}</a>
+                                        <!--! UNFINISHED - NEEDS A HELPER TO GET PROXY LIVERIES
+                                        <tal:optional_image condition="catalogue_entry.livery_def.has_predrawn_badge_sprite">
+                                            <img style="width:${14*2}px; height:${8*2}px; vertical-align:text-bottom; margin-right:4px;" src="static/img/badges/livery_${catalogue_entry.livery_def.livery_name.lower()}.png" />
+                                        </tal:optional_image>
+                                        -->
                                     </div>
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
