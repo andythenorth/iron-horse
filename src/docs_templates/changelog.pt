@@ -1,6 +1,24 @@
 Changelog
 =========
 
+------------
+DRAFT 4.0.0 Release
+------------
+
+UNFINISHED
+
+* new wagon liveries
+* restructured buy menu for wagons
+* badges
+* new vehicles
+* many small changes to vehicle appearance behaviour
+- pax and mail vehicle consist randomisation / patterns
+* reworked railtype internals entirely
+
+
+
+
+
 
 ------------
 3.37.0 Release
