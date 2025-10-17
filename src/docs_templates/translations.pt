@@ -7,44 +7,18 @@
 
 <div metal:fill-slot='body'>
     <div class="page-header">
-        <div class="alert alert-error">
-            <strong>This page is outdated. Translations cannot be updated currently (November 2020).</strong>
+        <div class="alert alert-danger">
+            <strong>Iron Horse 4 does not support translations.</strong>
         </div>
-        <hr />
-        <h2>Help Translate ${roster.str_grf_name}</h2>
-        <p>${roster.str_grf_name} has already been translated into multiple languages, and more translations are always welcome.</p>
-    </div>
-
-    <div id="status">
-        <h3>Current Translation Status</h3>
-        <p>See which languages ${roster.str_grf_name} has been translated into, and how complete each translation is.</p>
-        <a class="btn btn-primary btn-large" href="http://bundles.openttdcoop.org/fish/push/LATEST/translations/">Translation Status Report</a>
-    </div>
-    <br />
-    <hr />
-
-    <div id="translating">
-        <h3>Get Started with Translating</h3>
-        <h4>1. Get a Language File</h4>
-        <p>Language files can be edited in any text editor that supports unicode.</p>
-        <p>To start a new translation from scratch get the base language file, which contains strings for the English (British) language.</p>
-        <a class="btn btn-primary" href="http://dev.openttdcoop.org/projects/fish/repository/entry/lang/english.lng">Get Base Language File</a>
-        <br />
-        <br />
-        <p>To update an existing translation, <a href="http://dev.openttdcoop.org/projects/fish/repository/show/lang">get an existing language file</a>.</p>
-        <br />
-
-        <h4>2. Translate Strings</h4>
-        <p>Change or update the strings to appropriate translations for the language.</p>
-        <p><a class="btn btn-info" href="http://dev.openttdcoop.org/projects/eints/repository/entry/docs/strings.rst">Detailed Guide to Translating</a></p>
-        <br />
-        <h4>3. Post Language File for Inclusion in ${roster.str_grf_name}</h4>
-        <p>Post translated files into <a href="${metadata['dev_thread_url']}">this TT-forums thread</a>.</p>
-        <br />
-        <h4>4. Have Cake</h4>
-        <p>Someone on the FISH team will include your translation as soon as they have time.</p>
-        <p>Thanks :)</p>
-        <br />
+        <p>
+            Translations were included in some older versions of Iron Horse.
+        </p>
+        <p>
+            However the work became too much, and for the health of the Iron Horse project, translations had to be dropped.
+        <p>
+        </p>
+            Thanks go to those who did diligently contribute translations over many years of Iron Horse.
+        </p>
     </div>
 
 </div>

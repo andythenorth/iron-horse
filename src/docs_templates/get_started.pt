@@ -95,7 +95,7 @@
                 <div id="iron-horse-changes">
                     <h2>5. Changes in ${roster.str_grf_name}</h2>
                     <p class="lead">${roster.str_grf_name} is updated and improved quite often.</p>
-                    <p>The <a href="changelog.html"><strong>${roster.str_grf_name} changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
+                    <p>The <a href="changelog.html"><strong>${roster.str_grf_name} changelog</strong></a> keeps track of changes, including new features, bug fixes and updates.</p>
                 </div>
                 <hr />
                 <br />
