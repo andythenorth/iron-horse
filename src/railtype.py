@@ -41,6 +41,17 @@ class Railtype(object):
         return "[" + result + "]"
 
 
+    @property
+    def badges(self):
+        result = []
+        result.append(f"ih_railtype/{self.label}")
+        return result
+
+    @property
+    def badges_as_nml_prop(self):
+        return "[" + ",".join(f'"{badge}"' for badge in self.badges) + "]"
+
+
 class RailTypeManager(list):
     """
     It's convenient to have a structure for working with railtypes.
