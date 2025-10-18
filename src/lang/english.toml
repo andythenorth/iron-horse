@@ -213,6 +213,9 @@ base = "No gameplay effect"
 [STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS]
 base = "Express haulable"
 
+[STR_BADGE_BEHAVIOUR_LGV_CAPABLE]
+base = "High speed capable"
+
 [STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
 base = "Randomised choice of wagon"
 
