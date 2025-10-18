@@ -543,6 +543,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -552,6 +553,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -561,6 +563,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -573,6 +576,7 @@ def main():
                 },
                 "proxy_livery_for_badge_display_and_filter": "GREY_HORSE",
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_WHITE"),
@@ -582,6 +586,7 @@ def main():
             "FARMFLOW": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
                 "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
@@ -590,6 +595,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -603,6 +609,7 @@ def main():
                 },
                 "proxy_livery_for_badge_display_and_filter": "SUPERGRAPHIC",
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_MAUVE", "COLOUR_YELLOW"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -612,6 +619,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -621,6 +629,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -633,6 +642,7 @@ def main():
                 },
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -640,6 +650,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -649,6 +660,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -661,6 +673,7 @@ def main():
                 },
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -668,6 +681,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -680,6 +694,7 @@ def main():
                 },
                 "proxy_livery_for_badge_display_and_filter": "GREY_HORSE",
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PINK", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -693,6 +708,7 @@ def main():
                 },
                 "proxy_livery_for_badge_display_and_filter": "GREY_HORSE",
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -702,6 +718,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -711,6 +728,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -720,6 +738,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -729,6 +748,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -738,6 +758,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -747,6 +768,7 @@ def main():
             "VANILLA": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -756,6 +778,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -765,6 +788,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
@@ -774,6 +798,7 @@ def main():
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),

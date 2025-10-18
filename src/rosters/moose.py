@@ -153,6 +153,7 @@ def main():
             "VANILLA": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),

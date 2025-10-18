@@ -26,25 +26,31 @@
                 <div style="margin-top:30px; margin-bottom:50px;">
                     <tal:catalogue_entries repeat="catalogue_entry catalogue">
                         <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
-                            <div class="vehicle-image"
-                                style="width:${2 * doc_helper.docs_sprite_max_width};
-                                       display:inline-block;">
-                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                     width="${2 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
-                                     height="${2 * doc_helper.docs_sprite_height}" />
-                            </div>
+                            <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                            <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                <div class="vehicle-image"
+                                    style="width:${2 * doc_helper.docs_sprite_max_width};
+                                           display:inline-block;">
+                                    <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                         width="${2 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
+                                         height="${2 * doc_helper.docs_sprite_height}" />
+                                </div>
+                            </tal:some_examples_suppressed>
                         </tal:cc_recolour>
                     </tal:catalogue_entries>
                     <br />
                     <tal:catalogue_entries repeat="catalogue_entry catalogue">
                         <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
-                            <div class="vehicle-image"
-                                style="width:${4 * doc_helper.docs_sprite_max_width};
-                                       display:inline-block;">
-                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                     width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
-                                     height="${4 * doc_helper.docs_sprite_height}" />
-                            </div>
+                            <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                            <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                <div class="vehicle-image"
+                                    style="width:${4 * doc_helper.docs_sprite_max_width};
+                                           display:inline-block;">
+                                    <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                         width="${4 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
+                                         height="${4 * doc_helper.docs_sprite_height}" />
+                                </div>
+                            </tal:some_examples_suppressed>
                         </tal:cc_recolour>
                     </tal:catalogue_entries>
                 </div>
@@ -236,28 +242,31 @@
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
                                     <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
-                                        <div class="livery-example-container">
-                                            <div class="vehicle-image"
-                                                style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                     width="${3 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
-                                                     height="${3 * doc_helper.docs_sprite_height}" />
+                                        <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                                        <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                            <div class="livery-example-container">
+                                                <div class="vehicle-image"
+                                                    style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                    <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                         width="${3 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
+                                                         height="${3 * doc_helper.docs_sprite_height}" />
+                                                </div>
+                                                <div style="display:block;">
+                                                    <tal:colours repeat="company_colour cc_remap_pair">
+                                                        <!--! !! probably should be a caption for a figure ?? -->
+                                                        <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
+                                                                     display:inline-block;
+                                                                     vertical-align:middle;
+                                                                     border:solid 1px #555;
+                                                                     width:12px;
+                                                                     height:12px;">
+                                                        </span>
+                                                        <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
+                                                        <br />
+                                                    </tal:colours>
+                                                </div>
                                             </div>
-                                            <div style="display:block;">
-                                                <tal:colours repeat="company_colour cc_remap_pair">
-                                                    <!--! !! probably should be a caption for a figure ?? -->
-                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
-                                                                 display:inline-block;
-                                                                 vertical-align:middle;
-                                                                 border:solid 1px #555;
-                                                                 width:12px;
-                                                                 height:12px;">
-                                                    </span>
-                                                    <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
-                                                    <br />
-                                                </tal:colours>
-                                            </div>
-                                        </div>
+                                        </tal:some_examples_suppressed>
                                     </tal:cc_recolour>
                                 </td>
                             </tr>
@@ -277,13 +286,16 @@
                                     <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_model_variant_mapping['model_variants']">
                                         <div>
                                             <tal:livery_examples repeat="cc_remap_pair trailer_model_variant.catalogue_entry.livery_def.docs_image_input_cc">
-                                                <div class="vehicle-image"
-                                                    style="width:${2 * doc_helper.docs_sprite_max_width};
-                                                           display:inline-block;">
-                                                    <img src="static/img/${trailer_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_model_variant_mapping['catalogue'])}"
-                                                         height="${2 * doc_helper.docs_sprite_height}" />
-                                                </div>
+                                                <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                                                <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                                    <div class="vehicle-image"
+                                                        style="width:${2 * doc_helper.docs_sprite_max_width};
+                                                               display:inline-block;">
+                                                        <img src="static/img/${trailer_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                             width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_model_variant_mapping['catalogue'])}"
+                                                             height="${2 * doc_helper.docs_sprite_height}" />
+                                                    </div>
+                                                </tal:some_examples_suppressed>
                                             </tal:livery_examples>
                                         </div>
                                     </tal:trailer_model_variants>
