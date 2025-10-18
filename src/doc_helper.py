@@ -285,10 +285,11 @@ class DocHelper(object):
         return role_string.split("{BLACK}")[0]
 
     def get_role_string_from_catalogue(self, catalogue, badge_manager):
-        role_string_name = badge_manager.get_badge_by_label(
-            catalogue.example_model_variant.role_badge
-        ).name
-        return self.clean_role_string(self.lang_strings[role_string_name])
+        result = []
+        for badge in catalogue.example_model_variant.role_badges:
+            role_string_name = badge_manager.get_badge_by_label(badge).name
+            result.append(self.clean_role_string(self.lang_strings[role_string_name]))
+        return ", ".join(result)
 
     def get_role_string_from_subrole(self, subrole, badge_manager):
         # used in docs for headers, no model variant available

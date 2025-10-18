@@ -9,7 +9,7 @@ def main(**kwargs):
         model_id="borax",
         base_numeric_id=24780,
         name="Borax",
-        subrole="metro",
+        subrole="metro_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "METRO": 950,

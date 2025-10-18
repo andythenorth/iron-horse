@@ -276,6 +276,9 @@ role_subrole_mapping = {
         "mail_metro",
         "metro",  # note pax before mail
     ],
+    "metro_freight": [
+        "metro_freight",
+    ]
 }
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
@@ -295,6 +298,7 @@ intro_month_offsets_by_role = {
     "suburban_or_universal_railcar": 6,
     "mail_railcar": 6,
     "metro": 7,
+    "metro_freight": 7,
     "very_high_speed": 8,
     "food_wagons": 9,
     "non_core_wagons": 10,

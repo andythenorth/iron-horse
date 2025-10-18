@@ -200,10 +200,42 @@ class ModelTypeBase(object):
         return None
 
     @property
-    def role_badge(self):
-        if self.role is not None:
-            return "role/" + self.role
-        return None
+    def role_badges(self):
+        result = []
+        if self.role is None:
+            # return early if no roles
+            return result
+
+        # faff
+        # internal IH roles predate role badges, and aren't easily refactored
+        # but we want to redirect some internal IH roles to another badge
+        role_remaps = {
+            "express_railcar": {"RAIL": "express", "NG": "universal"},
+            "hst": {"RAIL": "very_high_speed", "NG": "very_high_speed"},
+            "mail_railcar": {"RAIL": "universal", "NG": "universal"},
+        }
+        if self.role in role_remaps.keys():
+            role = role_remaps[self.role][self.base_track_type]
+        else:
+            role = self.role
+        result.append(f"role/{role}")
+
+        # extend additional badges for specific roles
+        if self.role in ["express", "freight", "suburban_or_universal_railcar"]:
+            result.append("role/universal")
+        if (not self.base_track_type in ["NG"]) and (
+            self.role
+            in [
+                "driving_cab",
+            ]
+        ):
+            result.append("role/express")
+        if self.role in [
+            "gronk",
+        ]:
+            result.append("role/freight")
+
+        return result
 
     @property
     def power_source_badges(self):
@@ -214,7 +246,9 @@ class ModelTypeBase(object):
     @property
     def livery_badges(self):
         result = []
-        result.append(self.catalogue_entry.livery_def.display_and_filter_name_badge_label)
+        result.append(
+            self.catalogue_entry.livery_def.display_and_filter_name_badge_label
+        )
         result.append(self.catalogue_entry.livery_def.internal_name_badge_label)
         result.append(self.catalogue_entry.livery_def.weathering_badge_label)
         return result
@@ -293,6 +327,8 @@ class ModelTypeBase(object):
             result.append(f"ih_behaviour/provides_easter_egg_haulage_speed_bonus")
         if self.catalogue.wagon_quacker.is_caboose:
             result.append(f"ih_behaviour/caboose")
+        if self.role == "driving_cab":
+            result.append(f"ih_behaviour/driving_cab")
         return result
 
     @property
@@ -324,8 +360,6 @@ class ModelTypeBase(object):
     def general_metadata_badges(self):
         result = []
         result.append(f"ih_gen/{self.gen}")
-        if self.role_badge is not None:
-            result.append(self.role_badge)
         if getattr(self, "subtype", None) is not None:
             result.append("ih_wagon_subtype/" + self.subtype.lower())
         # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
@@ -347,6 +381,7 @@ class ModelTypeBase(object):
         result.extend(self.livery_badges)
         result.extend(self.power_source_badges)
         result.extend(self.randomised_wagon_badges)
+        result.extend(self.role_badges)
         result.extend(self.tech_tree_badges)
         result.extend(self.behaviour_badges)
         result.extend([self.catalogue.vehicle_family_badge])
@@ -3709,7 +3744,15 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         self.class_refit_groups = []
         # strictly coils for these, eh, just infeasible for them to carry plate, slab etc
         # could add paper and copper, but no sprite support as of Sept 2025
-        self.label_refits_allowed = ["ALUM", "RBAR", "STEL", "STSH", "STPL", "STWR", "TYCO"]
+        self.label_refits_allowed = [
+            "ALUM",
+            "RBAR",
+            "STEL",
+            "STSH",
+            "STPL",
+            "STWR",
+            "TYCO",
+        ]
         # none needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
