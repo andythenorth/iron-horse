@@ -47,14 +47,6 @@ static_badges = {
             "very_high_speed": {"name": "STR_BADGE_ROLE_INTERCITY_EXPRESS"},
         },
     },
-    "special_flags": {
-        "name": "STR_BADGE_SPECIAL_FLAGS",
-        "sublabels": {
-            "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
-            "ih_lgv_capable": {},
-            "ih_random_reverse": {},
-        },
-    },
     "ih_behaviour": {
         "name": "STR_BADGE_BEHAVIOUR",
         "sublabels": {
@@ -65,6 +57,9 @@ static_badges = {
             "receives_easter_egg_haulage_speed_bonus": {
                 "name": "STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS"
             },
+            "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
+            "ih_lgv_capable": {},
+            "ih_random_reverse": {},
         },
     },
 }

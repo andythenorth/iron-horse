@@ -219,6 +219,9 @@ base = "Randomised choice of wagon"
 [STR_BADGE_BEHAVIOUR_RESTAURANT_CAR]
 base = "Eliminates running costs for all Passenger Coaches and High Speed Coaches in the train"
 
+[STR_BADGE_SPECIAL_FLAG_TILT]
+base = "Tilts for faster cornering"
+
 # role badges
 
 [STR_BADGE_ROLE]
@@ -273,14 +276,6 @@ base = "5"
 
 [STR_BADGE_GEN_6]
 base = "6"
-
-# special features badges
-
-[STR_BADGE_SPECIAL_FLAGS]
-base = "Special Features"
-
-[STR_BADGE_SPECIAL_FLAG_TILT]
-base = "Tilts for faster cornering"
 
 # power source badges
 

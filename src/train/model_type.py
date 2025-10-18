@@ -298,6 +298,19 @@ class ModelTypeBase(object):
         return result
 
     @property
+    def behaviour_badges(self):
+        # arbitrary special behaviours
+        # behaviour badges are used for implementation and/or display to player
+        result = []
+        if self.tilt_bonus:
+            result.append("ih_behaviour/tilt")
+        if self.lgv_capable:
+            result.append("ih_behaviour/ih_lgv_capable")
+        if self.random_reverse:
+            result.append("ih_behaviour/ih_random_reverse")
+        return result
+
+    @property
     def tech_tree_badges(self):
         result = []
         result.append(f"ih_tech_tree/subrole/{self.subrole}")
@@ -320,18 +333,6 @@ class ModelTypeBase(object):
                 result.append(
                     f"ih_tech_tree/replaces/{previous_gen_catalogue.vehicle_family_badge}"
                 )
-        return result
-
-    @property
-    def special_flags_badges(self):
-        # both OpenTTD special flags and some IH specific flags
-        result = []
-        if self.tilt_bonus:
-            result.append("special_flags/tilt")
-        if self.lgv_capable:
-            result.append("special_flags/ih_lgv_capable")
-        if self.random_reverse:
-            result.append("special_flags/ih_random_reverse")
         return result
 
     @property
@@ -364,8 +365,8 @@ class ModelTypeBase(object):
         result.extend(self.power_source_badges)
         result.extend(self.randomised_wagon_badges)
         result.extend(self.restaurant_car_badges)
-        result.extend(self.special_flags_badges)
         result.extend(self.tech_tree_badges)
+        result.extend(self.behaviour_badges)
         result.extend([self.catalogue.vehicle_family_badge])
         result.extend(self.catalogue.vehicle_family_pantograph_display_badges)
 
