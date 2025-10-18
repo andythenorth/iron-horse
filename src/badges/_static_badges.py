@@ -61,7 +61,7 @@ static_badges = {
             "receives_easter_egg_haulage_speed_bonus": {
                 "name": "STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS"
             },
-            "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
+            "tilt": {"name": "STR_BADGE_BEHAVIOUR_TILT"},
             "lgv_capable": {},
             "random_reverse": {},
         },
