@@ -263,30 +263,6 @@ class ModelTypeBase(object):
         return set(result)
 
     @property
-    def restaurant_car_badges(self):
-        result = []
-        if self.catalogue.wagon_quacker.is_restaurant_car:
-            result.append(f"ih_behaviour/restaurant_car")
-        return result
-
-    @property
-    def caboose_badges(self):
-        result = []
-        if self.catalogue.wagon_quacker.is_caboose:
-            result.append(f"ih_behaviour/caboose")
-        return result
-
-    @property
-    def easter_egg_haulage_speed_bonus_badges(self):
-        result = []
-        if self.receives_easter_egg_haulage_speed_bonus:
-            result.append(f"ih_behaviour/receives_easter_egg_haulage_speed_bonus")
-        if self.provides_easter_egg_haulage_speed_bonus:
-            result.append(f"ih_behaviour/provides_easter_egg_haulage_speed_bonus")
-            pass
-        return result
-
-    @property
     def distributed_power_badges(self):
         result = []
         if self.is_distributed_power_wagon:
@@ -301,13 +277,22 @@ class ModelTypeBase(object):
     def behaviour_badges(self):
         # arbitrary special behaviours
         # behaviour badges are used for implementation and/or display to player
+        # this is the generic method - behaviour badges may also be set by other methods for more complex vehicles
         result = []
+        if self.catalogue.wagon_quacker.is_restaurant_car:
+            result.append(f"ih_behaviour/restaurant_car")
         if self.tilt_bonus:
             result.append("ih_behaviour/tilt")
         if self.lgv_capable:
-            result.append("ih_behaviour/ih_lgv_capable")
+            result.append("ih_behaviour/lgv_capable")
         if self.random_reverse:
-            result.append("ih_behaviour/ih_random_reverse")
+            result.append("ih_behaviour/random_reverse")
+        if self.receives_easter_egg_haulage_speed_bonus:
+            result.append(f"ih_behaviour/receives_easter_egg_haulage_speed_bonus")
+        if self.provides_easter_egg_haulage_speed_bonus:
+            result.append(f"ih_behaviour/provides_easter_egg_haulage_speed_bonus")
+        if self.catalogue.wagon_quacker.is_caboose:
+            result.append(f"ih_behaviour/caboose")
         return result
 
     @property
@@ -355,16 +340,13 @@ class ModelTypeBase(object):
         # badges can be set on a vehicle for diverse reasons, including behaviour, visible display, debug
         result = []
         # order isn't significant here, so just alphabetise the calls for ease
-        result.extend(self.caboose_badges)
         result.extend(self.colour_mix_badges)
         result.extend(self.distributed_power_badges)
-        result.extend(self.easter_egg_haulage_speed_bonus_badges)
         result.extend(self.formation_ruleset_badges)
         result.extend(self.general_metadata_badges)
         result.extend(self.livery_badges)
         result.extend(self.power_source_badges)
         result.extend(self.randomised_wagon_badges)
-        result.extend(self.restaurant_car_badges)
         result.extend(self.tech_tree_badges)
         result.extend(self.behaviour_badges)
         result.extend([self.catalogue.vehicle_family_badge])
