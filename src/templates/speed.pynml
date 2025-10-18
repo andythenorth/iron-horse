@@ -12,12 +12,7 @@
       *cannot* be combined with any other variable speed effects  -->
 <tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part">
     switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_speed, [
-        <tal:lgv_railtype_labels repeat="label railtype_manager.lgv_railtype_labels">
-            tile_is_railtype("${label}")
-            <tal:block condition="not repeat.label.end">
-                ||
-            </tal:block>
-        </tal:lgv_railtype_labels>
+            tile_has_railtype_badge("ih_behaviour/lgv_capable")
         ]) {
         1: return ${int(1.60934 * model_variant.speed_on_lgv)};
         return ${int(1.60934 * model_variant.speed)};

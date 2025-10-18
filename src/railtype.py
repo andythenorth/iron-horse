@@ -45,6 +45,8 @@ class Railtype(object):
     def badges(self):
         result = []
         result.append(f"ih_railtype/{self.label}")
+        if self.is_lgv_railtype:
+            result.append(f"ih_behaviour/lgv_capable")
         return result
 
     @property
@@ -74,11 +76,3 @@ class RailTypeManager(list):
         raise ValueError(
             f"No railtype found with vehicle_track_type_name={vehicle_track_type_name}"
         )
-
-    @property
-    def lgv_railtype_labels(self):
-        result = []
-        for railtype in self:
-            if railtype.is_lgv_railtype:
-                result.append(railtype.label)
-        return result
