@@ -164,6 +164,11 @@ class ModelVariantProducer:
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
         - model_variant = "challenger_black"
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
+
+    # accessors
+    - generally, if a context needs acess to producer or catalogue, make each or both available in scope, e.g.
+    - self.producer and self.catalogue NOT repeated use of self.catalogue.producer or self.producer.catalogue
+
     """
 
     def __init__(self, model_def, roster_id, roster_id_providing_module):
