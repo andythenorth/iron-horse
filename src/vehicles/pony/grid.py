@@ -1,4 +1,4 @@
-from train.factory import ModelDef
+from train.producer import ModelDef
 
 
 def main(**kwargs):
@@ -23,7 +23,7 @@ def main(**kwargs):
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY", # coal
-            "SHOW_PONY",
+            "SUPERGRAPHIC",
         ],
         sprites_complete=True,
     )

@@ -1,4 +1,4 @@
-from train.factory import ModelDef
+from train.producer import ModelDef
 
 # HST middle parts are not engines, unlike TGV middle parts
 

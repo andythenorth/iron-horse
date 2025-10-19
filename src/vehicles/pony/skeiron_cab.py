@@ -1,4 +1,4 @@
-from train.factory import ModelDef
+from train.producer import ModelDef
 
 # skeiron does not have pax capacity, so it can be used for pure mail formations
 

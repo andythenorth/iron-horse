@@ -16,7 +16,7 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.factory import ModelVariantFactory
+from train.producer import ModelVariantFactory
 
 
 class Roster:
