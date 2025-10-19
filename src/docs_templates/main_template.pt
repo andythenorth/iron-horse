@@ -56,6 +56,9 @@
                     <li class="${doc_helper.get_active_nav(doc_name, 'tech_tree')}">
                         <a href="tech_tree_table_red.html">Tech tree</a>
                     </li>
+                    <li class="${doc_helper.get_active_nav(doc_name, 'liveries')}">
+                        <a href="liveries.html">Liveries</a>
+                    </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'train_whack')}">
                         <a href="train_whack.html">Train Whack!</a>
                     </li>
