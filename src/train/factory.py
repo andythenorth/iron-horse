@@ -12,7 +12,7 @@ from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional
 from functools import cached_property
 
-from train import model_type as model_type_module
+from train import model_types as model_types
 from train import unit as unit_module
 import utils
 from utils import timing
@@ -222,7 +222,7 @@ class ModelVariantFactory:
     @cached_property
     def model_type_cls(self):
         # get the class for the model type, uninstantiated
-        return getattr(model_type_module, self.class_name)
+        return getattr(model_types, self.class_name)
 
     @property
     def roster(self):
