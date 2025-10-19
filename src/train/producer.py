@@ -745,14 +745,14 @@ class Catalogue(list):
         # this assumes that NG and Metro always return the same, irrespective of model type cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
         # don't like how much content (text) is in code here, but eh
-        if self.model_def.base_track_type == "NG":
+        if self.base_track_type == "NG":
             cite_name = "Roberto Flange"
             cite_titles = [
                 "Narrow Gauge Superintendent",
                 "Works Manager (Narrow Gauge)",
                 "Traction Controller, Narrow Gauge Lines",
             ]
-        elif self.model_def.base_track_type == "METRO":
+        elif self.base_track_type == "METRO":
             cite_name = "JJ Transit"
             cite_titles = [
                 "Superintendent (Metro Division)",
