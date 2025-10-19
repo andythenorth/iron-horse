@@ -228,6 +228,11 @@ class Roster:
                 "." + engine_module_name, package_name
             )
 
+            # the implementation grew organically, with catalogue following from producer
+            # (the catalogue being a list of what the producer can produce)
+            # however it proved to be much more practical to work with catalogues as primary entity, and store catalogues in the roster
+            # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
+            # however as of Oct 2025 that wasn't a plaster I wanted to rip off
             for model_def in engine_module.main():
                 producer = ModelVariantProducer(
                     model_def, self.id, roster_id_providing_module
@@ -275,6 +280,12 @@ class Roster:
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
                     )
+
+                    # the implementation grew organically, with catalogue following from producer
+                    # (the catalogue being a list of what the producer can produce)
+                    # however it proved to be much more practical to work with catalogues as primary entity, and store catalogues in the roster
+                    # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
+                    # however as of Oct 2025 that wasn't a plaster I wanted to rip off
                     for model_def in wagon_module.main():
                         producer = ModelVariantProducer(
                             model_def, self.id, roster_id_providing_module
