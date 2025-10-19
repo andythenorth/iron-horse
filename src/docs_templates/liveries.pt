@@ -32,23 +32,23 @@
                         <p>${doc_helper.get_livery_extra_text(livery_obj)}</p>
                         <div class="container">
                             <div class="row">
-                                <tal:cabbage repeat="cabbage ['engines', 'pax_mail_cars']">
+                                <tal:vehicle_type repeat="vehicle_type ['engines', 'pax_mail_cars']">
                                     <div class="span6">
                                         <h3>
-                                            <span tal:replace="{'engines': 'Engines', 'pax_mail_cars': 'Passenger Coaches and Mail Vans'}[cabbage]"></span>
+                                            <span tal:replace="{'engines': 'Engines', 'pax_mail_cars': 'Passenger Coaches and Mail Vans'}[vehicle_type]"></span>
                                         </h3>
-                                        <tal:empty_case condition="len(livery_pair[1][cabbage]) == 0">
+                                        <tal:empty_case condition="len(livery_pair[1][vehicle_type]) == 0">
                                             <p class="muted">None.</p>
                                         </tal:empty_case>
                                         <table class="livery-list-table">
                                              <tbody>
-                                                <tal:model_variants repeat="model_variant livery_pair[1][cabbage]">
+                                                <tal:model_variants repeat="model_variant livery_pair[1][vehicle_type]">
                                                     <tr>
                                                         <td style="min-width:80px; background-color: #b4dcec;">
                                                             ${model_variant.catalogue.intro_year}
                                                         </td>
                                                         <td style="min-width:130px;">
-                                                            <tal:cc_recolour define="cc_remap_pair model_variant.catalogue_entry.livery_def.docs_image_input_cc[0]">
+                                                            <tal:cc_recolour define="cc_remap_pair model_variant.catalogue_entry.livery_def.docs_image_input_cc[1]">
                                                                 <div class="livery-example-container">
                                                                     <div class="vehicle-image"
                                                                         style="width:${2 * doc_helper.docs_sprite_max_width}px; vertical-align:middle; text-align:center; margin-bottom:6px;">
@@ -60,10 +60,10 @@
                                                             </tal:cc_recolour>
                                                         </td>
                                                         <td style="min-width:210px;">
-                                                            <tal:link condition="cabbage=='engines'">
+                                                            <tal:link condition="vehicle_type=='engines'">
                                                                 <a href="${model_variant.catalogue.model_id}.html#appearance">${doc_helper.unpack_name_string(model_variant.catalogue)}</a>
                                                             </tal:link>
-                                                            <tal:no_link condition="cabbage=='pax_mail_cars'">
+                                                            <tal:no_link condition="vehicle_type=='pax_mail_cars'">
                                                                 ${doc_helper.unpack_name_string(model_variant.catalogue)}
                                                             </tal:no_link>
                                                         </td>
@@ -72,7 +72,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </tal:cabbage>
+                                </tal:vehicle_type>
                             </div>
                         </div>
                     </tal:block>
