@@ -233,16 +233,14 @@ class Roster:
                     model_def, self.id, roster_id_providing_module
                 )
                 catalogue = producer.catalogue
-                # Use the convenience property `id` on Catalogue
-                catalogue_id = catalogue.model_id
-                if catalogue_id not in self.engine_model_variants_by_catalogue:
-                    self.engine_model_variants_by_catalogue[catalogue_id] = {
+                if catalogue.model_id not in self.engine_model_variants_by_catalogue:
+                    self.engine_model_variants_by_catalogue[catalogue.model_id] = {
                         "catalogue": catalogue,
                         "model_variants": [],
                     }
                 for catalogue_entry in catalogue:
                     model_variant = producer.produce(catalogue_entry=catalogue_entry)
-                    self.engine_model_variants_by_catalogue[catalogue_id][
+                    self.engine_model_variants_by_catalogue[catalogue.model_id][
                         "model_variants"
                     ].append(model_variant)
                 self.engine_model_tech_tree.add_model(catalogue)
@@ -282,10 +280,8 @@ class Roster:
                             model_def, self.id, roster_id_providing_module
                         )
                         catalogue = producer.catalogue
-                        # Using the convenience property 'id'
-                        catalogue_id = catalogue.model_id
-                        if catalogue_id not in self.wagon_model_variants_by_catalogue:
-                            self.wagon_model_variants_by_catalogue[catalogue_id] = {
+                        if catalogue.model_id not in self.wagon_model_variants_by_catalogue:
+                            self.wagon_model_variants_by_catalogue[catalogue.model_id] = {
                                 "catalogue": catalogue,
                                 "model_variants": [],
                             }
@@ -293,7 +289,7 @@ class Roster:
                             model_variant = producer.produce(
                                 catalogue_entry=catalogue_entry
                             )
-                            self.wagon_model_variants_by_catalogue[catalogue_id][
+                            self.wagon_model_variants_by_catalogue[catalogue.model_id][
                                 "model_variants"
                             ].append(model_variant)
                         if catalogue.wagon_quacker.is_randomised_wagon_type:
