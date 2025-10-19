@@ -118,8 +118,8 @@ class CatalogueEntry:
     The catalogue is composed of multiple CatalogueEntry instances.
 
     Each CatalogueEntry provides instantiation-time configuration for a model variant instance.
-    It aggregates properties derived from model_def and computed by the factory, ensuring
-    consumers can access necessary data without referencing the factory directly.
+    It aggregates properties derived from model_def and computed by the producer, ensuring
+    consumers can access necessary data without referencing the producer directly.
     """
 
     catalogue: "Catalogue"
@@ -138,9 +138,9 @@ class CatalogueEntry:
         return self.catalogue.index(self)
 
 
-class ModelVariantFactory:
+class ModelVariantProducer:
     """
-    ModelVariantFactory instances:
+    ModelVariantProducer instances:
     - hold a roster_id identifier
     - store a ModelDef object with vehicle-specific parameters
     - maintain a sequence of one or more UnitDef instances
@@ -179,19 +179,19 @@ class ModelVariantFactory:
         self.catalogue.add_entries()
         if len(self.catalogue) == 0:
             raise Exception(
-                f"{self.model_id}\n" f"ModelVariantFactory catalogue is empty"
+                f"{self.model_id}\n" f"ModelVariantProducer catalogue is empty"
             )
 
     def produce(self, catalogue_entry=None):
 
         if catalogue_entry == None:
             raise BaseException(
-                "no catalogue_index passed for ModelVariantFactory; model_def is "
+                "no catalogue_index passed for ModelVariantProducer; model_def is "
                 + str(self.model_type_cls)
             )
 
         model_variant = self.model_type_cls(
-            factory=self,
+            producer=self,
             catalogue_entry=catalogue_entry,
         )
 
@@ -248,7 +248,7 @@ class ModelVariantFactory:
 
     def get_wagon_id(self, model_id_root, model_def):
         # auto id creator, used for wagons not engines
-        # handled by model variant factory not model variant, better this way
+        # handled by model variant producer not model variant, better this way
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
         if model_def.base_track_type == "NG":
@@ -270,12 +270,12 @@ class ModelVariantFactory:
         return result
 
     @property
-    def cab_factory(self):
-        # convenience way to get cab factory
+    def cab_producer(self):
+        # convenience way to get cab producer
         if self.model_def.cab_id is not None:
             return self.roster.model_variants_by_catalogue[self.model_def.cab_id][
                 "catalogue"
-            ].factory
+            ].producer
         else:
             return None
 
@@ -320,10 +320,10 @@ class ModelVariantFactory:
         # accessed via catalogue
         result = []
         # first find out if we're a trailer, and if we need pans
-        if (self.cab_factory is not None) and (
+        if (self.cab_producer is not None) and (
             not self.catalogue.example_model_variant.is_distributed_power_wagon
         ):
-            if self.cab_factory.model_def.pantograph_type is not None:
+            if self.cab_producer.model_def.pantograph_type is not None:
                 result.append(
                     f"ih_pantograph_display/requires_cab_present/{self.model_id}"
                 )
@@ -349,8 +349,8 @@ class ModelVariantFactory:
 
         # group trailers with their cabs - needs to be done before generic wagon handling
         # there are a few ways this could be done, doesn't matter which as of Apr 2025
-        if self.cab_factory is not None:
-            return self.cab_factory.vehicle_family_id
+        if self.cab_producer is not None:
+            return self.cab_producer.vehicle_family_id
 
         # default grouping for wagons not otherwise handled above
         if self.catalogue.wagon_quacker.quack:
@@ -386,7 +386,7 @@ class ModelVariantFactory:
                 self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def
             )
         else:
-            # handle cloned cases by referring to the original factory for the path
+            # handle cloned cases by referring to the original producer for the path
             if self.model_def.cloned_from_model_def is not None:
                 input_spritesheet_name_stem = (
                     self.model_def.cloned_from_model_def.model_id
@@ -430,11 +430,11 @@ class Catalogue(list):
     Entry point for information about a model, including
     - liveries (variants) as catalogue entries
     - some properties that aren't otherwise delegated to model_variant or model_def
-    - accessors for factory, tech tree etc
+    - accessors for producer, tech tree etc
     """
 
-    def __init__(self, factory):
-        self.factory = factory
+    def __init__(self, producer):
+        self.producer = producer
         self.engine_quacker = EngineQuacker(catalogue=self)
         self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
@@ -442,48 +442,48 @@ class Catalogue(list):
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
-    def create(cls, factory):
-        instance = cls(factory)
+    def create(cls, producer):
+        instance = cls(producer)
         return instance
 
     def add_entries(self):
-        # entry adding separated from create() as it depends on the catalogue being available to factory
+        # entry adding separated from create() as it depends on the catalogue being available to producer
         for livery_counter, livery_def in enumerate(self.livery_defs):
-            model_variant_id = f"{self.factory.model_id}_mv_{livery_counter}"
+            model_variant_id = f"{self.producer.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
-                for i, _ in enumerate(self.factory.model_def.unit_defs)
+                for i, _ in enumerate(self.producer.model_def.unit_defs)
             ]
             # pre-calculated numeric IDs provided for every unit
-            numeric_id_offset = self.factory.model_def.base_numeric_id + (
-                livery_counter * len(self.factory.model_def.unit_defs)
+            numeric_id_offset = self.producer.model_def.base_numeric_id + (
+                livery_counter * len(self.producer.model_def.unit_defs)
             )
             # note that this is the list of *unique* numeric ids - it doesn't repeat ids for repeated units
             unit_numeric_ids = [
                 numeric_id_offset + i
-                for i, _ in enumerate(self.factory.model_def.unit_defs)
+                for i, _ in enumerate(self.producer.model_def.unit_defs)
             ]
 
-            vehicle_family_id = self.factory.vehicle_family_id
+            vehicle_family_id = self.producer.vehicle_family_id
 
-            variant_group_id = self.factory.get_variant_group_id(
+            variant_group_id = self.producer.get_variant_group_id(
                 livery_def, self.base_track_type
             )
 
-            # certain static properties are copied into the catalogue_entry from the factory
+            # certain static properties are copied into the catalogue_entry from the producer
             # this is for convenience of access as
-            # - we prefer not to access factory directly from templates or graphics generation
-            # - model_def is considered mostly immutable after init, and we don't want the factory extensively writing properties into model_def instances
+            # - we prefer not to access producer directly from templates or graphics generation
+            # - model_def is considered mostly immutable after init, and we don't want the producer extensively writing properties into model_def instances
             catalogue_entry = CatalogueEntry(
                 catalogue=self,
-                model_id=self.factory.model_id,
+                model_id=self.producer.model_id,
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
                 vehicle_family_id=vehicle_family_id,
                 variant_group_id=variant_group_id,
-                input_spritesheet_name_stem=self.factory.input_spritesheet_name_stem,
+                input_spritesheet_name_stem=self.producer.input_spritesheet_name_stem,
             )
             self.append(catalogue_entry)
 
@@ -509,20 +509,20 @@ class Catalogue(list):
         #      a. model_def.liveries (per-vehicle override)
         #      b. model_type_cls.liveries (default)
 
-        if self.factory.cab_factory is not None:
-            # if there's a valid cab factory, we want the liveries from that
-            target_factory = self.factory.cab_factory
+        if self.producer.cab_producer is not None:
+            # if there's a valid cab producer, we want the liveries from that
+            target_producer = self.producer.cab_producer
         else:
-            target_factory = self.factory
+            target_producer = self.producer
 
         # liveries as group from per-vehicle override
-        if target_factory.model_def.livery_group_name is not None:
+        if target_producer.model_def.livery_group_name is not None:
             result = []
             for (
                 livery_name,
                 index,
-            ) in target_factory.roster_providing_module.pax_mail_livery_groups[
-                target_factory.model_def.livery_group_name
+            ) in target_producer.roster_providing_module.pax_mail_livery_groups[
+                target_producer.model_def.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -534,13 +534,13 @@ class Catalogue(list):
             return result
 
         # liveries as group from class livery_group_name (default)
-        if hasattr(target_factory.model_type_cls, "livery_group_name"):
+        if hasattr(target_producer.model_type_cls, "livery_group_name"):
             result = []
             for (
                 livery_name,
                 index,
-            ) in target_factory.roster_providing_module.pax_mail_livery_groups[
-                target_factory.model_type_cls.livery_group_name
+            ) in target_producer.roster_providing_module.pax_mail_livery_groups[
+                target_producer.model_type_cls.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -552,9 +552,9 @@ class Catalogue(list):
             return result
 
         # liveries directly from model_def (simple list)
-        if target_factory.model_def.liveries is not None:
+        if target_producer.model_def.liveries is not None:
             result = []
-            for index, name in enumerate(target_factory.model_def.liveries):
+            for index, name in enumerate(target_producer.model_def.liveries):
                 result.append(
                     iron_horse.livery_supplier.deliver(
                         name, relative_spriterow_num=index
@@ -565,9 +565,9 @@ class Catalogue(list):
             return result
 
         # liveries directly from model_type_cls
-        if hasattr(target_factory.model_type_cls, "liveries"):
+        if hasattr(target_producer.model_type_cls, "liveries"):
             result = []
-            for index, name in enumerate(target_factory.model_type_cls.liveries):
+            for index, name in enumerate(target_producer.model_type_cls.liveries):
                 if self.wagon_quacker.quack:
                     # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
                     relative_spriterow_num = 0
@@ -588,23 +588,23 @@ class Catalogue(list):
             f"Unable to determine valid livery names for "
             f"{self.model_id}\n"
             f"{self.model_def}"
-            f"{self.factory.cab_factory}"
+            f"{self.producer.cab_producer}"
         )
 
     @property
     def model_id(self):
-        # catalogue model_id is synonymous with catalogue id, and derived from factory
-        return self.factory.model_id
+        # catalogue model_id is synonymous with catalogue id, and derived from producer
+        return self.producer.model_id
 
     @property
     def model_id_root(self):
         # convenience method
-        return self.factory.model_type_cls.model_id_root
+        return self.producer.model_type_cls.model_id_root
 
     @property
     def model_def(self):
         # convenience method
-        return self.factory.model_def
+        return self.producer.model_def
 
     @property
     def default_entry(self):
@@ -616,8 +616,8 @@ class Catalogue(list):
 
     @cached_property
     def default_model_variant_from_roster(self):
-        # requires that the factory produce() method has been called
-        model_variants = self.factory.roster.model_variants_by_catalogue[self.model_id][
+        # requires that the producer produce() method has been called
+        model_variants = self.producer.roster.model_variants_by_catalogue[self.model_id][
             "model_variants"
         ]
         for model_variant in model_variants:
@@ -634,9 +634,9 @@ class Catalogue(list):
         # fetch a model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
         # considered moving to WagonQuacker, as it's only used for wagons as of April 2025, but not sure yet (EngineQuacker is supposed to be 'is?' not 'here are...')
-        if self.factory.cab_factory is None:
+        if self.producer.cab_producer is None:
             return None
-        return self.factory.cab_factory.catalogue.example_model_variant
+        return self.producer.cab_producer.catalogue.example_model_variant
 
     @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
@@ -648,7 +648,7 @@ class Catalogue(list):
         for (
             catalogue_id,
             catalogue_model_variant_mapping,
-        ) in self.factory.roster.model_variants_by_catalogue.items():
+        ) in self.producer.roster.model_variants_by_catalogue.items():
             catalogue = catalogue_model_variant_mapping["catalogue"]
             if catalogue.model_def.cab_id == self.model_id:
                 result.append(catalogue_model_variant_mapping)
@@ -658,7 +658,7 @@ class Catalogue(list):
     def next_gen_catalogue(self):
         # note that there's just one replacement catalogue in the next gen (has to be this way for model life calculations)
         if self.engine_quacker.quack:
-            return self.factory.roster.engine_model_tech_tree.get_next_gen_catalogue(
+            return self.producer.roster.engine_model_tech_tree.get_next_gen_catalogue(
                 catalogue=self
             )
         return None
@@ -668,7 +668,7 @@ class Catalogue(list):
         # note a catalogue can replace multiple catalogues in the previous gen (as tree branches can merge)
         if self.engine_quacker.quack:
             return (
-                self.factory.roster.engine_model_tech_tree.get_previous_gen_catalogues(
+                self.producer.roster.engine_model_tech_tree.get_previous_gen_catalogues(
                     catalogue=self
                 )
             )
@@ -679,7 +679,7 @@ class Catalogue(list):
     def similar_model_catalogues(self):
         if self.engine_quacker.quack:
             return (
-                self.factory.roster.engine_model_tech_tree.get_similar_model_catalogues(
+                self.producer.roster.engine_model_tech_tree.get_similar_model_catalogues(
                     catalogue=self
                 )
             )
@@ -688,14 +688,14 @@ class Catalogue(list):
 
     @cached_property
     def intro_year(self):
-        if self.factory.cab_factory is not None:
-            return self.factory.cab_factory.catalogue.intro_year
+        if self.producer.cab_producer is not None:
+            return self.producer.cab_producer.catalogue.intro_year
 
         # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
-        result = self.factory.roster.intro_years[self.base_track_type][
+        result = self.producer.roster.intro_years[self.base_track_type][
             self.model_def.gen - 1
         ]
         if self.model_def.intro_year_offset is not None:
@@ -720,25 +720,25 @@ class Catalogue(list):
                 self.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
             )
 
-        # !! attr lookup like this is a sign that this might need delegated to factory properly, but eh
+        # !! attr lookup like this is a sign that this might need delegated to producer properly, but eh
         if (
-            getattr(self.factory.model_type_cls, "formation_reporting_labels", None)
+            getattr(self.producer.model_type_cls, "formation_reporting_labels", None)
             is not None
         ):
-            result.extend(self.factory.model_type_cls.formation_reporting_labels)
+            result.extend(self.producer.model_type_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
-        result.append(self.factory.vehicle_family_id)
+        result.append(self.producer.vehicle_family_id)
         return result
 
     @property
     def vehicle_family_badge(self):
-        # convenience method, catalogue method is public, factory is not
-        return self.factory._vehicle_family_badge
+        # convenience method, catalogue method is public, producer is not
+        return self.producer._vehicle_family_badge
 
     @property
     def vehicle_family_pantograph_display_badges(self):
-        # convenience method, catalogue method is public, factory is not
-        return self.factory._vehicle_family_pantograph_display_badges
+        # convenience method, catalogue method is public, producer is not
+        return self.producer._vehicle_family_pantograph_display_badges
 
     @property
     def cite(self):
@@ -759,18 +759,18 @@ class Catalogue(list):
                 "Chief Engineer, Mass Mobility Systems",
             ]
         else:
-            if getattr(self.factory.model_type_cls, "cite", None) == "Arabella Unit":
-                cite_name = self.factory.model_type_cls.cite
+            if getattr(self.producer.model_type_cls, "cite", None) == "Arabella Unit":
+                cite_name = self.producer.model_type_cls.cite
                 cite_titles = [
                     "General Manager (Railcars)",
                     "Senior Engineer, Self-Propelled Traction",
                     "Director, Suburban and Rural Lines",
                 ]
             elif (
-                getattr(self.factory.model_type_cls, "cite", None)
+                getattr(self.producer.model_type_cls, "cite", None)
                 == "Dr Constance Speed"
             ):
-                cite_name = self.factory.model_type_cls.cite
+                cite_name = self.producer.model_type_cls.cite
                 cite_titles = [
                     "Lead Engineer, High Speed Projects",
                     "Director, Future Traction Concepts",
@@ -864,7 +864,7 @@ class EngineQuacker:
 
     def __init__(self, catalogue):
         self.catalogue = catalogue
-        self.factory = self.catalogue.factory
+        self.producer = self.catalogue.producer
 
     def _validate_inverse_quacker(self, test_result):
         # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
@@ -879,7 +879,7 @@ class EngineQuacker:
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         return any(
             base.__name__ == "EngineModelTypeBase"
-            for base in self.catalogue.factory.model_type_cls.__mro__
+            for base in self.catalogue.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -919,7 +919,7 @@ class WagonQuacker:
 
     def __init__(self, catalogue):
         self.catalogue = catalogue
-        self.factory = self.catalogue.factory
+        self.producer = self.catalogue.producer
 
     def _validate_inverse_quacker(self, test_result):
         # the engine and wagon quackers are used to handle engine-like and wagon-like behaviour in context
@@ -934,7 +934,7 @@ class WagonQuacker:
         # doing it this way prevents conceptual blur enforceably
         return any(
             base.__name__ == "CarModelTypeBase"
-            for base in self.catalogue.factory.model_type_cls.__mro__
+            for base in self.catalogue.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -951,7 +951,7 @@ class WagonQuacker:
         if self._quack() == False:
             return False
         # wagons that are trailers for railcars etc need to match availability to their cab, so they're handled as engines
-        if self.factory.cab_factory is not None:
+        if self.producer.cab_producer is not None:
             return False
         # fall through
         return True
@@ -965,7 +965,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "RandomisedCarMixinBase"
-            for base in self.factory.model_type_cls.__mro__
+            for base in self.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -1001,7 +1001,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "PassengerRestaurantCar"
-            for base in self.catalogue.factory.model_type_cls.__mro__
+            for base in self.catalogue.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -1013,7 +1013,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ in ["PassengerCarBase", "MailCarBase"]
-            for base in self.catalogue.factory.model_type_cls.__mro__
+            for base in self.catalogue.producer.model_type_cls.__mro__
         )
 
 
@@ -1026,17 +1026,17 @@ class CloneQuacker:
 
     def __init__(self, catalogue):
         self.catalogue = catalogue
-        self.factory = self.catalogue.factory
+        self.producer = self.catalogue.producer
 
     @property
     def quack(self):
         # convenience boolean for things that either are clones, or can be treated like clones for docs etc
         # public access via catalogue
-        if self.factory.model_def.cloned_from_model_def is not None:
+        if self.producer.model_def.cloned_from_model_def is not None:
             return True
-        if self.factory.model_def.quacks_like_a_clone:
+        if self.producer.model_def.quacks_like_a_clone:
             return True
-        if getattr(self.factory.model_type_cls, "quacks_like_a_clone", False):
+        if getattr(self.producer.model_type_cls, "quacks_like_a_clone", False):
             return True
         # fall through to 'does not quack like a clone'
         return False
@@ -1046,29 +1046,29 @@ class CloneQuacker:
             raise ValueError(
                 f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
             )
-        if permissive == False and self.factory.model_def.cloned_from_model_def is None:
+        if permissive == False and self.producer.model_def.cloned_from_model_def is None:
             raise ValueError(
                 f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
             )
-        # if it's an actual clone get the factory for the model the clone was derived from
+        # if it's an actual clone get the producer for the model the clone was derived from
         # possibly expensive, but not often required
         # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
-        if self.factory.model_def.cloned_from_model_def is not None:
-            for candidate_catalogue in self.factory.roster.catalogues:
+        if self.producer.model_def.cloned_from_model_def is not None:
+            for candidate_catalogue in self.producer.roster.catalogues:
                 if (
                     candidate_catalogue.model_def
-                    == self.factory.model_def.cloned_from_model_def
+                    == self.producer.model_def.cloned_from_model_def
                 ):
                     return candidate_catalogue
         # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
         try:
-            return self.factory.roster.model_variants_by_catalogue[
-                self.factory.vehicle_family_id
+            return self.producer.roster.model_variants_by_catalogue[
+                self.producer.vehicle_family_id
             ]["catalogue"]
         except (KeyError, TypeError):
             raise LookupError(
                 f"Upstream catalogue not found for {self.catalogue.model_id}; "
-                f"vehicle_family_id={self.factory.vehicle_family_id}"
+                f"vehicle_family_id={self.producer.vehicle_family_id}"
             )
 
     def resolve_catalogue(self, permissive):
@@ -1076,8 +1076,8 @@ class CloneQuacker:
         if not self.quack:
             return self.catalogue
         # we handle trains with cab engines like clones, so get the cab catalogue
-        if permissive and self.factory.cab_factory is not None:
-            return self.factory.cab_factory.catalogue
+        if permissive and self.producer.cab_producer is not None:
+            return self.producer.cab_producer.catalogue
         return self._get_upstream_catalogue(permissive)
 
 
@@ -1089,7 +1089,7 @@ class TGVHSTQuacker:
 
     def __init__(self, catalogue):
         self.catalogue = catalogue
-        self.factory = self.catalogue.factory
+        self.producer = self.catalogue.producer
 
     def _validate(self):
         # specific name format is required for TGV and HST parts
@@ -1109,7 +1109,7 @@ class TGVHSTQuacker:
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
         if getattr(
-            self.catalogue.factory.model_type_cls, "dedicated_tgv_hst_formation", False
+            self.catalogue.producer.model_type_cls, "dedicated_tgv_hst_formation", False
         ):
             return True
         # fall through
@@ -1121,8 +1121,8 @@ class TGVHSTQuacker:
         if not self.quack:
             return False
         # cab parts are created before middle parts, so we can't rely on detecting middle parts for cab
-        # instead we have to rely on absence of cab_factory as that can be used at init time
-        if self.factory.cab_factory is None:
+        # instead we have to rely on absence of cab_producer as that can be used at init time
+        if self.producer.cab_producer is None:
             return True
         # fall through
         return False
@@ -1132,7 +1132,7 @@ class TGVHSTQuacker:
         # predicate to find middle_parts
         if not self.quack:
             return False
-        if self.factory.cab_factory is not None:
+        if self.producer.cab_producer is not None:
             return True
         # fall through
         return False

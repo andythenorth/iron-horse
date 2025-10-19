@@ -38,7 +38,7 @@ class DocHelper(object):
         result = defaultdict(lambda: {"model_type_cls": None, "catalogues": []})
 
         for catalogue in catalogues:
-            model_type_cls = catalogue.factory.model_type_cls
+            model_type_cls = catalogue.producer.model_type_cls
             key = model_type_cls.__name__
             if result[key]["model_type_cls"] is None:
                 result[key]["model_type_cls"] = model_type_cls
@@ -425,7 +425,7 @@ class DocHelper(object):
         if optional_model_variant is not None:
             image_filename = optional_model_variant.model_id + "_red_white.png"
             title = optional_title
-            quote = self.strip_html(optional_model_variant.catalogue.factory.model_def.description)
+            quote = self.strip_html(optional_model_variant.catalogue.producer.model_def.description)
             quote = self.wrap_in_smart_quotes(quote)
             cite = self.strip_html(optional_model_variant.catalogue.cite)
             description = f"{quote} - {cite}"

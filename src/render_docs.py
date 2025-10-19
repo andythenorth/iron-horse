@@ -100,7 +100,7 @@ def render_docs_vehicle_details(
 
     roster = iron_horse.roster_manager.active_roster
     for catalogue in catalogues:
-        catalogue.factory.assert_description_foamer_facts()
+        catalogue.producer.assert_description_foamer_facts()
         doc_name = catalogue.model_id
         model_variants = roster.model_variants_by_catalogue[catalogue.model_id][
             "model_variants"
@@ -223,7 +223,7 @@ def render_docs_vehicle_images(
 
         if model_variant.model_def.docs_image_spriterow is not None:
             y_offset = 30 * model_variant.model_def.docs_image_spriterow
-        # !! requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
+        # !! requires_custom_buy_menu_sprite could be folded into producer or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
             # further possibly fragile special-casing
             if (getattr(model_variant, "livery_group_name", None) is not None) or (

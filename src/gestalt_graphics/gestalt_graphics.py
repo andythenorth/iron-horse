@@ -139,7 +139,7 @@ class GestaltGraphics(object):
         # we use a badge as a predicate to detect 'same formation' for rulesets
         # this gets a slug for assembling the badge
         # we go via gestalt_graphics as that's the proper domain for rulesets...
-        # ...factory and catalogue should not know about rulesets
+        # ...producer and catalogue should not know about rulesets
         # however gestalt_graphics equally doesn't know about specific model types...
         # ...so it delegates back to catalogue methods or properties
         # the result is a bit conditional / indirect, but the domain boundaries are faffy here
@@ -152,7 +152,7 @@ class GestaltGraphics(object):
             if reporting_label_map["label"] == "model_id":
                 return self.catalogue.model_id
             if reporting_label_map["label"] == "vehicle_family":
-                return self.catalogue.factory.vehicle_family_id
+                return self.catalogue.producer.vehicle_family_id
             if reporting_label_map["label"] == "tgv_hst":
                 return (
                     self.catalogue.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag

@@ -16,7 +16,7 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.producer import ModelVariantFactory
+from train.producer import ModelVariantProducer
 
 
 class Roster:
@@ -229,10 +229,10 @@ class Roster:
             )
 
             for model_def in engine_module.main():
-                factory = ModelVariantFactory(
+                producer = ModelVariantProducer(
                     model_def, self.id, roster_id_providing_module
                 )
-                catalogue = factory.catalogue
+                catalogue = producer.catalogue
                 # Use the convenience property `id` on Catalogue
                 catalogue_id = catalogue.model_id
                 if catalogue_id not in self.engine_model_variants_by_catalogue:
@@ -241,7 +241,7 @@ class Roster:
                         "model_variants": [],
                     }
                 for catalogue_entry in catalogue:
-                    model_variant = factory.produce(catalogue_entry=catalogue_entry)
+                    model_variant = producer.produce(catalogue_entry=catalogue_entry)
                     self.engine_model_variants_by_catalogue[catalogue_id][
                         "model_variants"
                     ].append(model_variant)
@@ -278,10 +278,10 @@ class Roster:
                         "." + wagon_module_name, package_name
                     )
                     for model_def in wagon_module.main():
-                        factory = ModelVariantFactory(
+                        producer = ModelVariantProducer(
                             model_def, self.id, roster_id_providing_module
                         )
-                        catalogue = factory.catalogue
+                        catalogue = producer.catalogue
                         # Using the convenience property 'id'
                         catalogue_id = catalogue.model_id
                         if catalogue_id not in self.wagon_model_variants_by_catalogue:
@@ -290,7 +290,7 @@ class Roster:
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
-                            model_variant = factory.produce(
+                            model_variant = producer.produce(
                                 catalogue_entry=catalogue_entry
                             )
                             self.wagon_model_variants_by_catalogue[catalogue_id][
@@ -317,7 +317,7 @@ class Roster:
         tmp_randomisation_candidates_map = {}
         for catalogue in self.wagon_catalogues:
             for model_id_root in getattr(
-                catalogue.factory.model_type_cls, "randomised_candidate_groups", []
+                catalogue.producer.model_type_cls, "randomised_candidate_groups", []
             ):
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
                 tmp_randomisation_candidates_map.setdefault(tmp_uid, [])
@@ -327,7 +327,7 @@ class Roster:
 
         for catalogue in randomised_wagon_type_catalogues_tmp:
             tmp_uid = get_tmp_uid(
-                catalogue.factory.model_type_cls.model_id_root, catalogue
+                catalogue.producer.model_type_cls.model_id_root, catalogue
             )
             for model_variant in self.wagon_model_variants_by_catalogue[
                 catalogue.model_id

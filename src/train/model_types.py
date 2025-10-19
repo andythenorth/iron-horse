@@ -122,7 +122,7 @@ class ModelTypeBase(object):
     @property
     def roster_id(self):
         # just a pass through for convenience - we can't store roster directly as it won't pickle for multiprocessing, so store the id for lookups
-        return self.catalogue.factory.roster_id
+        return self.catalogue.producer.roster_id
 
     @property
     def base_numeric_id(self):
