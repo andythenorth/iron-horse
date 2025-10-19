@@ -120,9 +120,14 @@ class ModelTypeBase(object):
         return self.catalogue_entry.catalogue
 
     @property
+    def producer(self):
+        # direct accessor for convenience
+        return self.catalogue.producer
+
+    @property
     def roster_id(self):
         # just a pass through for convenience - we can't store roster directly as it won't pickle for multiprocessing, so store the id for lookups
-        return self.catalogue.producer.roster_id
+        return self.producer.roster_id
 
     @property
     def base_numeric_id(self):

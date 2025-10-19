@@ -872,14 +872,14 @@ class EngineQuacker:
         # doing it this way prevents conceptual blur enforceably
         assert (
             self.catalogue.wagon_quacker._quack() != test_result
-        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+        ), f"{self.producer.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
         # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         return any(
             base.__name__ == "EngineModelTypeBase"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -926,7 +926,7 @@ class WagonQuacker:
         # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
         assert (
             self.catalogue.engine_quacker._quack() != test_result
-        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+        ), f"{self.producer.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
         # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
@@ -934,7 +934,7 @@ class WagonQuacker:
         # doing it this way prevents conceptual blur enforceably
         return any(
             base.__name__ == "CarModelTypeBase"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -1001,7 +1001,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "PassengerRestaurantCar"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.producer.model_type_cls.__mro__
         )
 
     @cached_property
@@ -1013,7 +1013,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ in ["PassengerCarBase", "MailCarBase"]
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.producer.model_type_cls.__mro__
         )
 
 
@@ -1044,11 +1044,11 @@ class CloneQuacker:
     def _get_upstream_catalogue(self, permissive):
         if not self.quack:
             raise ValueError(
-                f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
+                f"{self.producer.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
             )
         if permissive == False and self.producer.model_def.cloned_from_model_def is None:
             raise ValueError(
-                f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
+                f"{self.producer.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
             )
         # if it's an actual clone get the producer for the model the clone was derived from
         # possibly expensive, but not often required
@@ -1067,7 +1067,7 @@ class CloneQuacker:
             ]["catalogue"]
         except (KeyError, TypeError):
             raise LookupError(
-                f"Upstream catalogue not found for {self.catalogue.model_id}; "
+                f"Upstream catalogue not found for {self.producer.model_id}; "
                 f"vehicle_family_id={self.producer.vehicle_family_id}"
             )
 
@@ -1095,21 +1095,21 @@ class TGVHSTQuacker:
         # specific name format is required for TGV and HST parts
         assert (
             self.is_tgv_hst_cab != self.is_tgv_hst_middle_part
-        ), f"TGVHSTQuacker: {self.catalogue.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
+        ), f"TGVHSTQuacker: {self.producer.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
         if self.is_tgv_hst_cab:
-            assert self.catalogue.model_id.endswith(
+            assert self.producer.model_id.endswith(
                 "_cab"
-            ), f"TGVHSTQuacker: {self.catalogue.model_id} cab part must end with '_cab'"
+            ), f"TGVHSTQuacker: {self.producer.model_id} cab part must end with '_cab'"
         if self.is_tgv_hst_middle_part:
-            assert self.catalogue.model_id.endswith(
+            assert self.producer.model_id.endswith(
                 ("_middle_passenger", "middle_mail")
-            ), f"TGVHSTQuacker: {self.catalogue.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
+            ), f"TGVHSTQuacker: {self.producer.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
 
     @property
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
         if getattr(
-            self.catalogue.producer.model_type_cls, "dedicated_tgv_hst_formation", False
+            self.producer.model_type_cls, "dedicated_tgv_hst_formation", False
         ):
             return True
         # fall through
@@ -1141,8 +1141,8 @@ class TGVHSTQuacker:
     def vehicle_family_id(self):
         self._validate()
         for suffix in ("_cab", "_middle_passenger", "_middle_mail"):
-            if self.catalogue.model_id.endswith(suffix):
-                return self.catalogue.model_id.removesuffix(suffix)
+            if self.producer.model_id.endswith(suffix):
+                return self.producer.model_id.removesuffix(suffix)
 
     @cached_property
     def formation_ruleset_middle_part_equivalence_flag(self):
