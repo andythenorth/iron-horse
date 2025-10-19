@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional
 from functools import cached_property
 
 from train import model_types as model_types
-from train import unit as unit_module
+from train import unit_types as unit_types
 import utils
 from utils import timing
 
@@ -198,7 +198,7 @@ class ModelVariantFactory:
         # orchestrate addition of units
         for counter, unit_def in enumerate(self.model_def.unit_defs):
             try:
-                unit_cls = getattr(unit_module, unit_def.class_name)
+                unit_cls = getattr(unit_types, unit_def.class_name)
             except:
                 raise Exception(
                     "class_name not found for "
