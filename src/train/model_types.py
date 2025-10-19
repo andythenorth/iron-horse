@@ -106,12 +106,12 @@ class ModelTypeBase(object):
 
     @property
     def model_id(self):
-        return self.catalogue_entry.model_id
+        return self.producer.model_id
 
     @property
     def model_def(self):
         # just a pass through for convenience
-        return self.catalogue.model_def
+        return self.producer.model_def
 
     @property
     def catalogue(self):
