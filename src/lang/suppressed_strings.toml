@@ -126,9 +126,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_WAGON_NAME_METAL_PRODUCT_UNCOVERED_COMBOS]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
 suppressed_rosters = ["moose", "ibex"]
 

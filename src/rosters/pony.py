@@ -344,7 +344,6 @@ wagon_module_names_with_roster_ids = {
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",
     "metal_product_mixed_combos": "pony",
-    "metal_product_uncovered_combos": "pony",
     "mgr_hopper_cars": "pony",
     "mgr_hopper_top_hood_cars": "pony",
     "mill_flat_cars_randomised": "pony",
