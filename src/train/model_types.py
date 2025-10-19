@@ -106,7 +106,7 @@ class ModelTypeBase(object):
 
     @property
     def model_id(self):
-        return self.producer.model_id
+        return self.catalogue.model_id
 
     @property
     def model_def(self):

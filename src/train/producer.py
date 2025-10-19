@@ -123,7 +123,6 @@ class CatalogueEntry:
     """
 
     catalogue: "Catalogue"
-    model_id: str
     model_variant_id: str
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
@@ -184,7 +183,7 @@ class ModelVariantProducer:
         self.catalogue.add_entries()
         if len(self.catalogue) == 0:
             raise Exception(
-                f"{self.model_id}\n" f"ModelVariantProducer catalogue is empty"
+                f"{self.catalogue.model_id}\n" f"ModelVariantProducer catalogue is empty"
             )
 
     def produce(self, catalogue_entry=None):
@@ -240,16 +239,6 @@ class ModelVariantProducer:
         return iron_horse.roster_manager.get_roster_by_id(
             self.roster_id_providing_module
         )
-
-    @cached_property
-    def model_id(self):
-        # figures out where a model variant is getting a base id from
-        # must be either defined on model_def or in the model variant class attrs
-        if self.model_def.model_id is not None:
-            return self.model_def.model_id
-        else:
-            # we assume it's a wagon id
-            return self.get_wagon_id(self.model_type_cls.model_id_root, self.model_def)
 
     def get_wagon_id(self, model_id_root, model_def):
         # auto id creator, used for wagons not engines
@@ -312,7 +301,7 @@ class ModelVariantProducer:
             return self.model_type_cls.model_id_root
 
         # otherwise fall through to just model_id
-        return self.model_id
+        return self.catalogue.model_id
 
     @property
     def _vehicle_family_badge(self):
@@ -330,12 +319,12 @@ class ModelVariantProducer:
         ):
             if self.cab_producer.model_def.pantograph_type is not None:
                 result.append(
-                    f"ih_pantograph_display/requires_cab_present/{self.model_id}"
+                    f"ih_pantograph_display/requires_cab_present/{self.catalogue.model_id}"
                 )
         # now find out if we're a cab, and if we need pans
         if self.catalogue.engine_quacker.is_cab_with_dedicated_trailers:
             if self.model_def.pantograph_type is not None:
-                result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
+                result.append(f"ih_pantograph_display/is_cab/{self.catalogue.model_id}")
         # strictly we should never need both results and could return early, but eh, this also works
         return result
 
@@ -347,7 +336,7 @@ class ModelVariantProducer:
         elif getattr(self.model_type_cls, "model_id_root", None) is not None:
             return f"NAME_SUFFIX_{self.model_type_cls.model_id_root}"
         else:
-            return self.model_id
+            return self.catalogue.model_id
 
     def get_variant_group_id(self, livery_def, base_track_type):
         # cascade of sources for variant group ID
@@ -376,7 +365,7 @@ class ModelVariantProducer:
             return self.vehicle_family_id
 
         # should never be reached
-        raise ValueError(f"variant_group_id not found for {self.model_id}")
+        raise ValueError(f"variant_group_id not found for {self.catalogue.model_id}")
 
     @cached_property
     def input_spritesheet_name_stem(self):
@@ -397,7 +386,7 @@ class ModelVariantProducer:
                     self.model_def.cloned_from_model_def.model_id
                 )
             else:
-                input_spritesheet_name_stem = self.model_id
+                input_spritesheet_name_stem = self.catalogue.model_id
 
         # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
@@ -423,11 +412,11 @@ class ModelVariantProducer:
         # if these are too noisy, comment out the caller
         if self.catalogue.engine_quacker.quack:
             if len(self.model_def.description) == 0:
-                utils.echo_message(self.model_id + " has no description")
+                utils.echo_message(self.catalogue.model_id + " has no description")
             if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message(self.model_id + " has no foamer_facts")
+                utils.echo_message(self.catalogue.model_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
-                utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
+                utils.echo_message(self.catalogue.model_id + " foamer_facts has a '.' in it.")
 
 
 class Catalogue(list):
@@ -454,7 +443,7 @@ class Catalogue(list):
     def add_entries(self):
         # entry adding separated from create() as it depends on the catalogue being available to producer
         for livery_counter, livery_def in enumerate(self.livery_defs):
-            model_variant_id = f"{self.producer.model_id}_mv_{livery_counter}"
+            model_variant_id = f"{self.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
                 for i, _ in enumerate(self.producer.model_def.unit_defs)
@@ -481,7 +470,6 @@ class Catalogue(list):
             # - model_def is considered mostly immutable after init, and we don't want the producer extensively writing properties into model_def instances
             catalogue_entry = CatalogueEntry(
                 catalogue=self,
-                model_id=self.producer.model_id,
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
@@ -596,10 +584,15 @@ class Catalogue(list):
             f"{self.producer.cab_producer}"
         )
 
-    @property
+    @cached_property
     def model_id(self):
-        # catalogue model_id is synonymous with catalogue id, and derived from producer
-        return self.producer.model_id
+        # figures out where a model variant is getting a base id from
+        # must be either defined on model_def or in the model variant class attrs
+        if self.producer.model_def.model_id is not None:
+            return self.producer.model_def.model_id
+        else:
+            # we assume it's a wagon id
+            return self.producer.get_wagon_id(self.producer.model_type_cls.model_id_root, self.producer.model_def)
 
     @property
     def model_id_root(self):
@@ -877,7 +870,7 @@ class EngineQuacker:
         # doing it this way prevents conceptual blur enforceably
         assert (
             self.catalogue.wagon_quacker._quack() != test_result
-        ), f"{self.producer.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
         # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
@@ -931,7 +924,7 @@ class WagonQuacker:
         # BUT the default .quack methods should be inverse for any given catalogue, as the base behaviours are mutually exclusive
         assert (
             self.catalogue.engine_quacker._quack() != test_result
-        ), f"{self.producer.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
+        ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
         # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
@@ -1049,11 +1042,11 @@ class CloneQuacker:
     def _get_upstream_catalogue(self, permissive):
         if not self.quack:
             raise ValueError(
-                f"{self.producer.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
+                f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
             )
         if permissive == False and self.producer.model_def.cloned_from_model_def is None:
             raise ValueError(
-                f"{self.producer.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
+                f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
             )
         # if it's an actual clone get the producer for the model the clone was derived from
         # possibly expensive, but not often required
@@ -1072,7 +1065,7 @@ class CloneQuacker:
             ]["catalogue"]
         except (KeyError, TypeError):
             raise LookupError(
-                f"Upstream catalogue not found for {self.producer.model_id}; "
+                f"Upstream catalogue not found for {self.catalogue.model_id}; "
                 f"vehicle_family_id={self.producer.vehicle_family_id}"
             )
 
@@ -1100,15 +1093,15 @@ class TGVHSTQuacker:
         # specific name format is required for TGV and HST parts
         assert (
             self.is_tgv_hst_cab != self.is_tgv_hst_middle_part
-        ), f"TGVHSTQuacker: {self.producer.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
+        ), f"TGVHSTQuacker: {self.catalogue.model_id} is returning true for both is_tgv_hst_cab and is_tgv_hst_middle_part"
         if self.is_tgv_hst_cab:
-            assert self.producer.model_id.endswith(
+            assert self.catalogue.model_id.endswith(
                 "_cab"
-            ), f"TGVHSTQuacker: {self.producer.model_id} cab part must end with '_cab'"
+            ), f"TGVHSTQuacker: {self.catalogue.model_id} cab part must end with '_cab'"
         if self.is_tgv_hst_middle_part:
-            assert self.producer.model_id.endswith(
+            assert self.catalogue.model_id.endswith(
                 ("_middle_passenger", "middle_mail")
-            ), f"TGVHSTQuacker: {self.producer.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
+            ), f"TGVHSTQuacker: {self.catalogue.model_id} middle part must end with '_middle_passenger' or '_middle_mail'"
 
     @property
     def quack(self):
@@ -1146,8 +1139,8 @@ class TGVHSTQuacker:
     def vehicle_family_id(self):
         self._validate()
         for suffix in ("_cab", "_middle_passenger", "_middle_mail"):
-            if self.producer.model_id.endswith(suffix):
-                return self.producer.model_id.removesuffix(suffix)
+            if self.catalogue.model_id.endswith(suffix):
+                return self.catalogue.model_id.removesuffix(suffix)
 
     @cached_property
     def formation_ruleset_middle_part_equivalence_flag(self):
