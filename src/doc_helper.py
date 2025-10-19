@@ -18,8 +18,9 @@ class DocHelper(object):
     docs_sprite_max_width = 65  # up to 2 units eh
     docs_sprite_height = 16
 
-    def __init__(self, lang_strings):
-        self.lang_strings = lang_strings
+    def __init__(self, lang_data):
+        self.lang_strings = lang_data["lang_strings"]
+        self.docs_only_strings = lang_data["docs_only_strings"]
 
     def docs_sprite_width(self, catalogue=None, model_variant=None):
         # generally use catalogue for this
@@ -197,7 +198,7 @@ class DocHelper(object):
         return self.lang_strings["STR_BADGE_LIVERY_" + livery_def.display_and_filter_name]
 
     def get_livery_extra_text(self, livery_def):
-        return self.lang_strings.get("STR_EXTRA_TEXT_LIVERY_" + livery_def.display_and_filter_name, "CABBAGE")
+        return self.docs_only_strings["STR_EXTRA_TEXT_LIVERY_" + livery_def.display_and_filter_name]
 
     def get_subrole_child_branches(self, model_variants, base_track_type, role):
         result = []

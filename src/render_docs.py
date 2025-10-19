@@ -445,7 +445,7 @@ def main():
 
     # can't pass roster in to DocHelper at init, multiprocessing fails as it can't pickle the roster object
     doc_helper = DocHelper(
-        lang_strings=roster.get_lang_data("english", context="docs")["lang_strings"],
+        lang_data=roster.get_lang_data("english", context="docs"),
     )
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)

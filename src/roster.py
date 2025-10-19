@@ -408,6 +408,7 @@ class Roster:
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
         global_pragma = {}
         lang_strings = {}
+        docs_only_strings = {}
         # we have the option to suppress selected strings in specific contexts, using a dedicated suppression file
         suppressed_strings = tomllib.load(
             open(
@@ -435,11 +436,15 @@ class Roster:
                 if node_value.get("case", False):
                     global_pragma["case"] = node_value["case"]
             else:
-                # all lang strings should provide a default base value, which can optionally be over-ridden per roster
-                if self.id in node_value.keys():
-                    lang_strings[node_name] = node_value[self.id]
+                # ach conditional jank for docs only strings, but JFDI
+                if node_value.get("docs_only", False) == True:
+                    docs_only_strings[node_name] = node_value["base"]
                 else:
-                    lang_strings[node_name] = node_value["base"]
+                    # all lang strings should provide a default base value, which can optionally be over-ridden per roster
+                    if self.id in node_value.keys():
+                        lang_strings[node_name] = node_value[self.id]
+                    else:
+                        lang_strings[node_name] = node_value["base"]
 
         for catalogue in self.catalogues:
             example_model_variant = catalogue.example_model_variant
@@ -448,7 +453,7 @@ class Roster:
                     example_model_variant.name
                 )
 
-        return {"global_pragma": global_pragma, "lang_strings": lang_strings}
+        return {"global_pragma": global_pragma, "lang_strings": lang_strings, "docs_only_strings": docs_only_strings}
 
     # @timing
     def validate_vehicle_ids(self, numeric_id_defender):
