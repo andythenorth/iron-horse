@@ -112,31 +112,6 @@ class UnitDef:
     reverse_sprite_template: bool = False
 
 
-@dataclass
-class CatalogueEntry:
-    """
-    The catalogue is composed of multiple CatalogueEntry instances.
-
-    Each CatalogueEntry provides instantiation-time configuration for a model variant instance.
-    It aggregates properties derived from model_def and computed by the producer, ensuring
-    consumers can access necessary data without referencing the producer directly.
-    """
-
-    catalogue: "Catalogue"
-    model_variant_id: str
-    unit_variant_ids: List[str]
-    unit_numeric_ids: List[int]
-    livery_def: "LiveryDef"
-    variant_group_id: str
-    vehicle_family_id: str
-    input_spritesheet_name_stem: str
-
-    @property
-    def index(self):
-        # convenience function
-        return self.catalogue.index(self)
-
-
 class ModelVariantProducer:
     """
     ModelVariantProducer instances:
@@ -180,7 +155,8 @@ class ModelVariantProducer:
         self.catalogue.add_entries()
         if len(self.catalogue) == 0:
             raise Exception(
-                f"{self.catalogue.model_id}\n" f"ModelVariantProducer catalogue is empty"
+                f"{self.catalogue.model_id}\n"
+                f"ModelVariantProducer catalogue is empty"
             )
 
     def produce(self, catalogue_entry=None):
@@ -348,7 +324,9 @@ class ModelVariantProducer:
             if self.catalogue.livery_defs[0] == livery_def:
                 livery_suffix = "primary"
             else:
-                livery_suffix = "secondary_" + str(self.catalogue.livery_defs.index(livery_def))
+                livery_suffix = "secondary_" + str(
+                    self.catalogue.livery_defs.index(livery_def)
+                )
 
             return (
                 f"{self.variant_group_id_root}_"
@@ -413,7 +391,103 @@ class ModelVariantProducer:
             if len(self.model_def.foamer_facts) == 0:
                 utils.echo_message(self.catalogue.model_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
-                utils.echo_message(self.catalogue.model_id + " foamer_facts has a '.' in it.")
+                utils.echo_message(
+                    self.catalogue.model_id + " foamer_facts has a '.' in it."
+                )
+
+
+class ModelDefCloner:
+    """Utility to clone a model_def instance, this is just to keep clone logic out of the simple ModelDef dataclass"""
+
+    @staticmethod
+    def begin_clone(model_def, base_numeric_id, unit_repeats):
+        if model_def.cloned_from_model_def is not None:
+            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
+            raise Exception(
+                "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
+                + model_def.model_id,
+            )
+        cloned_model_def = copy.deepcopy(model_def)
+        # clone may need to reference original source
+        cloned_model_def.cloned_from_model_def = model_def
+        # keep a reference locally for book-keeping
+        model_def.clones.append(cloned_model_def)
+        # deepcopy will have created new unit instances, but we might want to modify the sequence for the clone
+        # the format is unit_repeats=[x, y z]
+        # for each existing unit, this will specify which units to copy, and what their repeat values are
+        # e.g. [1, 0] will keep the first and drop the second
+        # [2, 1] will repeat the first unit twice
+        # [0, 2] will drop the first unit and repeat the second twice
+        unit_defs_old = cloned_model_def.unit_defs.copy()
+        cloned_model_def.unit_defs = []
+        for counter, unit_def in enumerate(unit_defs_old):
+            # don't use unit if repeat is 0
+            if unit_repeats[counter] > 0:
+                cloned_model_def.unit_defs.append(unit_def)
+                unit_def.repeat = unit_repeats[counter]
+
+        cloned_model_def.base_numeric_id = base_numeric_id
+        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
+        cloned_model_def.model_id = (
+            model_def.model_id + "_clone_" + str(len(model_def.clones))
+        )
+        # this will cause the clone to group as a variant of the original source (unless influenced by other factors)
+        cloned_model_def.vehicle_family_id = model_def.model_id
+        return cloned_model_def
+
+    @staticmethod
+    def complete_clone(model_def):
+        # book-keeping and adjustments after all changes are made to a clone
+
+        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
+        # call on clone, not source, will except (correctly) if called on source
+        try:
+            source_unit_count = model_def.cloned_from_model_def.produced_unit_total
+        except:
+            raise Exception("source_unit_count failed" + str(model_def))
+        clone_unit_count = model_def.produced_unit_total
+        model_def.clone_stats_adjustment_factor = clone_unit_count / source_unit_count
+
+        # recalculate power in a clone
+        result = {}
+        for (
+            power_type,
+            power_value,
+        ) in model_def.power_by_power_source.items():
+            result[power_type] = int(
+                power_value * model_def.clone_stats_adjustment_factor
+            )
+        model_def.power_by_power_source = result
+
+        # purchase menu variant decor isn't supported if the vehicle is articulated, so just forcibly clear this property
+        if model_def.produced_unit_total > 1:
+            model_def.show_decor_in_purchase_for_variants = None
+        return model_def
+
+
+@dataclass
+class CatalogueEntry:
+    """
+    The catalogue is composed of multiple CatalogueEntry instances.
+
+    Each CatalogueEntry provides instantiation-time configuration for a model variant instance.
+    It aggregates properties derived from model_def and computed by the producer, ensuring
+    consumers can access necessary data without referencing the producer directly.
+    """
+
+    catalogue: "Catalogue"
+    model_variant_id: str
+    unit_variant_ids: List[str]
+    unit_numeric_ids: List[int]
+    livery_def: "LiveryDef"
+    variant_group_id: str
+    vehicle_family_id: str
+    input_spritesheet_name_stem: str
+
+    @property
+    def index(self):
+        # convenience function
+        return self.catalogue.index(self)
 
 
 class Catalogue(list):
@@ -589,7 +663,9 @@ class Catalogue(list):
             return self.producer.model_def.model_id
         else:
             # we assume it's a wagon id
-            return self.producer.get_wagon_id(self.producer.model_type_cls.model_id_root, self.producer.model_def)
+            return self.producer.get_wagon_id(
+                self.producer.model_type_cls.model_id_root, self.producer.model_def
+            )
 
     @property
     def model_id_root(self):
@@ -612,9 +688,9 @@ class Catalogue(list):
     @cached_property
     def default_model_variant_from_roster(self):
         # requires that the producer produce() method has been called
-        model_variants = self.producer.roster.model_variants_by_catalogue[self.model_id][
-            "model_variants"
-        ]
+        model_variants = self.producer.roster.model_variants_by_catalogue[
+            self.model_id
+        ]["model_variants"]
         for model_variant in model_variants:
             if model_variant.is_default_model_variant:
                 return model_variant
@@ -673,10 +749,8 @@ class Catalogue(list):
     @cached_property
     def similar_model_catalogues(self):
         if self.engine_quacker.quack:
-            return (
-                self.producer.roster.engine_model_tech_tree.get_similar_model_catalogues(
-                    catalogue=self
-                )
+            return self.producer.roster.engine_model_tech_tree.get_similar_model_catalogues(
+                catalogue=self
             )
         # empty list if nothing found
         return []
@@ -779,75 +853,6 @@ class Catalogue(list):
                     "Transitional General Manager (Traction)",
                 ]
         return cite_name + ", " + random.choice(cite_titles)
-
-
-class ModelDefCloner:
-    """Utility to clone a model_def instance, this is just to keep clone logic out of the simple ModelDef dataclass"""
-
-    @staticmethod
-    def begin_clone(model_def, base_numeric_id, unit_repeats):
-        if model_def.cloned_from_model_def is not None:
-            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
-            raise Exception(
-                "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
-                + model_def.model_id,
-            )
-        cloned_model_def = copy.deepcopy(model_def)
-        # clone may need to reference original source
-        cloned_model_def.cloned_from_model_def = model_def
-        # keep a reference locally for book-keeping
-        model_def.clones.append(cloned_model_def)
-        # deepcopy will have created new unit instances, but we might want to modify the sequence for the clone
-        # the format is unit_repeats=[x, y z]
-        # for each existing unit, this will specify which units to copy, and what their repeat values are
-        # e.g. [1, 0] will keep the first and drop the second
-        # [2, 1] will repeat the first unit twice
-        # [0, 2] will drop the first unit and repeat the second twice
-        unit_defs_old = cloned_model_def.unit_defs.copy()
-        cloned_model_def.unit_defs = []
-        for counter, unit_def in enumerate(unit_defs_old):
-            # don't use unit if repeat is 0
-            if unit_repeats[counter] > 0:
-                cloned_model_def.unit_defs.append(unit_def)
-                unit_def.repeat = unit_repeats[counter]
-
-        cloned_model_def.base_numeric_id = base_numeric_id
-        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_model_def.model_id = (
-            model_def.model_id + "_clone_" + str(len(model_def.clones))
-        )
-        # this will cause the clone to group as a variant of the original source (unless influenced by other factors)
-        cloned_model_def.vehicle_family_id = model_def.model_id
-        return cloned_model_def
-
-    @staticmethod
-    def complete_clone(model_def):
-        # book-keeping and adjustments after all changes are made to a clone
-
-        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
-        # call on clone, not source, will except (correctly) if called on source
-        try:
-            source_unit_count = model_def.cloned_from_model_def.produced_unit_total
-        except:
-            raise Exception("source_unit_count failed" + str(model_def))
-        clone_unit_count = model_def.produced_unit_total
-        model_def.clone_stats_adjustment_factor = clone_unit_count / source_unit_count
-
-        # recalculate power in a clone
-        result = {}
-        for (
-            power_type,
-            power_value,
-        ) in model_def.power_by_power_source.items():
-            result[power_type] = int(
-                power_value * model_def.clone_stats_adjustment_factor
-            )
-        model_def.power_by_power_source = result
-
-        # purchase menu variant decor isn't supported if the vehicle is articulated, so just forcibly clear this property
-        if model_def.produced_unit_total > 1:
-            model_def.show_decor_in_purchase_for_variants = None
-        return model_def
 
 
 class EngineQuacker:
@@ -1028,7 +1033,9 @@ class CloneQuacker:
             return True
         if self.catalogue.producer.model_def.quacks_like_a_clone:
             return True
-        if getattr(self.catalogue.producer.model_type_cls, "quacks_like_a_clone", False):
+        if getattr(
+            self.catalogue.producer.model_type_cls, "quacks_like_a_clone", False
+        ):
             return True
         # fall through to 'does not quack like a clone'
         return False
@@ -1038,7 +1045,10 @@ class CloneQuacker:
             raise ValueError(
                 f"{self.catalogue.model_id} does not quack like a clone, don't call clone_quacker.get_upstream_catalogue on it."
             )
-        if permissive == False and self.catalogue.producer.model_def.cloned_from_model_def is None:
+        if (
+            permissive == False
+            and self.catalogue.producer.model_def.cloned_from_model_def is None
+        ):
             raise ValueError(
                 f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
             )
