@@ -4,6 +4,14 @@ if (grf_future_status("\FB\FB\0B\01")) {
     error(FATAL, string(STR_ERROR_TERMITE_DEPRECATED));
 }
 
+<!--! as of Nov 2025, all incompatible grfs relate to railtypes - extend later if any other cases are needed -->
+<tal:incompatible_grfs repeat="incompatible_grf incompatible_grfs">
+    if (grf_future_status("${incompatible_grf.grfid}") && !grf_order_behind("${incompatible_grf.grfid}")) {
+        error(FATAL, MUST_LOAD_AFTER, "${incompatible_grf.grfname}");
+    }
+</tal:incompatible_grfs>
+
+
 /*
  * *********************
  * Define railtype table

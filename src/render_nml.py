@@ -10,6 +10,7 @@ import iron_horse
 import utils
 from utils import timing
 import global_constants
+from incompatible_grfs import incompatible_grfs
 import pseudo_random_vehicle_maps
 from polar_fox import git_info
 
@@ -47,6 +48,7 @@ def render_header_item_nml(
             roster_manager=iron_horse.roster_manager,
             graphics_path=graphics_path,
             git_revision=git_revision,
+            incompatible_grfs=incompatible_grfs,
             pseudo_random_vehicle_maps=pseudo_random_vehicle_maps,
         )
     )
