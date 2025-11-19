@@ -35,4 +35,5 @@ def main(disabled=False):
         ],
         alternative_railtype_list=[],
         use_custom_sprites=False,
+        yield_to_other_railtype_grfs=True,  # try to disable if another grf already provides this type, to deconflict
     )
