@@ -481,7 +481,7 @@ base = "Merchandise Van"
 base = "Covered Steel Wagon"
 
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
-base = "Mixed Steel Wagon"
+base = "Steel Wagon"
 
 [STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
 base = "Coal Wagon"
@@ -523,7 +523,7 @@ base = "Peat Wagon"
 base = "Covered Goods Wagon"
 
 [STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
-base = "Mixed Goods Wagon"
+base = "Goods Wagon"
 
 [STR_WAGON_NAME_PIPE_CAR]
 base = "Pipe Wagon"
