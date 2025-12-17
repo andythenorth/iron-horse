@@ -9,7 +9,7 @@ import global_constants  # expose all constants for easy passing to templates
 import utils
 
 
-class UnitTypeBase(object):
+class UnitBase(object):
     """
     Base class for all types of units
     """
@@ -397,7 +397,7 @@ class UnitTypeBase(object):
         self.assert_random_reverse()
 
 
-class BatteryHybridEngineUnit(UnitTypeBase):
+class BatteryHybridEngineUnit(UnitBase):
     """
     Unit for a battery hybrid engine.
     """
@@ -413,7 +413,7 @@ class BatteryHybridEngineUnit(UnitTypeBase):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
 
 
-class CabbageDVTUnit(UnitTypeBase):
+class CabbageDVTUnit(UnitBase):
     """
     Unit for a DVT / Cabbage (driving cab with mail capacity)
     """
@@ -432,7 +432,7 @@ class CabbageDVTUnit(UnitTypeBase):
         return self.get_mail_car_capacity()
 
 
-class CabControlPaxCarUnit(UnitTypeBase):
+class CabControlPaxCarUnit(UnitBase):
     """
     Unit for a cab control car (driving cab with pax capacity)
     """
@@ -451,7 +451,7 @@ class CabControlPaxCarUnit(UnitTypeBase):
         return self.get_pax_car_capacity()
 
 
-class CombineUnitMailBase(UnitTypeBase):
+class CombineUnitMailBase(UnitBase):
     """
     Mail unit for a combine vehicle (articulated vehicle with mail + pax capacity)
     """
@@ -469,7 +469,7 @@ class CombineUnitMailBase(UnitTypeBase):
         return 0.75 * self.get_mail_car_capacity()
 
 
-class CombineUnitPaxBase(UnitTypeBase):
+class CombineUnitPaxBase(UnitBase):
     """
     Pax unit for a combine vehicle (articulated vehicle with mail + pax capacity)
     """
@@ -544,7 +544,7 @@ class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
 
 
-class DieselEngineUnit(UnitTypeBase):
+class DieselEngineUnit(UnitBase):
     """
     Unit for a diesel engine.
     """
@@ -617,7 +617,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class ElectricEngineUnit(UnitTypeBase):
+class ElectricEngineUnit(UnitBase):
     """
     Unit for an electric engine.
     """
@@ -639,7 +639,7 @@ class ElectricEngineUnit(UnitTypeBase):
             }
 
 
-class ElectricHighSpeedUnitBase(UnitTypeBase):
+class ElectricHighSpeedUnitBase(UnitBase):
     """
     Unit for high-speed, high-power electric train
     """
@@ -687,7 +687,7 @@ class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
         return self.get_pax_car_capacity()
 
 
-class ElectroDieselEngineUnit(UnitTypeBase):
+class ElectroDieselEngineUnit(UnitBase):
     """
     Unit for a bi-mode Locomotive - operates on electrical power or diesel.
     """
@@ -708,7 +708,7 @@ class ElectroDieselEngineUnit(UnitTypeBase):
         }
 
 
-class ElectroDieselRailcarBaseUnit(UnitTypeBase):
+class ElectroDieselRailcarBaseUnit(UnitBase):
     """
     Unit for a bi-mode railcar - operates on electrical power or diesel.
     """
@@ -764,7 +764,7 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class ElectricRailcarBaseUnit(UnitTypeBase):
+class ElectricRailcarBaseUnit(UnitBase):
     """
     Unit for an electric railcar.  Capacity set in subclasses
     """
@@ -819,7 +819,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class MetroUnit(UnitTypeBase):
+class MetroUnit(UnitBase):
     """
     Unit for an electric metro train, with high loading speed.
     """
@@ -845,7 +845,7 @@ class MetroUnit(UnitTypeBase):
             return 0
 
 
-class SnowploughUnit(UnitTypeBase):
+class SnowploughUnit(UnitBase):
     """
     Unit for a snowplough.  Snowploughs have express cargo capacity, so they can actually be useful. :P
     """
@@ -864,7 +864,7 @@ class SnowploughUnit(UnitTypeBase):
         return self.get_mail_car_capacity()
 
 
-class SteamEnginePoweredUnit(UnitTypeBase):
+class SteamEnginePoweredUnit(UnitBase):
     """
     Unit for a steam engine, with smoke
     """
@@ -885,7 +885,7 @@ class SteamEnginePoweredUnit(UnitTypeBase):
         return [(1 + int(math.floor(-0.5 * self.vehicle_length)), 0)]
 
 
-class SteamEngineTenderUnit(UnitTypeBase):
+class SteamEngineTenderUnit(UnitBase):
     """
     Unit for a steam engine tender.
     Arguably this class is pointless, as it is just passthrough.
@@ -897,15 +897,15 @@ class SteamEngineTenderUnit(UnitTypeBase):
         self._symmetry_type = "asymmetric"
 
 
-# alphabetised (mostly) non-CarUnitBase subclasses of UnitTypeBase above here
+# alphabetised (mostly) non-CarUnitBase subclasses of UnitBase above here
 # then CarUnitBase subclasses below here, also alphabetised
 
 
-class CarUnitBase(UnitTypeBase):
+class CarUnitBase(UnitBase):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
-    Most props should be declared by UnitTypeBase with useful defaults.
+    Most props should be declared by UnitBase with useful defaults.
     """
 
     def __init__(self, **kwargs):
