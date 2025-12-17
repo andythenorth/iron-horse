@@ -79,6 +79,7 @@ class ModelDef:
         return sum(unit_def.repeat for unit_def in self.unit_defs)
 
 
+# UnitDef here because it's a subsidiary of ModelDef, and not worth moving to own module
 @dataclass
 class UnitDef:
     """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
