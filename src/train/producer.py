@@ -119,20 +119,20 @@ class ModelVariantProducer:
     - store a ModelDef object with vehicle-specific parameters
     - maintain a sequence of one or more UnitDef instances
     - include the set of available liveries for the vehicle model
-    - for each livery, create a model variant (an instance of the ModelType subclass)
+    - for each livery, create a model variant (an instance of the Schema subclass)
         - each model variant will appear in the in-game buy menu
     - attach to each model variant unique UnitType instances in the proper order
     - resulting in model_variant.units = [<UnitType>, <UnitType>]
 
     # examples
-    - class_name = class SmallVan(ModelType)
+    - class_name = class SmallVan(Schema)
     - model_id = "ford_transit"
         - model_variant = "ford_transit_blue"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
         - model_variant = "ford_transit_red"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
 
-    - class_name = class Engine(ModelType)
+    - class_name = class Engine(Schema)
     - model_id = "challenger"
         - model_variant = "challenger_grey"
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]

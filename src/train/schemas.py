@@ -34,10 +34,19 @@ import iron_horse
 import spritelayer_cargos
 
 
-class ModelTypeBase(object):
+class SchemaBase(object):
     """
-    'Model Variants' (appearing in buy menu) are composed as articulated vehicles.
-    Each vehicle comprises one or more 'units' (visible).
+    A vehicle model is composed from:
+    - a schema, which defines how a model behaves and how its data is interpreted
+      (e.g. engine, tanker, hopper)
+    - a model_def, which supplies the specific values
+      (e.g. intro date, weight, capacity)
+
+    Model variants are the concrete, buyable vehicles produced from this combination,
+    usually differing only by livery.
+
+    Each vehicle comprises one or more units:
+    non-articulated vehicles have one unit; articulated vehicles have several.
     """
 
     def __init__(self, **kwargs):
@@ -1116,7 +1125,7 @@ class ModelTypeBase(object):
         return nml_result
 
 
-class EngineModelTypeBase(ModelTypeBase):
+class EngineSchemaBase(SchemaBase):
     """
     Base model type for Engines and other powered vehicles.
     """
@@ -1303,7 +1312,7 @@ class EngineModelTypeBase(ModelTypeBase):
         return result
 
 
-class SimpleEngine(EngineModelTypeBase):
+class SimpleEngine(EngineSchemaBase):
     """
     Basic engine (without passenger or cargo capacity).
     """
@@ -1313,7 +1322,7 @@ class SimpleEngine(EngineModelTypeBase):
         super().__init__(**kwargs)
 
 
-class AutoCoachCombineEngine(EngineModelTypeBase):
+class AutoCoachCombineEngine(EngineSchemaBase):
     """
     Articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
     To keep implementation simple + crude, first unit should be dedicated mail type, second unit should be dedicated pax type
@@ -1366,7 +1375,7 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
+class FixedFormationRailcarCombineEngine(EngineSchemaBase):
     """
     Fixed formation articulated railcar combine (mail + pax).
     This *does* not use formation-dependent position sprite rulesets; the formation is fixed.
@@ -1393,7 +1402,7 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class MailEngineBase(EngineModelTypeBase):
+class MailEngineBase(EngineSchemaBase):
     """
     Engines / units with mail (and express freight) capacity
     """
@@ -1659,7 +1668,7 @@ class MailEngineExpressRailcar(MailEngineBase):
         return 155
 
 
-class PassengerEngineBase(EngineModelTypeBase):
+class PassengerEngineBase(EngineSchemaBase):
     """
     Engine with passenger capacity
     """
@@ -1943,7 +1952,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
         return self.roster.pax_car_capacity_types["high_capacity"]
 
 
-class SnowploughEngine(EngineModelTypeBase):
+class SnowploughEngine(EngineSchemaBase):
     """
     Snowplough!  Implemented as Engine so it can lead a consist in-game.
     """
@@ -1995,7 +2004,7 @@ class SnowploughEngine(EngineModelTypeBase):
         return 68
 
 
-class TGVCabEngine(EngineModelTypeBase):
+class TGVCabEngine(EngineSchemaBase):
     """
     TGV (very high speed) engine (leading cab motor)
     This has power by default and would usually be set as a dual-headed engine.
@@ -2044,7 +2053,7 @@ class TGVCabEngine(EngineModelTypeBase):
         return True
 
 
-class TGVMiddleEngineMixin(EngineModelTypeBase):
+class TGVMiddleEngineMixin(EngineSchemaBase):
     """
     Mixin for an intermediate motor unit for very high speed train (TGV etc).
     When added to the correct cab engine, this vehicle will cause cab power to increase.
@@ -2165,7 +2174,7 @@ class TGVMiddlePassengerEngine(TGVMiddleEngineMixin, PassengerEngineBase):
         return offset + self.catalogue.cab_engine_model.subrole_child_branch_num
 
 
-class CarModelTypeBase(ModelTypeBase):
+class CarSchemaBase(SchemaBase):
     """
     Intermediate class for car (wagon) model types to subclass from, provides sparse properties, most are declared in subclasses.
     """
@@ -2384,7 +2393,7 @@ class RandomisedCarCabooseMixin(RandomisedCarMixinBase):
         self.badge_slug_randomised_wagon_type = "caboose"
 
 
-class AlignmentCarUnit(CarModelTypeBase):
+class AlignmentCarUnit(CarSchemaBase):
     """
     For checking sprite alignment
     """
@@ -2405,7 +2414,7 @@ class AlignmentCarUnit(CarModelTypeBase):
         self.use_colour_randomisation_strategies = False
 
 
-class AutomobileCarBase(CarModelTypeBase):
+class AutomobileCarBase(CarSchemaBase):
     """
     Transports automobiles (cars, trucks, tractors etc).
     'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
@@ -2594,7 +2603,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
         )
 
 
-class BolsterCarBase(CarModelTypeBase):
+class BolsterCarBase(CarSchemaBase):
     """
     Base class for specialist wagon with side stakes and bolsters for long products, limited refits.
     """
@@ -2676,7 +2685,7 @@ class BolsterCarRandomised(RandomisedCarVanillaMixin, BolsterCarBase):
         )
 
 
-class BoxCarBase(CarModelTypeBase):
+class BoxCarBase(CarSchemaBase):
     """
     Base for box car, van - piece goods cargos, express, other selected cargos.
     """
@@ -3027,7 +3036,7 @@ class BoxCarSlidingWallRandomised(RandomisedCarVanillaMixin, BoxCarSlidingWallBa
         )
 
 
-class BulkOpenCarBase(CarModelTypeBase):
+class BulkOpenCarBase(CarSchemaBase):
     """
     Common base class for dump cars.
     Limited set of bulk (mineral) cargos, same set as hopper cars.
@@ -3521,7 +3530,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         )
 
 
-class CabooseCarBase(CarModelTypeBase):
+class CabooseCarBase(CarSchemaBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -3652,7 +3661,7 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         )
 
 
-class CaneBinCar(CarModelTypeBase):
+class CaneBinCar(CarSchemaBase):
     """
     Specialist transporter (narrow gauge bin) for (sugar) cane
     """
@@ -3687,7 +3696,7 @@ class CaneBinCar(CarModelTypeBase):
         )
 
 
-class CarbonBlackHopperCar(CarModelTypeBase):
+class CarbonBlackHopperCar(CarSchemaBase):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.
     """
@@ -3720,7 +3729,7 @@ class CarbonBlackHopperCar(CarModelTypeBase):
         )
 
 
-class CoilBuggyCarUnit(CarModelTypeBase):
+class CoilBuggyCarUnit(CarSchemaBase):
     """
     Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
     """
@@ -3782,7 +3791,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         )
 
 
-class CoilCarBase(CarModelTypeBase):
+class CoilCarBase(CarSchemaBase):
     """
     Coil car - for finished metals (steel, copper etc).
     """
@@ -3953,7 +3962,7 @@ class DedicatedCoilCarRandomised(RandomisedCarVanillaMixin, CoilCarBase):
         return True
 
 
-class CoveredHopperCarBase(CarModelTypeBase):
+class CoveredHopperCarBase(CarSchemaBase):
     """
     Bulk cargos needing covered protection.
     """
@@ -4111,7 +4120,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         )
 
 
-class ExpressCarBase(CarModelTypeBase):
+class ExpressCarBase(CarSchemaBase):
     """
     Express cars - express freight, valuables, mails.
     """
@@ -4201,7 +4210,7 @@ class ExpressCarRandomised(RandomisedCarVanillaMixin, ExpressCarBase):
         )
 
 
-class ExpressIntermodalCar(CarModelTypeBase):
+class ExpressIntermodalCar(CarSchemaBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
     """
@@ -4247,7 +4256,7 @@ class ExpressIntermodalCar(CarModelTypeBase):
         return ["default"]
 
 
-class FarmCargoCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
+class FarmCargoCombosBase(RandomisedCarComboMixin, CarSchemaBase):
     """
     Random choice of farm products car.
     """
@@ -4314,7 +4323,7 @@ class FarmCargoHopperCombos(FarmCargoCombosBase):
         )
 
 
-class FarmProductsBoxCarBase(CarModelTypeBase):
+class FarmProductsBoxCarBase(CarSchemaBase):
     """
     Bae for farm type cargos - box cars / vans.
     """
@@ -4398,7 +4407,7 @@ class FarmProductsBoxCarRandomised(RandomisedCarVanillaMixin, FarmProductsBoxCar
         )
 
 
-class FarmProductsHopperCarBase(CarModelTypeBase):
+class FarmProductsHopperCarBase(CarSchemaBase):
     """
     Farm type cargos - covered hoppers.
     """
@@ -4484,7 +4493,7 @@ class FarmProductsHopperCarRandomised(
         )
 
 
-class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarModelTypeBase):
+class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarSchemaBase):
     """
     Random choice of farm products car.
     """
@@ -4648,7 +4657,7 @@ class FoodProductsHopperCarRandomised(
         )
 
 
-class FoodExpressCarBase(CarModelTypeBase):
+class FoodExpressCarBase(CarSchemaBase):
     """
     Sets basic loading speed etc for food express cars.
     """
@@ -4823,7 +4832,7 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         )
 
 
-class FlatCarBase(CarModelTypeBase):
+class FlatCarBase(CarSchemaBase):
     """
     Flatbed - refits wide range of cargos, but not bulk.
     """
@@ -5141,7 +5150,7 @@ class FlatBedCargoCombos(RandomisedCarComboMixin, FlatCarBase):
         )
 
 
-class GasTankCarBase(CarModelTypeBase):
+class GasTankCarBase(CarSchemaBase):
     """
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
@@ -5196,7 +5205,7 @@ class GasTankCarCryo(GasTankCarBase):
         self._joker = True
 
 
-class HopperCarBase(CarModelTypeBase):
+class HopperCarBase(CarSchemaBase):
     """
     Common base class for dump cars.
     Limited set of bulk (mineral) cargos.
@@ -5519,7 +5528,7 @@ class HopperCarSkip(HopperCarBase):
         self._joker = True
 
 
-class IngotCarUnit(CarModelTypeBase):
+class IngotCarUnit(CarSchemaBase):
     """
     Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
     """
@@ -5571,7 +5580,7 @@ class IngotCarUnit(CarModelTypeBase):
         )
 
 
-class IntermodalCarBase(CarModelTypeBase):
+class IntermodalCarBase(CarSchemaBase):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -5655,7 +5664,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
         return ["low_floor"]
 
 
-class KaolinHopperCar(CarModelTypeBase):
+class KaolinHopperCar(CarSchemaBase):
     """
     Dedicated to kaolin (china clay).
     """
@@ -5694,7 +5703,7 @@ class KaolinHopperCar(CarModelTypeBase):
         )
 
 
-class LivestockCarBase(CarModelTypeBase):
+class LivestockCarBase(CarSchemaBase):
     """
     Specialist transporter for livestock.
     """
@@ -5763,7 +5772,7 @@ class LivestockExpressCar(LivestockCarBase):
         ]
 
 
-class LogCar(CarModelTypeBase):
+class LogCar(CarSchemaBase):
     """
     Specialist transporter for logs
     """
@@ -5798,7 +5807,7 @@ class LogCar(CarModelTypeBase):
         )
 
 
-class MailCarBase(CarModelTypeBase):
+class MailCarBase(CarSchemaBase):
     """
     Common base class for mail cars.
     """
@@ -6153,7 +6162,7 @@ class MetalProductMixedCombos(MetalProductCombosBase):
         )
 
 
-class MineralCoveredHopperCarBase(CarModelTypeBase):
+class MineralCoveredHopperCarBase(CarSchemaBase):
     """
     Bulk mineral cargos needing covered protection.
     """
@@ -6466,7 +6475,7 @@ class MineralCoveredHopperCarSaltRandomised(
         )
 
 
-class OpenCarBase(CarModelTypeBase):
+class OpenCarBase(CarSchemaBase):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -6730,7 +6739,7 @@ class OpenCarCombos(RandomisedCarComboMixin, OpenCarBase):
         )
 
 
-class PassengerCarBase(CarModelTypeBase):
+class PassengerCarBase(CarSchemaBase):
     """
     Common base class for passenger cars.
     """
@@ -7238,7 +7247,7 @@ class PassengerSuburbanCar(PassengerCarBase):
         return "pax_suburban_coach"
 
 
-class PeatCar(CarModelTypeBase):
+class PeatCar(CarSchemaBase):
     """
     Specialist transporter (narrow gauge bin) for peat
     """
@@ -7277,7 +7286,7 @@ class PeatCar(CarModelTypeBase):
         )
 
 
-class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarModelTypeBase):
+class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarSchemaBase):
     """
     Base class for randomised general (piece goods) cargo wagon.
     Refits match box vans, this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
@@ -7505,7 +7514,7 @@ class ReeferCarRandomised(RandomisedCarVanillaMixin, ReeferCarBase):
         )
 
 
-class SiloCarBase(CarModelTypeBase):
+class SiloCarBase(CarSchemaBase):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
     """
@@ -7783,7 +7792,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         )
 
 
-class SlagLadleCarUnit(CarModelTypeBase):
+class SlagLadleCarUnit(CarSchemaBase):
     """
     Dedicated car for iron / steel slag.  No other refits.
     """
@@ -7833,7 +7842,7 @@ class SlagLadleCarUnit(CarModelTypeBase):
         )
 
 
-class SpacerCabbageCarBase(CarModelTypeBase):
+class SpacerCabbageCarBase(CarSchemaBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -7901,7 +7910,7 @@ class SpacerCabbageCarType2(SpacerCabbageCarBase):
         super().__init__(**kwargs)
 
 
-class TankCarBase(CarModelTypeBase):
+class TankCarBase(CarSchemaBase):
     """
     All non-edible liquid cargos
     """
@@ -8364,7 +8373,7 @@ class TarpaulinCarRandomised(RandomisedCarVanillaMixin, TarpaulinCarBase):
         )
 
 
-class TorpedoCarUnit(CarModelTypeBase):
+class TorpedoCarUnit(CarSchemaBase):
     """
     Specialist wagon for hauling molten pig iron.
     May or may not extend to other metal cargos (probably not).

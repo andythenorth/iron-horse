@@ -415,10 +415,10 @@ class EngineQuacker:
         ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
-        # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
+        # simple base class check, all models are derived from one of "EngineSchemaBase" xor "CarSchemaBase"
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         return any(
-            base.__name__ == "EngineModelTypeBase"
+            base.__name__ == "EngineSchemaBase"
             for base in self.catalogue.producer.schema_cls.__mro__
         )
 
@@ -468,11 +468,11 @@ class WagonQuacker:
         ), f"{self.catalogue.model_id} quacker conflict: engine and wagon quackers both return {test_result} for .quack, their return values should be mutually inverse"
 
     def _quack(self):
-        # simple base class check, all models are derived from one of "EngineModelTypeBase" xor "CarModelTypeBase"
+        # simple base class check, all models are derived from one of "EngineSchemaBase" xor "CarSchemaBase"
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         # doing it this way prevents conceptual blur enforceably
         return any(
-            base.__name__ == "CarModelTypeBase"
+            base.__name__ == "CarSchemaBase"
             for base in self.catalogue.producer.schema_cls.__mro__
         )
 
