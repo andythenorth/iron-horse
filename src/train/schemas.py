@@ -295,7 +295,7 @@ class SchemaBase(object):
     def randomised_wagon_badges(self):
         result = []
         if self.catalogue.wagon_quacker.is_randomised_wagon_type:
-            result.append(f"ih_behaviour/randomised_wagon")
+            result.append("ih_behaviour/randomised_wagon")
             result.append(
                 f"ih_randomised_wagon/type/{self.badge_slug_randomised_wagon_type}"
             )
@@ -323,7 +323,7 @@ class SchemaBase(object):
         # this is the generic method - behaviour badges may also be set by other methods for more complex vehicles
         result = []
         if self.catalogue.wagon_quacker.is_restaurant_car:
-            result.append(f"ih_behaviour/restaurant_car")
+            result.append("ih_behaviour/restaurant_car")
         if self.tilt_bonus:
             result.append("ih_behaviour/tilt")
         if self.lgv_capable:
@@ -331,13 +331,13 @@ class SchemaBase(object):
         if self.random_reverse:
             result.append("ih_behaviour/random_reverse")
         if self.receives_easter_egg_haulage_speed_bonus:
-            result.append(f"ih_behaviour/receives_easter_egg_haulage_speed_bonus")
+            result.append("ih_behaviour/receives_easter_egg_haulage_speed_bonus")
         if self.provides_easter_egg_haulage_speed_bonus:
-            result.append(f"ih_behaviour/provides_easter_egg_haulage_speed_bonus")
+            result.append("ih_behaviour/provides_easter_egg_haulage_speed_bonus")
         if self.catalogue.wagon_quacker.is_caboose:
-            result.append(f"ih_behaviour/caboose")
+            result.append("ih_behaviour/caboose")
         if self.role == "driving_cab":
-            result.append(f"ih_behaviour/driving_cab")
+            result.append("ih_behaviour/driving_cab")
         return result
 
     @property
@@ -6640,10 +6640,6 @@ class OpenCarMillBase(OpenCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self._joker = True
         # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
-            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
-        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
@@ -7426,10 +7422,6 @@ class PipeCar(FlatCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
         self._joker = True
         # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
-            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
-        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
@@ -7503,10 +7495,6 @@ class ReeferCarRandomised(RandomisedCarVanillaMixin, ReeferCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.roof_type = "freight"
-        weathered_states = {
-            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
-            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
-        }
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
