@@ -1,5 +1,5 @@
 # deprecated
-from train.producer import ModelDef
+from train.model_def import ModelDef
 
 
 def main(**kwargs):

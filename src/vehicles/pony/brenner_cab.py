@@ -1,4 +1,4 @@
-from train.producer import ModelDef
+from train.model_def import ModelDef
 
 # pax capacity on these limits use for 100% mail formations - use the Skeiron for that?
 

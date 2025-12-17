@@ -1,4 +1,4 @@
-from train.producer import ModelDef
+from train.model_def import ModelDef
 
 # !! can we do both middle parts in one module?
 
