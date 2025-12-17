@@ -96,11 +96,11 @@
                 <section id="vehicle_properties">
                     <h3>Vehicle properties for ${len(catalogues)} trains</h3>
                     <p></p>
-                    <tal:catalogues_by_model_type_cls repeat="catalogues_by_model_type_cls doc_helper.get_catalogues_by_model_type_cls(catalogues)">
-                        <tal:block define="model_type_cls catalogues_by_model_type_cls['model_type_cls'];
-                                           catalogues catalogues_by_model_type_cls['catalogues'];">
-                            <h4 id="${model_type_cls.__name__}">${model_type_cls.__name__} <small>Subclass</small></h4>
-                            <p>${model_type_cls.__doc__}</p>
+                    <tal:catalogues_by_schema_cls repeat="catalogues_by_schema_cls doc_helper.get_catalogues_by_schema_cls(catalogues)">
+                        <tal:block define="schema_cls catalogues_by_schema_cls['schema_cls'];
+                                           catalogues catalogues_by_schema_cls['catalogues'];">
+                            <h4 id="${schema_cls.__name__}">${schema_cls.__name__} <small>Subclass</small></h4>
+                            <p>${schema_cls.__doc__}</p>
                             <tal:props_to_print define="props_to_print doc_helper.get_props_to_print_in_code_reference(catalogues)">
                                 <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
                                     <thead>
@@ -136,7 +136,7 @@
                                 <br />
                             </tal:props_to_print>
                         </tal:block>
-                    </tal:catalogues_by_model_type_cls>
+                    </tal:catalogues_by_schema_cls>
                 </section>
                 <hr />
                 <br />

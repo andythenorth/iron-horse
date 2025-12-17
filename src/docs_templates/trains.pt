@@ -63,7 +63,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:engine_model_types repeat="catalogue doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])">
+                                <tal:engine_models repeat="catalogue doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])">
                                     <tr id="${catalogue.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
@@ -92,7 +92,7 @@
                                             <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
-                                </tal:engine_model_types>
+                                </tal:engine_models>
                             </tbody>
                         </table>
                     </tal:not_empty>
@@ -117,7 +117,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:wagon_model_types repeat="catalogue doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])">
+                                <tal:wagon_models repeat="catalogue doc_helper.get_wagon_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])">
                                     <tr id="${catalogue.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
@@ -141,7 +141,7 @@
                                             <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
-                                </tal:wagon_model_types>
+                                </tal:wagon_models>
                             </tbody>
                         </table>
                     </tal:not_empty>

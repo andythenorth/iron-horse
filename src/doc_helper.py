@@ -35,18 +35,18 @@ class DocHelper(object):
         if model_variant.dual_headed:
             return min((2 * 4 * model_variant.length) + 1, self.docs_sprite_max_width)
 
-    def get_catalogues_by_model_type_cls(self, catalogues):
-        result = defaultdict(lambda: {"model_type_cls": None, "catalogues": []})
+    def get_catalogues_by_schema_cls(self, catalogues):
+        result = defaultdict(lambda: {"schema_cls": None, "catalogues": []})
 
         for catalogue in catalogues:
-            model_type_cls = catalogue.producer.model_type_cls
-            key = model_type_cls.__name__
-            if result[key]["model_type_cls"] is None:
-                result[key]["model_type_cls"] = model_type_cls
+            schema_cls = catalogue.producer.schema_cls
+            key = schema_cls.__name__
+            if result[key]["schema_cls"] is None:
+                result[key]["schema_cls"] = schema_cls
             result[key]["catalogues"].append(catalogue)
 
         # Return a list of dicts sorted by the model type class name
-        return sorted(result.values(), key=lambda x: x["model_type_cls"].__name__)
+        return sorted(result.values(), key=lambda x: x["schema_cls"].__name__)
 
     def get_engine_catalogues_by_roster_and_base_track_type(
         self, roster, base_track_type

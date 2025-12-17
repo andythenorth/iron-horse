@@ -95,7 +95,7 @@ class Catalogue(list):
     @property
     def livery_defs(self):
         # Retrieve a list of livery definitions from various sources.
-        # Liveries may be specified in either model_def or model_type_cls,
+        # Liveries may be specified in either model_def or schema_cls,
         # and can be provided in two formats:
         #
         # 1. Livery group format (2-tuples: (livery_name, index)):
@@ -104,7 +104,7 @@ class Catalogue(list):
         #
         #    Priority:
         #      a. model_def.livery_group_name (per-vehicle override)
-        #      b. model_type_cls.livery_group_name (default)
+        #      b. schema_cls.livery_group_name (default)
         #
         # 2. Direct liveries (simple list):
         #    - Assumes liveries in the spritesheet are in the same order as in the buy menu.
@@ -112,7 +112,7 @@ class Catalogue(list):
         #
         #    Priority:
         #      a. model_def.liveries (per-vehicle override)
-        #      b. model_type_cls.liveries (default)
+        #      b. schema_cls.liveries (default)
 
         if self.producer.cab_producer is not None:
             # if there's a valid cab producer, we want the liveries from that
@@ -139,13 +139,13 @@ class Catalogue(list):
             return result
 
         # liveries as group from class livery_group_name (default)
-        if hasattr(target_producer.model_type_cls, "livery_group_name"):
+        if hasattr(target_producer.schema_cls, "livery_group_name"):
             result = []
             for (
                 livery_name,
                 index,
             ) in target_producer.roster_providing_module.pax_mail_livery_groups[
-                target_producer.model_type_cls.livery_group_name
+                target_producer.schema_cls.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -169,10 +169,10 @@ class Catalogue(list):
                 raise ValueError(f"no liveries found for {self.model_id}")
             return result
 
-        # liveries directly from model_type_cls
-        if hasattr(target_producer.model_type_cls, "liveries"):
+        # liveries directly from schema_cls
+        if hasattr(target_producer.schema_cls, "liveries"):
             result = []
-            for index, name in enumerate(target_producer.model_type_cls.liveries):
+            for index, name in enumerate(target_producer.schema_cls.liveries):
                 if self.wagon_quacker.quack:
                     # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
                     relative_spriterow_num = 0
@@ -205,13 +205,13 @@ class Catalogue(list):
         else:
             # we assume it's a wagon id
             return self.producer.get_wagon_id(
-                self.producer.model_type_cls.model_id_root, self.producer.model_def
+                self.producer.schema_cls.model_id_root, self.producer.model_def
             )
 
     @property
     def model_id_root(self):
         # convenience method
-        return self.producer.model_type_cls.model_id_root
+        return self.producer.schema_cls.model_id_root
 
     @property
     def model_def(self):
@@ -332,10 +332,10 @@ class Catalogue(list):
 
         # !! attr lookup like this is a sign that this might need delegated to producer properly, but eh
         if (
-            getattr(self.producer.model_type_cls, "formation_reporting_labels", None)
+            getattr(self.producer.schema_cls, "formation_reporting_labels", None)
             is not None
         ):
-            result.extend(self.producer.model_type_cls.formation_reporting_labels)
+            result.extend(self.producer.schema_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
         result.append(self.producer.vehicle_family_id)
         return result
@@ -369,18 +369,18 @@ class Catalogue(list):
                 "Chief Engineer, Mass Mobility Systems",
             ]
         else:
-            if getattr(self.producer.model_type_cls, "cite", None) == "Arabella Unit":
-                cite_name = self.producer.model_type_cls.cite
+            if getattr(self.producer.schema_cls, "cite", None) == "Arabella Unit":
+                cite_name = self.producer.schema_cls.cite
                 cite_titles = [
                     "General Manager (Railcars)",
                     "Senior Engineer, Self-Propelled Traction",
                     "Director, Suburban and Rural Lines",
                 ]
             elif (
-                getattr(self.producer.model_type_cls, "cite", None)
+                getattr(self.producer.schema_cls, "cite", None)
                 == "Dr Constance Speed"
             ):
-                cite_name = self.producer.model_type_cls.cite
+                cite_name = self.producer.schema_cls.cite
                 cite_titles = [
                     "Lead Engineer, High Speed Projects",
                     "Director, Future Traction Concepts",
@@ -419,7 +419,7 @@ class EngineQuacker:
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         return any(
             base.__name__ == "EngineModelTypeBase"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.catalogue.producer.schema_cls.__mro__
         )
 
     @cached_property
@@ -473,7 +473,7 @@ class WagonQuacker:
         # doing it this way prevents conceptual blur enforceably
         return any(
             base.__name__ == "CarModelTypeBase"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.catalogue.producer.schema_cls.__mro__
         )
 
     @cached_property
@@ -504,7 +504,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "RandomisedCarMixinBase"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.catalogue.producer.schema_cls.__mro__
         )
 
     @cached_property
@@ -540,7 +540,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "PassengerRestaurantCar"
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.catalogue.producer.schema_cls.__mro__
         )
 
     @cached_property
@@ -552,7 +552,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ in ["PassengerCarBase", "MailCarBase"]
-            for base in self.catalogue.producer.model_type_cls.__mro__
+            for base in self.catalogue.producer.schema_cls.__mro__
         )
 
 
@@ -575,7 +575,7 @@ class CloneQuacker:
         if self.catalogue.producer.model_def.quacks_like_a_clone:
             return True
         if getattr(
-            self.catalogue.producer.model_type_cls, "quacks_like_a_clone", False
+            self.catalogue.producer.schema_cls, "quacks_like_a_clone", False
         ):
             return True
         # fall through to 'does not quack like a clone'
@@ -651,7 +651,7 @@ class TGVHSTQuacker:
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
         if getattr(
-            self.catalogue.producer.model_type_cls, "dedicated_tgv_hst_formation", False
+            self.catalogue.producer.schema_cls, "dedicated_tgv_hst_formation", False
         ):
             return True
         # fall through

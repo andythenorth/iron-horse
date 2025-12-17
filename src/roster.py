@@ -324,7 +324,7 @@ class Roster:
         tmp_randomisation_candidates_map = {}
         for catalogue in self.wagon_catalogues:
             for model_id_root in getattr(
-                catalogue.producer.model_type_cls, "randomised_candidate_groups", []
+                catalogue.producer.schema_cls, "randomised_candidate_groups", []
             ):
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
                 tmp_randomisation_candidates_map.setdefault(tmp_uid, [])
@@ -334,7 +334,7 @@ class Roster:
 
         for catalogue in randomised_wagon_type_catalogues_tmp:
             tmp_uid = get_tmp_uid(
-                catalogue.producer.model_type_cls.model_id_root, catalogue
+                catalogue.producer.schema_cls.model_id_root, catalogue
             )
             for model_variant in self.wagon_model_variants_by_catalogue[
                 catalogue.model_id

@@ -1161,7 +1161,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
 
-    def get_spriterow_types_for_model_type(self):
+    def get_spriterow_types_for_model(self):
         # builds a map of spriterows for the entire vehicle by walking gestalt graphics for each unique unit
         # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
         result = []
@@ -1950,7 +1950,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(
-            self.get_spriterow_types_for_model_type()
+            self.get_spriterow_types_for_model()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
             self.vehicle_unit = self.example_model_variant.unique_units[

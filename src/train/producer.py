@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 from functools import cached_property
 
 from train.catalogue import Catalogue
-from train import model_types as model_types
+from train import schemas as schemas
 from train import unit_types as unit_types
 import utils
 from utils import timing
@@ -164,10 +164,10 @@ class ModelVariantProducer:
         if catalogue_entry == None:
             raise BaseException(
                 "no catalogue_index passed for ModelVariantProducer; model_def is "
-                + str(self.model_type_cls)
+                + str(self.schema_cls)
             )
 
-        model_variant = self.model_type_cls(
+        model_variant = self.schema_cls(
             producer=self,
             catalogue_entry=catalogue_entry,
         )
@@ -197,9 +197,9 @@ class ModelVariantProducer:
         return model_variant
 
     @cached_property
-    def model_type_cls(self):
-        # get the class for the model type, uninstantiated
-        return getattr(model_types, self.class_name)
+    def schema_cls(self):
+        # get the schema_cls class for the model, uninstantiated
+        return getattr(schemas, self.class_name)
 
     @property
     def roster(self):
@@ -268,10 +268,10 @@ class ModelVariantProducer:
             if self.model_def.cab_id is not None:
                 return self.model_def.cab_id
             # wagon can optionally set vehicle_family_id as class property
-            if getattr(self.model_type_cls, "vehicle_family_id", None) is not None:
-                return self.model_type_cls.vehicle_family_id
+            if getattr(self.schema_cls, "vehicle_family_id", None) is not None:
+                return self.schema_cls.vehicle_family_id
             # wagons otherwise fall through to just model_id
-            return self.model_type_cls.model_id_root
+            return self.schema_cls.model_id_root
 
         # otherwise fall through to just model_id
         return self.catalogue.model_id
@@ -304,10 +304,10 @@ class ModelVariantProducer:
     @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
-        if getattr(self.model_type_cls, "variant_group_id_root", None) is not None:
-            return self.model_type_cls.variant_group_id_root
-        elif getattr(self.model_type_cls, "model_id_root", None) is not None:
-            return f"NAME_SUFFIX_{self.model_type_cls.model_id_root}"
+        if getattr(self.schema_cls, "variant_group_id_root", None) is not None:
+            return self.schema_cls.variant_group_id_root
+        elif getattr(self.schema_cls, "model_id_root", None) is not None:
+            return f"NAME_SUFFIX_{self.schema_cls.model_id_root}"
         else:
             return self.catalogue.model_id
 
@@ -347,12 +347,12 @@ class ModelVariantProducer:
         # the input spritesheet name is the same for all variants of the model type
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
         if (
-            getattr(self.model_type_cls, "input_spritesheet_delegate_id_root", None)
+            getattr(self.schema_cls, "input_spritesheet_delegate_id_root", None)
             is not None
         ):
             # CABBAGE - THIS MAY BE UNUSED
             input_spritesheet_name_stem = self.get_wagon_id(
-                self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def
+                self.schema_cls.input_spritesheet_delegate_id_root, self.model_def
             )
         else:
             # handle cloned cases by referring to the original producer for the path
