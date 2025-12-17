@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field, replace
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 from itertools import cycle, islice
 from functools import cached_property
 
@@ -50,11 +50,6 @@ class LiveryDef:
 
     @property
     def internal_name_badge_label(self):
-        # conforms to draft livery spec in grf docs as of Apr 2025
-        if self.is_freight_wagon_livery:
-            subcategory = "freight_wagon/"
-        else:
-            subcategory = ""
         return f"ih_livery_def/internal_livery_name/{self.livery_name.lower()}"
 
     @property
