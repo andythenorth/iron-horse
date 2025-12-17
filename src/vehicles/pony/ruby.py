@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineRailcar",
+        schema_name="MailEngineRailcar",
         model_id="ruby",
         base_numeric_id=22110,
         name="Ruby",
@@ -22,7 +22,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarMailUnit",
+        unit_cls_name="DieselRailcarMailUnit",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",

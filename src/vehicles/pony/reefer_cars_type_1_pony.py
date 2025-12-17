@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24180,
         gen=2,
         subtype="A",
@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -23,7 +23,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24190,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=16430,
         gen=3,
         subtype="B",
@@ -47,7 +47,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_24px",
     )
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24200,
         gen=4,
         subtype="A",
@@ -63,7 +63,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -71,7 +71,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24210,
         gen=4,
         subtype="B",
@@ -79,7 +79,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
     )
@@ -87,7 +87,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24220,
         gen=4,
         subtype="C",
@@ -95,7 +95,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_32px",
     )
@@ -103,7 +103,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24230,
         gen=5,
         subtype="B",
@@ -111,7 +111,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_greebled_24px",
     )
@@ -119,7 +119,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarType1",
+        schema_name="ReeferCarType1",
         base_numeric_id=24240,
         gen=5,
         subtype="C",
@@ -127,7 +127,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressCarUnit",
+        unit_cls_name="ExpressCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_greebled_32px",
     )

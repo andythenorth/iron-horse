@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="hungarian_2d2_400",
         base_numeric_id=30800,
         name="Hungarian 2D2 400",
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=8,
         rel_spriterow_index=0,

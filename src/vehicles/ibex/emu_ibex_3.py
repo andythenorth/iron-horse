@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailcar",
+        schema_name="PassengerEngineRailcar",
         model_id="emu_ibex_3",
         base_numeric_id=28480,
         name="SBB Ce 2/4",  # see also https://de.wikipedia.org/wiki/SOB_CFZe_4/4
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricRailcarPaxUnit",
+        unit_cls_name="ElectricRailcarPaxUnit",
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCar",
+        schema_name="PassengerRestaurantCar",
         base_numeric_id=21210,
         gen=1,
         subtype="U",
@@ -15,13 +15,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
+        unit_cls_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCar",
+        schema_name="PassengerRestaurantCar",
         base_numeric_id=21390,
         gen=2,
         subtype="U",
@@ -30,13 +30,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
+        unit_cls_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCar",
+        schema_name="PassengerRestaurantCar",
         base_numeric_id=21550,
         gen=3,
         subtype="U",
@@ -44,13 +44,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
+        unit_cls_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCar",
+        schema_name="PassengerRestaurantCar",
         base_numeric_id=21570,
         gen=4,
         subtype="U",
@@ -58,13 +58,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="PaxRestaurantCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCar",
+        schema_name="PassengerRestaurantCar",
         base_numeric_id=22090,
         gen=5,
         subtype="U",
@@ -74,7 +74,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="PaxRestaurantCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)

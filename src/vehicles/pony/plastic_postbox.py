@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineRailcar",
+        schema_name="MailEngineRailcar",
         model_id="plastic_postbox",
         base_numeric_id=21420,
         name="Plastic Postbox",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarMailUnit",
+        unit_cls_name="DieselRailcarMailUnit",
         weight=37,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",

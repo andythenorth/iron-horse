@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=25560,
         gen=1,
         subtype="A",
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=27730,
         gen=3,
         subtype="A",
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=27710,
         gen=3,
         subtype="B",
@@ -41,117 +41,117 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=32950,
         gen=1,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=34670,
         gen=2,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=32910,
         gen=3,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=32930,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=27650,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=27670,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=36330,
         gen=5,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=17040,
         gen=5,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="OpenCarRandomised",
+        schema_name="OpenCarRandomised",
         base_numeric_id=27690,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_32px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_32px")
 
     result.append(model_def)
 

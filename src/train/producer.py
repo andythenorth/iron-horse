@@ -13,7 +13,7 @@ from functools import cached_property
 
 from train.catalogue import Catalogue
 from train import schemas as schemas
-from train import unit_types as unit_types
+from train import units as units
 import utils
 from utils import timing
 
@@ -23,7 +23,7 @@ import iron_horse
 @dataclass
 class ModelDef:
     # Required fields (lexically sorted)
-    class_name: str
+    schema_name: str
     gen: int
     sprites_complete: bool
 
@@ -92,7 +92,7 @@ class ModelDef:
 class UnitDef:
     """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
 
-    class_name: str
+    unit_cls_name: str
     repeat: int = 1
     capacity: Optional[int] = None
     weight: Optional[int] = None
@@ -125,14 +125,14 @@ class ModelVariantProducer:
     - resulting in model_variant.units = [<UnitType>, <UnitType>]
 
     # examples
-    - class_name = class SmallVan(Schema)
+    - schema_name = class SmallVan(Schema)
     - model_id = "ford_transit"
         - model_variant = "ford_transit_blue"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
         - model_variant = "ford_transit_red"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
 
-    - class_name = class Engine(Schema)
+    - schema_name = class Engine(Schema)
     - model_id = "challenger"
         - model_variant = "challenger_grey"
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
@@ -143,7 +143,7 @@ class ModelVariantProducer:
     """
 
     def __init__(self, model_def, roster_id, roster_id_providing_module):
-        self.class_name = model_def.class_name
+        self.schema_name = model_def.schema_name
         self.model_def = model_def
         # rosters can optionally init model variants from other rosters
         # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
@@ -175,13 +175,13 @@ class ModelVariantProducer:
         # orchestrate addition of units
         for counter, unit_def in enumerate(self.model_def.unit_defs):
             try:
-                unit_cls = getattr(unit_types, unit_def.class_name)
+                unit_cls = getattr(units, unit_def.unit_cls_name)
             except:
                 raise Exception(
-                    "class_name not found for "
+                    "unit_cls_name not found for "
                     + self.model_def.model_id
                     + ", "
-                    + unit_def.class_name
+                    + unit_def.unit_cls_name
                 )
             # print(unit_cls, unit)
             # now add the units
@@ -199,7 +199,7 @@ class ModelVariantProducer:
     @cached_property
     def schema_cls(self):
         # get the schema_cls class for the model, uninstantiated
-        return getattr(schemas, self.class_name)
+        return getattr(schemas, self.schema_name)
 
     @property
     def roster(self):

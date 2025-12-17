@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="thunderer",
         base_numeric_id=4830,
         name="4-6-0 Thunderer",  # shorter 2-6-0 version was tried, but doesn't fit a power band gap in the mixed traffic roster
@@ -24,14 +24,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit",
+        unit_cls_name="SteamEnginePoweredUnit",
         weight=82,
         vehicle_length=6,
         rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit",
+        unit_cls_name="SteamEngineTenderUnit",
         weight=30,
         vehicle_length=4,
         rel_spriterow_index=1,

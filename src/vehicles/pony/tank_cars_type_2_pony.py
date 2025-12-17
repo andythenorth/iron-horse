@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=33310,
         gen=4,
         subtype="A",
@@ -15,13 +15,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_alt_16px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_alt_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=33330,
         gen=4,
         subtype="B",
@@ -29,13 +29,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=33350,
         gen=4,
         subtype="C",
@@ -43,13 +43,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=28950,
         gen=5,
         subtype="A",
@@ -57,13 +57,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_sparse_greebled_alt_16px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_sparse_greebled_alt_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=28970,
         gen=5,
         subtype="B",
@@ -71,13 +71,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_sparse_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_sparse_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardType2",
+        schema_name="TankCarStandardType2",
         base_numeric_id=30830,
         gen=5,
         subtype="C",
@@ -85,7 +85,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
     )
 
     result.append(model_def)

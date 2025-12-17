@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="HopperCarAggregateType3",
+        schema_name="HopperCarAggregateType3",
         base_numeric_id=34300,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -17,13 +17,13 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
 
     model_def =ModelDef(
-        class_name="HopperCarAggregateType3",
+        schema_name="HopperCarAggregateType3",
         base_numeric_id=32850,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -32,45 +32,45 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
    """
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateType3",
+        schema_name="HopperCarAggregateType3",
         base_numeric_id=20280,
         gen=5,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateType3",
+        schema_name="HopperCarAggregateType3",
         base_numeric_id=22980,
         gen=5,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_filled_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateType3",
+        schema_name="HopperCarAggregateType3",
         base_numeric_id=20300,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_filled_32px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_32px")
 
     result.append(model_def)
 

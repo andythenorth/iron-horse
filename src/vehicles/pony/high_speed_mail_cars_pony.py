@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailHighSpeedCar",
+        schema_name="MailHighSpeedCar",
         base_numeric_id=30690,
         gen=5,
         subtype="U",
@@ -13,7 +13,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="high_speed_32px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="high_speed_32px")
 
     result.append(model_def)
 

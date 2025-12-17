@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="re_6_6",
         base_numeric_id=40,
         name="SBB Re 6/6",
@@ -23,13 +23,13 @@ def main(**kwargs):
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=75,
         vehicle_length=5,
         rel_spriterow_index=0,
     )
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=75,
         vehicle_length=5,
         rel_spriterow_index=1,

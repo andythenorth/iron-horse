@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="fs_e636",
         base_numeric_id=140,
         name="FS E.636",
@@ -23,13 +23,13 @@ def main(**kwargs):
     # !!! these are only 60 foot long IRL so 2x 4/8 units
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=4,
         rel_spriterow_index=0,
     )
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=4,
         rel_spriterow_index=1,

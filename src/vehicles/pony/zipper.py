@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailbus",
+        schema_name="PassengerEngineRailbus",
         model_id="zipper",
         base_numeric_id=260,
         name="Zipper",
@@ -23,14 +23,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitMail",
+        unit_cls_name="DieselRailcarCombineUnitMail",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitPax",
+        unit_cls_name="DieselRailcarCombineUnitPax",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
@@ -42,7 +42,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailbus",
+        schema_name="PassengerEngineRailbus",
         model_id="zipper_single",
         base_numeric_id=22310,
         name="Zipper",
@@ -63,7 +63,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarPaxUnit",
+        unit_cls_name="DieselRailcarPaxUnit",
         weight=25,
         chassis="railbus_lwb_24px",
         tail_light="railcar_24px_1",

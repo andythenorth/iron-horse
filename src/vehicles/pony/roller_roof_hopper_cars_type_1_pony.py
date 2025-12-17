@@ -7,31 +7,31 @@ def main(**kwargs):
     # --------------- standard gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofType1",
+        schema_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=23670,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofType1",
+        schema_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=16840,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofType1",
+        schema_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=23730,
         gen=5,
         subtype="A",
@@ -39,13 +39,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofType1",
+        schema_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=17160,
         gen=5,
         subtype="B",
@@ -53,7 +53,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)

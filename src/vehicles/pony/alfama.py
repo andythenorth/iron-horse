@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="alfama",
         base_numeric_id=21670,
         name="0-4-4-0 Alfama",
@@ -25,7 +25,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit",
+        unit_cls_name="SteamEnginePoweredUnit",
         weight=32,
         vehicle_length=6,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

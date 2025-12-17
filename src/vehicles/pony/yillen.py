@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="yillen",
         base_numeric_id=6370,
         name="Yillen",
@@ -23,14 +23,14 @@ def main(**kwargs):
 
     # 2 separate units so that buy menu has reversed cabs
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=67,
         vehicle_length=5,
         rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=67,
         vehicle_length=5,
         rel_spriterow_index=1,

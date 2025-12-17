@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CabooseCarType4",
+        schema_name="CabooseCarType4",
         base_numeric_id=29370,
         gen=1,
         subtype="aA",
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType4",
+        schema_name="CabooseCarType4",
         base_numeric_id=29130,
         gen=1,
         subtype="aB",
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType4",
+        schema_name="CabooseCarType4",
         base_numeric_id=29290,
         gen=1,
         subtype="aC",
@@ -41,7 +41,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
 
     result.append(model_def)
 

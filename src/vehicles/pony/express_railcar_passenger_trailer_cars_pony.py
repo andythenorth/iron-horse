@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=15350,
         gen=3,
         subtype="U",
@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         suppress_roof_sprite=True,
@@ -26,7 +26,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=1940,
         gen=3,
         subtype="U",
@@ -35,7 +35,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
         repeat=2,
@@ -44,7 +44,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=15340,
         gen=4,
         subtype="U",
@@ -53,7 +53,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,
@@ -62,7 +62,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=2170,
         gen=4,
         subtype="U",
@@ -71,7 +71,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
         repeat=2,
@@ -80,7 +80,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=1010,
         gen=5,
         subtype="U",
@@ -89,7 +89,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=30,
         gen=5,
         subtype="U",
@@ -107,7 +107,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
         repeat=2,
@@ -116,7 +116,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCar",
+        schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=6380,
         gen=6,
         subtype="U",
@@ -126,7 +126,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="high_speed_32px",
         tail_light="railcar_32px_5",
         suppress_roof_sprite=True,

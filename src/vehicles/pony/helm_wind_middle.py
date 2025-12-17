@@ -7,7 +7,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVMiddlePassengerEngine",
+        schema_name="TGVMiddlePassengerEngine",
         model_id="helm_wind_middle_passenger",
         cab_id="helm_wind_cab",
         base_numeric_id=320,
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricHighSpeedPaxUnit",
+        unit_cls_name="ElectricHighSpeedPaxUnit",
         weight=42,
         rel_spriterow_index=0,
         chassis="high_speed_32px",
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TGVMiddleMailEngine",
+        schema_name="TGVMiddleMailEngine",
         model_id="helm_wind_middle_mail",
         cab_id="helm_wind_cab",
         base_numeric_id=15330,
@@ -55,7 +55,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricHighSpeedMailUnit",
+        unit_cls_name="ElectricHighSpeedMailUnit",
         weight=42,
         rel_spriterow_index=0,
         chassis="high_speed_32px",

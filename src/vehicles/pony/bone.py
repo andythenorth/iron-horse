@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="bone",
         base_numeric_id=21540,
         name="Bone",
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=125,  # tiny nerf from Grid, because IRL reasons
         vehicle_length=8,
         effect_offsets=[(1, 0)],

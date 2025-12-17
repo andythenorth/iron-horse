@@ -9,7 +9,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="AutoCoachCombineEngine",
+        schema_name="AutoCoachCombineEngine",
         model_id="auto_coach_pony_gen_2",
         base_numeric_id=410,
         name="Autocoach Set",
@@ -20,14 +20,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutoCoachCombineUnitMail",
+        unit_cls_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
     model_def.add_unit_def(
-        class_name="AutoCoachCombineUnitPax",
+        unit_cls_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",

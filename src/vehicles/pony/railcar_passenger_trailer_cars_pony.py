@@ -12,7 +12,7 @@ def main(**kwargs):
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=17130,
         gen=4,
         subtype="U",
@@ -21,7 +21,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_2",
     )
@@ -29,7 +29,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=26060,
         gen=4,
         subtype="U",
@@ -38,7 +38,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_2",
     )
@@ -46,7 +46,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=27170,
         gen=5,
         subtype="U",
@@ -55,7 +55,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
     )
@@ -63,7 +63,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=25140,
         gen=5,
         subtype="U",
@@ -72,7 +72,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
     )
@@ -80,7 +80,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=25580,
         gen=6,
         subtype="U",
@@ -89,7 +89,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_2",
     )
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCar",
+        schema_name="PassengerRailcarTrailerCar",
         base_numeric_id=25400,
         gen=6,
         subtype="U",
@@ -106,7 +106,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCarUnit",
+        unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_2",
     )

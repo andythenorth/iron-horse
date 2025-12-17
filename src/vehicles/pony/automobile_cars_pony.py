@@ -12,20 +12,20 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=22570,
         gen=2,
         subtype="A",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="AutomobileCarSymmetricUnit", chassis="2_axle_solid_express_16px")
+    model_def.add_unit_def(unit_cls_name="AutomobileCarSymmetricUnit", chassis="2_axle_solid_express_16px")
 
     result.append(model_def)
     """
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=22540,
         gen=3,
         subtype="B",
@@ -33,13 +33,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="3_axle_solid_express_24px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="3_axle_solid_express_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=35150,
         gen=3,
         subtype="C",
@@ -47,13 +47,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="4_axle_solid_express_32px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="4_axle_solid_express_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=35110,
         gen=4,
         subtype="B",
@@ -61,13 +61,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="2_axle_filled_24px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="2_axle_filled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=35130,
         gen=4,
         subtype="C",
@@ -75,13 +75,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="4_axle_solid_express_32px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="4_axle_solid_express_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=35170,
         gen=5,
         subtype="B",
@@ -89,13 +89,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="2_axle_filled_greebled_24px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="2_axle_filled_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileSingleDeckCar",
+        schema_name="AutomobileSingleDeckCar",
         base_numeric_id=24760,
         gen=5,
         subtype="C",
@@ -103,7 +103,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarSymmetricUnit", chassis="4_axle_filled_greebled_32px"
+        unit_cls_name="AutomobileCarSymmetricUnit", chassis="4_axle_filled_greebled_32px"
     )
 
     result.append(model_def)

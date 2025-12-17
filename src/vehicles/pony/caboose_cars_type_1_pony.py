@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
+        schema_name="CabooseCarType1",
         base_numeric_id=33400,
         gen=1,
         subtype="A",
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_ng_8px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_ng_8px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
+        schema_name="CabooseCarType1",
         base_numeric_id=29150,
         gen=1,
         subtype="B",
@@ -28,14 +28,14 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
+        schema_name="CabooseCarType1",
         base_numeric_id=29330,
         gen=1,
         subtype="aA",
@@ -43,12 +43,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
+        schema_name="CabooseCarType1",
         base_numeric_id=23270,
         gen=1,
         subtype="aB",
@@ -56,12 +56,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CabooseCarType1",
+        schema_name="CabooseCarType1",
         base_numeric_id=29170,
         gen=1,
         subtype="aC",
@@ -69,7 +69,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
 
     result.append(model_def)
 

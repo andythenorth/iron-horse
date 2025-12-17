@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailbus",
+        schema_name="PassengerEngineRailbus",
         model_id="mumble",
         base_numeric_id=830,
         name="Mumble",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitMail",
+        unit_cls_name="DieselRailcarCombineUnitMail",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
@@ -32,7 +32,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitPax",
+        unit_cls_name="DieselRailcarCombineUnitPax",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailbus",
+        schema_name="PassengerEngineRailbus",
         model_id="mumble_single",
         base_numeric_id=17140,
         name="Mumble",
@@ -69,7 +69,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarPaxUnit",
+        unit_cls_name="DieselRailcarPaxUnit",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",

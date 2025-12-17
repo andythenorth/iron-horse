@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineMetro",
+        schema_name="PassengerEngineMetro",
         model_id="westbourne",
         base_numeric_id=360,
         name="Westbourne",
@@ -20,7 +20,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="MetroUnit",
+        unit_cls_name="MetroUnit",
         weight=33,
         capacity=160,
         chassis="metro_low_floor_32px",

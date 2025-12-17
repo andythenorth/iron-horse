@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="falcon",
         base_numeric_id=17860,
         name="Falcon",
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=115,
         vehicle_length=8,
         effect_offsets=[(-1, 0), (1, 0)],  # double the smoke eh?

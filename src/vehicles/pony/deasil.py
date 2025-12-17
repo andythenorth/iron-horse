@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineRailcar",
+        schema_name="PassengerEngineRailcar",
         model_id="deasil",
         base_numeric_id=21240,
         name="Deasil",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarPaxUnit",
+        unit_cls_name="DieselRailcarPaxUnit",
         weight=30,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",

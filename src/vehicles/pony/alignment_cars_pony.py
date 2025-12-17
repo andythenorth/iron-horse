@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="AlignmentCarUnit",
+        schema_name="AlignmentCarUnit",
         base_numeric_id=9060,
         gen=1,
         subtype="A",
@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name=AlignmentCarUnit,
+        unit_cls_name=AlignmentCarUnit,
         vehicle_length=4,
         chassis="2_axle_solid_express_16px",
     )
@@ -23,7 +23,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AlignmentCarUnit",
+        schema_name="AlignmentCarUnit",
         base_numeric_id=9070,
         gen=1,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name=AlignmentCarUnit,
+        unit_cls_name=AlignmentCarUnit,
         vehicle_length=6,
         chassis="4_axle_solid_express_24px",
     )
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AlignmentCarUnit",
+        schema_name="AlignmentCarUnit",
         base_numeric_id=9080,
         gen=1,
         subtype="C",
@@ -47,7 +47,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name=AlignmentCarUnit,
+        unit_cls_name=AlignmentCarUnit,
         vehicle_length=8,
         chassis="4_axle_solid_express_32px",
     )

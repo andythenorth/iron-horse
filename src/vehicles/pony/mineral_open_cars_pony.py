@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18690,
         gen=1,
         subtype="A",
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18710,
         gen=3,
         subtype="A",
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18730,
         gen=3,
         subtype="B",
@@ -41,76 +41,76 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18750,
         gen=1,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     # gen 1 also covers gen 2
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18770,
         gen=3,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18790,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_filled_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18810,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18830,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18850,
         gen=5,
         subtype="A",
@@ -118,13 +118,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18870,
         gen=5,
         subtype="B",
@@ -132,13 +132,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineral",
+        schema_name="BulkOpenCarMineral",
         base_numeric_id=18890,
         gen=5,
         subtype="C",
@@ -146,7 +146,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
     )
 
     result.append(model_def)

@@ -8,43 +8,43 @@ def main(**kwargs):
     # start gen 4
 
     model_def = ModelDef(
-        class_name="CoilCarUncovered",
+        schema_name="CoilCarUncovered",
         base_numeric_id=24040,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncovered",
+        schema_name="CoilCarUncovered",
         base_numeric_id=29060,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncovered",
+        schema_name="CoilCarUncovered",
         base_numeric_id=24060,
         gen=4,
         subtype="C",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_gapped_32px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_32px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncovered",
+        schema_name="CoilCarUncovered",
         base_numeric_id=29040,
         gen=5,
         subtype="B",
@@ -52,13 +52,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_1cc_filled_24px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncovered",
+        schema_name="CoilCarUncovered",
         base_numeric_id=24080,
         gen=5,
         subtype="C",
@@ -66,7 +66,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_1cc_filled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_1cc_filled_32px"
     )
 
     result.append(model_def)

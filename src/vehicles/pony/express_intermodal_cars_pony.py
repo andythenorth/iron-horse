@@ -8,7 +8,7 @@ def main(**kwargs):
     # only gen 5 and 6 eh
 
     model_def = ModelDef(
-        class_name="ExpressIntermodalCar",
+        schema_name="ExpressIntermodalCar",
         base_numeric_id=22960,
         gen=5,
         subtype="B",
@@ -16,13 +16,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressIntermodalCarUnit", chassis="2_axle_1cc_filled_24px"
+        unit_cls_name="ExpressIntermodalCarUnit", chassis="2_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressIntermodalCar",
+        schema_name="ExpressIntermodalCar",
         base_numeric_id=22970,
         gen=5,
         subtype="C",
@@ -30,7 +30,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressIntermodalCarUnit", chassis="4_axle_1cc_filled_32px"
+        unit_cls_name="ExpressIntermodalCarUnit", chassis="4_axle_1cc_filled_32px"
     )
 
     result.append(model_def)

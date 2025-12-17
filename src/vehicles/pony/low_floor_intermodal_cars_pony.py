@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCar",
+        schema_name="IntermodalLowFloorCar",
         base_numeric_id=24450,
         gen=5,
         subtype="A",
@@ -16,13 +16,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="IntermodalCarUnit", chassis="2_axle_1cc_low_floor_16px"
+        unit_cls_name="IntermodalCarUnit", chassis="2_axle_1cc_low_floor_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCar",
+        schema_name="IntermodalLowFloorCar",
         base_numeric_id=35050,
         gen=5,
         subtype="B",
@@ -30,13 +30,13 @@ def main(**kwargs):
         formation_ruleset="max_2_unit_sets",  # special case for 2 unit low-floor intermodals (they're FLAs eh)
     )
     model_def.add_unit_def(
-        class_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_24px"
+        unit_cls_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCar",
+        schema_name="IntermodalLowFloorCar",
         base_numeric_id=35860,
         gen=5,
         subtype="C",
@@ -44,7 +44,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_32px"
+        unit_cls_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_32px"
     )
 
     result.append(model_def)

@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="magnum_90",
         base_numeric_id=21680,
         name="Magnum 90",
@@ -27,7 +27,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="BatteryHybridEngineUnit",
+        unit_cls_name="BatteryHybridEngineUnit",
         weight=90,
         vehicle_length=8,
         rel_spriterow_index=0,

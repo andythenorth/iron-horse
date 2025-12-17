@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="traxx_e_494",
         base_numeric_id=34700,
         name="Captrain Italia E.494 Traxx 3 LM",
@@ -22,7 +22,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=8,
         rel_spriterow_index=0,

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PanoramicCar",
+        schema_name="PanoramicCar",
         base_numeric_id=25940,
         gen=4,
         subtype="B",
@@ -17,13 +17,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_24px"
+        unit_cls_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PanoramicCar",
+        schema_name="PanoramicCar",
         base_numeric_id=25960,
         gen=4,
         subtype="C",
@@ -33,7 +33,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_32px"
+        unit_cls_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_32px"
     )
 
     result.append(model_def)

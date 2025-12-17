@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="gronk",
         base_numeric_id=21490,
         name="Gronk",
@@ -27,7 +27,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=55,
         vehicle_length=4,
         rel_spriterow_index=0,
@@ -46,7 +46,7 @@ def main(**kwargs):
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
     model_def_clone.unit_defs[0].rel_spriterow_index = 1
     model_def_clone.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=55,
         vehicle_length=4,
         rel_spriterow_index=0,

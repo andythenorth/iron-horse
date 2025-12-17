@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=17740,
         gen=3,
         subtype="A",
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_sparse_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=28990,
         gen=3,
         subtype="B",
@@ -28,62 +28,62 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_sparse_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=35530,
         gen=3,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=32240,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=31750,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=31390,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=26530,
         gen=5,
         subtype="B",
@@ -91,13 +91,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_sparse_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarTipplerType1",
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=26550,
         gen=5,
         subtype="C",
@@ -105,7 +105,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
     )
 
     result.append(model_def)

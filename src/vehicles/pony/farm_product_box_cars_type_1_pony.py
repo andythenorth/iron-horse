@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=30350,
         gen=1,
         subtype="A",
@@ -15,14 +15,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=30400,
         gen=3,
         subtype="A",
@@ -30,12 +30,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=19940,
         gen=3,
         subtype="B",
@@ -43,86 +43,86 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- pony --------------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25390,
         gen=2,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25360,
         gen=2,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="3_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="3_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25230,
         gen=3,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25160,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25110,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=25080,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=23720,
         gen=4,
         subtype="C",
@@ -130,7 +130,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
@@ -138,7 +138,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=23700,
         gen=5,
         subtype="B",
@@ -146,13 +146,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarType1",
+        schema_name="FarmProductsBoxCarType1",
         base_numeric_id=23540,
         gen=5,
         subtype="C",
@@ -160,7 +160,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
     )
 
     result.append(model_def)

@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineCabControlCar",
+        schema_name="PassengerEngineCabControlCar",
         model_id="driving_cab_passenger_ng_pony_gen_4",
         base_numeric_id=23260,
         name="Driving Trailer",
@@ -18,7 +18,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
+        unit_cls_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
     )
 
     model_def.define_description(

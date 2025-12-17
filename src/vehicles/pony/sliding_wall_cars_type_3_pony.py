@@ -8,7 +8,7 @@ def main(**kwargs):
     # starts gen 4, B and C only
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallType3",
+        schema_name="BoxCarSlidingWallType3",
         base_numeric_id=17020,
         gen=4,
         subtype="B",
@@ -16,12 +16,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_filled_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallType3",
+        schema_name="BoxCarSlidingWallType3",
         base_numeric_id=27820,
         gen=4,
         subtype="C",
@@ -30,7 +30,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_greebled_alt_32px",
     )
@@ -38,7 +38,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallType3",
+        schema_name="BoxCarSlidingWallType3",
         base_numeric_id=28680,
         gen=5,
         subtype="B",
@@ -46,7 +46,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
     )
@@ -54,7 +54,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallType3",
+        schema_name="BoxCarSlidingWallType3",
         base_numeric_id=28700,
         gen=5,
         subtype="C",
@@ -62,7 +62,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_greebled_32px",
     )
@@ -70,7 +70,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallType3",
+        schema_name="BoxCarSlidingWallType3",
         base_numeric_id=6750,
         gen=5,
         subtype="D",
@@ -78,7 +78,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_20px",
         symmetry_type="asymmetric",
@@ -86,7 +86,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit",
+        unit_cls_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_20px",
         symmetry_type="asymmetric",

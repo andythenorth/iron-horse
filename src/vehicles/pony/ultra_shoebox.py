@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="ultra_shoebox",
         base_numeric_id=21340,
         name="Ultra Shoebox",
@@ -22,7 +22,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectroDieselEngineUnit",
+        unit_cls_name="ElectroDieselEngineUnit",
         weight=84,
         vehicle_length=8,
         effect_offsets=[(2, 0)],

@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVCabEngine",
+        schema_name="TGVCabEngine",
         model_id="helm_wind_cab",
         base_numeric_id=22330,
         name="Helm Wind",
@@ -22,7 +22,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,

@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SnowploughEngine",
+        schema_name="SnowploughEngine",
         model_id="snowplough_moose_gen_2",
         base_numeric_id=34890,
         name="Snowplough",
@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(class_name="SnowploughUnit", weight=50, vehicle_length=4)
+    model_def.add_unit_def(unit_cls_name="SnowploughUnit", weight=50, vehicle_length=4)
 
     model_def.define_description("""MOOSE.""")
     model_def.define_foamer_facts("""MOOSE""")

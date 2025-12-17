@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineHSTCab",
+        schema_name="PassengerEngineHSTCab",
         model_id="blaze_cab",
         vehicle_family_id="blaze",  # vehicle_family_id required for HST
         base_numeric_id=21640,
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=70,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?

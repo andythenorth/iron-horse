@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="FixedFormationRailcarCombineEngine",
+        schema_name="FixedFormationRailcarCombineEngine",
         model_id="golfinho",
         base_numeric_id=970,
         name="Golfinho",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitPax",
+        unit_cls_name="DieselRailcarCombineUnitPax",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
@@ -33,7 +33,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitPax",
+        unit_cls_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
@@ -41,7 +41,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselRailcarCombineUnitMail",
+        unit_cls_name="DieselRailcarCombineUnitMail",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",

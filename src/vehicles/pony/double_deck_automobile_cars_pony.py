@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCar",
+        schema_name="AutomobileDoubleDeckCar",
         base_numeric_id=26760,
         gen=4,
         subtype="B",
@@ -15,13 +15,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
+        unit_cls_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCar",
+        schema_name="AutomobileDoubleDeckCar",
         base_numeric_id=36610,
         gen=4,
         subtype="C",
@@ -29,14 +29,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="jacobs_solid_express_32px",
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCar",
+        schema_name="AutomobileDoubleDeckCar",
         base_numeric_id=35090,
         gen=5,
         subtype="B",
@@ -44,13 +44,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
+        unit_cls_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCar",
+        schema_name="AutomobileDoubleDeckCar",
         base_numeric_id=35190,
         gen=5,
         subtype="C",
@@ -58,7 +58,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="jacobs_solid_express_32px",
     )
 
@@ -66,7 +66,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="AutomobileDoubleDeckCar",
+        schema_name="AutomobileDoubleDeckCar",
         base_numeric_id=5830,
         gen=5,
         subtype="D",
@@ -74,13 +74,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
         rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
         rel_spriterow_index=1,
     )

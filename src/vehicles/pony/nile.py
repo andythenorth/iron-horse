@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="nile",
         base_numeric_id=21820,
         name="2-6-0+0-6-2 Nile",
@@ -25,7 +25,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit",
+        unit_cls_name="SteamEnginePoweredUnit",
         weight=65,
         vehicle_length=8,
         effect_offsets=[(-1, 0)],  # non-standard smoke position

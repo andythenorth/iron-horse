@@ -8,7 +8,7 @@ def main(**kwargs):
     # intro gen 4
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCar",
+        schema_name="AutomobileLowFloorCar",
         base_numeric_id=26720,
         gen=4,
         subtype="B",
@@ -16,13 +16,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
+        unit_cls_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCar",
+        schema_name="AutomobileLowFloorCar",
         base_numeric_id=33040,
         gen=4,
         subtype="C",
@@ -30,14 +30,14 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="jacobs_solid_express_32px",
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCar",
+        schema_name="AutomobileLowFloorCar",
         base_numeric_id=26740,
         gen=5,
         subtype="B",
@@ -45,13 +45,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
+        unit_cls_name="AutomobileCarAsymmetricUnit", chassis="jacobs_solid_express_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCar",
+        schema_name="AutomobileLowFloorCar",
         base_numeric_id=35070,
         gen=5,
         subtype="C",
@@ -59,7 +59,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit",
+        unit_cls_name="AutomobileCarAsymmetricUnit",
         chassis="jacobs_solid_express_32px",
     )
 

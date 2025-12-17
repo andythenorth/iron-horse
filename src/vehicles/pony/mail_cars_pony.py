@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=19120,
         gen=1,
         subtype="A",
@@ -16,14 +16,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=19140,
         gen=3,
         subtype="A",
@@ -32,12 +32,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=19160,
         gen=3,
         subtype="B",
@@ -46,12 +46,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=19180,
         gen=4,
         subtype="A",
@@ -60,12 +60,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17450,
         gen=4,
         subtype="B",
@@ -74,12 +74,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=21170,
         gen=4,
         subtype="C",
@@ -88,14 +88,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="4_axle_ng_32px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_32px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17470,
         gen=1,
         subtype="A",
@@ -103,13 +103,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
+        unit_cls_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17490,
         gen=1,
         subtype="B",
@@ -117,13 +117,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17510,
         gen=2,
         subtype="A",
@@ -131,13 +131,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
+        unit_cls_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17530,
         gen=2,
         subtype="B",
@@ -145,13 +145,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17550,
         gen=3,
         subtype="A",
@@ -160,13 +160,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
+        unit_cls_name="ExpressMailCarUnit", chassis="3_axle_solid_express_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17750,
         gen=3,
         subtype="B",
@@ -175,13 +175,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17910,
         gen=3,
         subtype="C",
@@ -190,13 +190,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17930,
         gen=4,
         subtype="A",
@@ -205,13 +205,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="2_axle_solid_pax_mail_16px"
+        unit_cls_name="ExpressMailCarUnit", chassis="2_axle_solid_pax_mail_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=17950,
         gen=4,
         subtype="B",
@@ -220,13 +220,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=18030,
         gen=4,
         subtype="C",
@@ -235,13 +235,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=18050,
         gen=5,
         subtype="A",
@@ -250,13 +250,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="2_axle_solid_pax_mail_16px"
+        unit_cls_name="ExpressMailCarUnit", chassis="2_axle_solid_pax_mail_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=18110,
         gen=5,
         subtype="B",
@@ -265,13 +265,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCar",
+        schema_name="MailCar",
         base_numeric_id=18130,
         gen=5,
         subtype="C",
@@ -280,7 +280,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)

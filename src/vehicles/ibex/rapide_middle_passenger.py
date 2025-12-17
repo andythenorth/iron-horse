@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVMiddlePassengerEngine",
+        schema_name="TGVMiddlePassengerEngine",
         model_id="rapide_middle_passenger",
         cab_id="rapide_cab",
         base_numeric_id=440,
@@ -21,7 +21,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricHighSpeedPaxUnit",
+        unit_cls_name="ElectricHighSpeedPaxUnit",
         weight=42,
         rel_spriterow_index=0,
         chassis="jacobs_solid_express_32px",

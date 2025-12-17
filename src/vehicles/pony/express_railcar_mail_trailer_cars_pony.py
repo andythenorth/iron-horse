@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailExpressRailcarTrailerCar",
+        schema_name="MailExpressRailcarTrailerCar",
         base_numeric_id=6350,
         gen=5,
         subtype="U",
@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="MailRailcarTrailerCarUnit",
+        unit_cls_name="MailRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
         tail_light="railcar_32px_3",
         repeat=2,

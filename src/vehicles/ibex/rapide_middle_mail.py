@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVMiddleMailEngine",
+        schema_name="TGVMiddleMailEngine",
         model_id="rapide_middle_mail",
         cab_id="rapide_cab",
         base_numeric_id=6400,
@@ -21,7 +21,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricHighSpeedMailUnit",
+        unit_cls_name="ElectricHighSpeedMailUnit",
         weight=42,
         rel_spriterow_index=0,
         chassis="jacobs_solid_express_32px",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarSkip",
+        schema_name="HopperCarSkip",
         base_numeric_id=10,
         gen=1,
         subtype="U",
@@ -16,9 +16,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_8px", repeat=2)
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_8px", repeat=2)
 
-    # model_def.add_unit_def(class_name="FreightCarUnit", chassis="empty_8px")
+    # model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_8px")
 
     result.append(model_def)
 

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="KaolinHopperCar",
+        schema_name="KaolinHopperCar",
         base_numeric_id=26230,
         gen=5,
         subtype="B",
@@ -15,13 +15,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="KaolinHopperCar",
+        schema_name="KaolinHopperCar",
         base_numeric_id=26240,
         gen=5,
         subtype="C",
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
     )
 
     result.append(model_def)

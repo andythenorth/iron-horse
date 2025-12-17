@@ -8,7 +8,7 @@ def main(**kwargs):
     # gen 2 start eh?
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19070,
         gen=2,
         subtype="A",
@@ -16,12 +16,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19090,
         gen=3,
         subtype="A",
@@ -29,12 +29,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19110,
         gen=3,
         subtype="B",
@@ -42,62 +42,62 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19130,
         gen=3,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19150,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19170,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19190,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_sparse_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19210,
         gen=5,
         subtype="A",
@@ -105,13 +105,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19230,
         gen=5,
         subtype="B",
@@ -119,13 +119,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarScrapMetalType1",
+        schema_name="BulkOpenCarScrapMetalType1",
         base_numeric_id=19250,
         gen=5,
         subtype="C",
@@ -133,7 +133,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
     )
 
     result.append(model_def)

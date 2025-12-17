@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineMetro",
+        schema_name="MailEngineMetro",
         model_id="bankside",
         base_numeric_id=1920,
         name="Bankside",
@@ -20,7 +20,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="MetroUnit",
+        unit_cls_name="MetroUnit",
         weight=32,
         # set capacity for freight; mail will be automatically calculated
         capacity=30,

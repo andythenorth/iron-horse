@@ -8,7 +8,7 @@ def main(**kwargs):
     # start gen 4
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetric",
+        schema_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23320,
         gen=4,
         subtype="B",
@@ -16,13 +16,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="CoilCarAsymmetricUnit", chassis="4_axle_filled_24px"
+        unit_cls_name="CoilCarAsymmetricUnit", chassis="4_axle_filled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetric",
+        schema_name="CoilCarCoveredAsymmetric",
         base_numeric_id=29850,
         gen=4,
         subtype="C",
@@ -30,13 +30,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="CoilCarAsymmetricUnit", chassis="4_axle_filled_32px"
+        unit_cls_name="CoilCarAsymmetricUnit", chassis="4_axle_filled_32px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetric",
+        schema_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23340,
         gen=5,
         subtype="B",
@@ -44,13 +44,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="CoilCarAsymmetricUnit", chassis="4_axle_1cc_filled_24px"
+        unit_cls_name="CoilCarAsymmetricUnit", chassis="4_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetric",
+        schema_name="CoilCarCoveredAsymmetric",
         base_numeric_id=34820,
         gen=5,
         subtype="C",
@@ -58,7 +58,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="CoilCarAsymmetricUnit", chassis="4_axle_1cc_filled_32px"
+        unit_cls_name="CoilCarAsymmetricUnit", chassis="4_axle_1cc_filled_32px"
     )
 
     result.append(model_def)

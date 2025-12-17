@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineHSTCab",
+        schema_name="PassengerEngineHSTCab",
         model_id="firebird_cab",
         vehicle_family_id="firebird",  # vehicle_family_id required for HST
         base_numeric_id=21500,
@@ -21,7 +21,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit",
+        unit_cls_name="DieselEngineUnit",
         weight=68,
         vehicle_length=8,
         capacity=16,

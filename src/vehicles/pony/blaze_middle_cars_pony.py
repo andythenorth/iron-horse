@@ -9,7 +9,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerHSTMiddleCar",
+        schema_name="PassengerHSTMiddleCar",
         model_id="blaze_middle_passenger",
         cab_id="blaze_cab",
         base_numeric_id=18150,
@@ -19,12 +19,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="PaxCarUnit", chassis="high_speed_32px")
+    model_def.add_unit_def(unit_cls_name="PaxCarUnit", chassis="high_speed_32px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailHSTMiddleCar",
+        schema_name="MailHSTMiddleCar",
         model_id="blaze_middle_mail",
         cab_id="blaze_cab",
         base_numeric_id=26180,
@@ -34,7 +34,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressMailCarUnit", chassis="high_speed_32px")
+    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="high_speed_32px")
 
     result.append(model_def)
 

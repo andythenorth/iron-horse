@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SimpleEngine",
+        schema_name="SimpleEngine",
         model_id="mulberry",
         base_numeric_id=24430,
         name="Mulberry",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="MetroUnit", weight=48, vehicle_length=8, rel_spriterow_index=0
+        unit_cls_name="MetroUnit", weight=48, vehicle_length=8, rel_spriterow_index=0
     )
 
     model_def.define_description("""Born slippy? Mega mega mega.""")

@@ -7,7 +7,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVCabEngine",
+        schema_name="TGVCabEngine",
         model_id="skeiron_cab",
         base_numeric_id=25120,
         name="Skeiron",
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit",
+        unit_cls_name="ElectricEngineUnit",
         weight=54,
         rel_spriterow_index=0,
         chassis="4_axle_solid_express_32px",

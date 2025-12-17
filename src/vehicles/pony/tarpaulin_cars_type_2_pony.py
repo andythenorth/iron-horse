@@ -8,7 +8,7 @@ def main(**kwargs):
     # gen 5 start, only B and C lengths
 
     model_def = ModelDef(
-        class_name="TarpaulinCarType2",
+        schema_name="TarpaulinCarType2",
         base_numeric_id=24850,
         gen=5,
         subtype="B",
@@ -16,13 +16,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_filled_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TarpaulinCarType2",
+        schema_name="TarpaulinCarType2",
         base_numeric_id=25300,
         gen=5,
         subtype="C",
@@ -30,7 +30,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_32px"
     )
 
     result.append(model_def)
