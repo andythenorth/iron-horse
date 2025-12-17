@@ -218,6 +218,11 @@ class Catalogue(list):
             )
 
     @property
+    def schema_cls(self):
+        # convenience method
+        return self.producer.schema_cls
+
+    @property
     def model_id_root(self):
         # convenience method
         return self.producer.schema_cls.model_id_root
@@ -226,6 +231,11 @@ class Catalogue(list):
     def model_def(self):
         # convenience method
         return self.producer.model_def
+
+    @property
+    def vehicle_family_id(self):
+        # convenience method
+        return self.producer.vehicle_family_id
 
     @property
     def default_entry(self):
@@ -249,6 +259,12 @@ class Catalogue(list):
     def example_model_variant(self):
         # more convenient when we just want an example model_variant for templates
         return self.default_model_variant_from_roster
+
+    @property
+    def cab_producer(self):
+        # convenience method
+        # CABBAGE - this should actually be cab_catalogue in both call name and what it accesses (cab_producer is overly indirect)
+        return self.producer.cab_producer
 
     @cached_property
     def cab_engine_model(self):
@@ -711,7 +727,7 @@ class EngineQuacker:
         # this could have been done with an attribute on the base class, but that tends to lead to subclass overrides, which work at first, then become unmanageable
         return any(
             base.__name__ == "EngineSchemaBase"
-            for base in self.catalogue.producer.schema_cls.__mro__
+            for base in self.catalogue.schema_cls.__mro__
         )
 
     @cached_property
@@ -765,7 +781,7 @@ class WagonQuacker:
         # doing it this way prevents conceptual blur enforceably
         return any(
             base.__name__ == "CarSchemaBase"
-            for base in self.catalogue.producer.schema_cls.__mro__
+            for base in self.catalogue.schema_cls.__mro__
         )
 
     @cached_property
@@ -782,7 +798,7 @@ class WagonQuacker:
         if self._quack() == False:
             return False
         # wagons that are trailers for railcars etc need to match availability to their cab, so they're handled as engines
-        if self.catalogue.producer.cab_producer is not None:
+        if self.catalogue.cab_producer is not None:
             return False
         # fall through
         return True
@@ -796,7 +812,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "RandomisedCarMixinBase"
-            for base in self.catalogue.producer.schema_cls.__mro__
+            for base in self.catalogue.schema_cls.__mro__
         )
 
     @cached_property
@@ -832,7 +848,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "PassengerRestaurantCar"
-            for base in self.catalogue.producer.schema_cls.__mro__
+            for base in self.catalogue.schema_cls.__mro__
         )
 
     @cached_property
@@ -844,7 +860,7 @@ class WagonQuacker:
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ in ["PassengerCarBase", "MailCarBase"]
-            for base in self.catalogue.producer.schema_cls.__mro__
+            for base in self.catalogue.schema_cls.__mro__
         )
 
 
@@ -862,11 +878,11 @@ class CloneQuacker:
     def quack(self):
         # convenience boolean for things that either are clones, or can be treated like clones for docs etc
         # public access via catalogue
-        if self.catalogue.producer.model_def.cloned_from_model_def is not None:
+        if self.catalogue.model_def.cloned_from_model_def is not None:
             return True
-        if self.catalogue.producer.model_def.quacks_like_a_clone:
+        if self.catalogue.model_def.quacks_like_a_clone:
             return True
-        if getattr(self.catalogue.producer.schema_cls, "quacks_like_a_clone", False):
+        if getattr(self.catalogue.schema_cls, "quacks_like_a_clone", False):
             return True
         # fall through to 'does not quack like a clone'
         return False
@@ -878,7 +894,7 @@ class CloneQuacker:
             )
         if (
             permissive == False
-            and self.catalogue.producer.model_def.cloned_from_model_def is None
+            and self.catalogue.model_def.cloned_from_model_def is None
         ):
             raise ValueError(
                 f"{self.catalogue.model_id} is not a true clone, don't call clone_quacker.get_upstream_catalogue on it with permissive={permissive}"
@@ -886,22 +902,22 @@ class CloneQuacker:
         # if it's an actual clone get the producer for the model the clone was derived from
         # possibly expensive, but not often required
         # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
-        if self.catalogue.producer.model_def.cloned_from_model_def is not None:
+        if self.catalogue.model_def.cloned_from_model_def is not None:
             for candidate_catalogue in self.catalogue.producer.roster.catalogues:
                 if (
                     candidate_catalogue.model_def
-                    == self.catalogue.producer.model_def.cloned_from_model_def
+                    == self.catalogue.model_def.cloned_from_model_def
                 ):
                     return candidate_catalogue
         # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
         try:
             return self.catalogue.producer.roster.model_variants_by_catalogue[
-                self.catalogue.producer.vehicle_family_id
+                self.catalogue.vehicle_family_id
             ]["catalogue"]
         except (KeyError, TypeError):
             raise LookupError(
                 f"Upstream catalogue not found for {self.catalogue.model_id}; "
-                f"vehicle_family_id={self.catalogue.producer.vehicle_family_id}"
+                f"vehicle_family_id={self.catalogue.vehicle_family_id}"
             )
 
     def resolve_catalogue(self, permissive):
@@ -909,8 +925,8 @@ class CloneQuacker:
         if not self.quack:
             return self.catalogue
         # we handle trains with cab engines like clones, so get the cab catalogue
-        if permissive and self.catalogue.producer.cab_producer is not None:
-            return self.catalogue.producer.cab_producer.catalogue
+        if permissive and self.catalogue.cab_producer is not None:
+            return self.catalogue.cab_producer.catalogue
         return self._get_upstream_catalogue(permissive)
 
 
@@ -941,7 +957,7 @@ class TGVHSTQuacker:
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
         if getattr(
-            self.catalogue.producer.schema_cls, "dedicated_tgv_hst_formation", False
+            self.catalogue.schema_cls, "dedicated_tgv_hst_formation", False
         ):
             return True
         # fall through
@@ -954,7 +970,7 @@ class TGVHSTQuacker:
             return False
         # cab parts are created before middle parts, so we can't rely on detecting middle parts for cab
         # instead we have to rely on absence of cab_producer as that can be used at init time
-        if self.catalogue.producer.cab_producer is None:
+        if self.catalogue.cab_producer is None:
             return True
         # fall through
         return False
@@ -964,7 +980,7 @@ class TGVHSTQuacker:
         # predicate to find middle_parts
         if not self.quack:
             return False
-        if self.catalogue.producer.cab_producer is not None:
+        if self.catalogue.cab_producer is not None:
             return True
         # fall through
         return False

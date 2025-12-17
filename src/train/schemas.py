@@ -120,7 +120,7 @@ class SchemaBase(object):
     @property
     def model_def(self):
         # just a pass through for convenience
-        return self.catalogue.producer.model_def
+        return self.catalogue.model_def
 
     @property
     def catalogue(self):

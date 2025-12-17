@@ -152,7 +152,7 @@ class GestaltGraphics(object):
             if reporting_label_map["label"] == "model_id":
                 return self.catalogue.model_id
             if reporting_label_map["label"] == "vehicle_family":
-                return self.catalogue.producer.vehicle_family_id
+                return self.catalogue.vehicle_family_id
             if reporting_label_map["label"] == "tgv_hst":
                 return (
                     self.catalogue.tgv_hst_quacker.formation_ruleset_middle_part_equivalence_flag
