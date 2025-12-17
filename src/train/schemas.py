@@ -8373,7 +8373,7 @@ class TarpaulinCarRandomised(RandomisedCarVanillaMixin, TarpaulinCarBase):
         )
 
 
-class TorpedoCarUnit(CarSchemaBase):
+class TorpedoCar(CarSchemaBase):
     """
     Specialist wagon for hauling molten pig iron.
     May or may not extend to other metal cargos (probably not).
@@ -8415,3 +8415,4 @@ class TorpedoCarUnit(CarSchemaBase):
             "vehicle_torpedo_car.pynml",
             catalogue_entry=self.catalogue_entry,
         )
+

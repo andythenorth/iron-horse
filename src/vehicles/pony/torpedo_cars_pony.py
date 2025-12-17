@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="TorpedoCarUnit",
+        schema_name="TorpedoCar",
         base_numeric_id=490,
         gen=2,
         subtype="U",
@@ -23,7 +23,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TorpedoCarUnit",
+        schema_name="TorpedoCar",
         base_numeric_id=90,
         gen=3,
         subtype="U",
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TorpedoCarUnit",
+        schema_name="TorpedoCar",
         base_numeric_id=15190,
         gen=4,
         subtype="U",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TorpedoCarUnit",
+        schema_name="TorpedoCar",
         base_numeric_id=15230,
         gen=5,
         subtype="U",
