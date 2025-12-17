@@ -10,7 +10,7 @@ import math
 from functools import cached_property
 
 import polar_fox
-import global_constants  # expose all constants for easy passing to templates
+import global_constants
 import utils
 from utils import timing
 
