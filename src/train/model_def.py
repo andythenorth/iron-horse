@@ -10,6 +10,7 @@ import copy
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
+
 @dataclass
 class ModelDef:
     # Required fields (lexically sorted)
@@ -100,7 +101,6 @@ class UnitDef:
     force_spriterow_group_in_output_spritesheet: Optional[int] = 0
     # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
     reverse_sprite_template: bool = False
-
 
 
 class ModelDefCloner:

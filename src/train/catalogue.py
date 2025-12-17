@@ -2,6 +2,7 @@ import random
 from dataclasses import dataclass
 from typing import List
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from .livery import LiveryDef
 from functools import cached_property
@@ -385,8 +386,7 @@ class Catalogue(list):
                     "Director, Suburban and Rural Lines",
                 ]
             elif (
-                getattr(self.producer.schema_cls, "cite", None)
-                == "Dr Constance Speed"
+                getattr(self.producer.schema_cls, "cite", None) == "Dr Constance Speed"
             ):
                 cite_name = self.producer.schema_cls.cite
                 cite_titles = [
@@ -866,9 +866,7 @@ class CloneQuacker:
             return True
         if self.catalogue.producer.model_def.quacks_like_a_clone:
             return True
-        if getattr(
-            self.catalogue.producer.schema_cls, "quacks_like_a_clone", False
-        ):
+        if getattr(self.catalogue.producer.schema_cls, "quacks_like_a_clone", False):
             return True
         # fall through to 'does not quack like a clone'
         return False

@@ -42,7 +42,7 @@ class LiveryDef:
     def display_and_filter_name_badge_label(self):
         # conforms to draft livery spec in grf docs as of Apr 2025
         if self.is_freight_wagon_livery:
-            #subcategory = "freight_wagon/"
+            # subcategory = "freight_wagon/"
             subcategory = ""
         else:
             subcategory = ""
@@ -223,8 +223,10 @@ class LiverySupplier(dict):
         for livery in self.values():
             if not livery.is_freight_wagon_livery:
                 if livery.proxy_livery_for_badge_display_and_filter is not None:
-                    #result.append(livery)
-                    result.append(self[livery.proxy_livery_for_badge_display_and_filter])
+                    # result.append(livery)
+                    result.append(
+                        self[livery.proxy_livery_for_badge_display_and_filter]
+                    )
                 else:
                     result.append(livery)
             else:
@@ -233,8 +235,10 @@ class LiverySupplier(dict):
                     seen_purchase_swatches.append(livery.purchase_swatch)
                 else:
                     if livery.proxy_livery_for_badge_display_and_filter is not None:
-                        #result.append(livery)
-                        result.append(self[livery.proxy_livery_for_badge_display_and_filter])
+                        # result.append(livery)
+                        result.append(
+                            self[livery.proxy_livery_for_badge_display_and_filter]
+                        )
                     else:
                         # this is JFDI, and might choke on livery order, or multiple liveries declaring same proxy_livery_for_badge_display_and_filter
                         raise Exception(

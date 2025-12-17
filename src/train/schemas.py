@@ -8403,4 +8403,3 @@ class TorpedoCar(CarSchemaBase):
             "vehicle_torpedo_car.pynml",
             catalogue_entry=self.catalogue_entry,
         )
-
