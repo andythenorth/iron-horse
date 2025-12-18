@@ -244,8 +244,8 @@ class Catalogue(list):
 
     @property
     def roster(self):
-        # convenience method
-        return self.producer.roster
+        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
+        return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
     @property
     def roster_id_providing_module(self):
@@ -268,7 +268,7 @@ class Catalogue(list):
     @cached_property
     def default_model_variant_from_roster(self):
         # requires that the producer produce() method has been called
-        model_variants = self.producer.roster.model_variants_by_catalogue[
+        model_variants = self.roster.model_variants_by_catalogue[
             self.model_id
         ]["model_variants"]
         for model_variant in model_variants:
@@ -305,7 +305,7 @@ class Catalogue(list):
         for (
             catalogue_id,
             catalogue_model_variant_mapping,
-        ) in self.producer.roster.model_variants_by_catalogue.items():
+        ) in self.roster.model_variants_by_catalogue.items():
             catalogue = catalogue_model_variant_mapping["catalogue"]
             if catalogue.model_def.cab_id == self.model_id:
                 result.append(catalogue_model_variant_mapping)
@@ -315,7 +315,7 @@ class Catalogue(list):
     def next_gen_catalogue(self):
         # note that there's just one replacement catalogue in the next gen (has to be this way for model life calculations)
         if self.engine_quacker.quack:
-            return self.producer.roster.engine_model_tech_tree.get_next_gen_catalogue(
+            return self.roster.engine_model_tech_tree.get_next_gen_catalogue(
                 catalogue=self
             )
         return None
@@ -325,7 +325,7 @@ class Catalogue(list):
         # note a catalogue can replace multiple catalogues in the previous gen (as tree branches can merge)
         if self.engine_quacker.quack:
             return (
-                self.producer.roster.engine_model_tech_tree.get_previous_gen_catalogues(
+                self.roster.engine_model_tech_tree.get_previous_gen_catalogues(
                     catalogue=self
                 )
             )
@@ -335,7 +335,7 @@ class Catalogue(list):
     @cached_property
     def similar_model_catalogues(self):
         if self.engine_quacker.quack:
-            return self.producer.roster.engine_model_tech_tree.get_similar_model_catalogues(
+            return self.roster.engine_model_tech_tree.get_similar_model_catalogues(
                 catalogue=self
             )
         # empty list if nothing found
@@ -350,7 +350,7 @@ class Catalogue(list):
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
-        result = self.producer.roster.intro_years[self.base_track_type][
+        result = self.roster.intro_years[self.base_track_type][
             self.model_def.gen - 1
         ]
         if self.model_def.intro_year_offset is not None:
@@ -459,6 +459,7 @@ class Catalogue(list):
 
 class ModelVariantProducer:
     """
+    CABBAGE - UPDATE if refactoring some of the storages out, so that catalogue holds the core attrs, and the producer holds methods dedicated to producing model variant instances
     ModelVariantProducer instances:
     - hold a roster_id identifier
     - store a ModelDef object with vehicle-specific parameters
@@ -547,11 +548,6 @@ class ModelVariantProducer:
         return getattr(schemas, self.schema_name)
 
     @property
-    def roster(self):
-        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
-        return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
-
-    @property
     def roster_providing_module(self):
         # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
         return iron_horse.roster_manager.get_roster_by_id(
@@ -585,7 +581,7 @@ class ModelVariantProducer:
     def cab_producer(self):
         # convenience way to get cab producer
         if self.model_def.cab_id is not None:
-            return self.roster.model_variants_by_catalogue[self.model_def.cab_id][
+            return self.catalogue.roster.model_variants_by_catalogue[self.model_def.cab_id][
                 "catalogue"
             ].producer
         else:
