@@ -135,7 +135,7 @@ class Catalogue(list):
             for (
                 livery_name,
                 index,
-            ) in target_producer.roster_providing_module.pax_mail_livery_groups[
+            ) in target_producer.catalogue.roster_providing_module.pax_mail_livery_groups[
                 target_producer.model_def.livery_group_name
             ]:
                 result.append(
@@ -153,7 +153,7 @@ class Catalogue(list):
             for (
                 livery_name,
                 index,
-            ) in target_producer.roster_providing_module.pax_mail_livery_groups[
+            ) in target_producer.catalogue.roster_providing_module.pax_mail_livery_groups[
                 target_producer.catalogue.schema_cls.livery_group_name
             ]:
                 result.append(
@@ -268,14 +268,21 @@ class Catalogue(list):
         return self.producer.roster_id
 
     @property
+    def roster_id_providing_module(self):
+        # convenience method
+        return self.producer.roster_id_providing_module
+
+    @property
     def roster(self):
         # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
         return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
     @property
-    def roster_id_providing_module(self):
-        # convenience method
-        return self.producer.roster_id_providing_module
+    def roster_providing_module(self):
+        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
+        return iron_horse.roster_manager.get_roster_by_id(
+            self.roster_id_providing_module
+        )
 
     @cached_property
     def numeric_id_blocks_consumed(self):
@@ -616,13 +623,6 @@ class ModelVariantProducer:
                 model_variant.units.append(unit)
 
         return model_variant
-
-    @property
-    def roster_providing_module(self):
-        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
-        return iron_horse.roster_manager.get_roster_by_id(
-            self.roster_id_providing_module
-        )
 
     def get_wagon_id(self, model_id_root, model_def):
         # auto id creator, used for wagons not engines
