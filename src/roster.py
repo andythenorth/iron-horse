@@ -244,7 +244,7 @@ class Roster:
                         "model_variants": [],
                     }
                 for catalogue_entry in catalogue:
-                    model_variant = producer.produce(catalogue_entry=catalogue_entry)
+                    model_variant = catalogue.produce(catalogue_entry=catalogue_entry)
                     self.engine_model_variants_by_catalogue[catalogue.model_id][
                         "model_variants"
                     ].append(model_variant)
@@ -297,7 +297,7 @@ class Roster:
                                 "model_variants": [],
                             }
                         for catalogue_entry in catalogue:
-                            model_variant = producer.produce(
+                            model_variant = catalogue.produce(
                                 catalogue_entry=catalogue_entry
                             )
                             self.wagon_model_variants_by_catalogue[catalogue.model_id][

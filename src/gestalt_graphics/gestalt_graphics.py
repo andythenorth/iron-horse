@@ -139,7 +139,7 @@ class GestaltGraphics(object):
         # we use a badge as a predicate to detect 'same formation' for rulesets
         # this gets a slug for assembling the badge
         # we go via gestalt_graphics as that's the proper domain for rulesets...
-        # ...producer and catalogue should not know about rulesets
+        # ...catalogue should not know about rulesets
         # however gestalt_graphics equally doesn't know about specific model types...
         # ...so it delegates back to catalogue methods or properties
         # the result is a bit conditional / indirect, but the domain boundaries are faffy here

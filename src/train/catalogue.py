@@ -101,6 +101,10 @@ class Catalogue(list):
             )
             self.append(catalogue_entry)
 
+    def produce(self, catalogue_entry):
+        # public interface is via catalogue, producer is a private implementation detail
+        return self.producer._produce(catalogue_entry=catalogue_entry)
+
     @property
     def livery_defs(self):
         # Retrieve a list of livery definitions from various sources.
@@ -323,7 +327,6 @@ class Catalogue(list):
     @property
     def cab_producer(self):
         # convenience way to get cab producer
-        # CABBAGE - this should actually be cab_catalogue in both call name and what it accesses (cab_producer is overly indirect)
         if self.model_def.cab_id is not None:
             return self.roster.model_variants_by_catalogue[self.model_def.cab_id][
                 "catalogue"
@@ -587,7 +590,7 @@ class ModelVariantProducer:
                 f"ModelVariantProducer catalogue is empty"
             )
 
-    def produce(self, catalogue_entry=None):
+    def _produce(self, catalogue_entry=None):
 
         if catalogue_entry == None:
             raise BaseException(
