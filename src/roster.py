@@ -16,7 +16,7 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.catalogue import CabbageShim
+from train.catalogue import Catalogue
 
 
 class Roster:
@@ -228,16 +228,10 @@ class Roster:
                 "." + engine_module_name, package_name
             )
 
-            # the implementation grew organically, with catalogue following from producer
-            # (the catalogue being a list of what the producer can produce)
-            # however it proved to be much more practical to work with catalogues as primary entity, and store catalogues in the roster
-            # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
-            # however as of Oct 2025 that wasn't a plaster I wanted to rip off
             for model_def in engine_module.main():
-                producer = CabbageShim(
+                catalogue = Catalogue(
                     model_def, self.id, roster_id_providing_module
                 )
-                catalogue = producer.catalogue
                 if catalogue.model_id not in self.engine_model_variants_by_catalogue:
                     self.engine_model_variants_by_catalogue[catalogue.model_id] = {
                         "catalogue": catalogue,
@@ -287,10 +281,9 @@ class Roster:
                     # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
                     # however as of Oct 2025 that wasn't a plaster I wanted to rip off
                     for model_def in wagon_module.main():
-                        producer = CabbageShim(
+                        catalogue = Catalogue(
                             model_def, self.id, roster_id_providing_module
                         )
-                        catalogue = producer.catalogue
                         if catalogue.model_id not in self.wagon_model_variants_by_catalogue:
                             self.wagon_model_variants_by_catalogue[catalogue.model_id] = {
                                 "catalogue": catalogue,

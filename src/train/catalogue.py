@@ -536,14 +536,6 @@ class Catalogue(list):
                 )
 
 
-class CabbageShim:
-    # CABBAGE
-    def __init__(self, model_def, roster_id, roster_id_providing_module):
-        # catalogue is a singleton that provides basic metadata for produced model variants
-        self.catalogue = Catalogue(model_def, roster_id, roster_id_providing_module)
-        # cabbage assignment of catalogue back to producer
-        self.catalogue.producer.catalogue = self.catalogue
-
 class ModelVariantProducer:
     """
     Produces model variants from:
