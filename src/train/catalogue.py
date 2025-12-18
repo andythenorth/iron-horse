@@ -102,6 +102,11 @@ class Catalogue(list):
                 input_spritesheet_name_stem=self.input_spritesheet_name_stem,
             )
             self.append(catalogue_entry)
+        if len(self) == 0:
+            raise Exception(
+                f"{self.catalogue.model_id}\n"
+                f"ModelVariantProducer catalogue is empty"
+            )
 
     def produce(self, catalogue_entry):
         # public interface is via catalogue, producer is a private implementation detail
@@ -579,11 +584,6 @@ class ModelVariantProducer:
         # catalogue is a singleton that provides basic metadata for produced model variants
         self.catalogue = Catalogue.create(self, model_def)
         self.catalogue.add_entries()
-        if len(self.catalogue) == 0:
-            raise Exception(
-                f"{self.catalogue.model_id}\n"
-                f"ModelVariantProducer catalogue is empty"
-            )
 
     def _produce(self, catalogue_entry=None):
 
