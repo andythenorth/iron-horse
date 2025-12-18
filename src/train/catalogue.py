@@ -48,8 +48,10 @@ class Catalogue(list):
     - accessors for producer, tech tree etc
     """
 
-    def __init__(self, producer):
+    def __init__(self, producer, model_def):
         self.producer = producer
+        self.model_def = model_def
+        self.schema_name = model_def.schema_name
         self.engine_quacker = EngineQuacker(catalogue=self)
         self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
@@ -57,8 +59,8 @@ class Catalogue(list):
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
-    def create(cls, producer):
-        instance = cls(producer)
+    def create(cls, producer, model_def):
+        instance = cls(producer, model_def)
         return instance
 
     def add_entries(self):
@@ -67,16 +69,16 @@ class Catalogue(list):
             model_variant_id = f"{self.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
-                for i, _ in enumerate(self.producer.model_def.unit_defs)
+                for i, _ in enumerate(self.model_def.unit_defs)
             ]
             # pre-calculated numeric IDs provided for every unit
-            numeric_id_offset = self.producer.model_def.base_numeric_id + (
-                livery_counter * len(self.producer.model_def.unit_defs)
+            numeric_id_offset = self.model_def.base_numeric_id + (
+                livery_counter * len(self.model_def.unit_defs)
             )
             # note that this is the list of *unique* numeric ids - it doesn't repeat ids for repeated units
             unit_numeric_ids = [
                 numeric_id_offset + i
-                for i, _ in enumerate(self.producer.model_def.unit_defs)
+                for i, _ in enumerate(self.model_def.unit_defs)
             ]
 
             vehicle_family_id = self.vehicle_family_id
@@ -134,13 +136,13 @@ class Catalogue(list):
             target_producer = self.producer
 
         # liveries as group from per-vehicle override
-        if target_producer.model_def.livery_group_name is not None:
+        if target_producer.catalogue.model_def.livery_group_name is not None:
             result = []
             for (
                 livery_name,
                 index,
             ) in target_producer.catalogue.roster_providing_module.pax_mail_livery_groups[
-                target_producer.model_def.livery_group_name
+                target_producer.catalogue.model_def.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -170,9 +172,9 @@ class Catalogue(list):
             return result
 
         # liveries directly from model_def (simple list)
-        if target_producer.model_def.liveries is not None:
+        if target_producer.catalogue.model_def.liveries is not None:
             result = []
-            for index, name in enumerate(target_producer.model_def.liveries):
+            for index, name in enumerate(target_producer.catalogue.model_def.liveries):
                 result.append(
                     iron_horse.livery_supplier.deliver(
                         name, relative_spriterow_num=index
@@ -213,23 +215,18 @@ class Catalogue(list):
     def model_id(self):
         # figures out where a model variant is getting a base id from
         # must be either defined on model_def or in the model variant class attrs
-        if self.producer.model_def.model_id is not None:
-            return self.producer.model_def.model_id
+        if self.model_def.model_id is not None:
+            return self.model_def.model_id
         else:
             # we assume it's a wagon id
             return self.producer.get_wagon_id(
-                self.schema_cls.model_id_root, self.producer.model_def
+                self.schema_cls.model_id_root, self.model_def
             )
-
-    @property
-    def model_def(self):
-        # convenience method
-        return self.producer.model_def
 
     @cached_property
     def schema_cls(self):
         # get the schema_cls class for the model, uninstantiated
-        return getattr(schemas, self.producer.schema_name)
+        return getattr(schemas, self.schema_name)
 
     @property
     def model_id_root(self):
@@ -446,7 +443,7 @@ class Catalogue(list):
         if (self.cab_producer is not None) and (
             not self.example_model_variant.is_distributed_power_wagon
         ):
-            if self.cab_producer.model_def.pantograph_type is not None:
+            if self.cab_producer.catalogue.model_def.pantograph_type is not None:
                 result.append(
                     f"ih_pantograph_display/requires_cab_present/{self.model_id}"
                 )
@@ -574,15 +571,13 @@ class ModelVariantProducer:
     """
 
     def __init__(self, model_def, roster_id, roster_id_providing_module):
-        self.schema_name = model_def.schema_name
-        self.model_def = model_def
         # rosters can optionally init model variants from other rosters
         # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
         # catalogue is a singleton that provides basic metadata for produced model variants
-        self.catalogue = Catalogue.create(self)
+        self.catalogue = Catalogue.create(self, model_def)
         self.catalogue.add_entries()
         if len(self.catalogue) == 0:
             raise Exception(
@@ -604,13 +599,13 @@ class ModelVariantProducer:
         )
 
         # orchestrate addition of units
-        for counter, unit_def in enumerate(self.model_def.unit_defs):
+        for counter, unit_def in enumerate(self.catalogue.model_def.unit_defs):
             try:
                 unit_cls = getattr(units, unit_def.unit_cls_name)
             except:
                 raise Exception(
                     "unit_cls_name not found for "
-                    + self.model_def.model_id
+                    + self.catalogue.model_def.model_id
                     + ", "
                     + unit_def.unit_cls_name
                 )
@@ -680,7 +675,7 @@ class ModelVariantProducer:
             return (
                 f"{self.variant_group_id_root}_"
                 f"{base_track_type.lower()}_"
-                f"gen_{self.model_def.gen}{self.model_def.subtype}_"
+                f"gen_{self.catalogue.model_def.gen}{self.catalogue.model_def.subtype}_"
                 f"{livery_suffix}"
             )
 
