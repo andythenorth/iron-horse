@@ -8,7 +8,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <tal:not_trailing_parts condition="unit.is_not_trailing_part">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
             engine_class:                   ${unit.engine_class};
-            introduction_date:              date(${catalogue.intro_year}, ${1 + model_variant.intro_date_months_offset}, 1);
+            introduction_date:              ${model_variant.introduction_date};
             power:                          ${model_variant.power}hp;
             weight:                         ${model_variant.weight}ton;
             tractive_effort_coefficient:    ${model_variant.tractive_effort_coefficient};

@@ -544,6 +544,11 @@ class SchemaBase(object):
         return result
 
     @property
+    def introduction_date(self):
+        # override in subclass as needed
+        return f"date({self.catalogue.intro_year}, {1 + self.intro_date_months_offset}, 1)"
+
+    @property
     def dual_headed(self):
         # override in subclass as needed
         return False
