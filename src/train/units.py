@@ -216,7 +216,9 @@ class UnitBase(object):
             # disable news and exclusive preview for all variants except the default
             if self.model_variant.variant_group_as_nml_prop is not None:
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
-                extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
+                if self.model_variant.catalogue.cab_engine_model is None:
+                    # only disable exclusive preview if there's no cab engine
+                    extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
