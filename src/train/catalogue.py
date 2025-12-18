@@ -123,9 +123,9 @@ class Catalogue(list):
         #      a. model_def.liveries (per-vehicle override)
         #      b. schema_cls.liveries (default)
 
-        if self.producer.cab_producer is not None:
+        if self.cab_producer is not None:
             # if there's a valid cab producer, we want the liveries from that
-            target_producer = self.producer.cab_producer
+            target_producer = self.cab_producer
         else:
             target_producer = self.producer
 
@@ -202,7 +202,7 @@ class Catalogue(list):
             f"Unable to determine valid livery names for "
             f"{self.model_id}\n"
             f"{self.model_def}"
-            f"{self.producer.cab_producer}"
+            f"{self.cab_producer}"
         )
 
     @cached_property
@@ -290,18 +290,23 @@ class Catalogue(list):
 
     @property
     def cab_producer(self):
-        # convenience method
+        # convenience way to get cab producer
         # CABBAGE - this should actually be cab_catalogue in both call name and what it accesses (cab_producer is overly indirect)
-        return self.producer.cab_producer
+        if self.model_def.cab_id is not None:
+            return self.roster.model_variants_by_catalogue[self.model_def.cab_id][
+                "catalogue"
+            ].producer
+        else:
+            return None
 
     @cached_property
     def cab_engine_model(self):
         # fetch a model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
         # considered moving to WagonQuacker, as it's only used for wagons as of April 2025, but not sure yet (EngineQuacker is supposed to be 'is?' not 'here are...')
-        if self.producer.cab_producer is None:
+        if self.cab_producer is None:
             return None
-        return self.producer.cab_producer.catalogue.example_model_variant
+        return self.cab_producer.catalogue.example_model_variant
 
     @cached_property
     def dedicated_trailer_catalogue_model_variant_mappings(self):
@@ -351,8 +356,8 @@ class Catalogue(list):
 
     @cached_property
     def intro_year(self):
-        if self.producer.cab_producer is not None:
-            return self.producer.cab_producer.catalogue.intro_year
+        if self.cab_producer is not None:
+            return self.cab_producer.catalogue.intro_year
 
         # automatic intro_year, but can override via model_def
         assert self.model_def.gen != None, (
@@ -595,16 +600,6 @@ class ModelVariantProducer:
         return result
 
     @property
-    def cab_producer(self):
-        # convenience way to get cab producer
-        if self.model_def.cab_id is not None:
-            return self.catalogue.roster.model_variants_by_catalogue[self.model_def.cab_id][
-                "catalogue"
-            ].producer
-        else:
-            return None
-
-    @property
     def vehicle_family_id(self):
         # vehicle families can transcend multiple model types, and can be used for purposes such as
         # - fetching common model type names
@@ -649,8 +644,8 @@ class ModelVariantProducer:
 
         # group trailers with their cabs - needs to be done before generic wagon handling
         # there are a few ways this could be done, doesn't matter which as of Apr 2025
-        if self.cab_producer is not None:
-            return self.cab_producer.vehicle_family_id
+        if self.catalogue.cab_producer is not None:
+            return self.catalogue.cab_producer.vehicle_family_id
 
         # default grouping for wagons not otherwise handled above
         if self.catalogue.wagon_quacker.quack:
