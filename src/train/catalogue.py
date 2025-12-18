@@ -63,6 +63,8 @@ class Catalogue(list):
         self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
         self.tgv_hst_quacker = TGVHSTQuacker(catalogue=self)
+        # add entries
+        self.add_entries()
 
     def add_entries(self):
         for livery_counter, livery_def in enumerate(self.livery_defs):
@@ -541,7 +543,6 @@ class CabbageShim:
         self.catalogue = Catalogue(model_def, roster_id, roster_id_providing_module)
         # cabbage assignment of catalogue back to producer
         self.catalogue.producer.catalogue = self.catalogue
-        self.catalogue.add_entries()
 
 class ModelVariantProducer:
     """
