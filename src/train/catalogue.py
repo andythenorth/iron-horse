@@ -48,10 +48,16 @@ class Catalogue(list):
     - accessors for producer, tech tree etc
     """
 
-    def __init__(self, producer, model_def):
+    def __init__(self, producer, model_def, roster_id, roster_id_providing_module):
         self.producer = producer
         self.model_def = model_def
         self.schema_name = model_def.schema_name
+        # rosters can optionally init model variants from other rosters
+        # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
+        # we don't store the roster object directly as it can fail to pickle with multiprocessing
+        self.roster_id = roster_id
+        self.roster_id_providing_module = roster_id_providing_module
+        # quackers are used to encapsulate detection of certain vehicle types, encapsulating complex (in some cases) detection conditions
         self.engine_quacker = EngineQuacker(catalogue=self)
         self.wagon_quacker = WagonQuacker(catalogue=self)
         self.clone_quacker = CloneQuacker(catalogue=self)
@@ -59,8 +65,8 @@ class Catalogue(list):
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
-    def create(cls, producer, model_def):
-        instance = cls(producer, model_def)
+    def create(cls, producer, model_def, roster_id, roster_id_providing_module):
+        instance = cls(producer, model_def, roster_id, roster_id_providing_module)
         return instance
 
     def add_entries(self):
@@ -267,16 +273,6 @@ class Catalogue(list):
 
         # otherwise fall through to just model_id
         return self.model_id
-
-    @property
-    def roster_id(self):
-        # convenience method
-        return self.producer.roster_id
-
-    @property
-    def roster_id_providing_module(self):
-        # convenience method
-        return self.producer.roster_id_providing_module
 
     @property
     def roster(self):
@@ -572,13 +568,8 @@ class ModelVariantProducer:
     """
 
     def __init__(self, model_def, roster_id, roster_id_providing_module):
-        # rosters can optionally init model variants from other rosters
-        # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
-        # we don't store the roster object directly as it can fail to pickle with multiprocessing
-        self.roster_id = roster_id
-        self.roster_id_providing_module = roster_id_providing_module
         # catalogue is a singleton that provides basic metadata for produced model variants
-        self.catalogue = Catalogue.create(self, model_def)
+        self.catalogue = Catalogue.create(self, model_def, roster_id, roster_id_providing_module)
         self.catalogue.add_entries()
 
     def _produce(self, catalogue_entry=None):
@@ -635,7 +626,7 @@ class ModelVariantProducer:
         if model_def.cab_id is not None:
             substrings.append(model_def.cab_id)
         substrings.append(base_id)
-        substrings.append(self.roster_id)
+        substrings.append(self.catalogue.roster_id)
         substrings.append("gen")
         substrings.append(str(model_def.gen) + str(model_def.subtype))
         result = "_".join(substrings)
