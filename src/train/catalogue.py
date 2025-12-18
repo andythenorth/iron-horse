@@ -546,14 +546,10 @@ class Catalogue(list):
 
 class ModelVariantProducer:
     """
-    CABBAGE - UPDATE if refactoring some of the storages out, so that catalogue holds the core attrs, and the producer holds methods dedicated to producing model variant instances
-    ModelVariantProducer instances:
-    - hold a roster_id identifier
-    - store a ModelDef object with vehicle-specific parameters
-    - maintain a sequence of one or more UnitDef instances
-    - include the set of available liveries for the vehicle model
-    - for each livery, create a model variant (an instance of the Schema subclass)
-        - each model variant will appear in the in-game buy menu
+    Produces model variants from:
+    - a roster_id identifier
+    - a ModelDef object with vehicle-specific parameters
+    - a Schema object, which is a general pattern for a vehicle type
     - attach to each model variant unique UnitType instances in the proper order
     - resulting in model_variant.units = [<UnitType>, <UnitType>]
 
