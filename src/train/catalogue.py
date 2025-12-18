@@ -538,6 +538,8 @@ class Catalogue(list):
 
 class ModelVariantProducer:
     """
+    Intended as a singleton on Catalogue, just to wrap up some methods for ease.
+
     Produces model variants from:
     - a roster_id identifier
     - a ModelDef object with vehicle-specific parameters
