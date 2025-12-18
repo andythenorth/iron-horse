@@ -522,8 +522,14 @@ base = "Peat Wagon"
 [STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
 base = "Covered Goods Wagon"
 
+[STR_WAGON_NAME_PIECE_GOODS_EASILOADER_COMBOS]
+base = "Easy-loading Covered Wagon"
+
 [STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
 base = "Goods Wagon"
+
+[STR_WAGON_NAME_PIECE_GOODS_MANUFACTURING_PARTS_COMBOS]
+base = "Manufacturing Parts Wagon"
 
 [STR_WAGON_NAME_PIPE_CAR]
 base = "Pipe Wagon"

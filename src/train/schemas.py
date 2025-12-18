@@ -7305,8 +7305,8 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_easiloader_combos"
-    vehicle_family_id = "piece_goods_covered_combos"
-    variant_group_id_root = "wagon_group_piece_goods_combos"  # deliberately group with the covered goods wagons as limited difference
+    vehicle_family_id = "piece_goods_easiloader_combos"
+    variant_group_id_root = "wagon_group_piece_goods_easiloader_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7344,8 +7344,8 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
     """
 
     model_id_root = "piece_goods_manufacturing_parts_combos"
-    vehicle_family_id = "piece_goods_covered_combos"
-    variant_group_id_root = "wagon_group_piece_goods_combos"  # deliberately group with the covered goods wagons as limited difference
+    vehicle_family_id = "piece_goods_manufacturing_parts_combos"
+    variant_group_id_root = "wagon_group_piece_goods_parts_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
