@@ -387,13 +387,27 @@ class Catalogue(list):
 
     @property
     def vehicle_family_badge(self):
-        # convenience method, catalogue method is public, producer is not
-        return self.producer._vehicle_family_badge
+        # accessed via catalogue
+        return f"ih_vehicle_family/{self.vehicle_family_id}"
 
     @property
     def vehicle_family_pantograph_display_badges(self):
-        # convenience method, catalogue method is public, producer is not
-        return self.producer._vehicle_family_pantograph_display_badges
+        # accessed via catalogue
+        result = []
+        # first find out if we're a trailer, and if we need pans
+        if (self.cab_producer is not None) and (
+            not self.example_model_variant.is_distributed_power_wagon
+        ):
+            if self.cab_producer.model_def.pantograph_type is not None:
+                result.append(
+                    f"ih_pantograph_display/requires_cab_present/{self.model_id}"
+                )
+        # now find out if we're a cab, and if we need pans
+        if self.engine_quacker.is_cab_with_dedicated_trailers:
+            if self.model_def.pantograph_type is not None:
+                result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
+        # strictly we should never need both results and could return early, but eh, this also works
+        return result
 
     @property
     def input_spritesheet_name_stem(self):
@@ -611,31 +625,6 @@ class ModelVariantProducer:
 
         # otherwise fall through to just model_id
         return self.catalogue.model_id
-
-    @property
-    def _vehicle_family_badge(self):
-        # accessed via catalogue
-        # over-ride in subclasses as appropriate
-        return f"ih_vehicle_family/{self.vehicle_family_id}"
-
-    @property
-    def _vehicle_family_pantograph_display_badges(self):
-        # accessed via catalogue
-        result = []
-        # first find out if we're a trailer, and if we need pans
-        if (self.cab_producer is not None) and (
-            not self.catalogue.example_model_variant.is_distributed_power_wagon
-        ):
-            if self.cab_producer.model_def.pantograph_type is not None:
-                result.append(
-                    f"ih_pantograph_display/requires_cab_present/{self.catalogue.model_id}"
-                )
-        # now find out if we're a cab, and if we need pans
-        if self.catalogue.engine_quacker.is_cab_with_dedicated_trailers:
-            if self.model_def.pantograph_type is not None:
-                result.append(f"ih_pantograph_display/is_cab/{self.catalogue.model_id}")
-        # strictly we should never need both results and could return early, but eh, this also works
-        return result
 
     @property
     def variant_group_id_root(self):
