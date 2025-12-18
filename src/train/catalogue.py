@@ -97,7 +97,7 @@ class Catalogue(list):
                 livery_def=livery_def,
                 vehicle_family_id=vehicle_family_id,
                 variant_group_id=variant_group_id,
-                input_spritesheet_name_stem=self.producer.input_spritesheet_name_stem,
+                input_spritesheet_name_stem=self.input_spritesheet_name_stem,
             )
             self.append(catalogue_entry)
 
@@ -447,10 +447,33 @@ class Catalogue(list):
         # strictly we should never need both results and could return early, but eh, this also works
         return result
 
-    @property
+    @cached_property
     def input_spritesheet_name_stem(self):
-        # convenience method
-        return self.producer.input_spritesheet_name_stem
+        # the input spritesheet name is the same for all variants of the model type
+        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
+        if (
+            getattr(self.schema_cls, "input_spritesheet_delegate_id_root", None)
+            is not None
+        ):
+            # CABBAGE - THIS MAY BE UNUSED
+            input_spritesheet_name_stem = self.get_wagon_id(
+                self.schema_cls.input_spritesheet_delegate_id_root, self.model_def
+            )
+        else:
+            # handle cloned cases by referring to the original producer for the path
+            if self.model_def.cloned_from_model_def is not None:
+                input_spritesheet_name_stem = (
+                    self.model_def.cloned_from_model_def.model_id
+                )
+            else:
+                input_spritesheet_name_stem = self.model_id
+
+        # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
+        # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
+        input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
+            self.roster_id, self.roster_id_providing_module
+        )
+        return input_spritesheet_name_stem
 
     @property
     def cite(self):
@@ -664,34 +687,6 @@ class ModelVariantProducer:
 
         # should never be reached
         raise ValueError(f"variant_group_id not found for {self.catalogue.model_id}")
-
-    @cached_property
-    def input_spritesheet_name_stem(self):
-        # the input spritesheet name is the same for all variants of the model type
-        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-        if (
-            getattr(self.catalogue.schema_cls, "input_spritesheet_delegate_id_root", None)
-            is not None
-        ):
-            # CABBAGE - THIS MAY BE UNUSED
-            input_spritesheet_name_stem = self.get_wagon_id(
-                self.catalogue.schema_cls.input_spritesheet_delegate_id_root, self.model_def
-            )
-        else:
-            # handle cloned cases by referring to the original producer for the path
-            if self.model_def.cloned_from_model_def is not None:
-                input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.model_id
-                )
-            else:
-                input_spritesheet_name_stem = self.catalogue.model_id
-
-        # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
-        # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
-        input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
-            self.roster_id, self.roster_id_providing_module
-        )
-        return input_spritesheet_name_stem
 
 
 class EngineQuacker:
