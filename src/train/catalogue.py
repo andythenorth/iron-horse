@@ -79,7 +79,7 @@ class Catalogue(list):
                 for i, _ in enumerate(self.producer.model_def.unit_defs)
             ]
 
-            vehicle_family_id = self.producer.vehicle_family_id
+            vehicle_family_id = self.vehicle_family_id
 
             variant_group_id = self.producer.get_variant_group_id(
                 livery_def, self.base_track_type
@@ -234,8 +234,33 @@ class Catalogue(list):
 
     @property
     def vehicle_family_id(self):
-        # convenience method
-        return self.producer.vehicle_family_id
+        # vehicle families can transcend multiple model types, and can be used for purposes such as
+        # - fetching common model type names
+        # - variant grouping (other methods exist)
+        # - badges for behaviour such as formation-dependent sprites
+        # - other badges
+
+        # cascade of sources for vehicle family ID
+        if self.model_def.vehicle_family_id is not None:
+            return self.model_def.vehicle_family_id
+
+        # tgv and hst model types have specific handling
+        if self.tgv_hst_quacker.quack:
+            return self.tgv_hst_quacker.vehicle_family_id
+
+        # general methods for wagons
+        if self.wagon_quacker.quack:
+            # trailers can delegate to cab_id if prsent
+            if self.model_def.cab_id is not None:
+                return self.model_def.cab_id
+            # wagon can optionally set vehicle_family_id as class property
+            if getattr(self.schema_cls, "vehicle_family_id", None) is not None:
+                return self.schema_cls.vehicle_family_id
+            # wagons otherwise fall through to just model_id
+            return self.schema_cls.model_id_root
+
+        # otherwise fall through to just model_id
+        return self.model_id
 
     @property
     def roster_id(self):
@@ -395,7 +420,7 @@ class Catalogue(list):
         ):
             result.extend(self.schema_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
-        result.append(self.producer.vehicle_family_id)
+        result.append(self.vehicle_family_id)
         return result
 
     @property
@@ -600,36 +625,6 @@ class ModelVariantProducer:
         return result
 
     @property
-    def vehicle_family_id(self):
-        # vehicle families can transcend multiple model types, and can be used for purposes such as
-        # - fetching common model type names
-        # - variant grouping (other methods exist)
-        # - badges for behaviour such as formation-dependent sprites
-        # - other badges
-
-        # cascade of sources for vehicle family ID
-        if self.model_def.vehicle_family_id is not None:
-            return self.model_def.vehicle_family_id
-
-        # tgv and hst model types have specific handling
-        if self.catalogue.tgv_hst_quacker.quack:
-            return self.catalogue.tgv_hst_quacker.vehicle_family_id
-
-        # general methods for wagons
-        if self.catalogue.wagon_quacker.quack:
-            # trailers can delegate to cab_id if prsent
-            if self.model_def.cab_id is not None:
-                return self.model_def.cab_id
-            # wagon can optionally set vehicle_family_id as class property
-            if getattr(self.catalogue.schema_cls, "vehicle_family_id", None) is not None:
-                return self.catalogue.schema_cls.vehicle_family_id
-            # wagons otherwise fall through to just model_id
-            return self.catalogue.schema_cls.model_id_root
-
-        # otherwise fall through to just model_id
-        return self.catalogue.model_id
-
-    @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
         if getattr(self.catalogue.schema_cls, "variant_group_id_root", None) is not None:
@@ -645,7 +640,7 @@ class ModelVariantProducer:
         # group trailers with their cabs - needs to be done before generic wagon handling
         # there are a few ways this could be done, doesn't matter which as of Apr 2025
         if self.catalogue.cab_producer is not None:
-            return self.catalogue.cab_producer.vehicle_family_id
+            return self.catalogue.cab_producer.catalogue.vehicle_family_id
 
         # default grouping for wagons not otherwise handled above
         if self.catalogue.wagon_quacker.quack:
@@ -664,8 +659,8 @@ class ModelVariantProducer:
             )
 
         # delegate to vehicle family
-        if self.vehicle_family_id is not None:
-            return self.vehicle_family_id
+        if self.catalogue.vehicle_family_id is not None:
+            return self.catalogue.vehicle_family_id
 
         # should never be reached
         raise ValueError(f"variant_group_id not found for {self.catalogue.model_id}")
