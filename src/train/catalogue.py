@@ -48,10 +48,11 @@ class Catalogue(list):
     - accessors for producer, tech tree etc
     """
 
-    def __init__(self, producer, model_def, roster_id, roster_id_providing_module):
-        self.producer = producer
+    def __init__(self, model_def, roster_id, roster_id_providing_module):
         self.model_def = model_def
         self.schema_name = model_def.schema_name
+        # ModelVariantProducer is a convenience singleton to wrap up some detail of producing model variants
+        self.producer = ModelVariantProducer()
         # rosters can optionally init model variants from other rosters
         # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
@@ -65,8 +66,8 @@ class Catalogue(list):
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
-    def create(cls, producer, model_def, roster_id, roster_id_providing_module):
-        instance = cls(producer, model_def, roster_id, roster_id_providing_module)
+    def create(cls, model_def, roster_id, roster_id_providing_module):
+        instance = cls(model_def, roster_id, roster_id_providing_module)
         return instance
 
     def add_entries(self):
@@ -540,6 +541,15 @@ class Catalogue(list):
                 )
 
 
+class CabbageShim:
+    # CABBAGE
+    def __init__(self, model_def, roster_id, roster_id_providing_module):
+        # catalogue is a singleton that provides basic metadata for produced model variants
+        self.catalogue = Catalogue(model_def, roster_id, roster_id_providing_module)
+        # cabbage assignment of catalogue back to producer
+        self.catalogue.producer.catalogue = self.catalogue
+        self.catalogue.add_entries()
+
 class ModelVariantProducer:
     """
     Produces model variants from:
@@ -567,10 +577,9 @@ class ModelVariantProducer:
 
     """
 
-    def __init__(self, model_def, roster_id, roster_id_providing_module):
-        # catalogue is a singleton that provides basic metadata for produced model variants
-        self.catalogue = Catalogue.create(self, model_def, roster_id, roster_id_providing_module)
-        self.catalogue.add_entries()
+    def __init__(self):
+        pass
+        # nothing
 
     def _produce(self, catalogue_entry=None):
 

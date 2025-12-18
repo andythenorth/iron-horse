@@ -16,7 +16,7 @@ from utils import timing
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.catalogue import Catalogue, ModelVariantProducer
+from train.catalogue import CabbageShim
 
 
 class Roster:
@@ -234,7 +234,7 @@ class Roster:
             # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
             # however as of Oct 2025 that wasn't a plaster I wanted to rip off
             for model_def in engine_module.main():
-                producer = ModelVariantProducer(
+                producer = CabbageShim(
                     model_def, self.id, roster_id_providing_module
                 )
                 catalogue = producer.catalogue
@@ -287,7 +287,7 @@ class Roster:
                     # therefore it would be better if catalogue was instantiated here and producer was instantiated as a subsidiary of catalogue
                     # however as of Oct 2025 that wasn't a plaster I wanted to rip off
                     for model_def in wagon_module.main():
-                        producer = ModelVariantProducer(
+                        producer = CabbageShim(
                             model_def, self.id, roster_id_providing_module
                         )
                         catalogue = producer.catalogue
