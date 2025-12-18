@@ -545,7 +545,8 @@ class SchemaBase(object):
 
     @property
     def introduction_date(self):
-        # override in subclass as needed
+        if self.catalogue.cab_engine_model is not None:
+            return self.catalogue.cab_engine_model.introduction_date
         return f"date({self.catalogue.intro_year}, {1 + self.intro_date_months_offset}, 1)"
 
     @property
