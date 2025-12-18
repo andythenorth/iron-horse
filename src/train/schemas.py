@@ -5161,7 +5161,11 @@ class GasTankCarBase(CarSchemaBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = ["RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR"]
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+    ]
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
