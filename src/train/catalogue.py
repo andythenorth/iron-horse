@@ -148,13 +148,13 @@ class Catalogue(list):
             return result
 
         # liveries as group from class livery_group_name (default)
-        if hasattr(target_producer.schema_cls, "livery_group_name"):
+        if hasattr(target_producer.catalogue.schema_cls, "livery_group_name"):
             result = []
             for (
                 livery_name,
                 index,
             ) in target_producer.roster_providing_module.pax_mail_livery_groups[
-                target_producer.schema_cls.livery_group_name
+                target_producer.catalogue.schema_cls.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -179,9 +179,9 @@ class Catalogue(list):
             return result
 
         # liveries directly from schema_cls
-        if hasattr(target_producer.schema_cls, "liveries"):
+        if hasattr(target_producer.catalogue.schema_cls, "liveries"):
             result = []
-            for index, name in enumerate(target_producer.schema_cls.liveries):
+            for index, name in enumerate(target_producer.catalogue.schema_cls.liveries):
                 if self.wagon_quacker.quack:
                     # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
                     relative_spriterow_num = 0
@@ -214,7 +214,7 @@ class Catalogue(list):
         else:
             # we assume it's a wagon id
             return self.producer.get_wagon_id(
-                self.producer.schema_cls.model_id_root, self.producer.model_def
+                self.schema_cls.model_id_root, self.producer.model_def
             )
 
     @property
@@ -222,15 +222,15 @@ class Catalogue(list):
         # convenience method
         return self.producer.model_def
 
-    @property
+    @cached_property
     def schema_cls(self):
-        # convenience method
-        return self.producer.schema_cls
+        # get the schema_cls class for the model, uninstantiated
+        return getattr(schemas, self.producer.schema_name)
 
     @property
     def model_id_root(self):
         # convenience method
-        return self.producer.schema_cls.model_id_root
+        return self.schema_cls.model_id_root
 
     @property
     def vehicle_family_id(self):
@@ -377,10 +377,10 @@ class Catalogue(list):
 
         # !! attr lookup like this is a sign that this might need delegated to producer properly, but eh
         if (
-            getattr(self.producer.schema_cls, "formation_reporting_labels", None)
+            getattr(self.schema_cls, "formation_reporting_labels", None)
             is not None
         ):
-            result.extend(self.producer.schema_cls.formation_reporting_labels)
+            result.extend(self.schema_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
         result.append(self.producer.vehicle_family_id)
         return result
@@ -419,17 +419,17 @@ class Catalogue(list):
                 "Chief Engineer, Mass Mobility Systems",
             ]
         else:
-            if getattr(self.producer.schema_cls, "cite", None) == "Arabella Unit":
-                cite_name = self.producer.schema_cls.cite
+            if getattr(self.schema_cls, "cite", None) == "Arabella Unit":
+                cite_name = self.schema_cls.cite
                 cite_titles = [
                     "General Manager (Railcars)",
                     "Senior Engineer, Self-Propelled Traction",
                     "Director, Suburban and Rural Lines",
                 ]
             elif (
-                getattr(self.producer.schema_cls, "cite", None) == "Dr Constance Speed"
+                getattr(self.schema_cls, "cite", None) == "Dr Constance Speed"
             ):
-                cite_name = self.producer.schema_cls.cite
+                cite_name = self.schema_cls.cite
                 cite_titles = [
                     "Lead Engineer, High Speed Projects",
                     "Director, Future Traction Concepts",
@@ -510,10 +510,10 @@ class ModelVariantProducer:
         if catalogue_entry == None:
             raise BaseException(
                 "no catalogue_index passed for ModelVariantProducer; model_def is "
-                + str(self.schema_cls)
+                + str(self.catalogue.schema_cls)
             )
 
-        model_variant = self.schema_cls(
+        model_variant = self.catalogue.schema_cls(
             producer=self,
             catalogue_entry=catalogue_entry,
         )
@@ -541,11 +541,6 @@ class ModelVariantProducer:
                 model_variant.units.append(unit)
 
         return model_variant
-
-    @cached_property
-    def schema_cls(self):
-        # get the schema_cls class for the model, uninstantiated
-        return getattr(schemas, self.schema_name)
 
     @property
     def roster_providing_module(self):
@@ -609,10 +604,10 @@ class ModelVariantProducer:
             if self.model_def.cab_id is not None:
                 return self.model_def.cab_id
             # wagon can optionally set vehicle_family_id as class property
-            if getattr(self.schema_cls, "vehicle_family_id", None) is not None:
-                return self.schema_cls.vehicle_family_id
+            if getattr(self.catalogue.schema_cls, "vehicle_family_id", None) is not None:
+                return self.catalogue.schema_cls.vehicle_family_id
             # wagons otherwise fall through to just model_id
-            return self.schema_cls.model_id_root
+            return self.catalogue.schema_cls.model_id_root
 
         # otherwise fall through to just model_id
         return self.catalogue.model_id
@@ -645,10 +640,10 @@ class ModelVariantProducer:
     @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
-        if getattr(self.schema_cls, "variant_group_id_root", None) is not None:
-            return self.schema_cls.variant_group_id_root
-        elif getattr(self.schema_cls, "model_id_root", None) is not None:
-            return f"NAME_SUFFIX_{self.schema_cls.model_id_root}"
+        if getattr(self.catalogue.schema_cls, "variant_group_id_root", None) is not None:
+            return self.catalogue.schema_cls.variant_group_id_root
+        elif getattr(self.catalogue.schema_cls, "model_id_root", None) is not None:
+            return f"NAME_SUFFIX_{self.catalogue.schema_cls.model_id_root}"
         else:
             return self.catalogue.model_id
 
@@ -688,12 +683,12 @@ class ModelVariantProducer:
         # the input spritesheet name is the same for all variants of the model type
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
         if (
-            getattr(self.schema_cls, "input_spritesheet_delegate_id_root", None)
+            getattr(self.catalogue.schema_cls, "input_spritesheet_delegate_id_root", None)
             is not None
         ):
             # CABBAGE - THIS MAY BE UNUSED
             input_spritesheet_name_stem = self.get_wagon_id(
-                self.schema_cls.input_spritesheet_delegate_id_root, self.model_def
+                self.catalogue.schema_cls.input_spritesheet_delegate_id_root, self.model_def
             )
         else:
             # handle cloned cases by referring to the original producer for the path
