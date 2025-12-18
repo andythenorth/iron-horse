@@ -52,7 +52,7 @@ class Catalogue(list):
         self.model_def = model_def
         self.schema_name = model_def.schema_name
         # ModelVariantProducer is a convenience singleton to wrap up some detail of producing model variants
-        self.producer = ModelVariantProducer()
+        self.producer = ModelVariantProducer(self)
         # rosters can optionally init model variants from other rosters
         # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
@@ -64,14 +64,7 @@ class Catalogue(list):
         self.clone_quacker = CloneQuacker(catalogue=self)
         self.tgv_hst_quacker = TGVHSTQuacker(catalogue=self)
 
-    # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
-    @classmethod
-    def create(cls, model_def, roster_id, roster_id_providing_module):
-        instance = cls(model_def, roster_id, roster_id_providing_module)
-        return instance
-
     def add_entries(self):
-        # entry adding separated from create() as it depends on the catalogue being available to producer
         for livery_counter, livery_def in enumerate(self.livery_defs):
             model_variant_id = f"{self.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
@@ -577,9 +570,8 @@ class ModelVariantProducer:
 
     """
 
-    def __init__(self):
-        pass
-        # nothing
+    def __init__(self, catalogue):
+        self.catalogue = catalogue
 
     def _produce(self, catalogue_entry=None):
 
