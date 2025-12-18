@@ -252,10 +252,18 @@ class Catalogue(list):
         # convenience method
         return self.producer.roster_id_providing_module
 
-    @property
+    @cached_property
     def numeric_id_blocks_consumed(self):
-        # convenience method
-        return self.producer.numeric_id_blocks_consumed
+        """
+        Returns a sorted list of unique numeric ID blocks (multiple-of-10 bases)
+        consumed by this model.
+        """
+        all_ids = []
+        for catalogue_entry in self:
+            all_ids.extend(catalogue_entry.unit_numeric_ids)
+
+        blocks = {id_ - (id_ % 10) for id_ in all_ids}
+        return sorted(blocks)
 
     @property
     def default_entry(self):
@@ -694,19 +702,6 @@ class ModelVariantProducer:
             self.roster_id, self.roster_id_providing_module
         )
         return input_spritesheet_name_stem
-
-    @cached_property
-    def numeric_id_blocks_consumed(self):
-        """
-        Returns a sorted list of unique numeric ID blocks (multiple-of-10 bases)
-        consumed by this vehicle.
-        """
-        all_ids = []
-        for catalogue_entry in self.catalogue:
-            all_ids.extend(catalogue_entry.unit_numeric_ids)
-
-        blocks = {id_ - (id_ % 10) for id_ in all_ids}
-        return sorted(blocks)
 
 
 class EngineQuacker:
