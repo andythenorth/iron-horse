@@ -42,8 +42,8 @@ class Pipeline(object):
             "src",
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
-            self.catalogue.producer.roster_id_providing_module,
-            self.catalogue.producer.input_spritesheet_name_stem + ".png",
+            self.catalogue.roster_id_providing_module,
+            self.catalogue.input_spritesheet_name_stem + ".png",
         )
 
     @cached_property

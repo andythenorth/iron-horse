@@ -100,7 +100,7 @@ def render_docs_vehicle_details(
 
     roster = iron_horse.roster_manager.active_roster
     for catalogue in catalogues:
-        catalogue.producer.assert_description_foamer_facts()
+        catalogue.assert_description_foamer_facts()
         doc_name = catalogue.model_id
         model_variants = roster.model_variants_by_catalogue[catalogue.model_id][
             "model_variants"

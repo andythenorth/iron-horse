@@ -158,7 +158,7 @@
                         <tbody>
                             <tal:catalogues repeat="catalogue sorted(catalogues, key=lambda catalogue: catalogue.model_def.base_numeric_id)">
                                 <tr>
-                                    <td>${', '.join([str(i) for i in catalogue.producer.numeric_id_blocks_consumed])}</td>
+                                    <td>${', '.join([str(i) for i in catalogue.numeric_id_blocks_consumed])}</td>
                                     <td>${catalogue.model_id}</td>
                                     <td>${doc_helper.unpack_name_string(catalogue)}</td>
                                 </tr>

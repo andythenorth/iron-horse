@@ -218,6 +218,11 @@ class Catalogue(list):
             )
 
     @property
+    def model_def(self):
+        # convenience method
+        return self.producer.model_def
+
+    @property
     def schema_cls(self):
         # convenience method
         return self.producer.schema_cls
@@ -228,14 +233,29 @@ class Catalogue(list):
         return self.producer.schema_cls.model_id_root
 
     @property
-    def model_def(self):
-        # convenience method
-        return self.producer.model_def
-
-    @property
     def vehicle_family_id(self):
         # convenience method
         return self.producer.vehicle_family_id
+
+    @property
+    def roster_id(self):
+        # convenience method
+        return self.producer.roster_id
+
+    @property
+    def roster(self):
+        # convenience method
+        return self.producer.roster
+
+    @property
+    def roster_id_providing_module(self):
+        # convenience method
+        return self.producer.roster_id_providing_module
+
+    @property
+    def numeric_id_blocks_consumed(self):
+        # convenience method
+        return self.producer.numeric_id_blocks_consumed
 
     @property
     def default_entry(self):
@@ -376,6 +396,11 @@ class Catalogue(list):
         return self.producer._vehicle_family_pantograph_display_badges
 
     @property
+    def input_spritesheet_name_stem(self):
+        # convenience method
+        return self.producer.input_spritesheet_name_stem
+
+    @property
     def cite(self):
         # this assumes that NG and Metro always return the same, irrespective of model type cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
@@ -418,6 +443,18 @@ class Catalogue(list):
                     "Transitional General Manager (Traction)",
                 ]
         return cite_name + ", " + random.choice(cite_titles)
+
+    def assert_description_foamer_facts(self):
+        # if these are too noisy, comment out the caller
+        if self.engine_quacker.quack:
+            if len(self.model_def.description) == 0:
+                utils.echo_message(self.model_id + " has no description")
+            if len(self.model_def.foamer_facts) == 0:
+                utils.echo_message(self.model_id + " has no foamer_facts")
+            if "." in self.model_def.foamer_facts:
+                utils.echo_message(
+                    self.model_id + " foamer_facts has a '.' in it."
+                )
 
 
 class ModelVariantProducer:
@@ -691,18 +728,6 @@ class ModelVariantProducer:
         blocks = {id_ - (id_ % 10) for id_ in all_ids}
         return sorted(blocks)
 
-    def assert_description_foamer_facts(self):
-        # if these are too noisy, comment out the caller
-        if self.catalogue.engine_quacker.quack:
-            if len(self.model_def.description) == 0:
-                utils.echo_message(self.catalogue.model_id + " has no description")
-            if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message(self.catalogue.model_id + " has no foamer_facts")
-            if "." in self.model_def.foamer_facts:
-                utils.echo_message(
-                    self.catalogue.model_id + " foamer_facts has a '.' in it."
-                )
-
 
 class EngineQuacker:
     """
@@ -903,7 +928,7 @@ class CloneQuacker:
         # possibly expensive, but not often required
         # timed ok when tested, but if slow, put a structure on roster to handle it, or pre-build the clone references in catalogue when produced
         if self.catalogue.model_def.cloned_from_model_def is not None:
-            for candidate_catalogue in self.catalogue.producer.roster.catalogues:
+            for candidate_catalogue in self.catalogue.roster.catalogues:
                 if (
                     candidate_catalogue.model_def
                     == self.catalogue.model_def.cloned_from_model_def
@@ -911,7 +936,7 @@ class CloneQuacker:
                     return candidate_catalogue
         # otherwise it's a fake clone, try the vehicle family, which may be unreliable but eh
         try:
-            return self.catalogue.producer.roster.model_variants_by_catalogue[
+            return self.catalogue.roster.model_variants_by_catalogue[
                 self.catalogue.vehicle_family_id
             ]["catalogue"]
         except (KeyError, TypeError):
