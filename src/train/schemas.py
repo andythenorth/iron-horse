@@ -367,7 +367,8 @@ class SchemaBase(object):
     @property
     def general_metadata_badges(self):
         result = []
-        result.append(f"ih_gen/{self.gen}")
+        if not self.catalogue.wagon_quacker.is_caboose:
+            result.append(f"ih_gen/{self.gen}")
         if getattr(self, "subtype", None) is not None:
             result.append("ih_wagon_subtype/" + self.subtype.lower())
         # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
