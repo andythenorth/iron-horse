@@ -3652,7 +3652,7 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_2"]],
+            buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_3"]],
             catalogue_entry=self.catalogue_entry,
         )
 
