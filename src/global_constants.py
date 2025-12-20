@@ -197,6 +197,7 @@ wagon_module_name_stems = [
     "caboose_cars_type_2",
     "caboose_cars_type_3",
     "caboose_cars_type_4",
+    "caboose_cars_type_5",
 ]
 
 # capacity multipliers for user-configurable capacity parameter

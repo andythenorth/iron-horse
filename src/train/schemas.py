@@ -3589,8 +3589,6 @@ class CabooseCarType1(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    # !! NE / LNER ish
-
     model_id_root = "caboose_car_type_1"
 
     def __init__(self, **kwargs):
@@ -3601,8 +3599,6 @@ class CabooseCarType2(CabooseCarBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
-
-    # !! LMS / Midland ish
 
     model_id_root = "caboose_car_type_2"
 
@@ -3615,8 +3611,6 @@ class CabooseCarType3(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    # !! GWR ish
-
     model_id_root = "caboose_car_type_3"
 
     def __init__(self, **kwargs):
@@ -3628,9 +3622,20 @@ class CabooseCarType4(CabooseCarBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
+    model_id_root = "caboose_car_type_4"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class CabooseCarType5(CabooseCarBase):
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
     # !! SR ish
 
-    model_id_root = "caboose_car_type_4"
+    model_id_root = "caboose_car_type_5"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
