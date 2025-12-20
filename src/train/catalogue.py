@@ -789,20 +789,8 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ == "GestaltGraphicsCabooseLike"
-            for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
-        )
-
-    @cached_property
-    def is_randomised_caboose(self):
-        # predicate for wagons which act as random choice of caboose (or similar)
-        # if it's not a wagon at all, return early
-        if self._quack() == False:
-            return False
-        # depends on looking up class name, but should be ok
-        return any(
-            base.__name__ == "GestaltGraphicsCabooseLikeRandomised"
-            for base in self.catalogue.example_model_variant.gestalt_graphics.__class__.__mro__
+            base.__name__ in ["CabooseCarBase", "SpacerCabbageCarBase"]
+            for base in self.catalogue.schema_cls.__mro__
         )
 
     @cached_property

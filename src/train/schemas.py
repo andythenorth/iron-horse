@@ -19,8 +19,6 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsVisibleCargo,
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
-    GestaltGraphicsCabooseLike,
-    GestaltGraphicsCabooseLikeRandomised,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
     GestaltGraphicsFormationDependent,
@@ -874,8 +872,6 @@ class SchemaBase(object):
             # custom buy menu sprite for articulated vehicles
             return True
         if self.catalogue.wagon_quacker.is_randomised_wagon_type:
-            return True
-        if self.catalogue.wagon_quacker.is_randomised_caboose:
             return True
         if self.dual_headed:
             return True
@@ -3573,21 +3569,14 @@ class CabooseCarBase(CarSchemaBase):
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCabooseLike(
+        weathered_states = {
+            "unweathered": graphics_constants.body_recolour_CC1,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
+            weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @cached_property
-    def buy_menu_variants_by_date_cabbage(self):
-        # map buy menu variants and date ranges to show them for
-        result = []
-        for counter, date_range in enumerate(
-            self.roster.intro_year_ranges(self.base_track_type)
-        ):
-            result.append((counter, date_range))
-        return result
 
     @property
     def random_reverse(self):
@@ -3659,10 +3648,10 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         # note that this uses caboose-specific randomisation methods
-        self.gestalt_graphics = GestaltGraphicsCabooseLikeRandomised(
-            recolour_map=graphics_constants.caboose_car_body_recolour_map,
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=2,
             buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_2"]],
-            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7317,7 +7306,7 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
-            dice_colour=1,
+            dice_colour=3,
             # CABBAGE SET THESE
             buy_menu_id_pairs=[["tarpaulin_car_type_2"], ["sliding_roof_car"]],
             catalogue_entry=self.catalogue_entry,
@@ -7830,17 +7819,14 @@ class SpacerCabbageCarBase(CarSchemaBase):
         self.floating_run_cost_multiplier = 0.5
         self.use_colour_randomisation_strategies = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCabooseLike(
+        weathered_states = {
+            "unweathered": graphics_constants.body_recolour_CC1,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            buy_menu_variants_by_date_cabbage=self.buy_menu_variants_by_date_cabbage,
+            weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @cached_property
-    def buy_menu_variants_by_date_cabbage(self):
-        # only one version
-        return [[0, (0, global_constants.max_game_date)]]
-
 
 class SpacerCabbageCarType1(SpacerCabbageCarBase):
     """
@@ -8009,7 +7995,6 @@ class TankCarProductBase(TankCarBase):
         weathered_states = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
-        # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -8085,7 +8070,6 @@ class TankCarStandardBase(TankCarBase):
         weathered_states = {
             "unweathered": graphics_constants.tank_car_livery_recolour_map
         }
-        # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
