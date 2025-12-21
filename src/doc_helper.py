@@ -227,8 +227,6 @@ class DocHelper(object):
             # extensible excludes as needed
             if catalogue.wagon_quacker.is_randomised_wagon_type:
                 continue
-            if catalogue.wagon_quacker.is_caboose:
-                continue
             wagon_catalogues.append(catalogue)
         wagons = ("wagons", wagon_catalogues)
 
