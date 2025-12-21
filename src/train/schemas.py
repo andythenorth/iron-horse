@@ -7812,6 +7812,7 @@ class SpacerCabbageCarBase(CarSchemaBase):
         self.buy_cost_adjustment_factor = 0.25
         self.floating_run_cost_multiplier = 0.5
         self.use_colour_randomisation_strategies = True
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.body_recolour_CC1,
