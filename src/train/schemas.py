@@ -2751,18 +2751,6 @@ class BoxCarType2(BoxCarBase):
     Alternative livery for standard box car / van
     """
 
-    # adjusted set
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_BUMBLEBEE",
-        # "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING", # nerfed off as duplicates appearance of type 1 box car in same livery
-        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "RANDOM_LIVERIES_OXIDE_RUST",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-    ]
-
     model_id_root = "box_car_type_2"
     variant_group_id_root = "wagon_group_box_cars"
     randomised_candidate_groups = [
