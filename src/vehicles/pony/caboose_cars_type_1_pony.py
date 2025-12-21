@@ -25,7 +25,7 @@ def main(**kwargs):
         gen=1,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_ng_16px")
