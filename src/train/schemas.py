@@ -3557,6 +3557,7 @@ class CabooseCarBase(CarSchemaBase):
         # chop down caboose costs, they're just eye candy eh
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.body_recolour_CC1,
