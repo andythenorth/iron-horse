@@ -31,7 +31,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    model_def.define_description("""""")
+    model_def.define_description(
+        """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
+    )
     model_def.define_foamer_facts(
         """TGV Sud-Est, with TGV 001-style distributed traction"""
     )
@@ -63,7 +65,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    model_def.define_description("""""")
+    model_def.define_description(
+        """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
+    )
     model_def.define_foamer_facts(
         """TGV Sud-Est, with TGV 001-style distributed traction"""
     )
