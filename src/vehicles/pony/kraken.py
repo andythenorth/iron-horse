@@ -30,7 +30,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""The tide turns. Release the Kraken.""")
     model_def.define_foamer_facts("""GWR twin railcars""")
 
     result.append(model_def)

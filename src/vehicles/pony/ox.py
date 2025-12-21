@@ -30,10 +30,10 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Knows its job.""")
     model_def.define_foamer_facts(
-        """"""
-    )  # SOME SORT OF LNER 0-6-2t, but as 2-6-2t https://www.lner.info/locos/N/n10.php
+        """NER N9, N10, N11 class tank engines"""
+    )
 
     result.append(model_def)
 

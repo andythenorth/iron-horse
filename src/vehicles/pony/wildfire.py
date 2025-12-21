@@ -35,9 +35,9 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Built small, runs hot.""")
     model_def.define_foamer_facts(
-        """Indonesian Railways Co. GE CM20EMP, Vossloh G2000 BB"""
+        """Indonesian Railways GE CM20EMP, Vossloh G2000 BB"""
     )
 
     result.append(model_def)

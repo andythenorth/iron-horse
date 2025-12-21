@@ -35,8 +35,8 @@ def main(**kwargs):
         rel_spriterow_index=1,
     )
 
-    model_def.define_description("""""")
-    model_def.define_foamer_facts("""LMS Stanier 8F, WD Austerity 2-10-0""")
+    model_def.define_description("""Put it on the job and let it work.""")
+    model_def.define_foamer_facts("""LMS Stanier 8F, WD Austerity 2-10-0, LNER P1 2-8-2""")
 
     result.append(model_def)
 

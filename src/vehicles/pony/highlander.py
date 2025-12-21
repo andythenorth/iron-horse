@@ -38,7 +38,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Who said there can only be one?""")
     model_def.define_foamer_facts(
         """CIÉ (Irish Transport System) 141 Class and 181 Class"""
     )

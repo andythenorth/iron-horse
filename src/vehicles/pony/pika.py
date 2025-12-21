@@ -31,8 +31,8 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
-    model_def.define_foamer_facts("""""")
+    model_def.define_description("""Small creature, steady habits.""")
+    model_def.define_foamer_facts("""Garratt-type engines for industrial use""")
 
     result.append(model_def)
 

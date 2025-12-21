@@ -31,7 +31,7 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Big intentions.""")
     model_def.define_foamer_facts(
         """LNWR 380 Class 'Beames Tank', Port Talbot Railway Cooke Tank"""
     )

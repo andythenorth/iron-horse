@@ -28,7 +28,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Ça fait du vent?""")
     model_def.define_foamer_facts(
         """BR Class 124 DMU, using turbine from SNCF Class T 1000 ETG Turbotrain"""
     )

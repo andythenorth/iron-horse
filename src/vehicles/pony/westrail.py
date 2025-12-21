@@ -36,9 +36,9 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Looks tidy, works anywhere.""")
     model_def.define_foamer_facts(
-        """Westrail P Class"""  # https://en.wikipedia.org/wiki/Westrail_P_class
+        """Westrail P Class (Australia), Spoornet Class 38-000 (South Africa); bo-bo-bo wheel arrangement"""
     )
 
     result.append(model_def)

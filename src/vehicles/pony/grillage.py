@@ -35,7 +35,7 @@ def main(**kwargs):
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Turn and burn.""")
     model_def.define_foamer_facts(
         """Proposed BR high-horsepower freight locomotives of the 1960s and 1970s"""
     )

@@ -35,10 +35,10 @@ def main(**kwargs):
         rel_spriterow_index=1,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Run it hard, put it away wet.""")
     model_def.define_foamer_facts(
-        """"""
-    )  # BR Class 16, QR 1270 class, BTH Explorer class
+        """Queensland Railways 1270 class, British Thomson-Houston <i>Explorer</i> class, BR Class 16"""
+    )
 
     result.append(model_def)
 

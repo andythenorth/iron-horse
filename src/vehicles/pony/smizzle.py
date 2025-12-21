@@ -34,7 +34,7 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    model_def.define_description("""""")
+    model_def.define_description("""Pulls steady, asks nowt.""")
     model_def.define_foamer_facts(
         """English Electric locomotives for Queensland and Western Australia, Baldwin DRS-6-4-660NA"""
     )
