@@ -39,8 +39,7 @@ def main(**kwargs):
         base_numeric_id=29110,
         gen=1,
         subtype="aA",
-        docs_image_spriterow=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
@@ -52,8 +51,7 @@ def main(**kwargs):
         base_numeric_id=32390,
         gen=1,
         subtype="aB",
-        docs_image_spriterow=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
@@ -65,8 +63,7 @@ def main(**kwargs):
         base_numeric_id=29250,
         gen=1,
         subtype="aC",
-        docs_image_spriterow=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_caboose_24px")

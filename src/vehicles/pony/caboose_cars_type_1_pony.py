@@ -39,7 +39,6 @@ def main(**kwargs):
         base_numeric_id=29330,
         gen=1,
         subtype="aA",
-        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
@@ -52,7 +51,6 @@ def main(**kwargs):
         base_numeric_id=23270,
         gen=1,
         subtype="aB",
-        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
@@ -65,7 +63,6 @@ def main(**kwargs):
         base_numeric_id=29170,
         gen=1,
         subtype="aC",
-        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
