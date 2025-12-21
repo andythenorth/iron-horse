@@ -4,6 +4,35 @@ from train.model_def import ModelDef
 def main(**kwargs):
     result = []
 
+    # --------------- narrow gauge -----------------------------------------------------------------
+
+    model_def = ModelDef(
+        schema_name="CabooseCarType4",
+        base_numeric_id=16690,
+        gen=1,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_ng_8px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="CabooseCarType4",
+        base_numeric_id=16570,
+        gen=1,
+        subtype="B",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_ng_16px")
+
+    result.append(model_def)
+
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
