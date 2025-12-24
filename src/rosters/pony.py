@@ -151,9 +151,9 @@ engine_module_names = [
     "jupiter",
     "pylon",
     # express diesel railcars
-    "kraken",
-    "turbulent",
-    "typhoon",
+    #"kraken", #CABBAGE
+    #"turbulent", #CABBAGE
+    #"typhoon", #CABBAGE
     # express electric railcars
     "high_flyer",
     "sunshine_coast",

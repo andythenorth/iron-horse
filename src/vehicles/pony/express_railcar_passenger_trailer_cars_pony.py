@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-
+    """ # CABBAGE
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=15350,
@@ -24,7 +24,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=1940,
@@ -43,6 +43,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    """ # CABBAGE
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=15340,
@@ -58,8 +59,8 @@ def main(**kwargs):
         tail_light="railcar_32px_3",
         repeat=2,
     )
-
     result.append(model_def)
+    """
 
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
@@ -79,6 +80,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    """ # CABBAGE
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=1010,
@@ -96,7 +98,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=30,
