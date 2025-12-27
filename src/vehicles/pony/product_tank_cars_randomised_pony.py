@@ -11,7 +11,6 @@ def main(**kwargs):
         base_numeric_id=23240,
         gen=2,
         subtype="A",
-        intro_year_offset=-10,  # let's be earlier for this one
         sprites_complete=True,
     )
 

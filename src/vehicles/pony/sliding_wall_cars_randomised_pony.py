@@ -10,7 +10,6 @@ def main(**kwargs):
         schema_name="BoxCarSlidingWallRandomised",
         base_numeric_id=33370,
         gen=3,
-        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
         base_track_type="NG",
         sprites_complete=True,
@@ -27,7 +26,6 @@ def main(**kwargs):
         schema_name="BoxCarSlidingWallRandomised",
         base_numeric_id=33390,
         gen=3,
-        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type="NG",
         sprites_complete=True,
@@ -48,7 +46,6 @@ def main(**kwargs):
         base_numeric_id=30000,
         gen=4,
         subtype="B",
-        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 
@@ -61,7 +58,6 @@ def main(**kwargs):
         base_numeric_id=30020,
         gen=4,
         subtype="C",
-        intro_year_offset=5,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 

@@ -396,6 +396,10 @@ class Catalogue(list):
             self.model_def.gen - 1
         ]
         if self.model_def.intro_year_offset is not None:
+            # we don't support intro_year_offset for wagons it doesn't add anything, and causes complications when randomising wagons
+            assert self.wagon_quacker.quack != True, (
+                "%s model_def has intro_year_offset set, which is not supported for wagons" % self.model_id
+            )
             result = result + self.model_def.intro_year_offset
         return result
 

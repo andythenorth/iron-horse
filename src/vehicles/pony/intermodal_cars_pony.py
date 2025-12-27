@@ -10,7 +10,6 @@ def main(**kwargs):
         schema_name="IntermodalCar",
         base_numeric_id=28350,
         gen=3,
-        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
         base_track_type="NG",
         sprites_complete=True,
@@ -24,7 +23,6 @@ def main(**kwargs):
         schema_name="IntermodalCar",
         base_numeric_id=35490,
         gen=3,
-        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type="NG",
         sprites_complete=True,
