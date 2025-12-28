@@ -569,19 +569,15 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         # two liveries
         self.asymmetric_row_map = {
             1: 1,
-            2: 2,  # default: default
-            3: 5,
-            4: 6,  # first: last
-            5: 3,
-            6: 4,  # last: first
-            7: 7,
-            8: 8,  # middle: middle
+            2: 3,  # default: default
+            3: 2,
+            4: 4,  # first: last
         }
 
     def get_output_row_types(self):
         # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+        return ["empty", "empty", "empty", "empty"]
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
