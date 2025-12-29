@@ -67,8 +67,8 @@ def render_item_nml(item, graphics_path):
     # write the nml per item to disk, it aids debugging
     with codecs.open(
         os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
-    ) as header_item_nml:
-        header_item_nml.write(result)
+    ) as item_nml:
+        item_nml.write(result)
 
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
