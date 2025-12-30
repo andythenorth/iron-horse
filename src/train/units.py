@@ -1064,10 +1064,7 @@ class ExpressIntermodalCarUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = (
-            "_switch_graphics_spritelayer_cargos_"
-            + self.model_variant.spritelayer_cargo_layers[0]
-        )
+        self.random_trigger_switch = f"switch_spritelayer_cargos_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class ExpressMailCarUnit(ExpressCarUnit):
@@ -1114,19 +1111,9 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
         if len(self.model_variant.spritelayer_cargo_layers) > 0:
-            self.random_trigger_switch = (
-                "_switch_graphics_spritelayer_cargos_"
-                + self.model_variant.spritelayer_cargo_layers[0]
-            )
-        # !! no clue what this random trigger report is for, maybe an old commit knows?
-        if (
-            self.model_variant.is_default_model_variant
-            and self.model_variant.gen == 5
-            and self.model_variant.subtype == "C"
-        ):
-            utils.echo_message(
-                "AutomobileCarAsymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-            )
+            # this will only handle first layer of a double deck auto carrier
+            # but that might not might matter, as it's vehicle bits we're randomising, not layers
+            self.random_trigger_switch = f"switch_spritelayer_cargos_automobiles_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class AutomobileCarSymmetricUnit(ExpressCarUnit):
@@ -1139,19 +1126,9 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
-        # !! no clue what this random trigger issue is, maybe an old commit knows?
-        if (
-            self.model_variant.is_default_model_variant
-            and self.model_variant.gen == 5
-            and self.model_variant.subtype == "C"
-        ):
-            utils.echo_message(
-                "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
-            )
-        self.random_trigger_switch = (
-            "_switch_graphics_spritelayer_cargos_"
-            + self.model_variant.spritelayer_cargo_layers[0]
-        )
+        # CABBAGE - this won't work properly with both layers of a double deck auto carrier
+        # but that might not might matter, as it's vehicle bits we're randomising, not layers
+        self.random_trigger_switch = f"switch_spritelayer_cargos_automobiles_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class FreightCarUnit(CarUnitBase):
@@ -1253,10 +1230,7 @@ class IntermodalCarUnit(FreightCarUnit):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = (
-            "_switch_graphics_spritelayer_cargos_"
-            + self.model_variant.spritelayer_cargo_layers[0]
-        )
+        self.random_trigger_switch = f"switch_spritelayer_cargos_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class OreDumpCarUnit(FreightCarUnit):

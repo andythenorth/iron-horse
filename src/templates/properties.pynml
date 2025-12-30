@@ -91,8 +91,13 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             </tal:buy_menu_additional_text>
         </tal:not_trailing_parts>
         <tal:conditional_random_trigger condition="unit.random_trigger_switch is not None">
-            <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
-            random_trigger:                 ${unit.id + unit.random_trigger_switch};
+            <!--! NOTES
+                - dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc
+                - (Dec 2025) - appears that the target switch should be as close to the random switch as possible
+                    and avoid switches that set registers, or read vars that might not be in scope
+                    (unconfirmed cause, but changing the target switch fixed unwanted behaviour with intermodal container re-randomisation on cargo load)
+             -->
+            random_trigger:                 ${unit.random_trigger_switch};
         </tal:conditional_random_trigger>
         <tal:colour_mapping_cb switch="unit.requires_colour_mapping_cb">
             <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
