@@ -17,13 +17,22 @@ class SpritelayerCargo(object):
         self.gestalt_graphics = None
 
     @property
+    def id(self):
+        return self.base_id + "_" + self.platform_type + "_" + str(self.length) + "px"
+
+    @property
     def floor_height_for_platform_type(self):
         # crude resolution of floor height for each platform type
         return self.all_platform_types_with_floor_heights[self.platform_type]
 
-    @property
-    def id(self):
-        return self.base_id + "_" + self.platform_type + "_" + str(self.length) + "px"
+    def desync_decks(self, cargo_set, repeat_index):
+        print(self.platform_type)
+        # option to force variation between cargos for upper and lower deck layers on double-deck vehicles
+        # this is a crude hack on the template ordering for a random switch, there's no deeper architecture
+        if self.platform_type in ["double_deck_upper"]:
+            # just a crude reversal of order
+            return len(cargo_set.variants) - 1 - repeat_index
+        return repeat_index
 
     def render(self, templates, graphics_path):
         # templating
