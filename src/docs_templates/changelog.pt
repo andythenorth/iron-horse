@@ -2,22 +2,90 @@ Changelog
 =========
 
 ------------
-DRAFT 4.0.0 Release
+4.0.0 Release
 ------------
 
-UNFINISHED
 
-* new wagon liveries
-* restructured buy menu for wagons
-* badges
-* new vehicles
-* many small changes to vehicle appearance behaviour
-- pax and mail vehicle consist randomisation / patterns
-* reworked railtype internals entirely
+Not savegame compatible with Iron Horse releases before 4.0.0.
 
 
+- CABBAGE new wagon liveries
+- CABBAGE restructured buy menu for wagons
+    - CABBAGE simplfied vehicle naming
+    - CABBAGE added/changed many combo wagon types
+    - CABBAGE changed wagon order
+
+- CABBAGE badges
+- CABBAGE new vehicles
+    - CABBAGE spacer vehicles
+    - CABBAGE single unit versions for Xerxes, Doubletide, Yillen
+    - CABBAGE express livestock wagons
+    - CABBAGE motorail vans
+
+- CABBAGE many small changes to vehicle appearance behaviour
+    - CABBAGE pax and mail vehicle consist randomisation / patterns
+    - CABBAGE additional pax coach sprites (position variants)
+    - CABBAGE wagon randomisation / patterns
+    - CABBAGE improved mail and express van appearance
+    - CABABGE improved express food van and tanker appearance
+    - CABABGE improved open wagon and mill open wagon appearance
+    - CABABGE improved caboose appearance
+    - CABABGE improved car transporter appearance
+    - CABABGE improved log carrier appearance
+    - CABABGE improved van, sliding wall van and curtain side van appearance
+    - CABBAGE additional liveries for some vehicles
+    - CABBAGE improved appearance of freight wagon roofs
+    - CABBAGE improved appearance of log cars
+    - CABBAGE small tweaks to many vehicles
+
+- CABBAGE - remove intro year offsets from some wagons, not useful
+
+- CABBAGE - increase car transporter capacity when refitted to passengers
 
 
+- CABBAGE reworked railtype internals entirely
+    - CABBAGE specific JP+ compatibility (load order dependent)
+    - CABBAGE specific U&ReRMM 2 compatibility
+    - CABBAGE LGV vehicle behaviour now on a badge, not a specific railtype "ih_behaviour/lgv_capable"
+    - CABABGE - yield to LGVE, LGVN and METRO types
+        https://github.com/andythenorth/iron-horse/commit/b5e92df296fbec5ba6e043ec046e54de152db55b
+        https://github.com/andythenorth/iron-horse/commit/e5be3760117029270244aa36b840b649ecc2c108
+        https://github.com/andythenorth/iron-horse/commit/9027d81e480698109be591a89deaf90de4df34e9
+    - CABBAGE removed AC / DC split
+    - CABBAGE changed vehicle railtype handling to use new prop track_type as list not single entry
+    - CABBAGE drop Horse-specific Hxxx labels, replace with others
+        https://github.com/andythenorth/iron-horse/commit/513c7b8df7167ab97d2d29a8f2eba0c565e6915a
+        https://github.com/andythenorth/iron-horse/commit/38c9b61db1cb38d15717407cd4e4064276006b60
+        etc
+
+- CABBAGE unify gen 5 lgv-capable speeds to 155mph
+
+- CABBAGE remove all lang translations
+
+
+*Docs*
+
+- CABBAGE Docs: don't exclude cabeese from Train Whack
+- CABBAGE livery page
+- CABBAGE improved vehicle details display (show liveries, track types etc)
+- CABBAGEset better OG tag description for engines
+
+
+*Fixes*
+
+- CABBAGE spritelayer cargo re-randomisation
+- CABBAGE match up intro dates for HST, TGV etc trailers, in general play and also in exclusive preview mode
+- CABBAGE NG coil buggy car was too permissive in refits, just define them manually
+- CABBAGE missing cargo sprites for NG mill open wagons in some angles closes
+- CABBAGE type 1 cement silo car sprites wrong for some angles
+- CABBAGE type 1 silo car sprites wrong for some angles
+- CABBAGE some wagons weren't hidden in Simplified mode that should have been
+
+
+*Codechanges*
+
+- significant changes to the structures for defining vehicle models and variants
+- improved compile time: up to 40% reductioni in total time compared to Iron Horse 3 (in local tests)
 
 
 ------------
