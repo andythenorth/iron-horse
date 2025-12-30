@@ -596,7 +596,7 @@ class ModelVariantProducer:
                     + ", "
                     + unit_def.unit_cls_name
                 )
-            # print(unit_cls, unit)
+
             # now add the units
             unit = unit_cls(
                 model_variant=model_variant,

@@ -305,9 +305,6 @@ class UnitBase(object):
         else:
             effect_offsets = self.default_effect_offsets
 
-        if self.model_variant.id == "toaster":
-            print("TOASTER", effect_offsets)
-
         # z offset is handled independently to x, y for simplicity, option to override z offset default per vehicle
         if self.unit_def.effect_z_offset is not None:
             z_offset = self.unit_def.effect_z_offset

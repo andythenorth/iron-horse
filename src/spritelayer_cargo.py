@@ -26,7 +26,6 @@ class SpritelayerCargo(object):
         return self.all_platform_types_with_floor_heights[self.platform_type]
 
     def desync_decks(self, cargo_set, repeat_index):
-        print(self.platform_type)
         # option to force variation between cargos for upper and lower deck layers on double-deck vehicles
         # this is a crude hack on the template ordering for a random switch, there's no deeper architecture
         if self.platform_type in ["double_deck_upper"]:
@@ -77,7 +76,6 @@ class CargoSetBase(object):
                     break
             if already_registered == False:
                 registered_spritelayer_cargos.append(spritelayer_cargo)
-            # print("registering", spritelayer_cargo.id, spritelayer_cargo.platform_type, self.subtype, self.subtype_suffix)
             spritelayer_cargo.cargo_sets.append(self)
 
     def id(self, spritelayer_cargo):
