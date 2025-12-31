@@ -598,6 +598,11 @@ class SchemaBase(object):
         # retire at end of model life + 10 (fudge factor - no need to be more precise than that)
         return -10
 
+    def get_electrified_track_type_name(self):
+        # only call this when we actually want an electrified track type name
+        # arguably the railtype manager shoul do this using some passed params, but eh
+        return self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+
     @cached_property
     def track_types(self):
         # creates an array of railtypes that the vehicle is compatible with in prop 34
@@ -607,7 +612,15 @@ class SchemaBase(object):
         # this assumes that all vehicles have a base track type, and a consistent pattern if that base track type has electrified variants
         if self.requires_electric_rails:
             track_type_names.append(
-                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+                self.get_electrified_track_type_name()
+            )
+        elif self.is_electro_diesel:
+            # special case
+            # only used to display both 'Rail types' in the buy menu
+            # we don't need the electrified type for electro diesels to be compatible, as they are 'go anywhere' and have separate track detection for power
+            track_type_names.append(self.base_track_type)
+            track_type_names.append(
+                self.get_electrified_track_type_name()
             )
         else:
             track_type_names.append(self.base_track_type)
