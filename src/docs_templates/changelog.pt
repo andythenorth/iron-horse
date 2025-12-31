@@ -1,96 +1,107 @@
 Changelog
 =========
 
-------------
+--------------
 4.0.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 4.0.0.
 
 
-- CABBAGE new wagon liveries
-- CABBAGE restructured buy menu for wagons
-    - CABBAGE simplfied vehicle naming
-    - CABBAGE added/changed many combo wagon types
-    - CABBAGE changed wagon order
+*Changes*
 
-- CABBAGE badges
-- CABBAGE new vehicles
-    - CABBAGE spacer vehicles
-    - CABBAGE single unit versions for Xerxes, Doubletide, Yillen
-    - CABBAGE express livestock wagons
-    - CABBAGE motorail vans
-
-- CABBAGE many small changes to vehicle appearance behaviour
-    - CABBAGE pax and mail vehicle consist randomisation / patterns
-    - CABBAGE additional pax coach sprites (position variants)
-    - CABBAGE wagon randomisation / patterns
-    - CABBAGE improved mail and express van appearance
-    - CABABGE improved express food van and tanker appearance
-    - CABABGE improved open wagon and mill open wagon appearance
-    - CABABGE improved caboose appearance
-    - CABABGE improved car transporter appearance
-    - CABABGE improved log carrier appearance
-    - CABABGE improved van, sliding wall van and curtain side van appearance
-    - CABBAGE additional liveries for some vehicles
-    - CABBAGE improved appearance of freight wagon roofs
-    - CABBAGE improved appearance of log cars
-    - CABBAGE small tweaks to many vehicles
-
-- CABBAGE - remove intro year offsets from some wagons, not useful
-
-- CABBAGE - increase car transporter capacity when refitted to passengers
-
-
-- CABBAGE reworked railtype internals entirely
-    - CABBAGE specific JP+ compatibility (load order dependent)
-    - CABBAGE specific U&ReRMM 2 compatibility
-    - CABBAGE LGV vehicle behaviour now on a badge, not a specific railtype "ih_behaviour/lgv_capable"
-    - CABABGE - yield to LGVE, LGVN and METRO types
-        https://github.com/andythenorth/iron-horse/commit/b5e92df296fbec5ba6e043ec046e54de152db55b
-        https://github.com/andythenorth/iron-horse/commit/e5be3760117029270244aa36b840b649ecc2c108
-        https://github.com/andythenorth/iron-horse/commit/9027d81e480698109be591a89deaf90de4df34e9
-    - CABBAGE removed AC / DC split
-    - CABBAGE changed vehicle railtype handling to use new prop track_type as list not single entry
-    - CABBAGE drop Horse-specific Hxxx labels, replace with others
-        https://github.com/andythenorth/iron-horse/commit/513c7b8df7167ab97d2d29a8f2eba0c565e6915a
-        https://github.com/andythenorth/iron-horse/commit/38c9b61db1cb38d15717407cd4e4064276006b60
-        etc
-
-- CABBAGE unify gen 5 lgv-capable speeds to 155mph
-
-- CABBAGE remove all lang translations
+- added vehicle badges (requires OpenTTD 15)
+    - visible badges for liveries
+    - text badges for searching in buy menu
+- new approach to wagon liveries
+    - wagon liveries have named badges and can be searched for
+    - wagon liveries use a single colour, or a set of random colours
+    - most wagon liveries include randomised weathering / fading
+- reworked appearance of many vehicles
+    - improved Mail Vans and Express vans
+    - improved Express Food Vans and Express Food Tankers
+    - improved Open Wagons and Mill Open Wagons
+    - improved Car Transporters
+    - improved Log Carriers
+    - improved Vans, Sliding Wall Vans and Curtain Side Vans
+    - improved appearance of roofs on van-type freight wagons
+    - additional liveries for some engines
+    - small tweaks to many vehicles
+- improved appearance of passenger and mail vehicle sequences
+    - passenger coach sequences now have more variety in the placement of brake coach sprites, not just at the ends
+    - passenger coach sequence patterns now work across a wider range of vehicles, including restaurant cars and driving cab cars
+    - when appropriate, passenger coach sequences detect mail vehicles and reduce the number of other brake coach sprites shown
+    - added additional sprites to existing passenger coaches to increase sequence variety
+    - mail van sequences now have more variety, reducing monotony
+    - added additional sprites to existing mail vans to increase sequence variety
+    - mail van sequence patterns now work across a wider range of vehicles, including driving cab cars
+- reworked Brake Vans
+    - improved appearance
+    - added option to build non-randomised brake vans
+- added wagons
+    - Express Livestock Wagons
+    - Motorail Vans
+    - added/updated many randomised/combo wagon types
+- added Spacer Wagons
+    - these have no cargo capacity and have similar gameplay behaviour to Brake Vans
+    - intended for use as spacer vehicles, for example with wagons carrying hot metal
+- added single-unit variants for Xerxes, Doubletide and Yillen engines
+- reorganised buy menu
+    - simplified vehicle name display
+    - improved order of wagon types
+    - improved handling of wagon livery variants
+- adjusted railtype handling
+    - switched vehicles to provide a list of compatible railtypes, not a single entry (requires improved `track_type` property in OpenTTD 15)
+    - high-speed vehicles now detect suitable dedicated high speed tracks using a badge `ih_behaviour/lgv_capable`, rather than checking specific railtype labels
+    - unified all suitable generation 5 vehicles to maximum speed of 155mph on appropriate dedicated high speed tracks
+    - replaced Iron Horse IHxx railtype labels with the following generic labels:
+        - RAIL:	Standard gauge rail
+        - ELRL:	Standard gauge rail (electrified with catenary)
+        - LGVN:	Dedicated high speed railway
+        - LGVE: Dedicated high speed railway (electrified with catenary)
+        - NAAN:	Narrow gauge railway
+        - MTRO:	Metro railway
+    - if any other railtype grf(s) provide any of these types, Iron Horse will attempt to yield to the other railtype grf(s) by disabling the relevant Iron Horse railtype:
+        - LGVE
+        - LGVN
+        - MTRO
+        - NAAN
+        - this behaviour depends on Iron Horse being after any railtype grfs in the grf load order
+        - provided specific detection of JP+ Tracks to maximise compatibility
+    - removed AC electrification concept, Iron Horse now uses default electrified rails for standard electric trains
+- increased car transporter capacity when refitted to passengers
+- removed any non-standard introduction years for wagon types
+- removed translations, no longer supportable
 
 
 *Docs*
 
-- CABBAGE Docs: don't exclude cabeese from Train Whack
-- CABBAGE livery page
-- CABBAGE improved vehicle details display (show liveries, track types etc)
-- CABBAGEset better OG tag description for engines
+- don't exclude brake vans from Train Whack!
+- added page to show livery names and which vehicles they apply to
+- improved vehicle details display (show liveries, track types etc)
+- improved OG tag (social preview) descriptions for engines
 
 
 *Fixes*
 
-- CABBAGE spritelayer cargo re-randomisation
-- CABBAGE match up intro dates for HST, TGV etc trailers, in general play and also in exclusive preview mode
-- CABBAGE NG coil buggy car was too permissive in refits, just define them manually
-- CABBAGE missing cargo sprites for NG mill open wagons in some angles closes
-- CABBAGE type 1 cement silo car sprites wrong for some angles
-- CABBAGE type 1 silo car sprites wrong for some angles
-- CABBAGE some wagons weren't hidden in Simplified mode that should have been
+- fixed excessive re-randomisation of cargo sprites for all types of container wagons and vehicle transporters
+- matched up intro dates for trailers and cab engines (such as HSTs, TGVs etc), in general play and also in exclusive preview mode
+- narrow gauge Coil Buggies were too permissive in refits
+- cargo sprites were missing for narrow gauge Mill Open Wagons for some angles
+- type 1 Silo Wagon and Cement Wagon sprites were wrong for some angles
+- fixed some wagons being incorrectly available in Simplified mode
 
 
 *Codechanges*
 
-- significant changes to the structures for defining vehicle models and variants
-- improved compile time: up to 40% reductioni in total time compared to Iron Horse 3 (in local tests)
+- significantly reworked methods for defining vehicle models and variants
+- improved compile time: up to 40% reduction in total time compared to Iron Horse 3 (in local tests)
 
 
-------------
+--------------
 3.37.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.34.0.
@@ -109,9 +120,9 @@ Not savegame compatible with Iron Horse releases before 3.34.0.
 - wrong sprite for 1 angle of gen 5 large Car Transporter
 
 
-------------
+--------------
 3.36.1 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.34.0.
@@ -122,9 +133,9 @@ Not savegame compatible with Iron Horse releases before 3.34.0.
 - capacity of Cane Bins and Peat Wagons was half the intended amount
 
 
-------------
+--------------
 3.36.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.34.0.
@@ -146,9 +157,9 @@ Not savegame compatible with Iron Horse releases before 3.34.0.
 - Farm Product Vans lacked food cargo refit
 
 
-------------
+--------------
 3.35.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.34.0.
@@ -169,9 +180,9 @@ Not savegame compatible with Iron Horse releases before 3.34.0.
 - typo in description for "Wagons" parameter
 
 
-------------
+--------------
 3.34.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.34.0.
@@ -185,9 +196,9 @@ Not savegame compatible with Iron Horse releases before 3.34.0.
     - changed colour of Express Food Tankers from silver to white
 
 
-------------
+--------------
 3.33.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.32.0.
@@ -208,9 +219,9 @@ Not savegame compatible with Iron Horse releases before 3.32.0.
 - remove spurious links to non-existent wagon pages from trains.html
 
 
-------------
+--------------
 3.32.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.32.0.
@@ -229,9 +240,9 @@ Not savegame compatible with Iron Horse releases before 3.32.0.
 - added clay to China Clay Hopper refits
 
 
-------------
+--------------
 3.31.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.27.0.
@@ -258,9 +269,9 @@ Not savegame compatible with Iron Horse releases before 3.27.0.
 - remove spurious '-' prefix company colour name suffix in buy menu
 
 
-------------
+--------------
 3.30.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.27.0.
@@ -282,9 +293,9 @@ Not savegame compatible with Iron Horse releases before 3.27.0.
 - removed spurious image generation from docs
 
 
-------------
+--------------
 3.29.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.27.0.
@@ -301,9 +312,9 @@ Not savegame compatible with Iron Horse releases before 3.27.0.
 - dropped spurious railtype info columns from vehicle tables in trains.html
 
 
-------------
+--------------
 3.28.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.27.0.
@@ -317,9 +328,9 @@ Not savegame compatible with Iron Horse releases before 3.27.0.
     - added randomised Tarpaulin Wagons
 
 
-------------
+--------------
 3.27.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.27.0.
@@ -350,9 +361,9 @@ Not savegame compatible with Iron Horse releases before 3.27.0.
 - added flour cargo to farm product refits
 
 
-------------
+--------------
 3.26.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.24.0.
@@ -373,9 +384,9 @@ Not savegame compatible with Iron Horse releases before 3.24.0.
     - narrow gauge Sliding Wall Vans
 
 
-------------
+--------------
 3.25.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.24.0.
@@ -390,9 +401,9 @@ Not savegame compatible with Iron Horse releases before 3.24.0.
 - adjusted chassis sprite selection for some wagons
 
 
-------------
+--------------
 3.24.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.24.0.
@@ -463,9 +474,9 @@ Not savegame compatible with Iron Horse releases before 3.24.0.
 - added a guard to detect duplicate IDs in roster.consists_in_order_optimised_for_action_2_ids
 
 
-------------
+--------------
 3.23.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -483,9 +494,9 @@ Not savegame compatible with Iron Horse releases before 3.24.0.
 - improved appearance of some Chemical Covered Hoppers and Mineral Covered Hoppers
 
 
-------------
+--------------
 3.22.0 Release
-------------
+--------------
 
 Not savegame compatible with Iron Horse releases before 3.22.0.
 
@@ -512,9 +523,9 @@ Not savegame compatible with Iron Horse releases before 3.22.0.
 - wrong colour steps for some angles of Saxon and Tyrconnell
 
 
-------------
+--------------
 3.21.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -525,9 +536,9 @@ Not savegame compatible with Iron Horse releases before 3.22.0.
 - changed cargo refits for Randomised Piece Goods Wagons to be more flexible
 
 
-------------
+--------------
 3.20.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.20.0.
@@ -558,9 +569,9 @@ Not savegame compatible with Iron Horse releases before 3.20.0.
 - fixed missing cargo sprites for narrow gauge Plate Wagons
 
 
-------------
+--------------
 3.19.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.19.0.
@@ -576,9 +587,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - adjusted livery order for Ravensbourne metro unit
 
 
-------------
+--------------
 3.18.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -598,9 +609,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - set correct tail lights for Autocoach and some metro vehicles
 
 
-------------
+--------------
 3.17.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -616,9 +627,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - added missing facts and descriptions for some metro vehicles
 
 
-------------
+--------------
 3.16.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -631,9 +642,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - improved appearance of Serpentine and Longwater metro trains
 
 
-------------
+--------------
 3.15.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -648,9 +659,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - brake vans which use a specific sprite for some engines now also use the sprite for variants of that engine
 
 
-------------
+--------------
 3.14.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -666,9 +677,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - not enough visual effects for combined passenger + mail railbuses (Snapper, Skipper etc)
 
 
-------------
+--------------
 3.13.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -679,9 +690,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
     - Panoramic Driving Trailer
 
 
-------------
+--------------
 3.12.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -702,9 +713,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - fixed bad/missing roof pixels for narrow gauge railcars and some mail cars
 
 
-------------
+--------------
 3.11.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -723,9 +734,9 @@ Not savegame compatible with Iron Horse releases before 3.19.0.
 - tail lights were wrong for Mumble
 
 
-------------
+--------------
 3.10.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.8.0.
@@ -736,9 +747,9 @@ Not savegame compatible with Iron Horse releases before 3.8.0.
 - added Cyclone, AC electric, 2200 hp, 120 mph, available around 1994
 
 
-------------
+--------------
 3.9.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.8.0.
@@ -752,9 +763,9 @@ Not savegame compatible with Iron Horse releases before 3.8.0.
     - available around 1991
 
 
-------------
+--------------
 3.8.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.8.0.
@@ -776,9 +787,9 @@ Not savegame compatible with Iron Horse releases before 3.8.0.
 - hide type 2 reefer cars in simplified gameplay
 
 
-------------
+--------------
 3.7.1 Release
-------------
+--------------
 
 
 *Fixes*
@@ -786,9 +797,9 @@ Not savegame compatible with Iron Horse releases before 3.8.0.
 - symmetrical vehicles of length less than 8/8 were being drawn in the wrong position in many cases
 
 
-------------
+--------------
 3.7.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.3.0.
@@ -839,9 +850,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 - removed some legacy Makefile targets and args
 
 
-------------
+--------------
 3.6.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -869,9 +880,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 - buy menu rows were too tall due to an incorrectly sized empty sprite
 
 
-------------
+--------------
 3.5.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -889,9 +900,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 - improved appearance of Livestock Wagons
 
 
-------------
+--------------
 3.4.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -924,9 +935,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 - some wagon variants were parented to a group of the wrong railtype, leading to incorrect variant groups in the buy menu
 
 
-------------
+--------------
 3.3.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.3.0.
@@ -1044,9 +1055,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 - containers incorrectly positioned when container wagons were flipped in depot
 
 
-------------
+--------------
 3.2.0 Release
-------------
+--------------
 
 
 Not savegame compatible with Iron Horse releases before 3.2.0.
@@ -1082,9 +1093,9 @@ Not savegame compatible with Iron Horse releases before 3.2.0.
 - switch lang files to TOML format
 
 
-------------
+--------------
 3.1.0 Release
-------------
+--------------
 
 
 *Changes*
@@ -1104,9 +1115,9 @@ Not savegame compatible with Iron Horse releases before 3.2.0.
 - Lion weight was too low
 
 
-------------
+--------------
 3.0.1 Release
-------------
+--------------
 
 
 *Fixes*
@@ -1114,9 +1125,9 @@ Not savegame compatible with Iron Horse releases before 3.2.0.
 - Fix: TGV-type trains with distributed power were only adding power with the default buyable variant
 
 
-------------
+--------------
 3.0.0 Release
-------------
+--------------
 
 
 "A horse is worth more than riches" — Spanish proverb
@@ -1209,9 +1220,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - passenger and mail vehicle liveries no longer use the complicated approach of triggering different sprites by flipping the vehicle in depot
 
 
--------------
+---------------
 2.64.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1226,9 +1237,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - remove unwanted 'CABBAGE' placeholder text from train list page
 
 
--------------
+---------------
 2.63.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -1236,9 +1247,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - some articulated engines were using 'passenger coach' company colour for trailing parts
 
 
--------------
+---------------
 2.63.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1250,9 +1261,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
     - refits for vehicles (car sprites), and also for passengers (motorail)
 
 
--------------
+---------------
 2.62.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1267,9 +1278,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - improved appearance of dice sprites used in buy menu to indicate randomised wagons
 
 
--------------
+---------------
 2.61.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -1283,9 +1294,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
     - Magnum 70
 
 
--------------
+---------------
 2.61.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1312,9 +1323,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - deleted outdated and very incomplete US-English translation
 
 
--------------
+---------------
 2.60.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1328,9 +1339,9 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 Observant readers will notice that versions 2.53 through 2.59 are missing. "Certain mistakes were made."
 
 
--------------
+---------------
 2.52.0 Release
--------------
+---------------
 
 
 *Docs*
@@ -1338,9 +1349,9 @@ Observant readers will notice that versions 2.53 through 2.59 are missing. "Cert
 - improved display of power values
 
 
--------------
+---------------
 2.51.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1354,9 +1365,9 @@ Observant readers will notice that versions 2.53 through 2.59 are missing. "Cert
 - improved appearance of multiple brake vans
 
 
--------------
+---------------
 2.50.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.50.0.
@@ -1407,9 +1418,9 @@ Not savegame compatible with Iron Horse releases before 2.50.0.
 - refactored approach to managing vehicle intro date synchronisation / de-synchronisation (includes minor visible differences in gameplay)
 
 
--------------
+---------------
 2.49.1 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.49.0.
@@ -1420,9 +1431,9 @@ Not savegame compatible with Iron Horse releases before 2.49.0.
 - added alternative liveries for Avenger and Roarer, triggered by choice of second company colour
 
 
--------------
+---------------
 2.49.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.49.0.
@@ -1450,9 +1461,9 @@ Not savegame compatible with Iron Horse releases before 2.49.0.
 - vehicles showing alternative_cc_livery in buy menu will now recolour correctly in that case
 
 
--------------
+---------------
 2.48.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1472,9 +1483,9 @@ Not savegame compatible with Iron Horse releases before 2.49.0.
 - fixed bad pixels for bulk cargos in hood open wagon
 
 
--------------
+---------------
 2.47.1 Release
--------------
+---------------
 
 
 *Changes*
@@ -1488,9 +1499,9 @@ Not savegame compatible with Iron Horse releases before 2.49.0.
 - fixed random choice of sprites in page headers by removing 'randomised wagon' sprites
 
 
--------------
+---------------
 2.47.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.47.0.
@@ -1517,9 +1528,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - removed SAA4 fallback railtype label from Metro, it's not an appropriate fallback for Metro
 
 
--------------
+---------------
 2.46.2 Release
--------------
+---------------
 
 
 *Fixes*
@@ -1527,9 +1538,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - hidden unfinished automobile transporter wagons
 
 
--------------
+---------------
 2.46.1 Release
--------------
+---------------
 
 
 *Changes*
@@ -1546,9 +1557,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - set correct weight for narrow gauge railbus trailers
 
 
--------------
+---------------
 2.46.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1572,9 +1583,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - explain a little about Iron Horse railtype use in 'Code reference' page
 
 
--------------
+---------------
 2.45.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1604,9 +1615,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - mention included railtypes on 'Get started' page, no longer recommend Termite
 
 
--------------
+---------------
 2.44.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1630,9 +1641,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
     - no-op in Iron Horse currently as 2cc isn't actually used in this way
 
 
--------------
+---------------
 2.43.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1646,9 +1657,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - merchandise open wagons were showing wrong bulk cargo sprites
 
 
--------------
+---------------
 2.42.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1662,9 +1673,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - improved appearance of Open Wagons
 
 
--------------
+---------------
 2.41.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1685,9 +1696,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - further improved 'Get started' page
 
 
--------------
+---------------
 2.40.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1724,9 +1735,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
     - moved 'Code reference' link to be less prominent
 
 
--------------
+---------------
 2.39.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1734,9 +1745,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - added narrow gauge log cars
 
 
--------------
+---------------
 2.38.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1751,9 +1762,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - Proper Job sprites off by 1px in \ view
 
 
--------------
+---------------
 2.37.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1770,9 +1781,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - Daring run cost was too low relative to similar engines
 
 
--------------
+---------------
 2.36.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -1780,9 +1791,9 @@ Not savegame compatible with Iron Horse releases before 2.47.0.
 - fixed Mail Van speed (was accidentally nerfed in 2.36.0)
 
 
--------------
+---------------
 2.36.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.32.0.
@@ -1798,9 +1809,9 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 - set correct buy menu order for Xerxes
 
 
--------------
+---------------
 2.35.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.32.0.
@@ -1812,9 +1823,9 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 - added Falcon general purpose / express engine, 2800 hp, available around 1965
 
 
--------------
+---------------
 2.34.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.32.0.
@@ -1826,9 +1837,9 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 - adjusted some covered hopper default cargos
 
 
--------------
+---------------
 2.33.0 Release
--------------
+---------------
 
 
 Not savegame compatible with Iron Horse releases before 2.32.0.
@@ -1839,9 +1850,9 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 - added China Clay Hoppers (for FIRS kaolin)
 
 
--------------
+---------------
 2.32.0 Release
--------------
+---------------
 
 
 Not savegame compatible with previous Iron Horse releases.
@@ -1865,9 +1876,9 @@ Not savegame compatible with previous Iron Horse releases.
 - remove extraneous buffer pixels from 8/8 livestock cars
 
 
--------------
+---------------
 2.31.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1890,9 +1901,9 @@ Not savegame compatible with previous Iron Horse releases.
 - incorrect buffer placement on gen 6 Ore Hopper
 
 
--------------
+---------------
 2.30.0 Release
--------------
+---------------
 
 
 Iron Horse 2.30.0 is *possibly* savegame compatible with previous Iron Horse versions, but some existing mineral wagons _might_ change name and appearance. YOLO.
@@ -1926,9 +1937,9 @@ Iron Horse 2.30.0 is *possibly* savegame compatible with previous Iron Horse ver
 - translation updates (thanks translators)
 
 
--------------
+---------------
 2.29.0 Release
--------------
+---------------
 
 
 Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, but any existing Merlion engines in savegames will change name and appearance.
@@ -1954,9 +1965,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - added space between value and unit for 'hp' and 'mph' values
 
 
--------------
+---------------
 2.28.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -1986,9 +1997,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - coil buggies and ingot cars referenced a non-existent chassis sprite (didn't error as chassis sprite isn't used, but should still be defined)
 
 
--------------
+---------------
 2.27.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2020,9 +2031,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - (fix) sprites were misaligned in Train Whack mini-game
 
 
--------------
+---------------
 2.26.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2039,9 +2050,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - electro-diesel (bi-mode) railcars now show power on diesel in buy menu, not power on electric, consistent with other bi-mode vehicles
 
 
--------------
+---------------
 2.25.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2057,9 +2068,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - railbuses should not be available in simplified gameplay
 
 
--------------
+---------------
 2.24.0 Release
--------------
+---------------
 
 
 "The world would not make a racehorse of a donkey." - proverb
@@ -2079,9 +2090,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - translation updates (thanks translators)
 
 
--------------
+---------------
 2.23.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2113,9 +2124,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - translation updates (thanks translators)
 
 
--------------
+---------------
 2.22.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2133,9 +2144,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - door sprites out of place by 1 pixel for gen 6C Driving Van Trailer
 
 
--------------
+---------------
 2.21.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -2143,9 +2154,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - use correct sprites for gen 5 Low-floor Container Wagon (Small)
 
 
--------------
+---------------
 2.21.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2169,9 +2180,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - improved appearance of Blackthorn and Stentor engines
 
 
--------------
+---------------
 2.20.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2198,9 +2209,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - added more livery examples for some engines
 
 
--------------
+---------------
 2.19.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2216,9 +2227,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - improved appearance of Flanders Storm engine
 
 
--------------
+---------------
 2.18.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2233,9 +2244,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - cargo sprites were incomplete for gen 6A and 6B Rock Hoppers
 
 
--------------
+---------------
 2.17.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2246,9 +2257,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - improved the choice of default cargo for some wagon types, to better support different FIRS economies
 
 
--------------
+---------------
 2.16.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2310,9 +2321,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - refactored intermodal cargo sprites code to be both simpler and more flexible
 
 
--------------
+---------------
 2.15.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2353,9 +2364,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - move license.pt to repo root so it's more easily found
 
 
--------------
+---------------
 2.14.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2380,9 +2391,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - improved placement of certain coil cargo sprites
 
 
--------------
+---------------
 2.13.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2404,9 +2415,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - fix footer placement on changelog html page
 
 
--------------
+---------------
 2.12.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2430,9 +2441,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - refactored some switches so nml can automatically optimise them to constants when appropriate (glx)
 
 
--------------
+---------------
 2.11.1 Release
--------------
+---------------
 
 
 *Changes*
@@ -2440,9 +2451,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - default for 'Random Wagon Colour 3' should be company colour 1, not company colour 2
 
 
--------------
+---------------
 2.11.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2459,9 +2470,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - feature is compatible with Iron Horse 2.8.0+ savegames, but the new parameters may not be visible unless OpenTTD is restarted
 
 
--------------
+---------------
 2.10.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -2470,9 +2481,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
     - this is a revert of https://github.com/andythenorth/iron-horse/commit/5b3b0b015ad2bbf48f4e148ce763ac564f5d617c
 
 
--------------
+---------------
 2.10.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2483,9 +2494,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
     - inspired by Alco S1, EMD switchers, Brush Bagnall steelworks locos
 
 
--------------
+---------------
 2.9.1 Release
--------------
+---------------
 
 
 *Translations*
@@ -2493,9 +2504,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - French translation (Arikover)
 
 
--------------
+---------------
 2.9.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2527,9 +2538,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 - change the majority of headings in html docs from title case to sentence case
 
 
--------------
+---------------
 2.8.0 Release
--------------
+---------------
 
 
 "We were in the jungle, there were too many of us, we had access to too much money, too much equipment, and little by little we went insane" - Francis Ford Coppola
@@ -2624,9 +2635,9 @@ Not savegame compatible with previous Iron Horse releases.
 - re-implemented docs image randomiser using json, with nested engines / wagons
 
 
--------------
+---------------
 2.7.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2647,9 +2658,9 @@ Not savegame compatible with previous Iron Horse releases.
 - corrected shading on narrow gauge Tankers
 
 
--------------
+---------------
 2.6.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2685,9 +2696,9 @@ Not savegame compatible with previous Iron Horse releases.
 - removed doubled parens in en-us translation (desmondgc)
 
 
--------------
+---------------
 2.5.0 Release
--------------
+---------------
 
 
 *Changes*
@@ -2697,9 +2708,9 @@ Not savegame compatible with previous Iron Horse releases.
 - adjusted intro date for gen 2 Hopper and Product Tanker, now available around 1890
 
 
--------------
+---------------
 2.4.0 Release
--------------
+---------------
 
 
 Not savegame compatible with previous Iron Horse releases.
@@ -2864,9 +2875,9 @@ Not savegame compatible with previous Iron Horse releases.
 - removed some outdated/unused lang strings
 
 
--------------
+---------------
 2.3.0 Release
--------------
+---------------
 
 
 *Features*
@@ -2883,9 +2894,9 @@ Not savegame compatible with previous Iron Horse releases.
 - adjusted which default cargo will be set for some vehicles (depends on which cargos are available in game)
 
 
----------------------
+-----------------------
 2.2.0 - 2.2.1 Release
----------------------
+-----------------------
 
 
 Not savegame compatible with previous versions of Iron Horse.
@@ -2933,9 +2944,9 @@ The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
 - using combination of python 3.8 and pypy interpreters, compile speed reduced by 40% in local tests
 
 
--------------
+---------------
 2.1.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -2950,9 +2961,9 @@ The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
 
 
--------------
+---------------
 2.1.0 Release
--------------
+---------------
 
 
 *Container Wagons*
@@ -3005,9 +3016,9 @@ The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
 
 
--------------
+---------------
 2.0.0 Release
--------------
+---------------
 
 
 "Whoa Runaway horses...Racing through the darkness....Runaway Horses." - Belinda Carlisle
@@ -3187,9 +3198,9 @@ Dive in and play.
 - Brenner cab doors do not open when loading, this will not be fixed
 
 
--------------
+---------------
 1.9.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -3198,9 +3209,9 @@ Dive in and play.
 - Tin Rocket HP reduced in line with reduced weight
 
 
--------------
+---------------
 1.9.0 Release
--------------
+---------------
 
 
 *Features*
@@ -3230,9 +3241,9 @@ Dive in and play.
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
 
 
--------------
+---------------
 1.8.0 Release
--------------
+---------------
 
 
 Not savegame compatible with previous versions of Iron Horse.
@@ -3265,9 +3276,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
 
 
--------------
+---------------
 1.7.0 Release
--------------
+---------------
 
 
 *Features*
@@ -3288,9 +3299,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - covered hopper car was out of position
 
 
--------------
+---------------
 1.6.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -3305,9 +3316,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
 
 
--------------
+---------------
 1.6.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3339,9 +3350,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - refactored compile scripts, keeping pyflakes happy, and not relying on weird magic related to python imports
 
 
--------------
+---------------
 1.5.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3368,9 +3379,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - nl_NL (Alberth)
 
 
--------------
+---------------
 1.4.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3393,9 +3404,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - stop mail cars refitting to tourists cargo
 
 
--------------
+---------------
 1.3.1 Release
--------------
+---------------
 
 
 *Fixes*
@@ -3403,9 +3414,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - stop box cars and open cars refitting to tourists cargo
 
 
--------------
+---------------
 1.3.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3428,9 +3439,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - la_VA (Supercheese)
 
 
--------------
+---------------
 1.2.1 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3452,9 +3463,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - compiler defaults to multiprocessing *off* instead of *on*, to avoid DoS-ing people's systems
 
 
--------------
+---------------
 1.1.1 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3470,9 +3481,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - narrow gauge wagons now available in 1860, same as first narrow gauge engine
 
 
--------------
+---------------
 1.1.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3485,9 +3496,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - bumped minimum compatible version to avoid breaking savegames
 
 
--------------
+---------------
 1.0.0 Release
--------------
+---------------
 
 
 *New Features / Changes*
@@ -3496,9 +3507,9 @@ Not savegame compatible with previous versions of Iron Horse.
 - it's 1.0.0...
 
 
--------------------
+---------------------
 Release Candidate 6
--------------------
+---------------------
 
 
 *New Features / Changes*
@@ -3526,9 +3537,9 @@ Release Candidate 6
 - extended the Pixa pipeline for cargo recolouring to also handle 1cc/2cc swap
 
 
--------------------
+---------------------
 Release Candidate 5
--------------------
+---------------------
 
 
 *New Features / Changes*
@@ -3556,9 +3567,9 @@ Release Candidate 5
 - don't refit flat wagons to food, the birds will eat it
 
 
--------------------
+---------------------
 Release Candidate 4
--------------------
+---------------------
 
 
 *New Features / Changes*
@@ -3571,9 +3582,9 @@ Release Candidate 4
 - covered hopper cars can now refit to Building Materials cargo
 
 
--------------------
+---------------------
 Release Candidate 3
--------------------
+---------------------
 
 
 *Fixes*
@@ -3583,9 +3594,9 @@ Release Candidate 3
 - Double Juice shows electric sparks or diesel smoke, depending on power type
 
 
--------------------
+---------------------
 Release Candidate 2
--------------------
+---------------------
 
 *Fixes*
 
@@ -3594,9 +3605,9 @@ Release Candidate 2
 - many vehicles had loading speeds which were too high
 
 
--------------------
+---------------------
 Release Candidate 1
--------------------
+---------------------
 
 
 *New Features / Changes*
