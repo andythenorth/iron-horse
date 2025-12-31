@@ -17,7 +17,7 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=1,  # introduce later by design
         livery_group_name="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
