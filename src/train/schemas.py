@@ -549,7 +549,9 @@ class SchemaBase(object):
     def introduction_date(self):
         if self.catalogue.cab_engine_model is not None:
             return self.catalogue.cab_engine_model.introduction_date
-        return f"date({self.catalogue.intro_year}, {1 + self.intro_date_months_offset}, 1)"
+        return (
+            f"date({self.catalogue.intro_year}, {1 + self.intro_date_months_offset}, 1)"
+        )
 
     @property
     def dual_headed(self):
@@ -7823,6 +7825,7 @@ class SpacerCabbageCarBase(CarSchemaBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
 
 class SpacerCabbageCarType1(SpacerCabbageCarBase):
     """

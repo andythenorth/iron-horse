@@ -79,8 +79,7 @@ class Catalogue(list):
             )
             # note that this is the list of *unique* numeric ids - it doesn't repeat ids for repeated units
             unit_numeric_ids = [
-                numeric_id_offset + i
-                for i, _ in enumerate(self.model_def.unit_defs)
+                numeric_id_offset + i for i, _ in enumerate(self.model_def.unit_defs)
             ]
 
             vehicle_family_id = self.vehicle_family_id
@@ -306,9 +305,9 @@ class Catalogue(list):
     @cached_property
     def default_model_variant_from_roster(self):
         # requires that the producer produce() method has been called
-        model_variants = self.roster.model_variants_by_catalogue[
-            self.model_id
-        ]["model_variants"]
+        model_variants = self.roster.model_variants_by_catalogue[self.model_id][
+            "model_variants"
+        ]
         for model_variant in model_variants:
             if model_variant.is_default_model_variant:
                 return model_variant
@@ -366,10 +365,8 @@ class Catalogue(list):
     def previous_gen_catalogues(self):
         # note a catalogue can replace multiple catalogues in the previous gen (as tree branches can merge)
         if self.engine_quacker.quack:
-            return (
-                self.roster.engine_model_tech_tree.get_previous_gen_catalogues(
-                    catalogue=self
-                )
+            return self.roster.engine_model_tech_tree.get_previous_gen_catalogues(
+                catalogue=self
             )
         # empty list if nothing found
         return []
@@ -392,13 +389,12 @@ class Catalogue(list):
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
-        result = self.roster.intro_years[self.base_track_type][
-            self.model_def.gen - 1
-        ]
+        result = self.roster.intro_years[self.base_track_type][self.model_def.gen - 1]
         if self.model_def.intro_year_offset is not None:
             # we don't support intro_year_offset for wagons it doesn't add anything, and causes complications when randomising wagons
             assert self.wagon_quacker.quack != True, (
-                "%s model_def has intro_year_offset set, which is not supported for wagons" % self.model_id
+                "%s model_def has intro_year_offset set, which is not supported for wagons"
+                % self.model_id
             )
             result = result + self.model_def.intro_year_offset
         return result
@@ -422,10 +418,7 @@ class Catalogue(list):
             )
 
         # !! attr lookup like this is a sign that this might need delegated to producer properly, but eh
-        if (
-            getattr(self.schema_cls, "formation_reporting_labels", None)
-            is not None
-        ):
+        if getattr(self.schema_cls, "formation_reporting_labels", None) is not None:
             result.extend(self.schema_cls.formation_reporting_labels)
         # !! adding family might have unexpected results, it's a JFDI thing
         result.append(self.vehicle_family_id)
@@ -509,9 +502,7 @@ class Catalogue(list):
                     "Senior Engineer, Self-Propelled Traction",
                     "Director, Suburban and Rural Lines",
                 ]
-            elif (
-                getattr(self.schema_cls, "cite", None) == "Dr Constance Speed"
-            ):
+            elif getattr(self.schema_cls, "cite", None) == "Dr Constance Speed":
                 cite_name = self.schema_cls.cite
                 cite_titles = [
                     "Lead Engineer, High Speed Projects",
@@ -535,9 +526,7 @@ class Catalogue(list):
             if len(self.model_def.foamer_facts) == 0:
                 utils.echo_message(self.model_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
-                utils.echo_message(
-                    self.model_id + " foamer_facts has a '.' in it."
-                )
+                utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
 
 
 class ModelVariantProducer:
@@ -635,7 +624,10 @@ class ModelVariantProducer:
     @property
     def variant_group_id_root(self):
         # we keep this distinct from vehicle_family_id, to support flexibility in variant grouping
-        if getattr(self.catalogue.schema_cls, "variant_group_id_root", None) is not None:
+        if (
+            getattr(self.catalogue.schema_cls, "variant_group_id_root", None)
+            is not None
+        ):
             return self.catalogue.schema_cls.variant_group_id_root
         elif getattr(self.catalogue.schema_cls, "model_id_root", None) is not None:
             return f"NAME_SUFFIX_{self.catalogue.schema_cls.model_id_root}"
@@ -914,9 +906,7 @@ class TGVHSTQuacker:
     @property
     def quack(self):
         # convenience boolean for models that are HST or TGV (dual-head cab and dedicated middle vehicles)
-        if getattr(
-            self.catalogue.schema_cls, "dedicated_tgv_hst_formation", False
-        ):
+        if getattr(self.catalogue.schema_cls, "dedicated_tgv_hst_formation", False):
             return True
         # fall through
         return False
