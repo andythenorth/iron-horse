@@ -77,7 +77,7 @@ class SchemaBase(object):
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # just a simple buy cost tweak, only use when needed
-        self.electro_diesel_buy_cost_malus = None
+        self.is_electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, override in subclasses as needed
         self.buy_cost_adjustment_factor = 1
@@ -657,7 +657,16 @@ class SchemaBase(object):
         return result
 
     @cached_property
+    def is_electro_diesel(self):
+        # !! arguably should be an engine quacker boolean property?
+        # specific and possibly fragile, but JFDI as of December 2025
+        if self.power_by_power_source is None:
+            return False
+        return all(power_source_name in self.power_by_power_source.keys() for power_source_name in ["DIESEL", "OHLE"])
+
+    @cached_property
     def requires_electric_rails(self):
+        # !! arguably should be an engine quacker boolean property?
         if self.power_by_power_source is None:
             return False
         for power_source_name in self.power_by_power_source.keys():
@@ -1185,9 +1194,9 @@ class EngineSchemaBase(SchemaBase):
         # malus for complex electro-diesels, ~33% higher equipment costs, based on elrl power
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
         # !! assumption of OHLE !!
-        elif self.electro_diesel_buy_cost_malus is not None:
+        elif self.is_electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus * self.power_by_power_source["OHLE"]
+                self.is_electro_diesel_buy_cost_malus * self.power_by_power_source["OHLE"]
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:
@@ -1314,10 +1323,7 @@ class EngineSchemaBase(SchemaBase):
                     continue
                 result.append(f"power_source/{power_source.lower()}")
             # special cases
-            if (
-                "DIESEL" in self.power_by_power_source.keys()
-                and "OHLE" in self.power_by_power_source.keys()
-            ):
+            if self.is_electro_diesel:
                 result.append("power_source/electro_diesel")
         return result
 
