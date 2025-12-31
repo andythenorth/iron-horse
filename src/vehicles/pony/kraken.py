@@ -18,7 +18,7 @@ def main(**kwargs):
         intro_year_offset=2,  # introduce later by design
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="default_suburban_pax_liveries", # hax for now
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

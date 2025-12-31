@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=3,
         subtype="U",
         cab_id="kraken",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
