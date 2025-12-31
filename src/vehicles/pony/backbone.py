@@ -17,7 +17,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.29,
         gen=3,
         liveries=["WORKHORSE", "STOCK_STANDARD", "FREIGHT_BLACK"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

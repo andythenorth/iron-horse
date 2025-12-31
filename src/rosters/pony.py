@@ -98,10 +98,10 @@ engine_module_names = [
     "girt_licker",
     "lemon",
     "esk",
-    #"backbone", #CABBAGE
+    "backbone",
     "chinook",
     "withershins",
-    #"highlander", #CABBAGE
+    "highlander",
     "grid",
     "bone",
     "lion",
