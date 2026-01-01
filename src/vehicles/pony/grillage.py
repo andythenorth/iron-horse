@@ -25,7 +25,7 @@ def main(**kwargs):
             "RAILFREIGHT_RED_STRIPE",
             "SUPERGRAPHIC",
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
