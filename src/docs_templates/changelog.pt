@@ -46,7 +46,22 @@ Not savegame compatible with Iron Horse releases before 4.0.0.
 - added Spacer Wagons
     - these have no cargo capacity and have similar gameplay behaviour to Brake Vans
     - intended for use as spacer vehicles, for example with wagons carrying hot metal
-- added single-unit variants for Xerxes, Doubletide and Yillen engines
+- added engines
+    - Ox 2-6-2 steam freight engine, 45 mph, 800 hp, available around 1895
+    - Backbone 2-8-2 steam freight engine, 60 mph, 2400 hp, available around 1930
+    - Rat diesel freight engine, 75 mph, 1450 hp, available around 1959
+    - Highlander diesel freight engine, 87 mph, 2900 hp, available around 1961
+    - Westrail, electro-diesel freight engine, 2200 hp / 3450 hp, available around 1996
+    - Wildfire diesel engine, 120 mph, 1650 hp, available around 1997
+    - added single-unit variants for Xerxes, Doubletide and Yillen twin-unit engines
+- adjusted engines
+    - Lynx is now a diesel freight engine, 87 mph, 1650 hp, available around 1997
+    - repainted Withershins sprites
+- added express diesel passenger railcars (and trailers)
+    - these run at express train speeds, and have more power but lower capacity than standard diesel railcars
+    - Kraken, 90 mph, 840 hp, introduced around 1932
+    - Turbulent, 105 mph, 1200 hp, introduced around 1961
+    - Typhoon, 120 mph, 1400 hp, introduced around 1991
 - reorganised buy menu
     - simplified vehicle name display
     - improved order of wagon types
