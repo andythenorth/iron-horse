@@ -21,7 +21,7 @@ def main(**kwargs):
         gen=2,
         intro_year_offset=15,
         liveries=["BANGER_BLUE", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
