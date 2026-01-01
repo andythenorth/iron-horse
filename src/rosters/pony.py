@@ -86,7 +86,7 @@ engine_module_names = [
     "trojan",
     #"smizzle", #CABBAGE
     "viking",
-    #"westrail", #CABBAGE
+    "westrail",
     "xerxes",
     "keen",
     "vigilant",

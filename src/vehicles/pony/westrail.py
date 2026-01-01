@@ -26,13 +26,14 @@ def main(**kwargs):
             "LOWER_LINES",
             "INDUSTRIAL_YELLOW",
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
         unit_cls_name="ElectroDieselEngineUnit",
         weight=98,
         vehicle_length=8,
+        effect_offsets=[(2, 0)],
         rel_spriterow_index=0,
     )
 
