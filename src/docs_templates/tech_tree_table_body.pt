@@ -181,49 +181,52 @@
                                                    box-shadow: inset 0 -1px #fff;
                                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
                                             <th style="text-align: right; width: 180px; padding-right: 20px;"
-                                                class="has-child-branch-tooltip">
+                                                class="has-child-branch-tooltip"
+                                                id="${role}-${subrole}-${subrole_child_branch}">
                                                 <div class="child-branch-tooltip">
                                                     <ul>
                                                         <li>Role: ${role}</li>
                                                         <li>Subrole: ${subrole}</li>
                                                         <li>Branch number: ${subrole_child_branch}</li>
+                                                        <li tal:condition="subrole_child_branch < 0">Joker</li>
                                                     </ul>
                                                 </div>
                                                 <!--! this string mangling will be fragile if roles change eh -->
-                                                <span tal:condition="'branch' in subrole">
-                                                    Light
-                                                </span>
-                                                <span tal:condition="'super' in subrole">
-                                                    Super
-                                                </span>
-                                                <span tal:condition="'ultra' in subrole">
-                                                    Ultra
-                                                </span>
-                                                <!--! order of 'heavy' is significant -->
-                                                <span tal:condition="'heavy' in subrole">
-                                                    Heavy
-                                                </span>
-                                                <span tal:condition="'pax' in subrole">
-                                                    Passenger
-                                                </span>
-                                                <span tal:condition="'mail' in subrole">
-                                                    Mail
-                                                </span>
-                                                <span tal:condition="'railbus' in subrole">
-                                                    Railbus
-                                                </span>
-                                                <span tal:condition="'railcar' in subrole">
-                                                    Railcar
-                                                </span>
-                                                <span tal:condition="'express_railcar' in role">
-                                                    Express
-                                                </span>
-                                                <span tal:condition="'mail_railcar' not in subrole and 'pax_railcar' and 'pax_railbus' and 'express_railcar' not in role and 'hst' not in role">
-                                                    ${doc_helper.get_role_string_from_subrole(subrole, iron_horse.badge_manager)}
-                                                </span>
-                                                <span tal:condition="subrole_child_branch < 0">
-                                                    <br /><span class="muted">(Joker)</span>
-                                                </span>
+                                                    <span tal:condition="'branch' in subrole">
+                                                        Light
+                                                    </span>
+                                                    <span tal:condition="'super' in subrole">
+                                                        Super
+                                                    </span>
+                                                    <span tal:condition="'ultra' in subrole">
+                                                        Ultra
+                                                    </span>
+                                                    <!--! order of 'heavy' is significant -->
+                                                    <span tal:condition="'heavy' in subrole">
+                                                        Heavy
+                                                    </span>
+                                                    <span tal:condition="'pax' in subrole">
+                                                        Passenger
+                                                    </span>
+                                                    <span tal:condition="'mail' in subrole">
+                                                        Mail
+                                                    </span>
+                                                    <span tal:condition="'railbus' in subrole">
+                                                        Railbus
+                                                    </span>
+                                                    <span tal:condition="'railcar' in subrole">
+                                                        Railcar
+                                                    </span>
+                                                    <span tal:condition="'express_railcar' in role">
+                                                        Express
+                                                    </span>
+                                                    <span tal:condition="'mail_railcar' not in subrole and 'pax_railcar' and 'pax_railbus' and 'express_railcar' not in role and 'hst' not in role">
+                                                        ${doc_helper.get_role_string_from_subrole(subrole, iron_horse.badge_manager)}
+                                                    </span>
+                                                <a style="text-decoration:none;"
+                                                    href="#${role}-${subrole}-${subrole_child_branch}">
+                                                    &#x1f517;
+                                                </a>
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
                                                 <tal:example_model_variant define="catalogue tech_tree[base_track_type][role][subrole][subrole_child_branch][gen];">
