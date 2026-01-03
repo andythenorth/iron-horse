@@ -16,28 +16,39 @@
                 <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, simplified_gameplay)">
-                <tal:base_track_type repeat="base_track_type tech_tree.keys()">
-                    <h3>${doc_helper.base_track_types_with_display_names[base_track_type]}</h3>
-                    <tal:roles define="intro_years roster.intro_years[base_track_type]"
-                               repeat="role tech_tree[base_track_type]">
-                        <tal:descriptions_rail condition="base_track_type=='RAIL'">
-                            <tal:descriptions switch="role">
-                                <div tal:case="'express'">
-                                    <h4 id="role-${role}">General Purpose / Express Engines</h4>
+                <tal:base_track_types repeat="base_track_type ['RAIL', 'NG', 'METRO']">
+                        <h3>
+                            ${doc_helper.base_track_types_with_display_names[base_track_type]}
+                        </h3>
+
+                        <div tal:define="role 'express'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">General Purpose / Express Engines</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li>Passengers, mail and valuables</li>
                                         <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
                                         <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost to buy and run</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'freight'">
-                                    <h4 id="role-${role}">Freight Engines</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'freight'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Freight Engines</metal:block>
+                                <metal:block fill-slot="body">
                                     <p>
                                         Recommended for all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed.
                                     </p>
-                                </div>
-                                <div tal:case="'suburban_or_universal_railcar'">
-                                    <h4 id="role-${role}">Railcars / Multiple-Unit Trains</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'suburban_or_universal_railcar'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Railcars / Multiple-Unit Trains</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li>These run at similar speeds to freight trains, and are suited to
                                             <ul>
@@ -48,30 +59,50 @@
                                         <li>Railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
                                         <li>Railcars can be combined as needed</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'express_railcar'">
-                                    <h4 id="role-${role}">Express Railcars / Multiple-Unit Trains</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'express_railcar'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Express Railcars / Multiple-Unit Trains</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
                                         <li>Express railcars can be combined as needed</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'high_power_railcar'">
-                                    <h4 id="role-${role}">High Power Railcars</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'high_power_railcar'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">High Power Railcars</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li>Single-unit railcars with passenger or mail capacity.</li>
                                         <li>With power and speed equivalent to medium-power engines, these railcars can haul reasonably-sized trains.</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'hst'">
-                                    <h4 id="role-${role}">InterCity Express Trains</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'hst'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">InterCity Express Trains</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li> high-speed engines with dedicated high-speed coaches and mail cars</li>
                                         <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'very_high_speed'">
-                                    <h4 id="role-${role}">InterCity Express Trains With Distributed Power</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'very_high_speed'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">InterCity Express Trains With Distributed Power</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li> TGV-style electric passenger trains with very high speeds</li>
                                         <li> power is distributed throughout the train
@@ -82,214 +113,90 @@
                                         <li> tilt bonus for higher speed through curves</li>
                                         <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'driving_cab'">
-                                    <h4 id="role-${role}">Driving Van Trailers</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'driving_cab'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Driving Van Trailers</metal:block>
+                                <metal:block fill-slot="body">
                                     <ul>
                                         <li>Attach to front or rear of express trains that have at least one other engine</li>
                                         <li>Carries mail and express freight</li>
                                         <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
                                     </ul>
-                                </div>
-                                <div tal:case="'gronk'">
-                                    <h4 id="role-${role}">Gronk!</h4>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'gronk'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Gronk!</metal:block>
+                                <metal:block fill-slot="body">
                                     <p>Slow engines that have limited gameplay use but look nice.</p>
-                                </div>
-                                <div tal:case="'lolz'">
-                                    <h4 id="role-${role}">Lolz</h4>
+                               </metal:block>
+                            </metal:use_role_table>
+                     </div>
+
+                        <div tal:define="role 'lolz'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Lolz</metal:block>
+                                <metal:block fill-slot="body">
                                     <p>Silly trains that have no gameplay purpose at all but look nice.</p>
-                                </div>
-                            </tal:descriptions>
-                        </tal:descriptions_rail>
-                        <tal:descriptions_ng condition="base_track_type=='NG'">
-                            <div tal:condition="role=='express'">
-                                <h4 id="role-${role}">Narrow Gauge Trains</h4>
-                                <ul>
-                                    <li> low power trains with low buy and run costs, and relatively low speeds</li>
-                                    <li> effective for short routes</li>
-                                    <li> can be moderately effective on longer routes</li>
-                                </ul>
-                            </div>
-                            <div tal:condition="role=='suburban_or_universal_railcar'">
-                                <h4 id="role-${role}">Narrow Gauge Railcars</h4>
-                                <ul>
-                                    <li> can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
-                                    <li> narrow gauge railcars can be combined as needed</li>
-                                </ul>
-                            </div>
-                        </tal:descriptions_ng>
-                        <tal:descriptions_metro condition="base_track_type=='METRO'">
-                            <div tal:condition="role=='metro'">
-                                <h4 id="role-${role}">Metro Trains</h4>
-                                <ul>
-                                    <li> pax, mail, valuables, food and similar town cargos</li>
-                                    <li> for very busy routes in and around large cities
-                                        <ul>
-                                            <li> metro trains have very high capacity and relatively high run costs</li>
-                                            <li> to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings</li>
-                                        </ul>
-                                    </li>
-                                    <li> can be used in stations  as small as 1 tile</li>
-                                    <li> metro trains can be combined as needed</li>
-                                </ul>
-                            </div>
-                        </tal:descriptions_metro>
-                        <style>
-                            .has-child-branch-tooltip {
-                                position: relative; /* Needed for the absolute positioning of the tooltip */
-                                // display: inline-block; /* So it wraps nicely */
-                            }
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
 
-                            .child-branch-tooltip {
-                                display: none; /* Hidden by default */
-                                position: absolute;
-                                top: 66%;
-                                left: 0;
-                                background: #333;
-                                color: white;
-                                padding: 5px 8px;
-                                border-radius: 4px;
-                                font-size: 12px;
-                                font-weight: normal;
-                                white-space: nowrap;
-                                text-align: left;
-                                z-index: 10;
-                            }
-                            .child-branch-tooltip ul {
-                                margin: 0;
-                                padding: 0;
-                                list-style: none;
-                            }
-                            .has-child-branch-tooltip:hover .child-branch-tooltip {
-                                display: block;
-                            }
-                        </style>
-                        <table style="width:100%; margin-bottom:40px;"
-                               tal:define="subroles tech_tree[base_track_type][role].keys();"
-                               tal:condition="len(subroles) > 0">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:right; padding-right: 20px;">Intro Year:</th>
-                                    <th style="padding-right: 20px;" tal:repeat="intro_year intro_years">${intro_year}</th>
-                                    <td><!--! empty space cell --></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tal:roles repeat="subrole subroles">
-                                    <tal:subrole_child_branch tal:repeat="subrole_child_branch doc_helper.get_subrole_child_branches_in_order(tech_tree[base_track_type][role][subrole].keys())">
-                                        <tr style="border-top: solid ${'2px #ccc' if subrole in ['branch_freight', 'heavy_freight', 'super_heavy_freight', 'heavy_express', 'super_heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
-                                                   box-shadow: inset 0 -1px #fff;
-                                                   background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
-                                            <th style="text-align: right; width: 180px; padding-right: 20px;"
-                                                class="has-child-branch-tooltip"
-                                                id="${role}-${subrole}-${subrole_child_branch}">
-                                                <div class="child-branch-tooltip">
-                                                    <ul>
-                                                        <li>Role: ${role}</li>
-                                                        <li>Subrole: ${subrole}</li>
-                                                        <li>Branch number: ${subrole_child_branch}</li>
-                                                        <li tal:condition="subrole_child_branch < 0">Joker</li>
-                                                    </ul>
-                                                </div>
-                                                <!--! this string mangling will be fragile if roles change eh -->
-                                                    <span tal:condition="'branch' in subrole">
-                                                        Light
-                                                    </span>
-                                                    <span tal:condition="'super' in subrole">
-                                                        Super
-                                                    </span>
-                                                    <span tal:condition="'ultra' in subrole">
-                                                        Ultra
-                                                    </span>
-                                                    <!--! order of 'heavy' is significant -->
-                                                    <span tal:condition="'heavy' in subrole">
-                                                        Heavy
-                                                    </span>
-                                                    <span tal:condition="'pax' in subrole">
-                                                        Passenger
-                                                    </span>
-                                                    <span tal:condition="'mail' in subrole">
-                                                        Mail
-                                                    </span>
-                                                    <span tal:condition="'railbus' in subrole">
-                                                        Railbus
-                                                    </span>
-                                                    <span tal:condition="'railcar' in subrole">
-                                                        Railcar
-                                                    </span>
-                                                    <span tal:condition="'express_railcar' in role">
-                                                        Express
-                                                    </span>
-                                                    <span tal:condition="'mail_railcar' not in subrole and 'pax_railcar' and 'pax_railbus' and 'express_railcar' not in role and 'hst' not in role">
-                                                        ${doc_helper.get_role_string_from_subrole(subrole, iron_horse.badge_manager)}
-                                                    </span>
-                                                <a style="text-decoration:none;"
-                                                    href="#${role}-${subrole}-${subrole_child_branch}">
-                                                    &#x1f517;
-                                                </a>
-                                            </th>
-                                            <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
-                                                <tal:example_model_variant define="catalogue tech_tree[base_track_type][role][subrole][subrole_child_branch][gen];">
-                                                    <tal:block condition="catalogue is not None"
-                                                               define="example_model_variant catalogue.example_model_variant if catalogue is not None else None;">
-                                                        <div id="${example_model_variant.model_id}"
-                                                             class="tech_tree_vehicle_container">
-                                                            <a href="${example_model_variant.model_id}.html">
-                                                                <div class="tech_tree_vehicle
-                                                                            ${'tech_tree_vehicle_electric_' + example_model_variant.electrification_type.lower() if example_model_variant.requires_electric_rails else 'None'}
-                                                                            ${'tech_tree_vehicle_electro_diesel' if example_model_variant.is_electro_diesel else None}
-                                                                            ${'tech_tree_vehicle_arrow' if catalogue.next_gen_catalogue is not None else None}">
-                                                                    <span style="display:block;">
-                                                                        ${example_model_variant.name}
-                                                                    </span>
-                                                                    <img src="static/img/${example_model_variant.id}_${vehicle_cc}.png"
-                                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=catalogue)}"
-                                                                         height="${2 * doc_helper.docs_sprite_height}" />
-                                                                    <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
-                                                                        <small>
-                                                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(catalogue)">
-                                                                                <span style="display:block">${power_string}</span>
-                                                                            </tal:power>
-                                                                        </small>
-                                                                        <!--!
-                                                                            this is a lolz JFDI hack to provide equal height spacing when there are 1 or 2 power sources
-                                                                            this will fail with more than 2 power sources, but deal with that later by adding more conditions
-                                                                        -->
-                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(catalogue)) == 1) and (example_model_variant.lgv_capable == False)">
-                                                                            <br />
-                                                                        </tal:linebreak>
-                                                                        <small>${doc_helper.speed_formatted_for_docs(catalogue)}</small>
+                        <!--! CABBAGE NARROW GAUGE -->
 
-                                                                        <small>${example_model_variant.power_speed_ratio}i</small>
-                                                                        <tal:branch condition="example_model_variant.roster.id != 'pony'">
-                                                                            <small>branch: ${example_model_variant.subrole_child_branch_num}</small>
-                                                                        </tal:branch>
-                                                                    </span>
-                                                                </div>
-                                                                <div tal:condition="catalogue.next_gen_catalogue is not None"
-                                                                     style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                     <div style="${'visibility:hidden;' if doc_helper.model_has_direct_replacement_in_tree(example_model_variant) else nothing}">
-                                                                        <a href="${catalogue.next_gen_catalogue.model_id}.html">
-                                                                            <div class="muted"
-                                                                                 style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                                Replaced by ${doc_helper.unpack_name_string(catalogue.next_gen_catalogue)}
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </tal:block>
-                                                </tal:example_model_variant>
-                                            </td>
-                                            <td><!--! empty space cell --></td>
-                                        </tr>
-                                    </tal:subrole_child_branch>
-                                </tal:roles>
-                            </tbody>
-                        </table>
-                    </tal:roles>
-                </tal:base_track_type>
+                        <div tal:define="role 'express'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Narrow Gauge Trains</metal:block>
+                                <metal:block fill-slot="body">
+                                    <ul>
+                                        <li> low power trains with low buy and run costs, and relatively low speeds</li>
+                                        <li> effective for short routes</li>
+                                        <li> can be moderately effective on longer routes</li>
+                                    </ul>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <div tal:define="role 'suburban_or_universal_railcar'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Narrow Gauge Railcars</metal:block>
+                                <metal:block fill-slot="body">
+                                    <ul>
+                                        <li> can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
+                                        <li> narrow gauge railcars can be combined as needed</li>
+                                    </ul>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                        <!--! metro trains -->
+
+                        <div tal:define="role 'metro'">
+                            <metal:use_role_table use-macro="load:cabbage.pt">
+                                <metal:block fill-slot="heading">Metro Trains</metal:block>
+                                <metal:block fill-slot="body">
+                                    <ul>
+                                        <li> pax, mail, valuables, food and similar town cargos</li>
+                                        <li> for very busy routes in and around large cities
+                                            <ul>
+                                                <li> metro trains have very high capacity and relatively high run costs</li>
+                                                <li> to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings</li>
+                                            </ul>
+                                        </li>
+                                        <li> can be used in stations  as small as 1 tile</li>
+                                        <li> metro trains can be combined as needed</li>
+                                    </ul>
+                                </metal:block>
+                            </metal:use_role_table>
+                        </div>
+
+                </tal:base_track_types>
             </tal:tech_tree>
         </div>
     </div>

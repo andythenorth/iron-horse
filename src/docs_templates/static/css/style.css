@@ -96,6 +96,37 @@ td.vehicle-image {
     border-left-color: #f5fff7 !important;
 }
 
+/* tree table tooltips */
+
+.has-child-branch-tooltip {
+    position: relative; /* Needed for the absolute positioning of the tooltip */
+    // display: inline-block; /* So it wraps nicely */
+}
+
+.child-branch-tooltip {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 66%;
+    left: 0;
+    background: #333;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
+    z-index: 10;
+}
+.child-branch-tooltip ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.has-child-branch-tooltip:hover .child-branch-tooltip {
+    display: block;
+}
+
 /* livery list */
 
 table.livery-list-table {
