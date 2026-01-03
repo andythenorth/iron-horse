@@ -6,13 +6,15 @@
             <metal:block metal:define-slot="heading" tal:define="unused nothing">
                 <!-- nothing if empty -->
             </metal:block>
-            <a style="text-decoration:none;"
-                href="#${base_track_type}-role-${role}">
-                &#x1f517;
-            </a>
+            <small>
+                <a style="text-decoration:none;"
+                    href="#${base_track_type}-role-${role}">
+                    &#x1f517;
+                </a>
+            </small>
         </h4>
 
-        <metal:block metal:define-slot="body" tal:define="unused nothing">
+        <metal:block metal:define-slot="description" tal:define="unused nothing">
             <!-- nothing if empty -->
         </metal:block>
 

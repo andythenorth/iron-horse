@@ -17,38 +17,74 @@
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, simplified_gameplay)">
                 <tal:base_track_types repeat="base_track_type ['RAIL', 'NG', 'METRO']">
-                        <h3>
-                            ${doc_helper.base_track_types_with_display_names[base_track_type]}
-                        </h3>
+                    <h3>
+                        ${doc_helper.base_track_types_with_display_names[base_track_type]}
+                    </h3>
+                    <div tal:define="role 'express'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">General Purpose / Express Engines</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li>Passengers, mail and valuables</li>
+                                    <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
+                                    <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost to buy and run</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
 
-                        <div tal:define="role 'express'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">General Purpose / Express Engines</metal:block>
-                                <metal:block fill-slot="body">
+                    <div tal:define="role 'universal'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
+                                    <!--! NOT IMPLEMENTED - only ng has universal as of Jan 2026 -->
+                                </tal:not_narrow_gauge>
+                                <tal:narrow_gauge condition="base_track_type == 'NG'">
+                                    Narrow Gauge Trains
+                                </tal:narrow_gauge>
+                            </metal:block>
+                            <metal:block fill-slot="description">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
+                                    <!--! NOT IMPLEMENTED - only ng has universal as of Jan 2026-->
+                                </tal:not_narrow_gauge>
+                                <tal:narrow_gauge condition="base_track_type == 'NG'">
                                     <ul>
-                                        <li>Passengers, mail and valuables</li>
-                                        <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
-                                        <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost to buy and run</li>
+                                        <li> low power trains with low buy and run costs, and relatively low speeds</li>
+                                        <li> effective for short routes</li>
+                                        <li> can be moderately effective on longer routes</li>
                                     </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
+                                </tal:narrow_gauge>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
 
-                        <div tal:define="role 'freight'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Freight Engines</metal:block>
-                                <metal:block fill-slot="body">
-                                    <p>
-                                        Recommended for all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed.
-                                    </p>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
+                    <div tal:define="role 'freight'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Freight Engines</metal:block>
+                            <metal:block fill-slot="description">
+                                <p>
+                                    Recommended for all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed.
+                                </p>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
 
-                        <div tal:define="role 'suburban_or_universal_railcar'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Railcars / Multiple-Unit Trains</metal:block>
-                                <metal:block fill-slot="body">
+                    <div tal:define="role 'suburban_or_universal_railcar'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
+                                    Railcars / Multiple-Unit Trains
+                                </tal:not_narrow_gauge>
+                                <tal:narrow_gauge condition="base_track_type == 'NG'">
+                                    Narrow Gauge Railcars
+                                </tal:narrow_gauge>
+                            </metal:block>
+                            <metal:block fill-slot="description">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
                                     <ul>
                                         <li>These run at similar speeds to freight trains, and are suited to
                                             <ul>
@@ -59,142 +95,141 @@
                                         <li>Railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
                                         <li>Railcars can be combined as needed</li>
                                     </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'express_railcar'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Express Railcars / Multiple-Unit Trains</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
-                                        <li>Express railcars can be combined as needed</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'high_power_railcar'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">High Power Railcars</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li>Single-unit railcars with passenger or mail capacity.</li>
-                                        <li>With power and speed equivalent to medium-power engines, these railcars can haul reasonably-sized trains.</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'hst'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">InterCity Express Trains</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li> high-speed engines with dedicated high-speed coaches and mail cars</li>
-                                        <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'very_high_speed'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">InterCity Express Trains With Distributed Power</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li> TGV-style electric passenger trains with very high speeds</li>
-                                        <li> power is distributed throughout the train
-                                            <ul>
-                                            <li> engines are relatively low power</li>
-                                            <li> every set of coaches attached to the engine adds more power</li>
-                                            </ul></li>
-                                        <li> tilt bonus for higher speed through curves</li>
-                                        <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'driving_cab'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Driving Van Trailers</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li>Attach to front or rear of express trains that have at least one other engine</li>
-                                        <li>Carries mail and express freight</li>
-                                        <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'gronk'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Gronk!</metal:block>
-                                <metal:block fill-slot="body">
-                                    <p>Slow engines that have limited gameplay use but look nice.</p>
-                               </metal:block>
-                            </metal:use_role_table>
-                     </div>
-
-                        <div tal:define="role 'lolz'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Lolz</metal:block>
-                                <metal:block fill-slot="body">
-                                    <p>Silly trains that have no gameplay purpose at all but look nice.</p>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <!--! CABBAGE NARROW GAUGE -->
-
-                        <div tal:define="role 'express'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Narrow Gauge Trains</metal:block>
-                                <metal:block fill-slot="body">
-                                    <ul>
-                                        <li> low power trains with low buy and run costs, and relatively low speeds</li>
-                                        <li> effective for short routes</li>
-                                        <li> can be moderately effective on longer routes</li>
-                                    </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
-
-                        <div tal:define="role 'suburban_or_universal_railcar'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Narrow Gauge Railcars</metal:block>
-                                <metal:block fill-slot="body">
+                                </tal:not_narrow_gauge>
+                                <tal:narrow_gauge condition="base_track_type == 'NG'">
                                     <ul>
                                         <li> can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
                                         <li> narrow gauge railcars can be combined as needed</li>
                                     </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
+                                </tal:narrow_gauge>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
 
-                        <!--! metro trains -->
-
-                        <div tal:define="role 'metro'">
-                            <metal:use_role_table use-macro="load:cabbage.pt">
-                                <metal:block fill-slot="heading">Metro Trains</metal:block>
-                                <metal:block fill-slot="body">
+                    <div tal:define="role 'express_railcar'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
+                                    Express Railcars / Multiple-Unit Trains
+                                </tal:not_narrow_gauge>
+                                <!--! no heading wanted for NG express railcars - grouped with universal -->
+                            </metal:block>
+                            <metal:block fill-slot="description">
+                                <!--! jank special handling of base track type for this role -->
+                                <tal:not_narrow_gauge condition="base_track_type != 'NG'">
                                     <ul>
-                                        <li> pax, mail, valuables, food and similar town cargos</li>
-                                        <li> for very busy routes in and around large cities
-                                            <ul>
-                                                <li> metro trains have very high capacity and relatively high run costs</li>
-                                                <li> to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings</li>
-                                            </ul>
-                                        </li>
-                                        <li> can be used in stations  as small as 1 tile</li>
-                                        <li> metro trains can be combined as needed</li>
+                                        <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
+                                        <li>Express railcars can be combined as needed</li>
                                     </ul>
-                                </metal:block>
-                            </metal:use_role_table>
-                        </div>
+                                </tal:not_narrow_gauge>
+                                <!--! no description wanted for NG express railcars - grouped with universal -->
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <div tal:define="role 'high_power_railcar'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">High Power Railcars</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li>Single-unit railcars with passenger or mail capacity.</li>
+                                    <li>With power and speed equivalent to medium-power engines, these railcars can haul reasonably-sized trains.</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <div tal:define="role 'hst'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">InterCity Express Trains</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li> high-speed engines with dedicated high-speed coaches and mail cars</li>
+                                    <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <div tal:define="role 'very_high_speed'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">InterCity Express Trains With Distributed Power</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li> TGV-style electric passenger trains with very high speeds</li>
+                                    <li> power is distributed throughout the train
+                                        <ul>
+                                        <li> engines are relatively low power</li>
+                                        <li> every set of coaches attached to the engine adds more power</li>
+                                        </ul></li>
+                                    <li> tilt bonus for higher speed through curves</li>
+                                    <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <div tal:define="role 'driving_cab'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Driving Van Trailers</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li>Attach to front or rear of express trains that have at least one other engine</li>
+                                    <li>Carries mail and express freight</li>
+                                    <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <div tal:define="role 'gronk'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Gronk!</metal:block>
+                            <metal:block fill-slot="description">
+                                <p>Slow engines that have limited gameplay use but look nice.</p>
+                           </metal:block>
+                        </metal:use_role_table>
+                 </div>
+
+                    <div tal:define="role 'lolz'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Lolz</metal:block>
+                            <metal:block fill-slot="description">
+                                <p>Silly trains that have no gameplay purpose at all but look nice.</p>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
+                    <!--! metro trains -->
+
+                    <div tal:define="role 'metro'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Metro Trains</metal:block>
+                            <metal:block fill-slot="description">
+                                <ul>
+                                    <li> pax, mail, valuables, food and similar town cargos</li>
+                                    <li> for very busy routes in and around large cities
+                                        <ul>
+                                            <li> metro trains have very high capacity and relatively high run costs</li>
+                                            <li> to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings</li>
+                                        </ul>
+                                    </li>
+                                    <li> can be used in stations  as small as 1 tile</li>
+                                    <li> metro trains can be combined as needed</li>
+                                </ul>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+                    <div tal:define="role 'metro_freight'">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <metal:block fill-slot="heading">Metro Freight</metal:block>
+                            <metal:block fill-slot="description">
+                                <p>For freight on metro lines.</p>
+                            </metal:block>
+                        </metal:use_role_table>
+                    </div>
+
 
                 </tal:base_track_types>
             </tal:tech_tree>
