@@ -105,7 +105,7 @@ engine_module_names = [
     "grid",
     "bone",
     "lion",
-    #"grillage", #CABBAGE
+    "grillage",
     "toaster",
     "cheddar_valley",
     "stentor",
