@@ -23,4 +23,7 @@ class IncompatibleGRF(object):
 # IMPORTANT
 # both forms of grfid string are supported: literal (per nfo) and dword (displayed in Bananas, in OpenTTD)
 
+# !! CABBAGE - railtypes aren't incompatible - this is disabling on a load order check - refactor names?
 IncompatibleGRF(DwordGrfID("595AAA02"), "JP+ Tracks")
+IncompatibleGRF(DwordGrfID("42424e54"), "SETS: Narrow gauge")
+IncompatibleGRF(DwordGrfID("42425354"), "SETS: Standard gauge")
