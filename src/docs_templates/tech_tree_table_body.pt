@@ -23,7 +23,7 @@
                         <tal:descriptions_rail condition="base_track_type=='RAIL'">
                             <tal:descriptions switch="role">
                                 <div tal:case="'express'">
-                                    <h4>General Purpose / Express Engines</h4>
+                                    <h4 id="role-${role}">General Purpose / Express Engines</h4>
                                     <ul>
                                         <li>Passengers, mail and valuables</li>
                                         <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
@@ -31,13 +31,13 @@
                                     </ul>
                                 </div>
                                 <div tal:case="'freight'">
-                                    <h4>Freight Engines</h4>
+                                    <h4 id="role-${role}">Freight Engines</h4>
                                     <p>
                                         Recommended for all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed.
                                     </p>
                                 </div>
                                 <div tal:case="'suburban_or_universal_railcar'">
-                                    <h4>Railcars / Multiple-Unit Trains</h4>
+                                    <h4 id="role-${role}">Railcars / Multiple-Unit Trains</h4>
                                     <ul>
                                         <li>These run at similar speeds to freight trains, and are suited to
                                             <ul>
@@ -50,28 +50,28 @@
                                     </ul>
                                 </div>
                                 <div tal:case="'express_railcar'">
-                                    <h4>Express Railcars / Multiple-Unit Trains</h4>
+                                    <h4 id="role-${role}">Express Railcars / Multiple-Unit Trains</h4>
                                     <ul>
                                         <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
                                         <li>Express railcars can be combined as needed</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'high_power_railcar'">
-                                    <h4>High Power Railcars</h4>
+                                    <h4 id="role-${role}">High Power Railcars</h4>
                                     <ul>
                                         <li>Single-unit railcars with passenger or mail capacity.</li>
                                         <li>With power and speed equivalent to medium-power engines, these railcars can haul reasonably-sized trains.</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'hst'">
-                                    <h4>InterCity Express Trains</h4>
+                                    <h4 id="role-${role}">InterCity Express Trains</h4>
                                     <ul>
                                         <li> high-speed engines with dedicated high-speed coaches and mail cars</li>
                                         <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'very_high_speed'">
-                                    <h4>InterCity Express Trains With Distributed Power</h4>
+                                    <h4 id="role-${role}">InterCity Express Trains With Distributed Power</h4>
                                     <ul>
                                         <li> TGV-style electric passenger trains with very high speeds</li>
                                         <li> power is distributed throughout the train
@@ -84,7 +84,7 @@
                                     </ul>
                                 </div>
                                 <div tal:case="'driving_cab'">
-                                    <h4>Driving Van Trailers</h4>
+                                    <h4 id="role-${role}">Driving Van Trailers</h4>
                                     <ul>
                                         <li>Attach to front or rear of express trains that have at least one other engine</li>
                                         <li>Carries mail and express freight</li>
@@ -92,18 +92,18 @@
                                     </ul>
                                 </div>
                                 <div tal:case="'gronk'">
-                                    <h4>Gronk!</h4>
+                                    <h4 id="role-${role}">Gronk!</h4>
                                     <p>Slow engines that have limited gameplay use but look nice.</p>
                                 </div>
                                 <div tal:case="'lolz'">
-                                    <h4>Lolz</h4>
+                                    <h4 id="role-${role}">Lolz</h4>
                                     <p>Silly trains that have no gameplay purpose at all but look nice.</p>
                                 </div>
                             </tal:descriptions>
                         </tal:descriptions_rail>
                         <tal:descriptions_ng condition="base_track_type=='NG'">
                             <div tal:condition="role=='express'">
-                                <h4>Narrow Gauge Trains</h4>
+                                <h4 id="role-${role}">Narrow Gauge Trains</h4>
                                 <ul>
                                     <li> low power trains with low buy and run costs, and relatively low speeds</li>
                                     <li> effective for short routes</li>
@@ -111,7 +111,7 @@
                                 </ul>
                             </div>
                             <div tal:condition="role=='suburban_or_universal_railcar'">
-                                <h4>Narrow Gauge Railcars</h4>
+                                <h4 id="role-${role}">Narrow Gauge Railcars</h4>
                                 <ul>
                                     <li> can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
                                     <li> narrow gauge railcars can be combined as needed</li>
@@ -120,7 +120,7 @@
                         </tal:descriptions_ng>
                         <tal:descriptions_metro condition="base_track_type=='METRO'">
                             <div tal:condition="role=='metro'">
-                                <h4>Metro Trains</h4>
+                                <h4 id="role-${role}">Metro Trains</h4>
                                 <ul>
                                     <li> pax, mail, valuables, food and similar town cargos</li>
                                     <li> for very busy routes in and around large cities
