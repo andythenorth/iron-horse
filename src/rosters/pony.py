@@ -81,10 +81,10 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    #"abernant", #CABBAGE
+    "abernant",
     "haar",
     "trojan",
-    "smizzle", #CABBAGE
+    "smizzle",
     "viking",
     "westrail",
     "xerxes",
