@@ -20,9 +20,9 @@ def main(**kwargs):
         liveries=[
             "CLASSIC_LINES",
             #"WORKHORSE",
-            #"STOCK_STANDARD",
-            #"RAILFREIGHT_RED_STRIPE",
-            #"INDUSTRIAL_YELLOW",
+            "STOCK_STANDARD",
+           # "RAILFREIGHT_RED_STRIPE",
+            "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,
     )
