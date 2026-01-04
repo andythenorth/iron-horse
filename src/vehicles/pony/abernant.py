@@ -21,7 +21,7 @@ def main(**kwargs):
         intro_year_offset=5,  # let's be a little bit later for this one
         extended_vehicle_life=True,
         liveries=["STOCK_STANDARD"], #, "WORKHORSE", "INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
