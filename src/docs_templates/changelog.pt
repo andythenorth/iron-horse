@@ -48,9 +48,11 @@ Not savegame compatible with Iron Horse releases before 4.0.0.
     - intended for use as spacer vehicles, for example with wagons carrying hot metal
 - added engines
     - Ox 2-6-2 steam freight engine, 45 mph, 800 hp, available around 1895
+    - Abernant 0-8-4 steam freight engine, 60 mph, 1250 hp, available around 1905
     - Pika 0-4-0+0-4-0 steam freight engine, 60 mph, 800 hp, available around 1915
     - Backbone 2-8-2 steam freight engine, 60 mph, 2400 hp, available around 1930
     - Rat diesel freight engine, 75 mph, 1450 hp, available around 1959
+    - Smizzle diesel freight engine, 75 mph, 1750 hp, available around 1959
     - Highlander diesel freight engine, 87 mph, 2900 hp, available around 1961
     - Grillage diesel freight engine, 87 mph, 3500 hp, available around 1972
     - Westrail, electro-diesel freight engine, 2200 hp / 3450 hp, available around 1996
