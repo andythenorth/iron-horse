@@ -127,8 +127,8 @@ engine_module_names = [
     "snowplough_pony_gen_2",
     # cargo sprinter
     "cargo_sprinter",
-    # auto-coach (only one as autoreplace can't handle mixed cargo articulated vehicles)
-    "auto_coach_pony_gen_2",
+    # autocoach (only one as autoreplace can't handle mixed cargo articulated vehicles)
+    "autocoach_pony_gen_2",
     # railbuses
     "clipper",
     "skipper",

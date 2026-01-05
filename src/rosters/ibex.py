@@ -89,7 +89,7 @@ engine_module_names = [
     # "snowplough_ibex_gen_2",
     # cargo sprinter
     # foo,
-    # auto-coach (only one as autoreplace can't handle mixed cargo articulated vehicles)
+    # autocoach (only one as autoreplace can't handle mixed cargo articulated vehicles)
     # foo,
     # railbuses
     # foo,

@@ -2539,7 +2539,7 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
     - attach to front or rear of a train with at least one other engine
     - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
     - 75 mph, combined pax and mail capacity (not refittable)
-    - inspired by SR and LMS auto-coach sets, LNER articulated coach sets
+    - inspired by SR and LMS autocoach sets, LNER articulated coach sets
 - increase Lemon speed to 75 mph, so it can stick around for longer in steam-diesel transition period, similar to Diablo and Blind Smuir
 - link to grf.farm docs from in-game
 
