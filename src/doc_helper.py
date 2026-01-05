@@ -424,7 +424,7 @@ class DocHelper(object):
 
         # generic or vehicle-specific image
         if optional_model_variant is not None:
-            image_filename = optional_model_variant.model_id + "_red_white.png"
+            image_filename = optional_model_variant.id + "_red_white.png"
             title = optional_title
             quote = self.strip_html(optional_model_variant.catalogue.model_def.description)
             quote = self.wrap_in_smart_quotes(quote)
