@@ -2,6 +2,26 @@ Changelog
 =========
 
 --------------
+4.1.0 Release
+--------------
+
+
+*Changes*
+
+- added liveries for
+    - Abernant
+    - Smizzle
+    - Autocoach set
+
+
+*Fixes*
+
+- liveries were incorrectly ordered for
+    - Kraken and Kraken Trailers
+    - High Flyer and High Flyer Trailers
+
+
+--------------
 4.0.0 Release
 --------------
 
