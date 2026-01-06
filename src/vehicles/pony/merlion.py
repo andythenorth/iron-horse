@@ -25,7 +25,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "CLASSIC_LINES",
             "RAILFREIGHT_RED_STRIPE",
-            "DUTCH",
+            "CONVENTIONAL_WISDOM",
         ],
         decor_spriterow_num=5,
         sprites_complete=True,
