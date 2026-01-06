@@ -28,6 +28,8 @@ def main(**kwargs):
             "LOWER_LINES",
             "BANGER_BLUE",
         ],
+        decor_spriterow_num=7,
+        show_decor_in_purchase_for_variants=[1, 3, 4, 5, 6],
         sprites_complete=True,
     )
 
