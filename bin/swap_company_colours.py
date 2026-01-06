@@ -9,11 +9,7 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "mail_car_ng_pony_gen_1A",
-    "mail_car_pony_gen_1A",
-    "mail_car_pony_gen_1B",
-    "mail_car_pony_gen_2A",
-    "mail_car_pony_gen_2B",
+    "resilient",
 ]
 
 for input_filename in input_filenames:

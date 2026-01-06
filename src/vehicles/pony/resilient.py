@@ -24,7 +24,7 @@ def main(**kwargs):
             "FRUIT_RIPPLE",
             "MAIL_BY_RAIL",
             "FREIGHTLINER_GBRF",
-            "DUTCH",
+            "CONVENTIONAL_WISDOM",
             "LOWER_LINES",
             "BANGER_BLUE",
         ],
