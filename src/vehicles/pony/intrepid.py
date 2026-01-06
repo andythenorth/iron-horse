@@ -20,7 +20,16 @@ def main(**kwargs):
         intro_year_offset=6,  # let's be later for this one
         extended_vehicle_life=True,
         # add triple grey railfreight
-        liveries=["BANGER_BLUE", "SUPERGRAPHIC", "RAILFREIGHT_RED_STRIPE"],
+        liveries=[
+            "BANGER_BLUE",
+            "SUPERGRAPHIC",
+            "RAILFREIGHT_RED_STRIPE",
+            "FRUIT_RIPPLE",
+            "MAIL_BY_RAIL",
+            "CLASSIC_LINES",
+        ],
+        decor_spriterow_num=6,
+        show_decor_in_purchase_for_variants=[3],
         sprites_complete=True,
     )
 
