@@ -652,10 +652,13 @@ class SchemaBase(object):
         # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
         for power_source, optional_props in global_constants.power_sources.items():
             if power_source in self.power_by_power_source.keys():
+                tile_powers_track_type_expressions = f"tile_powers_track_type_name_{self.base_track_type + optional_props.get("suffix", "")}()"
+                if self.lgv_capable:
+                    tile_powers_track_type_expressions = tile_powers_track_type_expressions + "||" + "tile_powers_track_type_name_LGV_ELECTRIFIED_OHLE()"
                 result.append(
                     [
                         power_source,
-                        self.base_track_type + optional_props.get("suffix", ""),
+                        tile_powers_track_type_expressions,
                     ]
                 )
         # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here

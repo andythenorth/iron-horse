@@ -3,7 +3,9 @@
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
     <tal:power_source repeat="power_source_data model_variant.vehicle_power_source_tree">
-        switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_power_${power_source_data[2]}, tile_powers_track_type_name_${power_source_data[1]}()) {
+        switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_power_${power_source_data[2]}, [
+                ${power_source_data[1]}
+            ]) {
             1: return ${model_variant.power_by_power_source[power_source_data[0]]};
             <tal:next condition="power_source_data[3] != None">
                 return ${model_variant.model_id}_switch_power_${power_source_data[3]};
