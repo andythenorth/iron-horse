@@ -1,6 +1,18 @@
 Changelog
 =========
 
+
+--------------
+4.3.1 Release
+--------------
+
+
+*Fixes*
+
+- Nimbus power was incorrect on dedicated high speed rail
+- incorrect sprite for 2 angles of Argus
+
+
 --------------
 4.3.0 Release
 --------------
