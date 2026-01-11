@@ -1,6 +1,6 @@
 <metal:role_table metal:define-macro="role_table">
     <!--! not all roles are defined for all types of base_track_type in all rosters -->
-    <tal:if_role_in_base_track_type condition="role in tech_tree[base_track_type]">
+    <tal:if_role_in_base_track_type condition="role in tech_tree.get(base_track_type, [])">
 
         <h4 id="${base_track_type}-role-${role}">
             <metal:block metal:define-slot="heading" tal:define="unused nothing">
