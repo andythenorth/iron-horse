@@ -65,4 +65,11 @@ static_badges = {
             "tilt": {"name": "STR_BADGE_BEHAVIOUR_TILT"},
         },
     },
+    # many ih_formation_ruleset badges are provided by catalogues, but a handful must be provided even for rosters that don't contain any vehicles using the relevant badge
+    "ih_formation_ruleset": {
+        "sublabels": {
+            "vehicle_reports_as/looks_like_pax_brake_car" : {},
+            "vehicle_reports_as/restaurant_car": {},
+        },
+    },
 }
