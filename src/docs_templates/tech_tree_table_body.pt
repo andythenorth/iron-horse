@@ -114,7 +114,8 @@
                     </div>
 
 
-                    <div tal:define="role 'express_railcar'">
+                    <div tal:define="role 'express_railcar';
+                                     suppress_role_heading_anchor True">
                         <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
                             <metal:block fill-slot="heading">
                                 <!--! jank special handling of base track type for this role -->
