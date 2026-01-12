@@ -2,6 +2,33 @@ img {
     image-rendering: pixelated;
 }
 
+/* permalinks */
+
+.anchor_link {
+  display: inline-block;
+  vertical-align: middle;
+
+  font-size: inherit;
+  width: 1.1em;
+  height: 1.1em;
+  margin-left: 0;
+  margin-top: -0.2em;
+
+  background: url("../img/anchor_link.svg") no-repeat center;
+  background-size: contain;
+
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+/* Intent feedback only */
+.anchor_link:hover,
+.anchor_link:focus {
+  opacity: 1;
+}
+
+/* --------- */
+
 td.number, th.number {
     text-align:right;
     padding-right:8px;

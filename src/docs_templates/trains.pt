@@ -89,7 +89,9 @@
                                         </td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(catalogue)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
+                                            <a class="anchor_link"
+                                               href="#${catalogue.model_id}">
+                                            </a>
                                         </td>
                                     </tr>
                                 </tal:engine_models>
@@ -138,7 +140,9 @@
                                         <td class="number">${doc_helper.capacity_formatted_for_docs(catalogue)}</td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(catalogue)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${catalogue.model_id}">&#x1f517;</a>
+                                            <a class="anchor_link"
+                                               href="#${catalogue.model_id}">
+                                            </a>
                                         </td>
                                     </tr>
                                 </tal:wagon_models>

@@ -7,12 +7,9 @@
                 <!-- nothing if empty -->
             </metal:block>
             <tal:role_heading_anchor condition="not suppress_role_heading_anchor | True">
-                <small>
-                    <a style="text-decoration:none;"
-                        href="#${base_track_type}-role-${role}">
-                        &#x1f517;
-                    </a>
-                </small>
+                <a class="anchor_link"
+                   href="#${base_track_type}-role-${role}">
+                </a>
             </tal:role_heading_anchor>
         </h4>
 
@@ -48,6 +45,9 @@
                                         <li tal:condition="subrole_child_branch < 0">Joker</li>
                                     </ul>
                                 </div>
+                                <a class="anchor_link"
+                                   href="#${base_track_type}-${role}-${subrole}-${subrole_child_branch}">
+                                </a>
                                 <!--! this string mangling will be fragile if roles change eh -->
                                 <span tal:condition="'branch' in subrole">
                                     Light
@@ -83,10 +83,6 @@
                                 <span tal:condition="'mail_railcar' not in subrole and 'pax_railcar' and 'pax_railbus' and 'express_railcar' not in role and 'hst' not in role">
                                     ${doc_helper.get_role_string_from_subrole(subrole, iron_horse.badge_manager)}
                                 </span>
-                                <a style="text-decoration:none;"
-                                    href="#${base_track_type}-${role}-${subrole}-${subrole_child_branch}">
-                                    &#x1f517;
-                                </a>
                             </th>
                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
                                 <tal:example_model_variant define="catalogue tech_tree[base_track_type][role][subrole][subrole_child_branch][gen];">
