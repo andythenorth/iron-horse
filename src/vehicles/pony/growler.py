@@ -17,8 +17,8 @@ def main(**kwargs):
         fixed_run_cost_points=40,  # give a huge bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=4,
-        liveries=["BANGER_BLUE", "CONVENTIONAL_WISDOM", "SUPERGRAPHIC", "RAILFREIGHT_RED_STRIPE"],
-        decor_spriterow_num=4,
+        liveries=["BANGER_BLUE", "CONVENTIONAL_WISDOM", "SUPERGRAPHIC", "RAILFREIGHT_RED_STRIPE", "CLASSIC_LINES"],
+        decor_spriterow_num=5,
         show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
