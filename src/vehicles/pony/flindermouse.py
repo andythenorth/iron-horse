@@ -19,8 +19,7 @@ def main(**kwargs):
         pantograph_type="diamond-double",
         intro_year_offset=7,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
-        # additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE"],
-        liveries=["LOWER_LINES", "BANGER_BLUE"],
+        liveries=["LOWER_LINES", "BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
