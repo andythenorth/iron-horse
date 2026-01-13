@@ -18,7 +18,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         intro_year_offset=5,  # introduce later than gen epoch by design
-        liveries=["CLASSIC_LINES", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        liveries=["CLASSIC_LINES", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE", "INVERSIONS"],
         sprites_complete=True,
     )
 
