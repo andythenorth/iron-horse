@@ -17,7 +17,7 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=150,  # give a small bonus so this can be a genuine mixed-traffic engine
-        liveries=["STOCK_STANDARD"],
+        liveries=["STOCK_STANDARD", "CLASSIC_LINES", "BANGER_BLUE"],
         sprites_complete=True,
     )
 
