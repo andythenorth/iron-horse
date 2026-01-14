@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Snowplough",
         gen=2,
         speed=75,
-        liveries=["CONVENTIONAL_WISDOM"],
+        liveries=["CONVENTIONAL_WISDOM", "BANGER_BLUE", "WORKHORSE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

@@ -9,10 +9,7 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "arrow",
-    "hawkinge",
-    "streamer",
-    "thunderer",
+    "snowplough_pony_gen_2",
 ]
 
 CC1 = 198
