@@ -9,7 +9,7 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "swift",
+    "hurly_burly",
 ]
 
 CC1 = 198
