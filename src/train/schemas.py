@@ -540,10 +540,11 @@ class SchemaBase(object):
                 else:
                     role_key = self.role + "_non_core"
             result = global_constants.intro_month_offsets_by_role[role_key]
-            if self.joker:
-                # force jokers away from vehicles in same subrole
-                # if further variation is wanted, give the joker a different intro year, automating that isn't wise
-                result = min(result + 6, 11)
+            if self.joker and not self.catalogue.clone_quacker.quack:
+                    # force jokers away from vehicles in same subrole
+                    # (does not apply to clones)
+                    # if further variation is wanted, give the joker a different intro year, automating that isn't wise
+                    result = min(result + 6, 11)
         return result
 
     @property
