@@ -1536,6 +1536,9 @@ class MailEngineCargoSprinter(MailEngineBase):
             cargo_label_mapping=cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
             catalogue_entry=self.catalogue_entry,
+            colour_mapping_switch = "_switch_colour_mapping",
+            colour_mapping_switch_purchase = "_switch_colour_mapping",
+            colour_mapping_with_purchase = True,
         )
 
     @property

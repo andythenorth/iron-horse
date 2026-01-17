@@ -1064,6 +1064,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         cargo_label_mapping=None,
         weathered_states=None,
         num_extra_layers_for_spritelayer_cargos=None,
+        colour_mapping_switch = None,
+        colour_mapping_switch_purchase = None,
+        colour_mapping_with_purchase = False,
         **kwargs,
     ):
         super().__init__(**kwargs)
@@ -1081,6 +1084,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
             self.num_extra_layers_for_spritelayer_cargos = (
                 num_extra_layers_for_spritelayer_cargos
             )
+        self.colour_mapping_switch = colour_mapping_switch
+        self.colour_mapping_switch_purchase = colour_mapping_switch_purchase
+        self.colour_mapping_with_purchase = colour_mapping_with_purchase
 
     @property
     def generic_rows(self):
