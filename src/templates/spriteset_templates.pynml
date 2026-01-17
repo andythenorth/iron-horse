@@ -47,7 +47,7 @@ template spriteset_template_purchase_dual_headed(x_loc, y_loc, width, x_offset, 
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
     []
     []
-    [104, y_loc + 2, width, 14, 1 + x_offset, -10, anim_flag | NOCROP]
+    [x_loc + width - 1, y_loc + 2, width, 14, 1 + x_offset, -10, anim_flag | NOCROP]
     []
     []
     []
