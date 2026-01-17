@@ -3,6 +3,27 @@ Changelog
 
 
 --------------
+4.6.0 Release
+--------------
+
+
+*Changes*
+
+- added liveries for
+    - Cargo Sprinter
+    - Eastern
+    - Hurly Burly
+    - Reliance
+    - Swift
+    - Wyvern
+
+
+*Fixes*
+
+- when an engine has single-unit or twin-unit variants, introduce them all at the same time
+
+
+--------------
 4.5.0 Release
 --------------
 
