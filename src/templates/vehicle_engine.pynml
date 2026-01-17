@@ -98,7 +98,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 </tal:buy_menu_lead_unit_only>
 
 
-
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:livery define="livery model_variant.catalogue_entry.livery_def">
