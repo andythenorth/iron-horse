@@ -14,6 +14,7 @@ def main(**kwargs):
         power_by_power_source={
             "DIESEL": 2900,
         },
+        # random_reverse=True, # tried random reverse, unsure if I liked the result, so nerfed it off
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         liveries=["CONVENTIONAL_WISDOM", "STOCK_STANDARD", "CLASSIC_LINES", "INDUSTRIAL_YELLOW"],
@@ -43,9 +44,6 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def_clone = model_def.begin_clone(base_numeric_id=20930, unit_repeats=[1, 0])
-
-    # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    model_def_clone.random_reverse = True
 
     model_def = model_def_clone.complete_clone()
 
