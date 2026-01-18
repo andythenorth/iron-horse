@@ -18,7 +18,7 @@ def main(**kwargs):
         fixed_run_cost_points=100,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=1,
-        liveries=["LOWER_LINES", "BANGER_BLUE"],
+        liveries=["LOWER_LINES", "BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
