@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
-        liveries=["LOWER_LINES", "BANGER_BLUE"],
+        liveries=["LOWER_LINES", "BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
