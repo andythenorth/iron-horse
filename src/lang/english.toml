@@ -139,6 +139,9 @@ base = "Oxide"
 [STR_BADGE_LIVERY_FREIGHT_RED]
 base = "Flame Red"
 
+[STR_BADGE_LIVERY_FREIGHT_INDUSTRIAL_YELLOW]
+base = "Industrial Yellow"
+
 # other liveries
 # _might_ need to use roster-specific strings, but we'll see
 

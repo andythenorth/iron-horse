@@ -26,6 +26,9 @@ wagon_module_name_stems = [
     "automobile_cars",
     "low_floor_automobile_cars",
     "express_intermodal_cars_type_1",
+    "express_intermodal_cars_type_2",
+    "express_intermodal_cars_type_3",
+    "express_intermodal_cars_type_4",
     "express_cars_type_1",
     "express_cars_type_2",
     "express_cars_randomised",
@@ -500,6 +503,8 @@ colour_sets = {
     "freight_clover": ["custom_clover", "custom_faded_clover"],
     "freight_cloud": ["custom_cloud", "custom_faded_cloud"],
     "freight_mist": ["custom_mist", "custom_faded_mist"],
+     # this is a hack to match express intermodal to industrial yellow
+    "freight_industrial_yellow": ["COLOUR_YELLOW", "COLOUR_YELLOW"],
 }
 
 # select a colour that matches the current company colour
@@ -802,6 +807,13 @@ freight_wagon_liveries = {
     },
     "FREIGHT_RED": {
         "colour_set_names": ["red"],
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_INDUSTRIAL_YELLOW": {
+        "colour_set_names": ["freight_industrial_yellow"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
