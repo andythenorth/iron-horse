@@ -17,7 +17,7 @@ def main(**kwargs):
         tractive_effort_coefficient=0.12,
         fixed_run_cost_points=160,  # minor cost bonus so it can make money
         gen=1,
-        liveries=["SHOW_PONY", "STOCK_STANDARD"],
+        liveries=["SHOW_PONY", "STOCK_STANDARD", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
