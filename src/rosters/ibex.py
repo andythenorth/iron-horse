@@ -132,7 +132,7 @@ wagon_module_names_with_roster_ids = {
     "cryo_tank_cars": "pony",
     "drop_end_flat_cars": "pony",
     "drop_side_flat_cars": "pony",
-    "express_intermodal_cars": "pony",
+    "express_intermodal_cars_type_1": "pony",
     "flat_cars": "pony",
     "flat_cars_randomised": "pony",
     "heavy_duty_dump_cars": "pony",

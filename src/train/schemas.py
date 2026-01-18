@@ -4229,16 +4229,16 @@ class ExpressCarRandomised(RandomisedCarVanillaMixin, ExpressCarBase):
         )
 
 
-class ExpressIntermodalCar(CarSchemaBase):
+class ExpressIntermodalCarBase(CarSchemaBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
     """
 
+    vehicle_family_id = "express_intermodal_car"
+
     liveries = [
         "COMPANY_COLOUR",
     ]
-
-    model_id_root = "express_intermodal_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4273,6 +4273,17 @@ class ExpressIntermodalCar(CarSchemaBase):
         # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
         # !! express intermodal all default currently, extend as needed
         return ["default"]
+
+
+class ExpressIntermodalCarType1(ExpressIntermodalCarBase):
+    """
+    Express intermodal container cars - express freight, valuables, mails.
+    """
+
+    model_id_root = "express_intermodal_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class FarmCargoCombosBase(RandomisedCarComboMixin, CarSchemaBase):

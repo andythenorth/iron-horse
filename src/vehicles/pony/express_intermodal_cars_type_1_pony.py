@@ -8,7 +8,7 @@ def main(**kwargs):
     # only gen 5 and 6 eh
 
     model_def = ModelDef(
-        schema_name="ExpressIntermodalCar",
+        schema_name="ExpressIntermodalCarType1",
         base_numeric_id=22960,
         gen=5,
         subtype="B",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="ExpressIntermodalCar",
+        schema_name="ExpressIntermodalCarType1",
         base_numeric_id=22970,
         gen=5,
         subtype="C",
