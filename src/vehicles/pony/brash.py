@@ -9,11 +9,11 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        schema_name="MailEngineCargoSprinter",
+        schema_name="FreightEngineCargoSprinter",
         model_id="brash",
         base_numeric_id=25840,
         name="Brash",
-        subrole="mail_railcar",  # abuse of existing railcar role for convenience
+        subrole="freight_railcar",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox
@@ -25,7 +25,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="DieselRailcarMailUnit",
+        unit_cls_name="DieselRailcarFreightUnit",
         weight=32,
         rel_spriterow_index=0,
         chassis="4_axle_solid_express_32px",

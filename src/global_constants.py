@@ -254,6 +254,9 @@ role_subrole_mapping = {
     "mail_railcar": [
         "mail_railcar",
     ],
+    "freight_railcar": [
+        "freight_railcar",
+    ],
     "express_railcar": [
         "express_pax_railcar",
         "express_mail_railcar",
@@ -301,6 +304,7 @@ intro_month_offsets_by_role = {
     "freight_non_core": 5,
     "suburban_or_universal_railcar": 6,
     "mail_railcar": 6,
+    "freight_railcar": 6,
     "metro": 7,
     "metro_freight": 7,
     "very_high_speed": 8,
