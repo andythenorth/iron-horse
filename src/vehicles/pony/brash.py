@@ -20,8 +20,8 @@ def main(**kwargs):
         },
         gen=5,
         intro_year_offset=3,  # introduce later than gen epoch by design
-        liveries=["VAPID_VOYAGER", "BANGER_BLUE", "LOWER_LINES", "INDUSTRIAL_YELLOW"],
-        sprites_complete=True,
+        liveries=["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"],
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
