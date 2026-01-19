@@ -113,6 +113,12 @@
                         </metal:use_role_table>
                     </div>
 
+                    <div tal:define="role 'freight_railcar';
+                                     suppress_role_heading_anchor True">
+                        <metal:use_role_table use-macro="load:tech_tree_table_macros.pt">
+                            <!--! no heading or description slots filled for these -->
+                        </metal:use_role_table>
+                    </div>
 
                     <div tal:define="role 'express_railcar';
                                      suppress_role_heading_anchor True">

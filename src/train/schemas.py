@@ -221,6 +221,7 @@ class SchemaBase(object):
             "express_railcar": {"RAIL": "express", "NG": "universal"},
             "hst": {"RAIL": "very_high_speed", "NG": "very_high_speed"},
             "mail_railcar": {"RAIL": "universal", "NG": "universal"},
+            "freight_railcar": {"RAIL": "freight", "NG": "freight"},
         }
         if self.role in role_remaps.keys():
             role = role_remaps[self.role][self.base_track_type]
@@ -762,7 +763,7 @@ class SchemaBase(object):
                     return self.get_speed_by_class("express")
             # then check other specific roles
             # !! this would be better determined by setting self.speed_class appropriately in the model type subclasses
-            if self.subrole in ["mail_railcar", "pax_railcar", "pax_railbus"]:
+            if self.subrole in ["mail_railcar", "pax_railcar", "pax_railbus", "freight_railcar"]:
                 return self.get_speed_by_class("suburban")
             elif self.subrole in ["hst"]:
                 return self.get_speed_by_class("hst")
@@ -1510,18 +1511,22 @@ class MailEngineCabbageDVT(MailEngineBase):
         # ....run costs reduced from base to make it close to mail cars
         return 68
 
-
-class MailEngineCargoSprinter(MailEngineBase):
+class FreightEngineCargoSprinterBase(EngineSchemaBase):
     """
-    Cab Motor for Cargo Sprinter express freight formation.
+    Cargo Sprinter express freight formation.
     """
 
     liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
-    # non-standard cite
-    cite = "Arabella Unit"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.class_refit_groups = ["all_freight"]
+        # no specific labels needed
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_freight_special_cases"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
@@ -1542,14 +1547,21 @@ class MailEngineCargoSprinter(MailEngineBase):
         )
 
     @property
-    def fixed_run_cost_points(self):
-        # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
-        return 2 * super().fixed_run_cost_points
-
-    @property
     def spritelayer_cargo_layers(self):
         # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
         return ["cargo_sprinter"]
+
+
+class FreightEngineCargoSprinter(FreightEngineCargoSprinterBase):
+    """
+    Cab Motor for Cargo Sprinter express freight formation.
+    """
+
+    # non-standard cite
+    cite = "Arabella Unit"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     @property
     def dual_headed(self):

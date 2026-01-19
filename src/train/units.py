@@ -571,6 +571,19 @@ class DieselRailcarBaseUnit(DieselEngineUnit):
         # note that railcar effects are left in default position, no attempt to move them to end of vehicle, or double them (tried, looks weird)
 
 
+class DieselRailcarFreightUnit(DieselRailcarBaseUnit):
+    """
+    Unit for a freight diesel railcar.  Just a sparse subclass to set symmetry.  Capacity set in subclasses
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    @cached_property
+    def capacity(self):
+        return self.get_freight_car_capacity()
+
+
 class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
     """
     Unit for a pax diesel express railcar.  Just a sparse subclass to set capacity and effects.
