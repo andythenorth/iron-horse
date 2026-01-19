@@ -10,16 +10,16 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailEngineCargoSprinter",
-        model_id="cargo_sprinter",
+        model_id="brash",
         base_numeric_id=25840,
-        name="Cargo Sprinter",
+        name="Brash",
         subrole="mail_railcar",  # abuse of existing railcar role for convenience
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox
         },
-        gen=6,
-        intro_year_offset=-3,  # introduce earlier than gen epoch by design
+        gen=5,
+        intro_year_offset=3,  # introduce later than gen epoch by design
         liveries=["VAPID_VOYAGER", "BANGER_BLUE", "LOWER_LINES", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

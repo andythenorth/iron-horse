@@ -125,8 +125,8 @@ engine_module_names = [
     "progress",
     "magnum_90",
     "snowplough_pony_gen_2",
-    # cargo sprinter
-    "cargo_sprinter",
+    # cargo sprinter / freight railcar
+    "brash",
     # autocoach (only one as autoreplace can't handle mixed cargo articulated vehicles)
     "autocoach_pony_gen_2",
     # railbuses
