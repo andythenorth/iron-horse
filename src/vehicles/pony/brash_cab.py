@@ -9,15 +9,16 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        schema_name="FreightEngineCargoSprinter",
-        model_id="brash",
+        schema_name="FreightEngineCargoSprinterCabEngine",
+        model_id="brash_cab",
         base_numeric_id=25840,
         name="Brash",
         subrole="freight_railcar",
         subrole_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox
+            "DIESEL": 825,  # matched to 50% of Griffon, Ultra Shoebox
         },
+        receives_easter_egg_haulage_speed_bonus=True,
         gen=5,
         intro_year_offset=3,  # introduce later than gen epoch by design
         liveries=["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"],

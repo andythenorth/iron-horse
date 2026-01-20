@@ -1068,7 +1068,10 @@ class SchemaBase(object):
             else:
                 return "lgv_capable"
         else:
-            return None
+            if self.buy_menu_additional_text_hint_distributed_power:
+                return "wagons_add_power"
+            else:
+                return None
 
     @property
     def uses_buy_menu_additional_text(self):
@@ -1513,7 +1516,7 @@ class MailEngineCabbageDVT(MailEngineBase):
 
 class FreightEngineCargoSprinterBase(EngineSchemaBase):
     """
-    Cargo Sprinter express freight formation.
+    Cargo Sprinter freight railcar.
     """
 
     liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
@@ -1546,15 +1549,10 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
             colour_mapping_with_purchase = True,
         )
 
-    @property
-    def spritelayer_cargo_layers(self):
-        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-        return ["cargo_sprinter"]
 
-
-class FreightEngineCargoSprinter(FreightEngineCargoSprinterBase):
+class FreightEngineCargoSprinterCabEngine(FreightEngineCargoSprinterBase):
     """
-    Cab Motor for Cargo Sprinter express freight formation.
+    Cab motor for Cargo Sprinter freight railcar
     """
 
     # non-standard cite
@@ -1562,10 +1560,70 @@ class FreightEngineCargoSprinter(FreightEngineCargoSprinterBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.is_distributed_power_cab = True
 
     @property
-    def dual_headed(self):
-        return True
+    def spritelayer_cargo_layers(self):
+        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+        return ["cargo_sprinter_cab_unreversed", "cargo_sprinter_cab_reversed"]
+
+    @property
+    def buy_menu_additional_text_distributed_power_substring(self):
+        return "STR_WAGONS_ADD_POWER_CAB"
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return "STR_NAME_" + self.model_id.upper()
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.power
+
+
+class FreightEngineCargoSprinterMiddleEngine(FreightEngineCargoSprinterBase):
+    """
+    Middle platform, with "distributed power" for Cargo Sprinter freight railcar.
+    """
+
+    # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
+    quacks_like_a_clone = True
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.is_distributed_power_wagon = True
+
+    @property
+    def spritelayer_cargo_layers(self):
+        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+        # cargo sprinter middle uses same as intermodal cars
+        return ["default"]
+
+    @property
+    def buy_cost(self):
+        # match middle engine buy cost to cab engine buy cost
+        # engine and wagon base costs are set differently, attempt to compensate for that
+        # 6.25 is a magic number
+        adjustment_factor = 6.25 * abs(global_constants.PR_BUILD_VEHICLE_TRAIN)
+        return int(self.catalogue.cab_engine_model.buy_cost * adjustment_factor)
+
+    @property
+    def running_cost(self):
+        # take 49% of cab engine running cost as running cost
+        # this is to prevent horrible scaling up of costs with each unit added, but could assume the cab has more cost due to driver, equipment etc
+        return int(0.49 * self.catalogue.cab_engine_model.running_cost)
+
+    @property
+    def buy_menu_additional_text_distributed_power_substring(self):
+        return "STR_WAGONS_ADD_POWER_MIDDLE"
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return "STR_NAME_" + self.model_def.cab_id.upper()
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.catalogue.cab_engine_model.power
+
 
 
 class MailEngineMetro(MailEngineBase):
