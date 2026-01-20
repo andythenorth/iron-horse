@@ -62,4 +62,15 @@
             return string(${model_variant.buy_menu_additional_text});
         }
     </tal:lgv_capable_and_wagons_add_power>
+    <tal:wagons_add_power case="'wagons_add_power'">
+        switch (FEAT_TRAINS, SELF, ${model_variant.model_id}_switch_buy_menu_additional_text, [
+            STORE_TEMP(
+                <!--! the parentheses look odd here, would be more readable around the shift, but it apparently works so leaving it be - May 2023 -->
+                (${model_variant.buy_menu_distributed_power_hp_value} | string(${model_variant.buy_menu_distributed_power_name_substring}) << 16),
+                0x100
+            )
+        ]) {
+            return string(${model_variant.buy_menu_additional_text});
+        }
+    </tal:wagons_add_power>
 </tal:block>

@@ -1,52 +1,55 @@
-<!--! Spritesets
-      the spritesets are interleaved with the switches by design;
-      doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
-<tal:cargo_sets repeat="cargo_set spritelayer_cargo.cargo_sets">
-    <tal:variants repeat="variant cargo_set.variants">
-        spriteset(ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
-            spriteset_template_asymmetric_unreversed_${int(cargo_set.length / 4)}_8(10 + ${repeat.variant.index * 30}, NOANIM)
+<!--! have to handle reversed state on these (for asymmetric cargo sprinters with cabs) -->
+<tal:reversed_status repeat="reversed_status spritelayer_cargo.supported_reverse_states">
+    <!--! Spritesets
+          the spritesets are interleaved with the switches by design;
+          doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
+    <tal:cargo_sets repeat="cargo_set spritelayer_cargo.cargo_sets">
+        <tal:variants repeat="variant cargo_set.variants">
+            spriteset(ss_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
+                spriteset_template_asymmetric_${reversed_status}_${int(cargo_set.length / 4)}_8(10 + ${repeat.variant.index * 30}, NOANIM)
+            }
+        </tal:variants>
+        <!--! if bits are ever needed for other random features, it's probably possible to only re-randomise specific bits on new load -->
+        random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_${cargo_set.subtype}_${cargo_set.subtype_suffix}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+            <tal:cargo_set_variants repeat="variant cargo_set.variants">
+                    1: return ss_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${spritelayer_cargo.desync_decks(cargo_set, repeat.variant.index)};
+            </tal:cargo_set_variants>
         }
-    </tal:variants>
-    <!--! if bits are ever needed for other random features, it's probably possible to only re-randomise specific bits on new load -->
-    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_random_${cargo_set.subtype}_${cargo_set.subtype_suffix}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-        <tal:cargo_set_variants repeat="variant cargo_set.variants">
-                1: return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${spritelayer_cargo.desync_decks(cargo_set, repeat.variant.index)};
-        </tal:cargo_set_variants>
-    }
-</tal:cargo_sets>
+    </tal:cargo_sets>
 
-<!--! Cargo switches
-    pseudo cargo checking code
-    1. check known labels -> named random switch
-    2. check known classes -> named random switch
-    3. fall back to random switch for generic (box in case of containers, ?? in case of automobiles)
--->
-<tal:generic_by_class switch="spritelayer_cargo.base_id">
-    <tal:intermodal_containers case="'intermodal_containers'">
-       <!--! check generic cargo classes
-              bulk class is explicitly not checked as there are no meaningful default bulk sprites
-        -->
-        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
-            0: return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_box_DFLT;
-            return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_tank_DFLT;
-        }
-        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
-            0: switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_liquid;
-            return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_reefer_DFLT;
-        }
-    </tal:intermodal_containers>
-    <tal:automobiles case="'automobiles'">
-        <!--! a no-op stub until further notice -->
-        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
-            return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_cars_DFLT;
-        }
-    </tal:automobiles>
-</tal:generic_by_class>
-<!--! check explicit cargo labels -->
-switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}, cargo_type_in_veh) {
-    <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.gestalt_graphics.cargo_label_mapping.items()">
-        <!--! cargo_label_mapping in format (4 char cargo_label, (subtype, subtype_suffix)) -->
-        ${cargo_map[0]}: switch_spritelayer_cargos_${spritelayer_cargo.id}_random_${cargo_map[1][0]}_${cargo_map[1][1]};
-    </tal:cargo_mapping_by_label>
-    return switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_entry_point;
-}
+    <!--! Cargo switches
+        pseudo cargo checking code
+        1. check known labels -> named random switch
+        2. check known classes -> named random switch
+        3. fall back to random switch for generic (box in case of containers, ?? in case of automobiles)
+    -->
+    <tal:generic_by_class switch="spritelayer_cargo.base_id">
+        <tal:intermodal_containers case="'intermodal_containers'">
+           <!--! check generic cargo classes
+                  bulk class is explicitly not checked as there are no meaningful default bulk sprites
+            -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+                0: return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_box_DFLT;
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_tank_DFLT;
+            }
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
+                0: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid;
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_reefer_DFLT;
+            }
+        </tal:intermodal_containers>
+        <tal:automobiles case="'automobiles'">
+            <!--! a no-op stub until further notice -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_cars_DFLT;
+            }
+        </tal:automobiles>
+    </tal:generic_by_class>
+    <!--! check explicit cargo labels -->
+    switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}, cargo_type_in_veh) {
+        <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.gestalt_graphics.cargo_label_mapping.items()">
+            <!--! cargo_label_mapping in format (4 char cargo_label, (subtype, subtype_suffix)) -->
+            ${cargo_map[0]}: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_${cargo_map[1][0]}_${cargo_map[1][1]};
+        </tal:cargo_mapping_by_label>
+        return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point;
+    }
+</tal:reversed_status>
