@@ -1542,6 +1542,7 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
             "vehicle_cargo_sprinter.pynml",
             cargo_label_mapping=cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
+            row_count_for_docs_image_offset=2,
             catalogue_entry=self.catalogue_entry,
             colour_mapping_switch = "_switch_colour_mapping",
             colour_mapping_switch_purchase = "_switch_colour_mapping",

@@ -1,5 +1,4 @@
 <tal:reversed_status repeat="reversed_status ['unreversed', 'reversed']">
-    // CABBAGE ${model_variant.spritelayer_cargo_layers}
     <tal:spritelayer_cargo_layers repeat="platform_type model_variant.spritelayer_cargo_layers">
         <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_${reversed_status}_check_cargo_${platform_type}, cargo_count) {

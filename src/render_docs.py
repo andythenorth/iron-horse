@@ -223,6 +223,9 @@ def render_docs_vehicle_images(
 
         if model_variant.model_def.docs_image_spriterow is not None:
             y_offset = 30 * model_variant.model_def.docs_image_spriterow
+        elif model_variant.gestalt_graphics.row_count_for_docs_image_offset is not None:
+            # specific custom offset, for example, if there's an extra row per livery for a masked layer
+            y_offset = 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num * model_variant.gestalt_graphics.row_count_for_docs_image_offset
         # !! requires_custom_buy_menu_sprite could be folded into producer or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
             # further possibly fragile special-casing
