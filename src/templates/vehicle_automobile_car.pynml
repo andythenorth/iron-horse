@@ -36,7 +36,6 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_r
 
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
                          STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
-                         STORE_TEMP(1, k_addr_unreversible_spritelayer_cargos) <!--! no reverse on cargo sprites -->
                         ]) {
         return ${unit.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
     }
