@@ -578,6 +578,7 @@ class DieselRailcarFreightUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
     @cached_property
     def capacity(self):
