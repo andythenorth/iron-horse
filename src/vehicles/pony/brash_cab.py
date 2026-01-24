@@ -1,10 +1,5 @@
 from train.model_def import ModelDef
 
-# implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
-
-# NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
-
-
 def main(**kwargs):
     result = []
 
