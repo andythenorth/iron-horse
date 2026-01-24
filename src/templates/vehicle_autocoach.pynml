@@ -5,7 +5,6 @@
 
 <!--! default graphics chain -->
 <tal:reversed repeat="reversed ['unreversed', 'reversed']">
-    // CABBAGE ${model_variant.catalogue_entry.livery_def.relative_spriterow_num}
     spriteset(${unit.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${model_variant.model_id}.png") {
         ${unit.get_spriteset_template_name(reversed, 10 + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 120))}
     }
