@@ -643,8 +643,12 @@ base = "{BLACK}Speed (Dedicated High Speed Rail): {GOLD}{VELOCITY} {}{BLACK}Spee
 [STR_WAGONS_ADD_POWER_CAB]
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} passenger or mail coach attached"
 
+[STR_WAGONS_ADD_POWER_CAB_CARGO_SPRINTER]
+base = "{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} powered trailer attached"
+
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine"
+
 
 # project management
 [STR_SPRITES_COMPLETE]

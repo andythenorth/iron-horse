@@ -1569,7 +1569,7 @@ class FreightEngineCargoSprinterCabEngine(FreightEngineCargoSprinterBase):
 
     @property
     def buy_menu_additional_text_distributed_power_substring(self):
-        return "STR_WAGONS_ADD_POWER_CAB"
+        return "STR_WAGONS_ADD_POWER_CAB_CARGO_SPRINTER"
 
     @property
     def buy_menu_distributed_power_name_substring(self):

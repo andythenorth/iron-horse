@@ -116,6 +116,9 @@ engine_module_names = [
     "tincans",
     "flanders_storm",
     "quietus",
+    # cargo sprinter / freight railcar
+    "brash_cab",
+    "brash_middle",
     # gronks / snowploughs
     "grub",
     "lamia",
@@ -125,9 +128,6 @@ engine_module_names = [
     "progress",
     "magnum_90",
     "snowplough_pony_gen_2",
-    # cargo sprinter / freight railcar
-    "brash_cab",
-    "brash_middle",
     # autocoach (only one as autoreplace can't handle mixed cargo articulated vehicles)
     "autocoach_pony_gen_2",
     # railbuses
