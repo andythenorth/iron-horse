@@ -4303,6 +4303,18 @@ class ExpressIntermodalCarBase(CarSchemaBase):
     Express intermodal container cars - express freight, valuables, mails.
     """
 
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
+        "RANDOM_LIVERIES_BUMBLEBEE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE_NO_WEATHERING",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR_NO_WEATHERING",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER_NO_WEATHERING",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE_NO_WEATHERING",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "COMPANY_COLOUR_NO_WEATHERING",
+    ]
+
     vehicle_family_id = "express_intermodal_car"
     variant_group_id_root = "express_intermodal_cars"
 
@@ -4331,6 +4343,10 @@ class ExpressIntermodalCarBase(CarSchemaBase):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="max_2_unit_sets",
+            weathered_states = {
+                "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+                "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
+            },
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4346,10 +4362,6 @@ class ExpressIntermodalCarType1(ExpressIntermodalCarBase):
     Express intermodal container cars - express freight, valuables, mails.
     """
 
-    liveries = [
-        "COMPANY_COLOUR",
-    ]
-
     model_id_root = "express_intermodal_car_type_1"
 
     def __init__(self, **kwargs):
@@ -4361,41 +4373,7 @@ class ExpressIntermodalCarType2(ExpressIntermodalCarBase):
     Express intermodal container cars - express freight, valuables, mails.
     """
 
-    liveries = [
-        "COMPANY_COLOUR",
-    ]
-
     model_id_root = "express_intermodal_car_type_2"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-
-class ExpressIntermodalCarType3(ExpressIntermodalCarBase):
-    """
-    Express intermodal container cars - express freight, valuables, mails.
-    """
-
-    liveries = [
-        "COMPANY_COLOUR",
-    ]
-
-    model_id_root = "express_intermodal_car_type_3"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-
-class ExpressIntermodalCarType4(ExpressIntermodalCarBase):
-    """
-    Express intermodal container cars - express freight, valuables, mails.
-    """
-
-    liveries = [
-        "FREIGHT_INDUSTRIAL_YELLOW",
-    ]
-
-    model_id_root = "express_intermodal_car_type_4"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
