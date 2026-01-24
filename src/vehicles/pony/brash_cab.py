@@ -22,7 +22,7 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=3,  # introduce later than gen epoch by design
         liveries=["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -34,7 +34,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Runs like the wind.""")
-    model_def.define_foamer_facts("""Windhoff MPV""")
+    model_def.define_foamer_facts("""Windhoff MPV / CargoSprinter""")
 
     result.append(model_def)
 
