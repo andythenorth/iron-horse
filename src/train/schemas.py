@@ -1533,7 +1533,6 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
         self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
-        # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
                 catalogue_entry=self.catalogue_entry,
