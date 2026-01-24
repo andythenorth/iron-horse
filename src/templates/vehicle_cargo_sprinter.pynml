@@ -9,7 +9,6 @@
 
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_${reversed_status}_${platform_type}, [
                              STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_container_by_company_colour_1cc_to_1cc(), 0x100), <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail -->
-                             STORE_TEMP(0, k_addr_unreversible_spritelayer_cargos) <!--! allow containers to reverse, to handle case (automatically reversed) rear unit -->
                             ]) {
             return ${unit.id}_switch_graphics_containers_${reversed_status}_check_cargo_${platform_type};
         }
