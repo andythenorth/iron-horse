@@ -7565,16 +7565,16 @@ class SiloCarBase(CarSchemaBase):
         # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
         # move to Polar Fox (maybe??)
         self.label_refits_allowed = [
-            "SUGR",
-            "FMSP",
-            "RFPR",
             "BDMT",
-            "QLME",
-            "SASH",
-            "CMNT",
             "CBLK",
+            "CHEM",
+            "CMNT",
+            "FMSP",
+            "QLME",
             "SAND",
+            "SASH",
             "SOAP",
+            "SUGR",
         ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
