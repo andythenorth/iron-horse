@@ -53,11 +53,11 @@
                     <h3>Parameter settings (optional)</h3>
                     <p>Players can choose advanced options via parameter settings. It's also fine to ignore these.  Parameter options include:</p>
                     <ul>
-                        <li>Adjustable train cargo capacity</li>
                         <li>Simplified gameplay with fewer trains</li>
-                        <li>Turn off ${roster.str_grf_name} extra railtypes</li>
+                        <li>Wagons-only mode or engines-only mode, for use with other grfs that have gaps in their vehicles</li>
+                        <li>Adjustable train cargo capacity</li>
                         <li>Turn off freight wagon colour fading</li>
-                        <li>Turn on wagons-only mode, for use with other grfs that are short on wagons</li>
+                        <li>Turn off some vehicles randomly reversing when built</li>
                     </ul>
                 </div>
                 <br />
