@@ -2662,9 +2662,7 @@ class BolsterCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["flatbed_freight"]
         self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
+        self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
@@ -2741,7 +2739,7 @@ class BoxCarBase(CarSchemaBase):
             "box_freight"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box"]
         self.buy_cost_adjustment_factor = 1.2
@@ -3066,11 +3064,11 @@ class BulkOpenCarBase(CarSchemaBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ["dump_freight"]
+        self.class_refit_groups = ["open_bulk_non_food_grade"]
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_dump_bulk"
+            "legacy_disallowed_open_bulk"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["dump"]
         self._loading_speed_multiplier = 1.5
@@ -4171,7 +4169,7 @@ class ExpressCarBase(CarSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
@@ -4244,7 +4242,7 @@ class ExpressIntermodalCarBase(CarSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
         self._loading_speed_multiplier = 2
@@ -4927,9 +4925,7 @@ class FlatCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["flatbed_freight"]
         self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
+        self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
@@ -5243,6 +5239,9 @@ class GasTankCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["cryo_gases"]
         self.label_refits_allowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_gas_bulk"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
@@ -5308,11 +5307,11 @@ class HopperCarBase(CarSchemaBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ["dump_freight"]
+        self.class_refit_groups = ["open_bulk_non_food_grade"]
         # none needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_dump_bulk"
+            "legacy_disallowed_open_bulk"
         ]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -5683,7 +5682,7 @@ class IntermodalCarBase(CarSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self._loading_speed_multiplier = 2
@@ -5899,7 +5898,7 @@ class MailCarBase(CarSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
         # keep matched to ExpressCarUnit
@@ -6560,7 +6559,7 @@ class OpenCarBase(CarSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -7343,7 +7342,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarSchemaBase):
             "box_freight"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box"]
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -7562,7 +7561,7 @@ class SiloCarBase(CarSchemaBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["silo_powders"]
-        # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
+        # labels are for legacy support, prior to CC_COVERED_BULK class; this left in place as of Oct 2024
         # move to Polar Fox (maybe??)
         self.label_refits_allowed = [
             "BDMT",
@@ -7946,7 +7945,7 @@ class TankCarBase(CarSchemaBase):
         self.class_refit_groups = ["liquids_non_food_grade"]
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_generic_liquids"
+            "legacy_disallowed_liquid_bulk"
         ]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
