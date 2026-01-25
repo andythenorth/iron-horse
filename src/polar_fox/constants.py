@@ -140,6 +140,7 @@ cargo_labels = [
     "STBR",
     "STSW",
     "STPL",
+    "CHEM",
     #
     "NULL",
 ]
