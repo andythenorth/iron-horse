@@ -3828,7 +3828,7 @@ class CoilCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = []
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "metal_products"
+            "allowed_metal_products"
         ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
@@ -4004,11 +4004,23 @@ class CoveredHopperCarBase(CarSchemaBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_any_grade"]
-        # we assume generic covered hoppers refit anything suitable from the more specialist types
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "covered_hoppers_pellet_powder"
+        # covered hopper specifically needs to combine 3 lists, this isn't common, and is a combination of legacy support, and some details that are too fine-grained for classes
+        self.label_refits_allowed = list(
+            set(polar_fox.constants.allowed_refits_by_label[
+                "legacy_allowed_covered_hoppers_any_non_food"
+            ])
+            |
+            set(polar_fox.constants.allowed_refits_by_label[
+                "legacy_allowed_covered_hoppers_non_mineral_non_food"
+            ])
+            |
+            set(polar_fox.constants.allowed_refits_by_label[
+                "farm_food_products"
+            ])
+        )
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_covered_hoppers_all_types"
         ]
-        self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -6246,9 +6258,18 @@ class MineralCoveredHopperCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_non_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "covered_hoppers_mineral"
+            "legacy_allowed_covered_hoppers_any_non_food"
         ]
-        self.label_refits_disallowed = []
+        # disallow combined from two sources for these covered hoppers
+        self.label_refits_disallowed = list(
+            set(polar_fox.constants.disallowed_refits_by_label[
+                "legacy_disallowed_covered_hoppers_all_types"
+            ])
+            |
+            set(polar_fox.constants.disallowed_refits_by_label[
+                "disallowed_covered_hoppers_mineral"
+            ])
+        )
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -7579,7 +7600,7 @@ class SiloCarBase(CarSchemaBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["silo_powders"]
-        # labels are for legacy support, prior to CC_COVERED_BULK class; this left in place as of Oct 2024
+        # labels are for legacy support, prior to CC_POWDERISED class; this left in place as of Oct 2024
         # move to Polar Fox (maybe??)
         self.label_refits_allowed = [
             "BDMT",
