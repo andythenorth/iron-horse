@@ -2661,7 +2661,9 @@ class BolsterCarBase(CarSchemaBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "legacy_allowed_flatbed"
+        ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[

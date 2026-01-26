@@ -308,6 +308,14 @@ allowed_refits_by_label = {
         "FOOD",
         "MILK",
     ],
+    # used for food flatbed to refit to older cargos that don't set flatbed bits (limited range, this doesn't try to be comprehensive)
+    "legacy_allowed_flatbed": [
+        "METL",
+        "PIPE",
+        "STEL",
+        "WDPR",
+        "WOOD",
+    ],
     # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
     # !! NOT SURE WHAT THIS ONE IS DOING - CAN WE DROP ANY IN FAVOUR OF POTABLE ETC?
     # !! BUT THESE ARE QUITE NICHE VEHICLES - WE'LL NEED SOME SPECIFIC LABELS
