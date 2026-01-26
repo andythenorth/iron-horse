@@ -4345,7 +4345,9 @@ class FarmCargoCombosBase(RandomisedCarComboMixin, CarSchemaBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "farm_food_products"
         ]
-        self.label_refits_disallowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_farm_food_products"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -4415,7 +4417,9 @@ class FarmProductsBoxCarBase(CarSchemaBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "farm_food_products"
         ]
-        self.label_refits_disallowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_farm_food_products"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -4497,7 +4501,9 @@ class FarmProductsHopperCarBase(CarSchemaBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "farm_food_products"
         ]
-        self.label_refits_disallowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_farm_food_products"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -4584,7 +4590,9 @@ class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarSchemaBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "farm_food_products"
         ]
-        self.label_refits_disallowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_farm_food_products"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -4596,7 +4604,7 @@ class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarSchemaBase):
 
 class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
     """
-    Random choice of farm products car from hoppers, vans etc.
+    Random choice of food ingredients car from hoppers, vans etc.
     """
 
     model_id_root = "food_ingredients_mixed_combos"
@@ -4617,7 +4625,7 @@ class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
 
 class FoodIngredientsHopperCombos(FoodIngredientsCombosBase):
     """
-    Random choice of farm products hopper.
+    Random choice of food ingredients hopper.
     """
 
     model_id_root = "food_ingredients_hopper_combos"
@@ -4774,8 +4782,12 @@ class FoodExpressTankCarBase(FoodExpressCarBase):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         super().__init__(**kwargs)
         self.class_refit_groups = ["liquids_food_grade"]
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "legacy_allowed_food_grade_liquid_bulk"
+        ]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_food_grade_liquid_bulk"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         # Graphics configuration
         weathered_states = {
@@ -4891,8 +4903,12 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["liquids_food_grade"]
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "legacy_allowed_food_grade_liquid_bulk"
+        ]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_food_grade_liquid_bulk"
+        ]
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(

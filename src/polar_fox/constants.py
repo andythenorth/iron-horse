@@ -219,8 +219,9 @@ base_refits_by_class = {
 }
 
 # generally we want to allow refit on classes, and disallow on labels (see disallowed_refits_by_label)
-# BUT for _some_ specialist vehicle types, it's simpler to just allow refit by label
-# !! CABBAGE NEEDS UPDATED OCT 2024 NOT CLEAR THESE ALL NEEDED !!
+# as of Jan 2026 FRAX classes make that more reliable, where used
+# but there are still special cases where allowed labels offer better specificity
+# allowed labels also provide the option for tidier legacy support of non-FRAX industry grfs
 allowed_refits_by_label = {
     # box cars get some extended cargos
     # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
@@ -244,6 +245,8 @@ allowed_refits_by_label = {
         "CHLO",
         "RFPR",
     ],
+    # these are used for dedicated metal carrying vehicles (mostly steel-industry specific)
+    # there are no classes that can pick this out, so this list is valid and required
     "metal_products": [
         "ALUM",
         "COPR",
@@ -288,26 +291,30 @@ allowed_refits_by_label = {
     # non-food cargos that need 'clean' covered hopper
     # preference is not to overlap with mineral covered hoppers and farm hoppers (as they will be combined where needed)
     # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
+    # !! this is needed I think, potable / non-potable don't cover the case of 'non-food cargos that need protected from impurities'
+    # !! but the precise naming might need adjusted
     "covered_hoppers_pellet_powder": [
         "CBLK",
         "NHNO",
         "PLAS",
         "RUBR",
     ],
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
+    # !! CABBAGE
     # !! dropped in Horse, keyword still here to avoid breaking Sam compile, but can be dropped after that
+    # !! we'll just force the issue on these, gas cargos weren't common anywhere before FIRS 4, not supporting old grfs
     "cryo_gases": [],
+    # used for food tankers to refit to older cargos that don't set liquid bulk and potable bits
+    "legacy_allowed_food_grade_liquid_bulk": [
+        "FOOD",
+        "MILK",
+    ],
     # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
-    # !! dropped in Horse, keyword still here to avoid breaking Sam compile, but can be dropped after that
-    "edible_liquids": [],
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
+    # !! NOT SURE WHAT THIS ONE IS DOING - CAN WE DROP ANY IN FAVOUR OF POTABLE ETC?
+    # !! BUT THESE ARE QUITE NICHE VEHICLES - WE'LL NEED SOME SPECIFIC LABELS
     "farm_food_products": [
         "BAKE",
+        "BEAN",
         "CERE",
-        "FERT",
         "FMSP",
         "FOOD",
         "FRUT",
@@ -356,6 +363,10 @@ disallowed_refits_by_label = {
         "WHEA",
         "WOOD",
     ],
+    # used to exclude from covered bulk vehicles older cargos that set 'covered' bit (prior to FRAX) but weren't bulk cargos
+    "legacy_disallowed_covered_bulk": [
+        "WOOL",
+    ],
     # used to exclude from generic tankers older food and gas cargos that set 'liquid' bit (prior to FRAX)
     "legacy_disallowed_liquid_bulk": [
         "BEER",
@@ -366,6 +377,30 @@ disallowed_refits_by_label = {
         "N7__",
         "O2__",
         "WATR",
+    ],
+    # !! CABBAGE - THIS NEEDS FINISHING FOR FOOD TANKERS WITH E.G. FIRS 3
+    "legacy_disallowed_food_grade_liquid_bulk": [
+        "ACID",
+        "CHLO",
+        "KAOL",
+        "OIL_",
+        "PETR",
+        "PLAS",
+        "RFPR",
+        "RUBR",
+        "SULP",
+    ],
+    # !! CABBAGE - THIS NEEDS FINISHING FARM PRODUCT WAGONS WITH E.G. FIRS 3
+    "legacy_disallowed_farm_food_products": [
+        "CLAY",
+        "CMNT",
+        "KAOL",
+        "QLME",
+        "RFPR",
+        "SASH",
+        "SGBT", # Sugar beet is not food grade, and not suitable for farm covered hoppers or box cars
+        "SULP",
+        "WOOL", # Wool is not food grade, and also not suitable for farm covered hoppers
     ],
     # used to exclude from pressure tankers older cargos that used 'hazardous' bit (prior to FRAX)
     "legacy_disallowed_gas_bulk": [
@@ -859,7 +894,7 @@ container_recolour_cargo_maps = (
             curtain_side_livery_recolour_maps,
         ),
     ),
-    ("edibles_tank", (allowed_refits_by_label["edible_liquids"], [])),
+    ("edibles_tank", (allowed_refits_by_label["legacy_allowed_food_grade_liquid_bulk"], [])),
     (
         "livestock",
         # one label only - extend if other livestock labels added in future
