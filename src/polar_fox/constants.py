@@ -319,6 +319,18 @@ allowed_refits_by_label = {
         "TATO",
         "WHEA",
     ],
+    "legacy_allowed_silo_powderised": [
+        "BDMT",
+        "CBLK",
+        "CHEM",
+        "CMNT",
+        "FMSP",
+        "QLME",
+        "SAND",
+        "SASH",
+        "SOAP",
+        "SUGR",
+    ],
     # !! CABBAGE
     # !! dropped in Horse, keyword still here to avoid breaking Sam compile, but can be dropped after that
     # !! we'll just force the issue on these, gas cargos weren't common anywhere before FIRS 4, not supporting old grfs

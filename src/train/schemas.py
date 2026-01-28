@@ -7600,19 +7600,8 @@ class SiloCarBase(CarSchemaBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["silo_powders"]
-        # labels are for legacy support, prior to CC_POWDERISED class; this left in place as of Oct 2024
-        # move to Polar Fox (maybe??)
-        self.label_refits_allowed = [
-            "BDMT",
-            "CBLK",
-            "CHEM",
-            "CMNT",
-            "FMSP",
-            "QLME",
-            "SAND",
-            "SASH",
-            "SOAP",
-            "SUGR",
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "legacy_allowed_silo_powderised"
         ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
