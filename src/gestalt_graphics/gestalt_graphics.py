@@ -49,6 +49,8 @@ class GestaltGraphics(object):
         self.buy_menu_width_addition = 0
         # override this in subclasses as needed
         self.num_load_state_or_similar_spriterows = 1
+        # override this in subclasses as needed
+        self.row_count_for_docs_image_offset = None
         # optional - rulesets are used to define for different types of vehicle how sprites change depending on formation position
         # ruleset may also be used for buy menu sprite processing
         self.formation_ruleset = kwargs.get("formation_ruleset", None)
