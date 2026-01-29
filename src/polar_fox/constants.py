@@ -241,6 +241,17 @@ allowed_refits_by_label = {
         "TYCO",
         "ZINC",
     ],
+    # box cars get some extended cargos for older (pre-FRAX) cargos that don't set piece goods
+    "legacy_box_freight": [
+        "BEAN",
+        "CMNT",
+        "FRUT",
+        "GRAI",
+        "MAIL",
+        "MAIZ",
+        "NITR",
+        "WHEA",
+    ],
     # this covers all of
     # - farm covered hoppers
     # - food covered hoppers
@@ -268,33 +279,13 @@ allowed_refits_by_label = {
         "TATO",
         "WHEA",
     ],
-    # box cars get some extended cargos for older (pre-FRAX) cargos that don't set piece goods
-    "legacy_box_freight": [
-        "BEAN",
-        "CMNT",
-        "FRUT",
-        "GRAI",
-        "MAIL",
-        "MAIZ",
-        "NITR",
-        "WHEA",
-    ],
-    # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
-    # !! not used in Horse
-    "chemicals": [
-        "ACID",
-        "CHLO",
-        "RFPR",
-    ],
     # covered hoppers (excluding farm hoppers)
     # two lists for legacy support
     # - a longer list suitable for any non-food covered hopper
     # - a shorter list suitable only for general covered hoppers (non-mineral, non-food)
     #   - mostly 'clean' cargos that are not food-grade, but are definitely unsuitable for mineral hoppers (which are assumed to be dirtier and less protective of their cargos)
     # there is also a non-legacy 'disallow' list for mineral covered hoppers, caution is needed to avoid making all these lists too faffy
-    # we then also permit farm_food_products on generic covered hoppers
+    # we then also permit allowed_farm_food_products on generic covered hoppers
     "legacy_allowed_covered_hoppers_any_non_food": [
         "ALO_",
         "BDMT",
@@ -330,16 +321,12 @@ allowed_refits_by_label = {
         "SOAP",
         "SUGR",
     ],
-    # !! CABBAGE
-    # !! dropped in Horse, keyword still here to avoid breaking Sam compile, but can be dropped after that
-    # !! we'll just force the issue on these, gas cargos weren't common anywhere before FIRS 4, not supporting old grfs
-    "cryo_gases": [],
     # used for food tankers to refit to older cargos that don't set liquid bulk and potable bits
     "legacy_allowed_food_grade_liquid_bulk": [
         "FOOD",
         "MILK",
     ],
-    # used for food flatbed to refit to older cargos that don't set flatbed bits (limited range, this doesn't try to be comprehensive)
+    # used for flatbed to refit to older cargos that don't set flatbed bits (limited range, this doesn't try to be comprehensive)
     "legacy_allowed_flatbed": [
         "METL",
         "PIPE",
@@ -347,13 +334,25 @@ allowed_refits_by_label = {
         "WDPR",
         "WOOD",
     ],
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
+    # !! CABBAGE THIS IS NOT ABOUT REFITS, THIS IS ABOUT MAPPING INTERMODAL CONTAINER SPRITES TO CARGO LABELS
+    # !! used internally in Polar Fox
+    # !! is it also used externally in consumers via `container_recolour_cargo_maps`?
+    # !! definitely a candidate for refactor, but doesn't relate to FRAX - didn't change as of Jan 2026
+    "chemicals": [
+        "ACID",
+        "CHLO",
+        "RFPR",
+    ],
+    # !! CABBAGE THIS IS NOT ABOUT REFITS, THIS IS ABOUT MAPPING INTERMODAL CONTAINER SPRITES TO CARGO LABELS
+    # !! used internally in Polar Fox
+    # !! is it also used externally in consumers via `container_recolour_cargo_maps`?
+    # !! definitely a candidate for refactor, but doesn't relate to FRAX - didn't change as of Jan 2026
     "reefer": [
         "FISH",
         "FOOD",
         "FRUT",
     ],
+    "cryo_gases": [], # this really is just here to make the Polar Fox containers compile work as of Jan 2026, it's possibly a sign of unintentionally nerfed cryo container support, but eh
 }
 
 # these are maintained for legacy support with older industry grfs that don't use FRAX (or don't set potable / non-potable bits)
@@ -432,7 +431,6 @@ disallowed_refits_by_label = {
         "RUBR",
         "SULP",
     ],
-    # !! CABBAGE - THIS NEEDS FINISHING FARM PRODUCT WAGONS WITH E.G. FIRS 3
     "legacy_disallowed_farm_food_products": [
         "BDMT",
         "CLAY",
