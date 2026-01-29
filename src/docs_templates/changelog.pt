@@ -3,6 +3,51 @@ Changelog
 
 
 --------------
+4.8.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.8.0.
+
+
+*Changes*
+
+- replaced Cargo Sprinter with single-unit Brash container-carrying railcar
+    - Brash introduced around 1993, 825 hp diesel power, 87 mph
+    - refits any freight cargo or mail
+    - Brash cab units can be combined
+    - Brash cab units will auto-flip if they are the last vehicle in the consist
+    - add Brash Powered Trailers (also 825 hp) to make longer Brash consists
+    - Brash units are express haulable (can travel at higher speed if attached to faster engines)
+    - can be used as self-contained multiple unit, or with any freight wagons, or as a driving cab for a freight train with another type of engine
+    - improved sprites from Cargo Sprinter version
+- reworked Express Intermodal Wagons
+    - improved sprites
+    - more livery choices, and no longer uses non-standard wagon liveries
+- added liveries for
+    - Argus
+    - Carrack
+    - Decapod
+    - Foxhound
+    - Lark
+    - Merrylegs
+    - Pinhorse
+    - Proper Job
+    - Spinner
+    - Stag
+- improved wagon refittability with a wide range of older industry grfs, including
+    - ECS vectors
+    - FIRS 3
+    - Pikka's Basic Industries
+    - PIRS 2022
+
+
+*Fixes*
+
+- improved handling of trains with distributed power (powered coaches), when another type of engine is mixed into the consist
+
+
+--------------
 4.7.0 Release
 --------------
 
