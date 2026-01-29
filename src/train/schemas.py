@@ -1527,7 +1527,7 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
+            "legacy_disallowed_express"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self._loading_speed_multiplier = 2
