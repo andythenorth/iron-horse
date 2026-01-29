@@ -2738,7 +2738,7 @@ class BoxCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["packaged_freight"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "box_freight"
+            "legacy_box_freight"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_express"
@@ -4015,7 +4015,7 @@ class CoveredHopperCarBase(CarSchemaBase):
             ])
             |
             set(polar_fox.constants.allowed_refits_by_label[
-                "farm_food_products"
+                "allowed_farm_food_products"
             ])
         )
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
@@ -4357,7 +4357,7 @@ class FarmCargoCombosBase(RandomisedCarComboMixin, CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_food_products"
+            "allowed_farm_food_products"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_farm_food_products"
@@ -4429,7 +4429,7 @@ class FarmProductsBoxCarBase(CarSchemaBase):
         # no classes, use explicit labels
         self.class_refit_groups = []
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_food_products"
+            "allowed_farm_food_products"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_farm_food_products"
@@ -4513,7 +4513,7 @@ class FarmProductsHopperCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_food_products"
+            "allowed_farm_food_products"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_farm_food_products"
@@ -4602,7 +4602,7 @@ class FoodIngredientsCombosBase(RandomisedCarComboMixin, CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["covered_hopper_freight_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_food_products"
+            "allowed_farm_food_products"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_farm_food_products"
@@ -7378,7 +7378,7 @@ class PieceGoodsCarRandomisedBase(RandomisedCarVanillaMixin, CarSchemaBase):
         super().__init__(**kwargs)
         self.class_refit_groups = ["packaged_freight"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "box_freight"
+            "legacy_box_freight"
         ]
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_express"

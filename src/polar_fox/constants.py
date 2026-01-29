@@ -200,8 +200,9 @@ base_refits_by_class = {
         "disallowed": ["CC_NON_POTABLE"],
     },
     "mail": {"allowed": ["CC_MAIL"], "disallowed": []},
+    # includes mail
     "packaged_freight": {
-        "allowed": ["CC_PIECE_GOODS", "CC_EXPRESS"],
+        "allowed": ["CC_PIECE_GOODS", "CC_EXPRESS", "CC_MAIL"],
         "disallowed": ["CC_WEIRD"],  # weird covered in all_freight,
     },
     "pax": {"allowed": ["CC_PASSENGERS"], "disallowed": []},
@@ -217,28 +218,6 @@ base_refits_by_class = {
 # but there are still special cases where allowed labels offer better specificity
 # allowed labels also provide the option for tidier legacy support of non-FRAX industry grfs
 allowed_refits_by_label = {
-    # box cars get some extended cargos
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
-    "box_freight": [
-        "BEAN",
-        "CMNT",
-        "FRUT",
-        "GRAI",
-        "MAIL",
-        "MAIZ",
-        "NITR",
-        "WHEA",
-    ],
-    # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
-    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
-    # !! some of these might be able to drop back to classes with FIRS 4 or 5
-    # !! not used in Horse
-    "chemicals": [
-        "ACID",
-        "CHLO",
-        "RFPR",
-    ],
     # these are used for dedicated metal carrying vehicles (mostly steel-industry specific)
     # there are no classes that can pick this out, so this list is valid and required
     "allowed_metal_products": [
@@ -261,6 +240,53 @@ allowed_refits_by_label = {
         "STWR",
         "TYCO",
         "ZINC",
+    ],
+    # this covers all of
+    # - farm covered hoppers
+    # - food covered hoppers
+    # - farm box cars
+    # - combo cars of all the above
+    # - inevitably some unrealism is accepted in favour of consistent refittability across these types
+    # it's a judgement call whether this
+    # - *includes* a cargo that's not suitable for all types
+    # - or *excludes* the cargo even though some types could carry it
+    "allowed_farm_food_products": [
+        "BAKE",
+        "BEAN",
+        "CERE",
+        "FMSP",
+        "FOOD",
+        "FRUT",
+        "GRAI",
+        "JAVA",
+        "MAIZ",
+        "NUTS",
+        "OLSD",
+        "SEED",
+        "SGBT",
+        "SUGR",
+        "TATO",
+        "WHEA",
+    ],
+    # box cars get some extended cargos for older (pre-FRAX) cargos that don't set piece goods
+    "legacy_box_freight": [
+        "BEAN",
+        "CMNT",
+        "FRUT",
+        "GRAI",
+        "MAIL",
+        "MAIZ",
+        "NITR",
+        "WHEA",
+    ],
+    # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
+    # !! CABBAGE NEEDS UPDATED OCT 2024 - STILL NEEDED?
+    # !! some of these might be able to drop back to classes with FIRS 4 or 5
+    # !! not used in Horse
+    "chemicals": [
+        "ACID",
+        "CHLO",
+        "RFPR",
     ],
     # covered hoppers (excluding farm hoppers)
     # two lists for legacy support
@@ -291,33 +317,6 @@ allowed_refits_by_label = {
         "NHNO",
         "PLAS",
         "RUBR",
-    ],
-    # this covers all of
-    # - farm covered hoppers
-    # - food covered hoppers
-    # - farm box cars
-    # - combo cars of all the above
-    # - inevitably some unrealism is accepted in favour of consistent refittability across these types
-    # it's a judgement call whether this
-    # - *includes* a cargo that's not suitable for all types
-    # - or *excludes* the cargo even though some types could carry it
-    "farm_food_products": [
-        "BAKE",
-        "BEAN",
-        "CERE",
-        "FMSP",
-        "FOOD",
-        "FRUT",
-        "GRAI",
-        "JAVA",
-        "MAIZ",
-        "NUTS",
-        "OLSD",
-        "SEED",
-        "SGBT",
-        "SUGR",
-        "TATO",
-        "WHEA",
     ],
     "legacy_allowed_silo_powderised": [
         "BDMT",
