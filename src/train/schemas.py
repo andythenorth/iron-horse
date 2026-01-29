@@ -4232,34 +4232,17 @@ class CoveredHopperCarSwingRoofType1(CoveredHopperCarSwingRoofBase):
         super().__init__(**kwargs)
 
 
-class KaolinHopperCar(CarSchemaBase):
+class CoveredHopperCarSwingRoofType2(CoveredHopperCarSwingRoofBase):
     """
-    Dedicated to kaolin (china clay).
+    Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
     """
 
-    # minimal set by design
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-    ]
-
-    model_id_root = "kaolin_hopper_car"
+    model_id_root = "swing_roof_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # no classes, use explicit labels
-        self.class_refit_groups = []
-        self.label_refits_allowed = ["KAOL", "CLAY"]
-        self.label_refits_disallowed = []
-        # no point using polar fox default_cargos for a vehicle with single refit
-        self.default_cargos = []
-        self._loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
-            "non_core_wagons"
-        ]
-        self._joker = True
         # Graphics configuration
+        # there's some specific magic pixel handling on these that means they get a unique recolour map
         weathered_states = {
             "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_map,
             "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_map_weathered,

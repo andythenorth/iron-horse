@@ -459,9 +459,6 @@ base = "Ingot Carriers"
 [STR_WAGON_NAME_INTERMODAL_CAR]
 base = "Container Wagon"
 
-[STR_WAGON_NAME_KAOLIN_HOPPER_CAR]
-base = "China Clay Hopper"
-
 [STR_WAGON_NAME_LIME_COVERED_HOPPER_CAR]
 base = "Lime Hopper"
 

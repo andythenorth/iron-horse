@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="KaolinHopperCar",
+        schema_name="CoveredHopperCarSwingRoofType2",
         base_numeric_id=26230,
         gen=5,
         subtype="B",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="KaolinHopperCar",
+        schema_name="CoveredHopperCarSwingRoofType2",
         base_numeric_id=26240,
         gen=5,
         subtype="C",

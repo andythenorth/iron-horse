@@ -139,7 +139,6 @@ wagon_module_names_with_roster_ids = {
     "heavy_duty_flat_cars": "pony",
     "ingot_cars": "pony",
     "intermodal_cars": "pony",
-    "kaolin_hopper_cars": "pony",
     "log_cars": "pony",
     "low_floor_intermodal_cars": "pony",
     "merchandise_box_cars": "pony",
