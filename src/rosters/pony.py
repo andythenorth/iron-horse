@@ -402,7 +402,7 @@ wagon_module_names_with_roster_ids = {
     "spacer_cars_type_1": "pony",
     "spacer_cars_type_2": "pony",
     "suburban_passenger_cars": "pony",
-    "swing_roof_hopper_cars": "pony",
+    "swing_roof_hopper_cars_type_1": "pony",
     "tank_cars_randomised": "pony",
     "tank_cars_type_1": "pony",
     "tank_cars_type_2": "pony",

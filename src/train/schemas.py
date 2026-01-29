@@ -4186,7 +4186,7 @@ class CoveredHopperCarRandomised(RandomisedCarVanillaMixin, CoveredHopperCarBase
         )
 
 
-class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
+class CoveredHopperCarSwingRoofBase(CoveredHopperCarBase):
     """
     Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
     """
@@ -4203,8 +4203,8 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         "RANDOM_LIVERIES_OXIDE_RUST",
     ]
 
-    model_id_root = "swing_roof_hopper_car"
     vehicle_family_id = "swing_roof_hopper_car"
+    variant_group_id_root = "swing_roof_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4215,6 +4215,56 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
         # teal before pewter to ensure it appears in buy menu order for mixed version
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class CoveredHopperCarSwingRoofType1(CoveredHopperCarSwingRoofBase):
+    """
+    Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
+    """
+
+    model_id_root = "swing_roof_hopper_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class KaolinHopperCar(CarSchemaBase):
+    """
+    Dedicated to kaolin (china clay).
+    """
+
+    # minimal set by design
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+    ]
+
+    model_id_root = "kaolin_hopper_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # no classes, use explicit labels
+        self.class_refit_groups = []
+        self.label_refits_allowed = ["KAOL", "CLAY"]
+        self.label_refits_disallowed = []
+        # no point using polar fox default_cargos for a vehicle with single refit
+        self.default_cargos = []
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_map_weathered,
+        }
+        # tried more liveries, doesn't add anything
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -5819,45 +5869,6 @@ class IntermodalLowFloorCar(IntermodalCarBase):
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         return ["low_floor"]
-
-
-class KaolinHopperCar(CarSchemaBase):
-    """
-    Dedicated to kaolin (china clay).
-    """
-
-    # minimal set by design
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-    ]
-
-    model_id_root = "kaolin_hopper_car"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # no classes, use explicit labels
-        self.class_refit_groups = []
-        self.label_refits_allowed = ["KAOL", "CLAY"]
-        self.label_refits_disallowed = []
-        # no point using polar fox default_cargos for a vehicle with single refit
-        self.default_cargos = []
-        self._loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
-            "non_core_wagons"
-        ]
-        self._joker = True
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_map,
-            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_map_weathered,
-        }
-        # tried more liveries, doesn't add anything
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
 class LivestockCarBase(CarSchemaBase):
