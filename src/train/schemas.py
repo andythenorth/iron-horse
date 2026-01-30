@@ -4227,6 +4227,7 @@ class CoveredHopperCarSwingRoofType1(CoveredHopperCarSwingRoofBase):
     """
 
     model_id_root = "swing_roof_hopper_car_type_1"
+    randomised_candidate_groups = ["swing_roof_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4238,6 +4239,7 @@ class CoveredHopperCarSwingRoofType2(CoveredHopperCarSwingRoofBase):
     """
 
     model_id_root = "swing_roof_hopper_car_type_2"
+    randomised_candidate_groups = ["swing_roof_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4250,6 +4252,24 @@ class CoveredHopperCarSwingRoofType2(CoveredHopperCarSwingRoofBase):
         # tried more liveries, doesn't add anything
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class CoveredHopperCarSwingRoofRandomised(RandomisedCarVanillaMixin, CoveredHopperCarSwingRoofBase):
+    """
+    Random choice of covered hopper car with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
+    """
+
+    model_id_root = "swing_roof_hopper_car_randomised"
+    variant_group_id_root = "swing_roof_hopper_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
             catalogue_entry=self.catalogue_entry,
         )
 
