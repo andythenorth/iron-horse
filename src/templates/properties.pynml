@@ -124,7 +124,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:create_effect condition="len(unit.effects) > 0">
             effect_spawn_model_and_powered: ${unit.id}_switch_effect_spawn_model_and_powered;
-            create_effect:      ${unit.id}_switch_create_effect_check_railtype;
+            create_effect:      ${unit.id}_switch_create_effect;
         </tal:create_effect>
         <tal:random_reverse_on_build condition="model_variant.random_reverse">
             <!--! 50% chance of being reversed when built, if this property is set (player bool parameter can turn this off) -->

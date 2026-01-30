@@ -40,3 +40,26 @@
         }
     </tal:default
 </tal:effect_type_varies_by_power_source>
+
+<!--! is the vehicle powered at all?
+    add more predicates here as needed - chain them from a tree if it gets combinatorial - but JFDI as of Jan 2026 -->
+<tal:unit_has_any_power switch="model_variant.is_distributed_power_wagon and unit.is_not_trailing_part">
+    <tal:is_distributed_power_wagon case="True">
+        <!--! power varies if specific engines are present in the consist -->
+        <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
+        switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_create_effect_check_unit_has_any_power, count_has_badge("ih_distributed_power/is_power_cab/${catalogue.cab_engine_model.model_id}")) {
+            0: return 0;
+            return 1;
+        }
+    </tal:is_distributed_power_wagon>
+    <tal:default case="False">
+        switch (FEAT_TRAINS, SELF, ${unit.id}_switch_create_effect_check_unit_has_any_power, 1) {
+            return 1;
+        }
+    </tal:default>
+</tal:unit_has_any_power>
+
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_create_effect, ${unit.id}_switch_create_effect_check_unit_has_any_power()) {
+    1: return ${unit.id}_switch_create_effect_check_railtype;
+    return VISUAL_EFFECT_DISABLE;
+}
