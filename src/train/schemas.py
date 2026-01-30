@@ -4241,6 +4241,17 @@ class CoveredHopperCarSwingRoofType2(CoveredHopperCarSwingRoofBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class CoveredHopperCarSwingRoofType3(CoveredHopperCarSwingRoofBase):
+    """
+    Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
+    """
+
+    model_id_root = "swing_roof_hopper_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # Graphics configuration
         # there's some specific magic pixel handling on these that means they get a unique recolour map
         weathered_states = {
