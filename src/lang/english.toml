@@ -178,8 +178,8 @@ base = "Mail by Rail"
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
 
-[STR_BADGE_LIVERY_RENAME_ME]
-base = "RENAME ME"
+[STR_BADGE_LIVERY_MARGINAL_GAINS]
+base = "Marginal Gains"
 
 [STR_BADGE_LIVERY_RIDEWELL]
 base = "Ridewell"
@@ -800,15 +800,15 @@ base = "A livery featuring mostly the first company colour, with a lower body or
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_MAIL_BY_RAIL]
-base = "Varied liveries for mail trains, inspired by Royal Mail, Rail Express Systems, TGV La Poste, and other liveries."
+base = "Varied liveries for mail trains, inspired by Royal Mail, Rail Express Systems, TGV La Poste, and other liveries. Always uses red as main colour."
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_METROLAND]
 base = "Varied liveries for metro trains, inspired by London Underground and other liveries."
 docs_only = true
 
-[STR_EXTRA_TEXT_LIVERY_RENAME_ME]
-base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
+[STR_EXTRA_TEXT_LIVERY_MARGINAL_GAINS]
+base = "A generic livery for passenger and mail trains, inspired by British Rail 1970s suburban white/blue livery."
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_RIDEWELL]

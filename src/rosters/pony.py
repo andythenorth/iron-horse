@@ -717,7 +717,7 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "RENAME_ME": {
+            "MARGINAL_GAINS": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
@@ -837,7 +837,7 @@ def main():
             "gen_1_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("RIDEWELL", 1)],
             "gen_2_pax_liveries": [("RIDEWELL", 0), ("TRANCENTRAL_TEMP", 1)],
             "gen_3_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
-            "gen_4_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("RENAME_ME", 1)],
+            "gen_4_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("MARGINAL_GAINS", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
@@ -853,7 +853,7 @@ def main():
                 ("VAPID_VOYAGER", 1),
             ],
             "gen_3_ng_pax_liveries": [
-                ("RENAME_ME", 0),
+                ("MARGINAL_GAINS", 0),
                 ("TRANCENTRAL_TEMP", 1),
             ],
             "gen_1_ng_pax_liveries": [
@@ -886,7 +886,7 @@ def main():
                 ("SURE_PACE", 0),
             ],
             "gen_4_suburban_pax_liveries": [
-                ("RENAME_ME", 1),
+                ("MARGINAL_GAINS", 1),
                 ("TRANCENTRAL_TEMP", 0),
             ],
             "gen_5_suburban_pax_liveries": [
@@ -928,7 +928,7 @@ def main():
             "gen_4_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("TRANCENTRAL_TEMP", 0),
-                ("RENAME_ME", 1),
+                ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -960,7 +960,7 @@ def main():
             "gen_3_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("TRANCENTRAL_TEMP", 1),
-                ("RENAME_ME", 0),
+                ("MARGINAL_GAINS", 0),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -988,7 +988,7 @@ def main():
             "gen_4_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("TRANCENTRAL_TEMP", 0),
-                ("RENAME_ME", 1),
+                ("MARGINAL_GAINS", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -1001,7 +1001,7 @@ def main():
             ],
             "gen_3_ng_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
-                ("RENAME_ME", 0),
+                ("MARGINAL_GAINS", 0),
                 ("TRANCENTRAL_TEMP", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
@@ -1016,7 +1016,7 @@ def main():
             "gen_4_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("TRANCENTRAL_TEMP", 0),
-                ("RENAME_ME", 1),
+                ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
