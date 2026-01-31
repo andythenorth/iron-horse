@@ -897,6 +897,14 @@ def main():
                 ("VAPID_VOYAGER", 1),
                 ("VINYL_VECTOR", 0),
             ],
+            "gen_5_diesel_pax_railcar_liveries": [
+                ("FRUIT_RIPPLE", 0),
+                ("SURE_PACE", 1),
+            ],
+            "gen_5_electric_pax_railcar_liveries": [
+                ("SURE_PACE", 1),
+                ("FRUIT_RIPPLE", 0),
+            ],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
