@@ -888,6 +888,7 @@ def main():
             "gen_4_suburban_pax_liveries": [
                 ("MARGINAL_GAINS", 1),
                 ("RAIN_OR_SHINE", 0),
+                ("BANGER_BLUE", 2),
             ],
             "gen_5_suburban_pax_liveries": [
                 ("SURE_PACE", 1),
