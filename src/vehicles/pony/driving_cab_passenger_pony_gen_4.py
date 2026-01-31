@@ -12,6 +12,7 @@ def main(**kwargs):
         subrole_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=4,
         intro_year_offset=16,  # a lot later, very short lived, replaced by gen 5 quickly
+        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

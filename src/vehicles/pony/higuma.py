@@ -19,7 +19,7 @@ def main(**kwargs):
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         liveries=[
-            "RIDEWELL",
+            "SURE_PACE",
             "SHOW_PONY",
             "FRUIT_RIPPLE",  # strictly not quite, but close enough
         ],

@@ -17,7 +17,7 @@ def main(**kwargs):
         pantograph_type="z-shaped-single-reversed",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        liveries=["FRUIT_RIPPLE", "RIDEWELL"],
+        liveries=["FRUIT_RIPPLE", "SURE_PACE"],
         sprites_complete=True,
     )
 

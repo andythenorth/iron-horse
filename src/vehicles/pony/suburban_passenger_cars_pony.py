@@ -42,6 +42,7 @@ def main(**kwargs):
         base_numeric_id=19240,
         gen=3,
         subtype="A",
+        livery_group_name="gen_3_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -54,6 +55,7 @@ def main(**kwargs):
         base_numeric_id=19260,
         gen=3,
         subtype="B",
+        livery_group_name="gen_3_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -68,6 +70,7 @@ def main(**kwargs):
         base_numeric_id=19930,
         gen=3,
         subtype="C",
+        livery_group_name="gen_3_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -80,6 +83,7 @@ def main(**kwargs):
         base_numeric_id=19950,
         gen=4,
         subtype="B",
+        livery_group_name="gen_4_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -94,6 +98,7 @@ def main(**kwargs):
         base_numeric_id=20240,
         gen=4,
         subtype="C",
+        livery_group_name="gen_4_suburban_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

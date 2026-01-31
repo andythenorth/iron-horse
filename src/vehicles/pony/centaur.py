@@ -20,7 +20,7 @@ def main(**kwargs):
         gen=5,
         # red stripe? Teeside steelmaster?
         liveries=[
-            "RIDEWELL",
+            "SURE_PACE",
             "BANGER_BLUE",
             "SHOW_PONY",
             "LOWER_LINES",

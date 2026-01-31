@@ -178,6 +178,9 @@ base = "Mail by Rail"
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
 
+[STR_BADGE_LIVERY_RENAME_ME]
+base = "RENAME ME"
+
 [STR_BADGE_LIVERY_RIDEWELL]
 base = "Ridewell"
 
@@ -192,6 +195,9 @@ base = "Supergraphic"
 
 [STR_BADGE_LIVERY_SURE_PACE]
 base = "Sure Pace"
+
+[STR_BADGE_LIVERY_TRANCENTRAL_TEMP]
+base = "TRANCENTRAL TEMP"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
@@ -801,6 +807,10 @@ docs_only = true
 base = "Varied liveries for metro trains, inspired by London Underground and other liveries."
 docs_only = true
 
+[STR_EXTRA_TEXT_LIVERY_RENAME_ME]
+base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
+docs_only = true
+
 [STR_EXTRA_TEXT_LIVERY_RIDEWELL]
 base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
 docs_only = true
@@ -818,6 +828,10 @@ base = "A bold livery featuring blocks of yellow and the first company colour, s
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_SURE_PACE]
+base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_TRANCENTRAL_TEMP]
 base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
 docs_only = true
 

@@ -717,7 +717,17 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "RIDEWELL": {
+            "RENAME_ME": {
+                "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "SURE_PACE": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
@@ -757,7 +767,17 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "SURE_PACE": {
+            "TRANCENTRAL_TEMP": {
+                "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "RIDEWELL": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
@@ -813,49 +833,64 @@ def main():
         # - livery name comes from roster engine_and_misc_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
-            "default_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
-            "gen_2_pax_liveries": [("RIDEWELL", 0), ("SURE_PACE", 1)],
+            "default_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("SURE_PACE", 1)],
+            "gen_1_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("RIDEWELL", 1)],
+            "gen_2_pax_liveries": [("RIDEWELL", 0), ("TRANCENTRAL_TEMP", 1)],
+            "gen_3_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
+            "gen_4_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("RENAME_ME", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
             ],
             "gen_5_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
             ],
             "gen_6_pax_liveries": [
                 ("VINYL_VECTOR", 0),
                 ("VAPID_VOYAGER", 1),
             ],
             "gen_3_ng_pax_liveries": [
-                ("RIDEWELL", 0),
-                ("SURE_PACE", 1),
+                ("RENAME_ME", 0),
+                ("TRANCENTRAL_TEMP", 1),
+            ],
+            "gen_1_ng_pax_liveries": [
+                ("TRANCENTRAL_TEMP", 0),
+                ("RIDEWELL", 1),
             ],
             "gen_4_ng_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
             ],
             "gen_4_reversed_ng_pax_liveries": [
-                ("RIDEWELL", 0),
+                ("SURE_PACE", 0),
                 ("FRUIT_RIPPLE", 1),
             ],
             # CABBAGE
             "CABBAGE_RAILCAR": [
                 ("SHOW_PONY", 1),
-                ("SURE_PACE", 0),
+                ("TRANCENTRAL_TEMP", 0),
             ],
             "default_suburban_pax_liveries": [
+                ("SURE_PACE", 1),
+                ("TRANCENTRAL_TEMP", 0),
+            ],
+            "gen_2_suburban_pax_liveries": [
+                ("TRANCENTRAL_TEMP", 1),
+                ("RIDEWELL", 0),
+            ],
+            "gen_3_suburban_pax_liveries": [
                 ("RIDEWELL", 1),
                 ("SURE_PACE", 0),
             ],
-            "gen_2_suburban_pax_liveries": [
-                ("SURE_PACE", 1),
-                ("RIDEWELL", 0),
+            "gen_4_suburban_pax_liveries": [
+                ("RENAME_ME", 1),
+                ("TRANCENTRAL_TEMP", 0),
             ],
             "gen_5_suburban_pax_liveries": [
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("FRUIT_RIPPLE", 0),
             ],
             "gen_6_suburban_pax_liveries": [
@@ -864,8 +899,22 @@ def main():
             ],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
-                ("SURE_PACE", 0),
+                ("RIDEWELL", 0),
+                ("SURE_PACE", 1),
+                ("BANGER_BLUE", 2),
+                ("MAIL_BY_RAIL", 4),
+            ],
+            "gen_1_mail_liveries": [
+                ("INVERSIONS", 3),
+                ("TRANCENTRAL_TEMP", 0),
                 ("RIDEWELL", 1),
+                ("BANGER_BLUE", 2),
+                ("MAIL_BY_RAIL", 4),
+            ],
+            "gen_2_mail_liveries": [
+                ("INVERSIONS", 3),
+                ("RIDEWELL", 0),
+                ("TRANCENTRAL_TEMP", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -878,15 +927,15 @@ def main():
             ],
             "gen_4_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("SURE_PACE", 0),
-                ("RIDEWELL", 1),
+                ("TRANCENTRAL_TEMP", 0),
+                ("RENAME_ME", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_and_6_mail_liveries": [
                 ("LOWER_LINES", 5),
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
                 ("MAIL_BY_RAIL", 4),
@@ -896,33 +945,40 @@ def main():
                 ("MAIL_BY_RAIL", 4),
                 ("LOWER_LINES", 5),
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
                 ("MAIL_BY_RAIL", 6),
             ],
             "gen_1_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("SURE_PACE", 0),
+                ("TRANCENTRAL_TEMP", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("SURE_PACE", 1),
-                ("RIDEWELL", 0),
+                ("TRANCENTRAL_TEMP", 1),
+                ("RENAME_ME", 0),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("FRUIT_RIPPLE", 1),
-                ("RIDEWELL", 0),
+                ("SURE_PACE", 0),
                 ("MAIL_BY_RAIL", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "diesel_railcar_mail_liveries": [
+                ("BANGER_BLUE", 2),
+                ("SURE_PACE", 0),
+                ("TRANCENTRAL_TEMP", 1),
+                ("INVERSIONS", 3),
+                ("MAIL_BY_RAIL", 4),
+            ],
+            "gen_3_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("RIDEWELL", 0),
                 ("SURE_PACE", 1),
@@ -931,22 +987,22 @@ def main():
             ],
             "gen_4_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
-                ("SURE_PACE", 0),
-                ("RIDEWELL", 1),
+                ("TRANCENTRAL_TEMP", 0),
+                ("RENAME_ME", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_diesel_railcar_mail_liveries": [
                 ("MAIL_BY_RAIL", 2),
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_ng_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
-                ("RIDEWELL", 0),
-                ("SURE_PACE", 1),
+                ("RENAME_ME", 0),
+                ("TRANCENTRAL_TEMP", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -959,15 +1015,15 @@ def main():
             ],
             "gen_4_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("SURE_PACE", 0),
-                ("RIDEWELL", 1),
+                ("TRANCENTRAL_TEMP", 0),
+                ("RENAME_ME", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("MAIL_BY_RAIL", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -978,9 +1034,13 @@ def main():
                 ("MAIL_BY_RAIL", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
+            "gen_3_railcar_pax_liveries": [
+                ("SURE_PACE", 1),
+                ("RIDEWELL", 0),
+            ],
             "gen_4_railbus_pax_liveries": [
                 ("INVERSIONS", 0),
-                ("SURE_PACE", 1),
+                ("TRANCENTRAL_TEMP", 1),
             ],
             "gen_5_railbus_pax_liveries": [
                 ("SHOW_PONY", 0),
@@ -1006,18 +1066,18 @@ def main():
                 ("MAIL_BY_RAIL", 2),
             ],
             "default_motorail_liveries": [
-                ("SURE_PACE", 0),
-                ("RIDEWELL", 1),
+                ("TRANCENTRAL_TEMP", 0),
+                ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
             ],
             "gen_2_motorail_liveries": [
-                ("SURE_PACE", 0),
-                ("RIDEWELL", 1),
+                ("TRANCENTRAL_TEMP", 0),
+                ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
             ],
             "gen_5_and_6_motorail_liveries": [
                 ("FRUIT_RIPPLE", 0),
-                ("RIDEWELL", 1),
+                ("SURE_PACE", 1),
                 ("STOCK_STANDARD", 2),
             ],
         },

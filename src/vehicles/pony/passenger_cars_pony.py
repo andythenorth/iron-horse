@@ -12,6 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         base_track_type="NG",
+        livery_group_name="gen_1_ng_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -25,6 +26,7 @@ def main(**kwargs):
         gen=1,
         subtype="B",
         base_track_type="NG",
+        livery_group_name="gen_1_ng_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -113,6 +115,7 @@ def main(**kwargs):
         base_numeric_id=23010,
         gen=1,
         subtype="A",
+        livery_group_name="gen_1_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -125,6 +128,7 @@ def main(**kwargs):
         base_numeric_id=20840,
         gen=1,
         subtype="B",
+        livery_group_name="gen_1_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -139,6 +143,7 @@ def main(**kwargs):
         base_numeric_id=18210,
         gen=1,
         subtype="C",
+        livery_group_name="gen_1_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -192,6 +197,7 @@ def main(**kwargs):
         base_numeric_id=18270,
         gen=3,
         subtype="A",
+        livery_group_name="gen_3_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -204,6 +210,7 @@ def main(**kwargs):
         base_numeric_id=18290,
         gen=3,
         subtype="B",
+        livery_group_name="gen_3_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -218,6 +225,7 @@ def main(**kwargs):
         base_numeric_id=18310,
         gen=3,
         subtype="C",
+        livery_group_name="gen_3_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -232,6 +240,7 @@ def main(**kwargs):
         base_numeric_id=18330,
         gen=4,
         subtype="B",
+        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -246,6 +255,7 @@ def main(**kwargs):
         base_numeric_id=18680,
         gen=4,
         subtype="C",
+        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
