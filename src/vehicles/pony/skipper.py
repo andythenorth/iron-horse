@@ -17,7 +17,7 @@ def main(**kwargs):
         gen=5,
         # introduce early by design
         intro_year_offset=-4,
-        livery_group_name="gen_5_railbus_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_railbus_pax_liveries",  # override default liveries from gestalt
         pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
@@ -37,7 +37,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Patience is the virtue of the donkeys.""")
-    model_def.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
+    model_def.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>, Vivarail D-Train""")
 
     result.append(model_def)
 
@@ -54,7 +54,7 @@ def main(**kwargs):
         gen=5,
         # introduce early by design
         intro_year_offset=-4,
-        livery_group_name="gen_5_railbus_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_railbus_pax_liveries",  # override default liveries from gestalt
         # match to equivalent twin-unit railbus id
         vehicle_family_id="skipper",
         # it's too complex to clone these from the twin unit, but treat the result like a clone

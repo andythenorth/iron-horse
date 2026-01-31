@@ -133,7 +133,6 @@ engine_module_names = [
     # railbuses
     "clipper",
     "skipper",
-    "zipper",
     # diesel railcars
     "deasil",
     "slammer",
@@ -1048,9 +1047,11 @@ def main():
                 ("INVERSIONS", 0),
                 ("RAIN_OR_SHINE", 1),
             ],
-            "gen_5_railbus_pax_liveries": [
+            "gen_5_and_6_railbus_pax_liveries": [
                 ("SHOW_PONY", 0),
                 ("INVERSIONS", 1),
+                ("VAPID_VOYAGER", 2),
+                ("VINYL_VECTOR", 3),
             ],
             "gen_6_railbus_pax_liveries": [
                 ("VAPID_VOYAGER", 0),
