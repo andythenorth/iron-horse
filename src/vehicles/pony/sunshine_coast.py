@@ -17,7 +17,10 @@ def main(**kwargs):
         pantograph_type="z-shaped-single-with-base",
         gen=4,
         intro_year_offset=1,  # introduce later by design
-        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
+        liveries=[
+            "RAIN_OR_SHINE",
+            "MARGINAL_GAINS",
+        ],
         sprites_complete=True,
     )
 
