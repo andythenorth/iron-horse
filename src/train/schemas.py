@@ -373,7 +373,7 @@ class SchemaBase(object):
         if getattr(self, "subtype", None) is not None:
             result.append("ih_wagon_subtype/" + self.subtype.lower())
         # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
-        if False: # make True to turn on debug
+        if False:  # make True to turn on debug
             if self.catalogue_entry.variant_group_id is not None:
                 result.append(
                     "ih_variant_group_id/" + self.catalogue_entry.variant_group_id
@@ -542,10 +542,10 @@ class SchemaBase(object):
                     role_key = self.role + "_non_core"
             result = global_constants.intro_month_offsets_by_role[role_key]
             if self.joker and not self.catalogue.clone_quacker.quack:
-                    # force jokers away from vehicles in same subrole
-                    # (does not apply to clones)
-                    # if further variation is wanted, give the joker a different intro year, automating that isn't wise
-                    result = min(result + 6, 11)
+                # force jokers away from vehicles in same subrole
+                # (does not apply to clones)
+                # if further variation is wanted, give the joker a different intro year, automating that isn't wise
+                result = min(result + 6, 11)
         return result
 
     @property
@@ -614,17 +614,13 @@ class SchemaBase(object):
 
         # this assumes that all vehicles have a base track type, and a consistent pattern if that base track type has electrified variants
         if self.requires_electric_rails:
-            track_type_names.append(
-                self.get_electrified_track_type_name()
-            )
+            track_type_names.append(self.get_electrified_track_type_name())
         elif self.is_electro_diesel:
             # special case
             # only used to display both 'Rail types' in the buy menu
             # we don't need the electrified type for electro diesels to be compatible, as they are 'go anywhere' and have separate track detection for power
             track_type_names.append(self.base_track_type)
-            track_type_names.append(
-                self.get_electrified_track_type_name()
-            )
+            track_type_names.append(self.get_electrified_track_type_name())
         else:
             track_type_names.append(self.base_track_type)
 
@@ -656,7 +652,11 @@ class SchemaBase(object):
             if power_source in self.power_by_power_source.keys():
                 tile_powers_track_type_expressions = f"tile_powers_track_type_name_{self.base_track_type + optional_props.get("suffix", "")}()"
                 if self.lgv_capable:
-                    tile_powers_track_type_expressions = tile_powers_track_type_expressions + "||" + "tile_powers_track_type_name_LGV_ELECTRIFIED_OHLE()"
+                    tile_powers_track_type_expressions = (
+                        tile_powers_track_type_expressions
+                        + "||"
+                        + "tile_powers_track_type_name_LGV_ELECTRIFIED_OHLE()"
+                    )
                 result.append(
                     [
                         power_source,
@@ -681,7 +681,10 @@ class SchemaBase(object):
         # specific and possibly fragile, but JFDI as of December 2025
         if self.power_by_power_source is None:
             return False
-        return all(power_source_name in self.power_by_power_source.keys() for power_source_name in ["DIESEL", "OHLE"])
+        return all(
+            power_source_name in self.power_by_power_source.keys()
+            for power_source_name in ["DIESEL", "OHLE"]
+        )
 
     @cached_property
     def requires_electric_rails(self):
@@ -763,7 +766,12 @@ class SchemaBase(object):
                     return self.get_speed_by_class("express")
             # then check other specific roles
             # !! this would be better determined by setting self.speed_class appropriately in the model type subclasses
-            if self.subrole in ["mail_railcar", "pax_railcar", "pax_railbus", "freight_railcar"]:
+            if self.subrole in [
+                "mail_railcar",
+                "pax_railcar",
+                "pax_railbus",
+                "freight_railcar",
+            ]:
                 return self.get_speed_by_class("suburban")
             elif self.subrole in ["hst"]:
                 return self.get_speed_by_class("hst")
@@ -1218,7 +1226,8 @@ class EngineSchemaBase(SchemaBase):
         # !! assumption of OHLE !!
         elif self.is_electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.is_electro_diesel_buy_cost_malus * self.power_by_power_source["OHLE"]
+                self.is_electro_diesel_buy_cost_malus
+                * self.power_by_power_source["OHLE"]
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:
@@ -1514,6 +1523,7 @@ class MailEngineCabbageDVT(MailEngineBase):
         # ....run costs reduced from base to make it close to mail cars
         return 68
 
+
 class FreightEngineCargoSprinterBase(EngineSchemaBase):
     """
     Cargo Sprinter freight railcar.
@@ -1544,9 +1554,9 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
             num_extra_layers_for_spritelayer_cargos=2,
             row_count_for_docs_image_offset=2,
             catalogue_entry=self.catalogue_entry,
-            colour_mapping_switch = "_switch_colour_mapping",
-            colour_mapping_switch_purchase = "_switch_colour_mapping",
-            colour_mapping_with_purchase = True,
+            colour_mapping_switch="_switch_colour_mapping",
+            colour_mapping_switch_purchase="_switch_colour_mapping",
+            colour_mapping_with_purchase=True,
         )
 
 
@@ -1623,7 +1633,6 @@ class FreightEngineCargoSprinterMiddleEngine(FreightEngineCargoSprinterBase):
     @property
     def buy_menu_distributed_power_hp_value(self):
         return self.catalogue.cab_engine_model.power
-
 
 
 class MailEngineMetro(MailEngineBase):
@@ -4076,17 +4085,21 @@ class CoveredHopperCarBase(CarSchemaBase):
         self.class_refit_groups = ["covered_hopper_freight_any_grade"]
         # covered hopper specifically needs to combine 3 lists, this isn't common, and is a combination of legacy support, and some details that are too fine-grained for classes
         self.label_refits_allowed = list(
-            set(polar_fox.constants.allowed_refits_by_label[
-                "legacy_allowed_covered_hoppers_any_non_food"
-            ])
-            |
-            set(polar_fox.constants.allowed_refits_by_label[
-                "legacy_allowed_covered_hoppers_non_mineral_non_food"
-            ])
-            |
-            set(polar_fox.constants.allowed_refits_by_label[
-                "allowed_farm_food_products"
-            ])
+            set(
+                polar_fox.constants.allowed_refits_by_label[
+                    "legacy_allowed_covered_hoppers_any_non_food"
+                ]
+            )
+            | set(
+                polar_fox.constants.allowed_refits_by_label[
+                    "legacy_allowed_covered_hoppers_non_mineral_non_food"
+                ]
+            )
+            | set(
+                polar_fox.constants.allowed_refits_by_label[
+                    "allowed_farm_food_products"
+                ]
+            )
         )
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "legacy_disallowed_covered_hoppers_all_types"
@@ -4256,7 +4269,9 @@ class CoveredHopperCarSwingRoofType2(CoveredHopperCarSwingRoofBase):
         )
 
 
-class CoveredHopperCarSwingRoofRandomised(RandomisedCarVanillaMixin, CoveredHopperCarSwingRoofBase):
+class CoveredHopperCarSwingRoofRandomised(
+    RandomisedCarVanillaMixin, CoveredHopperCarSwingRoofBase
+):
     """
     Random choice of covered hopper car with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
     """
@@ -4409,7 +4424,7 @@ class ExpressIntermodalCarBase(CarSchemaBase):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="max_2_unit_sets",
-            weathered_states = {
+            weathered_states={
                 "unweathered": graphics_constants.refrigerated_livery_recolour_map,
                 "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
             },
@@ -6326,13 +6341,16 @@ class MineralCoveredHopperCarBase(CarSchemaBase):
         ]
         # disallow combined from two sources for these covered hoppers
         self.label_refits_disallowed = list(
-            set(polar_fox.constants.disallowed_refits_by_label[
-                "legacy_disallowed_covered_hoppers_all_types"
-            ])
-            |
-            set(polar_fox.constants.disallowed_refits_by_label[
-                "disallowed_covered_hoppers_mineral"
-            ])
+            set(
+                polar_fox.constants.disallowed_refits_by_label[
+                    "legacy_disallowed_covered_hoppers_all_types"
+                ]
+            )
+            | set(
+                polar_fox.constants.disallowed_refits_by_label[
+                    "disallowed_covered_hoppers_mineral"
+                ]
+            )
         )
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2

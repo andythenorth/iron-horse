@@ -229,9 +229,7 @@ class Roster:
             )
 
             for model_def in engine_module.main():
-                catalogue = Catalogue(
-                    model_def, self.id, roster_id_providing_module
-                )
+                catalogue = Catalogue(model_def, self.id, roster_id_providing_module)
                 if catalogue.model_id not in self.engine_model_variants_by_catalogue:
                     self.engine_model_variants_by_catalogue[catalogue.model_id] = {
                         "catalogue": catalogue,
@@ -284,8 +282,13 @@ class Roster:
                         catalogue = Catalogue(
                             model_def, self.id, roster_id_providing_module
                         )
-                        if catalogue.model_id not in self.wagon_model_variants_by_catalogue:
-                            self.wagon_model_variants_by_catalogue[catalogue.model_id] = {
+                        if (
+                            catalogue.model_id
+                            not in self.wagon_model_variants_by_catalogue
+                        ):
+                            self.wagon_model_variants_by_catalogue[
+                                catalogue.model_id
+                            ] = {
                                 "catalogue": catalogue,
                                 "model_variants": [],
                             }
@@ -326,9 +329,7 @@ class Roster:
                 )
 
         for catalogue in randomised_wagon_type_catalogues_tmp:
-            tmp_uid = get_tmp_uid(
-                catalogue.schema_cls.model_id_root, catalogue
-            )
+            tmp_uid = get_tmp_uid(catalogue.schema_cls.model_id_root, catalogue)
             for model_variant in self.wagon_model_variants_by_catalogue[
                 catalogue.model_id
             ]["model_variants"]:
@@ -446,7 +447,11 @@ class Roster:
                     example_model_variant.name
                 )
 
-        return {"global_pragma": global_pragma, "lang_strings": lang_strings, "docs_only_strings": docs_only_strings}
+        return {
+            "global_pragma": global_pragma,
+            "lang_strings": lang_strings,
+            "docs_only_strings": docs_only_strings,
+        }
 
     # @timing
     def validate_vehicle_ids(self, numeric_id_defender):

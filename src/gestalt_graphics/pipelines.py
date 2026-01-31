@@ -630,7 +630,11 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
             (
                 graphics_constants.spritesheet_width,
                 (
-                    len(self.example_model_variant.gestalt_graphics.buy_menu_row_map(self))
+                    len(
+                        self.example_model_variant.gestalt_graphics.buy_menu_row_map(
+                            self
+                        )
+                    )
                     * graphics_constants.spriterow_height
                 )
                 + 10,
@@ -715,7 +719,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     26 + y_offset_dest,
                 )
                 custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_input)
-                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(
+                    custom_buy_menu_sprite, crop_box_dest
+                )
 
             dice_image = Image.open(
                 os.path.join(
@@ -750,7 +756,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 360 + x_offset_dest + dice_image_width,
                 10 + y_offset_dest + dice_image_height,
             )
-            randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(dice_image, crop_box_dest)
+            randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(
+                dice_image, crop_box_dest
+            )
 
             fade_image = Image.open(
                 os.path.join(
@@ -772,7 +780,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     360 + x_offset_dest + fade_image_width,
                     10 + y_offset_dest + dice_image_height,
                 )
-                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(fade_image, crop_box_dest, fade_image_mask)
+                randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(
+                    fade_image, crop_box_dest, fade_image_mask
+                )
                 # flip the image for the next time we paste it (this creates a better symmetry at each side of the image)
                 fade_image = ImageOps.mirror(fade_image)
                 fade_image_mask = ImageOps.mirror(fade_image_mask)

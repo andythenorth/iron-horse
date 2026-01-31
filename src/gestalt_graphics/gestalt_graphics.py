@@ -269,7 +269,10 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             # so the resulting sprites may vary between compiles - this is accepted as of August 2022
             candidate_1 = wagon_randomisation_candidates[0]
             candidate_2 = wagon_randomisation_candidates[-1]
-            if pipeline.example_model_variant.badge_slug_randomised_wagon_type == "combo":
+            if (
+                pipeline.example_model_variant.badge_slug_randomised_wagon_type
+                == "combo"
+            ):
                 print([i.model_id_root for i in wagon_randomisation_candidates])
 
         source_vehicles_and_input_spriterow_nums = [
@@ -1067,9 +1070,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         weathered_states=None,
         num_extra_layers_for_spritelayer_cargos=None,
         row_count_for_docs_image_offset=None,
-        colour_mapping_switch = None,
-        colour_mapping_switch_purchase = None,
-        colour_mapping_with_purchase = False,
+        colour_mapping_switch=None,
+        colour_mapping_switch_purchase=None,
+        colour_mapping_with_purchase=False,
         **kwargs,
     ):
         super().__init__(**kwargs)
