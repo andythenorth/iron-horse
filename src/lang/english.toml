@@ -175,11 +175,14 @@ base = "Lower Lines"
 [STR_BADGE_LIVERY_MAIL_BY_RAIL]
 base = "Mail by Rail"
 
+[STR_BADGE_LIVERY_MARGINAL_GAINS]
+base = "Marginal Gains"
+
 [STR_BADGE_LIVERY_METROLAND]
 base = "Metroland"
 
-[STR_BADGE_LIVERY_MARGINAL_GAINS]
-base = "Marginal Gains"
+[STR_BADGE_LIVERY_RAIN_OR_SHINE]
+base = "Rain or Shine"
 
 [STR_BADGE_LIVERY_RIDEWELL]
 base = "Ridewell"
@@ -195,9 +198,6 @@ base = "Supergraphic"
 
 [STR_BADGE_LIVERY_SURE_PACE]
 base = "Sure Pace"
-
-[STR_BADGE_LIVERY_TRANCENTRAL_TEMP]
-base = "TRANCENTRAL TEMP"
 
 [STR_BADGE_LIVERY_VANILLA]
 base = "VANILLA"
@@ -803,12 +803,16 @@ docs_only = true
 base = "Varied liveries for mail trains, inspired by Royal Mail, Rail Express Systems, TGV La Poste, and other liveries. Always uses red as main colour."
 docs_only = true
 
+[STR_EXTRA_TEXT_LIVERY_MARGINAL_GAINS]
+base = "A generic livery for passenger and mail trains, inspired by British Rail 1970s suburban white/blue livery."
+docs_only = true
+
 [STR_EXTRA_TEXT_LIVERY_METROLAND]
 base = "Varied liveries for metro trains, inspired by London Underground and other liveries."
 docs_only = true
 
-[STR_EXTRA_TEXT_LIVERY_MARGINAL_GAINS]
-base = "A generic livery for passenger and mail trains, inspired by British Rail 1970s suburban white/blue livery."
+[STR_EXTRA_TEXT_LIVERY_RAIN_OR_SHINE]
+base = "A generic livery for passenger and mail trains, inspired by conventional two-tone liveries."
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_RIDEWELL]
@@ -828,10 +832,6 @@ base = "A bold livery featuring blocks of yellow and the first company colour, s
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_SURE_PACE]
-base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
-docs_only = true
-
-[STR_EXTRA_TEXT_LIVERY_TRANCENTRAL_TEMP]
 base = "A generic livery for passenger and mail trains. Style changes between certain vehicle generations."
 docs_only = true
 

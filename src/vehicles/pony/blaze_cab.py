@@ -20,7 +20,7 @@ def main(**kwargs):
         lgv_capable=True,  # for lolz
         liveries=[
             "FRUIT_RIPPLE",
-            "TRANCENTRAL_TEMP",
+            "RAIN_OR_SHINE",
             "SURE_PACE",
             "VINYL_VECTOR",
             "VAPID_VOYAGER",

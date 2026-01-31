@@ -680,6 +680,16 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "MARGINAL_GAINS": {
+                "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "METROLAND": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
@@ -717,7 +727,17 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "MARGINAL_GAINS": {
+            "RAIN_OR_SHINE": {
+                "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
+            "RIDEWELL": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
@@ -758,26 +778,6 @@ def main():
                 ],
             },
             "SUPERGRAPHIC": {
-                "remap_to_cc": None,
-                "has_predrawn_badge_sprite": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "TRANCENTRAL_TEMP": {
-                "remap_to_cc": None,
-                "has_predrawn_badge_sprite": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
-            "RIDEWELL": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
@@ -833,11 +833,11 @@ def main():
         # - livery name comes from roster engine_and_misc_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
-            "default_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("SURE_PACE", 1)],
-            "gen_1_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("RIDEWELL", 1)],
-            "gen_2_pax_liveries": [("RIDEWELL", 0), ("TRANCENTRAL_TEMP", 1)],
+            "default_pax_liveries": [("RAIN_OR_SHINE", 0), ("SURE_PACE", 1)],
+            "gen_1_pax_liveries": [("RAIN_OR_SHINE", 0), ("RIDEWELL", 1)],
+            "gen_2_pax_liveries": [("RIDEWELL", 0), ("RAIN_OR_SHINE", 1)],
             "gen_3_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
-            "gen_4_pax_liveries": [("TRANCENTRAL_TEMP", 0), ("MARGINAL_GAINS", 1)],
+            "gen_4_pax_liveries": [("RAIN_OR_SHINE", 0), ("MARGINAL_GAINS", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
@@ -854,10 +854,10 @@ def main():
             ],
             "gen_3_ng_pax_liveries": [
                 ("MARGINAL_GAINS", 0),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
             ],
             "gen_1_ng_pax_liveries": [
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("RIDEWELL", 1),
             ],
             "gen_4_ng_pax_liveries": [
@@ -871,14 +871,14 @@ def main():
             # CABBAGE
             "CABBAGE_RAILCAR": [
                 ("SHOW_PONY", 1),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
             ],
             "default_suburban_pax_liveries": [
                 ("SURE_PACE", 1),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
             ],
             "gen_2_suburban_pax_liveries": [
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
                 ("RIDEWELL", 0),
             ],
             "gen_3_suburban_pax_liveries": [
@@ -887,7 +887,7 @@ def main():
             ],
             "gen_4_suburban_pax_liveries": [
                 ("MARGINAL_GAINS", 1),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
             ],
             "gen_5_suburban_pax_liveries": [
                 ("SURE_PACE", 1),
@@ -906,7 +906,7 @@ def main():
             ],
             "gen_1_mail_liveries": [
                 ("INVERSIONS", 3),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
@@ -914,7 +914,7 @@ def main():
             "gen_2_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -927,7 +927,7 @@ def main():
             ],
             "gen_4_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
@@ -952,14 +952,14 @@ def main():
             ],
             "gen_1_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_ng_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
                 ("MARGINAL_GAINS", 0),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
@@ -974,7 +974,7 @@ def main():
             "diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("SURE_PACE", 0),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
                 ("INVERSIONS", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -987,7 +987,7 @@ def main():
             ],
             "gen_4_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
@@ -1002,7 +1002,7 @@ def main():
             "gen_3_ng_diesel_railcar_mail_liveries": [
                 ("BANGER_BLUE", 2),
                 ("MARGINAL_GAINS", 0),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
                 ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
@@ -1015,7 +1015,7 @@ def main():
             ],
             "gen_4_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
@@ -1040,7 +1040,7 @@ def main():
             ],
             "gen_4_railbus_pax_liveries": [
                 ("INVERSIONS", 0),
-                ("TRANCENTRAL_TEMP", 1),
+                ("RAIN_OR_SHINE", 1),
             ],
             "gen_5_railbus_pax_liveries": [
                 ("SHOW_PONY", 0),
@@ -1066,12 +1066,12 @@ def main():
                 ("MAIL_BY_RAIL", 2),
             ],
             "default_motorail_liveries": [
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
             ],
             "gen_2_motorail_liveries": [
-                ("TRANCENTRAL_TEMP", 0),
+                ("RAIN_OR_SHINE", 0),
                 ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
             ],
