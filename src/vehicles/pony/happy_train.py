@@ -17,7 +17,7 @@ def main(**kwargs):
         receives_easter_egg_haulage_speed_bonus=True,
         gen=6,
         # introduce early by design
-        intro_year_offset=-12,
+        intro_year_offset=-18,
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="gen_6_pax_liveries",
         sprites_complete=True,
