@@ -17,7 +17,7 @@ def main(**kwargs):
         formation_ruleset="railcars_3_unit_sets",
         gen=6,
         # introduce early by design
-        intro_year_offset=-3,
+        intro_year_offset=-15,
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="gen_6_electric_railcar_mail_liveries",
         sprites_complete=True,
