@@ -15,7 +15,7 @@ def main(**kwargs):
         name="Autocoach Set",
         replacement_model_id="clipper",  # autocoach ends with gen 4 clipper
         gen=2,
-        liveries=["RIDEWELL", "BANGER_BLUE"],
+        liveries=["RIDEWELL", "RAIN_OR_SHINE", "BANGER_BLUE", "SURE_PACE"],
         sprites_complete=True,
     )
 
