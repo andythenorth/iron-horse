@@ -3,6 +3,21 @@ Changelog
 
 
 --------------
+4.10.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.8.0.
+
+
+*Changes*
+
+- added randomised Swing Roof Hoppers
+- reorganised passenger and mail liveries to have consistent appearance
+    - added "Rain or Shine" and "Marginal Gains" livery names for vehicles split out from "Sure Pace" and "Ridewell" liveries
+
+
+--------------
 4.9.0 Release
 --------------
 
