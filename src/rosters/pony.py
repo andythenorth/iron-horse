@@ -451,8 +451,8 @@ def main():
                     87,
                     87,
                 ],
-                # match standard, except gen 6
-                "suburban": [45, 45, 60, 75, 87, 99],
+                # match standard
+                "suburban": [45, 45, 60, 75, 87, 87],
                 # smaller steps in gen 5 and 6, balances against faster HSTs
                 "express": [
                     60,
