@@ -883,6 +883,7 @@ def main():
             "gen_3_suburban_pax_liveries": [
                 ("RIDEWELL", 1),
                 ("SURE_PACE", 0),
+                ("BANGER_BLUE", 2),
             ],
             "gen_4_suburban_pax_liveries": [
                 ("MARGINAL_GAINS", 1),
