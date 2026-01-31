@@ -896,10 +896,20 @@ def main():
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
             ],
+            "gen_3_diesel_pax_railcar_liveries": [
+                ("RIDEWELL", 0),
+                ("SURE_PACE", 1),
+                ("BANGER_BLUE", 2),
+            ],
             "gen_5_diesel_pax_railcar_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
                 ("LOWER_LINES", 2),
+            ],
+            "gen_3_electric_railcar_pax_liveries": [
+                ("SURE_PACE", 1),
+                ("RIDEWELL", 0),
+                ("BANGER_BLUE", 2),
             ],
             "gen_5_electric_pax_railcar_liveries": [
                 ("SURE_PACE", 1),
@@ -1046,10 +1056,6 @@ def main():
                 ("VAPID_VOYAGER", 1),
                 ("MAIL_BY_RAIL", 2),
                 ("MAIL_BY_RAIL", 4),
-            ],
-            "gen_3_railcar_pax_liveries": [
-                ("SURE_PACE", 1),
-                ("RIDEWELL", 0),
             ],
             "gen_4_railcar_pax_liveries": [
                 ("RAIN_OR_SHINE", 1),
