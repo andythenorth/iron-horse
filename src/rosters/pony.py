@@ -1038,6 +1038,11 @@ def main():
                 ("SURE_PACE", 1),
                 ("RIDEWELL", 0),
             ],
+            "gen_4_railcar_pax_liveries": [
+                ("RAIN_OR_SHINE", 1),
+                ("MARGINAL_GAINS", 0),
+                ("BANGER_BLUE", 2),
+            ],
             "gen_4_railbus_pax_liveries": [
                 ("INVERSIONS", 0),
                 ("RAIN_OR_SHINE", 1),

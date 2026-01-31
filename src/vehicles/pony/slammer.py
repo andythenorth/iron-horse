@@ -19,7 +19,7 @@ def main(**kwargs):
         # introduce early by design
         intro_year_offset=-5,
         # this railcar type specifies liveries per model_def for flexibility
-        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_4_railcar_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
