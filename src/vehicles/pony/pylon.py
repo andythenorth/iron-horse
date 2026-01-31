@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Pylon",
         subrole="mail_railcar",
         subrole_child_branch_num=-3,
-        power_by_power_source={"DIESEL": 560, "OHLE": 680},
+        power_by_power_source={"DIESEL": 660, "OHLE": 780},
         pantograph_type="z-shaped-single-with-base",
         receives_easter_egg_haulage_speed_bonus=True,
         formation_ruleset="railcars_3_unit_sets",

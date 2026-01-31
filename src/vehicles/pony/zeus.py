@@ -10,7 +10,7 @@ def main(**kwargs):
         base_numeric_id=22240,
         name="Zeus",
         subrole="pax_railcar",
-        subrole_child_branch_num=2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "OHLE": 620,
         },
@@ -18,7 +18,7 @@ def main(**kwargs):
         receives_easter_egg_haulage_speed_bonus=True,
         gen=6,
         # introduce early by design
-        intro_year_offset=-3,
+        intro_year_offset=-12,
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="gen_6_suburban_pax_liveries",
         sprites_complete=True,

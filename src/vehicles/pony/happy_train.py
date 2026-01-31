@@ -10,14 +10,14 @@ def main(**kwargs):
         base_numeric_id=20330,
         name="Happy Train",
         subrole="pax_railcar",
-        subrole_child_branch_num=1,
+        subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 500,
         },
         receives_easter_egg_haulage_speed_bonus=True,
         gen=6,
         # introduce early by design
-        intro_year_offset=-5,
+        intro_year_offset=-12,
         # this railcar type specifies liveries per model_def for flexibility
         livery_group_name="gen_6_pax_liveries",
         sprites_complete=True,
