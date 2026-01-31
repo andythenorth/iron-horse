@@ -1071,8 +1071,18 @@ def main():
                 ("BANGER_BLUE", 2),
             ],
             "gen_2_motorail_liveries": [
+                ("RIDEWELL", 0),
+                ("RAIN_OR_SHINE", 1),
+                ("BANGER_BLUE", 2),
+            ],
+            "gen_3_motorail_liveries": [
+                ("SURE_PACE", 0),
+                ("RIDEWELL", 1),
+                ("BANGER_BLUE", 2),
+            ],
+            "gen_4_motorail_liveries": [
                 ("RAIN_OR_SHINE", 0),
-                ("SURE_PACE", 1),
+                ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
             ],
             "gen_5_and_6_motorail_liveries": [
