@@ -898,6 +898,7 @@ def main():
             "gen_5_diesel_pax_railcar_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
+                ("LOWER_LINES", 2),
             ],
             "gen_5_electric_pax_railcar_liveries": [
                 ("SURE_PACE", 1),
