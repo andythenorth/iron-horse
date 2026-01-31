@@ -889,13 +889,11 @@ def main():
                 ("RAIN_OR_SHINE", 0),
                 ("BANGER_BLUE", 2),
             ],
-            "gen_5_suburban_pax_liveries": [
+            "gen_5_6_suburban_pax_liveries": [
                 ("SURE_PACE", 1),
                 ("FRUIT_RIPPLE", 0),
-            ],
-            "gen_6_suburban_pax_liveries": [
-                ("VAPID_VOYAGER", 1),
-                ("VINYL_VECTOR", 0),
+                ("VINYL_VECTOR", 2),
+                ("VAPID_VOYAGER", 3),
             ],
             "gen_5_diesel_pax_railcar_liveries": [
                 ("FRUIT_RIPPLE", 0),
@@ -904,6 +902,10 @@ def main():
             "gen_5_electric_pax_railcar_liveries": [
                 ("SURE_PACE", 1),
                 ("FRUIT_RIPPLE", 0),
+            ],
+            "gen_6_electric_pax_railcar_liveries": [
+                ("VAPID_VOYAGER", 0),
+                ("VINYL_VECTOR", 1),
             ],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
