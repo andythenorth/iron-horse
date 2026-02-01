@@ -6995,6 +6995,60 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         return result
 
 
+class PassengeMetroTrailerCar(PassengerCarBase):
+    """
+    Pax metro trailer cars.
+    """
+
+    model_id_root = "metro_passenger_trailer_car"
+
+    def __init__(self, **kwargs):
+        # don't set model_id here, let subclasses do it
+        super().__init__(**kwargs)
+        self.speed_class = "standard"
+        # buy costs increased above baseline, account for 2 units + underground nonsense
+        self.buy_cost_adjustment_factor = 2
+        # metro should only be effective over short distances
+        # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
+        self.floating_run_cost_multiplier = 1.5
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
+        self._joker = True
+        # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
+        self._frozen_pantograph_type = self.catalogue.cab_engine_model.pantograph_type
+        # Graphics configuration
+        # metro includes roof sprites
+        self.roof_type = None
+        # formation position rules
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 1,
+            "special": 0,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="metro",
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def loading_speed_multiplier(self):
+        # super super OP bonus to pax metro loading speed
+        return 8
+
+    def get_name_parts(self, context):
+        # special name handling to use the cab name
+        result = [
+            "STR_NAME_" + self.model_def.cab_id.upper(),
+            self._str_name_suffix,
+        ]
+        return result
+
+
 class PanoramicCar(PassengerCarBase):
     """
     Panoramic car / observation car / dome car.
