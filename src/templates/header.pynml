@@ -5,7 +5,7 @@ grf {
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_revision};
-	min_compatible_version: 8864;
+	min_compatible_version: 8898;
 	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
 	param 3 {
         param_vehicle_availability_engines {
