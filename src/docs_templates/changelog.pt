@@ -3,6 +3,31 @@ Changelog
 
 
 --------------
+4.11.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.11.0.
+
+
+*Changes*
+
+- reworked generation 5 and 6 general purpose railcars and suburban coaches
+    - removed Zipper, added Zipper liveries to generation 5 Skipper
+    - gen 5 Tin Rocket, Breeze, Plastic Postbox and Jupiter now available perpetually, no longer replaced by gen 6 railcars
+    - adjusted gen 6 Happy Train, Zeus and Pylon speeds from 99 mph to 87 mph, eliminating a mostly meaningless stats bump, and matching other similar vehicles
+    - introduce Happy Train, Zeus and Pylon much earlier (2002 - 2005)
+    - added Lower Lines livery option to Tin Rocket and Breeze
+    - removed gen 6 Suburban Coaches, added their liveries to gen 5 Suburban Coaches
+- added Basic Banger livery option to multiple railcars and coaches in gen 3 and gen 4
+
+
+*Docs*
+
+- Motorail Vans were missing from liveries page
+
+
+--------------
 4.10.0 Release
 --------------
 
