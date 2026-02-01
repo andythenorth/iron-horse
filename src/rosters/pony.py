@@ -920,6 +920,7 @@ def main():
                 ("VAPID_VOYAGER", 0),
                 ("VINYL_VECTOR", 1),
             ],
+            "gen_3_pax_express_railcar_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
