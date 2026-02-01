@@ -12,6 +12,7 @@ Not savegame compatible with Iron Horse releases before 4.11.0.
 
 *Changes*
 
+- added unpowered trailers for Serpentine, Poplar, Westbourne, Hammersmith, Fleet and Canary metro units
 - reworked generation 5 and 6 general purpose railcars and suburban coaches
     - removed Zipper, added Zipper liveries to generation 5 Skipper
     - gen 5 Tin Rocket, Breeze, Plastic Postbox and Jupiter now available perpetually, no longer replaced by gen 6 railcars
