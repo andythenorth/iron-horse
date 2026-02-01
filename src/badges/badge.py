@@ -19,7 +19,7 @@ class Badge(object):
     def flags(self):
         result = self._flags
         if self.sprite is not None:
-            result.append("BADGE_FLAG_NAME_USE_COMPANY_COLOUR")
+            result.append("BADGE_FLAG_USE_COMPANY_COLOUR")
         return ",".join(set(result))
 
 
