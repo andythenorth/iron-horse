@@ -17,7 +17,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=22,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
@@ -38,7 +38,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=24,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
@@ -59,7 +59,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=22,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
@@ -80,7 +80,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=24,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
@@ -101,7 +101,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=22,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
@@ -122,7 +122,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="MetroUnit",
-        weight=33,
+        weight=24,
         capacity=120,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_2",
