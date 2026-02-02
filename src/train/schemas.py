@@ -5151,6 +5151,32 @@ class FlatCarBulkheadRandomised(RandomisedCarVanillaMixin, FlatCarBulkheadBase):
         )
 
 
+class FlatCarDropCentre(FlatCarBase):
+    """
+    Drop-centre (depressed-centre) flat wagon.
+    """
+
+    model_id_root = "drop_centre_flat_car"
+    vehicle_family_id = "drop_centre_flat_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # Graphics configuration
+        formation_ruleset = "max_4_unit_sets"
+        # CABBAGE - GESTALT NEEDS CHANGING
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            self.spritelayer_cargo_layers,
+            formation_ruleset=formation_ruleset,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["low_floor"]
+
+
 class FlatCarDropEnd(FlatCarBase):
     """
     Wagon with droppable end flaps - variant on flat wagon, refits same

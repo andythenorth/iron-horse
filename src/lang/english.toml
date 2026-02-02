@@ -387,6 +387,9 @@ base = "Curtain Side Van"
 [STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Car Transporter"
 
+[STR_WAGON_NAME_DROP_CENTRE_FLAT_CAR]
+base = "Drop Centre Flat Wagon"
+
 [STR_WAGON_NAME_MOTORAIL_AUTOMOBILE_CAR]
 base = "Motorail Van"
 
