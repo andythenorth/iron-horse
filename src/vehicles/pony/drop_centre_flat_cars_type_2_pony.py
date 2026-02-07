@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17650,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33120,
         gen=2,
         subtype="B",
         sprites_complete=False,
@@ -22,8 +22,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17670,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33140,
         gen=2,
         subtype="C",
         sprites_complete=False,
@@ -37,8 +37,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17690,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33160,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -52,8 +52,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17710,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33180,
         gen=3,
         subtype="C",
         sprites_complete=False,
@@ -67,8 +67,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17310,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33200,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -82,8 +82,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17580,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33220,
         gen=4,
         subtype="C",
         sprites_complete=False,
@@ -97,8 +97,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17350,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33240,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -112,8 +112,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentre",
-        base_numeric_id=17380,
+        schema_name="FlatCarDropCentreType2",
+        base_numeric_id=33260,
         gen=5,
         subtype="C",
         sprites_complete=False,
