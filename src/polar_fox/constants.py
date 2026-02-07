@@ -144,6 +144,8 @@ cargo_labels = [
 
 # shared lists of allowed classes, shared across multiple vehicle types
 # !! CABBAGE PARTLY UPDATED OCT 2024 UNFINISHED
+# !! DO WE NEED TO APPLY `any_grade` name for cases where there's no disallowed classes?  Just to be explicit?
+# !! OR is there a uniformity with the lists of specific labels?
 base_refits_by_class = {
     "all_freight": {
         "allowed": [
