@@ -10,6 +10,7 @@
                     <li><a href="#source_code">Obtaining source code</a></li>
                     <li><a href="#compiling">Compiling</a></li>
                     <li><a href="#railtypes_and_fallbacks">Railtypes</a></li>
+                    <li><a href="#cargo_classes">Cargo classes</a></li>
                     <li><a href="#vehicle_properties">Vehicle properties</a></li>
                     <li><a href="#numeric_ids">Base numeric IDs in use</a></li>
                 </ul>
@@ -86,6 +87,16 @@
                        </tbody>
                     </table>
                 </section>
+
+                <hr />
+                <br />
+                <section id="cargo_classes">
+                    <h3>Cargo Classes</h3>
+                    <p>
+                        For cargo class names, Iron Horse uses FRAX, an improved standard for cargo classes.
+                        <a href="https://grf.farm/polar_fox/frax_latest.html">&#187; Reference for FRAX cargo classes</a>
+                    <p>
+                </section>
             </div>
         </div>
 
@@ -101,6 +112,9 @@
                                            catalogues catalogues_by_schema_cls['catalogues'];">
                             <h4 id="${schema_cls.__name__}">${schema_cls.__name__} <small>Subclass</small></h4>
                             <p>${schema_cls.__doc__}</p>
+                            <tal:refittability_nml_fragment condition="catalogues[0].wagon_quacker.quack">
+                                <tal:include metal:use-macro="load: cargo_refit_code_reference_macro.pt" />
+                            </tal:refittability_nml_fragment>
                             <tal:props_to_print define="props_to_print doc_helper.get_props_to_print_in_code_reference(catalogues)">
                                 <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
                                     <thead>

@@ -1,0 +1,42 @@
+<!--! this script is small enough that repeating it via one fully-encapsulated macro is healthier than trying to abstract it -->
+<!--! copy button helper (encapsulated) -->
+<script>
+function copyCode(button) {
+  var codeEl = button.parentElement.querySelector("code");
+  var text = codeEl ? codeEl.innerText : "";
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text);
+  } else {
+    // fallback for older browsers
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+}
+</script>
+
+<div class="well" style="position:relative; padding:5px; padding-top:15px;">
+  <h5 style="margin-top:-10px; margin-left:5px; margin-bottom:0px; font-size:11px; color:#999; text-shadow:0 1px 0 rgba(255,255,255,0.5); text-transform:uppercase;">
+    Refits
+  </h5>
+  <button
+    type="button"
+    class="btn btn-mini"
+    onclick="copyCode(this)"
+    style="position:absolute; top:8px; right:8px;">
+    Copy NML code
+  </button>
+
+<!--! pre can't be indented as it preserves whitespace -->
+<pre style="margin:0; border:0; padding:5px; background:transparent; box-shadow:none; color:#555;"><code>refittable_cargo_classes: ${catalogues[0].example_model_variant.units[0].get_cargo_classes_as_nml_prop('allowed')}; // FRAX class names
+non_refittable_cargo_classes: ${catalogues[0].example_model_variant.units[0].get_cargo_classes_as_nml_prop('disallowed')}; // FRAX class names
+cargo_allow_refit: [${catalogues[0].example_model_variant.label_refits_allowed_as_nml_prop}]; // labels
+cargo_disallow_refit: [${catalogues[0].example_model_variant.label_refits_disallowed_as_nml_prop}]; // labels
+</code></pre>
+<!--! end pre indenting -->
+</div>
