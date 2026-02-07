@@ -5151,19 +5151,19 @@ class FlatCarBulkheadRandomised(RandomisedCarVanillaMixin, FlatCarBulkheadBase):
         )
 
 
-class FlatCarDropCentre(FlatCarBase):
+class FlatCarDropCentreBase(FlatCarBase):
     """
     Drop-centre (depressed-centre) flat wagon.
     """
 
-    model_id_root = "drop_centre_flat_car"
     vehicle_family_id = "drop_centre_flat_car"
+    variant_group_id_root = "wagon_group_drop_centre_flat_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
         # Graphics configuration
-        formation_ruleset = "max_4_unit_sets"
+        formation_ruleset = "max_1_unit_sets"
         # CABBAGE - GESTALT NEEDS CHANGING
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
@@ -5175,6 +5175,30 @@ class FlatCarDropCentre(FlatCarBase):
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         return ["low_floor"]
+
+
+class FlatCarDropCentreType1(FlatCarDropCentreBase):
+    """
+    Drop-centre (depressed-centre) flat wagon.
+    """
+
+    # low or high bulkhead? stakes or not?
+    model_id_root = "drop_centre_flat_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class FlatCarDropCentreType2(FlatCarDropCentreBase):
+    """
+    Drop-centre (depressed-centre) flat wagon.
+    """
+
+    # low or high bulkhead? stakes or not?
+    model_id_root = "drop_centre_flat_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class FlatCarDropEnd(FlatCarBase):

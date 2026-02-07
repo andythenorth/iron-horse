@@ -323,6 +323,8 @@
                                         
                                             CC_PIECE_GOODS
                                         
+                                            CC_COVERED_BULK
+                                        
                                             CC_POWDER_BULK
                                         
                                     </td>
@@ -364,6 +366,8 @@
                                     <td><a href="#CARGO_DIAMONDS">Diamonds</a></td>
                                     
                                     <td style="width:50%;">
+                                        
+                                            CC_NON_POTABLE
                                         
                                             CC_ARMOURED
                                         
@@ -457,6 +461,8 @@
                                         
                                             CC_FLATBED
                                         
+                                            CC_EXPRESS
+                                        
                                     </td>
                                 </tr>
                             
@@ -498,6 +504,8 @@
                                     <td style="width:50%;">
                                         
                                             CC_NON_POTABLE
+                                        
+                                            CC_PIECE_GOODS
                                         
                                             CC_WEIRD
                                         
@@ -541,6 +549,8 @@
                                     
                                     <td style="width:50%;">
                                         
+                                            CC_NON_POTABLE
+                                        
                                             CC_ARMOURED
                                         
                                             CC_WEIRD
@@ -568,6 +578,10 @@
                                     <td><a href="#CARGO_OXYGEN">Oxygen</a></td>
                                     
                                     <td style="width:50%;">
+                                        
+                                            CC_NON_POTABLE
+                                        
+                                            CC_PIECE_GOODS
                                         
                                             CC_GAS_BULK
                                         
@@ -712,6 +726,8 @@
                                             CC_OPEN_BULK
                                         
                                             CC_COVERED_BULK
+                                        
+                                            CC_LIQUID_BULK
                                         
                                     </td>
                                 </tr>
@@ -974,6 +990,8 @@
                                                 
                                                     CC_PIECE_GOODS
                                                 
+                                                    CC_COVERED_BULK
+                                                
                                                     CC_POWDER_BULK
                                                 
                                             </td>
@@ -996,6 +1014,24 @@
                                                             <li class="guide-list-group-item">
                                                                 
                                                                     <a href="vehicle_frax.html#VEHICLE_BOX_VAN_MORE_PERMISSIVE">Box Van (more permissive)</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_COVERED_HOPPER">Covered Hopper</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_COVERED_HOPPER_INDUSTRIAL">Industrial Covered Hopper</a>
                                                                 
                                                                 
                                                             </li>
@@ -1258,6 +1294,8 @@
                                         <tr>
                                             <th>Cargo classes</th>
                                             <td>
+                                                
+                                                    CC_NON_POTABLE
                                                 
                                                     CC_ARMOURED
                                                 
@@ -1756,7 +1794,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Cargo description</th>
-                                            <td>Goods is a generic cargo, and is transported using general cargo vehicles, or flatbed vehicles.</td>
+                                            <td>Goods is a generic cargo, and is transported using general cargo vehicles, or flatbed vehicles. CC_EXPRESS is set because there is a long history of setting this class for Goods in OpenTTD.</td>
                                         </tr>
                                         <tr>
                                             <th>Cargo classes</th>
@@ -1767,6 +1805,8 @@
                                                     CC_PIECE_GOODS
                                                 
                                                     CC_FLATBED
+                                                
+                                                    CC_EXPRESS
                                                 
                                             </td>
                                         </tr>
@@ -1806,6 +1846,15 @@
                                                             <li class="guide-list-group-item">
                                                                 
                                                                     <a href="vehicle_frax.html#VEHICLE_INTERMODAL_CONTAINERS">Intermodal Container Vehicle</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_MAIL_VAN">Mail Van</a>
                                                                 
                                                                 
                                                             </li>
@@ -2045,13 +2094,15 @@
                                     <tbody>
                                         <tr>
                                             <th>Cargo description</th>
-                                            <td>Livestock is a unique cargo, and vehicles should handle it using the cargo label LVST. CC_WEIRD also set to flag that this cargo is non-standard and should be handled using a label.  The base game sets livestock to CC_PIECE_GOODS, but this is not considered helpful for grfs.</td>
+                                            <td>Livestock is a unique cargo, and vehicles should handle it using the cargo label LVST. CC_WEIRD also set to flag that this cargo is non-standard and should be handled using a label.  CC_PIECE_GOODS is set because OpenTTD sets this class for Livestock.</td>
                                         </tr>
                                         <tr>
                                             <th>Cargo classes</th>
                                             <td>
                                                 
                                                     CC_NON_POTABLE
+                                                
+                                                    CC_PIECE_GOODS
                                                 
                                                     CC_WEIRD
                                                 
@@ -2061,6 +2112,15 @@
                                             <th>Example vehicles</th>
                                             <td>
                                                 <ul class="guide-list-group">
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_BOX_VAN_MORE_PERMISSIVE">Box Van (more permissive)</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
                                                     
                                                         
                                                             <li class="guide-list-group-item">
@@ -2278,6 +2338,8 @@
                                             <th>Cargo classes</th>
                                             <td>
                                                 
+                                                    CC_NON_POTABLE
+                                                
                                                     CC_ARMOURED
                                                 
                                                     CC_WEIRD
@@ -2435,6 +2497,10 @@
                                             <th>Cargo classes</th>
                                             <td>
                                                 
+                                                    CC_NON_POTABLE
+                                                
+                                                    CC_PIECE_GOODS
+                                                
                                                     CC_GAS_BULK
                                                 
                                             </td>
@@ -2443,6 +2509,15 @@
                                             <th>Example vehicles</th>
                                             <td>
                                                 <ul class="guide-list-group">
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_BOX_VAN_LESS_PERMISSIVE">Box Van (less permissive)</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
                                                     
                                                         
                                                             <li class="guide-list-group-item">
@@ -2457,6 +2532,15 @@
                                                             <li class="guide-list-group-item">
                                                                 
                                                                     <a href="vehicle_frax.html#VEHICLE_INTERMODAL_CONTAINERS">Intermodal Container Vehicle</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_OPEN_CARGO_LESS_PERMISSIVE">Open Cargo Vehicle (less permissive)</a>
                                                                 
                                                                 
                                                             </li>
@@ -3281,6 +3365,8 @@
                                                 
                                                     CC_COVERED_BULK
                                                 
+                                                    CC_LIQUID_BULK
+                                                
                                             </td>
                                         </tr>
                                         <tr>
@@ -3355,6 +3441,24 @@
                                                             <li class="guide-list-group-item">
                                                                 
                                                                     <a href="vehicle_frax.html#VEHICLE_ORE_DUMP">Ore Dump Vehicle</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_TANKER_LESS_PERMISSIVE">Tanker Vehicle (less permissive)</a>
+                                                                
+                                                                
+                                                            </li>
+                                                        
+                                                    
+                                                        
+                                                            <li class="guide-list-group-item">
+                                                                
+                                                                    <a href="vehicle_frax.html#VEHICLE_TANKER_MORE_PERMISSIVE">Tanker Vehicle (more permissive)</a>
                                                                 
                                                                 
                                                             </li>
