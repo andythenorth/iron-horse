@@ -9,8 +9,8 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "withershins",
-    "yillen",
+    "abernant",
+    "stoat",
 ]
 
 CC1 = 198
