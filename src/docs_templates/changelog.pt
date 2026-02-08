@@ -3,6 +3,24 @@ Changelog
 
 
 --------------
+4.11.1 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.11.0.
+
+
+*Fixes*
+
+- metro trailer cars weighed too much
+
+
+*Docs*
+
+- show vehicle type cargo refits in code reference page
+
+
+--------------
 4.11.0 Release
 --------------
 
