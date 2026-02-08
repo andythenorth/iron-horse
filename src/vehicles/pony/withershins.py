@@ -17,8 +17,8 @@ def main(**kwargs):
         # random_reverse=True, # tried random reverse, unsure if I liked the result, so nerfed it off
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        liveries=["CONVENTIONAL_WISDOM", "STOCK_STANDARD", "CLASSIC_LINES", "INDUSTRIAL_YELLOW"],
-        decor_spriterow_num=8,
+        liveries=["CONVENTIONAL_WISDOM", "STOCK_STANDARD", "CLASSIC_LINES", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
+        decor_spriterow_num=10,
         sprites_complete=True,
     )
 
