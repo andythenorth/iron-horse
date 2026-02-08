@@ -22,6 +22,7 @@ def main(**kwargs):
             "SURE_PACE",
             "SHOW_PONY",
             "FRUIT_RIPPLE",  # strictly not quite, but close enough
+            "FREIGHT_BLACK",
         ],
         sprites_complete=True,
     )

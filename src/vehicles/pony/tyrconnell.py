@@ -19,7 +19,7 @@ def main(**kwargs):
         gen=2,
         intro_year_offset=-5,  # introduce early eh
         random_reverse=False,
-        liveries=["CLASSIC_LINES"],
+        liveries=["CLASSIC_LINES",  "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
