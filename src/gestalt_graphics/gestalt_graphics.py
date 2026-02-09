@@ -14,6 +14,7 @@ formation_ruleset_reporting_label_maps = {
     "max_1_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "max_2_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "max_4_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
+    "articulated_permanent_twin_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "motorail_cars": {"label": "motorail_car"},
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
@@ -725,6 +726,11 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             result = [
                 "empty",
                 "empty",
+                "empty",
+                "empty",
+            ]
+        elif self.formation_ruleset == "articulated_permanent_twin_sets":
+            result = [
                 "empty",
                 "empty",
             ]

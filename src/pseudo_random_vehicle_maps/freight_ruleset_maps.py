@@ -1,4 +1,3 @@
-""
 """
 Deterministic entropic formation maps for ruleset-based vehicle rendering.
 
@@ -41,6 +40,7 @@ RULESET_CONFIG = {
     "max_4_unit_sets": {"allow_inner": True, "max_run_length": 4},
     "max_2_unit_sets": {"allow_inner": False, "max_run_length": 2},
     "max_1_unit_sets": {"allow_inner": False, "max_run_length": 1},
+    "articulated_permanent_twin_sets": {"allow_inner": False, "fixed_run_length": 2},
 }
 
 def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int]:
@@ -60,7 +60,10 @@ def generate_base_maps_for_ruleset(seed_index: int, config: dict) -> list[int]:
     formation = []
 
     while remaining > 0:
-        if config["allow_inner"]:
+        if "fixed_run_length" in config:
+            run_len = min(config["fixed_run_length"], remaining)
+
+        elif config["allow_inner"]:
             if remaining == 1:
                 run_len = 1
             elif remaining == 3:
@@ -111,6 +114,16 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
     return output
 
 def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
+    # Guard: each ruleset must specify exactly one of fixed_run_length or max_run_length
+    for key, config in RULESET_CONFIG.items():
+        has_fixed = "fixed_run_length" in config
+        has_max = "max_run_length" in config
+        if has_fixed == has_max:  # both or neither
+            raise ValueError(
+                f"{key} config must specify exactly one of 'fixed_run_length' or 'max_run_length' "
+                f"(got fixed_run_length={has_fixed}, max_run_length={has_max})"
+            )
+
     output = {key: [] for key in RULESET_CONFIG}
     for i in range(DEFAULT_FORMATION_COUNT):
         for key, config in RULESET_CONFIG.items():
