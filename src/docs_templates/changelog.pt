@@ -3,6 +3,37 @@ Changelog
 
 
 --------------
+4.12.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.12.0.
+
+
+*Changes*
+
+- added liveries for
+    - Abernant
+    - Captain Steel
+    - Chuggypig
+    - Defiant
+    - Fireball
+    - Grid
+    - Grub
+    - Keen
+    - Lamia
+    - Little Bear
+    - Pika
+    - Progress
+    - Stoat
+    - Toaster
+    - Withershins
+    - Xerxes
+    - Yillen
+- added generation 4 Coil Carriers (tarpaulin roof)
+
+
+--------------
 4.11.1 Release
 --------------
 
