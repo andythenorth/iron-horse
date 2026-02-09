@@ -833,6 +833,13 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     def variants_use_common_graphics_switch_chain(self):
         return False
 
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
+        # crude assumption that it's just a 2 row offset (vehicle sprite, mask) to each unit, probably fine for now
+        result = 2 * unit_counter
+        return result
+
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
