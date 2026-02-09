@@ -63,7 +63,6 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
 
     model_def =ModelDef(
         schema_name="AutomobileDoubleDeckCar",
@@ -86,6 +85,5 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
 
     return result
