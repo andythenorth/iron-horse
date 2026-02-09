@@ -918,8 +918,8 @@ def main():
                 ("LOWER_LINES", 2),
             ],
             "gen_6_electric_pax_railcar_liveries": [
-                ("VAPID_VOYAGER", 0),
-                ("VINYL_VECTOR", 1),
+                ("VAPID_VOYAGER", 1),
+                ("VINYL_VECTOR", 0),
             ],
             "gen_3_pax_express_railcar_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
             "default_mail_liveries": [
