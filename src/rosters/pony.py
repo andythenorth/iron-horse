@@ -1067,6 +1067,7 @@ def main():
             "gen_4_railbus_pax_liveries": [
                 ("INVERSIONS", 0),
                 ("RAIN_OR_SHINE", 1),
+                ("BANGER_BLUE", 2),
             ],
             "gen_5_and_6_railbus_pax_liveries": [
                 ("SHOW_PONY", 0),
