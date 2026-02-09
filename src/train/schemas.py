@@ -528,6 +528,8 @@ class SchemaBase(object):
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
             return 0
+        elif self.model_def.cloned_from_model_def is not None:
+            return self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.intro_date_months_offset
         elif self._intro_date_months_offset is not None:
             # offset defined in class (probably a wagon)
             return self._intro_date_months_offset
