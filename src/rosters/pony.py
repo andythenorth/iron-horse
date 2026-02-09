@@ -1060,8 +1060,8 @@ def main():
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_railcar_pax_liveries": [
-                ("RAIN_OR_SHINE", 1),
-                ("MARGINAL_GAINS", 0),
+                ("RAIN_OR_SHINE", 0),
+                ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
             ],
             "gen_4_railbus_pax_liveries": [
