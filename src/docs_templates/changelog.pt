@@ -3,6 +3,27 @@ Changelog
 
 
 --------------
+4.13.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.12.0.
+
+
+*Changes*
+
+- added liveries for
+    - Clipper
+    - Goliath
+
+
+*Fixes*
+
+- Slammer and Zeus had incorrect livery names and livery order
+- introduction dates for engines with single-unit and multiple-unit variants are now the same across all variants
+
+
+--------------
 4.12.0 Release
 --------------
 
