@@ -1535,7 +1535,7 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ["all_freight"]
+        self.class_refit_groups = ["all_freight", "mail"]
         # no specific labels needed
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
