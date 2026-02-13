@@ -338,7 +338,7 @@ class Catalogue(list):
 
     @cached_property
     def dedicated_trailer_catalogues(self):
-        # (if this catalogue has any related dedicated trailer catalogues)
+        # return any related dedicated trailer catalogues for this catalogue
         # this is _expected_ to fail if called too early - there won't be any wagons
         # - there's no guard against that as of April 2025, just don't it
         result = []
@@ -346,6 +346,19 @@ class Catalogue(list):
             if catalogue.model_def.cab_id == self.model_id:
                 result.append(catalogue)
         return result
+
+    @cached_property
+    def clone_or_family_relation_catalogues(self):
+        # return any catalogues for clones, or same vehicle family
+        # excludes self
+        result = []
+        for catalogue in self.roster.catalogues:
+            if catalogue is self:
+                continue
+            if catalogue.vehicle_family_id == self.vehicle_family_id:
+                result.append(catalogue)
+        return result
+
 
     @cached_property
     def next_gen_catalogue(self):

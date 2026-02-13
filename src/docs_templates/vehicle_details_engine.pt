@@ -274,6 +274,37 @@
                     </tal:catalogue_entries>
                 </table>
 
+                <tal:has_clones_or_family_relations condition="len(catalogue.clone_or_family_relation_catalogues) > 0">
+                    <h3>CABBAGE</h3>
+                    <table class="livery-or-trailers-table text-left">
+                        <tal:clone_or_family_relation_catalogues repeat="clone_or_family_relation_catalogue catalogue.clone_or_family_relation_catalogues">
+                            <tr>
+                                <th class="livery-or-trailers-table-first-col">
+                                    <div style="margin-top:12px;">${doc_helper.unpack_name_string(clone_or_family_relation_catalogue)}</div>
+                                </th>
+                                <td class="livery-or-trailers-table-col-with-divider">
+                                    <tal:catalogue_entries repeat="catalogue_entry clone_or_family_relation_catalogue">
+                                        <div>
+                                            <tal:livery_examples repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
+                                                <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                                                <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                                    <div class="vehicle-image"
+                                                        style="width:${2 * doc_helper.docs_sprite_max_width};
+                                                               display:inline-block;">
+                                                        <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                             width="${2 * doc_helper.docs_sprite_width(catalogue=clone_or_family_relation_catalogue)}"
+                                                             height="${2 * doc_helper.docs_sprite_height}" />
+                                                    </div>
+                                                </tal:some_examples_suppressed>
+                                            </tal:livery_examples>
+                                        </div>
+                                    </tal:catalogue_entries>
+                                </td>
+                            </tr>
+                        </tal:clone_or_family_relation_catalogues>
+                    </table>
+                </tal:has_clones_or_family_relations>
+
                 <tal:has_dedicated_trailers condition="catalogue.engine_quacker.is_cab_with_dedicated_trailers">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
                     <table class="livery-or-trailers-table text-left">
