@@ -3,6 +3,19 @@ Changelog
 
 
 --------------
+4.13.2 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.12.0.
+
+
+*Fixes*
+
+- Sunshine Coast had incorrect livery names
+
+
+--------------
 4.13.1 Release
 --------------
 
@@ -12,7 +25,7 @@ Not savegame compatible with Iron Horse releases before 4.12.0.
 
 *Fixes*
 
-- Fix: Brash now refits to mail, as intended
+- Brash now refits to mail, as intended
 
 
 --------------
