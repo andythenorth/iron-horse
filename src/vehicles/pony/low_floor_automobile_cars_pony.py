@@ -65,4 +65,26 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    model_def =ModelDef(
+        schema_name="AutomobileLowFloorCar",
+        base_numeric_id=4920,
+        gen=5,
+        subtype="D",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="AutomobileCarAsymmetricUnit",
+        chassis="2_axle_running_gear_only_20px",
+        rel_spriterow_index=0,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="AutomobileCarAsymmetricUnit",
+        chassis="2_axle_running_gear_only_20px",
+        rel_spriterow_index=1,
+    )
+
+    result.append(model_def)
+
     return result
