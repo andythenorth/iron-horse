@@ -922,6 +922,7 @@ def main():
                 ("VINYL_VECTOR", 0),
             ],
             "gen_3_pax_express_railcar_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
+            "gen_4_pax_express_railcar_liveries": [("RAIN_OR_SHINE", 0), ("MARGINAL_GAINS", 1)],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
