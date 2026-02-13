@@ -2610,7 +2610,10 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         super().__init__(**kwargs)
         self._joker = True
         # Graphics configuration
-        formation_ruleset = "max_1_unit_sets"
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "max_1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
@@ -2666,9 +2669,13 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
-            formation_ruleset="max_4_unit_sets",
+            formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
 

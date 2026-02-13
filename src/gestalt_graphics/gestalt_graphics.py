@@ -836,9 +836,11 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, pipeline, catalogue_entry, unit_counter, unit
     ):
-        # crude assumption that it's just a 2 row offset (vehicle sprite, mask) to each unit, probably fine for now
-        result = 2 * unit_counter
-        return result
+        if self.add_masked_overlay:
+            # crude assumption that it's just a 2 row offset (vehicle sprite, mask) to each unit, probably fine for now
+            return 2 * unit_counter
+        else:
+            return unit_counter
 
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
