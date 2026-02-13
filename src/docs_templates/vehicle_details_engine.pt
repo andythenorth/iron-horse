@@ -274,6 +274,30 @@
                     </tal:catalogue_entries>
                 </table>
 
+                <tal:has_clones condition="len(catalogue.model_def.clones) > 0">
+                    <h3>Clones</h3>
+                    <tal:clones repeat="clone catalogue.model_def.clones">
+                        <!--!${clone}-->
+
+                        <tal:clone_model_variants repeat="clone_model_variant roster.model_variants_by_catalogue[clone.model_id]['model_variants']">
+                            <div>
+                                <tal:livery_examples repeat="cc_remap_pair clone_model_variant.catalogue_entry.livery_def.docs_image_input_cc">
+                                    <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
+                                    <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
+                                        <div class="vehicle-image"
+                                            style="width:${2 * doc_helper.docs_sprite_max_width};
+                                                   display:inline-block;">
+                                            <img src="static/img/${clone_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(catalogue=clone_model_variant.catalogue)}"
+                                                 height="${2 * doc_helper.docs_sprite_height}" />
+                                        </div>
+                                    </tal:some_examples_suppressed>
+                                </tal:livery_examples>
+                            </div>
+                        </tal:clone_model_variants>
+                    </tal:clones>
+                </tal:has_clones>
+
                 <tal:has_dedicated_trailers condition="len(catalogue.dedicated_trailer_catalogue_model_variant_mappings) > 0">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
                     <table class="livery-or-trailers-table text-left">
