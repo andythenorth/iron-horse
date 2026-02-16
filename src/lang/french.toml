@@ -1,0 +1,853 @@
+[GLOBAL_PRAGMA]
+# this is the default translation and is en-gb
+grflangid = 0x03
+plural = 2
+gender = "m m2 f"
+
+[STR_GRF_DESCRIPTION]
+base = "Licence : {SILVER}GPL v2{}{BLACK}"
+
+
+# parameters (action 14 etc)
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
+base = "Sélection de locomotives"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
+base = "Jouer avec toutes les locomotives, une sélection simplifiée de locomotives, ou aucune locomotive.{}{}{SILVER}Complète : {BLACK}Toutes les locomotives d’Iron Horse seront disponibles{}{}{SILVER}Simplifiée : {BLACK}Moins de locomotives d’Iron Horse seront disponibles, et les éléments cosmétiques comme les chasse-neige, les voitures de conduite et les locomotives très lentes ne seront pas disponibles{}{}{SILVER}Aucune : {BLACK}Aucune locomotive d’Iron Horse ne sera disponible. Cela fournir une version contenant uniquement les wagons d’Iron Horse (requiert que les locomotives soient fournies par un autre GRF, sinon les wagons ne seront pas disponibles)."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
+base = "Sélection de wagons"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
+base = "Jouer avec tous les wagons, une sélection simplifiée de wagons, ou aucun wagon.{}{}{SILVER}Complète : {BLACK}Tous les wagons d’Iron Horse seront disponibles{}{}{SILVER}Simplifiée : {BLACK}Moins de wagons d’Iron Horse seront disponibles{}{}{SILVER}Aucune : {BLACK}Aucun wagon d’Iron Horse ne sera disponible"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
+base = "Complète"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1]
+base = "Simplifiée"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
+base = "Aucune"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Capacité des trains"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
+base = "Ajuste la capacité des véhicules pour des styles de jeu alternatifs.{}{}{SILVER}Nanoscopique : {BLACK}77% de réduction{SILVER}{}Ridicule : {BLACK}33% de réduction{SILVER}{}Merveilleuse : {BLACK}Par défaut{SILVER}{}Excessive : {BLACK}33% d’augmentation{SILVER}{}Scandaleuse : {BLACK}77% d’augmentation{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Nanoscopique"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Ridicule"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Merveilleuse (default)"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
+base = "Excessive"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
+base = "Scandaleuse"
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION]
+base = "Couleurs de wagon nuancées"
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC]
+base = "Les couleurs de wagon nuancées apportent de la diversité aux trains (chance aléatoire que le wagon ait une couleur nuancée)"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD]
+base = "Placer certains véhicules à l’envers"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC]
+base = "Iron Horse placera aléatoirement quelques véhicules à l’envers, par exemple des locomotives à vapeur ou des locomotives diesel avec un poste de conduite des deux côtés. Cette fonctionnalité peut être désactivée avec ce paramètre."
+
+[STR_ERROR_INFLATION_INCOMPATIBLE]
+base = "Iron Horse n’est pas compatible avec l’inflation d’OpenTTD. Désactivez l’inflation dans les réglages du jeu."
+# substrings of the grf name _could_ be used here
+ibex = "Iron Ibex n’est pas compatible avec l’inflation d’OpenTTD. Désactivez l’inflation dans les réglages du jeu."
+moose = "Iron Moose n’est pas compatible avec l’inflation d’OpenTTD. Désactivez l’inflation dans les réglages du jeu."
+
+[STR_ERROR_TERMITE_DEPRECATED]
+base = "Iron Horse incorpore les types de rails de Termite. Merci de retirer Termite de la liste des NewGRF et de lancer une nouvelle partie."
+# substrings of the grf name _could_ be used here
+ibex = "Iron Ibex incorpore les types de rails de Termite. Merci de retirer Termite de la liste des NewGRF et de lancer une nouvelle partie."
+moose = "Iron Moose incorpore les types de rails de Termite. Merci de retirer Termite de la liste des NewGRF et de lancer une nouvelle partie."
+
+# livery badges
+
+[STR_BADGE_LIVERY]
+base = "Livrée"
+
+# freight wagon liveries
+
+[STR_BADGE_LIVERY_COMPANY_COLOUR]
+base = "Couleurs de la compagnie"
+
+[STR_BADGE_LIVERY_COMPLEMENT_COMPANY_COLOUR]
+base = "Couleurs de la compagnie et semblables"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR]
+base = "Mélange de couleurs de la compagnie"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VARIETY_GEMSTONE]
+base = "Pierre précieuse"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VARIETY_LIMEWASH]
+base = "Chaux"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_BUMBLEBEE]
+base = "Bourdon"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE]
+base = "Ceinture de rouille"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL]
+base = "Bulle de savon"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_PEWTER]
+base = "Platine"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR]
+base = "Champ de trèfles"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR]
+base = "Ananas"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SULPHUR_OCHRE]
+base = "Mélange de soufre"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE]
+base = "Nuit noire"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OCHRE_SAND]
+base = "Sable du désert"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_TEAL_PEWTER_SILVER]
+base = "Océan argenté"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_TEAL_OCEAN_TEAL]
+base = "Océan turquoise"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_GREY_PEWTER]
+base = "Fumée argentée"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OXIDE_RUST]
+base = "Rouille"
+
+[STR_BADGE_LIVERY_FREIGHT_RED]
+base = "Rouge flamboyant"
+
+[STR_BADGE_LIVERY_FREIGHT_INDUSTRIAL_YELLOW]
+base = "Jaune industriel"
+
+# other liveries
+# _might_ need to use roster-specific strings, but we'll see
+
+[STR_BADGE_LIVERY_BANGER_BLUE]
+base = "Triomphe basique"
+
+[STR_BADGE_LIVERY_CLASSIC_LINES]
+base = "Lignes classiques"
+
+[STR_BADGE_LIVERY_CONVENTIONAL_WISDOM]
+base = "Sagesse conventionnelle"
+
+[STR_BADGE_LIVERY_FREIGHT_BLACK]
+base = "Cheval sombre"
+
+[STR_BADGE_LIVERY_FRUIT_RIPPLE]
+base = "Fruit frippé"
+
+[STR_BADGE_LIVERY_GREY_HORSE]
+base = "Cheval gris"
+
+[STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
+base = "Jaune radioactif"
+
+[STR_BADGE_LIVERY_INVERSIONS]
+base = "Inversions"
+
+[STR_BADGE_LIVERY_LOWER_LINES]
+base = "Lignes basses"
+
+[STR_BADGE_LIVERY_MAIL_BY_RAIL]
+base = "Wagon postal"
+
+[STR_BADGE_LIVERY_MARGINAL_GAINS]
+base = "Gains marginaux"
+
+[STR_BADGE_LIVERY_METROLAND]
+base = "Métroland"
+
+[STR_BADGE_LIVERY_RAIN_OR_SHINE]
+base = "Après la pluie"
+
+[STR_BADGE_LIVERY_RIDEWELL]
+base = "Chevauchée"
+
+[STR_BADGE_LIVERY_SHOW_PONY]
+base = "Spéciale"
+
+[STR_BADGE_LIVERY_STOCK_STANDARD]
+base = "Standard"
+
+[STR_BADGE_LIVERY_SUPERGRAPHIC]
+base = "Supergraphique"
+
+[STR_BADGE_LIVERY_SURE_PACE]
+base = "À bon pas"
+
+[STR_BADGE_LIVERY_VANILLA]
+base = "VANILLA"
+
+[STR_BADGE_LIVERY_VAPID_VOYAGER]
+base = "Calme plat"
+
+[STR_BADGE_LIVERY_VINYL_VECTOR]
+base = "Vecteur vinyle"
+
+[STR_BADGE_LIVERY_WORKHORSE]
+base = "Cheval de trait"
+
+# behaviour badges (behaviour and role are different)
+
+[STR_BADGE_BEHAVIOUR]
+base = "Comportement"
+
+[STR_BADGE_BEHAVIOUR_CABOOSE]
+base = "Aucun effet sur le jeu"
+
+[STR_BADGE_BEHAVIOUR_DRIVING_CAB]
+base = "Poste de conduite{BLACK} — placer à l’avant ou à l’arrière du train avec un moins une autre locomotive"
+
+[STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS]
+base = "Transportable en express"
+
+[STR_BADGE_BEHAVIOUR_LGV_CAPABLE]
+base = "Capable de grandes vitesses"
+
+[STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
+base = "Choix de wagons aléatoire"
+
+[STR_BADGE_BEHAVIOUR_RESTAURANT_CAR]
+base = "Supprime les coûts d’entretien de toutes les voitures passagers et à grande vitesse du train"
+
+[STR_BADGE_BEHAVIOUR_TILT]
+base = "Se balance pour aller plus vite dans les virages"
+
+# role badges
+
+[STR_BADGE_ROLE]
+base = "Rôle"
+
+[STR_BADGE_ROLE_DRIVING_CAB]
+base = "Poste de conduite"
+
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
+base = "Général"
+
+[STR_BADGE_ROLE_EXPRESS]
+base = "Express"
+
+[STR_BADGE_ROLE_FREIGHT]
+base = "Fret"
+
+[STR_BADGE_ROLE_GRONK]
+base = "Gronk !"
+
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
+base = "Express intercités"
+
+[STR_BADGE_ROLE_LOLZ]
+base = "Lolz"
+
+[STR_BADGE_ROLE_METRO]
+base = "Urbain à très haute capacité"
+
+[STR_BADGE_ROLE_METRO_FREIGHT]
+base = "Fret urbain"
+
+[STR_BADGE_ROLE_SUBURBAN]
+base = "Haute capacité"
+
+# gen badges
+
+[STR_BADGE_GEN]
+base = "Génération"
+
+[STR_BADGE_GEN_1]
+base = "1"
+
+[STR_BADGE_GEN_2]
+base = "2"
+
+[STR_BADGE_GEN_3]
+base = "3"
+
+[STR_BADGE_GEN_4]
+base = "4"
+
+[STR_BADGE_GEN_5]
+base = "5"
+
+[STR_BADGE_GEN_6]
+base = "6"
+
+# power source badges
+
+[STR_BADGE_POWER_SOURCE_BATTERY_HYBRID]
+base = "Hybride avec batterie"
+
+[STR_BADGE_POWER_SOURCE_DIESEL]
+base = "Diesel"
+
+[STR_BADGE_POWER_SOURCE_OHLE]
+base = "Électrique"
+
+[STR_BADGE_POWER_SOURCE_METRO]
+base = "Métro"
+
+[STR_BADGE_POWER_SOURCE_STEAM]
+base = "Vapeur"
+
+# name suffixes
+
+[STR_WAGON_NAME_TRAILER]
+base = "Remorque"
+
+# wagon class suffixes
+[STR_WAGON_NAME_ACID_TANK_CAR]
+base = "Citerne à acide"
+
+[STR_WAGON_NAME_AGGREGATE_BULK_OPEN_CAR]
+base = "Wagon à agrégats"
+
+[STR_WAGON_NAME_AGGREGATE_HOPPER_CAR]
+base = "Trémie à agrégats"
+
+[STR_WAGON_NAME_ALIGNMENT_CAR]
+base = "Wagon d’alignement"
+
+[STR_WAGON_NAME_AUTOMOBILE_CAR]
+base = "Porte-véhicules"
+
+[STR_WAGON_NAME_BOLSTER_CAR]
+base = "Wagon plat"
+
+[STR_WAGON_NAME_BOX_CAR]
+base = "Fourgon"
+
+[STR_WAGON_NAME_BULK_CARGO_BOX_COMBOS]
+base = "Wagon tombereau à minerai"
+
+[STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
+base = "Trémie à minerai"
+
+[STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
+base = "Wagon à minerai"
+
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
+base = "Wagon plat à parois"
+
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR]
+base = "Wagon plat à parois"
+
+[STR_WAGON_NAME_CABOOSE_CAR]
+base = "Fourgon-frein"
+
+[STR_WAGON_NAME_CANE_BIN_CAR]
+base = "Wagon à canne à sucre"
+
+[STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
+base = "Trémie noir charbon"
+
+[STR_WAGON_NAME_CEMENT_SILO_CAR]
+base = "Wagon à ciment"
+
+[STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
+base = "Citerne chimique"
+
+[STR_WAGON_NAME_COIL_BUGGY_CAR]
+base = "Bogies porte-coils"
+
+[STR_WAGON_NAME_COIL_CAR]
+base = "Wagon porte-coils"
+
+[STR_WAGON_NAME_COVERED_HOPPER_CAR]
+base = "Trémie couverte"
+
+[STR_WAGON_NAME_CRYO_TANK_CAR]
+base = "Citerne cryogénique"
+
+[STR_WAGON_NAME_CURTAIN_SIDE_BOX_CAR]
+base = "Wagon à paroi coulissante"
+
+[STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
+base = "Porte-véhicules"
+
+[STR_WAGON_NAME_MOTORAIL_AUTOMOBILE_CAR]
+base = "Fourgon Motorail"
+
+[STR_WAGON_NAME_EXPRESS_CAR]
+base = "Fourgon express"
+
+[STR_WAGON_NAME_EXPRESS_INTERMODAL_CAR]
+base = "Porte-conteneurs express"
+
+[STR_WAGON_NAME_FARM_CARGO_HOPPER_COMBOS]
+base = "Trémie à céréales"
+
+[STR_WAGON_NAME_FARM_CARGO_MIXED_COMBOS]
+base = "Wagon d’agriculture"
+
+[STR_WAGON_NAME_FARM_PRODUCT_BOX_CAR]
+base = "Fourgon de produits de la ferme"
+
+[STR_WAGON_NAME_FARM_PRODUCT_HOPPER_CAR]
+base = "Trémie de produits de la ferme"
+
+[STR_WAGON_NAME_FLAT_CAR]
+base = "Wagon plat générique"
+
+[STR_WAGON_NAME_FLATBED_CARGO_COMBOS]
+base = "Wagon plat"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_BOX_COMBOS]
+base = "Fourgon alimentaire express"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_LIQUID_COMBOS]
+base = "Wagon à boissons express"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_TANK_CAR]
+base = "Citerne alimentaire express"
+
+[STR_WAGON_NAME_FOOD_HOPPER_CAR]
+base = "Trémie alimentaire"
+
+[STR_WAGON_NAME_FOOD_INGREDIENTS_HOPPER_COMBOS]
+base = "Trémie à aliments"
+
+[STR_WAGON_NAME_FOOD_INGREDIENTS_MIXED_COMBOS]
+base = "Wagon à aliments"
+
+[STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
+base = "Wagon renforcé"
+
+[STR_WAGON_NAME_HEAVY_DUTY_FLAT_CAR]
+base = "Wagon plat renforcé"
+
+[STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]
+base = "Fourgon postal à grande vitesse"
+
+[STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
+base = "Voiture à grande vitesse"
+
+[STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
+base = "Wagon télescopique"
+
+[STR_WAGON_NAME_HOPPER_CAR]
+base = "Trémie à charbon"
+
+[STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
+base = "Trémie à charbon"
+
+[STR_WAGON_NAME_HST_MAIL_CAR]
+base = "Fourgon postal"
+
+[STR_WAGON_NAME_HST_PASSENGER_CAR]
+base = "Voiture de passagers"
+
+[STR_WAGON_NAME_INGOT_CAR]
+base = "Wagon à lingots"
+
+[STR_WAGON_NAME_INTERMODAL_CAR]
+base = "Porte-conteneurs"
+
+[STR_WAGON_NAME_LIME_COVERED_HOPPER_CAR]
+base = "Trémie à chaux"
+
+[STR_WAGON_NAME_LIVESTOCK_CAR]
+base = "Wagon à bétail"
+
+[STR_WAGON_NAME_LIVESTOCK_EXPRESS_CAR]
+base = "Fourgon à bétail express"
+
+[STR_WAGON_NAME_LOG_CAR]
+base = "Porte-bûches"
+
+[STR_WAGON_NAME_MAIL_CAR]
+base = "Fourgon postal"
+
+[STR_WAGON_NAME_MERCHANDISE_BOX_CAR]
+base = "Fourgon de marchandises"
+
+[STR_WAGON_NAME_METAL_PRODUCT_COVERED_COMBOS]
+base = "Wagon à acier couvert"
+
+[STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
+base = "Wagon à acier"
+
+[STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
+base = "Wagon à charbon"
+
+[STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
+base = "Wagon à sable"
+
+[STR_WAGON_NAME_MINERAL_COVERED_HOPPER_COMBOS]
+base = "Trémie à minerai couverte"
+
+[STR_WAGON_NAME_MGR_HOPPER_CAR]
+base = "Trémie carrousel"
+
+[STR_WAGON_NAME_MILL_FLAT_CAR]
+base = "Wagon plat d’usine"
+
+[STR_WAGON_NAME_MILL_OPEN_CAR]
+base = "Wagon tombereau d’usine"
+
+[STR_WAGON_NAME_OPEN_CAR]
+base = "Wagon tombereau générique"
+
+[STR_WAGON_NAME_OPEN_CAR_COMBOS]
+base = "Wagon tombereau"
+
+[STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
+base = "Wagon tombereau générique"
+
+[STR_WAGON_NAME_PANORAMIC_CAR]
+base = "Voiture panoramique"
+
+[STR_WAGON_NAME_PASSENGER_CAR]
+base = "Voiture de passagers"
+
+[STR_WAGON_NAME_PEAT_CAR]
+base = "Wagon à tourbe"
+
+[STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
+base = "Wagon à biens couvert"
+
+[STR_WAGON_NAME_PIECE_GOODS_EASILOADER_COMBOS]
+base = "Wagon couvert à chargement rapide"
+
+[STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
+base = "Wagon à biens"
+
+[STR_WAGON_NAME_PIECE_GOODS_MANUFACTURING_PARTS_COMBOS]
+base = "Wagon à pièces détachées"
+
+[STR_WAGON_NAME_PIPE_CAR]
+base = "Wagon à tuyaux"
+
+[STR_WAGON_NAME_PRESSURE_TANK_CAR]
+base = "Citerne sous pression"
+
+[STR_WAGON_NAME_PRODUCT_TANK_CAR]
+base = "Citerne"
+
+[STR_WAGON_NAME_REEFER_CAR]
+base = "Fourgon réfrigéré"
+
+[STR_WAGON_NAME_RESTAURANT_CAR]
+base = "Voiture-restaurant"
+
+[STR_WAGON_NAME_ROCK_HOPPER_CAR]
+base = "Trémie à pierres"
+
+[STR_WAGON_NAME_ROLLER_ROOF_HOPPER_CAR]
+base = "Trémie à toit roulant"
+
+[STR_WAGON_NAME_SALT_COVERED_HOPPER_CAR]
+base = "Trémie à sel"
+
+[STR_WAGON_NAME_SCRAP_METAL_CAR]
+base = "Wagon à ferraille"
+
+[STR_WAGON_NAME_SIDE_DOOR_HOPPER_CAR]
+base = "Trémie à porte latérale"
+
+[STR_WAGON_NAME_SILO_CAR]
+base = "Wagon-silo"
+
+[STR_WAGON_NAME_SKIP_CAR]
+base = "Skips"
+
+[STR_WAGON_NAME_SLAG_LADLE_CAR]
+base = "Wagon à scories"
+
+[STR_WAGON_NAME_SLIDING_ROOF_CAR]
+base = "Wagon à toit coulissant"
+
+[STR_WAGON_NAME_SLIDING_ROOF_HI_CUBE_CAR]
+base = "Wagon cube"
+
+[STR_WAGON_NAME_SLIDING_WALL_CAR]
+base = "Fourgon à paroi coulissante"
+
+[STR_WAGON_NAME_SPACER_CAR]
+base = "Wagon d’espacement"
+
+[STR_WAGON_NAME_SUBURBAN_PASSENGER_CAR]
+base = "Voiture de banlieue"
+
+[STR_WAGON_NAME_SWING_ROOF_HOPPER_CAR]
+base = "Trémie à toit pivotant"
+
+[STR_WAGON_NAME_TANK_CAR]
+base = "Citerne générique"
+
+[STR_WAGON_NAME_TARPAULIN_CAR]
+base = "Wagon bâché"
+
+[STR_WAGON_NAME_TIPPLER_BULK_OPEN_CAR]
+base = "Wagon renverseur"
+
+[STR_WAGON_NAME_TORPEDO_CAR]
+base = "Wagon torpille"
+
+[STR_WAGON_NAME_VOLATILES_TANK_CAR]
+base = "Citerne à volatils"
+
+# cargo subtypes - only used for automobile cars (specifically vehicles cargo) as of May 2021
+[STR_CARGO_SUBTYPE_VEHI_0]
+base = "(voitures)"
+
+[STR_CARGO_SUBTYPE_VEHI_1]
+base = "(camions)"
+
+[STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
+base = "{BLACK}Alimenté par {STRING} : {GOLD}{POWER} {}{BLACK}Alimenté par {STRING} : {GOLD}{POWER}"
+
+[STR_POWER_SOURCE]
+base = "Source d’alimentation"
+
+[STR_POWER_SOURCE_OHLE]
+base = "Électrique"
+
+[STR_POWER_SOURCE_BATTERY_HYBRID]
+base = "Hybride avec batterie"
+
+[STR_POWER_SOURCE_METRO]
+base = "Métro"
+
+[STR_POWER_SOURCE_DIESEL]
+base = "Diesel"
+
+[STR_POWER_SOURCE_STEAM]
+# reported unused by nml, but needed by docs as of April 2025
+base = "Vapeur"
+
+# assumed to be handling case of lgv_capable (two speeds)
+[STR_SPEED_BY_RAILTYPE_LGV_CAPABLE]
+base = "{BLACK}Vitesse (ligne à grande vitesse dédiée) : {GOLD}{VELOCITY} {}{BLACK}Vitesse (rails normaux) : {GOLD}{VELOCITY}"
+
+# distributed power (dedicated wagons add power)
+[STR_WAGONS_ADD_POWER_CAB]
+base = "{BLACK}Puissance (distribuée) : {GOLD}{POWER} par {STRING} voitures passagers ou fourgons postaux attachés"
+
+[STR_WAGONS_ADD_POWER_CAB_CARGO_SPRINTER]
+base = "{BLACK}Puissance (distribuée) : {GOLD}{POWER} par {STRING} remorques motorisées attachées"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "{BLACK}Puissance (distribuée) : {GOLD}{POWER} quand attaché à une locomotive {STRING}"
+
+
+# project management
+[STR_SPRITES_COMPLETE]
+base = "{}Sprites terminées : {GOLD}Yep"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Sprites terminées : {GOLD}Nope"
+
+## railtypes
+# lgv track strings
+# this type isn't built, it's unelectrified and exists for compatibility reasons, see electrified lgv instead
+[STR_RAILTYPE_LGV_NAME]
+base = "Voie ferrée à grande vitesse dédiée"
+
+[STR_RAILTYPE_LGV_TOOLBAR_CAPTION]
+base = "[unused]"
+
+[STR_RAILTYPE_LGV_MENU_TEXT]
+base = "[unused]"
+
+[STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION]
+base = "Nouveaux véhicules à grande vitesse"
+
+[STR_RAILTYPE_LGV_AUTOREPLACE_TEXT]
+base = "Véhicules à grande vitesse"
+
+[STR_RAILTYPE_LGV_NEW_ENGINE_TEXT]
+base = "véhicule à grande vitesse"
+
+# lgv electrified track strings
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NAME]
+base = "Voie ferrée à grande vitesse dédiée"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_TOOLBAR_CAPTION]
+base = "Contruction de voie ferrée à grande vitesse dédiée"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_MENU_TEXT]
+base = "Contruction de voie ferrée à grande vitesse dédiée"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_BUILD_WINDOW_CAPTION]
+base = "Nouveaux véhicules à grande vitesse"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_AUTOREPLACE_TEXT]
+base = "Véhicules à grande vitesse"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NEW_ENGINE_TEXT]
+base = "véhicule à grande vitesse"
+
+
+# metro track strings
+[STR_RAILTYPE_METRO_NAME]
+base = "Voie ferrée métropolitaine"
+
+[STR_RAILTYPE_METRO_TOOLBAR_CAPTION]
+base = "Construction de voie ferrée métropolitaine"
+
+[STR_RAILTYPE_METRO_MENU_TEXT]
+base = "Construction de voie ferrée métropolitaine"
+
+[STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION]
+base = "Nouvelles rames de métro"
+
+[STR_RAILTYPE_METRO_AUTOREPLACE_TEXT]
+base = "Rames de métro"
+
+[STR_RAILTYPE_METRO_NEW_ENGINE_TEXT]
+base = "rame de métro"
+
+
+# narrow gauge track strings
+[STR_RAILTYPE_NARROW_GAUGE_NAME]
+base = "Voie ferrée à écartement faible"
+
+[STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION]
+base = "Construction de voie ferrée à écartement faible"
+
+[STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT]
+base = "Construction de voie ferrée à écartement faible"
+
+[STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION]
+base = "Nouveaux véhicules à écartement faible"
+
+[STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT]
+base = "Véhicules à écartement faible"
+
+[STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT]
+base = "véhicule à écartement faible"
+
+
+# narrow gauge electrified track strings
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME]
+base = "Voie ferrée à écartement faible électrifiée"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_TOOLBAR_CAPTION]
+base = "Construction de voie ferrée à écartement faible électrifiée"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_MENU_TEXT]
+base = "Construction de voie ferrée à écartement faible électrifiée"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_BUILD_WINDOW_CAPTION]
+base = "Nouveaux véhicules à écartement faible électriques"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT]
+base = "Véhicules à écartement faible électriques"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
+base = "véhicule à écartement faible électrique"
+
+
+# docs extra strings
+
+[STR_EXTRA_TEXT_LIVERY_BANGER_BLUE]
+base = "Une livrée très simple mettant en avant la première couleur de compagnie, avec quelques marquages de la seconde couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_CLASSIC_LINES]
+base = "Une livrée mettant principalement en avant la première couleur de compagnie, avec une ou plusieurs lignes horizontales de la seconde couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_CONVENTIONAL_WISDOM]
+base = "Une livrée alternant de larges blocs des deux couleurs de compagnie, avec parfois des marquages minimalistes."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_FREIGHT_BLACK]
+base = "Une livrée pour les trains de fret, dans des couleurs sombres et sales, avec des logos ou des marquages d’une ou deux des couleurs de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_FRUIT_RIPPLE]
+base = "Une livrée pour les trains de passagers et postaux, inspirée des livrées British Rail InterCity 'Swallow' et 'Executive'."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_GREY_HORSE]
+base = "Une livrée pour les trains de fret, mettant en avant du gris, avec des paneaux contrastants jaunes ou d’autres couleurs. Inspiré par les livrées British Rail Railfreight 'Red Stripe' et Railfreight 'Triple Grey Sector' liveries."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_INDUSTRIAL_YELLOW]
+base = "Une livrée pour les trains utilisés dans des environnements industriels comme des aciéries ou des fonderies."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_INVERSIONS]
+base = "Diverses livrées qui utilisent principalement la seconde couleur de compagnie, avec des logos ou des marquages de la première couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_LOWER_LINES]
+base = "Une livrée mettant principalement en avant la première couleur de compagnie, avec une ligne basse de la seconde couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_MAIL_BY_RAIL]
+base = "Diverses livrées pour les trains postaux, inspirées par les livrées Royal Mail, Rail Express Systems, TGV La Poste, et d’autres. Utilisent toujours le rouge en couleur principale."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_MARGINAL_GAINS]
+base = "Une livrée générique pour les trains de passagers et postaux, inspirée de la livrée de banlieue blanche/bleue British Rail des années 1970."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_METROLAND]
+base = "Diverses livrées pour les rames de métro, inspirées par les livrées London Underground et d’autres."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_RAIN_OR_SHINE]
+base = "Une livrée générique pour les trains de passagers et postaux, inspirée des livrées bicolores conventionnelles."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_RIDEWELL]
+base = "Une livrée générique pour les trains de passagers et postaux. Le style change selon les générations de véhicules."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SHOW_PONY]
+base = "Livrées uniques à un véhicule, ou qui ne rentrent dans aucune autre catégorie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_STOCK_STANDARD]
+base = "Une livrée simple mettant principalement en avant la première couleur de compagnie, avec des logos ou des marquages de la seconde couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SUPERGRAPHIC]
+base = "Une livrée audacieuse mettant en avant des blocs jaunes et de la première couleur de compagnie, parfois avec des logos ou des marquages de la seconde couleur de compagnie."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SURE_PACE]
+base = "Une livrée générique pour les trains de passagers et postaux. Le style change selon les générations de véhicules."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VANILLA]
+base = "VANILLA"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VAPID_VOYAGER]
+base = "Une livrée pour les trains de passagers et postaux, inspirée par les livrées Virgin Trains, Greater Anglia, et d’autres similaires."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VINYL_VECTOR]
+base = "Une livrée générique pour les trains de passagers et postaux, inspirée par les livrées fluides des années 1990-2020."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_WORKHORSE]
+base = "Une livrée pour les trains de fret, mettant en avant un mélange de noir et des deux couleurs de compagnie."
+docs_only = true
