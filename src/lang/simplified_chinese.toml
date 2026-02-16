@@ -1,0 +1,851 @@
+[GLOBAL_PRAGMA]
+grflangid = 0x56
+plural = 1
+
+[STR_GRF_DESCRIPTION]
+base = "协议: {SILVER}GPL v2{}{BLACK}"
+
+
+# parameters (action 14 etc)
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
+base = "机车"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
+base = "启用全部机车，启用一套简化版的机车组, 或完全不启用任何 Iron-Horse 机车。 {}{}{SILVER}启用全部机车: {BLACK}全部Iron Horse 机车可用。{}{}{SILVER}启用简化版机车组: {BLACK}一部分Iron Horse 机车可用。诸如除雪车、驾驶控制车这类外观炫酷但实用性不大的列车也将无法使用。{}{}{SILVER}完全不启用: {BLACK}不启用 Iron Horse 机车，可借此获得仅含拖车的 Iron Horse 模组(请注意：此模式需依赖其他grf图形资源文件提供机车，否则货车无法使用)."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
+base = "拖车"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
+base = "启用全部拖车，启用一套简化版的拖车组, 或完全不启用任何 Iron-Horse 拖车。 {}{}{SILVER}启用全部拖车: {BLACK}全部Iron Horse 拖车可用。{}{}{SILVER}启用简化版拖车组: {BLACK}一部分Iron Horse 拖车可用。{}{}{SILVER}完全不启用: {BLACK}不启用 Iron Horse 拖车。"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
+base = "启用全部"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1]
+base = "启用简化版"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
+base = "不启用"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "列车载客/货量"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
+base = "调整运载容量，以此适配多种游戏玩法风格。{}{}{SILVER}垃圾: {BLACK}运量缩减77%{SILVER}{}更少: {BLACK}运量缩减33%{SILVER}{}适中: {BLACK}默认运量{SILVER}{}更多: {BLACK}运量增加33%{SILVER}{}运载王: {BLACK}运量增加77%"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "垃圾"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "更少"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "适中 (默认)"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
+base = "更多"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
+base = "运载王"
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION]
+base = "拖车颜色褪色效果"
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC]
+base = "为列车增添视觉层次的货运车厢做旧 (每节车厢均有随机概率呈现褪色效果)."
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD]
+base = "允许反向挂载部分车辆"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC]
+base = "Iron Horse 将随机反向挂载部分车厢，例如两端均设有驾驶室的蒸汽机车或柴油机车。此功能可在此设置开启/关闭。"
+
+[STR_ERROR_INFLATION_INCOMPATIBLE]
+base = "Iron Horse 与 OpenTTD 的“通货膨胀”经济模式不兼容。请在 OpenTTD 设置中关闭通货膨胀选项。"
+# substrings of the grf name _could_ be used here
+ibex = "Iron Ibex 与 OpenTTD 的“通货膨胀”经济模式不兼容。请在 OpenTTD 设置中关闭通货膨胀选项。"
+moose = "Iron Moose 与 OpenTTD 的“通货膨胀”经济模式不兼容。请在 OpenTTD 设置中关闭通货膨胀选项。"
+
+[STR_ERROR_TERMITE_DEPRECATED]
+base = "Iron Horse 当前版本已集成 Termite 模组的轨道类型。请从 NewGRF 列表中移除 Termite 模组，并尝试开始新游戏。"
+# substrings of the grf name _could_ be used here
+ibex = "Iron Ibex 当前版本已集成 Termite 模组的轨道类型。请从 NewGRF 列表中移除 Termite 模组，并尝试开始新游戏。"
+moose = "Iron Moose 当前版本已集成 Termite 模组的轨道类型。请从 NewGRF 列表中移除 Termite 模组，并尝试开始新游戏。"
+
+# livery badges
+
+[STR_BADGE_LIVERY]
+base = "涂装方案"
+
+# freight wagon liveries
+
+[STR_BADGE_LIVERY_COMPANY_COLOUR]
+base = "公司色彩方案涂装"
+
+[STR_BADGE_LIVERY_COMPLEMENT_COMPANY_COLOUR]
+base = "公司色彩方案相近色搭配涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR]
+base = "公司色彩方案双混合涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VARIETY_GEMSTONE]
+base = "宝石涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VARIETY_LIMEWASH]
+base = "石灰白涂装 "
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_BUMBLEBEE]
+base = "大黄蜂涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE]
+base = "工业锈色涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL]
+base = "肥皂泡涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_PEWTER]
+base = "铂金涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR]
+base = "苜蓿田野涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR]
+base = "凤梨黄涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SULPHUR_OCHRE]
+base = "硫磺混合涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE]
+base = "夜墨黑涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OCHRE_SAND]
+base = "沙漠沙色涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_TEAL_PEWTER_SILVER]
+base = "海洋银涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_TEAL_OCEAN_TEAL]
+base = "海洋青绿涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_SILVER_GREY_PEWTER]
+base = "银雾涂装"
+
+[STR_BADGE_LIVERY_RANDOM_LIVERIES_OXIDE_RUST]
+base = "氧化层涂装"
+
+[STR_BADGE_LIVERY_FREIGHT_RED]
+base = "烈焰红涂装"
+
+[STR_BADGE_LIVERY_FREIGHT_INDUSTRIAL_YELLOW]
+base = "工业黄涂装"
+
+# other liveries
+# _might_ need to use roster-specific strings, but we'll see
+
+[STR_BADGE_LIVERY_BANGER_BLUE]
+base = "基础款涂装 "
+
+[STR_BADGE_LIVERY_CLASSIC_LINES]
+base = "经典条纹涂装"
+
+[STR_BADGE_LIVERY_CONVENTIONAL_WISDOM]
+base = "经典格纹涂装"
+
+[STR_BADGE_LIVERY_FREIGHT_BLACK]
+base = "深色骏马涂装"
+
+[STR_BADGE_LIVERY_FRUIT_RIPPLE]
+base = "水果漩涡涂装"
+
+[STR_BADGE_LIVERY_GREY_HORSE]
+base = "灰色骏马涂装"
+
+[STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
+base = "警示黄涂装"
+
+[STR_BADGE_LIVERY_INVERSIONS]
+base = "反色涂装"
+
+[STR_BADGE_LIVERY_LOWER_LINES]
+base = "低位线型涂装"
+
+[STR_BADGE_LIVERY_MAIL_BY_RAIL]
+base = "铁路邮政涂装"
+
+[STR_BADGE_LIVERY_MARGINAL_GAINS]
+base = "边际增益涂装"
+
+[STR_BADGE_LIVERY_METROLAND]
+base = "大都会涂装"
+
+[STR_BADGE_LIVERY_RAIN_OR_SHINE]
+base = "晴雨涂装"
+
+[STR_BADGE_LIVERY_RIDEWELL]
+base = "顺驰涂装"
+
+[STR_BADGE_LIVERY_SHOW_PONY]
+base = "特别款限定涂装"
+
+[STR_BADGE_LIVERY_STOCK_STANDARD]
+base = "常规标准涂装"
+
+[STR_BADGE_LIVERY_SUPERGRAPHIC]
+base = "巨幅标识涂装"
+
+[STR_BADGE_LIVERY_SURE_PACE]
+base = "稳健步伐涂装"
+
+[STR_BADGE_LIVERY_VANILLA]
+base = "原厂标准涂装"
+
+[STR_BADGE_LIVERY_VAPID_VOYAGER]
+base = "空洞航者涂装"
+
+[STR_BADGE_LIVERY_VINYL_VECTOR]
+base = "唱片纹矢量涂装"
+
+[STR_BADGE_LIVERY_WORKHORSE]
+base = "勤劳驮马涂装"
+
+# behaviour badges (behaviour and role are different)
+
+[STR_BADGE_BEHAVIOUR]
+base = "行为模式"
+
+[STR_BADGE_BEHAVIOUR_CABOOSE]
+base = "无影响"
+
+[STR_BADGE_BEHAVIOUR_DRIVING_CAB]
+base = "驾驶控制车{BLACK} - 可连接于列车首尾，但需至少配备另一台机车作为动力单元。"
+
+[STR_BADGE_BEHAVIOUR_EASTER_EGG_HAULAGE_SPEED_BONUS]
+base = "可被特快机车牵引"
+
+[STR_BADGE_BEHAVIOUR_LGV_CAPABLE]
+base = "高速铁路适用"
+
+[STR_BADGE_BEHAVIOUR_RANDOMISED_WAGON]
+base = "随机选择拖车类型"
+
+[STR_BADGE_BEHAVIOUR_RESTAURANT_CAR]
+base = "免除列车中所有客车与高速客车的运营成本"
+
+[STR_BADGE_BEHAVIOUR_TILT]
+base = "带有转向架倾斜系统，以实现高速过弯。"
+
+# role badges
+
+[STR_BADGE_ROLE]
+base = "车辆类型"
+
+[STR_BADGE_ROLE_DRIVING_CAB]
+base = "驾驶控制车"
+
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
+base = "多功能"
+
+[STR_BADGE_ROLE_EXPRESS]
+base = "特快"
+
+[STR_BADGE_ROLE_FREIGHT]
+base = "货运"
+
+[STR_BADGE_ROLE_GRONK]
+base = "猪！"
+
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
+base = "城际特快"
+
+[STR_BADGE_ROLE_LOLZ]
+base = "彩蛋"
+
+[STR_BADGE_ROLE_METRO]
+base = "高运量城轨"
+
+[STR_BADGE_ROLE_METRO_FREIGHT]
+base = "货运城轨"
+
+[STR_BADGE_ROLE_SUBURBAN]
+base = "高运量"
+
+# gen badges
+
+[STR_BADGE_GEN]
+base = "第"
+
+[STR_BADGE_GEN_1]
+base = "一代"
+
+[STR_BADGE_GEN_2]
+base = "二代"
+
+[STR_BADGE_GEN_3]
+base = "三代"
+
+[STR_BADGE_GEN_4]
+base = "四代"
+
+[STR_BADGE_GEN_5]
+base = "五代"
+
+[STR_BADGE_GEN_6]
+base = "六代"
+
+# power source badges
+
+[STR_BADGE_POWER_SOURCE_BATTERY_HYBRID]
+base = "油电混合"
+
+[STR_BADGE_POWER_SOURCE_DIESEL]
+base = "柴油"
+
+[STR_BADGE_POWER_SOURCE_OHLE]
+base = "电气化"
+
+[STR_BADGE_POWER_SOURCE_METRO]
+base = "第三轨"
+
+[STR_BADGE_POWER_SOURCE_STEAM]
+base = "蒸汽"
+
+# name suffixes
+
+[STR_WAGON_NAME_TRAILER]
+base = "拖车"
+
+# wagon class suffixes
+[STR_WAGON_NAME_ACID_TANK_CAR]
+base = "酸液罐车"
+
+[STR_WAGON_NAME_AGGREGATE_BULK_OPEN_CAR]
+base = "石料车"
+
+[STR_WAGON_NAME_AGGREGATE_HOPPER_CAR]
+base = "集料漏斗车"
+
+[STR_WAGON_NAME_ALIGNMENT_CAR]
+base = "校准车"
+
+[STR_WAGON_NAME_AUTOMOBILE_CAR]
+base = "汽车运输车"
+
+[STR_WAGON_NAME_BOLSTER_CAR]
+base = "驮架车"
+
+[STR_WAGON_NAME_BOX_CAR]
+base = "厢式货车"
+
+[STR_WAGON_NAME_BULK_CARGO_BOX_COMBOS]
+base = "矿物敞车"
+
+[STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
+base = "矿物漏斗车"
+
+[STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
+base = "矿物货车"
+
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
+base = "端板平板车"
+
+[STR_WAGON_NAME_BULKHEAD_FLAT_CAR]
+base = "端板平板车"
+
+[STR_WAGON_NAME_CABOOSE_CAR]
+base = "守车"
+
+[STR_WAGON_NAME_CANE_BIN_CAR]
+base = "甘蔗筐车"
+
+[STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
+base = "炭黑漏斗车"
+
+[STR_WAGON_NAME_CEMENT_SILO_CAR]
+base = "水泥罐车"
+
+[STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
+base = "化学品罐车"
+
+[STR_WAGON_NAME_COIL_BUGGY_CAR]
+base = "钢卷窄轨道车"
+
+[STR_WAGON_NAME_COIL_CAR]
+base = "钢卷运输车"
+
+[STR_WAGON_NAME_COVERED_HOPPER_CAR]
+base = "覆棚漏斗车"
+
+[STR_WAGON_NAME_CRYO_TANK_CAR]
+base = "低温罐车"
+
+[STR_WAGON_NAME_CURTAIN_SIDE_BOX_CAR]
+base = "侧帘厢式车"
+
+[STR_WAGON_NAME_DOUBLE_DECK_AUTOMOBILE_CAR]
+base = "双层汽车运输车"
+
+[STR_WAGON_NAME_MOTORAIL_AUTOMOBILE_CAR]
+base = "人车同行货车"
+
+[STR_WAGON_NAME_EXPRESS_CAR]
+base = "特快货车"
+
+[STR_WAGON_NAME_EXPRESS_INTERMODAL_CAR]
+base = "特快集装箱车"
+
+[STR_WAGON_NAME_FARM_CARGO_HOPPER_COMBOS]
+base = "谷物漏斗车"
+
+[STR_WAGON_NAME_FARM_CARGO_MIXED_COMBOS]
+base = "农产品货车"
+
+[STR_WAGON_NAME_FARM_PRODUCT_BOX_CAR]
+base = "农产品厢车"
+
+[STR_WAGON_NAME_FARM_PRODUCT_HOPPER_CAR]
+base = "农产品漏斗车"
+
+[STR_WAGON_NAME_FLAT_CAR]
+base = "通用平板车"
+
+[STR_WAGON_NAME_FLATBED_CARGO_COMBOS]
+base = "平板车"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_BOX_COMBOS]
+base = "特快食品厢车"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_LIQUID_COMBOS]
+base = "特快饮品货车"
+
+[STR_WAGON_NAME_FOOD_EXPRESS_TANK_CAR]
+base = "特快食品罐车"
+
+[STR_WAGON_NAME_FOOD_HOPPER_CAR]
+base = "食品漏斗车"
+
+[STR_WAGON_NAME_FOOD_INGREDIENTS_HOPPER_COMBOS]
+base = "食品原料漏斗车"
+
+[STR_WAGON_NAME_FOOD_INGREDIENTS_MIXED_COMBOS]
+base = "食品原料货车"
+
+[STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
+base = "重型漏斗车"
+
+[STR_WAGON_NAME_HEAVY_DUTY_FLAT_CAR]
+base = "重型平板车"
+
+[STR_WAGON_NAME_HIGH_SPEED_MAIL_CAR]
+base = "高速邮政车"
+
+[STR_WAGON_NAME_HIGH_SPEED_PASSENGER_CAR]
+base = "高速客车"
+
+[STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
+base = "罩式敞车"
+
+[STR_WAGON_NAME_HOPPER_CAR]
+base = "煤炭漏斗车"
+
+[STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
+base = "煤炭漏斗车"
+
+[STR_WAGON_NAME_HST_MAIL_CAR]
+base = "邮政车"
+
+[STR_WAGON_NAME_HST_PASSENGER_CAR]
+base = "客车"
+
+[STR_WAGON_NAME_INGOT_CAR]
+base = "锭模运输车"
+
+[STR_WAGON_NAME_INTERMODAL_CAR]
+base = "集装箱平板车"
+
+[STR_WAGON_NAME_LIME_COVERED_HOPPER_CAR]
+base = "石灰漏斗车"
+
+[STR_WAGON_NAME_LIVESTOCK_CAR]
+base = "牲畜厢车"
+
+[STR_WAGON_NAME_LIVESTOCK_EXPRESS_CAR]
+base = "特快牲畜厢车"
+
+[STR_WAGON_NAME_LOG_CAR]
+base = "原木运输车"
+
+[STR_WAGON_NAME_MAIL_CAR]
+base = "邮政车"
+
+[STR_WAGON_NAME_MERCHANDISE_BOX_CAR]
+base = "商品厢式车"
+
+[STR_WAGON_NAME_METAL_PRODUCT_COVERED_COMBOS]
+base = "有盖钢材车"
+
+[STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
+base = "钢材车"
+
+[STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR]
+base = "煤炭车"
+
+[STR_WAGON_NAME_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
+base = "砂石车"
+
+[STR_WAGON_NAME_MINERAL_COVERED_HOPPER_COMBOS]
+base = "有盖矿物漏斗车"
+
+[STR_WAGON_NAME_MGR_HOPPER_CAR]
+base = "MGR 漏斗车"
+
+[STR_WAGON_NAME_MILL_FLAT_CAR]
+base = "钢厂平板车"
+
+[STR_WAGON_NAME_MILL_OPEN_CAR]
+base = "钢厂敞车"
+
+[STR_WAGON_NAME_OPEN_CAR]
+base = "敞车"
+
+[STR_WAGON_NAME_OPEN_CAR_COMBOS]
+base = "敞车"
+
+[STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
+base = "敞车"
+
+[STR_WAGON_NAME_PANORAMIC_CAR]
+base = "全景客车"
+
+[STR_WAGON_NAME_PASSENGER_CAR]
+base = "客运车厢"
+
+[STR_WAGON_NAME_PEAT_CAR]
+base = "泥炭车"
+
+[STR_WAGON_NAME_PIECE_GOODS_COVERED_COMBOS]
+base = "覆棚货车"
+
+[STR_WAGON_NAME_PIECE_GOODS_EASILOADER_COMBOS]
+base = "易装卸有盖货车"
+
+[STR_WAGON_NAME_PIECE_GOODS_MIXED_COMBOS]
+base = "杂货车"
+
+[STR_WAGON_NAME_PIECE_GOODS_MANUFACTURING_PARTS_COMBOS]
+base = "零配件货车"
+
+[STR_WAGON_NAME_PIPE_CAR]
+base = "管材车"
+
+[STR_WAGON_NAME_PRESSURE_TANK_CAR]
+base = "压力罐车"
+
+[STR_WAGON_NAME_PRODUCT_TANK_CAR]
+base = "成品油罐车"
+
+[STR_WAGON_NAME_REEFER_CAR]
+base = "冷藏车"
+
+[STR_WAGON_NAME_RESTAURANT_CAR]
+base = "餐车"
+
+[STR_WAGON_NAME_ROCK_HOPPER_CAR]
+base = "石料漏斗车"
+
+[STR_WAGON_NAME_ROLLER_ROOF_HOPPER_CAR]
+base = "卷帘顶漏斗车"
+
+[STR_WAGON_NAME_SALT_COVERED_HOPPER_CAR]
+base = "食盐漏斗车"
+
+[STR_WAGON_NAME_SCRAP_METAL_CAR]
+base = "废料车"
+
+[STR_WAGON_NAME_SIDE_DOOR_HOPPER_CAR]
+base = "侧开门漏斗车"
+
+[STR_WAGON_NAME_SILO_CAR]
+base = "筒仓车"
+
+[STR_WAGON_NAME_SKIP_CAR]
+base = "矿斗车"
+
+[STR_WAGON_NAME_SLAG_LADLE_CAR]
+base = "渣罐车"
+
+[STR_WAGON_NAME_SLIDING_ROOF_CAR]
+base = "滑顶车"
+
+[STR_WAGON_NAME_SLIDING_ROOF_HI_CUBE_CAR]
+base = "高立方货车"
+
+[STR_WAGON_NAME_SLIDING_WALL_CAR]
+base = "滑门厢车"
+
+[STR_WAGON_NAME_SPACER_CAR]
+base = "间距车"
+
+[STR_WAGON_NAME_SUBURBAN_PASSENGER_CAR]
+base = "通勤客车"
+
+[STR_WAGON_NAME_SWING_ROOF_HOPPER_CAR]
+base = "摆顶漏斗车"
+
+[STR_WAGON_NAME_TANK_CAR]
+base = "罐车"
+
+[STR_WAGON_NAME_TARPAULIN_CAR]
+base = "篷布货车"
+
+[STR_WAGON_NAME_TIPPLER_BULK_OPEN_CAR]
+base = "翻卸货车"
+
+[STR_WAGON_NAME_TORPEDO_CAR]
+base = "鱼雷罐车"
+
+[STR_WAGON_NAME_VOLATILES_TANK_CAR]
+base = "危险品罐车"
+
+# cargo subtypes - only used for automobile cars (specifically vehicles cargo) as of May 2021
+[STR_CARGO_SUBTYPE_VEHI_0]
+base = "(汽车)"
+
+[STR_CARGO_SUBTYPE_VEHI_1]
+base = "(卡车)"
+
+[STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
+base = "{BLACK}使用 {STRING} 时: {GOLD}{POWER} {}{BLACK}使用 {STRING} 时: {GOLD}{POWER}"
+
+[STR_POWER_SOURCE]
+base = "动力类型"
+
+[STR_POWER_SOURCE_OHLE]
+base = "电气化"
+
+[STR_POWER_SOURCE_BATTERY_HYBRID]
+base = "油电混合"
+
+[STR_POWER_SOURCE_METRO]
+base = "第三轨"
+
+[STR_POWER_SOURCE_DIESEL]
+base = "柴油"
+
+[STR_POWER_SOURCE_STEAM]
+# reported unused by nml, but needed by docs as of April 2025
+base = "蒸汽"
+
+# assumed to be handling case of lgv_capable (two speeds)
+[STR_SPEED_BY_RAILTYPE_LGV_CAPABLE]
+base = "{BLACK}速度 (专用高速铁路): {GOLD}{VELOCITY} {}{BLACK}速度 (普通铁路): {GOLD}{VELOCITY}"
+
+# distributed power (dedicated wagons add power)
+[STR_WAGONS_ADD_POWER_CAB]
+base = "{BLACK}功率 (动车组): {GOLD}每个 {STRING} 客运/邮政动车 {POWER}"
+
+[STR_WAGONS_ADD_POWER_CAB_CARGO_SPRINTER]
+base = "{BLACK}功率 (动车组): {GOLD}每个 {STRING} 动车 {POWER}"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "{BLACK}功率 (动车组): {GOLD}挂载到 {STRING} 机车时提供 {POWER}"
+
+
+# project management
+[STR_SPRITES_COMPLETE]
+base = "{}贴图已完工: {GOLD}是"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}贴图已完工: {GOLD}否"
+
+## railtypes
+# lgv track strings
+# this type isn't built, it's unelectrified and exists for compatibility reasons, see electrified lgv instead
+[STR_RAILTYPE_LGV_NAME]
+base = "专用高速铁路 (LGV)"
+
+[STR_RAILTYPE_LGV_TOOLBAR_CAPTION]
+base = "[未使用]"
+
+[STR_RAILTYPE_LGV_MENU_TEXT]
+base = "[未使用]"
+
+[STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION]
+base = "新LGV车辆"
+
+[STR_RAILTYPE_LGV_AUTOREPLACE_TEXT]
+base = "LGV车辆"
+
+[STR_RAILTYPE_LGV_NEW_ENGINE_TEXT]
+base = "LGV机车"
+
+# lgv electrified track strings
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NAME]
+base = "专用高速铁路 (LGV)"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_TOOLBAR_CAPTION]
+base = "高速铁路建设"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_MENU_TEXT]
+base = "高速铁路建设"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_BUILD_WINDOW_CAPTION]
+base = "新LGV车辆"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_AUTOREPLACE_TEXT]
+base = "LGV车辆"
+
+[STR_RAILTYPE_LGV_ELECTRIFIED_OHLE_NEW_ENGINE_TEXT]
+base = "LGV机车"
+
+
+# metro track strings
+[STR_RAILTYPE_METRO_NAME]
+base = "轻轨"
+
+[STR_RAILTYPE_METRO_TOOLBAR_CAPTION]
+base = "轻轨建设"
+
+[STR_RAILTYPE_METRO_MENU_TEXT]
+base = "轻轨建设"
+
+[STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION]
+base = "新轻轨车辆"
+
+[STR_RAILTYPE_METRO_AUTOREPLACE_TEXT]
+base = "轻轨车辆"
+
+[STR_RAILTYPE_METRO_NEW_ENGINE_TEXT]
+base = "轻轨机车
+
+
+# narrow gauge track strings
+[STR_RAILTYPE_NARROW_GAUGE_NAME]
+base = "窄轨"
+
+[STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION]
+base = "窄轨建设"
+
+[STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT]
+base = "窄轨建设"
+
+[STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION]
+base = "新窄轨车辆"
+
+[STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT]
+base = "窄轨车辆"
+
+[STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT]
+base = "窄轨机车"
+
+
+# narrow gauge electrified track strings
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME]
+base = "电气化窄轨"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_TOOLBAR_CAPTION]
+base = "电气化窄轨建设"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_MENU_TEXT]
+base = "电气化窄轨建设"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_BUILD_WINDOW_CAPTION]
+base = "新电气化窄轨车辆"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT]
+base = "电气化窄轨列车"
+
+[STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
+base = "电气化窄轨机车"
+
+
+# docs extra strings
+
+[STR_EXTRA_TEXT_LIVERY_BANGER_BLUE]
+base = "极简涂装，主要使用公司第一配色，点缀少量公司第二配色。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_CLASSIC_LINES]
+base = "这种涂装主要使用公司第一配色，并在侧面饰有一条或多条公司第二配色的水平条纹。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_CONVENTIONAL_WISDOM]
+base = "这种涂装由两种公司配色的交替大色块组成，仅带有极简风格的标识（或完全没有标识）。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_FREIGHT_BLACK]
+base = "用于货运列车的涂装，多采用深暗、带有油污感的色彩，并使用一种或两种公司配色作为徽标或标识色。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_FRUIT_RIPPLE]
+base = "客运和邮政列车涂装，灵感源自英国城际铁路 的 'Swallow'和 'Executive'涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_GREY_HORSE]
+base = "货运列车涂装，以灰色为主色调，配有黄色或其他颜色的对比面板。灵感源自英国铁路 Railfreight 的 'Red Stripe'和 'Triple Grey Sector'涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_INDUSTRIAL_YELLOW]
+base = "专为钢铁厂、铸造厂等工业环境下的列车设计的涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_INVERSIONS]
+base = "多样化的涂装方案，主要使用公司第二配色，并以公司第一配色显示徽标或标识。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_LOWER_LINES]
+base = "这种涂装主要使用公司第一配色，并在车身下边缘或踏板处饰有公司第二配色的条纹。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_MAIL_BY_RAIL]
+base = "邮政列车的多样化涂装，灵感源自 Royal Mail、Rail Express Systems、TGV La Poste 等样式。始终以红色为主色。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_MARGINAL_GAINS]
+base = "客运和邮政列车的通用涂装，灵感源自 20 世纪 70 年代英国铁路郊区线路的白/蓝涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_METROLAND]
+base = "地铁列车的多样化涂装，灵感源自伦敦地铁等样式。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_RAIN_OR_SHINE]
+base = "客运和邮政列车的通用涂装，灵感源自传统的双色调涂装设计。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_RIDEWELL]
+base = "客运和邮政列车的通用涂装。风格会随着车辆代次的更迭而变化。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SHOW_PONY]
+base = "某些车辆专属的独特涂装，或是不属于任何其他分类的特殊样式。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_STOCK_STANDARD]
+base = "极简涂装，主要使用公司第一配色，并以公司第二配色显示公司徽标或标识。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SUPERGRAPHIC]
+base = "一种醒目的涂装，由大面积的黄色块和公司第一配色组成，有时会以公司第二配色显示徽标或标识。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_SURE_PACE]
+base = "客运和邮政列车的通用涂装。风格会随着车辆代次的更迭而变化。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VANILLA]
+base = "原机默认涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VAPID_VOYAGER]
+base = "客运和邮政列车涂装，灵感源自 Virgin Trains、Greater Anglia等类似样式。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_VINYL_VECTOR]
+base = "客运和邮政列车的通用涂装，灵感源自 20 世纪 90 年代末至 2020 年代流行的流线性“飘带”纹样涂装。"
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_WORKHORSE]
+base = "货运列车涂装，由纯黑背景和两种公司配色的混合色块组成。"
+docs_only = true
