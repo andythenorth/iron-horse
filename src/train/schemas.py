@@ -909,12 +909,19 @@ class SchemaBase(object):
     @cached_property
     def hide_in_simplified_mode(self):
         # can't just use joker for hiding in simplified mode, have to wrap around variants and a few other fragile special cases
-        if self.joker:
-            return True
+        # special cases first
+        if self.catalogue.tgv_hst_quacker.quack:
+            # TGV / HST middle parts need to be available or hidden depending on cab engine availability
+            if self.catalogue.tgv_hst_quacker.is_tgv_hst_middle_part:
+                if self.catalogue.cab_engine_model.joker:
+                    return True
+                else:
+                    return not self.is_default_model_variant
+        # generally, all non-default variants are expected to be hidden, even if not jokers
         if not self.is_default_model_variant:
             return True
-        # default fallthrough is to not hide
-        return False
+        # default is to use the joker value (all jokers are hidden)
+        return self.joker
 
     @cached_property
     def requires_custom_buy_menu_sprite(self):
