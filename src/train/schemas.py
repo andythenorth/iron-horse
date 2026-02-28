@@ -2682,6 +2682,7 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
@@ -2916,6 +2917,7 @@ class BoxCarType3(BoxCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
         weathered_states = {"unweathered": graphics_constants.box_livery_recolour_map}
@@ -4379,6 +4381,7 @@ class ExpressCarType2(ExpressCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class ExpressCarRandomised(RandomisedCarVanillaMixin, ExpressCarBase):
