@@ -907,6 +907,16 @@ class SchemaBase(object):
         return self.variant_group.get_variant_group_prop_for_model_variant(self)
 
     @cached_property
+    def hide_in_simplified_mode(self):
+        # can't just use joker for hiding in simplified mode, have to wrap around variants and a few other fragile special cases
+        if self.joker:
+            return True
+        if not self.is_default_model_variant:
+            return True
+        # default fallthrough is to not hide
+        return False
+
+    @cached_property
     def requires_custom_buy_menu_sprite(self):
         # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
         if len(self.units) > 1:
