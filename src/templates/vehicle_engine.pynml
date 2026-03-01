@@ -36,8 +36,20 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">
+
     spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${model_variant.model_id}.png") {
-        ${model_variant.get_nml_for_spriteset_template(y_offset=model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30)}
+        <!--! note the weird jank to handle articulated the y position of buy menu sprites
+              it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->
+        <tal:buy_menu_sprite_switch_case switch="model_variant.requires_custom_buy_menu_sprite">
+            <tal:case case="True">
+                <!--! custom buy menu sprites are generated in the order required for the variants in buy menu, and are in consecutive spriterows -->
+                ${model_variant.get_nml_for_spriteset_template(y_offset=model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30)}
+            </tal:case>
+            <tal:case case="False">
+                <!--! non-custom buy menu sprites use rel_spriterow_index and livery to select correct sprite -->
+                ${model_variant.get_nml_for_spriteset_template(y_offset=(unit.rel_spriterow_index * len(model_variant.model_def.liveries) * 30) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30))}
+            </tal:case>
+        </tal:buy_menu_sprite_switch_case>
     }
 
     <tal:conditional_pantographs condition="model_variant.pantograph_type is not None">
