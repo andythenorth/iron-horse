@@ -1428,8 +1428,8 @@ class AutoCoachCombineEngine(EngineSchemaBase):
 
     @property
     def tractive_effort_coefficient(self):
-        # nerf TE down to minimal value
-        return 0
+        # nerf TE down to minimal value (don't use 0 as some AIs apparently crash on a divide-by-zero, pff)
+        return 0.1
 
     @property
     def fixed_run_cost_points(self):
