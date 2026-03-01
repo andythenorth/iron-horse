@@ -4,8 +4,7 @@ grflangid = 0x01
 plural = 0
 
 [STR_GRF_DESCRIPTION]
-base = "License: {SILVER}GPL v2{}{BLACK}"
-
+base = "{ORANGE}Iron Horse (Trains){}{BLACK}A comprehensive train set with a gameplay focus, including a full set of steam, diesel and electric trains spanning 1860 to 2020. Also includes high speed trains, narrow gauge trains and metro trains. Inspired (mostly) by British and Irish trains.{SILVER}See website for more information. {BLACK}License: GPL v2"
 
 # parameters (action 14 etc)
 
