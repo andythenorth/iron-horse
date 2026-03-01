@@ -126,7 +126,7 @@ engine_module_names = [
     "gronk",
     "chuggypig",
     "progress",
-    "magnum_90",
+    "magnum_vario",
     "snowplough_pony_gen_2",
     # autocoach (only one as autoreplace can't handle mixed cargo articulated vehicles)
     "autocoach_pony_gen_2",

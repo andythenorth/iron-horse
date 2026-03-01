@@ -6,9 +6,9 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SimpleEngine",
-        model_id="magnum_90",
+        model_id="magnum_vario",
         base_numeric_id=21680,
-        name="Magnum 90",
+        name="Magnum Vario",
         subrole="gronk",
         subrole_child_branch_num=-4,
         power_by_power_source={
@@ -37,5 +37,40 @@ def main(**kwargs):
     model_def.define_foamer_facts("""Clayton CBD90""")
 
     result.append(model_def)
+
+    # !! as of Mar 2026, the clones have the same purchase cost and run cost as the source
+    # !! that's likely fixable, but eh
+
+    model_def_clone = model_def.begin_clone(base_numeric_id=17310, unit_repeats=[0])
+
+    model_def_clone.power_by_power_source={
+            "BATTERY_HYBRID": 675,
+        }
+    model_def_clone.add_unit_def(
+        unit_cls_name="DieselEngineUnit",
+        weight=67,
+        vehicle_length=6,
+        rel_spriterow_index=1,
+    )
+
+    model_def_clone = model_def_clone.complete_clone()
+
+    result.append(model_def_clone)
+
+    model_def_clone = model_def.begin_clone(base_numeric_id=17250, unit_repeats=[0])
+
+    model_def_clone.power_by_power_source={
+            "BATTERY_HYBRID": 450,
+        }
+    model_def_clone.add_unit_def(
+        unit_cls_name="DieselEngineUnit",
+        weight=45,
+        vehicle_length=4,
+        rel_spriterow_index=2,
+    )
+
+    model_def_clone = model_def_clone.complete_clone()
+
+    result.append(model_def_clone)
 
     return result
