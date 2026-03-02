@@ -3,6 +3,19 @@ Changelog
 
 
 --------------
+4.14.1 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.12.0.
+
+
+*Fixes*
+
+- livery support was broken for snowploughs
+
+
+--------------
 4.14.0 Release
 --------------
 
