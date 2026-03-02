@@ -43,15 +43,13 @@ def main(**kwargs):
 
     model_def_clone = model_def.begin_clone(base_numeric_id=17310, unit_repeats=[0])
 
-    model_def_clone.power_by_power_source={
-            "BATTERY_HYBRID": 675,
-        }
     model_def_clone.add_unit_def(
         unit_cls_name="DieselEngineUnit",
         weight=67,
         vehicle_length=6,
         rel_spriterow_index=1,
     )
+    model_def_clone.clone_stats_adjustment_factor = 0.75
 
     model_def_clone = model_def_clone.complete_clone()
 
@@ -59,15 +57,13 @@ def main(**kwargs):
 
     model_def_clone = model_def.begin_clone(base_numeric_id=17250, unit_repeats=[0])
 
-    model_def_clone.power_by_power_source={
-            "BATTERY_HYBRID": 450,
-        }
     model_def_clone.add_unit_def(
         unit_cls_name="DieselEngineUnit",
         weight=45,
         vehicle_length=4,
         rel_spriterow_index=2,
     )
+    model_def_clone.clone_stats_adjustment_factor = 0.5
 
     model_def_clone = model_def_clone.complete_clone()
 

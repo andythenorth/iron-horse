@@ -154,7 +154,8 @@ class ModelDefCloner:
         except:
             raise Exception("source_unit_count failed" + str(model_def))
         clone_unit_count = model_def.produced_unit_total
-        model_def.clone_stats_adjustment_factor = clone_unit_count / source_unit_count
+        if model_def.clone_stats_adjustment_factor is None:
+            model_def.clone_stats_adjustment_factor = clone_unit_count / source_unit_count
 
         # recalculate power in a clone
         result = {}
