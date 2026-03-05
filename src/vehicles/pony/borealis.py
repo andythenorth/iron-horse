@@ -17,8 +17,8 @@ def main(**kwargs):
         },
         intro_year_offset=-7,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
-        livery_group_name="gen_6_pax_liveries",  # override default liveries from gestalt
-        pantograph_type="z-shaped-double-with-base",
+        livery_group_name="gen_6_pax_liveries_special_case_jank",  # override default liveries from gestalt
+        pantograph_type="z-shaped-double",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
         sprites_complete=False,

@@ -853,6 +853,13 @@ def main():
                 ("VINYL_VECTOR", 0),
                 ("VAPID_VOYAGER", 1),
             ],
+            # ach special casing crap
+            "gen_6_pax_liveries_special_case_jank": [
+                ("CONVENTIONAL_WISDOM", 0),
+                ("SHOW_PONY", 1),
+                ("INVERSIONS", 2),
+                #("VAPID_VOYAGER", 1),
+            ],
             "gen_3_ng_pax_liveries": [
                 ("MARGINAL_GAINS", 0),
                 ("RAIN_OR_SHINE", 1),
