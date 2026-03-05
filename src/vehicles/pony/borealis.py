@@ -6,27 +6,27 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="PassengerEngineExpressRailcar",
-        model_id="nimbus",
-        base_numeric_id=940,
-        name="Nimbus",
+        model_id="borealis",
+        base_numeric_id=4920,
+        name="Borealis",
         subrole="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
-        subrole_child_branch_num=-3,
+        subrole_child_branch_num=-4,
         power_by_power_source={
-            "DIESEL": 1500,
-            "OHLE": 2500,
+            "DIESEL": 1450,
+            "OHLE": 2450,
         },
-        intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
+        intro_year_offset=-7,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         livery_group_name="gen_6_pax_liveries",  # override default liveries from gestalt
         pantograph_type="z-shaped-double-with-base",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
         unit_cls_name="ElectroDieselExpressRailcarPaxUnit",
-        weight=60,
+        weight=57,
         capacity=24,
         chassis="railcar_32px",
         tail_light="railcar_32px_5",
@@ -35,10 +35,10 @@ def main(**kwargs):
     )
 
     model_def.define_description(
-        """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
+        """"We were miles away from our real lives."""
     )
     model_def.define_foamer_facts(
-        """Bombardier Class 221 <i>Super Voyager</i>"""
+        """Hitachi Class 810 <i>Aurora</i>"""
     )
 
     result.append(model_def)

@@ -160,6 +160,7 @@ engine_module_names = [
     "olympic",
     "chronos",
     "nimbus",
+    "borealis",
     # brit high speed pax
     "firebird_cab",
     "blaze_cab",

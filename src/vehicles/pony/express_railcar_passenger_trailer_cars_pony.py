@@ -134,4 +134,24 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    model_def = ModelDef(
+        schema_name="PassengerExpressRailcarTrailerCar",
+        base_numeric_id=4930,
+        gen=6,
+        subtype="U",
+        cab_id="borealis",
+        lgv_capable=True,
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="PaxRailcarTrailerCarUnit",
+        chassis="high_speed_32px",
+        tail_light="railcar_32px_5",
+        suppress_roof_sprite=True,
+        repeat=2,
+    )
+
+    result.append(model_def)
+
     return result
