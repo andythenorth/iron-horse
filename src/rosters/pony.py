@@ -856,9 +856,10 @@ def main():
             # ach special casing crap
             "gen_6_pax_liveries_special_case_jank": [
                 ("CONVENTIONAL_WISDOM", 0),
-                ("SHOW_PONY", 1),
-                ("INVERSIONS", 2),
-                #("VAPID_VOYAGER", 1),
+                ("VAPID_VOYAGER", 1),
+                ("VINYL_VECTOR", 2),
+                ("SHOW_PONY", 4),
+                ("INVERSIONS", 3),
             ],
             "gen_3_ng_pax_liveries": [
                 ("MARGINAL_GAINS", 0),
