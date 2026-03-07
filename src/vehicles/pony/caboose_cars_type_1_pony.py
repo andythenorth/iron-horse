@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CabooseCarType1",
-        base_numeric_id=29330,
+        base_numeric_id=17970,
         gen=1,
         subtype="aA",
         sprites_complete=True,

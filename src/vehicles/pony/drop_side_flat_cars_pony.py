@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropSide",
-        base_numeric_id=40810,
+        base_numeric_id=17400,
         gen=3,
         subtype="A",
         base_track_type="NG",

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarRandomised",
-        base_numeric_id=38920,
+        base_numeric_id=18450,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarRandomised",
-        base_numeric_id=38900,
+        base_numeric_id=18430,
         gen=4,
         subtype="C",
         sprites_complete=True,

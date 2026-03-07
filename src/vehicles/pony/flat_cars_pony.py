@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCar",
-        base_numeric_id=38840,
+        base_numeric_id=18370,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCar",
-        base_numeric_id=38800,
+        base_numeric_id=18080,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -65,7 +65,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCar",
-        base_numeric_id=38820,
+        base_numeric_id=18350,
         gen=2,
         subtype="B",
         sprites_complete=True,

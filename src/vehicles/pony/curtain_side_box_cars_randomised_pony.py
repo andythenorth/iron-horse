@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideRandomised",
-        base_numeric_id=38940,
+        base_numeric_id=18490,
         gen=5,
         subtype="C",
         sprites_complete=True,
