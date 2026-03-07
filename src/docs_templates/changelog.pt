@@ -3,6 +3,30 @@ Changelog
 
 
 --------------
+4.15.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.15.0.
+
+
+*Changes*
+
+- added Borealis express passenger railcar (and trailers)
+    - 120 mph (155 mph on dedicated high speed rail)
+    - 1450 hp on diesel power, 2450 hp on AC electric power
+    - available around 2013
+- added liveries for
+    - Smizzle
+    - Trojan
+
+
+*Docs*
+
+- fix incorrect sprite lengths in docs for Magnum Vario
+
+
+--------------
 4.14.1 Release
 --------------
 

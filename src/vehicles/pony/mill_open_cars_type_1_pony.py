@@ -64,7 +64,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillType1",
-        base_numeric_id=38620,
+        base_numeric_id=18560,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillType1",
-        base_numeric_id=38640,
+        base_numeric_id=18580,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillType1",
-        base_numeric_id=38660,
+        base_numeric_id=18600,
         gen=4,
         subtype="B",
         sprites_complete=True,

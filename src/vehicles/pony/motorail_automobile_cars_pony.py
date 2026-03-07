@@ -23,7 +23,7 @@ def main(**kwargs):
 
     #     model_def = ModelDef(
     #         schema_name="AutomobileMotorailCar",
-    #         base_numeric_id=38760,
+    #         base_numeric_id=40520,
     #         gen=2,
     #         subtype="C",
     #         sprites_complete=False,
