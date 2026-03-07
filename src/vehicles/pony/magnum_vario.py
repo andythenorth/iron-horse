@@ -43,6 +43,7 @@ def main(**kwargs):
 
     model_def_clone = model_def.begin_clone(base_numeric_id=17310, unit_repeats=[0])
 
+    model_def_clone.docs_image_spriterow = 1
     model_def_clone.add_unit_def(
         unit_cls_name="DieselEngineUnit",
         weight=67,
@@ -57,6 +58,7 @@ def main(**kwargs):
 
     model_def_clone = model_def.begin_clone(base_numeric_id=17250, unit_repeats=[0])
 
+    model_def_clone.docs_image_spriterow = 2
     model_def_clone.add_unit_def(
         unit_cls_name="DieselEngineUnit",
         weight=45,

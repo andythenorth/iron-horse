@@ -222,7 +222,12 @@ def render_docs_vehicle_images(
         intermediate_image.putpalette(dos_palette)
 
         if model_variant.model_def.docs_image_spriterow is not None:
-            y_offset = 30 * model_variant.model_def.docs_image_spriterow
+            # forced (used to handle speicfic clone case of Magnum Vario as of March 2026)
+            # base calc using a manually specified attribute on the clone
+            y_offset = 30 * model_variant.model_def.docs_image_spriterow * len(model_variant.model_def.liveries)
+            # then offset automatically for livery
+            y_offset += 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            print(model_variant.id, y_offset)
         elif model_variant.gestalt_graphics.row_count_for_docs_image_offset is not None:
             # specific custom offset, for example, if there's an extra row per livery for a masked layer
             y_offset = 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num * model_variant.gestalt_graphics.row_count_for_docs_image_offset
