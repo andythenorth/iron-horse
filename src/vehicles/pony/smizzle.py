@@ -19,9 +19,10 @@ def main(**kwargs):
         intro_year_offset=-1,  # introduce earlier by design
         liveries=[
             "CLASSIC_LINES",
-            #"WORKHORSE",
             "STOCK_STANDARD",
-           # "RAILFREIGHT_RED_STRIPE",
+            "RAILFREIGHT_RED_STRIPE",
+            "FREIGHT_BLACK",
+            "SHOW_PONY",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,
