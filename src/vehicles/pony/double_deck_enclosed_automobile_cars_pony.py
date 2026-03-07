@@ -39,7 +39,7 @@ def main(**kwargs):
         base_numeric_id=4960,
         gen=5,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
