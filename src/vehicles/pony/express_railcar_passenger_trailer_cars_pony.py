@@ -141,7 +141,7 @@ def main(**kwargs):
         subtype="U",
         cab_id="borealis",
         lgv_capable=True,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
