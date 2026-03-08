@@ -31,7 +31,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_32px",
+        chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_32px",
+        chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
@@ -91,7 +91,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_32px",
+        chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
@@ -121,7 +121,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_32px",
+        chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
