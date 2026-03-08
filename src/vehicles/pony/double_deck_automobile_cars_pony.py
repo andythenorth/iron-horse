@@ -37,10 +37,10 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="AutomobileDoubleDeckCar",
-        base_numeric_id=590,
+        base_numeric_id=580,
         gen=4,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -91,7 +91,7 @@ def main(**kwargs):
         base_numeric_id=5830,
         gen=5,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

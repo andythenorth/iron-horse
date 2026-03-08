@@ -55,6 +55,19 @@ class DoubleDeckAutomobilesCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "double_deck"  # arguably should be 'dropped deck' or something as appropriate
 
 
+class DefaultCars16pxCargoSet(DefaultAutomobilesCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 16
+        super().__init__(**kwargs)
+        self.variants = [
+            ["cars_1_15_foot_red"],
+            ["cars_1_15_foot_blue"],
+            ["cars_1_15_foot_grey"],
+            ["cars_1_15_foot_mint_green"],
+            ["cars_1_15_foot_1CC"],
+        ]
+
+
 class DefaultCars20pxCargoSet(DefaultAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 20
@@ -475,6 +488,7 @@ class Trucks32pxCargoSet(DefaultAutomobilesCargoSetBase):
 
 subtype_to_cargo_set_mapping = {
     "cars": [
+        DefaultCars16pxCargoSet,
         DefaultCars20pxCargoSet,
         DefaultCars24pxCargoSet,
         DefaultCars32pxCargoSet,
