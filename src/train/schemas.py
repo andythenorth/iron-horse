@@ -1365,16 +1365,17 @@ class EngineSchemaBase(SchemaBase):
     @property
     def power_source_badges(self):
         # note returns multiple badges, as engines support multiple power sources
+        # note that by convention across grfs, power source badges are `'power/`
         result = []
         if self.power_by_power_source is not None:
             for power_source in self.power_by_power_source.keys():
                 # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
                 if power_source in ["NULL"]:
                     continue
-                result.append(f"power_source/{power_source.lower()}")
+                result.append(f"power/{power_source.lower()}")
             # special cases
             if self.is_electro_diesel:
-                result.append("power_source/electro_diesel")
+                result.append("power/electro_diesel")
         return result
 
 
