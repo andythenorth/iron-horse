@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32730,
+        base_numeric_id=32960,
         gen=2,
         subtype="B",
         sprites_complete=False,
@@ -16,14 +16,14 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_24px"
+        chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32840,
+        base_numeric_id=33030,
         gen=2,
         subtype="C",
         sprites_complete=False,
@@ -38,7 +38,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32880,
+        base_numeric_id=33050,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -46,14 +46,14 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_24px"
+        chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32900,
+        base_numeric_id=33280,
         gen=3,
         subtype="C",
         sprites_complete=False,
@@ -76,7 +76,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_24px"
+        chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
@@ -106,7 +106,7 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
-        chassis="4_axle_running_gear_only_24px"
+        chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
