@@ -1,6 +1,7 @@
 # badges can be predefined here, or created dynamically for specific vehicle models etc as needed
 static_badges = {
-    "power_source": {
+    # by convention across grfs, power source badges are `power/`
+    "power": {
         "name": "STR_POWER_SOURCE",
         "sublabels": {
             "dual_voltage": {},

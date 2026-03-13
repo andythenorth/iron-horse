@@ -138,7 +138,7 @@ class BadgeManager(list):
     def produce_power_source_badges(self, **kwargs):
         for power_source in global_constants.power_sources.keys():
             self.add_badge(
-                label=f"power_source/{power_source.lower()}",
+                label=f"power/{power_source.lower()}",
                 name=f"STR_BADGE_POWER_SOURCE_{power_source}",
             )
 
