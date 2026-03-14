@@ -33,7 +33,7 @@
                 ${int(not model_variant.suppress_pantograph_if_no_engine_attached)}
                 <tal:has_cab_consist condition="catalogue.cab_engine_model is not None">
                     ||
-                    count_has_badge("ih_pantograph_display/is_cab/${catalogue.cab_engine_model.model_id}") > 0
+                    count_has_badge("_ih_pantograph_display/is_cab/${catalogue.cab_engine_model.model_id}") > 0
 
                 </tal:has_cab_consist>
 

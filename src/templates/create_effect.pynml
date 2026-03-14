@@ -47,7 +47,7 @@
     <tal:is_distributed_power_wagon case="True">
         <!--! power varies if specific engines are present in the consist -->
         <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-        switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_create_effect_check_unit_has_any_power, count_has_badge("ih_distributed_power/is_power_cab/${catalogue.cab_engine_model.model_id}")) {
+        switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_create_effect_check_unit_has_any_power, count_has_badge("_ih_distributed_power/is_power_cab/${catalogue.cab_engine_model.model_id}")) {
             0: return 0;
             return 1;
         }

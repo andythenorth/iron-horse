@@ -439,12 +439,12 @@ class Catalogue(list):
         ):
             if self.cab_producer.catalogue.model_def.pantograph_type is not None:
                 result.append(
-                    f"ih_pantograph_display/requires_cab_present/{self.model_id}"
+                    f"_ih_pantograph_display/requires_cab_present/{self.model_id}"
                 )
         # now find out if we're a cab, and if we need pans
         if self.engine_quacker.is_cab_with_dedicated_trailers:
             if self.model_def.pantograph_type is not None:
-                result.append(f"ih_pantograph_display/is_cab/{self.model_id}")
+                result.append(f"_ih_pantograph_display/is_cab/{self.model_id}")
         # strictly we should never need both results and could return early, but eh, this also works
         return result
 
