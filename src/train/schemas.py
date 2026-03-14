@@ -310,10 +310,10 @@ class SchemaBase(object):
         result = []
         if self.is_distributed_power_wagon:
             result.append(
-                f"ih_distributed_power/powered_by/{self.catalogue.cab_engine_model.model_id}"
+                f"_ih_distributed_power/powered_by/{self.catalogue.cab_engine_model.model_id}"
             )
         if self.is_distributed_power_cab:
-            result.append(f"ih_distributed_power/is_power_cab/{self.model_id}")
+            result.append(f"_ih_distributed_power/is_power_cab/{self.model_id}")
         return result
 
     @property
