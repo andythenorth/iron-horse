@@ -297,12 +297,12 @@ class SchemaBase(object):
         if self.catalogue.wagon_quacker.is_randomised_wagon_type:
             result.append("ih_behaviour/randomised_wagon")
             result.append(
-                f"ih_randomised_wagon/type/{self.badge_slug_randomised_wagon_type}"
+                f"_ih_randomised_wagon/type/{self.badge_slug_randomised_wagon_type}"
             )
             for (
                 candidate_name
             ) in self.wagon_randomisation_candidate_assortment_unique_names:
-                result.append(f"ih_randomised_wagon/candidates/{candidate_name}")
+                result.append(f"_ih_randomised_wagon/candidates/{candidate_name}")
         return set(result)
 
     @property
