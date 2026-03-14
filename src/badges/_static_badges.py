@@ -8,7 +8,8 @@ static_badges = {
             "electro_diesel": {},
         },
     },
-    "ih_wagon_subtype": {
+    # private
+    "_ih_wagon_subtype": {
         # "name": "STR_BADGE_WAGON_LENGTH",
         "sublabels": {
             "a": {},  # {"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
@@ -19,6 +20,7 @@ static_badges = {
             "z": {},  # CABBAGE 3/8 temp
         },
     },
+    # public, might be of use to AI/GS
     "ih_gen": {
         "name": "STR_BADGE_GEN",
         "sublabels": {
@@ -46,6 +48,7 @@ static_badges = {
             "very_high_speed": {"name": "STR_BADGE_ROLE_INTERCITY_EXPRESS"},
         },
     },
+    # `ih_behaviour` is public, used with railtypes
     # note that we namespace `ih_behaviour` intentionally;
     # I considered just `behaviour`,
     # but I don't want to deal with de-conflicting other people's interpretations of that
