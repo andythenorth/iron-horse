@@ -180,7 +180,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
 
 <!--! (conditional) stuff any temp storages needed for use with the var_41_but_badges_not_ids magic -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, [
-        initialise_alt_var_41_with_badge_predicate(badgetype("ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"))
+        initialise_alt_var_41_with_badge_predicate(badgetype("_ih_formation_ruleset/vehicle_reports_as/${model_variant.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"))
     ]) {
     return ${unit.id}_switch_graphics_position_in_formation_entry_point;
 }

@@ -276,19 +276,19 @@ class SchemaBase(object):
         result = []
         if self.gestalt_graphics.formation_ruleset is not None:
             result.append(
-                f"ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
+                f"_ih_formation_ruleset/{self.gestalt_graphics.formation_ruleset}"
             )
         # specifically the ruleset can take one and only one (as of April 2025) badge to look for across the formation
         # that's used by alt_var_41, so let's just be explicit
         if self.gestalt_graphics.badge_slug_for_alt_var_41_predicate is not None:
             result.append(
-                f"ih_formation_ruleset/alt_var_41_predicate/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
+                f"_ih_formation_ruleset/alt_var_41_predicate/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
             )
             result.append(
-                f"ih_formation_ruleset/vehicle_reports_as/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
+                f"_ih_formation_ruleset/vehicle_reports_as/{self.gestalt_graphics.badge_slug_for_alt_var_41_predicate}"
             )
         for flag in self.catalogue.formation_reporting_labels:
-            result.append(f"ih_formation_ruleset/vehicle_reports_as/{flag}")
+            result.append(f"_ih_formation_ruleset/vehicle_reports_as/{flag}")
         return result
 
     @property

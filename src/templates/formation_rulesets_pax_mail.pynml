@@ -5,13 +5,13 @@
 
     <!--! special case to avoid too many things that look like brake coaches, can't be done in the map, has to check actual consist -->
     switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_brake_limiter_last, [
-            count_has_badge("ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
+            count_has_badge("_ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
         ]) {
         0: return ${last};
         return ${special};
     }
     switch (FEAT_TRAINS, PARENT, switch_graphics_pax_car_ruleset_brake_limiter_first, [
-            count_has_badge("ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
+            count_has_badge("_ih_formation_ruleset/vehicle_reports_as/looks_like_pax_brake_car")
         ]) {
         0: return ${first};
         return ${special};
@@ -20,7 +20,7 @@
     <!--! utility to check for restaurant cars -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_check_if_restaurant_at_offset, offset, [
             <!--! 0x61 requires register 0x10E to contain the parameter to check - store the badge there -->
-            STORE_TEMP(badgetype("ih_formation_ruleset/vehicle_reports_as/restaurant_car"), 0x10E),
+            STORE_TEMP(badgetype("_ih_formation_ruleset/vehicle_reports_as/restaurant_car"), 0x10E),
             STORE_TEMP(offset, 0x10F),
             var[0x61, 0, 0x00000001, 0x7A],
         ]) {
