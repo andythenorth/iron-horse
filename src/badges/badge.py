@@ -183,10 +183,10 @@ class BadgeManager(list):
 
         # copy elements of the livery_def into badges, for both behaviour and debugging
         self.add_badge(
-            label=f"ih_livery_def/use_weathering/False",
+            label=f"_ih_livery_def/use_weathering/False",
         )
         self.add_badge(
-            label=f"ih_livery_def/use_weathering/True",
+            label=f"_ih_livery_def/use_weathering/True",
         )
 
         # internal names, no consolidation across liveries
@@ -197,7 +197,7 @@ class BadgeManager(list):
             colour_set_name
         ) in livery_supplier.freight_livery_colour_set_indexes_and_names:
             self.add_badge(
-                label=f"ih_livery_def/colour_set_names/{colour_set_name}",
+                label=f"_ih_livery_def/colour_set_names/{colour_set_name}",
             )
 
     def produce_formation_ruleset_badges(self, **kwargs):

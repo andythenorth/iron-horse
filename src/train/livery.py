@@ -50,11 +50,11 @@ class LiveryDef:
 
     @property
     def internal_name_badge_label(self):
-        return f"ih_livery_def/internal_livery_name/{self.livery_name.lower()}"
+        return f"_ih_livery_def/internal_livery_name/{self.livery_name.lower()}"
 
     @property
     def weathering_badge_label(self):
-        return f"ih_livery_def/use_weathering/{self.use_weathering}"
+        return f"_ih_livery_def/use_weathering/{self.use_weathering}"
 
 
 class LiverySupplier(dict):
