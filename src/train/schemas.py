@@ -371,7 +371,7 @@ class SchemaBase(object):
         if not self.catalogue.wagon_quacker.is_caboose:
             result.append(f"ih_gen/{self.gen}")
         if getattr(self, "subtype", None) is not None:
-            result.append("ih_wagon_subtype/" + self.subtype.lower())
+            result.append("_ih_wagon_subtype/" + self.subtype.lower())
         # variant_group_id is for debug only, variant groups in game determined by standalone action 0 prop
         if False:  # make True to turn on debug
             if self.catalogue_entry.variant_group_id is not None:
