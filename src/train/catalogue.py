@@ -337,19 +337,14 @@ class Catalogue(list):
         return self.cab_producer.catalogue.example_model_variant
 
     @cached_property
-    def dedicated_trailer_catalogue_model_variant_mappings(self):
-        # fetch dedicated trailer vehicles for this cab engine (if any)
+    def dedicated_trailer_catalogues(self):
+        # (if this catalogue has any related dedicated trailer catalogues)
         # this is _expected_ to fail if called too early - there won't be any wagons
         # - there's no guard against that as of April 2025, just don't it
-        # considered moving to EngineQuacker, as it's only used for engines as of April 2025, but not sure yet (WagonQuacker is supposed to be 'is?' not 'here are...')
         result = []
-        for (
-            catalogue_id,
-            catalogue_model_variant_mapping,
-        ) in self.roster.model_variants_by_catalogue.items():
-            catalogue = catalogue_model_variant_mapping["catalogue"]
+        for catalogue in self.roster.catalogues:
             if catalogue.model_def.cab_id == self.model_id:
-                result.append(catalogue_model_variant_mapping)
+                result.append(catalogue)
         return result
 
     @cached_property
@@ -714,7 +709,7 @@ class EngineQuacker:
         # predicate for engines which act as cabs for dedicated trailers
         if not self._quack():
             return False
-        if len(self.catalogue.dedicated_trailer_catalogue_model_variant_mappings) > 0:
+        if len(self.catalogue.dedicated_trailer_catalogues) > 0:
             return True
         # fall through
         return False
@@ -809,7 +804,8 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ in ["PassengerCarBase", "MailCarBase", "AutomobileMotorailCar"]
+            base.__name__
+            in ["PassengerCarBase", "MailCarBase", "AutomobileMotorailCar"]
             for base in self.catalogue.schema_cls.__mro__
         )
 
