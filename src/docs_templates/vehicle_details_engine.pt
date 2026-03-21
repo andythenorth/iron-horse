@@ -277,31 +277,31 @@
                 <tal:has_dedicated_trailers condition="catalogue.engine_quacker.is_cab_with_dedicated_trailers">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
                     <table class="livery-or-trailers-table text-left">
-                        <tal:trailer_catalogue_model_variant_mappings repeat="trailer_catalogue_model_variant_mapping catalogue.dedicated_trailer_catalogue_model_variant_mappings">
+                        <tal:trailer_catalogues repeat="trailer_catalogue catalogue.dedicated_trailer_catalogues">
                             <tr>
                                 <th class="livery-or-trailers-table-first-col">
-                                    <div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue_model_variant_mapping['catalogue'])}</div>
+                                    <div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue)}</div>
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
-                                    <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_model_variant_mapping['model_variants']">
+                                    <tal:catalogue_entries repeat="catalogue_entry trailer_catalogue">
                                         <div>
-                                            <tal:livery_examples repeat="cc_remap_pair trailer_model_variant.catalogue_entry.livery_def.docs_image_input_cc">
+                                            <tal:livery_examples repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
                                                 <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
                                                 <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
                                                     <div class="vehicle-image"
                                                         style="width:${2 * doc_helper.docs_sprite_max_width};
                                                                display:inline-block;">
-                                                        <img src="static/img/${trailer_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                             width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_model_variant_mapping['catalogue'])}"
+                                                        <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                                             width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue)}"
                                                              height="${2 * doc_helper.docs_sprite_height}" />
                                                     </div>
                                                 </tal:some_examples_suppressed>
                                             </tal:livery_examples>
                                         </div>
-                                    </tal:trailer_model_variants>
+                                    </tal:catalogue_entries>
                                 </td>
                             </tr>
-                        </tal:trailer_catalogue_model_variant_mappings>
+                        </tal:trailer_catalogues>
                     </table>
                 </tal:has_dedicated_trailers>
 
