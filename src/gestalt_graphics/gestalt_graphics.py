@@ -609,15 +609,8 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         if cargo_label == "DFLT":
             return False
         # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
-        contested_cargo_labels = {
-            "CHLO": "cryo_tank",
-            "FOOD": "reefer",
-            "N7__": "cryo_tank",
-            "RFPR": "chemicals_tank",
-            "SULP": "tank",
-        }
-        if cargo_label in contested_cargo_labels.keys():
-            if container_type == contested_cargo_labels[cargo_label]:
+        if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
+            if container_type == polar_fox.constants.container_contested_cargo_labels[cargo_label]:
                 return True
             else:
                 return False
@@ -628,7 +621,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,
-                "label; update contested_cargo_labels in gestalt_graphics",
+                "label; update polar_fox.constants.container_contested_cargo_labels",
             )
         # default to allowing, most cargos aren't contested
         return True
