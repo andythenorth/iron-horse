@@ -372,7 +372,7 @@ class DocHelper(object):
         for catalogue in catalogues:
             # we print _mostly_ from example_model_variant here, not catalogue or model_def, to see what actually gets determined
             example_model_variant = catalogue.example_model_variant
-            self.fetch_prop(result, "Vehicle Name", self.unpack_name_string(catalogue))
+            self.fetch_prop(result, "Vehicle name", self.unpack_name_string(catalogue))
             self.fetch_prop(result, "Gen", example_model_variant.gen)
             self.fetch_prop(result, "Railtypes", ", ".join([track_type.label for track_type in example_model_variant.track_types]))
             self.fetch_prop(result, "HP", int(example_model_variant.power))
@@ -383,13 +383,13 @@ class DocHelper(object):
                 "TE coefficient",
                 example_model_variant.tractive_effort_coefficient,
             )
-            self.fetch_prop(result, "Intro Year", catalogue.intro_year)
-            self.fetch_prop(result, "Vehicle Life", example_model_variant.vehicle_life)
-            self.fetch_prop(result, "Buy Cost", example_model_variant.buy_cost)
-            self.fetch_prop(result, "Running Cost", example_model_variant.running_cost)
+            self.fetch_prop(result, "Intro year", catalogue.intro_year)
+            self.fetch_prop(result, "Vehicle life", example_model_variant.vehicle_life)
+            self.fetch_prop(result, "Buy cost", example_model_variant.buy_cost)
+            self.fetch_prop(result, "Running cost", example_model_variant.running_cost)
             self.fetch_prop(
                 result,
-                "Loading Speed",
+                "Loading speed",
                 ", ".join(
                     [str(unit.loading_speed) for unit in example_model_variant.units]
                 ),

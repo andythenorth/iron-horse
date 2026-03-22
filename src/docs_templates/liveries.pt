@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <h1>${len(roster.model_variants_grouped_by_livery_for_docs)} Liveries for Engines, Passenger Coaches and Mail Vans</h1>
+                <h1>${len(roster.model_variants_grouped_by_livery_for_docs)} Liveries for engines, passenger coaches and mail vans</h1>
                 <p>Wagons have their own liveries, which aren't listed here as there are too many.</p>
                 <hr />
                 <ul style="margin-left:0;">
@@ -35,7 +35,7 @@
                                 <tal:vehicle_type repeat="vehicle_type ['engines', 'pax_mail_cars']">
                                     <div class="span6">
                                         <h3>
-                                            <span tal:replace="{'engines': 'Engines', 'pax_mail_cars': 'Passenger Coaches and Mail Vans'}[vehicle_type]"></span>
+                                            <span tal:replace="{'engines': 'Engines', 'pax_mail_cars': 'Passenger coaches and mail vans'}[vehicle_type]"></span>
                                         </h3>
                                         <tal:empty_case condition="len(livery_pair[1][vehicle_type]) == 0">
                                             <p class="muted">None.</p>

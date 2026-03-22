@@ -220,7 +220,7 @@
                     </tbody>
                 </table>
 
-                <h3 id="appearance">Livery Options</h3>
+                <h3 id="appearance">Livery options</h3>
 
                 <style>
                     table.livery-or-trailers-table {
@@ -270,8 +270,8 @@
                 <table class="livery-or-trailers-table text-left">
                     <thead>
                         <tr>
-                            <th>Livery Name</th>
-                            <th>Company Colour Examples</th>
+                            <th>Livery name</th>
+                            <th>Company colour examples</th>
                         </tr>
                     </thead>
                     <tal:catalogue_entries repeat="catalogue_entry catalogue">
@@ -322,7 +322,7 @@
                 </table>
 
                 <tal:has_dedicated_trailers condition="catalogue.engine_quacker.is_cab_with_dedicated_trailers">
-                    <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
+                    <h3>Dedicated trailers, coaches or mail vans</h3>
                     <table class="livery-or-trailers-table text-left">
                         <tal:trailer_catalogues repeat="trailer_catalogue catalogue.dedicated_trailer_catalogues">
                             <tr>
@@ -352,16 +352,16 @@
                     </table>
                 </tal:has_dedicated_trailers>
 
-                <h3 id="foamer-facts">Foamer Facts</h3>
+                <h3 id="foamer-facts">Foamer facts</h3>
                 <p>Inspired by ${structure: catalogue.model_def.foamer_facts}.</p>
 
                 <hr />
-                <h3 id="tech-tree">Tech Tree</h3>
+                <h3 id="tech-tree">Related vehicles</h3>
                 <table class="vehicle-facts">
                     <tbody>
                         <tr>
                             <th style="text-align:center;">Previous</th>
-                            <th style="text-align:center;">This Vehicle</th>
+                            <th style="text-align:center;">This vehicle</th>
                             <th style="text-align:center;">Replaced by</th>
                         </tr>
                         <tr>
