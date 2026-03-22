@@ -43,10 +43,10 @@
                     </tal:base_track_type>
                 </ul>
                 <tal:base_track_type repeat="base_track_type_with_display_name doc_helper.base_track_types_with_display_names.items()">
-                    <tal:not_empty condition="len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])) >  0">
+                    <tal:not_empty condition="len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0])) > 0">
                         <hr />
                         <h4 id="${base_track_type_with_display_name[0]}-engines">
-                            ${len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name))}
+                            ${len(doc_helper.get_engine_catalogues_by_roster_and_base_track_type(roster, base_track_type_with_display_name[0]))}
                             ${base_track_type_with_display_name[1].lower()} engines
                         </h4>
                         <table class="table table-striped tablesorter vehicle-table">
