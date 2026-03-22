@@ -36,7 +36,7 @@ def main(**kwargs):
     model_def.define_description(
         """The universal shunter.  Goes everywhere&hellip;slowly."""
     )
-    model_def.define_foamer_facts("""BR Class 08/09""")
+    model_def.define_foamer_facts("""BR Class 08/09, BR Class 13""")
 
     result.append(model_def)
 
