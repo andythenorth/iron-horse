@@ -348,12 +348,17 @@ class Catalogue(list):
         return result
 
     @cached_property
-    def clone_or_family_relation_catalogues(self):
+    def engine_family_catalogues(self):
         # return any catalogues for clones, or same vehicle family
-        # excludes self
+        # engines only - excludes any dedicated trailers
+        # as of March 2026, only used in docs
+        if not self.engine_quacker.quack:
+            raise
         result = []
         for catalogue in self.roster.catalogues:
-            if catalogue is self:
+            if catalogue.model_def.cab_id == self.model_id:
+                continue
+            if not catalogue.engine_quacker.quack:
                 continue
             if catalogue.vehicle_family_id == self.vehicle_family_id:
                 result.append(catalogue)

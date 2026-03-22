@@ -132,36 +132,17 @@
                 </style>
 
                 <table class="vehicle-facts">
-                    <tbody>
+                    <tbody tal:define="family_catalogues catalogue.engine_family_catalogues;
+                                       family_variant_count len(family_catalogues)">
+
                         <tr>
-                            <th>Role</th>
-                            <td>${doc_helper.get_role_string_from_catalogue(catalogue, iron_horse.badge_manager)}</td>
+                            <th>Intro year / designed</th>
+                            <td colspan="${family_variant_count}">${catalogue.intro_year}</td>
                         </tr>
+
                         <tr>
-                            <th>Intro year / Designed</th>
-                            <td>${catalogue.intro_year}</td>
-                        </tr>
-                        <tr>
-                            <th>Max. Speed</th>
-                            <td>${doc_helper.speed_formatted_for_docs(catalogue)}</td>
-                        </tr>
-                        <tr>
-                            <th>Power</th>
-                            <td>${" / ".join(doc_helper.power_formatted_for_docs(catalogue))}</td>
-                        </tr>
-                        <tr>
-                            <th>Weight</th>
-                            <td>${example_model_variant.weight} tonnes</td>
-                        </tr>
-                        <tal:optional_capacity condition="doc_helper.capacity_formatted_for_docs(catalogue) is not None">
-                            <tr>
-                                <th>Capacity</th>
-                                <td>${doc_helper.capacity_formatted_for_docs(catalogue)}</td>
-                            </tr>
-                        </tal:optional_capacity>
-                        <tr>
-                            <th>Track type(s)</th>
-                            <td>
+                            <th>Track type${'s' if len(example_model_variant.track_types) > 1 else None}</th>
+                            <td colspan="${family_variant_count}">
                                 <tal:track_types repeat="track_type example_model_variant.track_types">
                                     ${doc_helper.get_railtype_display_name(track_type)}
                                     <tal:break condition="not:repeat.track_type.end">
@@ -170,6 +151,72 @@
                                 </tal:track_types>
                             </td>
                         </tr>
+
+                        <tr>
+                            <th>Role</th>
+                            <td colspan="${family_variant_count}">
+                                ${doc_helper.get_role_string_from_catalogue(catalogue, iron_horse.badge_manager)}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Max. speed</th>
+                            <td colspan="${family_variant_count}">
+                                ${doc_helper.speed_formatted_for_docs(catalogue)}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                ${len(family_catalogues)}
+                                model variant${'s' if len(family_catalogues) > 1 else None}
+                            </th>
+                            <tal:engine_family_catalogues repeat="family_variant_catalogue family_catalogues">
+                                <td>
+                                    <div>
+                                        <!--! for sparsity, we just show one example, similar to tech tree etc -->
+                                        <div class="vehicle-image"
+                                            style="width:${2 * doc_helper.docs_sprite_max_width};
+                                                   display:inline-block;
+                                                   margin-top:-10px;">
+                                            <img src="static/img/${family_variant_catalogue.example_model_variant.id}_red_white.png"
+                                                 width="${3 * doc_helper.docs_sprite_width(catalogue=family_variant_catalogue)}"
+                                                 height="${3 * doc_helper.docs_sprite_height}" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tal:engine_family_catalogues>
+                        </tr>
+
+                        <tr>
+                            <th>Power</th>
+                            <tal:engine_family_catalogues repeat="family_variant_catalogue family_catalogues">
+                                <td>
+                                    ${" / ".join(doc_helper.power_formatted_for_docs(family_variant_catalogue))}
+                                </td>
+                            </tal:engine_family_catalogues>
+                        </tr>
+
+                        <tr>
+                            <th>Weight</th>
+                            <tal:engine_family_catalogues repeat="family_variant_catalogue family_catalogues">
+                                <td>
+                                    ${family_variant_catalogue.example_model_variant.weight} tonnes
+                                </td>
+                            </tal:engine_family_catalogues>
+                        </tr>
+
+                        <tal:optional_capacity condition="doc_helper.capacity_formatted_for_docs(catalogue) is not None">
+                            <tr>
+                                <th>Capacity</th>
+                                <tal:engine_family_catalogues repeat="family_variant_catalogue family_catalogues">
+                                    <td>
+                                        ${doc_helper.capacity_formatted_for_docs(family_variant_catalogue)}
+                                    </td>
+                                </tal:engine_family_catalogues>
+                            </tr>
+                        </tal:optional_capacity>
+
                     </tbody>
                 </table>
 
@@ -273,37 +320,6 @@
                         </tbody>
                     </tal:catalogue_entries>
                 </table>
-
-                <tal:has_clones_or_family_relations condition="len(catalogue.clone_or_family_relation_catalogues) > 0">
-                    <h3>CABBAGE</h3>
-                    <table class="livery-or-trailers-table text-left">
-                        <tal:clone_or_family_relation_catalogues repeat="clone_or_family_relation_catalogue catalogue.clone_or_family_relation_catalogues">
-                            <tr>
-                                <th class="livery-or-trailers-table-first-col">
-                                    <div style="margin-top:12px;">${doc_helper.unpack_name_string(clone_or_family_relation_catalogue)}</div>
-                                </th>
-                                <td class="livery-or-trailers-table-col-with-divider">
-                                    <tal:catalogue_entries repeat="catalogue_entry clone_or_family_relation_catalogue">
-                                        <div>
-                                            <tal:livery_examples repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
-                                                <!--! docs images are always generated to include blue-blue example, but we don't want to show that here -->
-                                                <tal:some_examples_suppressed condition="cc_remap_pair not in [('COLOUR_BLUE', 'COLOUR_BLUE')]">
-                                                    <div class="vehicle-image"
-                                                        style="width:${2 * doc_helper.docs_sprite_max_width};
-                                                               display:inline-block;">
-                                                        <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                             width="${2 * doc_helper.docs_sprite_width(catalogue=clone_or_family_relation_catalogue)}"
-                                                             height="${2 * doc_helper.docs_sprite_height}" />
-                                                    </div>
-                                                </tal:some_examples_suppressed>
-                                            </tal:livery_examples>
-                                        </div>
-                                    </tal:catalogue_entries>
-                                </td>
-                            </tr>
-                        </tal:clone_or_family_relation_catalogues>
-                    </table>
-                </tal:has_clones_or_family_relations>
 
                 <tal:has_dedicated_trailers condition="catalogue.engine_quacker.is_cab_with_dedicated_trailers">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
