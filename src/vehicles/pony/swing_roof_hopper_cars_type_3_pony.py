@@ -8,10 +8,10 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CoveredHopperCarSwingRoofType3",
-        base_numeric_id=26230,
+        base_numeric_id=18760,
         gen=5,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -22,10 +22,10 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CoveredHopperCarSwingRoofType3",
-        base_numeric_id=26240,
+        base_numeric_id=18780,
         gen=5,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
