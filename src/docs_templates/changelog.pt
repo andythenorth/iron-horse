@@ -3,6 +3,32 @@ Changelog
 
 
 --------------
+4.16.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.15.0.
+
+
+*Changes*
+
+- added articulated-twin Car Transporters and Vehicle Transporters
+
+
+*Docs*
+
+- show family model variants in vehicle details page
+- sentence case majority of docs titles and table headings
+- fix incorrect engine counts on trains page
+
+
+*Codechanges*
+
+- added `_` prefix to some badges, to indicate that they're intended to be internal to Iron Horse only
+- switched `power_source/` badges to `power/`
+
+
+--------------
 4.15.0 Release
 --------------
 
