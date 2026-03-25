@@ -4293,6 +4293,7 @@ class CoveredHopperCarSwingRoofType3(CoveredHopperCarSwingRoofBase):
     """
 
     model_id_root = "swing_roof_hopper_car_type_3"
+    randomised_candidate_groups = ["swing_roof_hopper_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4323,7 +4324,7 @@ class CoveredHopperCarSwingRoofRandomised(
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",
+            random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
         )
