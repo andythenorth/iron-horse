@@ -22,7 +22,7 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-9,  # introduce much earlier than gen epoch by design
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
-        liveries=["STOCK_STANDARD", "CONVENTIONAL_WISDOM", "BANGER_BLUE", "FREIGHT_BLACK", "SHOW_PONY", "INDUSTRIAL_YELLOW", "INDUSTRIAL_YELLOW"],
+        liveries=["BANGER_BLUE", "STOCK_STANDARD", "SHOW_PONY", "CONVENTIONAL_WISDOM", "FREIGHT_BLACK", "BUMBLEBEE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
@@ -40,7 +40,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def_clone = model_def.begin_clone(base_numeric_id=520, unit_repeats=[1])
+    model_def_clone = model_def.begin_clone(base_numeric_id=600, unit_repeats=[1])
 
     model_def_clone.unit_defs[0].rel_spriterow_index = 1
     model_def_clone.add_unit_def(
