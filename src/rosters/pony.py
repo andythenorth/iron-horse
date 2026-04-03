@@ -554,6 +554,16 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "BUMBLEBEE": {
+                "remap_to_cc": None,
+                "has_predrawn_badge_sprite": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
+                ],
+            },
             "CLASSIC_LINES": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,

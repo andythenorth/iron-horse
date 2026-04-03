@@ -147,6 +147,10 @@ base = "Industrial Yellow"
 [STR_BADGE_LIVERY_BANGER_BLUE]
 base = "Basic Banger"
 
+[STR_BADGE_LIVERY_BUMBLEBEE]
+# duplicates STR_BADGE_LIVERY_RANDOM_LIVERIES_BUMBLEBEE - but fine
+base = "Bumblebee"
+
 [STR_BADGE_LIVERY_CLASSIC_LINES]
 base = "Classic Lines"
 
@@ -764,6 +768,10 @@ base = "electrified narrow gauge rail vehicle"
 
 [STR_EXTRA_TEXT_LIVERY_BANGER_BLUE]
 base = "A very simple livery featuring mostly the first company colour, with small markings in the second company colour."
+docs_only = true
+
+[STR_EXTRA_TEXT_LIVERY_BUMBLEBEE]
+base = "A livery for trains used in industrial settings such as steel mills and foundries."
 docs_only = true
 
 [STR_EXTRA_TEXT_LIVERY_CLASSIC_LINES]
