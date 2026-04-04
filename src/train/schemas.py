@@ -3666,6 +3666,7 @@ class CabooseCarBase(CarSchemaBase):
     # hmm do we want lots of brake van colour choices, or just a few?
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_BUMBLEBEE",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
