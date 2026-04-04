@@ -3,6 +3,33 @@ Changelog
 
 
 --------------
+4.17.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.17.0.
+
+
+*Changes*
+
+- added third type of Swing Roof Hoppers
+- added or adjusted liveries for
+    - Chuggypig
+    - Gronk
+    - Progress
+    - Shoebox
+    - Trojan
+    - Ultra Shoebox
+    - Viking
+- added Bumblebee livery to brake vans
+
+
+*Fixes*
+
+- use correct badge for power/electric
+
+
+--------------
 4.16.0 Release
 --------------
 
