@@ -554,7 +554,7 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "BUMBLEBEE": {
+            "WORKER_BEE": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
                 "docs_image_input_cc": [
