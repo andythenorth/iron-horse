@@ -1376,6 +1376,9 @@ class EngineSchemaBase(SchemaBase):
             # special cases
             if self.is_electro_diesel:
                 result.append("power/electro_diesel")
+        # default badge display for electrified relies on power/electric, whereas Horse has other badges
+        if "power/ohle" in result:
+            result.append("power/electric")
         return result
 
 

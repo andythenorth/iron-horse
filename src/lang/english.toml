@@ -298,23 +298,6 @@ base = "5"
 [STR_BADGE_GEN_6]
 base = "6"
 
-# power source badges
-
-[STR_BADGE_POWER_SOURCE_BATTERY_HYBRID]
-base = "Battery Hybrid"
-
-[STR_BADGE_POWER_SOURCE_DIESEL]
-base = "Diesel"
-
-[STR_BADGE_POWER_SOURCE_OHLE]
-base = "Electric"
-
-[STR_BADGE_POWER_SOURCE_METRO]
-base = "Metro"
-
-[STR_BADGE_POWER_SOURCE_STEAM]
-base = "Steam"
-
 # name suffixes
 
 [STR_WAGON_NAME_TRAILER]

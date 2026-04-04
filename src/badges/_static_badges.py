@@ -6,6 +6,7 @@ static_badges = {
         "sublabels": {
             "dual_voltage": {},
             "electro_diesel": {},
+            "electric": {},
         },
     },
     # private
