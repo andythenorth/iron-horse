@@ -17,7 +17,15 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=6,  # earlier than anything IRL, but we want 125 mph capability so eh, there we go
         extended_vehicle_life=True,  # because long time until replaced
-        liveries=["INVERSIONS", "VAPID_VOYAGER", "LOWER_LINES", "BANGER_BLUE"],
+        liveries=[
+            "INVERSIONS",
+            "FRUIT_RIPPLE",
+            "MAIL_BY_RAIL",
+            "VAPID_VOYAGER",
+            "LOWER_LINES",
+            "BANGER_BLUE",
+            "RAILFREIGHT_TRIPLE_GREY",
+        ],
         sprites_complete=True,
     )
 
