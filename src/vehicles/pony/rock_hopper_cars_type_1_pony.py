@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=27060,
         gen=3,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=21990,
         gen=3,
         subtype="B",
@@ -35,7 +35,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=24100,
         gen=4,
         subtype="B",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=24120,
         gen=4,
         subtype="C",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=24140,
         gen=5,
         subtype="B",
@@ -71,7 +71,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRock",
+        schema_name="HopperCarRockType1",
         base_numeric_id=24160,
         gen=5,
         subtype="C",

@@ -5726,7 +5726,7 @@ class HopperCarRandomised(RandomisedCarVanillaMixin, HopperCarBase):
         )
 
 
-class HopperCarRock(HopperCarBase):
+class HopperCarRockBase(HopperCarBase):
     """
     Hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
@@ -5741,12 +5741,38 @@ class HopperCarRock(HopperCarBase):
         "FREIGHT_MIST",
     ]
 
-    model_id_root = "rock_hopper_car"
-    randomised_candidate_groups = ["bulk_cargo_hopper_combos"]
+    vehicle_family_id = "rock_hopper_car"
+    variant_group_id_root = "wagon_group_rock_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        self._joker = True
+
+
+class HopperCarRockType1(HopperCarRockBase):
+    """
+    Hopper for rock cargos, just a visual variant.
+    """
+
+    model_id_root = "rock_hopper_car_type_1"
+    randomised_candidate_groups = ["bulk_cargo_hopper_combos"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class HopperCarRockType2(HopperCarRockBase):
+    """
+    Hopper for rock cargos, just a visual variant.
+    """
+
+    model_id_root = "rock_hopper_car_type_2"
+    randomised_candidate_groups = ["bulk_cargo_hopper_combos"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self._joker = True
 
 
