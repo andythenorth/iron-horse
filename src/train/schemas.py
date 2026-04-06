@@ -5200,6 +5200,7 @@ class FlatCarDropCentreType1(FlatCarDropCentreBase):
 
     # low or high bulkhead? stakes or not?
     model_id_root = "drop_centre_flat_car_type_1"
+    randomised_candidate_groups = ["drop_centre_flat_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5212,9 +5213,28 @@ class FlatCarDropCentreType2(FlatCarDropCentreBase):
 
     # low or high bulkhead? stakes or not?
     model_id_root = "drop_centre_flat_car_type_2"
+    randomised_candidate_groups = ["drop_centre_flat_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class FlatCarDropCentreRandomised(RandomisedCarVanillaMixin, FlatCarDropCentreBase):
+    """
+    Random choice of drop-centre (depressed-centre) flat wagon sprite.
+    """
+
+    model_id_root = "drop_centre_flat_car_randomised"
+    variant_group_id_root = "wagon_group_drop_centre_flat_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class FlatCarDropEnd(FlatCarBase):

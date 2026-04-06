@@ -106,6 +106,7 @@ wagon_module_name_stems = [
     "flatbed_cargo_combos",
     "drop_centre_flat_cars_type_1",
     "drop_centre_flat_cars_type_2",
+    "drop_centre_flat_cars_randomised",
     "coil_cars_covered",
     "coil_cars_covered_asymmetric",
     "coil_cars_uncovered",
