@@ -288,6 +288,7 @@ wagon_module_names_with_roster_ids = {
     "double_deck_enclosed_automobile_cars": "pony",
     "drop_centre_flat_cars_type_1": "pony",
     "drop_centre_flat_cars_type_2": "pony",
+    #"drop_centre_flat_cars_randomised": "pony",
     "drop_end_flat_cars": "pony",
     "drop_side_flat_cars": "pony",
     "mineral_open_cars": "pony",
