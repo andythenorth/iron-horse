@@ -529,7 +529,9 @@ class SchemaBase(object):
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
             return 0
         elif self.model_def.cloned_from_model_def is not None:
-            return self.catalogue.clone_quacker.resolve_catalogue(permissive=False).example_model_variant.intro_date_months_offset
+            return self.catalogue.clone_quacker.resolve_catalogue(
+                permissive=False
+            ).example_model_variant.intro_date_months_offset
         elif self._intro_date_months_offset is not None:
             # offset defined in class (probably a wagon)
             return self._intro_date_months_offset
@@ -5756,7 +5758,10 @@ class HopperCarRockType1(HopperCarRockBase):
     """
 
     model_id_root = "rock_hopper_car_type_1"
-    randomised_candidate_groups = ["bulk_cargo_hopper_combos"]
+    randomised_candidate_groups = [
+        "bulk_cargo_hopper_combos",
+        "rock_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5769,11 +5774,31 @@ class HopperCarRockType2(HopperCarRockBase):
     """
 
     model_id_root = "rock_hopper_car_type_2"
-    randomised_candidate_groups = ["bulk_cargo_hopper_combos"]
+    randomised_candidate_groups = [
+        "bulk_cargo_hopper_combos",
+        "rock_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
+
+
+class HopperCarRockRandomised(RandomisedCarVanillaMixin, HopperCarRockBase):
+    """
+    Random choice of rock hopper car sprite.
+    """
+
+    model_id_root = "rock_hopper_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class HopperCarSideDoor(HopperCarBase):
