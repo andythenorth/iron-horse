@@ -326,7 +326,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         if "weathered" in self.weathered_states.keys():
             self.add_masked_overlay = True
         # cargo flags
-        self.has_cover = kwargs.get("has_cover", False)
+        self.covered_vehicle_body = kwargs.get("covered_vehicle_body", False)
         self.has_bulk = kwargs.get("bulk", False)
         self.has_piece = kwargs.get("piece", None) is not None
         if self.has_piece:
@@ -357,8 +357,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # note that this is *types* of rows, in order, not counts - counts are delegated elsehwere
         result = []
         # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
-        if self.has_cover:
-            result.append("has_cover")
+        if self.covered_vehicle_body:
+            result.append("covered_vehicle_body")
         # 1 empty spriterow
         result.append("empty")
         if self.has_bulk:
@@ -371,7 +371,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
         result = []
         for variant_name, body_recolour_map in self.weathered_states.items():
-            if spriterow_type == "has_cover":
+            if spriterow_type == "covered_vehicle_body":
                 label = "COVERED"
                 if variant_name == "weathered":
                     label = label + " - WEATHERED" + "\n" + "OVERLAY (NO MASK)"
@@ -435,7 +435,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
         start_y_cumulative = graphics_constants.spritesheet_top_margin
 
-        if self.has_cover:
+        if self.covered_vehicle_body:
             # add rows for covered sprite
             for weathered_state in self.weathered_states.keys():
                 result.append(["has_cover_" + weathered_state, start_y_cumulative])

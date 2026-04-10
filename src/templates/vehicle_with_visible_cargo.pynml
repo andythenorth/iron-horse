@@ -28,7 +28,7 @@
         }
     </tal:load_state>
 
-    <tal:graphics_with_optional_cover switch="getattr(model_variant.gestalt_graphics, 'has_cover', False)">
+    <tal:graphics_with_optional_cover switch="getattr(model_variant.gestalt_graphics, 'covered_vehicle_body', False)">
         <tal:no_cover case="False">
             switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered, alt_var_loaded_loading_state_visible_cargo_no_cover()) {
                 0: return ${unit.unit_id_from_common_model_id}_ss_empty_unweathered;
@@ -36,18 +36,18 @@
                 2: return ${unit.unit_id_from_common_model_id}_switch_cargo_loaded;
             }
         </tal:no_cover>
-        <tal:has_cover case="True">
+        <tal:covered_vehicle_body case="True">
             switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_unweathered, alt_var_loaded_loading_state_visible_cargo_has_cover()) {
                 0: return ${unit.unit_id_from_common_model_id}_ss_has_cover_unweathered;
                 1: return ${unit.unit_id_from_common_model_id}_ss_empty_unweathered;
                 2: return ${unit.unit_id_from_common_model_id}_switch_cargo_loading;
                 3: return ${unit.unit_id_from_common_model_id}_switch_cargo_loaded;
             }
-        </tal:has_cover>
+        </tal:covered_vehicle_body>
     </tal:graphics_with_optional_cover>
 
     <!--! weathered graphics are optional, and only used when recoloured sprites are provided in an overlay layer, rather than by CC remapping the default sprite -->
-    <tal:masked_overlay_graphics condition="model_variant.gestalt_graphics.add_masked_overlay" switch="getattr(model_variant.gestalt_graphics, 'has_cover', False)">
+    <tal:masked_overlay_graphics condition="model_variant.gestalt_graphics.add_masked_overlay" switch="getattr(model_variant.gestalt_graphics, 'covered_vehicle_body', False)">
         <tal:no_cover case="False">
             switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_weathered, alt_var_loaded_loading_state_visible_cargo_no_cover()) {
                 0: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
@@ -55,14 +55,14 @@
                 2: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
             }
         </tal:no_cover>
-        <tal:has_cover case="True">
+        <tal:covered_vehicle_body case="True">
             switch (FEAT_TRAINS, SELF, ${unit.unit_id_from_common_model_id}_switch_graphics_vehicle_check_state_weathered, alt_var_loaded_loading_state_visible_cargo_has_cover()) {
                 0: return ${unit.unit_id_from_common_model_id}_ss_has_cover_weathered;
                 1: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
                 2: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
                 3: return ${unit.unit_id_from_common_model_id}_ss_empty_weathered;
             }
-        </tal:has_cover>
+        </tal:covered_vehicle_body>
     </tal:masked_overlay_graphics>
 
     <tal:weathered_state condition="len(model_variant.gestalt_graphics.weathered_states) > 1">

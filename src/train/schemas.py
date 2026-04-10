@@ -3978,7 +3978,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_states=weathered_states,
             piece="coil",
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4010,7 +4010,7 @@ class CoilCarCovered(CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_states=weathered_states,
             piece="coil",
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4041,7 +4041,7 @@ class CoilCarTarpaulin(CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_states=weathered_states,
             piece="coil",
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6882,7 +6882,7 @@ class OpenCarHoodType1(OpenCarBase):
             bulk=True,
             piece="open",
             weathered_states=weathered_states,
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8030,7 +8030,7 @@ class SlidingRoofCar(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_states=weathered_states,
             piece="flat",
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8071,7 +8071,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_states=weathered_states,
             piece="flat",
-            has_cover=True,
+            covered_vehicle_body=True,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8584,7 +8584,7 @@ class TarpaulinCarBase(BoxCarBase):
         # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            has_cover=True,
+            covered_vehicle_body=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
@@ -8631,7 +8631,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
         # reduced set of liveries here
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            has_cover=True,
+            covered_vehicle_body=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )

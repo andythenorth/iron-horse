@@ -1696,10 +1696,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             2 * graphics_constants.spriterow_height,
         )
 
-        # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
+        # this is dirty shorthand and relies on covered_vehicle_body yielding 0 or 1 for an additional offset (empty row is second row if covered_vehicle_body is True)
         empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (
             graphics_constants.spriterow_height
-            * self.example_model_variant.gestalt_graphics.has_cover
+            * self.example_model_variant.gestalt_graphics.covered_vehicle_body
         )
 
         crop_box_vehicle_body = (
@@ -1794,10 +1794,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
-        # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
+        # this is dirty shorthand and relies on covered_vehicle_body yielding 0 or 1 for an additional offset (empty row is second row if covered_vehicle_body is True)
         empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (
             graphics_constants.spriterow_height
-            * self.example_model_variant.gestalt_graphics.has_cover
+            * self.example_model_variant.gestalt_graphics.covered_vehicle_body
         )
 
         crop_box_vehicle_body = (
@@ -1978,7 +1978,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 if spriterow_type == "empty":
                     input_spriterow_count = 1
                     self.add_generic_spriterows(spriterow_type)
-                if spriterow_type == "has_cover":
+                if spriterow_type == "covered_vehicle_body":
                     input_spriterow_count = 1
                     self.add_generic_spriterows(spriterow_type)
                 elif spriterow_type == "simple_recolour_spriterows":
