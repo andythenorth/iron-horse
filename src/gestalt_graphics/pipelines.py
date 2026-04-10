@@ -1975,7 +1975,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     graphics_constants.spriterow_height
                     * cumulative_input_spriterow_count
                 )
-                if spriterow_type == "empty":
+                if spriterow_type == "empty_vehicle_body":
                     input_spriterow_count = 1
                     self.add_generic_spriterows(spriterow_type)
                 if spriterow_type == "covered_vehicle_body":

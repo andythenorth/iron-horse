@@ -360,7 +360,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         if self.covered_vehicle_body:
             result.append("covered_vehicle_body")
         # 1 empty spriterow
-        result.append("empty")
+        result.append("empty_vehicle_body")
         if self.has_bulk:
             result.append("bulk_cargo")
         if self.has_piece:
@@ -377,7 +377,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                     label = label + " - WEATHERED" + "\n" + "OVERLAY (NO MASK)"
                 # no mask for covered rows, even if weathered
                 mask_row_offset_count = None
-            if spriterow_type == "empty":
+            if spriterow_type == "empty_vehicle_body":
                 label = "EMPTY"
                 if variant_name == "weathered":
                     # for this gestalt, weathered state is always implemented as a masked overlay
@@ -583,12 +583,12 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     def get_output_row_types(self):
         # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return ["empty", "empty", "empty", "empty"]
+        return ["empty_vehicle_body", "empty_vehicle_body", "empty_vehicle_body", "empty_vehicle_body"]
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
         # for this gestalt, it's just one empty output row per input row, no other variants
-        if spriterow_type != "empty":
+        if spriterow_type != "empty_vehicle_body":
             # only empty rows are supported eh
             raise BaseException(
                 "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
@@ -708,24 +708,24 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # 2 liveries * 4 formation position rules, so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         if self.formation_ruleset == "max_1_unit_sets":
-            result = ["empty"]
+            result = ["empty_vehicle_body"]
         elif self.formation_ruleset == "max_2_unit_sets":
             result = [
-                "empty",
-                "empty",
-                "empty",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
             ]
         elif self.formation_ruleset == "max_4_unit_sets":
             result = [
-                "empty",
-                "empty",
-                "empty",
-                "empty",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
             ]
         elif self.formation_ruleset == "articulated_permanent_twin_sets":
             result = [
-                "empty",
-                "empty",
+                "empty_vehicle_body",
+                "empty_vehicle_body",
             ]
         else:
             raise BaseException(
@@ -744,7 +744,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
         # for this gestalt, it's just one empty output row per input row, no other variants
-        if spriterow_type != "empty":
+        if spriterow_type != "empty_vehicle_body":
             # only empty rows are supported eh
             raise BaseException(
                 "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
