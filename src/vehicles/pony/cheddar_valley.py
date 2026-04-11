@@ -26,7 +26,7 @@ def main(**kwargs):
             "LOWER_LINES",
             "FREIGHTLINER_GBRF",
             "SHOW_PONY",
-            "WORKER_BEE",
+            "HORNET",
             "CONVENTIONAL_WISDOM",
         ],
         sprites_complete=True,

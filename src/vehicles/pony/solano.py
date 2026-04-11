@@ -22,7 +22,7 @@ def main(**kwargs):
             "STOCK_STANDARD",
             "LOWER_LINES",
             "FREIGHT_BLACK",
-            "WORKER_BEE",
+            "HORNET",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,

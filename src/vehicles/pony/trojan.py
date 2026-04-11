@@ -21,7 +21,7 @@ def main(**kwargs):
             "CONVENTIONAL_WISDOM",
             "BANGER_BLUE",
             "FREIGHT_BLACK",
-            "WORKER_BEE",
+            "HORNET",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,

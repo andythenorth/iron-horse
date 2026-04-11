@@ -159,6 +159,9 @@ base = "Fruit Ripple"
 [STR_BADGE_LIVERY_GREY_HORSE]
 base = "Grey Horse"
 
+[STR_BADGE_LIVERY_HORNET]
+base = "Hornet"
+
 [STR_BADGE_LIVERY_INDUSTRIAL_YELLOW]
 base = "Hazard Yellow"
 
@@ -203,9 +206,6 @@ base = "Vapid Voyager"
 
 [STR_BADGE_LIVERY_VINYL_VECTOR]
 base = "Vinyl Vector"
-
-[STR_BADGE_LIVERY_WORKER_BEE]
-base = "Worker Bee"
 
 [STR_BADGE_LIVERY_WORKHORSE]
 base = "Work Horse"
@@ -829,7 +829,7 @@ docs_only = true
 base = "A generic livery for passenger and mail trains, inspired by swoosh-like liveries from the late 1990s-2020s."
 docs_only = true
 
-[STR_EXTRA_TEXT_LIVERY_WORKER_BEE]
+[STR_EXTRA_TEXT_LIVERY_HORNET]
 base = "A livery for trains used in industrial settings such as steel mills, foundries, mines etc."
 docs_only = true
 
