@@ -28,15 +28,11 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     @classmethod
     def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
+        # the base class also has an @property accessor for this for consistency with other uses
         result = {}
         # see intermodal for example of how this mapped containers
         # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
-
-    @property
-    def cargo_label_mapping(self):
-        # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
-        return self.get_cargo_label_mapping()
 
 
 class DefaultAutomobilesCargoSetBase(CargoSetBase):

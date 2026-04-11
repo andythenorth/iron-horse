@@ -31,8 +31,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_r
     <!--! load state is assumed (for simplicity) to be all or nothing: any cargo amount = cargo sprites shown as though full load -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
             0: return ss_global_empty_vehicle;
-        <!--! CABBAGE need to abstract "automobiles" base_id to the gestalt - it's from the spritelayer cargo, but maybe we just match them manually -->
-        return switch_spritelayer_cargos_unreversed_${"automobiles"}_${platform_type}_${4 * unit.vehicle_length}px;
+        return switch_spritelayer_cargos_unreversed_${model_variant.gestalt_graphics.spritelayer_cargo_cls.base_id}_${platform_type}_${4 * unit.vehicle_length}px;
     }
 
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_${platform_type}, [

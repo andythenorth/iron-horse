@@ -28,6 +28,11 @@ class SpritelayerCargo(object):
         return self.base_id + "_" + self.platform_type + "_" + str(self.length) + "px"
 
     @property
+    def cargo_label_mapping(self):
+        # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
+        return self.get_cargo_label_mapping()
+
+    @property
     def floor_height_for_platform_type(self):
         # crude resolution of floor height for each platform type
         return self.all_platform_types_with_floor_heights[self.platform_type]

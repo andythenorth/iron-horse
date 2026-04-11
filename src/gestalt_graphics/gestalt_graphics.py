@@ -3,12 +3,10 @@ from functools import cached_property
 import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
+from spritelayer_cargos.automobiles import AutomobilesSpritelayerCargo
 import utils
 from utils import timing
 
-from spritelayer_cargos.automobiles import AutomobilesSpritelayerCargo
-print(AutomobilesSpritelayerCargo.get_cargo_label_mapping())
-print(AutomobilesSpritelayerCargo.base_id)
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
@@ -698,13 +696,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-    @property
-    def cargo_label_mapping(self):
-        result = {}
-        # see intermodal for example of how this mapped containers
-        # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
-        return result
+        self.spritelayer_cargo_cls = AutomobilesSpritelayerCargo
 
     @property
     def variants_use_common_graphics_switch_chain(self):

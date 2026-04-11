@@ -32,6 +32,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     @classmethod
     def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
+        # the base class also has an @property accessor for this for consistency with other uses
         # CABBAGE - this could be provided directly on the spritelayer cargo, as that is the more relevant scope (gestalt graphics could fetch it when needed)
         # CABBAGE - NEEDS REFACTORED
         return GestaltGraphicsIntermodalContainerTransporters(
@@ -39,11 +40,6 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
             spritelayer_cargo_layers=["default"],
             catalogue_entry=None,
         ).cargo_label_mapping
-
-    @property
-    def cargo_label_mapping(self):
-        # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
-        return self.get_cargo_label_mapping()
 
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
