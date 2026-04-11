@@ -40,7 +40,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarTipplerRotaryType1",
-        base_numeric_id=35550,
+        base_numeric_id=22780,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarTipplerRotaryType1",
-        base_numeric_id=35570,
+        base_numeric_id=22740,
         gen=5,
         subtype="B",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="sbb_eem_923",
-        base_numeric_id=34770,
+        base_numeric_id=24980,
         name="SBB Eem 923",
         subrole="branch_express",
         subrole_child_branch_num=1,

@@ -10,7 +10,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="mthb_re_486",
-        base_numeric_id=34750,
+        base_numeric_id=25030,
         name="MTHB Re 486",
         subrole="super_heavy_freight",
         subrole_child_branch_num=2,

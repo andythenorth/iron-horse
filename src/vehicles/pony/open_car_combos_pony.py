@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarCombos",
-        base_numeric_id=35260,
+        base_numeric_id=23630,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarCombos",
-        base_numeric_id=35280,
+        base_numeric_id=23580,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarCombos",
-        base_numeric_id=35300,
+        base_numeric_id=23530,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarCombos",
-        base_numeric_id=35320,
+        base_numeric_id=23350,
         gen=5,
         subtype="C",
         sprites_complete=True,

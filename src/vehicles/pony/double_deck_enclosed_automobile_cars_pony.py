@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileDoubleDeckEnclosedCar",
-        base_numeric_id=34560,
+        base_numeric_id=25620,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileDoubleDeckEnclosedCar",
-        base_numeric_id=34580,
+        base_numeric_id=25600,
         gen=5,
         subtype="C",
         sprites_complete=True,

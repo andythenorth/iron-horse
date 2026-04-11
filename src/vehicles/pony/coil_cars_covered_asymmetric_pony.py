@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CoilCarCoveredAsymmetric",
-        base_numeric_id=34820,
+        base_numeric_id=24770,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -40,7 +40,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarTipplerType1",
-        base_numeric_id=35530,
+        base_numeric_id=22820,
         gen=3,
         subtype="A",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="traxx_e_494",
-        base_numeric_id=34700,
+        base_numeric_id=25180,
         name="Captrain Italia E.494 Traxx 3 LM",
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,

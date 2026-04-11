@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BolsterCarHighEnd",
-        base_numeric_id=34540,
+        base_numeric_id=25640,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -38,7 +38,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarHighEnd",
-        base_numeric_id=40090,
+        base_numeric_id=19440,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarHighEnd",
-        base_numeric_id=40110,
+        base_numeric_id=19420,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarHighEnd",
-        base_numeric_id=36590,
+        base_numeric_id=19740,
         gen=5,
         subtype="B",
         sprites_complete=True,

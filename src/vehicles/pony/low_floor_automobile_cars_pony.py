@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileLowFloorCar",
-        base_numeric_id=35070,
+        base_numeric_id=23950,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="HopperCarAggregateType3",
-        base_numeric_id=34300,
+        base_numeric_id=26260,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
         subtype="A",

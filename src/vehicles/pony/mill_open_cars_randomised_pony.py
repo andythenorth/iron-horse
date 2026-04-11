@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=33940,
+        base_numeric_id=27200,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=33960,
+        base_numeric_id=27070,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=34080,
+        base_numeric_id=26830,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=34100,
+        base_numeric_id=26790,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=34120,
+        base_numeric_id=26770,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=33980,
+        base_numeric_id=27050,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -86,7 +86,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarMillRandomised",
-        base_numeric_id=34000,
+        base_numeric_id=26920,
         gen=5,
         subtype="C",
         sprites_complete=True,

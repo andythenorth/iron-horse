@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="TankCarStandardRandomised",
-        base_numeric_id=37020,
+        base_numeric_id=19680,
         gen=2,
         subtype="A",
         intro_year_offset=-10,  # let's be earlier for this one

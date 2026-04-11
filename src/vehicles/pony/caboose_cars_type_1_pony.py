@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CabooseCarType1",
-        base_numeric_id=33400,
+        base_numeric_id=27700,
         gen=1,
         subtype="A",
         base_track_type="NG",

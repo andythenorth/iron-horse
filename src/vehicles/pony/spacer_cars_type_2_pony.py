@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SpacerCabbageCarType2",
-        base_numeric_id=33380,
+        base_numeric_id=27740,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SpacerCabbageCarType2",
-        base_numeric_id=36190,
+        base_numeric_id=20410,
         gen=1,
         subtype="B",
         base_track_type="NG",

@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SiloCarRandomised",
-        base_numeric_id=33270,
+        base_numeric_id=28080,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarSlidingWallRandomised",
-        base_numeric_id=33370,
+        base_numeric_id=27760,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -24,7 +24,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarSlidingWallRandomised",
-        base_numeric_id=33390,
+        base_numeric_id=27720,
         gen=3,
         subtype="B",
         base_track_type="NG",

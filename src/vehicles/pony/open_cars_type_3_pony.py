@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=33820,
+        base_numeric_id=27450,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=33840,
+        base_numeric_id=27430,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -37,7 +37,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36170,
+        base_numeric_id=20430,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=33800,
+        base_numeric_id=27470,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36070,
+        base_numeric_id=20530,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -75,7 +75,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36090,
+        base_numeric_id=20510,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36110,
+        base_numeric_id=20490,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -99,7 +99,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36130,
+        base_numeric_id=20470,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36150,
+        base_numeric_id=20450,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -123,7 +123,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36030,
+        base_numeric_id=20570,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -137,7 +137,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36310,
+        base_numeric_id=20140,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -151,7 +151,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType3",
-        base_numeric_id=36050,
+        base_numeric_id=20550,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CabooseCarRandomised",
-        base_numeric_id=33440,
+        base_numeric_id=27620,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CabooseCarRandomised",
-        base_numeric_id=33460,
+        base_numeric_id=27580,
         gen=1,
         subtype="aC",
         sprites_complete=True,

@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalCar",
-        base_numeric_id=35490,
+        base_numeric_id=22860,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -50,7 +50,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalCar",
-        base_numeric_id=35510,
+        base_numeric_id=22840,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalCar",
-        base_numeric_id=34840,
+        base_numeric_id=24460,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -106,7 +106,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalCar",
-        base_numeric_id=34860,
+        base_numeric_id=24420,
         gen=5,
         subtype="C",
         sprites_complete=True,

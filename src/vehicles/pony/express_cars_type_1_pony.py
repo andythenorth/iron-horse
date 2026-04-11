@@ -92,7 +92,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarType1",
-        base_numeric_id=34710,
+        base_numeric_id=25100,
         gen=3,
         subtype="C",
         sprites_complete=True,

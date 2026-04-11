@@ -12,7 +12,7 @@ def main(**kwargs):
 
     #     model_def = ModelDef(
     #         schema_name="ExpressCarType2",
-    #         base_numeric_id=40830,
+    #         base_numeric_id=18800,
     #         gen=1,
     #         subtype="A",
     #         sprites_complete=True,
@@ -28,7 +28,7 @@ def main(**kwargs):
     #
     #     model_def = ModelDef(
     #         schema_name="ExpressCarType2",
-    #         base_numeric_id=39920,
+    #         base_numeric_id=19620,
     #         gen=2,
     #         subtype="A",
     #         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(**kwargs):
     #
     #     model_def = ModelDef(
     #         schema_name="ExpressCarType2",
-    #         base_numeric_id=38790,
+    #         base_numeric_id=19660,
     #         gen=2,
     #         subtype="B",
     #         sprites_complete=True,
@@ -60,7 +60,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarType2",
-        base_numeric_id=35560,
+        base_numeric_id=22760,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -76,7 +76,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarType2",
-        base_numeric_id=35540,
+        base_numeric_id=22800,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main(**kwargs):
 
     #     model_def = ModelDef(
     #         schema_name="ExpressCarType2",
-    #         base_numeric_id=34430,
+    #         base_numeric_id=25870,
     #         gen=3,
     #         subtype="C",
     #         sprites_complete=True,
@@ -108,7 +108,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarType2",
-        base_numeric_id=34310,
+        base_numeric_id=26210,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarType2",
-        base_numeric_id=34290,
+        base_numeric_id=26290,
         gen=4,
         subtype="B",
         sprites_complete=True,

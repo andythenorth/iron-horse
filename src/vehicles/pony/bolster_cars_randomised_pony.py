@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCarRandomised",
-        base_numeric_id=35470,
+        base_numeric_id=22880,
         gen=5,
         subtype="B",
         sprites_complete=True,

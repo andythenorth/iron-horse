@@ -138,7 +138,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33250,
+        base_numeric_id=28140,
         gen=5,
         subtype="C",
         sprites_complete=True,

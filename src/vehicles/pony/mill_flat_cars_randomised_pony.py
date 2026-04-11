@@ -73,7 +73,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarMillRandomised",
-        base_numeric_id=34440,
+        base_numeric_id=25810,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarMillRandomised",
-        base_numeric_id=34920,
+        base_numeric_id=24320,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -121,7 +121,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarMillRandomised",
-        base_numeric_id=34940,
+        base_numeric_id=24260,
         gen=5,
         subtype="B",
         sprites_complete=True,

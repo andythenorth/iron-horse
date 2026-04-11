@@ -42,7 +42,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="LogCar",
-        base_numeric_id=36240,
+        base_numeric_id=20290,
         gen=4,
         subtype="U",
         base_track_type="NG",

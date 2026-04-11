@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="niagra",
-        base_numeric_id=34880,
+        base_numeric_id=24400,
         name="Niagra",
         subrole="branch_freight",
         subrole_child_branch_num=-1,

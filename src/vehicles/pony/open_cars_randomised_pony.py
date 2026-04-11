@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarRandomised",
-        base_numeric_id=34670,
+        base_numeric_id=25220,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -121,7 +121,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarRandomised",
-        base_numeric_id=36330,
+        base_numeric_id=20120,
         gen=5,
         subtype="A",
         sprites_complete=True,

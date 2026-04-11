@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideType2",
-        base_numeric_id=33290,
+        base_numeric_id=28040,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideType2",
-        base_numeric_id=36430,
+        base_numeric_id=20060,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideType2",
-        base_numeric_id=36450,
+        base_numeric_id=19890,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideType2",
-        base_numeric_id=36470,
+        base_numeric_id=19860,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarCurtainSideType2",
-        base_numeric_id=36490,
+        base_numeric_id=19840,
         gen=5,
         subtype="C",
         sprites_complete=True,

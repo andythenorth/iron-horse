@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarMGRTopHood",
-        base_numeric_id=36280,
+        base_numeric_id=20200,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarMGRTopHood",
-        base_numeric_id=36300,
+        base_numeric_id=20160,
         gen=5,
         subtype="B",
         sprites_complete=True,

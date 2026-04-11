@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34810,
+        base_numeric_id=24820,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34300,
+        base_numeric_id=26260,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -35,7 +35,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34460,
+        base_numeric_id=25790,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34270,
+        base_numeric_id=26310,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34440,
+        base_numeric_id=25810,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="BulkOpenCarAggregateRandomised",
-        base_numeric_id=34250,
+        base_numeric_id=24820,
         gen=4,
         subtype="C",
         sprites_complete=True,

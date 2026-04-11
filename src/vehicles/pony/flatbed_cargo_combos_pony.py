@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=34600,
+        base_numeric_id=25570,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=34620,
+        base_numeric_id=25380,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=34640,
+        base_numeric_id=25330,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -51,7 +51,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=34660,
+        base_numeric_id=25290,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -65,7 +65,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35250,
+        base_numeric_id=23650,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -77,7 +77,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35270,
+        base_numeric_id=23600,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35410,
+        base_numeric_id=23050,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -101,7 +101,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35290,
+        base_numeric_id=23560,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35310,
+        base_numeric_id=23500,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35330,
+        base_numeric_id=23330,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -137,7 +137,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35350,
+        base_numeric_id=23250,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -149,7 +149,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35370,
+        base_numeric_id=23160,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -163,7 +163,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatBedCargoCombos",
-        base_numeric_id=35390,
+        base_numeric_id=23120,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarType3",
-        base_numeric_id=34140,
+        base_numeric_id=26750,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarType3",
-        base_numeric_id=36350,
+        base_numeric_id=19680,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarType3",
-        base_numeric_id=36370,
+        base_numeric_id=19660,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarType3",
-        base_numeric_id=36390,
+        base_numeric_id=20100,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BoxCarType3",
-        base_numeric_id=36410,
+        base_numeric_id=20080,
         gen=5,
         subtype="C",
         sprites_complete=True,

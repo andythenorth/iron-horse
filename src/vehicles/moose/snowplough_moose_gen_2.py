@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SnowploughEngine",
         model_id="snowplough_moose_gen_2",
-        base_numeric_id=34890,
+        base_numeric_id=24380,
         name="Snowplough",
         gen=2,
         speed=75,

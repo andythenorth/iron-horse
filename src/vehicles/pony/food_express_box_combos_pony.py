@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=35420,
+        base_numeric_id=23030,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=35430,
+        base_numeric_id=22990,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=35440,
+        base_numeric_id=22940,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=36000,
+        base_numeric_id=20630,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=36010,
+        base_numeric_id=20610,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
-        base_numeric_id=36020,
+        base_numeric_id=20590,
         gen=5,
         subtype="C",
         sprites_complete=True,

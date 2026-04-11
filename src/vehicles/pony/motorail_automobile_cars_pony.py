@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileMotorailCar",
-        base_numeric_id=34740,
+        base_numeric_id=25050,
         gen=2,
         subtype="B",
         livery_group_name="gen_2_motorail_liveries",  # override default liveries from gestalt
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     #     model_def = ModelDef(
     #         schema_name="AutomobileMotorailCar",
-    #         base_numeric_id=40520,
+    #         base_numeric_id=18840,
     #         gen=2,
     #         subtype="C",
     #         sprites_complete=False,
@@ -67,7 +67,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileMotorailCar",
-        base_numeric_id=34420,
+        base_numeric_id=25900,
         gen=4,
         subtype="B",
         livery_group_name="gen_4_motorail_liveries",  # override default liveries from gestalt
@@ -97,7 +97,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileMotorailCar",
-        base_numeric_id=36290,
+        base_numeric_id=20180,
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_motorail_liveries",  # override default liveries from gestalt

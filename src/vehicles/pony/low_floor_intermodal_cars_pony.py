@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalLowFloorCar",
-        base_numeric_id=35050,
+        base_numeric_id=23980,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalLowFloorCar",
-        base_numeric_id=35860,
+        base_numeric_id=22070,
         gen=5,
         subtype="C",
         sprites_complete=True,
