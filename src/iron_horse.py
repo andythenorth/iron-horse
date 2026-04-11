@@ -122,6 +122,7 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     globals()["badge_manager"] = BadgeManager()
     globals()["railtype_manager"] = RailTypeManager()
     globals()["roster_manager"] = RosterManager()
+    globals()["registered_spritelayer_cargos"] = registered_spritelayer_cargos
 
     # railtypes
     railtype_manager.add_railtypes(railtype_module_names)
@@ -138,11 +139,14 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     )
 
     # spritelayer cargos
+    # no manager here, would be neater, but was faffy when tried, TMWFTLB as of April 2026
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
         spritelayer_cargo_module = importlib.import_module(
             "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
         )
-        spritelayer_cargo_module.main()
+        result = spritelayer_cargo_module.main()
+        print(result)
+    print(registered_spritelayer_cargos)
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
     badge_manager.produce_badges(
