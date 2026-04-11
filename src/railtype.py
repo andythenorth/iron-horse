@@ -1,7 +1,4 @@
 import importlib
-import string
-
-import global_constants
 
 
 # !! could be @dataclass, but little benefit to changing currently
@@ -45,7 +42,7 @@ class Railtype(object):
         result = []
         result.append(f"ih_railtype/{self.label}")
         if self.is_lgv_railtype:
-            result.append(f"ih_behaviour/lgv_capable")
+            result.append("ih_behaviour/lgv_capable")
         return result
 
     @property
