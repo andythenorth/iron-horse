@@ -1106,10 +1106,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._unique_spritesets = unique_spritesets
         self._cargo_label_mapping = cargo_label_mapping
         self._weathered_states = weathered_states
-        if num_extra_layers_for_spritelayer_cargos is not None:
-            self.num_extra_layers_for_spritelayer_cargos = (
-                num_extra_layers_for_spritelayer_cargos
-            )
+        self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers", None)
+        if self.spritelayer_cargo_layers is not None:
+            self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
         self.row_count_for_docs_image_offset = row_count_for_docs_image_offset
         self.colour_mapping_switch = colour_mapping_switch
         self.colour_mapping_switch_purchase = colour_mapping_switch_purchase

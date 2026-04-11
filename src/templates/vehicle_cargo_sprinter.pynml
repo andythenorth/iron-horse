@@ -1,5 +1,5 @@
 <tal:reversed_status repeat="reversed_status ['unreversed', 'reversed']">
-    <tal:spritelayer_cargo_layers repeat="platform_type model_variant.spritelayer_cargo_layers">
+    <tal:spritelayer_cargo_layers repeat="platform_type model_variant.gestalt_graphics.spritelayer_cargo_layers">
         <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_${reversed_status}_check_cargo_${platform_type}, cargo_count) {
                 0: return ss_global_empty_vehicle;
@@ -24,7 +24,7 @@
     <!--! switch layers: base platform / containers -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_layers_${reversed_status}, getbits(extra_callback_info1, 8, 8)) {
         0: return ${unit.id}_ss_${reversed_status};
-        1: return ${unit.id}_switch_graphics_containers_${reversed_status}_${model_variant.spritelayer_cargo_layers[0]};
+        1: return ${unit.id}_switch_graphics_containers_${reversed_status}_${model_variant.gestalt_graphics.spritelayer_cargo_layers[0]};
         2: return ${unit.id}_ss_masked_overlay_${reversed_status};
     }
 </tal:reversed_status>

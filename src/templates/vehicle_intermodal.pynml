@@ -34,7 +34,7 @@
     }
 </tal:position_ruleset>
 
-<tal:spritelayer_cargo_layers repeat="platform_type model_variant.spritelayer_cargo_layers">
+<tal:spritelayer_cargo_layers repeat="platform_type model_variant.gestalt_graphics.spritelayer_cargo_layers">
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
             0: return ss_global_empty_vehicle;
@@ -66,7 +66,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_init_alt_var_41, [
 <!--! switch layers: base platform / spritelayer cargo -->
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${unit.id}_switch_graphics_vehicle_init_alt_var_41;
-    1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.spritelayer_cargo_layers[0]};
+    1: return ${unit.id}_switch_graphics_spritelayer_cargos_${model_variant.gestalt_graphics.spritelayer_cargo_layers[0]};
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">

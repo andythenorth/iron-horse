@@ -578,7 +578,7 @@ class DieselRailcarFreightUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
+        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
     @cached_property
     def capacity(self):
@@ -1075,7 +1075,7 @@ class ExpressIntermodalCarUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
+        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class ExpressMailCarUnit(ExpressCarUnit):
@@ -1121,10 +1121,10 @@ class AutomobileCarAsymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
-        if len(self.model_variant.spritelayer_cargo_layers) > 0:
+        if len(self.model_variant.gestalt_graphics.spritelayer_cargo_layers) > 0:
             # this will only handle first layer of a double deck auto carrier
             # but that might not might matter, as it's vehicle bits we're randomising, not layers
-            self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_automobiles_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
+            self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_automobiles_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class AutomobileCarSymmetricUnit(ExpressCarUnit):
@@ -1139,7 +1139,7 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         self._symmetry_type = "symmetric"
         # CABBAGE - this won't work properly with both layers of a double deck auto carrier
         # but that might not might matter, as it's vehicle bits we're randomising, not layers
-        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_automobiles_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
+        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_automobiles_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class FreightCarUnit(CarUnitBase):
@@ -1241,7 +1241,7 @@ class IntermodalCarUnit(FreightCarUnit):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
+        self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
 class OreDumpCarUnit(FreightCarUnit):
