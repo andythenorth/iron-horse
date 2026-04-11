@@ -3,6 +3,22 @@ Changelog
 
 
 --------------
+4.18.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.18.0.
+
+
+*Changes*
+
+- added second type of Rock Hopper and randomised Rock Hopper (both gen 5 only)
+- renamed Worker Bee livery to Hornet, as it fits better, and is now adjacent to Hazard Yellow in filter list
+- added Hornet livery for Captain Steel
+- added/improved liveries for Gargouille
+
+
+--------------
 4.17.0 Release
 --------------
 
