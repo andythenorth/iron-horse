@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreRandomised",
-        base_numeric_id=33300,
+        base_numeric_id=28020,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreRandomised",
-        base_numeric_id=33320,
+        base_numeric_id=27890,
         gen=2,
         subtype="C",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreRandomised",
-        base_numeric_id=33340,
+        base_numeric_id=27840,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreRandomised",
-        base_numeric_id=33360,
+        base_numeric_id=27780,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreRandomised",
-        base_numeric_id=33100,
+        base_numeric_id=28960,
         gen=5,
         subtype="C",
         sprites_complete=True,

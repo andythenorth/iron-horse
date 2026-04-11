@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32960,
+        base_numeric_id=29030,
         gen=2,
         subtype="B",
         sprites_complete=False,
@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=33030,
+        base_numeric_id=28360,
         gen=2,
         subtype="C",
         sprites_complete=False,
@@ -38,7 +38,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=33050,
+        base_numeric_id=28210,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -53,7 +53,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=33280,
+        base_numeric_id=28060,
         gen=3,
         subtype="C",
         sprites_complete=False,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32920,
+        base_numeric_id=29320,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -83,7 +83,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32940,
+        base_numeric_id=28740,
         gen=4,
         subtype="C",
         sprites_complete=False,
@@ -98,7 +98,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=33410,
+        base_numeric_id=27680,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -113,7 +113,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarDropCentreType1",
-        base_numeric_id=33450,
+        base_numeric_id=27600,
         gen=5,
         subtype="C",
         sprites_complete=False,
