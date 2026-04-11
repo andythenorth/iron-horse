@@ -660,20 +660,6 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
             )
         return result
 
-
-
-
-class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
-    """
-    Dedicated automobiles (car, truck, tractor) transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def get_unique_spritesets(self, unit):
         # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
         # so instead we delegate that logic here and simplify the loop
@@ -694,6 +680,18 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
                 )
                 start_y_cumulative += row_height
         return result
+
+
+class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
+    """
+    Dedicated automobiles (car, truck, tractor) transporter
+    Gestalt handles both
+    - the model variant sprites
+    - the spritelayer cargos which are in separate layer
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     @property
     def cargo_label_mapping(self):
