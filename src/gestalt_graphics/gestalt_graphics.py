@@ -666,7 +666,6 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
     def get_unique_spritesets(self, unit):
         # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
         # so instead we delegate that logic here and simplify the loop
-        # !! CABBAGE - should this be moved to base class, as we want to use only one template for all spritelayer cargo vehicle types
         row_height = graphics_constants.spriterow_height
 
         result = []
