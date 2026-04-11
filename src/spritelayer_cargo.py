@@ -19,9 +19,7 @@ class SpritelayerCargo(object):
         self.supported_reverse_states = ["unreversed"]
         # option to fill in gaps in container shadows
         self.provide_container_shadows = kwargs.get("provide_container_shadows", False)
-        self.pipelines = pipelines.get_pipelines(
-            ["generate_spritelayer_cargo_sets"]
-        )
+        self.pipelines = pipelines.get_pipelines(["generate_spritelayer_cargo_sets"])
 
     @property
     def id(self):
