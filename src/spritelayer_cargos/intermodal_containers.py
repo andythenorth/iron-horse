@@ -15,11 +15,6 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         self.base_id = "intermodal_containers"
         # we need both reversed states for asymmetric cargo sprinter cab units; due to existing implementation it's easier to provide that for all intermodal cargos
         self.supported_reverse_states = ["unreversed", "reversed"]
-        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            # these are just empty defaults so we can init the gestalt as we need to use it for config
-            spritelayer_cargo_layers=["default"],
-            catalogue_entry=None,
-        )
         self.provide_container_shadows = True
 
     @property
@@ -32,6 +27,22 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
             "cargo_sprinter_cab_unreversed": 0,
             "cargo_sprinter_cab_reversed": 0,
         }
+
+    @classmethod
+    def _cargo_label_mapping(cls):
+        # class method so we can call it when we don't have an instance of the class in scope
+        # CABBAGE - this could be provided directly on the spritelayer cargo, as that is the more relevant scope (gestalt graphics could fetch it when needed)
+        # CABBAGE - NEEDS REFACTORED
+        return GestaltGraphicsIntermodalContainerTransporters(
+            # these are just empty defaults so we can init the gestalt as we need to use it for config
+            spritelayer_cargo_layers=["default"],
+            catalogue_entry=None,
+        ).cargo_label_mapping
+
+    @property
+    def cargo_label_mapping(self):
+        # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
+        return self._cargo_label_mapping()
 
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):

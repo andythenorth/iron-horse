@@ -46,7 +46,7 @@
     </tal:generic_by_class>
     <!--! check explicit cargo labels -->
     switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}, cargo_type_in_veh) {
-        <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.gestalt_graphics.cargo_label_mapping.items()">
+        <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.cargo_label_mapping.items()">
             <!--! cargo_label_mapping in format (4 char cargo_label, (subtype, subtype_suffix)) -->
             ${cargo_map[0]}: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_${cargo_map[1][0]}_${cargo_map[1][1]};
         </tal:cargo_mapping_by_label>

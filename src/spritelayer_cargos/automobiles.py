@@ -13,11 +13,6 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
         self.base_id = "automobiles"
         # automobile sprites are asymmetric
         self.cargo_sprites_are_asymmetric = True
-        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            # these are just empty defaults so we can init the gestalt as we need to use it for config
-            spritelayer_cargo_layers=["default"],
-            catalogue_entry=None,
-        )
 
     @property
     def all_platform_types_with_floor_heights(self):
@@ -30,6 +25,19 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
             "double_deck_lower": -1,
             "double_deck_upper": -5,
         }
+
+    @classmethod
+    def _cargo_label_mapping(cls):
+        # class method so we can call it when we don't have an instance of the class in scope
+        result = {}
+        # see intermodal for example of how this mapped containers
+        # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
+        return result
+
+    @property
+    def cargo_label_mapping(self):
+        # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
+        return self._cargo_label_mapping()
 
 
 class DefaultAutomobilesCargoSetBase(CargoSetBase):
