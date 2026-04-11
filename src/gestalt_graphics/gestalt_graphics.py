@@ -623,6 +623,17 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
             result = temp_result
         return result
 
+    @property
+    def vehicle_spritelayer_names(self):
+        # for template to manage interleaving vehicle spritelayers with cargo spritelayers
+        # !! this could be done differently, when the schema class inits gestalt graphics,
+        # !! e.g. replacing spritelayer_cargo_layers with something like [vehicle_layer, cargo_layer_1, mask_layer, cargo_layer_2] etc
+        # !! but as of April 2026, TMWFTLB
+        result = ["base_platform"]
+        if self.add_masked_overlay:
+            result.append("masked_overlay")
+        return result
+
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
         # for this gestalt, it's just one empty output row per input row, no other variants
@@ -663,16 +674,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    @property
-    def vehicle_spritelayer_names(self):
-        result = ["base_platform"]
-        if self.add_masked_overlay:
-            result.append("masked_overlay")
-        return result
-
     def get_unique_spritesets(self, unit):
         # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
         # so instead we delegate that logic here and simplify the loop
+        # !! CABBAGE - should this be moved to base class, as we want to use only one template for all spritelayer cargo vehicle types
         row_height = graphics_constants.spriterow_height
 
         result = []
