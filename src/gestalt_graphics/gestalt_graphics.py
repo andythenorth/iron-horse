@@ -610,6 +610,22 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
             result = temp_result
         return result
 
+    @cached_property
+    def formation_position_labels(self):
+        # used in spriteset templating
+        if self.formation_ruleset == "articulated_permanent_twin_sets":
+            # permanent articulated twin sets only need 2 formation position rules
+            return ["first", "last"]
+        elif self.formation_ruleset == "max_1_unit_sets":
+            # 1 unit articulated sets only need 1 position rule
+            return ["default"]
+        elif self.formation_ruleset == "max_2_unit_sets":
+            # 2 unit articulated sets only need 3 position rules
+            return ["default", "first", "last"]
+        else:
+            # defaulting to 4 unit sets is apparently fine?
+            return ["default", "first", "last", "middle"]
+
 
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
     """
@@ -682,22 +698,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
         # see intermodal for example of how this mapped containers
         # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
-
-    @cached_property
-    def formation_position_labels(self):
-        # used in spriteset templating
-        if self.formation_ruleset == "articulated_permanent_twin_sets":
-            # permanent articulated twin sets only need 2 formation position rules
-            return ["first", "last"]
-        elif self.formation_ruleset == "max_1_unit_sets":
-            # 1 unit articulated sets only need 1 position rule
-            return ["default"]
-        elif self.formation_ruleset == "max_2_unit_sets":
-            # 2 unit articulated sets only need 3 position rules
-            return ["default", "first", "last"]
-        else:
-            # defaulting to 4 unit sets is apparently fine?
-            return ["default", "first", "last", "middle"]
 
     @property
     def nml_template(self):
@@ -809,18 +809,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
                 if self.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
                     result[cargo_label] = ("stake_flatrack", cargo_label)
         return result
-
-    @cached_property
-    def formation_position_labels(self):
-        # used in spriteset templating
-        if self.formation_ruleset == "max_1_unit_sets":
-            # 1 unit articulated sets only need 1 position rule
-            return ["default"]
-        elif self.formation_ruleset == "max_2_unit_sets":
-            # 2 unit articulated sets only need 3 position rules
-            return ["default", "first", "last"]
-        else:
-            return ["default", "first", "last", "middle"]
 
     @property
     def nml_template(self):
