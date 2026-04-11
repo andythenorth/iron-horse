@@ -1,11 +1,7 @@
 # spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.gestalt_graphics import (
-    GestaltGraphicsIntermodalContainerTransporters,
-)
-
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
-
+import polar_fox
 
 class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     """Base class for the containers spritelayer cargo"""
@@ -30,17 +26,60 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         }
 
     @classmethod
+    def allow_adding_cargo_label(cls, cargo_label, container_type, result):
+        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
+        if cargo_label == "DFLT":
+            return False
+        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
+        if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
+            if (
+                container_type
+                == polar_fox.constants.container_contested_cargo_labels[cargo_label]
+            ):
+                return True
+            else:
+                return False
+        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
+        if cargo_label in result:
+            print(
+                "IntermodalContainersSpritelayerCargo.cargo_label_mapping: cargo_label",
+                cargo_label,
+                "already exists, being over-written by",
+                container_type,
+                "label; update polar_fox.constants.container_contested_cargo_labels",
+            )
+        # default to allowing, most cargos aren't contested
+        return True
+
+    @classmethod
     def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
         # the base class also has an @property accessor for this for consistency with other uses
-        # CABBAGE - this could be provided directly on the spritelayer cargo, as that is the more relevant scope (gestalt graphics could fetch it when needed)
-        # CABBAGE - NEEDS REFACTORED
-        return GestaltGraphicsIntermodalContainerTransporters(
-            # these are just empty defaults so we can init the gestalt as we need to use it for config
-            spritelayer_cargo_layers=["default"],
-            catalogue_entry=None,
-        ).cargo_label_mapping
+        result = {}
+        for (
+            container_type,
+            cargo_maps,
+        ) in polar_fox.constants.container_recolour_cargo_maps:
+            # first handle the cargos as explicitly refittable
+            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
+            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
+            # the mapping expected by spritelayer cargos is cargo_label: (subtype, subtype_suffix)
+            # these will all map cargo_label: (container_type, DFLT)
+            for cargo_label in cargo_maps[0]:
+                if cls.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = (container_type, "DFLT")
 
+            # then insert or override entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
+            for cargo_label, recolour_map in cargo_maps[1]:
+                if cls.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = (container_type, cargo_label)
+        # special handling of flatracks with visible cargo sprites
+        for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
+            for cargo_label in cargo_list:
+                if cls.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
+                    result[cargo_label] = ("stake_flatrack", cargo_label)
+        return result
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
     """Sparse base class to set compatible platform types and sprite placement template"""
@@ -339,11 +378,7 @@ def main():
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsIntermodalContainerTransporters(
-            # these are just empty defaults so we can init the gestalt as we need to use it for config
-            spritelayer_cargo_layers=["default"],
-            catalogue_entry=None,
-        ).cargo_label_mapping.values()
+        IntermodalContainersSpritelayerCargo.get_cargo_label_mapping().values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

@@ -4,6 +4,9 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 from spritelayer_cargos.automobiles import AutomobilesSpritelayerCargo
+from spritelayer_cargos.intermodal_containers import (
+    IntermodalContainersSpritelayerCargo,
+)
 import utils
 from utils import timing
 
@@ -724,6 +727,7 @@ class GestaltGraphicsIntermodalContainerTransporters(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.spritelayer_cargo_cls = IntermodalContainersSpritelayerCargo
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
@@ -732,59 +736,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
             3: 2,
             4: 4,  # first: last
         }
-
-    def allow_adding_cargo_label(self, cargo_label, container_type, result):
-        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
-        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
-        if cargo_label == "DFLT":
-            return False
-        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
-        if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
-            if (
-                container_type
-                == polar_fox.constants.container_contested_cargo_labels[cargo_label]
-            ):
-                return True
-            else:
-                return False
-        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
-        if cargo_label in result:
-            print(
-                "GestaltGraphicsIntermodalContainerTransporters.cargo_label_mapping: cargo_label",
-                cargo_label,
-                "already exists, being over-written by",
-                container_type,
-                "label; update polar_fox.constants.container_contested_cargo_labels",
-            )
-        # default to allowing, most cargos aren't contested
-        return True
-
-    @cached_property
-    def cargo_label_mapping(self):
-        result = {}
-        for (
-            container_type,
-            cargo_maps,
-        ) in polar_fox.constants.container_recolour_cargo_maps:
-            # first handle the cargos as explicitly refittable
-            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
-            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
-            # the mapping expected by spritelayer cargos is cargo_label: (subtype, subtype_suffix)
-            # these will all map cargo_label: (container_type, DFLT)
-            for cargo_label in cargo_maps[0]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, "DFLT")
-
-            # then insert or override entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
-            for cargo_label, recolour_map in cargo_maps[1]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, cargo_label)
-        # special handling of flatracks with visible cargo sprites
-        for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
-            for cargo_label in cargo_list:
-                if self.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
-                    result[cargo_label] = ("stake_flatrack", cargo_label)
-        return result
 
     @property
     def nml_template(self):
