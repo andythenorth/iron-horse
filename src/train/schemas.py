@@ -29,7 +29,6 @@ from gestalt_graphics.gestalt_graphics import (
 import gestalt_graphics.graphics_constants as graphics_constants
 
 import iron_horse
-import spritelayer_cargos
 
 
 class SchemaBase(object):
@@ -1189,7 +1188,6 @@ class SchemaBase(object):
             global_constants=global_constants,
             utils=utils,
             graphics_path=graphics_path,
-            spritelayer_cargos=spritelayer_cargos,
             railtype_manager=iron_horse.railtype_manager,
         )
         return nml_result
