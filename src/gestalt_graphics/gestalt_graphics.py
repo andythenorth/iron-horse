@@ -684,6 +684,15 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
                 start_y_cumulative += row_height
         return result
 
+    def get_buy_menu_unit_input_row_num(
+        self, pipeline, catalogue_entry, unit_counter, unit
+    ):
+        if self.add_masked_overlay:
+            # crude assumption that it's just a 2 row offset (vehicle sprite, mask) to each unit, probably fine for now
+            return 2 * unit_counter
+        else:
+            return unit_counter
+
 
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
     """
@@ -700,15 +709,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
     @property
     def variants_use_common_graphics_switch_chain(self):
         return False
-
-    def get_buy_menu_unit_input_row_num(
-        self, pipeline, catalogue_entry, unit_counter, unit
-    ):
-        if self.add_masked_overlay:
-            # crude assumption that it's just a 2 row offset (vehicle sprite, mask) to each unit, probably fine for now
-            return 2 * unit_counter
-        else:
-            return unit_counter
 
 
 class GestaltGraphicsIntermodalContainerTransporters(
