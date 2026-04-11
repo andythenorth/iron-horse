@@ -16,7 +16,7 @@ from utils import timing
 
 from gestalt_graphics.gestalt_graphics import (
     GestaltGraphics,
-    GestaltGraphicsVisibleCargo,
+    GestaltGraphicsPrecompositedCargo,
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
     GestaltGraphicsSimpleBodyColourRemaps,
@@ -2783,7 +2783,7 @@ class BolsterCarBase(CarSchemaBase):
         ]
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
         )
@@ -3192,7 +3192,7 @@ class BulkOpenCarBase(CarSchemaBase):
             "freight_core"
         ]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             catalogue_entry=self.catalogue_entry,
         )
@@ -3227,7 +3227,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
             "unweathered": graphics_constants.aggregate_bulk_open_livery_recolour_map,
             "weathered": graphics_constants.aggregate_bulk_open_livery_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -3317,7 +3317,7 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         self.weight_factor = 2
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             catalogue_entry=self.catalogue_entry,
         )
@@ -3822,7 +3822,7 @@ class CaneBinCar(CarSchemaBase):
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -3911,7 +3911,7 @@ class CoilBuggyCarUnit(CarSchemaBase):
         # cargo_row_map blank, all default to same
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
-            "vehicle_with_visible_cargo.pynml",
+            "vehicle_with_precomposited_cargo.pynml",
             variants_use_common_graphics_switch_chain=True,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
@@ -3975,7 +3975,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
             "unweathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map,
             "weathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             weathered_states=weathered_states,
             piece="coil",
             covered_vehicle_body=True,
@@ -4007,7 +4007,7 @@ class CoilCarCovered(CoilCarBase):
         self._joker = True
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             weathered_states=weathered_states,
             piece="coil",
             covered_vehicle_body=True,
@@ -4038,7 +4038,7 @@ class CoilCarTarpaulin(CoilCarBase):
             "unweathered": graphics_constants.coil_car_tarpaulin_body_recolour_map,
             "weathered": graphics_constants.coil_car_tarpaulin_body_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             weathered_states=weathered_states,
             piece="coil",
             covered_vehicle_body=True,
@@ -4064,7 +4064,7 @@ class CoilCarUncovered(CoilCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="coil",
             catalogue_entry=self.catalogue_entry,
         )
@@ -5127,7 +5127,7 @@ class FlatCarBase(CarSchemaBase):
             "freight_core"
         ]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
         )
@@ -5152,7 +5152,7 @@ class FlatCarBulkheadBase(FlatCarBase):
         ]
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
         )
@@ -5288,7 +5288,7 @@ class FlatCarHeavyDuty(FlatCarBase):
         self.weight_factor = 2
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
         )
@@ -5515,7 +5515,7 @@ class HopperCarBase(CarSchemaBase):
             "freight_core"
         ]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             catalogue_entry=self.catalogue_entry,
         )
@@ -5679,7 +5679,7 @@ class HopperCarMGRBase(HopperCarBase):
             "weathered": graphics_constants.mgr_hopper_body_recolour_map_weathered,
         }
         # player choice, various others tried, not needed
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -5891,7 +5891,7 @@ class IngotCarUnit(CarSchemaBase):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
-            "vehicle_with_visible_cargo.pynml",
+            "vehicle_with_precomposited_cargo.pynml",
             variants_use_common_graphics_switch_chain=True,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
@@ -6086,7 +6086,7 @@ class LogCar(CarSchemaBase):
             "non_core_wagons"
         ]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="tree_length_logs",
             catalogue_entry=self.catalogue_entry,
         )
@@ -6798,7 +6798,7 @@ class OpenCarType1(OpenCarBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             piece="open",
             catalogue_entry=self.catalogue_entry,
@@ -6823,7 +6823,7 @@ class OpenCarType2(OpenCarBase):
             "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
             "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             piece="open",
             weathered_states=weathered_states,
@@ -6849,7 +6849,7 @@ class OpenCarType3(OpenCarBase):
             "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
             "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             piece="open",
             weathered_states=weathered_states,
@@ -6878,7 +6878,7 @@ class OpenCarHoodType1(OpenCarBase):
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
             "weathered": graphics_constants.hood_open_car_body_recolour_map_weathered,
         }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             piece="open",
             weathered_states=weathered_states,
@@ -6915,7 +6915,7 @@ class OpenCarMillBase(OpenCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             piece="open",
             catalogue_entry=self.catalogue_entry,
@@ -7582,7 +7582,7 @@ class PeatCar(CarSchemaBase):
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             bulk=True,
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
@@ -7729,7 +7729,7 @@ class PipeCar(FlatCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             catalogue_entry=self.catalogue_entry,
         )
@@ -8027,7 +8027,7 @@ class SlidingRoofCar(BoxCarBase):
         }
         # these make little difference visually for this wagon, but are needed to make this wagon a candidate for relevant randomised wagons
         # teal before pewter to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             weathered_states=weathered_states,
             piece="flat",
             covered_vehicle_body=True,
@@ -8068,7 +8068,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
         # teal before pewter to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             weathered_states=weathered_states,
             piece="flat",
             covered_vehicle_body=True,
@@ -8113,7 +8113,7 @@ class SlagLadleCarUnit(CarSchemaBase):
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
-            "vehicle_with_visible_cargo.pynml",
+            "vehicle_with_precomposited_cargo.pynml",
             variants_use_common_graphics_switch_chain=True,
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
@@ -8582,7 +8582,7 @@ class TarpaulinCarBase(BoxCarBase):
         # Graphics configuration
         weathered_states = {"unweathered": graphics_constants.body_recolour_CC1}
         # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             covered_vehicle_body=True,
             weathered_states=weathered_states,
@@ -8629,7 +8629,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
         }
         # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast, as the wagon hood is white
         # reduced set of liveries here
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+        self.gestalt_graphics = GestaltGraphicsPrecompositedCargo(
             piece="flat",
             covered_vehicle_body=True,
             weathered_states=weathered_states,

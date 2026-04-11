@@ -1,6 +1,6 @@
 <!--!
     For the specific case of 3-unit articulated vehicle with cargo on the middle unit, and first/last units mirrored.
-    Simpler to write a dedicated template than add more complexity to vehicle_with_visible_cargo template.
+    Simpler to write a dedicated template than add more complexity to vehicle_with_precomposited_cargo template.
 -->
 
 <!--! plan

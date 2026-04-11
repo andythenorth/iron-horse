@@ -300,7 +300,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsVisibleCargo(GestaltGraphics):
+class GestaltGraphicsPrecompositedCargo(GestaltGraphics):
     """
     Used for vehicle with visible cargos
     Supports *only* pixa-generated cargos; mixing with custom cargo rows isn't handled, TMWFTLB
@@ -347,7 +347,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
     @property
     def nml_template(self):
-        return "vehicle_with_visible_cargo.pynml"
+        return "vehicle_with_precomposited_cargo.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):

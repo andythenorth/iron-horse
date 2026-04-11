@@ -1,4 +1,4 @@
-<!--! common procedures for vehicle_with_visible_cargo and similar templates -->
+<!--! common procedures for vehicle_with_precomposited_cargo and similar templates -->
 
 <!--! no cover variant, sprite states are empty, loading 0-99%, loaded -->
 <!--! return silly integer stuffing for flip + load state -->
