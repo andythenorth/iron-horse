@@ -573,23 +573,7 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
 
-
-class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
-    """
-    Dedicated automobiles (car, truck, tractor) transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
-
     def get_output_row_types(self):
-        # !! the actual number of variants needs decided - are we having articulated variants or just single units?
-        # 2 liveries * 4 formation position rules, so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
-        # note to self, remarkably adding multiple empty rows appears to just work here :o
         if self.formation_ruleset == "max_1_unit_sets":
             result = ["empty_vehicle_body"]
         elif self.formation_ruleset == "max_2_unit_sets":
@@ -613,7 +597,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
         else:
             raise BaseException(
                 str(self.formation_ruleset)
-                + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
+                + " not matched in GestaltGraphicsSpritelayerTransporterBase get_output_row_types()"
             )
         if self.add_masked_overlay:
             temp_result = []
@@ -623,6 +607,19 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
                 temp_result.append(None)
             result = temp_result
         return result
+
+
+class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
+    """
+    Dedicated automobiles (car, truck, tractor) transporter
+    Gestalt handles both
+    - the model variant sprites
+    - the spritelayer cargos which are in separate layer
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
@@ -739,16 +736,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
             3: 2,
             4: 4,  # first: last
         }
-
-    def get_output_row_types(self):
-        # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
-        # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return [
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-        ]
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
