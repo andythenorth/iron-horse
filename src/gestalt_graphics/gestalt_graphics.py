@@ -725,7 +725,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
         super().__init__(**kwargs)
         self.spritelayer_cargo_base_id = "intermodal_containers"
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
-        # two liveries
         self.asymmetric_row_map = {
             1: 1,
             2: 3,  # default: default
