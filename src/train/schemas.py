@@ -1570,14 +1570,14 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
-                spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+                spritelayer_cargo_layers=self._spritelayer_cargo_layers,
                 catalogue_entry=self.catalogue_entry,
             ).cargo_label_mapping,
         )
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
             cargo_label_mapping=cargo_label_mapping,
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self._spritelayer_cargo_layers,
             num_extra_layers_for_spritelayer_cargos=2,
             row_count_for_docs_image_offset=2,
             catalogue_entry=self.catalogue_entry,
@@ -1600,7 +1600,7 @@ class FreightEngineCargoSprinterCabEngine(FreightEngineCargoSprinterBase):
         self.is_distributed_power_cab = True
 
     @property
-    def spritelayer_cargo_layers(self):
+    def _spritelayer_cargo_layers(self):
         # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
         return ["cargo_sprinter_cab_unreversed", "cargo_sprinter_cab_reversed"]
 
@@ -1630,7 +1630,7 @@ class FreightEngineCargoSprinterMiddleEngine(FreightEngineCargoSprinterBase):
         self.is_distributed_power_wagon = True
 
     @property
-    def spritelayer_cargo_layers(self):
+    def _spritelayer_cargo_layers(self):
         # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
         # cargo sprinter middle uses same as intermodal cars
         return ["default"]
@@ -2611,15 +2611,10 @@ class AutomobileLowFloorCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=["low_floor"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["low_floor"]
 
 
 class AutomobileSingleDeckCar(AutomobileCarBase):
@@ -2640,15 +2635,10 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=["default"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["default"]
 
 
 class AutomobileDoubleDeckCar(AutomobileCarBase):
@@ -2669,17 +2659,12 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=["double_deck_lower", "double_deck_upper"],
             formation_ruleset=formation_ruleset,
             # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
             add_masked_overlay=True,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["double_deck_lower", "double_deck_upper"]
 
 
 class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
@@ -2700,15 +2685,11 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            # layers for spritelayer cargos - this is nerfed off for enclosed cars, no visible cargo
+            spritelayer_cargo_layers=[],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    # layers for spritelayer cargos - this is nerfed off for enclosed cars, no visible cargo
-    def spritelayer_cargo_layers(self):
-        return []
 
 
 class AutomobileMotorailCar(AutomobileCarBase):
@@ -4478,15 +4459,9 @@ class ExpressIntermodalCarBase(CarSchemaBase):
                 "unweathered": graphics_constants.refrigerated_livery_recolour_map,
                 "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
             },
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=["default"],
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    def spritelayer_cargo_layers(self):
-        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-        # !! express intermodal all default currently, extend as needed
-        return ["default"]
 
 
 class ExpressIntermodalCarType1(ExpressIntermodalCarBase):
@@ -5946,7 +5921,7 @@ class IntermodalCarBase(CarSchemaBase):
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
-            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self._spritelayer_cargo_layers,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5965,7 +5940,7 @@ class IntermodalCar(IntermodalCarBase):
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
+    def _spritelayer_cargo_layers(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
         if self.base_track_type == "NG":
             return ["low_floor"]
@@ -5988,7 +5963,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
+    def _spritelayer_cargo_layers(self):
         return ["low_floor"]
 
 
