@@ -571,7 +571,9 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         # required arg, fail if not provided
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers")
         # derive number of layers for cargo sprites
-        self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
+        self.num_extra_layers_for_spritelayer_cargos = len(
+            self.spritelayer_cargo_layers
+        )
 
     def get_output_row_types(self):
         if self.formation_ruleset == "max_1_unit_sets":
@@ -1090,7 +1092,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._weathered_states = weathered_states
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers", None)
         if self.spritelayer_cargo_layers is not None:
-            self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
+            self.num_extra_layers_for_spritelayer_cargos = len(
+                self.spritelayer_cargo_layers
+            )
         self.row_count_for_docs_image_offset = row_count_for_docs_image_offset
         self.colour_mapping_switch = colour_mapping_switch
         self.colour_mapping_switch_purchase = colour_mapping_switch_purchase
