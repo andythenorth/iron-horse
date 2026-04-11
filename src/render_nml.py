@@ -119,8 +119,7 @@ def main():
         "alt_vars_powered_by_railtype",
         "alt_vars_random_bits",
         # rulesets for formation-position-dependent vehicles
-        "formation_rulesets_automobile_car",
-        "formation_rulesets_intermodal",
+        "formation_rulesets_freight",
         "formation_rulesets_pax_mail",
         # procedures
         "procedures_capacity",

@@ -18,7 +18,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_get_recolour_map_r
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_formation_entry_point,
         [
             STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_freight_wagon_livery_entry_point(${unit.id}_switch_graphics_vehicle_get_recolour_map_random_choice()), 0x100),
-            10 + switch_graphics_automobile_transporter_ruleset_${model_variant.gestalt_graphics.formation_ruleset}()
+            10 + switch_graphics_freight_ruleset_${model_variant.gestalt_graphics.formation_ruleset}()
         ]
     ) {
         <tal:position_ruleset repeat="formation_position_label model_variant.gestalt_graphics.formation_position_labels">

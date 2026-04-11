@@ -16,7 +16,7 @@
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_2_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_max_2_unit_sets()) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_freight_ruleset_max_2_unit_sets()) {
         0: return ${unit.id}_ss_default;
         1: return ${unit.id}_ss_first;
         2: return ${unit.id}_ss_last;
@@ -25,7 +25,7 @@
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="model_variant.gestalt_graphics.formation_ruleset == 'max_4_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_intermodal_platform_ruleset_max_4_unit_sets()) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_platform_position_in_formation_entry_point, switch_graphics_freight_ruleset_max_4_unit_sets()) {
         0: ${unit.id}_ss_default;
         1: return ${unit.id}_ss_first;
         2: return ${unit.id}_ss_last;
