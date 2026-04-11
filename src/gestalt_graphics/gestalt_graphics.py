@@ -546,147 +546,33 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
+class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
     """
-    Dedicated gestalt for intermodal container transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
+    Base for wagons using spritelayer cargo.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # we use the composited sprites pipeline so we can make use of chassis compositing
+
         self.pipelines = pipelines.get_pipelines(
             [
                 "extend_spriterows_for_composited_sprites_pipeline",
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-        # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
+
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
             ["generate_spritelayer_cargo_sets"]
         )
+
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
-        # add layers for container sprites
-        # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
+
         self.num_extra_layers_for_spritelayer_cargos = 1
-        # the actual containers are symmetric
         self.cargo_sprites_are_asymmetric = False
-        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
-        # two liveries
-        self.asymmetric_row_map = {
-            1: 1,
-            2: 3,  # default: default
-            3: 2,
-            4: 4,  # first: last
-        }
-
-    def get_output_row_types(self):
-        # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
-        # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return [
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-            "empty_vehicle_body",
-        ]
-
-    def get_generic_spriterow_output_variants(self, spriterow_type):
-        # there may be variants of generic spriterows, to support weathered state, masked overlay etc
-        # for this gestalt, it's just one empty output row per input row, no other variants
-        if spriterow_type != "empty_vehicle_body":
-            # only empty rows are supported eh
-            raise BaseException(
-                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
-            )
-        result = []
-        result.append(
-            {
-                "label": "EMPTY",
-                "body_recolour_map": None,
-                "mask_row_offset_count": None,
-            }
-        )
-        return result
-
-    def allow_adding_cargo_label(self, cargo_label, container_type, result):
-        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
-        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
-        if cargo_label == "DFLT":
-            return False
-        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
-        if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
-            if (
-                container_type
-                == polar_fox.constants.container_contested_cargo_labels[cargo_label]
-            ):
-                return True
-            else:
-                return False
-        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
-        if cargo_label in result:
-            print(
-                "GestaltGraphicsIntermodalContainerTransporters.cargo_label_mapping: cargo_label",
-                cargo_label,
-                "already exists, being over-written by",
-                container_type,
-                "label; update polar_fox.constants.container_contested_cargo_labels",
-            )
-        # default to allowing, most cargos aren't contested
-        return True
-
-    @cached_property
-    def cargo_label_mapping(self):
-        result = {}
-        for (
-            container_type,
-            cargo_maps,
-        ) in polar_fox.constants.container_recolour_cargo_maps:
-            # first handle the cargos as explicitly refittable
-            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
-            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
-            # the mapping expected by spritelayer cargos is cargo_label: (subtype, subtype_suffix)
-            # these will all map cargo_label: (container_type, DFLT)
-            for cargo_label in cargo_maps[0]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, "DFLT")
-
-            # then insert or override entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
-            for cargo_label, recolour_map in cargo_maps[1]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, cargo_label)
-        # special handling of flatracks with visible cargo sprites
-        for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
-            for cargo_label in cargo_list:
-                if self.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
-                    result[cargo_label] = ("stake_flatrack", cargo_label)
-        return result
-
-    @cached_property
-    def formation_position_labels(self):
-        # used in spriteset templating
-        if self.formation_ruleset == "max_1_unit_sets":
-            # 1 unit articulated sets only need 1 position rule
-            return ["default"]
-        elif self.formation_ruleset == "max_2_unit_sets":
-            # 2 unit articulated sets only need 3 position rules
-            return ["default", "first", "last"]
-        else:
-            return ["default", "first", "last", "middle"]
-
-    @property
-    def nml_template(self):
-        # override in subclasses as needed
-        return "vehicle_intermodal.pynml"
-
-    @property
-    def variants_use_common_graphics_switch_chain(self):
-        return False
 
 
-class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
+class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
     """
     Dedicated automobiles (car, truck, tractor) transporter
     Gestalt handles both
@@ -697,19 +583,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     def __init__(self, spritelayer_cargo_layers=["default"], **kwargs):
         super().__init__(**kwargs)
         self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
-        # we use the composited sprites pipeline so we can make use of chassis compositing
-        self.pipelines = pipelines.get_pipelines(
-            [
-                "extend_spriterows_for_composited_sprites_pipeline",
-                "generate_buy_menu_sprite_vanilla_vehicle",
-            ]
-        )
-        # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
-        self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
-            ["generate_spritelayer_cargo_sets"]
-        )
-        self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_with_purchase = False
         self.cargo_sprites_are_asymmetric = True
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(spritelayer_cargo_layers)
@@ -845,6 +718,135 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             return 2 * unit_counter
         else:
             return unit_counter
+
+
+class GestaltGraphicsIntermodalContainerTransporters(
+    GestaltGraphicsSpritelayerTransporterBase
+):
+    """
+    Dedicated gestalt for intermodal container transporter
+    Gestalt handles both
+    - the model variant sprites
+    - the spritelayer cargos which are in separate layer
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # add layers for container sprites
+        # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
+        self.num_extra_layers_for_spritelayer_cargos = 1
+        # the actual containers are symmetric
+        self.cargo_sprites_are_asymmetric = False
+        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        # two liveries
+        self.asymmetric_row_map = {
+            1: 1,
+            2: 3,  # default: default
+            3: 2,
+            4: 4,  # first: last
+        }
+
+    def get_output_row_types(self):
+        # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # note to self, remarkably adding multiple empty rows appears to just work here :o
+        return [
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+        ]
+
+    def get_generic_spriterow_output_variants(self, spriterow_type):
+        # there may be variants of generic spriterows, to support weathered state, masked overlay etc
+        # for this gestalt, it's just one empty output row per input row, no other variants
+        if spriterow_type != "empty_vehicle_body":
+            # only empty rows are supported eh
+            raise BaseException(
+                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
+            )
+        result = []
+        result.append(
+            {
+                "label": "EMPTY",
+                "body_recolour_map": None,
+                "mask_row_offset_count": None,
+            }
+        )
+        return result
+
+    def allow_adding_cargo_label(self, cargo_label, container_type, result):
+        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
+        if cargo_label == "DFLT":
+            return False
+        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
+        if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
+            if (
+                container_type
+                == polar_fox.constants.container_contested_cargo_labels[cargo_label]
+            ):
+                return True
+            else:
+                return False
+        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
+        if cargo_label in result:
+            print(
+                "GestaltGraphicsIntermodalContainerTransporters.cargo_label_mapping: cargo_label",
+                cargo_label,
+                "already exists, being over-written by",
+                container_type,
+                "label; update polar_fox.constants.container_contested_cargo_labels",
+            )
+        # default to allowing, most cargos aren't contested
+        return True
+
+    @cached_property
+    def cargo_label_mapping(self):
+        result = {}
+        for (
+            container_type,
+            cargo_maps,
+        ) in polar_fox.constants.container_recolour_cargo_maps:
+            # first handle the cargos as explicitly refittable
+            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
+            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
+            # the mapping expected by spritelayer cargos is cargo_label: (subtype, subtype_suffix)
+            # these will all map cargo_label: (container_type, DFLT)
+            for cargo_label in cargo_maps[0]:
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = (container_type, "DFLT")
+
+            # then insert or override entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
+            for cargo_label, recolour_map in cargo_maps[1]:
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = (container_type, cargo_label)
+        # special handling of flatracks with visible cargo sprites
+        for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
+            for cargo_label in cargo_list:
+                if self.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
+                    result[cargo_label] = ("stake_flatrack", cargo_label)
+        return result
+
+    @cached_property
+    def formation_position_labels(self):
+        # used in spriteset templating
+        if self.formation_ruleset == "max_1_unit_sets":
+            # 1 unit articulated sets only need 1 position rule
+            return ["default"]
+        elif self.formation_ruleset == "max_2_unit_sets":
+            # 2 unit articulated sets only need 3 position rules
+            return ["default", "first", "last"]
+        else:
+            return ["default", "first", "last", "middle"]
+
+    @property
+    def nml_template(self):
+        # override in subclasses as needed
+        return "vehicle_intermodal.pynml"
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return False
 
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
