@@ -37,7 +37,7 @@ def run_spritelayer_cargo_set_pipelines(
 ):
     for pipeline in spritelayer_cargo_set_pair[
         0
-    ].gestalt_graphics.spritelayer_cargo_pipelines:
+    ].pipelines:
         pipeline.render(
             spritelayer_cargo_set_pair, global_constants, graphics_output_path
         )

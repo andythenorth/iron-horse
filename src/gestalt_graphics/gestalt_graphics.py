@@ -559,9 +559,6 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-        self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
-            ["generate_spritelayer_cargo_sets"]
-        )
         # required arg, fail if not provided
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers")
         # derive number of layers for cargo sprites

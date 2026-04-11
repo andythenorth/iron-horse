@@ -1,6 +1,7 @@
 import global_constants  # expose all constants for easy passing to templates
 
 from spritelayer_cargos import registered_spritelayer_cargos
+from gestalt_graphics import pipelines
 
 
 class SpritelayerCargo(object):
@@ -19,6 +20,9 @@ class SpritelayerCargo(object):
         self.provide_container_shadows = kwargs.get("provide_container_shadows", False)
         # configure gestalt_graphics in the subclass
         self.gestalt_graphics = None
+        self.pipelines = pipelines.get_pipelines(
+            ["generate_spritelayer_cargo_sets"]
+        )
 
     @property
     def id(self):
