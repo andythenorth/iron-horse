@@ -553,27 +553,24 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
         self.pipelines = pipelines.get_pipelines(
             [
                 "extend_spriterows_for_composited_sprites_pipeline",
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
             ["generate_spritelayer_cargo_sets"]
         )
-
-        self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_with_purchase = False
-
         # required arg, fail if not provided
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers")
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(
             self.spritelayer_cargo_layers
         )
+        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
+        self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
 
     def get_output_row_types(self):
         if self.formation_ruleset == "max_1_unit_sets":
@@ -637,7 +634,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
