@@ -568,7 +568,11 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
 
-        self.num_extra_layers_for_spritelayer_cargos = 1
+        # required arg, fail if not provided
+        self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers")
+        # derive number of layers for cargo sprites
+        self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
+        # default, over-ride in subclasses as needed
         self.cargo_sprites_are_asymmetric = False
 
 
@@ -580,12 +584,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
     - the spritelayer cargos which are in separate layer
     """
 
-    def __init__(self, spritelayer_cargo_layers=["default"], **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
         self.cargo_sprites_are_asymmetric = True
-        # derive number of layers for cargo sprites
-        self.num_extra_layers_for_spritelayer_cargos = len(spritelayer_cargo_layers)
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
@@ -732,9 +734,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # add layers for container sprites
-        # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
-        self.num_extra_layers_for_spritelayer_cargos = 1
         # the actual containers are symmetric
         self.cargo_sprites_are_asymmetric = False
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]

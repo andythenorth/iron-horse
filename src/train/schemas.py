@@ -1570,12 +1570,14 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
+                spritelayer_cargo_layers=self.spritelayer_cargo_layers,
                 catalogue_entry=self.catalogue_entry,
             ).cargo_label_mapping,
         )
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
             cargo_label_mapping=cargo_label_mapping,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             num_extra_layers_for_spritelayer_cargos=2,
             row_count_for_docs_image_offset=2,
             catalogue_entry=self.catalogue_entry,
@@ -2609,7 +2611,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
@@ -2638,7 +2640,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
@@ -2667,7 +2669,7 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
             add_masked_overlay=True,
@@ -2698,7 +2700,7 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         else:
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
@@ -4476,6 +4478,7 @@ class ExpressIntermodalCarBase(CarSchemaBase):
                 "unweathered": graphics_constants.refrigerated_livery_recolour_map,
                 "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
             },
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5943,6 +5946,7 @@ class IntermodalCarBase(CarSchemaBase):
             formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
+            spritelayer_cargo_layers=self.spritelayer_cargo_layers,
             catalogue_entry=self.catalogue_entry,
         )
 

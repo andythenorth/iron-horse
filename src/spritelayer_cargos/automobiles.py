@@ -12,7 +12,9 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            catalogue_entry=None,  # as of April 2025 this gestalt does nothing with liveries, seems fine for now
+            # these are just empty defaults so we can init the gestalt as we need to use it for config
+            spritelayer_cargo_layers=["default"],
+            catalogue_entry=None,
         )
 
     @property
@@ -530,7 +532,9 @@ def main():
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsAutomobilesTransporter(
-            catalogue_entry=None,  # no catalogue needed in this context as of April 20255
+            # these are just empty defaults so we can init the gestalt as we need to use it for config
+            spritelayer_cargo_layers=["default"],
+            catalogue_entry=None,
         ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
