@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33070,
+        base_numeric_id=29390,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -32,7 +32,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33090,
+        base_numeric_id=29370,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33130,
+        base_numeric_id=29330,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33150,
+        base_numeric_id=29310,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33170,
+        base_numeric_id=29290,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -96,7 +96,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33190,
+        base_numeric_id=29270,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -110,7 +110,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33210,
+        base_numeric_id=28600,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarProductType2",
-        base_numeric_id=33230,
+        base_numeric_id=28560,
         gen=5,
         subtype="B",
         sprites_complete=True,

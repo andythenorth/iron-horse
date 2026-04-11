@@ -23,7 +23,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="TankCarStandardRandomised",
-        base_numeric_id=32900,
+        base_numeric_id=29650,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def =ModelDef(
         schema_name="TankCarStandardRandomised",
-        base_numeric_id=32940,
+        base_numeric_id=29590,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -109,7 +109,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarStandardRandomised",
-        base_numeric_id=33110,
+        base_numeric_id=29350,
         gen=5,
         subtype="C",
         sprites_complete=True,

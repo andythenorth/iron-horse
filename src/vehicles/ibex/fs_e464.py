@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="fs_e464",
-        base_numeric_id=32740,
+        base_numeric_id=29980,
         name="FS E.464",
         subrole="super_heavy_express",
         subrole_child_branch_num=-1,

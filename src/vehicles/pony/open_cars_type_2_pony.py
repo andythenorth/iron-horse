@@ -85,7 +85,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="OpenCarType2",
-        base_numeric_id=32890,
+        base_numeric_id=29670,
         gen=3,
         subtype="B",
         sprites_complete=True,

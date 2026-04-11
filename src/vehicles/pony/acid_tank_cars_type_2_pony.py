@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarAcidType2",
-        base_numeric_id=32810,
+        base_numeric_id=29830,
         gen=2,
         subtype="A",
         base_track_type="NG",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="TankCarAcidType2",
-        base_numeric_id=32830,
+        base_numeric_id=29790,
         gen=3,
         subtype="A",
         base_track_type="NG",

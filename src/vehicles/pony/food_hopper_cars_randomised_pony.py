@@ -87,7 +87,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodProductsHopperCarRandomised",
-        base_numeric_id=33000,
+        base_numeric_id=29490,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -99,7 +99,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodProductsHopperCarRandomised",
-        base_numeric_id=32980,
+        base_numeric_id=29530,
         gen=5,
         subtype="C",
         sprites_complete=True,

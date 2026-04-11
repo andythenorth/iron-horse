@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarAggregateType1",
-        base_numeric_id=32970,
+        base_numeric_id=29550,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarAggregateType1",
-        base_numeric_id=32990,
+        base_numeric_id=29510,
         gen=5,
         subtype="C",
         sprites_complete=True,

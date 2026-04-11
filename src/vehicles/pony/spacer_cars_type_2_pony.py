@@ -36,7 +36,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SpacerCabbageCarType2",
-        base_numeric_id=32450,
+        base_numeric_id=30290,
         gen=1,
         subtype="aA",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SpacerCabbageCarType2",
-        base_numeric_id=32460,
+        base_numeric_id=30270,
         gen=1,
         subtype="aB",
         sprites_complete=True,

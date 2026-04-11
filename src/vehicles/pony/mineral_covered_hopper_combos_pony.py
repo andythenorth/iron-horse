@@ -22,7 +22,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MineralCoveredHopperCombos",
-        base_numeric_id=32860,
+        base_numeric_id=29730,
         gen=3,
         subtype="A",
         sprites_complete=True,

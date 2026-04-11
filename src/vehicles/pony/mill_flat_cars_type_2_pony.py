@@ -61,7 +61,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FlatCarMillType2",
-        base_numeric_id=32870,
+        base_numeric_id=29710,
         gen=3,
         subtype="B",
         sprites_complete=True,

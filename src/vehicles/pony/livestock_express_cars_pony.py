@@ -24,7 +24,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="LivestockExpressCar",
-        base_numeric_id=33000,
+        base_numeric_id=29490,
         gen=2,
         subtype="A",
         sprites_complete=True,

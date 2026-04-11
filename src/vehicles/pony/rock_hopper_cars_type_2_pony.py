@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarRockType2",
-        base_numeric_id=32730,
+        base_numeric_id=30100,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarRockType2",
-        base_numeric_id=32840,
+        base_numeric_id=29770,
         gen=5,
         subtype="C",
         sprites_complete=True,

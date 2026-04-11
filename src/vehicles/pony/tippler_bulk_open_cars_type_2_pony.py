@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarTipplerType2",
-        base_numeric_id=32770,
+        base_numeric_id=29920,
         gen=3,
         subtype="A",
         base_track_type="NG",

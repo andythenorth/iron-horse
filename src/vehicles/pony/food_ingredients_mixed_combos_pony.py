@@ -56,7 +56,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodIngredientsMixedCombos",
-        base_numeric_id=32980,
+        base_numeric_id=29530,
         gen=5,
         subtype="C",
         sprites_complete=True,

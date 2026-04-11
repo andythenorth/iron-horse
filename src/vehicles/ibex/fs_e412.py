@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="SimpleEngine",
         model_id="fs_e412",
-        base_numeric_id=32790,
+        base_numeric_id=29880,
         name="FS E.412 Brenner / OBB 1822",
         subrole="ultra_heavy_express",
         subrole_child_branch_num=1,

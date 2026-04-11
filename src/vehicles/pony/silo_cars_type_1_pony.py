@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SiloCarType1",
-        base_numeric_id=32720,
+        base_numeric_id=30120,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SiloCarType1",
-        base_numeric_id=32660,
+        base_numeric_id=30250,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="SiloCarType1",
-        base_numeric_id=32680,
+        base_numeric_id=30200,
         gen=5,
         subtype="C",
         sprites_complete=True,
