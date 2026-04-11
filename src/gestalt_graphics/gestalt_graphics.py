@@ -645,7 +645,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
         if spriterow_type != "empty_vehicle_body":
             # only empty rows are supported eh
             raise BaseException(
-                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
+                "get_generic_spriterow_output_variants only supports 'empty_vehicle_body' as spriterow_type, and may need extending"
             )
         result = []
         result.append(
@@ -745,7 +745,7 @@ class GestaltGraphicsIntermodalContainerTransporters(
         if spriterow_type != "empty_vehicle_body":
             # only empty rows are supported eh
             raise BaseException(
-                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
+                "get_generic_spriterow_output_variants only supports 'empty_vehicle_body' as spriterow_type, and may need extending"
             )
         result = []
         result.append(
