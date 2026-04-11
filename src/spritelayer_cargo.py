@@ -8,6 +8,8 @@ class SpritelayerCargo(object):
 
     def __init__(self, **kwargs):
         self.base_id = None  # set by subclass
+        # assume cargo sprites are symmetric by default, over-ride in subclasses as needed
+        self.cargo_sprites_are_asymmetric = False
         self.platform_type = kwargs.get("platform_type")
         self.length = kwargs.get("length")
         self.cargo_sets = []

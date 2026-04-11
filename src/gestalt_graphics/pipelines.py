@@ -246,7 +246,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
 
                 cargo_sprites = pixa.get_arbitrary_angles(cargo_item_image, bboxes)
                 if (
-                    self.spritelayer_cargo.gestalt_graphics.cargo_sprites_are_asymmetric
+                    self.spritelayer_cargo.cargo_sprites_are_asymmetric
                     == False
                 ):
                     # if cargo item sprites are symmetric (e.g. containers), angles 0-3 need to be copied from angles 4-7

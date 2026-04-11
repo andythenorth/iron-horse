@@ -11,6 +11,8 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
+        # automobile sprites are asymmetric
+        self.cargo_sprites_are_asymmetric = True
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             # these are just empty defaults so we can init the gestalt as we need to use it for config
             spritelayer_cargo_layers=["default"],

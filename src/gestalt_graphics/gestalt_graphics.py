@@ -572,8 +572,6 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers")
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(self.spritelayer_cargo_layers)
-        # default, over-ride in subclasses as needed
-        self.cargo_sprites_are_asymmetric = False
 
 
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
@@ -587,7 +585,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
-        self.cargo_sprites_are_asymmetric = True
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
@@ -734,8 +731,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # the actual containers are symmetric
-        self.cargo_sprites_are_asymmetric = False
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
