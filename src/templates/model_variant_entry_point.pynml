@@ -10,8 +10,8 @@
       <tal:include metal:use-macro="load: vehicle_autocoach.pynml" />
     </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_automobile_car.pynml'">
-      <tal:include metal:use-macro="load: vehicle_automobile_car.pynml" />
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_with_spritelayer_cargo.pynml'">
+      <tal:include metal:use-macro="load: vehicle_with_spritelayer_cargo.pynml" />
     </tal:block>
 
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_box_car_with_opening_doors.pynml'">

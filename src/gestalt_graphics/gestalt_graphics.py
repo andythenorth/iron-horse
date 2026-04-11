@@ -572,6 +572,11 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
 
+    @property
+    def nml_template(self):
+        # override in subclasses as needed
+        return "vehicle_with_spritelayer_cargo.pynml"
+
     @cached_property
     def formation_position_labels(self):
         # used in spriteset templating
@@ -699,11 +704,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
         # see intermodal for example of how this mapped containers
         # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
-
-    @property
-    def nml_template(self):
-        # override in subclasses as needed
-        return "vehicle_automobile_car.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):
