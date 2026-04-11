@@ -16,7 +16,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         # we need both reversed states for asymmetric cargo sprinter cab units; due to existing implementation it's easier to provide that for all intermodal cargos
         self.supported_reverse_states = ["unreversed", "reversed"]
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            catalogue_entry=None, # as of April 2025 this gestalt does nothing with liveries, seems fine for now
+            catalogue_entry=None,  # as of April 2025 this gestalt does nothing with liveries, seems fine for now
         )
         self.provide_container_shadows = True
 
@@ -45,7 +45,10 @@ class CargoSprinterIntermodalContainersCargoSetBase(CargoSetBase):
     """Sparse base class to set compatible platform types and sprite placement template"""
 
     def __init__(self, **kwargs):
-        self.compatible_platform_types = ["cargo_sprinter_cab_unreversed", "cargo_sprinter_cab_reversed"]
+        self.compatible_platform_types = [
+            "cargo_sprinter_cab_unreversed",
+            "cargo_sprinter_cab_reversed",
+        ]
         super().__init__(**kwargs)
         self.graphics_template_subtype_name = "cargo_sprinter"
 
@@ -327,7 +330,7 @@ def main():
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsIntermodalContainerTransporters(
-            catalogue_entry=None, # no catalogue needed in this context as of April 20255
+            catalogue_entry=None,  # no catalogue needed in this context as of April 20255
         ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere

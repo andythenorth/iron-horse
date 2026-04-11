@@ -14,7 +14,10 @@ formation_ruleset_reporting_label_maps = {
     "max_1_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "max_2_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
     "max_4_unit_sets": {"label": "model_id", "delegate_to_catalogue": True},
-    "articulated_permanent_twin_sets": {"label": "model_id", "delegate_to_catalogue": True},
+    "articulated_permanent_twin_sets": {
+        "label": "model_id",
+        "delegate_to_catalogue": True,
+    },
     "motorail_cars": {"label": "motorail_car"},
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
@@ -583,7 +586,12 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     def get_output_row_types(self):
         # 2 liveries * 4 formation position rules so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return ["empty_vehicle_body", "empty_vehicle_body", "empty_vehicle_body", "empty_vehicle_body"]
+        return [
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+            "empty_vehicle_body",
+        ]
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
@@ -610,7 +618,10 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
             return False
         # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
         if cargo_label in polar_fox.constants.container_contested_cargo_labels.keys():
-            if container_type == polar_fox.constants.container_contested_cargo_labels[cargo_label]:
+            if (
+                container_type
+                == polar_fox.constants.container_contested_cargo_labels[cargo_label]
+            ):
                 return True
             else:
                 return False

@@ -288,7 +288,7 @@ role_subrole_mapping = {
     ],
     "metro_freight": [
         "metro_freight",
-    ]
+    ],
 }
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
@@ -510,7 +510,7 @@ colour_sets = {
     "freight_clover": ["custom_clover", "custom_faded_clover"],
     "freight_cloud": ["custom_cloud", "custom_faded_cloud"],
     "freight_mist": ["custom_mist", "custom_faded_mist"],
-     # this is a hack to match express intermodal to industrial yellow
+    # this is a hack to match express intermodal to industrial yellow
     "freight_industrial_yellow": ["COLOUR_YELLOW", "COLOUR_YELLOW"],
 }
 

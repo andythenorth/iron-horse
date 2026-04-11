@@ -53,10 +53,7 @@ class DocHelper(object):
     ):
         result = []
         for catalogue in roster.engine_catalogues:
-            if (
-                not catalogue.base_track_type
-                == base_track_type
-            ):
+            if not catalogue.base_track_type == base_track_type:
                 continue
             if catalogue.clone_quacker.quack:
                 # exclude cloned models or things that act like clones
@@ -69,10 +66,7 @@ class DocHelper(object):
     ):
         result = []
         for catalogue in roster.wagon_catalogues:
-            if (
-                not catalogue.base_track_type
-                == base_track_type
-            ):
+            if not catalogue.base_track_type == base_track_type:
                 continue
             if catalogue.clone_quacker.quack:
                 # exclude cloned models or things that act like clones
@@ -115,7 +109,9 @@ class DocHelper(object):
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
-        total_variants_really_engines = sum([len(catalogue) for catalogue in really_engines])
+        total_variants_really_engines = sum(
+            [len(catalogue) for catalogue in really_engines]
+        )
         # print("total_variants_really_engines", total_variants_really_engines)
         # print("really_engines", [catalogue.model_id for catalogue in really_engines])
         # print("not_really_engines", [catalogue.model_id for catalogue in not_really_engines])
@@ -198,10 +194,14 @@ class DocHelper(object):
         return ("_").join(result).lower()
 
     def get_livery_display_name(self, livery_def):
-        return self.lang_strings["STR_BADGE_LIVERY_" + livery_def.display_and_filter_name]
+        return self.lang_strings[
+            "STR_BADGE_LIVERY_" + livery_def.display_and_filter_name
+        ]
 
     def get_livery_extra_text(self, livery_def):
-        return self.docs_only_strings["STR_EXTRA_TEXT_LIVERY_" + livery_def.display_and_filter_name]
+        return self.docs_only_strings[
+            "STR_EXTRA_TEXT_LIVERY_" + livery_def.display_and_filter_name
+        ]
 
     def get_subrole_child_branches(self, model_variants, base_track_type, role):
         result = []
@@ -219,9 +219,9 @@ class DocHelper(object):
         }
 
         for base_track_type in self.base_track_types_with_display_names:
-            result["sorted_by_base_track_type_and_vehicle_type"][
-                base_track_type
-            ] = defaultdict(list)
+            result["sorted_by_base_track_type_and_vehicle_type"][base_track_type] = (
+                defaultdict(list)
+            )
 
         # parse the engine and wagon model variants into a consistent structure
         engines = ("engines", roster.engine_catalogues)
@@ -275,9 +275,7 @@ class DocHelper(object):
                     # this will fail if name parts are found that don't correspond to string IDs (for example putting variables on the text stack)
                     result.append(self.lang_strings[name_part])
 
-            if (
-                catalogue.wagon_quacker.is_randomised_wagon_type
-            ):
+            if catalogue.wagon_quacker.is_randomised_wagon_type:
                 result.append("- Random")
             return " ".join(result)
 
@@ -300,7 +298,9 @@ class DocHelper(object):
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
     def model_has_direct_replacement_in_tree(self, model_variant):
-        replacement_model_variant = model_variant.catalogue.next_gen_catalogue.example_model_variant
+        replacement_model_variant = (
+            model_variant.catalogue.next_gen_catalogue.example_model_variant
+        )
         if replacement_model_variant.subrole != model_variant.subrole:
             return False
         elif (
@@ -359,7 +359,10 @@ class DocHelper(object):
             return f"{capacity} passengers"
         if "MAIL" in catalogue.example_model_variant.default_cargos:
             return f"{global_constants.mail_multiplier * capacity} bags of mail"
-        if "liquids_non_food_grade" in catalogue.example_model_variant.class_refit_groups:
+        if (
+            "liquids_non_food_grade"
+            in catalogue.example_model_variant.class_refit_groups
+        ):
             return f"{capacity} litres"
         # default to tonnes
         return f"{capacity} tonnes"
@@ -374,7 +377,16 @@ class DocHelper(object):
             example_model_variant = catalogue.example_model_variant
             self.fetch_prop(result, "Vehicle name", self.unpack_name_string(catalogue))
             self.fetch_prop(result, "Gen", example_model_variant.gen)
-            self.fetch_prop(result, "Railtypes", ", ".join([track_type.label for track_type in example_model_variant.track_types]))
+            self.fetch_prop(
+                result,
+                "Railtypes",
+                ", ".join(
+                    [
+                        track_type.label
+                        for track_type in example_model_variant.track_types
+                    ]
+                ),
+            )
             self.fetch_prop(result, "HP", int(example_model_variant.power))
             self.fetch_prop(result, "Speed (mph)", example_model_variant.speed)
             self.fetch_prop(result, "Weight (t)", example_model_variant.weight)
@@ -414,7 +426,12 @@ class DocHelper(object):
             return "Standard gauge rail"
         if railtype.label == "ELRL":
             return "Standard gauge rail" + electrification_suffix
-        return self.lang_strings['STR_RAILTYPE_' + railtype.id.upper() + '_NAME'].capitalize() + electrification_suffix
+        return (
+            self.lang_strings[
+                "STR_RAILTYPE_" + railtype.id.upper() + "_NAME"
+            ].capitalize()
+            + electrification_suffix
+        )
 
     def get_og_tags_content(self, doc_name, optional_title, optional_model_variant):
 
@@ -426,7 +443,9 @@ class DocHelper(object):
         if optional_model_variant is not None:
             image_filename = optional_model_variant.id + "_red_white.png"
             title = optional_title
-            quote = self.strip_html(optional_model_variant.catalogue.model_def.description)
+            quote = self.strip_html(
+                optional_model_variant.catalogue.model_def.description
+            )
             quote = self.wrap_in_smart_quotes(quote)
             cite = self.strip_html(optional_model_variant.catalogue.cite)
             description = f"{quote} - {cite}"
@@ -443,7 +462,7 @@ class DocHelper(object):
         }
 
     def wrap_in_smart_quotes(self, text):
-        return f'“{text}”'
+        return f"“{text}”"
 
     def strip_html(self, html_string):
         """Strip all HTML tags and unescape HTML entities from a string."""
@@ -461,4 +480,4 @@ class HTMLStripper(HTMLParser):
         self.fed.append(d)
 
     def get_data(self):
-        return ''.join(self.fed)
+        return "".join(self.fed)

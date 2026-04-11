@@ -850,8 +850,16 @@ def main():
             "default_pax_liveries": [("RAIN_OR_SHINE", 0), ("SURE_PACE", 1)],
             "gen_1_pax_liveries": [("RAIN_OR_SHINE", 0), ("RIDEWELL", 1)],
             "gen_2_pax_liveries": [("RIDEWELL", 0), ("RAIN_OR_SHINE", 1)],
-            "gen_3_pax_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1), ("BANGER_BLUE", 2)],
-            "gen_4_pax_liveries": [("RAIN_OR_SHINE", 0), ("MARGINAL_GAINS", 1), ("BANGER_BLUE", 2)],
+            "gen_3_pax_liveries": [
+                ("SURE_PACE", 0),
+                ("RIDEWELL", 1),
+                ("BANGER_BLUE", 2),
+            ],
+            "gen_4_pax_liveries": [
+                ("RAIN_OR_SHINE", 0),
+                ("MARGINAL_GAINS", 1),
+                ("BANGER_BLUE", 2),
+            ],
             "gen_5_and_6_pax_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
@@ -944,7 +952,10 @@ def main():
                 ("VINYL_VECTOR", 0),
             ],
             "gen_3_pax_express_railcar_liveries": [("SURE_PACE", 0), ("RIDEWELL", 1)],
-            "gen_4_pax_express_railcar_liveries": [("RAIN_OR_SHINE", 0), ("MARGINAL_GAINS", 1)],
+            "gen_4_pax_express_railcar_liveries": [
+                ("RAIN_OR_SHINE", 0),
+                ("MARGINAL_GAINS", 1),
+            ],
             "default_mail_liveries": [
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),

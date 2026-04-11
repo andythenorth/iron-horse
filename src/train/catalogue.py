@@ -364,7 +364,6 @@ class Catalogue(list):
                 result.append(catalogue)
         return result
 
-
     @cached_property
     def next_gen_catalogue(self):
         # note that there's just one replacement catalogue in the next gen (has to be this way for model life calculations)

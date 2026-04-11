@@ -137,7 +137,9 @@ def render_docs_badge_images(generated_graphics_path, static_dir_dst, doc_helper
         if livery.has_predrawn_badge_sprite:
             badge_spritesheet_filename = f"livery_{livery_name.lower()}.png"
             badge_spritesheet = Image.open(
-                os.path.join(generated_graphics_path, "badges", badge_spritesheet_filename)
+                os.path.join(
+                    generated_graphics_path, "badges", badge_spritesheet_filename
+                )
             )
 
             dest_image = Image.new(
@@ -149,23 +151,14 @@ def render_docs_badge_images(generated_graphics_path, static_dir_dst, doc_helper
                 255,
             )
 
-            badge_image_tmp = badge_spritesheet.crop(
-                box=(
-                    10,
-                    10,
-                    24,
-                    18
-                )
-            )
+            badge_image_tmp = badge_spritesheet.crop(box=(10, 10, 24, 18))
             crop_box_dest = (
                 0,
                 0,
                 14,
                 8,
             )
-            dest_image.paste(
-                badge_image_tmp.crop(crop_box_dest), crop_box_dest
-            )
+            dest_image.paste(badge_image_tmp.crop(crop_box_dest), crop_box_dest)
 
             dest_image.putpalette(dos_palette)
 
@@ -176,7 +169,9 @@ def render_docs_badge_images(generated_graphics_path, static_dir_dst, doc_helper
                 lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
             )
 
-            output_path = os.path.join(badge_sprites_dir_dst, badge_spritesheet_filename)
+            output_path = os.path.join(
+                badge_sprites_dir_dst, badge_spritesheet_filename
+            )
             dest_image.save(output_path, optimize=True, transparency=0)
             dest_image.close()
 
@@ -224,12 +219,22 @@ def render_docs_vehicle_images(
         if model_variant.model_def.docs_image_spriterow is not None:
             # forced (used to handle speicfic clone case of Magnum Vario as of March 2026)
             # base calc using a manually specified attribute on the clone
-            y_offset = 30 * model_variant.model_def.docs_image_spriterow * len(model_variant.model_def.liveries)
+            y_offset = (
+                30
+                * model_variant.model_def.docs_image_spriterow
+                * len(model_variant.model_def.liveries)
+            )
             # then offset automatically for livery
-            y_offset += 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            y_offset += (
+                30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            )
         elif model_variant.gestalt_graphics.row_count_for_docs_image_offset is not None:
             # specific custom offset, for example, if there's an extra row per livery for a masked layer
-            y_offset = 30 * model_variant.catalogue_entry.livery_def.relative_spriterow_num * model_variant.gestalt_graphics.row_count_for_docs_image_offset
+            y_offset = (
+                30
+                * model_variant.catalogue_entry.livery_def.relative_spriterow_num
+                * model_variant.gestalt_graphics.row_count_for_docs_image_offset
+            )
         # !! requires_custom_buy_menu_sprite could be folded into producer or catalogue entry
         elif model_variant.requires_custom_buy_menu_sprite:
             # further possibly fragile special-casing

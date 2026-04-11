@@ -40,7 +40,6 @@ class Railtype(object):
         result = ",".join(['"' + railtype + '"' for railtype in railtype_list])
         return "[" + result + "]"
 
-
     @property
     def badges(self):
         result = []
