@@ -5182,15 +5182,10 @@ class FlatCarDropCentreBase(FlatCarBase):
         formation_ruleset = "max_1_unit_sets"
         # CABBAGE - GESTALT NEEDS CHANGING
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            self.spritelayer_cargo_layers,
+            spritelayer_cargo_layers=["low_floor"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def spritelayer_cargo_layers(self):
-        return ["low_floor"]
 
 
 class FlatCarDropCentreType1(FlatCarDropCentreBase):
