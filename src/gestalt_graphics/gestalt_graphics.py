@@ -732,11 +732,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
         }
 
     @property
-    def nml_template(self):
-        # override in subclasses as needed
-        return "vehicle_intermodal.pynml"
-
-    @property
     def variants_use_common_graphics_switch_chain(self):
         return False
 

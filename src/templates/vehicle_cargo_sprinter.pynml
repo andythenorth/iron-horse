@@ -7,7 +7,9 @@
         }
 
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_${reversed_status}_${platform_type}, [
-                             STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_container_by_company_colour_1cc_to_1cc(), 0x100), <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail -->
+                            <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail
+                                  we also deliberately allow CC cargo sprites to recolour to match the vehicle recolour, that seems to work fine visually -->
+                             STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_freight_wagon_livery_entry_point(random_bits_spritelayer_cargo_random_remap_livery()), 0x100),
                             ]) {
             return ${unit.id}_switch_graphics_containers_${reversed_status}_check_cargo_${platform_type};
         }
