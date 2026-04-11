@@ -819,13 +819,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_INDUSTRIAL_YELLOW": {
-        "colour_set_names": ["freight_industrial_yellow"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
 }
 
 power_sources = {

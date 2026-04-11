@@ -586,20 +586,6 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
-            "DUTCH": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_GREY",
-                    "company_colour2": "company_colour1",
-                },
-                "proxy_livery_for_badge_display_and_filter": "GREY_HORSE",
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
-                    ("COLOUR_GREY", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
-                ],
-            },
             "FARMFLOW": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
