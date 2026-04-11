@@ -31,9 +31,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Knows its job.""")
-    model_def.define_foamer_facts(
-        """NER N9, N10, N11 class tank engines"""
-    )
+    model_def.define_foamer_facts("""NER N9, N10, N11 class tank engines""")
 
     result.append(model_def)
 

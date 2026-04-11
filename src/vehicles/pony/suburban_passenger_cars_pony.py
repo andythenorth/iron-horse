@@ -20,7 +20,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_16px")
+    model_def.add_unit_def(
+        unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_16px"
+    )
 
     result.append(model_def)
 
@@ -33,7 +35,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_24px")
+    model_def.add_unit_def(
+        unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_24px"
+    )
 
     result.append(model_def)
 
@@ -46,7 +50,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_16px")
+    model_def.add_unit_def(
+        unit_cls_name="PaxCarUnit", chassis="3_axle_solid_express_16px"
+    )
 
     result.append(model_def)
 
@@ -74,7 +80,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="PaxCarUnit", chassis="6_axle_solid_express_32px")
+    model_def.add_unit_def(
+        unit_cls_name="PaxCarUnit", chassis="6_axle_solid_express_32px"
+    )
 
     result.append(model_def)
 

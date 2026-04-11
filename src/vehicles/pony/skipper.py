@@ -37,7 +37,9 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Patience is the virtue of the donkeys.""")
-    model_def.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>, Vivarail D-Train""")
+    model_def.define_foamer_facts(
+        """BR Class 141/142/143/144 <i>Pacers</i>, Vivarail D-Train"""
+    )
 
     result.append(model_def)
 

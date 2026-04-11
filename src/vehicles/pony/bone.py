@@ -21,7 +21,7 @@ def main(**kwargs):
             "CLASSIC_LINES",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY", # coal
+            "RAILFREIGHT_TRIPLE_GREY",  # coal
             "LOWER_LINES",
             "CONVENTIONAL_WISDOM",
         ],

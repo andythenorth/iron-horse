@@ -29,9 +29,7 @@ def main(**kwargs):
     )
 
     model_def.define_description(""" """)
-    model_def.define_foamer_facts(
-        """Captrain Italia E.494 Traxx 3 FS 140 Last Mile"""
-    )
+    model_def.define_foamer_facts("""Captrain Italia E.494 Traxx 3 FS 140 Last Mile""")
 
     result.append(model_def)
 

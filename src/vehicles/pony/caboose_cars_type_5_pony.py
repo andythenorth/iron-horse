@@ -32,7 +32,6 @@ def main(**kwargs):
 
     result.append(model_def)
 
-
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
@@ -43,7 +42,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_12px")
+    model_def.add_unit_def(
+        unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_12px"
+    )
 
     result.append(model_def)
 
@@ -55,7 +56,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_16px")
+    model_def.add_unit_def(
+        unit_cls_name="CabooseCarUnit", chassis="2_axle_caboose_16px"
+    )
 
     result.append(model_def)
 
@@ -67,7 +70,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="CabooseCarUnit", chassis="4_axle_caboose_24px")
+    model_def.add_unit_def(
+        unit_cls_name="CabooseCarUnit", chassis="4_axle_caboose_24px"
+    )
 
     result.append(model_def)
 

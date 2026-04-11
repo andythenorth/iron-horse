@@ -22,7 +22,7 @@ def main(**kwargs):
             "STOCK_STANDARD",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY", # coal
+            "RAILFREIGHT_TRIPLE_GREY",  # coal
             "SUPERGRAPHIC",
             "WORKHORSE",
         ],

@@ -16,7 +16,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="CoilBuggyCarUnit", chassis="empty_8px", repeat=2)
+    model_def.add_unit_def(
+        unit_cls_name="CoilBuggyCarUnit", chassis="empty_8px", repeat=2
+    )
 
     result.append(model_def)
 

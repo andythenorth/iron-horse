@@ -34,7 +34,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def =ModelDef(
+    model_def = ModelDef(
         schema_name="AutomobileDoubleDeckEnclosedCar",
         base_numeric_id=4960,
         gen=5,

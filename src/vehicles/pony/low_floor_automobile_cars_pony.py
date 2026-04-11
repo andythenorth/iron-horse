@@ -36,7 +36,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def =ModelDef(
+    model_def = ModelDef(
         schema_name="AutomobileLowFloorCar",
         base_numeric_id=540,
         gen=4,
@@ -87,7 +87,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def =ModelDef(
+    model_def = ModelDef(
         schema_name="AutomobileLowFloorCar",
         base_numeric_id=520,
         gen=5,

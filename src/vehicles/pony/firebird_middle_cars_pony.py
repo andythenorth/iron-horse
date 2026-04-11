@@ -32,7 +32,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="high_speed_32px")
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="high_speed_32px"
+    )
 
     result.append(model_def)
 

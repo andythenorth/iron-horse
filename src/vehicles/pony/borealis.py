@@ -34,9 +34,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """"We were miles away from our real lives."""
-    )
+    model_def.define_description(""""We were miles away from our real lives.""")
     model_def.define_foamer_facts(
         """Hitachi Class 810 <i>Aurora</i>, Class 800/801/802 families"""
     )

@@ -21,7 +21,7 @@ def main(**kwargs):
         liveries=[
             "SUPERGRAPHIC",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY", # coal
+            "RAILFREIGHT_TRIPLE_GREY",  # coal
             "CONVENTIONAL_WISDOM",
             "LOWER_LINES",
             "WORKHORSE",

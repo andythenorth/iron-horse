@@ -1,5 +1,6 @@
 from train.model_def import ModelDef
 
+
 def main(**kwargs):
     result = []
 

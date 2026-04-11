@@ -25,7 +25,7 @@ def main(**kwargs):
             "SURE_PACE",
             "MAIL_BY_RAIL",
             "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY", # coal
+            "RAILFREIGHT_TRIPLE_GREY",  # coal
             "WORKHORSE",
         ],
         sprites_complete=True,

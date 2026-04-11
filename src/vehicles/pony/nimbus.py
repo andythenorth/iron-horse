@@ -37,9 +37,7 @@ def main(**kwargs):
     model_def.define_description(
         """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
     )
-    model_def.define_foamer_facts(
-        """Bombardier Class 221 <i>Super Voyager</i>"""
-    )
+    model_def.define_foamer_facts("""Bombardier Class 221 <i>Super Voyager</i>""")
 
     result.append(model_def)
 
