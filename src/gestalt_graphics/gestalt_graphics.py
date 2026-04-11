@@ -572,6 +572,22 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
 
+    @cached_property
+    def formation_position_labels(self):
+        # used in spriteset templating
+        if self.formation_ruleset == "articulated_permanent_twin_sets":
+            # permanent articulated twin sets only need 2 formation position rules
+            return ["first", "last"]
+        elif self.formation_ruleset == "max_1_unit_sets":
+            # 1 unit articulated sets only need 1 position rule
+            return ["default"]
+        elif self.formation_ruleset == "max_2_unit_sets":
+            # 2 unit articulated sets only need 3 position rules
+            return ["default", "first", "last"]
+        else:
+            # defaulting to 4 unit sets is apparently fine?
+            return ["default", "first", "last", "middle"]
+
     def get_output_row_types(self):
         if self.formation_ruleset == "max_1_unit_sets":
             result = ["empty_vehicle_body"]
@@ -607,34 +623,6 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
             result = temp_result
         return result
 
-    @cached_property
-    def formation_position_labels(self):
-        # used in spriteset templating
-        if self.formation_ruleset == "articulated_permanent_twin_sets":
-            # permanent articulated twin sets only need 2 formation position rules
-            return ["first", "last"]
-        elif self.formation_ruleset == "max_1_unit_sets":
-            # 1 unit articulated sets only need 1 position rule
-            return ["default"]
-        elif self.formation_ruleset == "max_2_unit_sets":
-            # 2 unit articulated sets only need 3 position rules
-            return ["default", "first", "last"]
-        else:
-            # defaulting to 4 unit sets is apparently fine?
-            return ["default", "first", "last", "middle"]
-
-
-class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
-    """
-    Dedicated automobiles (car, truck, tractor) transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered state, masked overlay etc
         # for this gestalt, it's just one empty output row per input row, no other variants
@@ -660,6 +648,20 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
                 }
             )
         return result
+
+
+
+
+class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
+    """
+    Dedicated automobiles (car, truck, tractor) transporter
+    Gestalt handles both
+    - the model variant sprites
+    - the spritelayer cargos which are in separate layer
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     @property
     def vehicle_spritelayer_names(self):
@@ -734,24 +736,6 @@ class GestaltGraphicsIntermodalContainerTransporters(
             3: 2,
             4: 4,  # first: last
         }
-
-    def get_generic_spriterow_output_variants(self, spriterow_type):
-        # there may be variants of generic spriterows, to support weathered state, masked overlay etc
-        # for this gestalt, it's just one empty output row per input row, no other variants
-        if spriterow_type != "empty_vehicle_body":
-            # only empty rows are supported eh
-            raise BaseException(
-                "get_generic_spriterow_output_variants only supports 'empty_vehicle_body' as spriterow_type, and may need extending"
-            )
-        result = []
-        result.append(
-            {
-                "label": "EMPTY",
-                "body_recolour_map": None,
-                "mask_row_offset_count": None,
-            }
-        )
-        return result
 
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
