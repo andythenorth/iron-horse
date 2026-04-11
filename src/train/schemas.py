@@ -30,9 +30,6 @@ import gestalt_graphics.graphics_constants as graphics_constants
 
 import iron_horse
 
-# JFDI import to get the containers in scope for the cargo sprinter, CABBAGE COULD BE REFACTORED?  only for cargo_label_mapping?
-from spritelayer_cargos.intermodal_containers import IntermodalContainersSpritelayerCargo
-
 class SchemaBase(object):
     """
     A vehicle model is composed from:
@@ -1568,12 +1565,9 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
         self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
-        cargo_label_mapping = (
-            IntermodalContainersSpritelayerCargo.get_cargo_label_mapping(),
-        )
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
-            cargo_label_mapping=cargo_label_mapping,
+            spritelayer_cargo_base_id="intermodal_containers",
             spritelayer_cargo_layers=self._spritelayer_cargo_layers,
             num_extra_layers_for_spritelayer_cargos=2,
             row_count_for_docs_image_offset=2,

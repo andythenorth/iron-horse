@@ -3,10 +3,6 @@ from functools import cached_property
 import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
-from spritelayer_cargos.automobiles import AutomobilesSpritelayerCargo
-from spritelayer_cargos.intermodal_containers import (
-    IntermodalContainersSpritelayerCargo,
-)
 import utils
 from utils import timing
 
@@ -699,7 +695,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.spritelayer_cargo_cls = AutomobilesSpritelayerCargo
+        self.spritelayer_cargo_base_id = "automobiles"
 
     @property
     def variants_use_common_graphics_switch_chain(self):
@@ -727,7 +723,7 @@ class GestaltGraphicsIntermodalContainerTransporters(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.spritelayer_cargo_cls = IntermodalContainersSpritelayerCargo
+        self.spritelayer_cargo_base_id = "intermodal_containers"
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
@@ -985,8 +981,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         cargo_row_map=None,
         generic_rows=None,
         unique_spritesets=None,
-        cargo_label_mapping=None,
         weathered_states=None,
+        spritelayer_cargo_base_id=None,
+        spritelayer_cargo_layers=None,
         num_extra_layers_for_spritelayer_cargos=None,
         row_count_for_docs_image_offset=None,
         colour_mapping_switch=None,
@@ -1003,9 +1000,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
-        self.get_cargo_label_mapping = cargo_label_mapping
         self._weathered_states = weathered_states
-        self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers", None)
+        self.spritelayer_cargo_base_id = spritelayer_cargo_base_id
+        self.spritelayer_cargo_layers = spritelayer_cargo_layers
         if self.spritelayer_cargo_layers is not None:
             self.num_extra_layers_for_spritelayer_cargos = len(
                 self.spritelayer_cargo_layers
@@ -1040,10 +1037,6 @@ class GestaltGraphicsCustom(GestaltGraphics):
 
     def get_unique_spritesets(self, unit):
         return self._unique_spritesets
-
-    @property
-    def cargo_label_mapping(self):
-        return self.get_cargo_label_mapping
 
     def buy_menu_row_map(self, pipeline):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet

@@ -3,6 +3,7 @@
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 import polar_fox
 
+
 class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     """Base class for the containers spritelayer cargo"""
 
@@ -80,6 +81,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
                 if cls.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
                     result[cargo_label] = ("stake_flatrack", cargo_label)
         return result
+
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
     """Sparse base class to set compatible platform types and sprite placement template"""
