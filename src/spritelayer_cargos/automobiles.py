@@ -1,16 +1,15 @@
 # spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.gestalt_graphics import GestaltGraphicsAutomobilesTransporter
-
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
 
 class AutomobilesSpritelayerCargo(SpritelayerCargo):
     """Base class for automobile spritelayer cargo - cars, trucks, tractors etc."""
 
+    base_id = "automobiles"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.base_id = "automobiles"
         # automobile sprites are asymmetric
         self.cargo_sprites_are_asymmetric = True
 
@@ -27,7 +26,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
         }
 
     @classmethod
-    def _cargo_label_mapping(cls):
+    def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
         result = {}
         # see intermodal for example of how this mapped containers
@@ -37,7 +36,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     @property
     def cargo_label_mapping(self):
         # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
-        return self._cargo_label_mapping()
+        return self.get_cargo_label_mapping()
 
 
 class DefaultAutomobilesCargoSetBase(CargoSetBase):
@@ -541,11 +540,7 @@ def main():
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsAutomobilesTransporter(
-            # these are just empty defaults so we can init the gestalt as we need to use it for config
-            spritelayer_cargo_layers=["default"],
-            catalogue_entry=None,
-        ).cargo_label_mapping.values()
+        AutomobilesSpritelayerCargo.get_cargo_label_mapping().values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

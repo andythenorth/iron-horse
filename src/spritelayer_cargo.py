@@ -7,8 +7,9 @@ from gestalt_graphics import pipelines
 class SpritelayerCargo(object):
     """Simple generic class for spritelayer cargos"""
 
+    base_id = None  # set by subclass
+
     def __init__(self, **kwargs):
-        self.base_id = None  # set by subclass
         # assume cargo sprites are symmetric by default, over-ride in subclasses as needed
         self.cargo_sprites_are_asymmetric = False
         self.platform_type = kwargs.get("platform_type")

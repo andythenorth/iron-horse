@@ -10,9 +10,10 @@ from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     """Base class for the containers spritelayer cargo"""
 
+    base_id = "intermodal_containers"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.base_id = "intermodal_containers"
         # we need both reversed states for asymmetric cargo sprinter cab units; due to existing implementation it's easier to provide that for all intermodal cargos
         self.supported_reverse_states = ["unreversed", "reversed"]
         self.provide_container_shadows = True
@@ -29,7 +30,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         }
 
     @classmethod
-    def _cargo_label_mapping(cls):
+    def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
         # CABBAGE - this could be provided directly on the spritelayer cargo, as that is the more relevant scope (gestalt graphics could fetch it when needed)
         # CABBAGE - NEEDS REFACTORED
@@ -42,7 +43,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     @property
     def cargo_label_mapping(self):
         # convenience wrapper so we can access the class method as a property for consistency with similar access elsewhere
-        return self._cargo_label_mapping()
+        return self.get_cargo_label_mapping()
 
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):

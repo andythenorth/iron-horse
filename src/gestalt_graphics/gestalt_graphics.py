@@ -6,6 +6,10 @@ from gestalt_graphics import pipelines
 import utils
 from utils import timing
 
+from spritelayer_cargos.automobiles import AutomobilesSpritelayerCargo
+print(AutomobilesSpritelayerCargo.get_cargo_label_mapping())
+print(AutomobilesSpritelayerCargo.base_id)
+
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
@@ -1056,7 +1060,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
-        self._cargo_label_mapping = cargo_label_mapping
+        self.get_cargo_label_mapping = cargo_label_mapping
         self._weathered_states = weathered_states
         self.spritelayer_cargo_layers = kwargs.get("spritelayer_cargo_layers", None)
         if self.spritelayer_cargo_layers is not None:
@@ -1096,7 +1100,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
 
     @property
     def cargo_label_mapping(self):
-        return self._cargo_label_mapping
+        return self.get_cargo_label_mapping
 
     def buy_menu_row_map(self, pipeline):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
