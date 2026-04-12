@@ -384,7 +384,7 @@ def main(spritelayer_cargo_manager):
     # mapping returns (subtype, subtype_suffix) pairs
     # DFLT entries are skipped here as they are handled above
     for subtype, subtype_suffix in set(
-        IntermodalContainersSpritelayerCargo.get_cargo_label_mapping().values()
+        spritelayer_cargo_cls.get_cargo_label_mapping().values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

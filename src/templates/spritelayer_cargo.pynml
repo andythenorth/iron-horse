@@ -24,6 +24,26 @@
         3. fall back to random switch for generic (box in case of containers, ?? in case of automobiles)
     -->
     <tal:generic_by_class switch="spritelayer_cargo.base_id">
+        <tal:automobiles case="'automobiles'">
+            <!--! CABBAGE a no-op stub until further notice -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_cars_DFLT;
+            }
+        </tal:automobiles>
+        <tal:drop_centre case="'drop_centre'">
+            <!--! CABBAGE - NEEDED? -->
+           <!--! check generic cargo classes
+                  bulk class is explicitly not checked as there are no meaningful default bulk sprites
+            -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+                0: return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_box_DFLT;
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_tank_DFLT;
+            }
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
+                0: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid;
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_reefer_DFLT;
+            }
+        </tal:drop_centre>
         <tal:intermodal_containers case="'intermodal_containers'">
            <!--! check generic cargo classes
                   bulk class is explicitly not checked as there are no meaningful default bulk sprites
@@ -37,12 +57,6 @@
                 return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_reefer_DFLT;
             }
         </tal:intermodal_containers>
-        <tal:automobiles case="'automobiles'">
-            <!--! CABBAGE a no-op stub until further notice -->
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
-                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_cars_DFLT;
-            }
-        </tal:automobiles>
     </tal:generic_by_class>
     <!--! check explicit cargo labels -->
     switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}, cargo_type_in_veh) {

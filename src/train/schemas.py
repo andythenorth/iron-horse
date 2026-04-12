@@ -22,8 +22,9 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
     GestaltGraphicsFormationDependent,
-    GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsAutomobilesTransporter,
+    GestaltGraphicsDropCentreTransporter,
+    GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsCustom,
 )
 import gestalt_graphics.graphics_constants as graphics_constants
@@ -5180,9 +5181,8 @@ class FlatCarDropCentreBase(FlatCarBase):
         self._joker = True
         # Graphics configuration
         formation_ruleset = "max_1_unit_sets"
-        # CABBAGE - GESTALT NEEDS CHANGING
-        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            spritelayer_cargo_layers=["low_floor"],
+        self.gestalt_graphics = GestaltGraphicsDropCentreTransporter(
+            spritelayer_cargo_layers=["default"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
