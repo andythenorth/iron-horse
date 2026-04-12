@@ -8096,7 +8096,7 @@ class SlagLadleCarUnit(CarSchemaBase):
         )
 
 
-class SpacerCabbageCarBase(CarSchemaBase):
+class SpacerCarBase(CarSchemaBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -8141,7 +8141,7 @@ class SpacerCabbageCarBase(CarSchemaBase):
         )
 
 
-class SpacerCabbageCarType1(SpacerCabbageCarBase):
+class SpacerCarType1(SpacerCarBase):
     """
     CABBAGE - EXPERIMENTAL
     """
@@ -8152,7 +8152,7 @@ class SpacerCabbageCarType1(SpacerCabbageCarBase):
         super().__init__(**kwargs)
 
 
-class SpacerCabbageCarType2(SpacerCabbageCarBase):
+class SpacerCarType2(SpacerCarBase):
     """
     CABBAGE - EXPERIMENTAL
     """

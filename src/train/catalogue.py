@@ -797,7 +797,7 @@ class WagonQuacker:
             return False
         # depends on looking up class name, but should be ok
         return any(
-            base.__name__ in ["CabooseCarBase", "SpacerCabbageCarBase"]
+            base.__name__ in ["CabooseCarBase", "SpacerCarBase"]
             for base in self.catalogue.schema_cls.__mro__
         )
 

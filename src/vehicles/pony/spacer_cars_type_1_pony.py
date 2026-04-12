@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="SpacerCabbageCarType1",
+        schema_name="SpacerCarType1",
         base_numeric_id=27660,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="SpacerCabbageCarType1",
+        schema_name="SpacerCarType1",
         base_numeric_id=27640,
         gen=1,
         subtype="B",
@@ -35,7 +35,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="SpacerCabbageCarType1",
+        schema_name="SpacerCarType1",
         base_numeric_id=19700,
         gen=1,
         subtype="aA",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="SpacerCabbageCarType1",
+        schema_name="SpacerCarType1",
         base_numeric_id=23690,
         gen=1,
         subtype="aB",
@@ -61,7 +61,7 @@ def main(**kwargs):
     # 5/8 length tried, not needed
 
     model_def = ModelDef(
-        schema_name="SpacerCabbageCarType1",
+        schema_name="SpacerCarType1",
         base_numeric_id=26270,
         gen=1,
         subtype="aC",
