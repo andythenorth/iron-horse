@@ -378,7 +378,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
         self.spritelayer_cargo = spritelayer_cargo_set_pair[0]
         self.spritelayer_cargo_set = spritelayer_cargo_set_pair[1]
         self.global_constants = global_constants
-        self.graphics_output_path = graphics_output_path
+        self.graphics_output_path = os.path.join(graphics_output_path, "spritelayer_cargos")
 
         self.add_cargo_spriterows()
 

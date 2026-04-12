@@ -5,7 +5,7 @@
           doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
     <tal:cargo_sets repeat="cargo_set spritelayer_cargo.cargo_sets">
         <tal:variants repeat="variant cargo_set.variants">
-            spriteset(ss_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
+            spriteset(ss_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}, "${graphics_path}/spritelayer_cargos/${cargo_set.id(spritelayer_cargo)}.png") {
                 spriteset_template_asymmetric_${reversed_status}_${int(cargo_set.length / 4)}_8(10 + ${repeat.variant.index * 30}, NOANIM)
             }
         </tal:variants>
