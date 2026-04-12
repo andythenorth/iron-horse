@@ -884,8 +884,7 @@ def main():
                 ("SURE_PACE", 0),
                 ("FRUIT_RIPPLE", 1),
             ],
-            # CABBAGE
-            "CABBAGE_RAILCAR": [
+            "gen_4_show_pony_railcar": [
                 ("SHOW_PONY", 1),
                 ("RAIN_OR_SHINE", 0),
             ],

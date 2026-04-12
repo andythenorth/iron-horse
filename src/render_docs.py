@@ -337,7 +337,7 @@ def render_docs_vehicle_images(
             )
 
             # CABBAGE - need to support non-CC defaults via purchase_swatch_colour_set_names
-            # cabbage - this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
+            # CABBAGE - this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
             # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
             custom_remap_indexes = None
             if (

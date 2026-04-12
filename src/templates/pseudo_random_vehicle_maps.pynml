@@ -87,30 +87,30 @@
 <!--! ====== Sequences for mail cars ====== -->
 
 <!--! specific ruleset with randomisation suitable for mail train formations (and mail vans in passenger trains) -->
-<tal:CABBAGE_deterministic_random_maps_MAIL repeat="CABBAGE_random_maps pseudo_random_vehicle_maps.mail_ruleset_maps.get_all_mail_maps()">
-    <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps['maps']">
-        switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.CABBAGE_map.index}, [
-                LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
+<tal:deterministic_random_maps_mail repeat="random_maps pseudo_random_vehicle_maps.mail_ruleset_maps.get_all_mail_maps()">
+    <tal:chain_length repeat="vehicle_map random_maps['maps']">
+        switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_mail_chain_length_${random_maps['chain_length']}_map_${repeat.vehicle_map.index}, [
+                LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(vehicle_map)}
             ]) {
-            <tal:map_items repeat="map_item CABBAGE_map">
+            <tal:map_items repeat="map_item vehicle_map">
                 ${repeat.map_item.index}: ${map_item};
             </tal:map_items>
         }
-    </tal:cabbage_chain_length>
+    </tal:chain_length>
 
-    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_chain_length_${CABBAGE_random_maps['chain_length']}, [
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_mail_chain_length_${random_maps['chain_length']}, [
             <!--! up to 32 maps - pick 5 random bits from lead engine -->
-            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 5) % ${len(CABBAGE_random_maps['maps'])}
+            getbits(var[0x5F, 8, 0x00FFFFFF], 0, 5) % ${len(random_maps['maps'])}
         ]) {
-        <tal:map_indexes repeat="map_index CABBAGE_random_maps['maps']">
-            ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_mail_chain_length_${CABBAGE_random_maps['chain_length']}_map_${repeat.map_index.index};
+        <tal:map_indexes repeat="map_index random_maps['maps']">
+            ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_mail_chain_length_${random_maps['chain_length']}_map_${repeat.map_index.index};
         </tal:map_indexes>
     }
-</tal:CABBAGE_deterministic_random_maps_MAIL>
+</tal:deterministic_random_maps_mail>
 
-switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE, target_map_length, [target_map_length]) {
-    <tal:length_indexes repeat="CABBAGE_random_maps pseudo_random_vehicle_maps.mail_ruleset_maps.get_all_mail_maps()">
-        ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE_chain_length_${CABBAGE_random_maps['chain_length']};
+switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_mail, target_map_length, [target_map_length]) {
+    <tal:length_indexes repeat="random_maps pseudo_random_vehicle_maps.mail_ruleset_maps.get_all_mail_maps()">
+        ${random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_mail_chain_length_${random_maps['chain_length']};
     </tal:length_indexes>
 
 }
@@ -119,40 +119,40 @@ switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_M
 <!--! ====== Sequences for pasenger cars ====== -->
 
 <!--! multiple types of map with relatively low entropy, to create interesting passenger formations -->
-<tal:CABBAGE_deterministic_random_maps_PAX repeat="CABBAGE_random_maps_by_category pseudo_random_vehicle_maps.pax_ruleset_maps.get_all_pax_maps().items()">
-    <tal:maps_by_category repeat="CABBAGE_random_maps_container CABBAGE_random_maps_by_category[1]"
-                          define="category CABBAGE_random_maps_by_category[0]">
-        <tal:cabbage_chain_length repeat="CABBAGE_map CABBAGE_random_maps_container['maps']">
-            switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.CABBAGE_map.index}, [
+<tal:deterministic_random_maps_pax repeat="random_maps_by_category pseudo_random_vehicle_maps.pax_ruleset_maps.get_all_pax_maps().items()">
+    <tal:maps_by_category repeat="random_maps_container random_maps_by_category[1]"
+                          define="category random_maps_by_category[0]">
+        <tal:chain_length repeat="vehicle_map random_maps_container['maps']">
+            switch (FEAT_TRAINS, SELF, switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${random_maps_container['chain_length']}_map_${repeat.vehicle_map.index}, [
                     <!--! the modulo will cause a wraparound for formations longer than the map - this will cause repeating patterns, but it's probably fine
                           (should only apply for formations > 24 which is max map length) -->
-                    LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(CABBAGE_map)}
+                    LOAD_TEMP(k_addr_position_in_badge_predicate_chain) % ${len(vehicle_map)}
                 ]) {
-                <tal:map_items repeat="map_item CABBAGE_map">
+                <tal:map_items repeat="map_item vehicle_map">
                     ${repeat.map_item.index}: ${map_item};
                 </tal:map_items>
             }
-        </tal:cabbage_chain_length>
+        </tal:chain_length>
 
 
-        switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}, [
+        switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_pax_category_${category}_chain_length_${random_maps_container['chain_length']}, [
                 <!--! up to 8 maps, pick 3 random bits from lead engine -->
-                getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3) % ${len(CABBAGE_random_maps_container['maps'])}
+                getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3) % ${len(random_maps_container['maps'])}
             ]) {
-            <tal:map_indexes repeat="map_index CABBAGE_random_maps_container['maps']">
-                ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${CABBAGE_random_maps_container['chain_length']}_map_${repeat.map_index.index};
+            <tal:map_indexes repeat="map_index random_maps_container['maps']">
+                ${repeat.map_index.index}: switch_pseudo_random_vehicle_map_pax_category_${category}_chain_length_${random_maps_container['chain_length']}_map_${repeat.map_index.index};
             </tal:map_indexes>
         }
 
     </tal:maps_by_category>
 
-    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}, target_map_length, [
+    switch (FEAT_TRAINS, PARENT, pseudo_random_value_from_deterministic_random_map_pax_category_${random_maps_by_category[0]}, target_map_length, [
             <!--! 24 is max formation length for pax, above 24 we'll use the 24 map, but with a wraparound -->
             min(target_map_length, 24)
         ]) {
-        <tal:length_indexes repeat="CABBAGE_random_maps CABBAGE_random_maps_by_category[1]">
-            ${CABBAGE_random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_${CABBAGE_random_maps_by_category[0]}_chain_length_${CABBAGE_random_maps['chain_length']};
+        <tal:length_indexes repeat="random_maps random_maps_by_category[1]">
+            ${random_maps['chain_length']}: pseudo_random_value_from_deterministic_random_map_pax_category_${random_maps_by_category[0]}_chain_length_${random_maps['chain_length']};
         </tal:length_indexes>
     }
-</tal:CABBAGE_deterministic_random_maps_PAX>
+</tal:deterministic_random_maps_pax>
 

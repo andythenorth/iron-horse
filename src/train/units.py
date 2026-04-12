@@ -1137,8 +1137,8 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
         super().__init__(**kwargs)
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
-        # CABBAGE - this won't work properly with both layers of a double deck auto carrier
-        # but that might not might matter, as it's vehicle bits we're randomising, not layers
+        # this branches into the first layer, whereas vehicles can have multiple layers
+        # but that appears to not matter, as it's vehicle bits we're randomising, not layers
         self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_automobiles_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 

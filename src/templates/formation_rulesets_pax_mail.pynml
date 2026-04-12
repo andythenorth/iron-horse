@@ -77,16 +77,16 @@
             getbits(var[0x5F, 8, 0x00FFFFFF], 0, 3)
         ]) {
         <!--! most common -->
-        0: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
-        1: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
-        2: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        0: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        1: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        2: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_outer_ends(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
 
-        3: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
-        4: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
-        5: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        3: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        4: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        5: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_inner_spaced(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
         <!--! least common -->
-        6: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
-        7: pseudo_random_value_from_deterministic_random_map_PAX_CABBAGE_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        6: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
+        7: pseudo_random_value_from_deterministic_random_map_pax_category_brakes_inner_paired(LOAD_TEMP(k_addr_num_vehs_in_badge_predicate_chain));
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, [
             switch_graphics_pax_car_ruleset_random_category()
@@ -138,15 +138,15 @@
              - short lengths such as 3 or 6 will have a good vehicle mix (this is enforced in the generator)
              - whereas offsetting short chains straight into the 32 map might not be pleasing result, as the first part of the map may have low entropy
           -->
-    <!--! cabbage - this could probably just have used a set of 64 length maps, with better map gen rules, like pax cars distribute brake coaches -->
+    <!--! this could probably just have used a set of 64 length maps, with better map gen rules, like pax cars distribute brake coaches, but eh -->
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_select_appropriate_map_length, [
             LOAD_TEMP(k_addr_position_in_badge_predicate_chain)
         ]) {
-        0: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(1); <!--! no special sprites for length 1, by design (relies on the maps) -->
-        1..3: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(3);
-        4..7: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(8);
-        8..15: return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(16);
-        return pseudo_random_value_from_deterministic_random_map_MAIL_CABBAGE(32);
+        0: return pseudo_random_value_from_deterministic_random_map_mail(1); <!--! no special sprites for length 1, by design (relies on the maps) -->
+        1..3: return pseudo_random_value_from_deterministic_random_map_mail(3);
+        4..7: return pseudo_random_value_from_deterministic_random_map_mail(8);
+        8..15: return pseudo_random_value_from_deterministic_random_map_mail(16);
+        return pseudo_random_value_from_deterministic_random_map_mail(32);
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset, [
             switch_graphics_mail_car_ruleset_select_appropriate_map_length()

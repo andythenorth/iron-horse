@@ -3355,7 +3355,6 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
 
     vehicle_family_id = "mineral_bulk_open_car_low_side"
     model_id_root = "mineral_bulk_open_car_low_side"
-    # CABBAGE, THIS SUBCLASS SHOULD BE SPLIT AWAY REALLY
     variant_group_id_root = "mineral_bulk_open_car_low_side"
     randomised_candidate_groups = [
         "bulk_cargo_mixed_combos",
@@ -7629,7 +7628,6 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=3,
-            # CABBAGE SET THESE
             buy_menu_id_pairs=[["tarpaulin_car_type_2"], ["sliding_roof_car"]],
             catalogue_entry=self.catalogue_entry,
         )
@@ -8143,7 +8141,7 @@ class SpacerCarBase(CarSchemaBase):
 
 class SpacerCarType1(SpacerCarBase):
     """
-    CABBAGE - EXPERIMENTAL
+    Spacer cars representing reach wagons, shunter's trucks, barrier wagons, brake force runners etc
     """
 
     model_id_root = "spacer_car_type_1"
@@ -8154,7 +8152,7 @@ class SpacerCarType1(SpacerCarBase):
 
 class SpacerCarType2(SpacerCarBase):
     """
-    CABBAGE - EXPERIMENTAL
+    Spacer cars representing reach wagons, shunter's trucks, barrier wagons, brake force runners etc
     """
 
     model_id_root = "spacer_car_type_2"

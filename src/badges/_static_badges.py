@@ -18,7 +18,7 @@ static_badges = {
             "c": {},  # {"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
             "d": {},  # {"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
             "u": {},  # {"name": "STR_EMPTY"},
-            "z": {},  # CABBAGE 3/8 temp
+            "z": {},  # YOLO 3/8 temp, can regret later - should probably be aA?
         },
     },
     # public, might be of use to AI/GS
