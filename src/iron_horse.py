@@ -12,6 +12,7 @@ from functools import cached_property
 from badges.badge import BadgeManager
 from train.livery import LiverySupplier
 from railtype import RailTypeManager
+from spritelayer_cargo import SpritelayerCargoManager
 import global_constants
 import utils
 from utils import timing
@@ -19,8 +20,6 @@ from utils import timing
 command_line_args = utils.get_command_line_args()
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
-
-from spritelayer_cargo import SpritelayerCargoManager
 
 spritelayer_cargo_module_names = [
     "intermodal_containers",
@@ -52,7 +51,7 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    #@timing
+    # @timing
     def add_rosters(
         self,
         roster_module_names,
@@ -111,7 +110,8 @@ class RosterManager(list):
         else:
             raise Exception("RosterManager: no roster found for ", roster_id)
 
-#@timing
+
+# @timing
 def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_files_path, exist_ok=True)
@@ -137,13 +137,13 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
         roster_module_names, validate_vehicle_ids, run_post_validation_steps
     )
 
-    # spritelayer cargos
-    spritelayer_cargo_manager.add_spritelayer_cargos(spritelayer_cargo_module_names)
-    print(spritelayer_cargo_manager)
-
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
     badge_manager.produce_badges(
         railtype_manager=railtype_manager,
         roster_manager=roster_manager,
         livery_supplier=livery_supplier,
     )
+
+    # spritelayer cargos
+    spritelayer_cargo_manager.add_spritelayer_cargos(spritelayer_cargo_module_names)
+

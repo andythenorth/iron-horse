@@ -94,8 +94,6 @@ def main():
         "utf8",
     )
 
-    spritelayer_cargos = iron_horse.spritelayer_cargo_manager
-
     # expensive if repeatedly computed
     git_revision = git_info.get_revision()
 
@@ -146,8 +144,8 @@ def main():
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
     # also multiprocessing failed on fiddly internal deps as of March 2025
     render_item_nml_start = time()
-    for spritelayercargo in spritelayer_cargos:
-        grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
+    for spritelayer_cargo in iron_horse.spritelayer_cargo_manager:
+        grf_nml.write(render_item_nml(spritelayer_cargo, graphics_path))
 
     # template_timings = {}
     # model_variant_timings = []
