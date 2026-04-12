@@ -1,4 +1,6 @@
-from spritelayer_cargos import registered_spritelayer_cargos
+import importlib
+
+from spritelayer_cargos import registered_spritelayer_cargos # CABBAGE
 from gestalt_graphics import pipelines
 
 
@@ -66,7 +68,10 @@ class CargoSetBase(object):
         self.subtype = kwargs.get("subtype")
         self.subtype_suffix = kwargs.get("subtype_suffix")
         # self.spritelayer_cargo = kwargs.get("spritelayer_cargo")
+        # CABBAGE - horrific autoregistration on init UGH
+        print("oof - self registering inits :|", kwargs.get("spritelayer_cargo_type"), self.subtype)
         self.register_cargo_set(kwargs.get("spritelayer_cargo_type"))
+
 
     def register_cargo_set(self, spritelayer_cargo_type):
         for platform_type in self.compatible_platform_types:
@@ -99,3 +104,50 @@ class CargoSetBase(object):
             + str(spritelayer_cargo.length)
             + "px"
         )
+
+
+class SpritelayerCargoManager(list):
+    """
+    It's convenient to have a structure for working with spritelayer_cargos.
+    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
+    """
+
+    def __init__(self, registered_spritelayer_cargos):
+        # init not needed, just shim
+        self.registered_spritelayer_cargos = registered_spritelayer_cargos #
+
+    def add_spritelayer_cargos(self, spritelayer_cargo_module_names):
+        for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
+            spritelayer_cargo_module = importlib.import_module(
+                "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
+            )
+            spritelayer_cargo_module.main(self)
+
+    def register_cargo_set(self, spritelayer_cargo_set_type, spritelayer_cargo_type, subtype, subtype_suffix):
+        print("register_cargo_set_type")
+        cargo_set = spritelayer_cargo_set_type(
+            subtype=subtype,
+            subtype_suffix=subtype_suffix,
+            spritelayer_cargo_type=spritelayer_cargo_type,
+        )
+        print(cargo_set)
+
+
+    """
+    def add_spritelayer_cargos(self, spritelayer_cargo_module_names):
+        for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
+            spritelayer_cargo_module = importlib.import_module(
+                "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
+            )
+            spritelayer_cargo = spritelayer_cargo_module.main(disabled=False)
+            self.append(spritelayer_cargo)
+
+    def get_spritelayer_cargo_by_vehicle_track_type_name(self, vehicle_track_type_name):
+        for spritelayer_cargo in self:
+            if spritelayer_cargo.vehicle_track_type_name == vehicle_track_type_name:
+                return spritelayer_cargo
+        raise ValueError(
+            f"No spritelayer_cargo found with vehicle_track_type_name={vehicle_track_type_name}"
+        )
+    """

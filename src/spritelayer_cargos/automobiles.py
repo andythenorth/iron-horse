@@ -515,12 +515,12 @@ subtype_to_cargo_set_mapping = {
 }
 
 
-def main():
+def main(spritelayer_cargo_manager):
     # first register automobiles with DFLT in their filename, which will be used for:
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
-    result = []
+    spritelayer_cargo_type = AutomobilesSpritelayerCargo
     for subtype in subtype_to_cargo_set_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if subtype not in [
@@ -528,11 +528,12 @@ def main():
         ]:
             subtype_suffix = "DFLT"
             for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
-                result.append(spritelayer_cargo_set_type(
-                    subtype=subtype,
-                    subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=AutomobilesSpritelayerCargo,
-                ))
+                spritelayer_cargo_manager.register_cargo_set(
+                    spritelayer_cargo_set_type,
+                    spritelayer_cargo_type,
+                    subtype,
+                    subtype_suffix,
+                )
 
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
@@ -542,9 +543,9 @@ def main():
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":
             for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
-                result.append(spritelayer_cargo_set_type(
-                    subtype=subtype,
-                    subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=AutomobilesSpritelayerCargo,
-                ))
-    return result
+                spritelayer_cargo_manager.register_cargo_set(
+                    spritelayer_cargo_set_type,
+                    spritelayer_cargo_type,
+                    subtype,
+                    subtype_suffix,
+                )
