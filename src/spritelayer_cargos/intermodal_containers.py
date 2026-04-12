@@ -360,11 +360,11 @@ subtype_to_cargo_set_mapping = {
 
 
 def main(spritelayer_cargo_manager):
-    # first register containers with DFLT in their filename, which will be used for:
-    # - for known cargos with only one visual variant
-    # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
-    # - all other cargos / classes not handled explicitly, which will fall back to box
     spritelayer_cargo_cls = IntermodalContainersSpritelayerCargo
+    # Pass 1: register default (DFLT) variants
+    # - used when a cargo has no specific visual variant
+    # - acts as fallback for partially-defined cargo types
+    # - some subtypes are excluded because they are always cargo-specific
     for subtype in subtype_to_cargo_set_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if subtype not in [
@@ -379,8 +379,10 @@ def main(spritelayer_cargo_manager):
                     subtype,
                     subtype_suffix,
                 )
-    # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
-    # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
+
+    # Pass 2: register cargo-specific variants (e.g. bulk_COAL, tank_PETR)
+    # mapping returns (subtype, subtype_suffix) pairs
+    # DFLT entries are skipped here as they are handled above
     for subtype, subtype_suffix in set(
         IntermodalContainersSpritelayerCargo.get_cargo_label_mapping().values()
     ):
