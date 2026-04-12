@@ -1,6 +1,5 @@
 import importlib
 
-from spritelayer_cargos import registered_spritelayer_cargos # CABBAGE
 from gestalt_graphics import pipelines
 
 
@@ -67,29 +66,6 @@ class CargoSetBase(object):
     def __init__(self, **kwargs):
         self.subtype = kwargs.get("subtype")
         self.subtype_suffix = kwargs.get("subtype_suffix")
-        # self.spritelayer_cargo = kwargs.get("spritelayer_cargo")
-        # CABBAGE - horrific autoregistration on init UGH
-        print("oof - self registering inits :|", kwargs.get("spritelayer_cargo_type"), self.subtype)
-        self.register_cargo_set(kwargs.get("spritelayer_cargo_type"))
-
-
-    def register_cargo_set(self, spritelayer_cargo_type):
-        for platform_type in self.compatible_platform_types:
-            spritelayer_cargo = spritelayer_cargo_type(
-                platform_type=platform_type,
-                length=self.length,
-            )
-            # the spritelayer_cargo may already be registered, this is a valid side effect of the implementation
-            # but we don't want to register the same spritelayer_cargo multiple times (waste of compile time and can cause bugs with multiprocessing)
-            already_registered = False
-            for registered_spritelayer_cargo in registered_spritelayer_cargos:
-                if registered_spritelayer_cargo.id == spritelayer_cargo.id:
-                    already_registered = True
-                    spritelayer_cargo = registered_spritelayer_cargo
-                    break
-            if already_registered == False:
-                registered_spritelayer_cargos.append(spritelayer_cargo)
-            spritelayer_cargo.cargo_sets.append(self)
 
     def id(self, spritelayer_cargo):
         return (
@@ -113,10 +89,6 @@ class SpritelayerCargoManager(list):
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def __init__(self, registered_spritelayer_cargos):
-        # init not needed, just shim
-        self.registered_spritelayer_cargos = registered_spritelayer_cargos #
-
     def add_spritelayer_cargos(self, spritelayer_cargo_module_names):
         for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
             spritelayer_cargo_module = importlib.import_module(
@@ -124,30 +96,28 @@ class SpritelayerCargoManager(list):
             )
             spritelayer_cargo_module.main(self)
 
-    def register_cargo_set(self, spritelayer_cargo_set_type, spritelayer_cargo_type, subtype, subtype_suffix):
-        print("register_cargo_set_type")
-        cargo_set = spritelayer_cargo_set_type(
+    def add_spritelayer_cargo(self, spritelayer_cargo):
+        # we don't permit duplicate spritelayer_cargo instances
+        for existing_spritelayer_cargo in self:
+            if spritelayer_cargo.id == existing_spritelayer_cargo.id:
+                return existing_spritelayer_cargo
+        self.append(spritelayer_cargo)
+        return spritelayer_cargo
+
+    def add_cargo_set(
+        self, spritelayer_cargo_set_cls, spritelayer_cargo_cls, subtype, subtype_suffix
+    ):
+        cargo_set = spritelayer_cargo_set_cls(
             subtype=subtype,
             subtype_suffix=subtype_suffix,
-            spritelayer_cargo_type=spritelayer_cargo_type,
         )
-        print(cargo_set)
-
-
-    """
-    def add_spritelayer_cargos(self, spritelayer_cargo_module_names):
-        for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
-            spritelayer_cargo_module = importlib.import_module(
-                "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
+        for platform_type in cargo_set.compatible_platform_types:
+            # spritelayer_cargo instances are created on demand by creating cargo sets
+            # this is a bit ass backwards, but it arose from an older implementation, and was easier to leave in place as of April 2026
+            spritelayer_cargo = spritelayer_cargo_cls(
+                platform_type=platform_type,
+                length=cargo_set.length,
             )
-            spritelayer_cargo = spritelayer_cargo_module.main(disabled=False)
-            self.append(spritelayer_cargo)
-
-    def get_spritelayer_cargo_by_vehicle_track_type_name(self, vehicle_track_type_name):
-        for spritelayer_cargo in self:
-            if spritelayer_cargo.vehicle_track_type_name == vehicle_track_type_name:
-                return spritelayer_cargo
-        raise ValueError(
-            f"No spritelayer_cargo found with vehicle_track_type_name={vehicle_track_type_name}"
-        )
-    """
+            spritelayer_cargo = self.add_spritelayer_cargo(spritelayer_cargo)
+            # we do always store the cargo set in the spritelayer cargo
+            spritelayer_cargo.cargo_sets.append(cargo_set)

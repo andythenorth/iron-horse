@@ -94,7 +94,7 @@ def main():
         "utf8",
     )
 
-    spritelayer_cargos = iron_horse.spritelayer_cargo_manager.registered_spritelayer_cargos
+    spritelayer_cargos = iron_horse.spritelayer_cargo_manager
 
     # expensive if repeatedly computed
     git_revision = git_info.get_revision()

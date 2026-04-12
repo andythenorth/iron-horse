@@ -364,7 +364,7 @@ def main(spritelayer_cargo_manager):
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
-    spritelayer_cargo_type = IntermodalContainersSpritelayerCargo
+    spritelayer_cargo_cls = IntermodalContainersSpritelayerCargo
     for subtype in subtype_to_cargo_set_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if subtype not in [
@@ -372,10 +372,10 @@ def main(spritelayer_cargo_manager):
             "stake_flatrack",
         ]:
             subtype_suffix = "DFLT"
-            for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
-                spritelayer_cargo_manager.register_cargo_set(
-                    spritelayer_cargo_set_type,
-                    spritelayer_cargo_type,
+            for spritelayer_cargo_set_cls in subtype_to_cargo_set_mapping[subtype]:
+                spritelayer_cargo_manager.add_cargo_set(
+                    spritelayer_cargo_set_cls,
+                    spritelayer_cargo_cls,
                     subtype,
                     subtype_suffix,
                 )
@@ -386,10 +386,10 @@ def main(spritelayer_cargo_manager):
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":
-            for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
-                spritelayer_cargo_manager.register_cargo_set(
-                    spritelayer_cargo_set_type,
-                    spritelayer_cargo_type,
+            for spritelayer_cargo_set_cls in subtype_to_cargo_set_mapping[subtype]:
+                spritelayer_cargo_manager.add_cargo_set(
+                    spritelayer_cargo_set_cls,
+                    spritelayer_cargo_cls,
                     subtype,
                     subtype_suffix,
                 )

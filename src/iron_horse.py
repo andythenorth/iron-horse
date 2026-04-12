@@ -20,7 +20,6 @@ command_line_args = utils.get_command_line_args()
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 
-from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargo import SpritelayerCargoManager
 
 spritelayer_cargo_module_names = [
@@ -122,7 +121,7 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
     globals()["badge_manager"] = BadgeManager()
     globals()["railtype_manager"] = RailTypeManager()
     globals()["roster_manager"] = RosterManager()
-    globals()["spritelayer_cargo_manager"] = SpritelayerCargoManager(registered_spritelayer_cargos)
+    globals()["spritelayer_cargo_manager"] = SpritelayerCargoManager()
 
     # railtypes
     railtype_manager.add_railtypes(railtype_module_names)
@@ -140,7 +139,7 @@ def main(validate_vehicle_ids=False, run_post_validation_steps=False):
 
     # spritelayer cargos
     spritelayer_cargo_manager.add_spritelayer_cargos(spritelayer_cargo_module_names)
-    print(spritelayer_cargo_manager.registered_spritelayer_cargos)
+    print(spritelayer_cargo_manager)
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
     badge_manager.produce_badges(
