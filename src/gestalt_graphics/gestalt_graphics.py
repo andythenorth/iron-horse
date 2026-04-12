@@ -696,9 +696,7 @@ class GestaltGraphicsSpritelayerTransporterBase(GestaltGraphics):
 class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporterBase):
     """
     Dedicated automobiles (car, truck, tractor) transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
+     - use spritelayer cargos
     """
 
     def __init__(self, **kwargs):
@@ -710,14 +708,27 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphicsSpritelayerTransporte
         return False
 
 
+class GestaltGraphicsDropCentreTransporter(GestaltGraphicsSpritelayerTransporterBase):
+    """
+    Dedicated drop-centre cargo vehicle
+     - use spritelayer cargos
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.spritelayer_cargo_base_id = "automobiles" # CABBAGE
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return False
+
+
 class GestaltGraphicsIntermodalContainerTransporters(
     GestaltGraphicsSpritelayerTransporterBase
 ):
     """
     Dedicated gestalt for intermodal container transporter
-    Gestalt handles both
-    - the model variant sprites
-    - the spritelayer cargos which are in separate layer
+     - use spritelayer cargos
     """
 
     def __init__(self, **kwargs):
