@@ -716,7 +716,7 @@ class GestaltGraphicsDropCentreTransporter(GestaltGraphicsSpritelayerTransporter
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.spritelayer_cargo_base_id = "automobiles" # CABBAGE
+        self.spritelayer_cargo_base_id = "drop_centre"
 
     @property
     def variants_use_common_graphics_switch_chain(self):

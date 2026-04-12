@@ -22,8 +22,9 @@ command_line_args = utils.get_command_line_args()
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 
 spritelayer_cargo_module_names = [
-    "intermodal_containers",
     "automobiles",
+    "drop_centre",
+    "intermodal_containers",
 ]
 
 # in the rare case that an unfinished railtype won't init cleanly, comment it out here
