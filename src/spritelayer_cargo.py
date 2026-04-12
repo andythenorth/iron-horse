@@ -1,5 +1,3 @@
-import global_constants  # expose all constants for easy passing to templates
-
 from spritelayer_cargos import registered_spritelayer_cargos
 from gestalt_graphics import pipelines
 
