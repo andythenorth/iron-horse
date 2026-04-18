@@ -88,6 +88,10 @@
         <tal:include metal:use-macro="load: speed.pynml" />
     </tal:lgv_capable_speed_bonus>
 
+    <tal:lgv_capable_speed_bonus condition="model_variant.catalogue.wagon_quacker.is_caboose and unit.is_not_trailing_part and model_variant.is_default_model_variant">
+        <tal:include metal:use-macro="load: speed.pynml" />
+    </tal:lgv_capable_speed_bonus>
+
     <tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
         <tal:include metal:use-macro="load: cost.pynml" />
     </tal:running_cost_factor>
