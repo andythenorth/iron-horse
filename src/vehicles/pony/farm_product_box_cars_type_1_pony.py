@@ -9,7 +9,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="FarmProductsBoxCarType1",
         base_numeric_id=30350,
-        gen=1,
+        gen=2, # gen 2 so that we can have randomised farm products combos wih hoppers
         subtype="A",
         base_track_type="NG",
         sprites_complete=True,
