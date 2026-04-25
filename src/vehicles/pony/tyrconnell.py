@@ -17,7 +17,7 @@ def main(**kwargs):
         },
         tractive_effort_coefficient=0.28,
         gen=2,
-        intro_year_offset=-5,  # introduce early eh
+        intro_year_offset=5,  # introduce a bit later eh
         random_reverse=False,
         liveries=["CLASSIC_LINES", "FREIGHT_BLACK"],
         sprites_complete=True,

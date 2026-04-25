@@ -17,7 +17,7 @@ def main(**kwargs):
         },
         tractive_effort_coefficient=0.31,
         gen=2,
-        intro_year_offset=10,  # introduce a bit later
+        intro_year_offset=15,  # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         liveries=["LOWER_LINES", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
