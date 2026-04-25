@@ -6,7 +6,18 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    # no gen 2 for NG, straight to gen 3
+    model_def = ModelDef(
+        schema_name="FarmCargoHopperCombos",
+        base_numeric_id=28380,
+        gen=2,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
+
+    result.append(model_def)
 
     model_def = ModelDef(
         schema_name="FarmCargoHopperCombos",
