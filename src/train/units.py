@@ -1204,6 +1204,16 @@ class CoilCarAsymmetricUnit(FreightCarUnit):
         self._symmetry_type = "asymmetric"
 
 
+class FlatCarDropCentreAsymmetricUnit(FreightCarUnit):
+    """
+    Drop centre flat car. This subclass only exists to set the symmetry_type to asymmetric.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = "asymmetric"
+
+
 class HeavyDutyCarUnit(FreightCarUnit):
     """
     Heavy duty car. This subclass only exists to set the capacity.
