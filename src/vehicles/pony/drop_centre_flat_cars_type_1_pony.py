@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
@@ -30,7 +30,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
@@ -45,7 +45,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
@@ -60,7 +60,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
@@ -75,7 +75,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
@@ -90,7 +90,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
@@ -105,7 +105,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
@@ -120,7 +120,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="AutomobileCarAsymmetricUnit", # CABBAGE
+        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
