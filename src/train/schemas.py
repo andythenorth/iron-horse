@@ -3598,7 +3598,7 @@ class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            buy_menu_id_pairs=[["hopper_car"], ["aggregate_hopper_car_type_1"]],
+            buy_menu_id_pairs=[["hopper_car"], ["ore_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5674,6 +5674,80 @@ class HopperCarMGRTopHood(HopperCarMGRBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class HopperCarOreBase(HopperCarBase):
+    """
+    Base class for hopper for ore cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        # didn't bother with teal, marginal benefit
+    ]
+
+    vehicle_family_id = "ore_hopper_car"
+    variant_group_id_root = "wagon_group_ore_hopper_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"] # CABBAG
+
+
+class HopperCarOreType1(HopperCarOreBase):
+    """
+    Hopper for ore cargos, just a visual variant.
+    """
+
+    model_id_root = "ore_hopper_car_type_1"
+    randomised_candidate_groups = [
+        "ore_hopper_car_randomised",
+        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mixed_combos",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class HopperCarOreType2(HopperCarOreBase):
+    """
+    Hopper for ore cargos, just a visual variant.
+    """
+
+    model_id_root = "ore_hopper_car_type_2"
+    randomised_candidate_groups = [
+        "ore_hopper_car_randomised",
+        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mixed_combos",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class HopperCarOreType3(HopperCarOreBase):
+    """
+    Hopper for ore cargos, just a visual variant.
+    """
+
+    model_id_root = "ore_hopper_car_type_3"
+    randomised_candidate_groups = [
+        "ore_hopper_car_randomised",
+        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mixed_combos",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
 
 
 class HopperCarRandomised(RandomisedCarVanillaMixin, HopperCarBase):

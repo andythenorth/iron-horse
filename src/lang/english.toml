@@ -498,6 +498,9 @@ base = "Open Wagon"
 [STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
 base = "General Open Wagon"
 
+[STR_WAGON_NAME_ORE_HOPPER_CAR]
+base = "Ore Hopper"
+
 [STR_WAGON_NAME_PANORAMIC_CAR]
 base = "Panoramic Coach"
 
