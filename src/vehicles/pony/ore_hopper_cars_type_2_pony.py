@@ -124,7 +124,7 @@ def main(**kwargs):
         base_numeric_id=31250,
         gen=5,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_16px")
@@ -150,7 +150,7 @@ def main(**kwargs):
         base_numeric_id=31170,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

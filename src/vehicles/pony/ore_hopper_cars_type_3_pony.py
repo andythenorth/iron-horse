@@ -6,13 +6,12 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    """
     model_def = ModelDef(
         schema_name="HopperCarOreType3",
-        base_numeric_id=20090,
+        base_numeric_id=28840,
         gen=4,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
@@ -21,10 +20,10 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarOreType3",
-        base_numeric_id=20110,
+        base_numeric_id=28880,
         gen=4,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
@@ -33,22 +32,22 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="HopperCarOreType3",
-        base_numeric_id=20210,
+        base_numeric_id=29520,
         gen=4,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_32px")
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="HopperCarOreType3",
         base_numeric_id=28860,
         gen=5,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_16px")
