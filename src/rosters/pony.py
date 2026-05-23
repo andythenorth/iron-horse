@@ -272,6 +272,7 @@ wagon_module_names_with_roster_ids = {
     "chemical_cargo_tank_combos": "pony",
     "coal_hopper_cars_type_1": "pony",
     "coal_hopper_cars_type_2": "pony",
+    "coal_hopper_cars_type_3": "pony",
     "coal_hopper_cars_randomised": "pony",
     "coil_buggy_cars": "pony",
     "coil_cars_covered": "pony",

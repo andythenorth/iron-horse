@@ -74,7 +74,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_32px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_alt_32px")
 
     result.append(model_def)
 

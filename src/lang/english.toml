@@ -325,7 +325,7 @@ base = "Box Van"
 base = "Mineral Open Wagon"
 
 [STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
-base = "Mineral Hopper"
+base = "Mine Hopper"
 
 [STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
 base = "Mineral Wagon"
