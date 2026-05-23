@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=23900,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=27420,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=23920,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=27040,
         gen=1,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=29890,
         gen=2,
         subtype="B",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=30970,
         gen=3,
         subtype="A",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=16890,
         gen=3,
         subtype="B",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=30530,
         gen=4,
         subtype="A",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=30370,
         gen=4,
         subtype="B",
@@ -122,7 +122,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=30300,
         gen=5,
         subtype="A",
@@ -134,7 +134,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=16930,
         gen=5,
         subtype="B",
@@ -146,7 +146,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarRandomised",
+        schema_name="HopperCarCoalRandomised",
         base_numeric_id=27400,
         gen=5,
         subtype="C",

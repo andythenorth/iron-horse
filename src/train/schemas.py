@@ -3598,7 +3598,7 @@ class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            buy_menu_id_pairs=[["hopper_car"], ["ore_hopper_car_type_1"]],
+            buy_menu_id_pairs=[["coal_hopper_car_type_1"], ["ore_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3630,7 +3630,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
             dice_colour=3,
             buy_menu_id_pairs=[
                 ["mineral_bulk_open_car"],
-                ["aggregate_hopper_car_type_1", "hopper_car"],
+                ["aggregate_hopper_car_type_1", "coal_hopper_car_type_1"],
             ],
             catalogue_entry=self.catalogue_entry,
         )
@@ -5598,18 +5598,18 @@ class HopperCarAggregateRandomised(RandomisedCarVanillaMixin, HopperCarAggregate
         )
 
 
-class HopperCar(HopperCarBase):
+class HopperCarCoalType1(HopperCarBase):
     """
     Standard hopper car. Defaults to coal.
     """
 
-    model_id_root = "hopper_car"
-    vehicle_family_id = "hopper_car"
-    variant_group_id_root = "wagon_group_hopper_cars"
+    model_id_root = "coal_hopper_car_type_1"
+    vehicle_family_id = "coal_hopper_car"
+    variant_group_id_root = "wagon_group_coal_hopper_cars"
     randomised_candidate_groups = [
         "bulk_cargo_hopper_combos",
         "bulk_cargo_mixed_combos",
-        "hopper_car_randomised",
+        "coal_hopper_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -5617,24 +5617,44 @@ class HopperCar(HopperCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
-class HopperCarHighSide(HopperCarBase):
+class HopperCarCoalType2(HopperCarBase):
     """
     Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
 
-    model_id_root = "hopper_car_high_side"
-    vehicle_family_id = "hopper_car"
-    variant_group_id_root = "wagon_group_hopper_cars"
+    model_id_root = "coal_hopper_car_type_2"
+    vehicle_family_id = "coal_hopper_car"
+    variant_group_id_root = "wagon_group_coal_hopper_cars"
     randomised_candidate_groups = [
         "bulk_cargo_hopper_combos",
         "bulk_cargo_mixed_combos",
-        "hopper_car_randomised",
+        "coal_hopper_car_randomised",
     ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
         self._joker = True
+
+
+class HopperCarCoalRandomised(RandomisedCarVanillaMixin, HopperCarBase):
+    """
+    Random choice of hopper car sprite.
+    """
+
+    model_id_root = "coal_hopper_car_randomised"
+    variant_group_id_root = "wagon_group_coal_hopper_cars"
+    # needed to clear randomised set by base class
+    randomised_candidate_groups = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            dice_colour=1,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class HopperCarMGRBase(HopperCarBase):
@@ -5765,26 +5785,6 @@ class HopperCarOreType3(HopperCarOreBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
-
-
-class HopperCarRandomised(RandomisedCarVanillaMixin, HopperCarBase):
-    """
-    Random choice of hopper car sprite.
-    """
-
-    model_id_root = "hopper_car_randomised"
-    variant_group_id_root = "wagon_group_hopper_cars"
-    # needed to clear randomised set by base class
-    randomised_candidate_groups = []
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=1,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
 class HopperCarRockBase(HopperCarBase):

@@ -338,8 +338,10 @@ class Roster:
                         tmp_randomisation_candidates_map[tmp_uid]
                     )
                 except KeyError as e:
-                    raise KeyError(
-                        f"UID {tmp_uid} not found in randomisation map, possibly there are no matching wagons for base_id/length/gen"
+                    raise RuntimeError(
+                        f"\nUID {tmp_uid} not found in randomisation map, possibly there are no matching wagons for base_id/length/gen\n"
+                        f"  {catalogue.model_id}\n"
+                        f"Previous causes: outdated ids or typos in ids for randomised_candidate_groups, should be {catalogue.vehicle_family_id}"
                     ) from e
 
                 if len(model_variant.wagon_randomisation_candidates) == 0:
