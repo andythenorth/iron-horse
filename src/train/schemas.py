@@ -5502,10 +5502,16 @@ class HopperCarAggregateBase(HopperCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
     vehicle_family_id = "aggregate_hopper_car"
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
+    randomised_candidate_groups = [
+        "aggregate_hopper_car_randomised",
+        #"bulk_cargo_hopper_combos", # doesn't mix well with coal and ore hoppers
+        #"bulk_cargo_mixed_combos",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5518,11 +5524,6 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_1"
-    randomised_candidate_groups = [
-        "aggregate_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
-        "bulk_cargo_mixed_combos",
-    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5535,11 +5536,6 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_2"
-    randomised_candidate_groups = [
-        "aggregate_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
-        "bulk_cargo_mixed_combos",
-    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5552,11 +5548,6 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_3"
-    randomised_candidate_groups = [
-        "aggregate_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
-        "bulk_cargo_mixed_combos",
-    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5569,11 +5560,6 @@ class HopperCarAggregateType4(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_4"
-    randomised_candidate_groups = [
-        "aggregate_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
-        "bulk_cargo_mixed_combos",
-    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5587,6 +5573,8 @@ class HopperCarAggregateRandomised(RandomisedCarVanillaMixin, HopperCarAggregate
 
     model_id_root = "aggregate_hopper_car_randomised"
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
+    # clear randomised candidates set by base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5634,6 +5622,18 @@ class HopperCarCoalType2(HopperCarCoalBase):
     """
 
     model_id_root = "coal_hopper_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class HopperCarCoalType3(HopperCarCoalBase):
+    """
+    Hopper for ore cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    model_id_root = "coal_hopper_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
