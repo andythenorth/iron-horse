@@ -5663,7 +5663,7 @@ class HopperCarAggregateRandomised(RandomisedCarVanillaMixin, HopperCarAggregate
         )
 
 
-class HopperCarCoalType1(HopperCarBase):
+class HopperCarCoalBase(HopperCarBase):
     """
     Standard hopper car. Defaults to coal.
     """
@@ -5682,33 +5682,35 @@ class HopperCarCoalType1(HopperCarBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
-class HopperCarCoalType2(HopperCarBase):
+class HopperCarCoalType1(HopperCarCoalBase):
+    """
+    Standard hopper car. Defaults to coal.
+    """
+
+    model_id_root = "coal_hopper_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class HopperCarCoalType2(HopperCarCoalBase):
     """
     Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
 
     model_id_root = "coal_hopper_car_type_2"
-    vehicle_family_id = "coal_hopper_car"
-    variant_group_id_root = "wagon_group_coal_hopper_cars"
-    randomised_candidate_groups = [
-        "bulk_cargo_hopper_combos",
-        "bulk_cargo_mixed_combos",
-        "coal_hopper_car_randomised",
-    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
         self._joker = True
 
 
-class HopperCarCoalRandomised(RandomisedCarVanillaMixin, HopperCarBase):
+class HopperCarCoalRandomised(RandomisedCarVanillaMixin, HopperCarCoalBase):
     """
     Random choice of hopper car sprite.
     """
 
     model_id_root = "coal_hopper_car_randomised"
-    variant_group_id_root = "wagon_group_coal_hopper_cars"
     # needed to clear randomised set by base class
     randomised_candidate_groups = []
 
