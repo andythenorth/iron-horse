@@ -5503,6 +5503,7 @@ class HopperCarAggregateBase(HopperCarBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "FREIGHT_KALE",
     ]
 
     vehicle_family_id = "aggregate_hopper_car"
