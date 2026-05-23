@@ -351,6 +351,12 @@ base = "Cement Wagon"
 [STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
 base = "Chemical Tanker"
 
+[STR_WAGON_NAME_COAL_HOPPER_CAR]
+base = "Coal Hopper"
+
+[STR_WAGON_NAME_COAL_HOPPER_CAR_RANDOMISED]
+base = "Coal Hopper"
+
 [STR_WAGON_NAME_COIL_BUGGY_CAR]
 base = "Coil Buggies"
 
@@ -431,12 +437,6 @@ base = "High Speed Coach"
 
 [STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
 base = "Hood Open Wagon"
-
-[STR_WAGON_NAME_HOPPER_CAR]
-base = "Coal Hopper"
-
-[STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
-base = "Coal Hopper"
 
 [STR_WAGON_NAME_HST_MAIL_CAR]
 base = "Mail Van"

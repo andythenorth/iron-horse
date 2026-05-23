@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19750,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19810,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -20,8 +20,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19770,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19830,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -33,8 +33,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19790,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19850,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -46,11 +46,12 @@ def main(**kwargs):
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
-    # also just type A for gen 1, 2 and 3
+
+    # just type A for gen 1, 2 and 3
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19570,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19390,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -63,8 +64,8 @@ def main(**kwargs):
     # gen 1A also covers gen 2
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19590,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19410,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -75,8 +76,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19610,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19430,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -87,8 +88,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19630,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19450,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -99,8 +100,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19650,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19470,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -111,8 +112,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19670,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19490,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -123,20 +124,22 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19690,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19510,
         gen=5,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_16px"
+    )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19710,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19530,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -149,8 +152,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19730,
+        schema_name="HopperCarCoalType1",
+        base_numeric_id=19550,
         gen=5,
         subtype="C",
         sprites_complete=True,
