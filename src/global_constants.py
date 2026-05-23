@@ -796,6 +796,14 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_KALE": {
+        "colour_set_names": ["freight_clover"],
+        "purchase_swatch_colour_set_names": ["freight_clover"],
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_MIST": {
         "colour_set_names": [
             "freight_mist",

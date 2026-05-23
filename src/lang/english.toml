@@ -135,6 +135,9 @@ base = "Silver Smoke"
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_OXIDE_RUST]
 base = "Oxide"
 
+[STR_BADGE_LIVERY_FREIGHT_KALE]
+base = "Kale"
+
 [STR_BADGE_LIVERY_FREIGHT_RED]
 base = "Flame Red"
 
