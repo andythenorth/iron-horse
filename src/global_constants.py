@@ -657,21 +657,17 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR": {
+    "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER": {
         "colour_set_names": [
             "freight_clover",
             "freight_clover",
-            "freight_clover",
-            "freight_clover",
-            "freight_silver",
             "freight_silver",
             "freight_ochre",
-            "freight_sulphur",
         ],
         "purchase_swatch_colour_set_names": [
             "freight_clover",
             "freight_silver",
-            "freight_sulphur",
+            "freight_ochre",
         ],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
