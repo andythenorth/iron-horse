@@ -590,7 +590,7 @@ def main():
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
-                "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER_SULPHUR",
+                "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER",
             },
             "FREIGHT_BLACK": {
                 "remap_to_cc": None,
