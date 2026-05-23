@@ -354,9 +354,6 @@ base = "Chemical Tanker"
 [STR_WAGON_NAME_COAL_HOPPER_CAR]
 base = "Coal Hopper"
 
-[STR_WAGON_NAME_COAL_HOPPER_CAR_RANDOMISED]
-base = "Coal Hopper"
-
 [STR_WAGON_NAME_COIL_BUGGY_CAR]
 base = "Coil Buggies"
 
