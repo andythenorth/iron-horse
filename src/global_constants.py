@@ -678,6 +678,23 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_LIVERIES_CLOVER_OCHRE_SAND": {
+        "colour_set_names": [
+            "freight_clover",
+            "freight_clover",  # for random weighting balance
+            "freight_ochre",
+            "freight_sand",
+        ],
+        "purchase_swatch_colour_set_names": [
+            "freight_clover",
+            "freight_ochre",
+            "freight_sand",
+        ],
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR": {
         "colour_set_names": [
             "freight_clover",
