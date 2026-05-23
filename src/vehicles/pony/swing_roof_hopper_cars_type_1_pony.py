@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_24px"
     )
 
     result.append(model_def)
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_32px"
     )
 
     result.append(model_def)
