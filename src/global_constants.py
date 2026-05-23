@@ -793,18 +793,6 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BONUS_TEAL": {
-        "colour_set_names": [
-            "freight_ocean_teal",
-            "freight_teal",
-        ],
-        "purchase_swatch_colour_set_names": ["freight_ocean_teal"],
-        "proxy_livery_for_badge_display_and_filter": "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "FREIGHT_MIST": {
         "colour_set_names": [
             "freight_mist",
