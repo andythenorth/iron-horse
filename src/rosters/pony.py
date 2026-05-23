@@ -245,6 +245,7 @@ wagon_module_names_with_roster_ids = {
     "aggregate_hopper_cars_type_1": "pony",
     "aggregate_hopper_cars_type_2": "pony",
     "aggregate_hopper_cars_type_3": "pony",
+    "aggregate_hopper_cars_type_4": "pony",
     "automobile_cars": "pony",
     "bolster_cars": "pony",
     "bulk_cargo_box_combos": "pony",

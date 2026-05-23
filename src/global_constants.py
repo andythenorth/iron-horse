@@ -137,6 +137,7 @@ wagon_module_name_stems = [
     "aggregate_hopper_cars_type_1",
     "aggregate_hopper_cars_type_2",
     "aggregate_hopper_cars_type_3",
+    "aggregate_hopper_cars_type_4",
     "aggregate_hopper_cars_randomised",
     "rock_hopper_cars_type_1",
     "rock_hopper_cars_type_2",

@@ -5562,11 +5562,11 @@ class HopperCarAggregateBase(HopperCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        # didn't bother with teal, marginal benefit
     ]
 
     vehicle_family_id = "aggregate_hopper_car"
@@ -5617,6 +5617,23 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
     """
 
     model_id_root = "aggregate_hopper_car_type_3"
+    randomised_candidate_groups = [
+        "aggregate_hopper_car_randomised",
+        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mixed_combos",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class HopperCarAggregateType4(HopperCarAggregateBase):
+    """
+    Hopper for rock cargos, just a visual variant.
+    """
+
+    model_id_root = "aggregate_hopper_car_type_4"
     randomised_candidate_groups = [
         "aggregate_hopper_car_randomised",
         "bulk_cargo_hopper_combos",
