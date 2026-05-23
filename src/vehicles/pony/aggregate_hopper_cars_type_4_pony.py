@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=29620,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=29420,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -19,8 +19,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=29640,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=29500,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -31,8 +31,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=29560,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=29660,
         gen=4,
         subtype="C",
         sprites_complete=False,
@@ -43,8 +43,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=20580,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=28660,
         gen=5,
         subtype="A",
         sprites_complete=False,
@@ -55,30 +55,26 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=20600,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=32340,
         gen=5,
         subtype="B",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_alt_24px"
-    )
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarAggregateType1",
-        base_numeric_id=20620,
+        schema_name="HopperCarAggregateType4",
+        base_numeric_id=31480,
         gen=5,
         subtype="C",
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_filled_greebled_alt_32px"
-    )
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_filled_32px")
 
     result.append(model_def)
 
