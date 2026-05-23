@@ -8,14 +8,28 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CoveredHopperCarSwingRoofType1",
-        base_numeric_id=29220,
+        base_numeric_id=29540,
         gen=4,
-        subtype="B",
-        sprites_complete=True,
+        subtype="A",
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_16px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="CoveredHopperCarSwingRoofType1",
+        base_numeric_id=29220,
+        gen=4,
+        subtype="B",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_24px"
     )
 
     result.append(model_def)
@@ -25,11 +39,11 @@ def main(**kwargs):
         base_numeric_id=32300,
         gen=4,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_32px"
     )
 
     result.append(model_def)
