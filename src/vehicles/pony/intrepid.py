@@ -23,12 +23,13 @@ def main(**kwargs):
         liveries=[
             "BANGER_BLUE",
             "SUPERGRAPHIC",
+            "RAILFREIGHT_RED_STRIPE", # no stripe
             "RAILFREIGHT_RED_STRIPE",
             "FRUIT_RIPPLE",
             "MAIL_BY_RAIL",
             "CLASSIC_LINES",
         ],
-        decor_spriterow_num=6,
+        decor_spriterow_num=7,
         show_decor_in_purchase_for_variants=[3],
         sprites_complete=True,
     )

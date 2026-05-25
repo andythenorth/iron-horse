@@ -21,10 +21,11 @@ def main(**kwargs):
             "BANGER_BLUE",
             "CONVENTIONAL_WISDOM",
             "SUPERGRAPHIC",
+            "RAILFREIGHT_RED_STRIPE", # no stripe
             "RAILFREIGHT_RED_STRIPE",
             "CLASSIC_LINES",
         ],
-        decor_spriterow_num=5,
+        decor_spriterow_num=6,
         show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
