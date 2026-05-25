@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=29480,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -25,7 +25,7 @@ def main(**kwargs):
         base_numeric_id=31050,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -39,7 +39,7 @@ def main(**kwargs):
         base_numeric_id=28960,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

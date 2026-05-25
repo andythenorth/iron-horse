@@ -4222,6 +4222,7 @@ class CoveredHopperCarSwingRoofBase(CoveredHopperCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "FREIGHT_KALE",
     ]
 
     vehicle_family_id = "swing_roof_hopper_car"

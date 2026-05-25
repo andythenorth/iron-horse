@@ -38,7 +38,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_16px")
 
     result.append(model_def)
 
@@ -51,7 +51,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_alt_24px"
     )
 
     result.append(model_def)
@@ -65,7 +65,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_chute_greebled_alt_32px"
     )
 
     result.append(model_def)

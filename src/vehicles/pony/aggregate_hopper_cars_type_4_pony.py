@@ -59,7 +59,7 @@ def main(**kwargs):
         base_numeric_id=32340,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_greebled_24px")
@@ -71,7 +71,7 @@ def main(**kwargs):
         base_numeric_id=31480,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_greebled_32px")
