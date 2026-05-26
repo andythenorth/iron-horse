@@ -3596,7 +3596,7 @@ class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
             dice_colour=1,
             buy_menu_id_pairs=[["coal_hopper_car_type_1"], ["ore_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
@@ -3626,7 +3626,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
             dice_colour=3,
             buy_menu_id_pairs=[
                 ["mineral_bulk_open_car"],
@@ -3658,7 +3658,7 @@ class BulkCarQuarryHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_segmented_block_train",
+            random_vehicle_map_type="map_segmented_block_train", # deliberate, tested alternatives, this is best
             dice_colour=1,
             buy_menu_id_pairs=[["aggregate_hopper_car_type_1"], ["rock_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
