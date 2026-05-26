@@ -336,6 +336,9 @@ base = "Mine Hopper"
 [STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
 base = "Mineral Wagon"
 
+[STR_WAGON_NAME_BULK_CARGO_QUARRY_HOPPER_COMBOS]
+base = "Quarry Hopper"
+
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
 base = "Bulkhead Flat Wagon"
 

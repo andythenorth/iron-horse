@@ -3576,7 +3576,7 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
 
 class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     """
-    Random choice of bulk car sprite, from available dump / hopper cars.
+    Random choice of bulk car sprite, from selected mine-type hopper cars.
     """
 
     # best to not have too many livery options for these
@@ -3606,7 +3606,7 @@ class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
 # not in alphabetical order as it depends on subclassing BulkOpenCarBase
 class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     """
-    Random choice of bulk car sprite, from available dump / hopper cars.
+    Random choice of bulk car sprite, from selected dump / hopper cars.
     """
 
     # best to not have too many livery options for these
@@ -3632,6 +3632,35 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
                 ["mineral_bulk_open_car"],
                 ["aggregate_hopper_car_type_1", "coal_hopper_car_type_1"],
             ],
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class BulkCarQuarryHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
+    """
+    Random choice of bulk car sprite, from selected quarry-type hopper cars.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+    ]
+
+    model_id_root = "bulk_cargo_quarry_hopper_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_segmented_block_train",
+            dice_colour=1,
+            buy_menu_id_pairs=[["aggregate_hopper_car_type_1"], ["rock_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5511,7 +5540,8 @@ class HopperCarAggregateBase(HopperCarBase):
     randomised_candidate_groups = [
         "aggregate_hopper_car_randomised",
         #"bulk_cargo_mine_hopper_combos", # doesn't mix well with coal and ore hoppers
-        #"bulk_cargo_mixed_combos",
+        #"bulk_cargo_mixed_combos", # doesn't mix well with this combo
+        "bulk_cargo_quarry_hopper_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -5822,6 +5852,7 @@ class HopperCarRockType1(HopperCarRockBase):
     model_id_root = "rock_hopper_car_type_1"
     randomised_candidate_groups = [
         "rock_hopper_car_randomised",
+        "bulk_cargo_quarry_hopper_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -5837,6 +5868,7 @@ class HopperCarRockType2(HopperCarRockBase):
     model_id_root = "rock_hopper_car_type_2"
     randomised_candidate_groups = [
         "rock_hopper_car_randomised",
+        "bulk_cargo_quarry_hopper_combos",
     ]
 
     def __init__(self, **kwargs):

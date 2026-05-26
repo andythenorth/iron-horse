@@ -144,6 +144,7 @@ wagon_module_name_stems = [
     "rock_hopper_cars_type_1",
     "rock_hopper_cars_type_2",
     "rock_hopper_cars_randomised",
+    "bulk_cargo_quarry_hopper_combos",
     "mineral_open_cars",
     "mineral_open_cars_high_side",
     "mineral_open_cars_randomised",
