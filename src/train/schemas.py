@@ -5492,7 +5492,7 @@ class HopperCarBase(CarSchemaBase):
 
 class HopperCarAggregateBase(HopperCarBase):
     """
-    Base class for hopper for rock cargos, same refits as standard hopper, just a visual variant.
+    Base class for hopper for aggregate (sand, gravel, stone) cargos, same refits as standard hopper, just a visual variant.
     """
 
     liveries = [
@@ -5521,7 +5521,7 @@ class HopperCarAggregateBase(HopperCarBase):
 
 class HopperCarAggregateType1(HopperCarAggregateBase):
     """
-    Hopper for rock cargos, just a visual variant.
+    Hopper for (sand, gravel, stone) cargos, just a visual variant.
     """
 
     model_id_root = "aggregate_hopper_car_type_1"
@@ -5533,7 +5533,7 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
 
 class HopperCarAggregateType2(HopperCarAggregateBase):
     """
-    Hopper for rock cargos, just a visual variant.
+    Hopper for (sand, gravel, stone) cargos, just a visual variant.
     """
 
     model_id_root = "aggregate_hopper_car_type_2"
@@ -5545,7 +5545,7 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
 
 class HopperCarAggregateType3(HopperCarAggregateBase):
     """
-    Hopper for rock cargos, just a visual variant.
+    Hopper for (sand, gravel, stone) cargos, just a visual variant.
     """
 
     model_id_root = "aggregate_hopper_car_type_3"
@@ -5557,7 +5557,7 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
 
 class HopperCarAggregateType4(HopperCarAggregateBase):
     """
-    Hopper for rock cargos, just a visual variant.
+    Hopper for (sand, gravel, stone) cargos, just a visual variant.
     """
 
     model_id_root = "aggregate_hopper_car_type_4"
@@ -5821,7 +5821,6 @@ class HopperCarRockType1(HopperCarRockBase):
 
     model_id_root = "rock_hopper_car_type_1"
     randomised_candidate_groups = [
-        "bulk_cargo_hopper_combos",
         "rock_hopper_car_randomised",
     ]
 
@@ -5837,7 +5836,6 @@ class HopperCarRockType2(HopperCarRockBase):
 
     model_id_root = "rock_hopper_car_type_2"
     randomised_candidate_groups = [
-        "bulk_cargo_hopper_combos",
         "rock_hopper_car_randomised",
     ]
 
