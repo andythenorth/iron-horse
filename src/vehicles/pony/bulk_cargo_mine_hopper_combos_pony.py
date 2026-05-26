@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=16440,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=24530,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=26450,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=24490,
         gen=3,
         subtype="A",
@@ -60,7 +60,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=24500,
         gen=3,
         subtype="B",
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=21200,
         gen=4,
         subtype="A",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=30450,
         gen=4,
         subtype="B",
@@ -96,7 +96,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=22150,
         gen=5,
         subtype="A",
@@ -108,7 +108,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=30620,
         gen=5,
         subtype="B",
@@ -120,7 +120,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="BulkCarHopperCombos",
+        schema_name="BulkCarMineHopperCombos",
         base_numeric_id=27280,
         gen=5,
         subtype="C",

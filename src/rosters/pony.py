@@ -332,7 +332,7 @@ wagon_module_names_with_roster_ids = {
     "high_speed_mail_cars": "pony",
     "high_speed_passenger_cars": "pony",
     "hood_open_cars_type_1": "pony",
-    "bulk_cargo_hopper_combos": "pony",
+    "bulk_cargo_mine_hopper_combos": "pony",
     "ingot_cars": "pony",
     "intermodal_cars": "pony",
     "lime_covered_hopper_cars_randomised": "pony",

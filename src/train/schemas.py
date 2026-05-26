@@ -3574,7 +3574,7 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         )
 
 
-class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
+class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -3590,7 +3590,7 @@ class BulkCarHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
-    model_id_root = "bulk_cargo_hopper_combos"
+    model_id_root = "bulk_cargo_mine_hopper_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5466,7 +5466,7 @@ class HopperCarBase(CarSchemaBase):
     ]
 
     randomised_candidate_groups = [
-        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mine_hopper_combos",
         "bulk_cargo_mixed_combos",
     ]
 
@@ -5510,7 +5510,7 @@ class HopperCarAggregateBase(HopperCarBase):
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
     randomised_candidate_groups = [
         "aggregate_hopper_car_randomised",
-        #"bulk_cargo_hopper_combos", # doesn't mix well with coal and ore hoppers
+        #"bulk_cargo_mine_hopper_combos", # doesn't mix well with coal and ore hoppers
         #"bulk_cargo_mixed_combos",
     ]
 
@@ -5596,7 +5596,7 @@ class HopperCarCoalBase(HopperCarBase):
     vehicle_family_id = "coal_hopper_car"
     variant_group_id_root = "wagon_group_coal_hopper_cars"
     randomised_candidate_groups = [
-        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mine_hopper_combos",
         "bulk_cargo_mixed_combos",
         "coal_hopper_car_randomised",
     ]
@@ -5747,7 +5747,7 @@ class HopperCarOreType1(HopperCarOreBase):
     model_id_root = "ore_hopper_car_type_1"
     randomised_candidate_groups = [
         "ore_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mine_hopper_combos",
         "bulk_cargo_mixed_combos",
     ]
 
@@ -5764,7 +5764,7 @@ class HopperCarOreType2(HopperCarOreBase):
     model_id_root = "ore_hopper_car_type_2"
     randomised_candidate_groups = [
         "ore_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mine_hopper_combos",
         "bulk_cargo_mixed_combos",
     ]
 
@@ -5781,7 +5781,7 @@ class HopperCarOreType3(HopperCarOreBase):
     model_id_root = "ore_hopper_car_type_3"
     randomised_candidate_groups = [
         "ore_hopper_car_randomised",
-        "bulk_cargo_hopper_combos",
+        "bulk_cargo_mine_hopper_combos",
         "bulk_cargo_mixed_combos",
     ]
 

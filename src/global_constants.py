@@ -132,7 +132,7 @@ wagon_module_name_stems = [
     "ore_hopper_cars_type_1",
     "ore_hopper_cars_type_2",
     "ore_hopper_cars_type_3",
-    "bulk_cargo_hopper_combos",
+    "bulk_cargo_mine_hopper_combos",
     "mgr_hopper_cars",
     "mgr_hopper_top_hood_cars",
     "side_door_hopper_cars",
