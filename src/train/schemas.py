@@ -1547,9 +1547,9 @@ class MailEngineCabbageDVT(MailEngineBase):
         return 68
 
 
-class FreightEngineCargoSprinterBase(EngineSchemaBase):
+class CargoSprinterMixin(object):
     """
-    Cargo Sprinter freight railcar.
+    Cargo Sprinter freight railcar common props (mixin as used for powered and unpowered vehicles).
     """
 
     liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
@@ -1578,8 +1578,14 @@ class FreightEngineCargoSprinterBase(EngineSchemaBase):
             colour_mapping_with_purchase=True,
         )
 
+    @property
+    def _spritelayer_cargo_layers(self):
+        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+        # cargo sprinter middle uses same as intermodal cars; cab subclass overrides
+        return ["default"]
 
-class FreightEngineCargoSprinterCabEngine(FreightEngineCargoSprinterBase):
+
+class FreightEngineCargoSprinterCabEngine(CargoSprinterMixin, EngineSchemaBase):
     """
     Cab motor for Cargo Sprinter freight railcar
     """
@@ -1609,9 +1615,10 @@ class FreightEngineCargoSprinterCabEngine(FreightEngineCargoSprinterBase):
         return self.power
 
 
-class FreightEngineCargoSprinterMiddleEngine(FreightEngineCargoSprinterBase):
+class FreightEngineCargoSprinterMiddleEngine(CargoSprinterMixin, EngineSchemaBase):
     """
     Middle platform, with "distributed power" for Cargo Sprinter freight railcar.
+    See also unpowered trailer version IntermodalCargoSprinterMiddleCar.
     """
 
     # these are not really engines, and this is the most convenient way to knock them out of engine lists in docs
@@ -1620,12 +1627,6 @@ class FreightEngineCargoSprinterMiddleEngine(FreightEngineCargoSprinterBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.is_distributed_power_wagon = True
-
-    @property
-    def _spritelayer_cargo_layers(self):
-        # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-        # cargo sprinter middle uses same as intermodal cars
-        return ["default"]
 
     @property
     def buy_cost(self):
@@ -3863,6 +3864,31 @@ class CarbonBlackHopperCar(CarSchemaBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class IntermodalCargoSprinterMiddleCar(CargoSprinterMixin, CarSchemaBase):
+    """
+    Dedicated unpowered trailer for cargo sprinter.
+    See also powered trailer version FreightEngineCargoSprinterMiddleEngine.
+    """
+
+    model_id_root = "cargo_sprinter_middle_car"
+
+    liveries=["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # uses named liveries, no random
+        self.use_colour_randomisation_strategies = False
+
+    def get_name_parts(self, context):
+        # special name handling to use the cab name
+        result = [
+            "STR_NAME_" + self.model_def.cab_id.upper(),
+            "STR_WAGON_NAME_TRAILER",
+        ]
+        return result
 
 
 class CoilBuggyCarUnit(CarSchemaBase):

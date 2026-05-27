@@ -118,7 +118,7 @@ engine_module_names = [
     "quietus",
     # cargo sprinter / freight railcar
     "brash_cab",
-    "brash_middle",
+    "brash_middle_powered",
     # gronks / snowploughs
     "grub",
     "lamia",
@@ -232,6 +232,7 @@ wagon_module_names_with_roster_ids = {
     # any engine-specific wagons go first
     "blaze_middle_cars": "pony",
     "firebird_middle_cars": "pony",
+    "brash_middle_unpowered": "pony",
     # generic wagons
     # these can be alphabetised, the buy menu order is enforced in global constants
     "acid_tank_cars_randomised": "pony",

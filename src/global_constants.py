@@ -8,6 +8,7 @@ wagon_module_name_stems = [
     # !! this is unfortunate, but JFDI for now, slavish consistency hobgoblin etc
     "blaze_middle_cars",  #
     "firebird_middle_cars",
+    "brash_middle_unpowered",
     # standard modules
     "railbus_passenger_trailer_cars",
     "railcar_passenger_trailer_cars",
