@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19750,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20400,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -20,8 +20,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19770,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20420,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -33,8 +33,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19790,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20440,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -46,12 +46,11 @@ def main(**kwargs):
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
-    # also just type A for gen 1, 2 and 3
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19570,
-        gen=1,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20460,
+        gen=2,
         subtype="A",
         sprites_complete=True,
     )
@@ -60,12 +59,22 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    # gen 1A also covers gen 2
+    model_def = ModelDef(
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20480,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+
+    result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19590,
-        gen=2,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20500,
+        gen=3,
         subtype="B",
         sprites_complete=True,
     )
@@ -75,89 +84,77 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19610,
-        gen=3,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19630,
-        gen=3,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19650,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20520,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19670,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20540,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_24px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19690,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=20560,
+        gen=4,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_hopper_32px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="HopperCarOreType1",
+        base_numeric_id=29240,
         gen=5,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19710,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=29280,
         gen=5,
         subtype="B",
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_chute_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="HopperCarHighSide",
-        base_numeric_id=19730,
+        schema_name="HopperCarOreType1",
+        base_numeric_id=29460,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_chute_greebled_32px"
     )
 
     result.append(model_def)

@@ -138,6 +138,9 @@ base = "Silver Smoke"
 [STR_BADGE_LIVERY_RANDOM_LIVERIES_OXIDE_RUST]
 base = "Oxide"
 
+[STR_BADGE_LIVERY_FREIGHT_KALE]
+base = "Kale"
+
 [STR_BADGE_LIVERY_FREIGHT_RED]
 base = "Flame Red"
 
@@ -327,11 +330,14 @@ base = "Box Van"
 [STR_WAGON_NAME_BULK_CARGO_BOX_COMBOS]
 base = "Mineral Open Wagon"
 
-[STR_WAGON_NAME_BULK_CARGO_HOPPER_COMBOS]
-base = "Mineral Hopper"
+[STR_WAGON_NAME_BULK_CARGO_MINE_HOPPER_COMBOS]
+base = "Mine Hopper"
 
 [STR_WAGON_NAME_BULK_CARGO_MIXED_COMBOS]
 base = "Mineral Wagon"
+
+[STR_WAGON_NAME_BULK_CARGO_QUARRY_HOPPER_COMBOS]
+base = "Quarry Hopper"
 
 [STR_WAGON_NAME_BULKHEAD_FLAT_CAR_RANDOMISED]
 base = "Bulkhead Flat Wagon"
@@ -353,6 +359,9 @@ base = "Cement Wagon"
 
 [STR_WAGON_NAME_CHEMICAL_CARGO_TANK_COMBOS]
 base = "Chemical Tanker"
+
+[STR_WAGON_NAME_COAL_HOPPER_CAR]
+base = "Coal Hopper"
 
 [STR_WAGON_NAME_COIL_BUGGY_CAR]
 base = "Coil Buggies"
@@ -435,12 +444,6 @@ base = "High Speed Coach"
 [STR_WAGON_NAME_HOOD_OPEN_CAR_TYPE_1]
 base = "Hood Open Wagon"
 
-[STR_WAGON_NAME_HOPPER_CAR]
-base = "Coal Hopper"
-
-[STR_WAGON_NAME_HOPPER_CAR_RANDOMISED]
-base = "Coal Hopper"
-
 [STR_WAGON_NAME_HST_MAIL_CAR]
 base = "Mail Van"
 
@@ -503,6 +506,9 @@ base = "Open Wagon"
 
 [STR_WAGON_NAME_OPEN_CAR_RANDOMISED]
 base = "General Open Wagon"
+
+[STR_WAGON_NAME_ORE_HOPPER_CAR]
+base = "Ore Hopper"
 
 [STR_WAGON_NAME_PANORAMIC_CAR]
 base = "Panoramic Coach"
