@@ -7506,9 +7506,15 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             "last": 2,
             "special": 3,
         }
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
+        else:
+            formation_ruleset = "railcars_6_unit_sets"
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
-            formation_ruleset="railcars_6_unit_sets",
+            formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
         )
