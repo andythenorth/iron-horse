@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_freight",
         subrole_child_branch_num=3,  # in its own line as it's no neat fit to either diesel or electric progression
         power_by_power_source={
-            "DIESEL": 2750,  # it's enough
+            "DIESEL": 3450,  # match to Grid etc, tried more, tried less, this is the one
             "OHLE": 7200,  # yolo, class 99 with a bit of a nerf
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
         tractive_effort_coefficient=0.375,  # assume slip control magic
