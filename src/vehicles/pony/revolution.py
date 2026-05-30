@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2250,  # lol, same as Shredder eh?
+            "DIESEL": 2750,  # keeping it too low doesn't serve much
             "OHLE": 5400,  # higher HP than Screamer, but heavier so similar HP / ton
         },
         random_reverse=True,
