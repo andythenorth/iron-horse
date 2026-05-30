@@ -397,6 +397,7 @@ wagon_module_names_with_roster_ids = {
     "roller_roof_hopper_cars_type_2": "pony",
     "scrap_metal_cars_type_1": "pony",
     "scrap_metal_cars_type_2": "pony",
+    "scrap_metal_cars_type_3": "pony",
     "scrap_metal_cars_randomised": "pony",
     "side_door_hopper_cars": "pony",
     "silo_cars_randomised": "pony",

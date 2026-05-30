@@ -164,6 +164,7 @@ wagon_module_name_stems = [
     "mineral_open_cars_low_side",
     "scrap_metal_cars_type_1",
     "scrap_metal_cars_type_2",
+    "scrap_metal_cars_type_3",
     "scrap_metal_cars_randomised",
     "skip_cars",
     "bulk_cargo_mixed_combos",

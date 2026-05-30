@@ -3437,6 +3437,17 @@ class BulkOpenCarScrapMetalType2(BulkOpenCarScrapMetalBase):
         super().__init__(**kwargs)
 
 
+class BulkOpenCarScrapMetalType3(BulkOpenCarScrapMetalBase):
+    """
+    Scrap Metal Car
+    """
+
+    model_id_root = "scrap_metal_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class BulkOpenCarScrapMetalRandomised(
     RandomisedCarVanillaMixin, BulkOpenCarScrapMetalBase
 ):
