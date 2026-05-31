@@ -71,7 +71,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="IntermodalCarUnit", chassis="4_axle_gapped_32px"
+        unit_cls_name="IntermodalCarUnit", chassis="4_axle_gapped_inset_32px"
     )
 
     result.append(model_def)
