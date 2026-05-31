@@ -50,6 +50,20 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="CoveredHopperCarSwingRoofType1",
+        base_numeric_id=28640,
+        gen=5,
+        subtype="A",
+        sprites_complete=False,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_16px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="CoveredHopperCarSwingRoofType1",
         base_numeric_id=26200,
         gen=5,
         subtype="B",

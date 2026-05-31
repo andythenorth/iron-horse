@@ -14,7 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
@@ -39,6 +39,18 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_32px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="CoveredHopperCarSwingRoofRandomised",
+        base_numeric_id=28330,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
 
