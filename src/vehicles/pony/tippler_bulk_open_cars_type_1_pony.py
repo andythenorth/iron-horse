@@ -88,6 +88,18 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarTipplerType1",
+        base_numeric_id=30420,
+        gen=4,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_inset_32px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="BulkOpenCarTipplerType1",
         base_numeric_id=26530,
         gen=5,
         subtype="B",

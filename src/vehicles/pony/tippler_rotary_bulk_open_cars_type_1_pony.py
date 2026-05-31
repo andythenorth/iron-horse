@@ -62,6 +62,18 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    model_def = ModelDef(
+        schema_name="BulkOpenCarTipplerRotaryType1",
+        base_numeric_id=29120,
+        gen=4,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="OreDumpCarUnit", chassis="4_axle_sparse_inset_32px")
+
+    result.append(model_def)
+
     # no gen 5A or 6A
 
     model_def = ModelDef(
