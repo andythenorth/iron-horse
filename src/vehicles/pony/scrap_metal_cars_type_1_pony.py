@@ -92,7 +92,19 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_24px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="BulkOpenCarScrapMetalType1",
+        base_numeric_id=29340,
+        gen=4,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_inset_32px")
 
     result.append(model_def)
 
