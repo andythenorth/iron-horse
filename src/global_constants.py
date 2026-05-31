@@ -452,7 +452,7 @@ custom_wagon_recolour_sprite_maps = {
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
     "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
     "custom_dark_teal": (88, 97, 156, 157, 158, 101, 102, 103),
-    "custom_ocean_teal": (105, 33, 249, 157, 158, 159, 160, 14),
+    "custom_ocean_teal": (105, 33, 155, 157, 158, 159, 160, 14),
     "custom_dark_ocean_teal": (104, 88, 155, 156, 158, 159, 102, 31),
     "custom_violet": (
         105,
