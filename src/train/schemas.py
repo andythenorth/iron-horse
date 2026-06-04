@@ -3315,12 +3315,12 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_OXIDE_RUST",
     ]
 
-    vehicle_family_id = "mineral_bulk_open_car"
-    variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
+    vehicle_family_id = "coal_bulk_open_car"
+    variant_group_id_root = "wagon_group_coal_bulk_open_cars"
     randomised_candidate_groups = [
         "bulk_cargo_mine_box_combos",
         "bulk_cargo_mixed_combos",
-        "mineral_bulk_open_car_randomised",
+        "coal_bulk_open_car_randomised",
     ]
 
     def __init__(self, **kwargs):
@@ -3333,7 +3333,7 @@ class BulkOpenCarMineral(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms).
     """
 
-    model_id_root = "mineral_bulk_open_car"
+    model_id_root = "coal_bulk_open_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3344,21 +3344,18 @@ class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
-    model_id_root = "mineral_bulk_open_car_high_side"
+    model_id_root = "coal_bulk_open_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarSandType1(BulkOpenCarMineralBase):
+class BulkOpenCarSandBase(BulkOpenCarMineralBase):
     """
     Sand and similar cargos bulk open car (low sides).
     """
 
-    # CABBAGE - needs splitting to Base to add type 2
-
     vehicle_family_id = "sand_bulk_open_car"
-    model_id_root = "sand_bulk_open_car_type_1"
     variant_group_id_root = "sand_bulk_open_car_type_1"
     randomised_candidate_groups = [
         "bulk_cargo_mixed_combos",
@@ -3369,13 +3366,35 @@ class BulkOpenCarSandType1(BulkOpenCarMineralBase):
         super().__init__(**kwargs)
 
 
+class BulkOpenCarSandType1(BulkOpenCarSandBase):
+    """
+    Sand and similar cargos bulk open car (low sides).
+    """
+
+    model_id_root = "sand_bulk_open_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BulkOpenCarSandType2(BulkOpenCarSandBase):
+    """
+    Sand and similar cargos bulk open car (low sides).
+    """
+
+    model_id_root = "sand_bulk_open_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class BulkOpenCarMineralRandomised(RandomisedCarVanillaMixin, BulkOpenCarMineralBase):
     """
     Random choice of standard dump car (Mineral Wagon in UK terms).
     """
 
-    model_id_root = "mineral_bulk_open_car_randomised"
-    variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
+    model_id_root = "coal_bulk_open_car_randomised"
+    variant_group_id_root = "wagon_group_coal_bulk_open_cars"
     # needed to clear randomised set by base class
     randomised_candidate_groups = []
 
@@ -3584,7 +3603,7 @@ class BulkCarMineBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             buy_menu_id_pairs=[
-                ["mineral_bulk_open_car"],
+                ["coal_bulk_open_car_type_1"],
                 ["aggregate_bulk_open_car_type_2", "tippler_bulk_open_car_type_1"],
             ],
             catalogue_entry=self.catalogue_entry,
@@ -3646,7 +3665,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
             dice_colour=3,
             buy_menu_id_pairs=[
-                ["mineral_bulk_open_car"],
+                ["coal_bulk_open_car_type_1"],
                 ["aggregate_hopper_car_type_1", "coal_hopper_car_type_1"],
             ],
             catalogue_entry=self.catalogue_entry,
