@@ -609,6 +609,20 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_LIVERIES_VARIETY_FERROUS": {
+        "colour_set_names": [
+            "freight_sand",
+            "freight_oil_black",
+            "freight_obsidian",
+            "freight_nightshade",
+            "freight_ochre",
+        ],
+        "purchase_swatch_colour_set_names": ["freight_sand", "freight_ochre", "freight_oil_black"],
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_LIVERIES_BUMBLEBEE": {
         # colour set names weighted for random weighting
         "colour_set_names": [
