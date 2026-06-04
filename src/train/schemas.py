@@ -3191,7 +3191,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
     variant_group_id_root = "wagon_group_aggregate_bulk_open_cars"
     randomised_candidate_groups = [
         "aggregate_bulk_open_car_randomised",
-        "bulk_cargo_box_combos",
+        "bulk_cargo_quarry_box_combos",
     ]
 
     def __init__(self, **kwargs):
@@ -3318,7 +3318,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
     vehicle_family_id = "mineral_bulk_open_car"
     variant_group_id_root = "wagon_group_mineral_bulk_open_cars"
     randomised_candidate_groups = [
-        "bulk_cargo_box_combos",
+        "bulk_cargo_mine_box_combos",
         "bulk_cargo_mixed_combos",
         "mineral_bulk_open_car_randomised",
     ]
@@ -3350,14 +3350,16 @@ class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
+class BulkOpenCarSandType1(BulkOpenCarMineralBase):
     """
-    Standard dump car (Mineral Wagon in UK terms), with low sides.
+    Sand and similar cargos bulk open car (low sides).
     """
 
-    vehicle_family_id = "mineral_bulk_open_car_low_side"
-    model_id_root = "mineral_bulk_open_car_low_side"
-    variant_group_id_root = "mineral_bulk_open_car_low_side"
+    # CABBAGE - needs splitting to Base to add type 2
+
+    vehicle_family_id = "sand_bulk_open_car"
+    model_id_root = "sand_bulk_open_car_type_1"
+    variant_group_id_root = "sand_bulk_open_car_type_1"
     randomised_candidate_groups = [
         "bulk_cargo_mixed_combos",
         # by design, does not randomise with the other box opens, visually jarring due to size difference
@@ -3489,8 +3491,9 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
     vehicle_family_id = "tippler_bulk_open_car"
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
     randomised_candidate_groups = [
-        "bulk_cargo_box_combos",
+        "bulk_cargo_mine_box_combos",
         "bulk_cargo_mixed_combos",
+        "bulk_cargo_quarry_box_combos",
         "tippler_bulk_open_car_randomised",
     ]
 
@@ -3557,7 +3560,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarVanillaMixin, BulkOpenCarTippler
 
 
 # not in alphabetical order as it depends on subclassing BulkOpenCarBase
-class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
+class BulkCarMineBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / box open cars.
     """
@@ -3573,7 +3576,7 @@ class BulkCargoBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
     ]
 
-    model_id_root = "bulk_cargo_box_combos"
+    model_id_root = "bulk_cargo_mine_box_combos"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3645,6 +3648,37 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
             buy_menu_id_pairs=[
                 ["mineral_bulk_open_car"],
                 ["aggregate_hopper_car_type_1", "coal_hopper_car_type_1"],
+            ],
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class BulkCarQuarryBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
+    """
+    Random choice of bulk car sprite, from available dump / box open cars.
+    """
+
+    # best to not have too many livery options for these
+    # generally we want liveries with a couple of distinct colours
+    # - too many colours is confusing...because the sprites are also so varied
+    # - too few colours looks unnatural...because the sprites are so varied
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+    ]
+
+    model_id_root = "bulk_cargo_quarry_box_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            dice_colour=2,
+            buy_menu_id_pairs=[
+                ["aggregate_bulk_open_car_type_2"],
+                ["tippler_bulk_open_car_type_1"],
             ],
             catalogue_entry=self.catalogue_entry,
         )
