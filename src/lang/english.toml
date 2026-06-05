@@ -330,9 +330,6 @@ base = "Bolster Wagon"
 [STR_WAGON_NAME_BOX_CAR]
 base = "Box Van"
 
-[STR_WAGON_NAME_BULK_CARGO_MINE_BOX_COMBOS]
-base = "Mine Open Wagon"
-
 [STR_WAGON_NAME_BULK_CARGO_MINE_HOPPER_COMBOS]
 base = "Mine Hopper"
 

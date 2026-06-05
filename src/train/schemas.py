@@ -3246,6 +3246,18 @@ class BulkOpenCarAggregateType3(BulkOpenCarAggregateBase):
         super().__init__(**kwargs)
 
 
+class BulkOpenCarAggregateType4(BulkOpenCarAggregateBase):
+    """
+    Aggregate Car.
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    model_id_root = "aggregate_bulk_open_car_type_4"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class BulkOpenCarAggregateRandomised(
     RandomisedCarVanillaMixin, BulkOpenCarAggregateBase
 ):
@@ -3318,8 +3330,8 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
     vehicle_family_id = "coal_bulk_open_car"
     variant_group_id_root = "wagon_group_coal_bulk_open_cars"
     randomised_candidate_groups = [
-        "bulk_cargo_mine_box_combos",
         "bulk_cargo_mixed_combos",
+        # "bulk_cargo_quarry_box_combos", # doesn't work due to 2 axle vs. 4 axle at B length
         "coal_bulk_open_car_randomised",
     ]
 
@@ -3339,12 +3351,34 @@ class BulkOpenCarMineral(BulkOpenCarMineralBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
+class BulkOpenCarMineralType2(BulkOpenCarMineralBase):
     """
-    Standard dump car (Mineral Wagon in UK terms), with high sides.
+    Standard dump car (Mineral Wagon in UK terms).
     """
 
     model_id_root = "coal_bulk_open_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BulkOpenCarMineralType3(BulkOpenCarMineralBase):
+    """
+    Standard dump car (Mineral Wagon in UK terms).
+    """
+
+    model_id_root = "coal_bulk_open_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class BulkOpenCarMineralType4(BulkOpenCarMineralBase):
+    """
+    Standard dump car (Mineral Wagon in UK terms).
+    """
+
+    model_id_root = "coal_bulk_open_car_type_4"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3510,7 +3544,6 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
     vehicle_family_id = "tippler_bulk_open_car"
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
     randomised_candidate_groups = [
-        "bulk_cargo_mine_box_combos",
         "bulk_cargo_mixed_combos",
         "bulk_cargo_quarry_box_combos",
         "tippler_bulk_open_car_randomised",
@@ -3539,6 +3572,18 @@ class BulkOpenCarTipplerType2(BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_bulk_open_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+
+class BulkOpenCarTipplerType3(BulkOpenCarTipplerBase):
+    """
+    Tippler (dump car).
+    """
+
+    model_id_root = "tippler_bulk_open_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3574,38 +3619,6 @@ class BulkOpenCarTipplerRandomised(RandomisedCarVanillaMixin, BulkOpenCarTippler
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-# not in alphabetical order as it depends on subclassing BulkOpenCarBase
-class BulkCarMineBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
-    """
-    Random choice of bulk car sprite, from available dump / box open cars.
-    """
-
-    # best to not have too many livery options for these
-    # generally we want liveries with a couple of distinct colours
-    # - too many colours is confusing...because the sprites are also so varied
-    # - too few colours looks unnatural...because the sprites are so varied
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_OCHRE_SAND",
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-    ]
-
-    model_id_root = "bulk_cargo_mine_box_combos"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
-            dice_colour=2,
-            buy_menu_id_pairs=[
-                ["coal_bulk_open_car_type_1"],
-                ["aggregate_bulk_open_car_type_2", "tippler_bulk_open_car_type_1"],
-            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3685,7 +3698,7 @@ class BulkCarQuarryBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
     ]
 
     model_id_root = "bulk_cargo_quarry_box_combos"
@@ -3693,7 +3706,7 @@ class BulkCarQuarryBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
+            random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
                 ["aggregate_bulk_open_car_type_2"],
@@ -3715,8 +3728,11 @@ class BulkCarQuarryHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_CLOVER_OCHRE_SAND",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
     ]
 
     model_id_root = "bulk_cargo_quarry_hopper_combos"
