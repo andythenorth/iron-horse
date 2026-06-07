@@ -8,6 +8,30 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BulkOpenCarSandType2",
+        base_numeric_id=27910,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="BulkOpenCarSandType2",
+        base_numeric_id=31520,
+        gen=4,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="BulkOpenCarSandType2",
         base_numeric_id=28400,
         gen=5,
         subtype="A",

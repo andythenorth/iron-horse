@@ -3340,7 +3340,7 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         self._joker = True
 
 
-class BulkOpenCarMineral(BulkOpenCarMineralBase):
+class BulkOpenCarMineralType1(BulkOpenCarMineralBase):
     """
     Standard dump car (Mineral Wagon in UK terms).
     """
