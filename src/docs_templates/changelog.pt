@@ -3,6 +3,58 @@ Changelog
 
 
 --------------
+4.19.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.19.0.
+
+
+*Changes*
+
+- added unpowered trailers for Brash freight railcar
+- added unpowered trailer for Stratos narrow gauge passenger railcar
+- increased power on diesel for Quietus and Revolution, nerfing them down doesn't aid balancing
+- added more liveries for Grid, Growler and Intrepid
+- reworked hopper wagons
+    - split Ore Hoppers out from Aggregate Hoppers
+    - added additional wagon generations or types for:
+        - Coal Hoppers
+        - Aggregate Hoppers
+        - Rock Hoppers
+        - Swing Roof Hoppers
+        - Covered Hoppers
+        - Carbon Black Hoppers
+        - Farm Hoppers
+    - added randomised Quarry Hoppers
+- reworked bulk open wagons
+    - some Coal Wagons switched to Sand Wagons
+    - added additional wagon generations or types for:
+        - Coal Wagons
+        - Scrap Wagons
+        - Tippler Wagons
+        - Stone Wagons
+    - added Quarry Open Wagons
+    - improved appearance of some Scrap Wagons
+    - adjusted Scrap Wagon livery options
+    - adjusted randomised bulk open wagons, to improve combinations
+- added additional Open wagons
+- adjusted some narrow gauge vehicle intro dates to 1900, rather than 1910, consistent with standard gauge
+- added Kale and Ferrous freight wagon liveries
+- switched some Pineapple freight wagon liveries to Marsh Grass
+- improved Clover Fields freight wagon livery
+- improved container wagon appearance
+    - some container types now match wagon colour, not company colour
+    - container wagon colours re-randomised between loads
+- improved toolbar sprites for Dedicated High Speed Railway
+
+
+*Fixes*
+
+- removed spurious animated pixels in Ocean Teal livery
+
+
+--------------
 4.18.0 Release
 --------------
 
