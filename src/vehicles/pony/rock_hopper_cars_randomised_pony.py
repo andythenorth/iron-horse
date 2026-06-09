@@ -5,7 +5,8 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-
+    # !!! see also gen 4A quarry hopper combos
+    """
     model_def = ModelDef(
         schema_name="HopperCarRockRandomised",
         base_numeric_id=29180,
@@ -17,7 +18,7 @@ def main(**kwargs):
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="HopperCarRockRandomised",
         base_numeric_id=31290,

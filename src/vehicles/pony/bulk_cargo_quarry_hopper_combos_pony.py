@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-
+    """
     model_def = ModelDef(
         schema_name="BulkCarQuarryHopperCombos",
         base_numeric_id=28930,
@@ -17,7 +17,7 @@ def main(**kwargs):
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="BulkCarQuarryHopperCombos",
         base_numeric_id=30590,

@@ -37,7 +37,7 @@ def main(**kwargs):
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
-
+    """
     model_def = ModelDef(
         schema_name="HopperCarRockType1",
         base_numeric_id=29050,
@@ -49,7 +49,7 @@ def main(**kwargs):
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="HopperCarRockType1",
         base_numeric_id=24100,
