@@ -221,6 +221,10 @@ class UnitBase(object):
                     extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
+        # optional flag for wagons that have a driving cab, to allow driving backwards (all engines have cabs)
+        if self.model_variant.catalogue.wagon_quacker.quack:
+            if self.model_variant.flag_has_cab:
+                extra_flags.append("VEHICLE_FLAG_TRAIN_HAS_CAB")
         return ",".join(extra_flags)
 
     def get_cargo_classes_as_nml_prop(self, allow_disallow_key):

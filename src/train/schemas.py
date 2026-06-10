@@ -2327,6 +2327,9 @@ class CarSchemaBase(SchemaBase):
         ]
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
+        # cab flag allows driving backward, override in subclasses as needed
+        # (all engines have cabs)
+        self.flag_has_cab = False
 
     @property
     def subtype(self):
@@ -6418,6 +6421,8 @@ class MailRailcarTrailerCarBase(MailCarBase):
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # trailers are allowed to lead a train driving backwards
+        self.flag_has_cab = True
         self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
@@ -7332,6 +7337,8 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # trailers are allowed to lead a train driving backwards
+        self.flag_has_cab = True
         self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
@@ -7376,6 +7383,8 @@ class PassengeMetroTrailerCar(PassengerCarBase):
         self.floating_run_cost_multiplier = 1.5
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # trailers are allowed to lead a train driving backwards
+        self.flag_has_cab = True
         self._str_name_suffix = "STR_WAGON_NAME_TRAILER"
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
