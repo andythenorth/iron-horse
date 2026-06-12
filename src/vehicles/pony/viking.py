@@ -21,6 +21,7 @@ def main(**kwargs):
             "CONVENTIONAL_WISDOM",
             "STOCK_STANDARD",
             "SHOW_PONY",
+            "HORNET",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,
