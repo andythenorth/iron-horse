@@ -2721,7 +2721,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
             self.roof_type = "pax_mail_smooth"
         # bonus sprites only for some generations
         bonus_sprites = (
-           1 if self.gen in [5] else 0
+           1 if self.gen in [4, 5] else 0
         )
         formation_position_spriterow_map = {
             "default": 0,
