@@ -1159,6 +1159,7 @@ def main():
                 ("STOCK_STANDARD", 2),
                 ("VAPID_VOYAGER", 3),
                 ("MAIL_BY_RAIL", 4),
+                ("MAIL_BY_RAIL", 5),
             ],
         },
         engine_module_names=engine_module_names,
