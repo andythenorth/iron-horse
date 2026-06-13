@@ -2719,15 +2719,11 @@ class AutomobileMotorailCar(AutomobileCarBase):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # bonus sprites only for some generations
-        bonus_sprites = (
-           1 if self.gen in [4, 5] else 0
-        )
         formation_position_spriterow_map = {
             "default": 0,
             "first": 0,  # default, first, last synonymous currently for motorail cars
             "last": 0,
-            "special": bonus_sprites,
+            "special": 1,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
