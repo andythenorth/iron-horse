@@ -19,7 +19,7 @@ formation_ruleset_reporting_label_maps = {
         "label": "model_id",
         "delegate_to_catalogue": True,
     },
-    "motorail_cars": {"label": "motorail_car"},
+    "motorail_cars": {"label": "generic_mail_car"},
     "driving_cab_cars": {"label": "generic_pax_car"},
     "metro": {"label": "vehicle_family", "delegate_to_catalogue": True},
     "mail_cars": {"label": "generic_mail_car"},
