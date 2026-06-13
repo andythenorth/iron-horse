@@ -2700,6 +2700,7 @@ class AutomobileMotorailCar(AutomobileCarBase):
     formation_reporting_labels = [
         "motorail_car",
         "generic_mail_car", # allows continuation of mail sequences
+        "generic_pax_car", # allows continuation of pax sequences
     ]
 
     def __init__(self, **kwargs):
