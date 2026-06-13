@@ -2703,6 +2703,11 @@ class AutomobileMotorailCar(AutomobileCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # motorail vans are faffy special case, as they transcend AutomobileCarBase by adding Mail and Express refits
+        self.class_refit_groups.extend(["mail", "express_freight"])
+        self.label_refits_disallowed.extend(polar_fox.constants.disallowed_refits_by_label[
+            "legacy_disallowed_express"
+        ])
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # roof configuration
