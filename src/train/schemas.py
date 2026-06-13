@@ -2698,8 +2698,9 @@ class AutomobileMotorailCar(AutomobileCarBase):
     model_id_root = "motorail_automobile_car"
 
     formation_reporting_labels = [
-        "motorail_car"
-    ]  # just a boilerplate entry in the case of motorail cars
+        "motorail_car",
+        "generic_mail_car", # allows continuation of mail sequences
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
