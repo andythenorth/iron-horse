@@ -333,6 +333,7 @@ class Roster:
             for model_variant in self.wagon_model_variants_by_catalogue[
                 catalogue.model_id
             ]["model_variants"]:
+                # this is where we write the result
                 try:
                     model_variant.wagon_randomisation_candidates = (
                         tmp_randomisation_candidates_map[tmp_uid]
@@ -344,6 +345,7 @@ class Roster:
                         f"Previous causes: outdated ids or typos in ids for randomised_candidate_groups, should be {catalogue.vehicle_family_id}"
                     ) from e
 
+                # post-write validation
                 if len(model_variant.wagon_randomisation_candidates) == 0:
                     raise BaseException(
                         f"{model_variant.id}"
