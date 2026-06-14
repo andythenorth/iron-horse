@@ -325,7 +325,7 @@ class Roster:
                 tmp_uid = get_tmp_uid(model_id_root, catalogue)
                 tmp_randomisation_candidates_map.setdefault(tmp_uid, [])
                 tmp_randomisation_candidates_map[tmp_uid].append(
-                    catalogue.example_model_variant
+                    catalogue
                 )
 
         for catalogue in randomised_wagon_type_catalogues_tmp:

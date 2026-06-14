@@ -22,12 +22,12 @@
                 - or possibly it should at least by using unique_units
                 - may not matter for non-articulated cases
                 - this is untested with articulated vehicles and random articulated vehicles may simply not work at all -->
-            <tal:candidate_graphics_entry_cases switch="randomisation_candidate.gestalt_graphics.variants_use_common_graphics_switch_chain">
+            <tal:candidate_graphics_entry_cases switch="randomisation_candidate.example_model_variant.gestalt_graphics.variants_use_common_graphics_switch_chain">
                 <tal:case tal:case="True">
                     ${repeat.randomisation_candidate.index}: ${randomisation_candidate.model_id}_unit_${model_variant.units.index(unit)}_switch_graphics;
                 </tal:case>
                 <tal:case tal:case="False">
-                    ${repeat.randomisation_candidate.index}: ${randomisation_candidate.units[model_variant.units.index(unit)].id}_switch_graphics;
+                    ${repeat.randomisation_candidate.index}: ${randomisation_candidate.example_model_variant.units[model_variant.units.index(unit)].id}_switch_graphics;
                 </tal:case>
             </tal:candidate_graphics_entry_cases>
         </tal:randomisation_candidates>

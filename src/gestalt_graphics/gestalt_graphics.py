@@ -285,11 +285,11 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
             (
-                candidate_2.units[0],
+                candidate_2.example_model_variant.units[0],
                 0,
             ),
             (
-                candidate_1.units[0],
+                candidate_1.example_model_variant.units[0],
                 0,
             ),
         ]

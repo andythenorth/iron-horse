@@ -2491,8 +2491,8 @@ class RandomisedCarMixinBase(object):
         result = {}
         for randomisation_candidate in self.wagon_randomisation_candidates:
             # we re-use the whole vehicle family badge here, probably fine?
-            label = randomisation_candidate.catalogue.vehicle_family_badge
-            name = randomisation_candidate.get_name_parts(context="badge")
+            label = randomisation_candidate.vehicle_family_badge
+            name = randomisation_candidate.example_model_variant.get_name_parts(context="badge")
             result[label] = name
         return result
 
