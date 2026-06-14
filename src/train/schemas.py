@@ -2479,6 +2479,29 @@ class RandomisedCarMixinBase(object):
         super().__init__(**kwargs)
         self.wagon_randomisation_candidates = []
 
+    def validate(self):
+        # post-write validation after randomised_candidate_groups is created
+        if len(self.wagon_randomisation_candidates) == 0:
+            raise BaseException(
+                f"{model_variant.id}"
+                f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
+            )
+        if len(self.wagon_randomisation_candidates) == 1:
+            raise BaseException(
+                f"{self.id}"
+                f" has only one choice for randomisation_candidates\n"
+                f"this will be either a shortage of candidates, or the model should not be declared\n"
+                f"{self.wagon_randomisation_candidates}"
+            )
+        if len(self.wagon_randomisation_candidates) > 64:
+            # we have a limited number of random bits, and we need to use them independently of company colour choices
+            # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
+            raise BaseException(
+                f"{self.id}"
+                f" has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates\n"
+                f"{self.wagon_randomisation_candidates}"
+            )
+
     @property
     def joker(self):
         # no randomised wagons in simplified gameplay mode

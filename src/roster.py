@@ -327,7 +327,6 @@ class Roster:
                 tmp_randomisation_candidates_map[tmp_uid].append(
                     catalogue
                 )
-
         for catalogue in randomised_wagon_type_catalogues_tmp:
             tmp_uid = get_tmp_uid(catalogue.schema_cls.model_id_root, catalogue)
             for model_variant in self.wagon_model_variants_by_catalogue[
@@ -346,26 +345,7 @@ class Roster:
                     ) from e
 
                 # post-write validation
-                if len(model_variant.wagon_randomisation_candidates) == 0:
-                    raise BaseException(
-                        f"{model_variant.id}"
-                        f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
-                    )
-                if len(model_variant.wagon_randomisation_candidates) == 1:
-                    raise BaseException(
-                        f"{model_variant.id}"
-                        f" has only one choice for randomisation_candidates\n"
-                        f"this will be either a shortage of candidates, or the model should not be declared\n"
-                        f"{model_variant.wagon_randomisation_candidates}"
-                    )
-                if len(model_variant.wagon_randomisation_candidates) > 64:
-                    # we have a limited number of random bits, and we need to use them independently of company colour choices
-                    # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
-                    raise BaseException(
-                        f"{model_variant.id}"
-                        f" has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates\n"
-                        f"{model_variant.wagon_randomisation_candidates}"
-                    )
+                model_variant.validate()
 
     @property
     def default_livery(self):
