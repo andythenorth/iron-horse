@@ -3,6 +3,29 @@ Changelog
 
 
 --------------
+4.20.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.19.0.
+
+
+*Changes*
+
+- improved Motorail Vans
+    - extended refits to include the same refittable cargos as Mail Vans
+    - added liveries, including red Mail by Rail liveries, and Vapid Voyager livery
+    - added additional sprites for randomised sequence variety
+- addded support for trains driving backwards
+    - requires an OpenTTD version including driving bacwkwards feature from OpenTTD #15379
+    - all Iron Horse engines and driving cabs support driving backwards without changes
+    - extended driving backwards support to unpowered trailers for multiple units, railcars and railbuses
+- adjusted buy menu offsets for dual-head engine sprites
+    - added for compatibility with changes in OpenTTD #15587
+    - dual-head engine sprites will overlap slightly in older OpenTTD versions (this is expected)
+
+
+--------------
 4.19.0 Release
 --------------
 
