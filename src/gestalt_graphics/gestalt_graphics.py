@@ -206,9 +206,9 @@ class GestaltGraphicsEngine(GestaltGraphics):
     # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
 
 
-class GestaltGraphicsRandomisedWagon(GestaltGraphics):
+class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
     """
-    Simple Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
+    Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
     """
 
     def __init__(self, **kwargs):
@@ -302,6 +302,15 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             }
         ]
         return result
+
+
+class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandomisedWagonBase):
+    """
+    Base Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class GestaltGraphicsPrecompositedCargo(GestaltGraphics):

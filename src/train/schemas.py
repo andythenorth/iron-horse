@@ -20,7 +20,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
     GestaltGraphicsSimpleBodyColourRemaps,
-    GestaltGraphicsRandomisedWagon,
+    GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps,
     GestaltGraphicsFormationDependent,
     GestaltGraphicsAutomobilesTransporter,
     GestaltGraphicsDropCentreTransporter,
@@ -2807,7 +2807,7 @@ class BolsterCarRandomised(RandomisedCarVanillaMixin, BolsterCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -2991,7 +2991,7 @@ class BoxCarCurtainSideRandomised(RandomisedCarVanillaMixin, BoxCarCurtainSideBa
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3054,7 +3054,7 @@ class BoxCarRandomised(RandomisedCarVanillaMixin, BoxCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3146,7 +3146,7 @@ class BoxCarSlidingWallRandomised(RandomisedCarVanillaMixin, BoxCarSlidingWallBa
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             # block train isn't most realistic, but looks best - too much variation in roof colour is visually confusing
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
@@ -3281,7 +3281,7 @@ class BulkOpenCarAggregateRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3444,7 +3444,7 @@ class BulkOpenCarMineralRandomised(RandomisedCarVanillaMixin, BulkOpenCarMineral
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3525,7 +3525,7 @@ class BulkOpenCarScrapMetalRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3625,7 +3625,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarVanillaMixin, BulkOpenCarTippler
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -3653,7 +3653,7 @@ class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
             dice_colour=1,
             buy_menu_id_pairs=[["coal_hopper_car_type_1"], ["ore_hopper_car_type_1"]],
@@ -3683,7 +3683,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
             dice_colour=3,
             buy_menu_id_pairs=[
@@ -3714,7 +3714,7 @@ class BulkCarQuarryBoxCombos(RandomisedCarComboMixin, BulkOpenCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -3749,7 +3749,7 @@ class BulkCarQuarryHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train", # deliberate, tested alternatives, this is best
             dice_colour=1,
             buy_menu_id_pairs=[["aggregate_hopper_car_type_1"], ["rock_hopper_car_type_1"]],
@@ -3880,7 +3880,7 @@ class CabooseCarRandomised(RandomisedCarCabooseMixin, CabooseCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         # note that this uses caboose-specific randomisation methods
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             buy_menu_id_pairs=[["caboose_car_type_1"], ["caboose_car_type_3"]],
@@ -4202,7 +4202,7 @@ class DedicatedCoilCarRandomised(RandomisedCarVanillaMixin, CoilCarBase):
         super().__init__(**kwargs)
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             buy_menu_id_pairs=[["coil_car_uncovered"], ["coil_car_covered"]],
@@ -4346,7 +4346,7 @@ class CoveredHopperCarRandomised(RandomisedCarVanillaMixin, CoveredHopperCarBase
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -4449,7 +4449,7 @@ class CoveredHopperCarSwingRoofRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -4540,7 +4540,7 @@ class ExpressCarRandomised(RandomisedCarVanillaMixin, ExpressCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -4660,7 +4660,7 @@ class FarmCargoMixedCombos(FarmCargoCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -4681,7 +4681,7 @@ class FarmCargoHopperCombos(FarmCargoCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             buy_menu_id_pairs=[
@@ -4771,7 +4771,7 @@ class FarmProductsBoxCarRandomised(RandomisedCarVanillaMixin, FarmProductsBoxCar
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -4859,7 +4859,7 @@ class FarmProductsHopperCarRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -4905,7 +4905,7 @@ class FoodIngredientsMixedCombos(FoodIngredientsCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -4926,7 +4926,7 @@ class FoodIngredientsHopperCombos(FoodIngredientsCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             buy_menu_id_pairs=[
@@ -5025,7 +5025,7 @@ class FoodProductsHopperCarRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -5132,7 +5132,7 @@ class FoodExpressTankCarRandomised(RandomisedCarVanillaMixin, FoodExpressTankCar
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -5164,7 +5164,7 @@ class FoodExpressBoxCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -5204,7 +5204,7 @@ class FoodExpressLiquidCombos(RandomisedCarComboMixin, FoodExpressCarBase):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -5307,7 +5307,7 @@ class FlatCarBulkheadRandomised(RandomisedCarVanillaMixin, FlatCarBulkheadBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -5371,7 +5371,7 @@ class FlatCarDropCentreRandomised(RandomisedCarVanillaMixin, FlatCarDropCentreBa
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -5539,7 +5539,7 @@ class FlatCarMillRandomised(RandomisedCarVanillaMixin, FlatCarMillBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -5558,7 +5558,7 @@ class FlatCarRandomised(RandomisedCarVanillaMixin, FlatCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -5586,7 +5586,7 @@ class FlatBedCargoCombos(RandomisedCarComboMixin, FlatCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -5791,7 +5791,7 @@ class HopperCarAggregateRandomised(RandomisedCarVanillaMixin, HopperCarAggregate
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -5864,7 +5864,7 @@ class HopperCarCoalRandomised(RandomisedCarVanillaMixin, HopperCarCoalBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -6067,7 +6067,7 @@ class HopperCarRockRandomised(RandomisedCarVanillaMixin, HopperCarRockBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -6664,7 +6664,7 @@ class MetalProductCoveredCombos(MetalProductCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             buy_menu_id_pairs=[
@@ -6685,7 +6685,7 @@ class MetalProductMixedCombos(MetalProductCombosBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             buy_menu_id_pairs=[
@@ -6826,7 +6826,7 @@ class MineralCoveredHopperCarLimeRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -6856,7 +6856,7 @@ class MineralCoveredHopperCombos(RandomisedCarComboMixin, MineralCoveredHopperCa
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
             buy_menu_id_pairs=[
@@ -6938,7 +6938,7 @@ class MineralCoveredHopperCarRollerRoofRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -7020,7 +7020,7 @@ class MineralCoveredHopperCarSaltRandomised(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -7231,7 +7231,7 @@ class OpenCarMillRandomised(RandomisedCarVanillaMixin, OpenCarMillBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -7249,7 +7249,7 @@ class OpenCarRandomised(RandomisedCarVanillaMixin, OpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             catalogue_entry=self.catalogue_entry,
@@ -7279,7 +7279,7 @@ class OpenCarCombos(RandomisedCarComboMixin, OpenCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             buy_menu_id_pairs=[["open_car_type_1"], ["hood_open_car_type_1"]],
@@ -7922,7 +7922,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             # CABBAGE SET THESE
@@ -7943,7 +7943,7 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=3,
             buy_menu_id_pairs=[["tarpaulin_car_type_2"], ["sliding_roof_car"]],
@@ -7961,7 +7961,7 @@ class PieceGoodsCombosMixedRandomised(PieceGoodsCarRandomisedBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             buy_menu_id_pairs=[["open_car_type_1"], ["box_car_type_1"]],
@@ -7981,7 +7981,7 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             # CABBAGE SET THESE
@@ -8088,7 +8088,7 @@ class ReeferCarRandomised(RandomisedCarVanillaMixin, ReeferCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.roof_type = "freight"
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -8188,7 +8188,7 @@ class SiloCarRandomised(RandomisedCarVanillaMixin, SiloCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -8270,7 +8270,7 @@ class SiloCarCementRandomised(RandomisedCarVanillaMixin, SiloCarCementBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             catalogue_entry=self.catalogue_entry,
@@ -8583,7 +8583,7 @@ class TankCarAcidRandomised(RandomisedCarVanillaMixin, TankCarAcidBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
@@ -8664,7 +8664,7 @@ class TankCarProductRandomised(RandomisedCarVanillaMixin, TankCarProductBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
@@ -8749,7 +8749,7 @@ class TankCarStandardRandomised(RandomisedCarVanillaMixin, TankCarStandardBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
@@ -8823,7 +8823,7 @@ class ChemicalCargoTankCombos(RandomisedCarComboMixin, TankCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             buy_menu_id_pairs=[["acid_tank_car_type_1"], ["product_tank_car_type_2"]],
@@ -8933,7 +8933,7 @@ class TarpaulinCarRandomised(RandomisedCarVanillaMixin, TarpaulinCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
