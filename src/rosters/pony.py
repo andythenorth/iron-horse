@@ -986,10 +986,10 @@ def main():
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_mail_liveries": [
-                ("LOWER_LINES", 3),
+                ("BANGER_BLUE", 2),
                 ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
-                ("BANGER_BLUE", 2),
+                ("LOWER_LINES", 3),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_and_6_mail_liveries": [
