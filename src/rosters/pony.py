@@ -696,6 +696,17 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "MAIL_BY_RAIL_ALT": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
+                "proxy_livery_for_badge_display_and_filter": "MAIL_BY_RAIL",
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "MARGINAL_GAINS": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
@@ -998,11 +1009,11 @@ def main():
                 ("SURE_PACE", 1),
                 ("VINYL_VECTOR", 2),
                 ("VAPID_VOYAGER", 3),
-                ("MAIL_BY_RAIL", 4),
+                ("MAIL_BY_RAIL_ALT", 4),
                 ("MAIL_BY_RAIL", 6),
             ],
             "gen_5_and_6_express_mail_railcar_liveries": [
-                ("MAIL_BY_RAIL", 4),
+                ("MAIL_BY_RAIL_ALT", 4),
                 ("LOWER_LINES", 5),
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
@@ -1028,7 +1039,7 @@ def main():
                 ("LOWER_LINES", 3),
                 ("FRUIT_RIPPLE", 1),
                 ("SURE_PACE", 0),
-                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL_ALT", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "diesel_railcar_mail_liveries": [
@@ -1053,7 +1064,7 @@ def main():
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_diesel_railcar_mail_liveries": [
-                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL_ALT", 2),
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
                 ("LOWER_LINES", 3),
@@ -1084,14 +1095,14 @@ def main():
                 ("LOWER_LINES", 3),
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
-                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL_ALT", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_6_electric_railcar_mail_liveries": [
                 ("LOWER_LINES", 3),
                 ("VINYL_VECTOR", 0),
                 ("VAPID_VOYAGER", 1),
-                ("MAIL_BY_RAIL", 2),
+                ("MAIL_BY_RAIL_ALT", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_4_railcar_pax_liveries": [
@@ -1158,7 +1169,7 @@ def main():
                 ("SURE_PACE", 1),
                 ("STOCK_STANDARD", 2),
                 ("VAPID_VOYAGER", 3),
-                ("MAIL_BY_RAIL", 4),
+                ("MAIL_BY_RAIL_ALT", 4),
                 ("MAIL_BY_RAIL", 5),
             ],
         },
