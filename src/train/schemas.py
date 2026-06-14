@@ -8,6 +8,7 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 
 import math
 from functools import cached_property
+from collections import Counter
 
 import polar_fox
 import global_constants
@@ -20,6 +21,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsBoxCarOpeningDoors,
     GestaltGraphicsEngine,
     GestaltGraphicsSimpleBodyColourRemaps,
+    GestaltGraphicsRandomisedWagonFormationDependent,
     GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps,
     GestaltGraphicsFormationDependent,
     GestaltGraphicsAutomobilesTransporter,
@@ -30,6 +32,7 @@ from gestalt_graphics.gestalt_graphics import (
 import gestalt_graphics.graphics_constants as graphics_constants
 
 import iron_horse
+
 
 class SchemaBase(object):
     """
@@ -2483,7 +2486,7 @@ class RandomisedCarMixinBase(object):
         # post-write validation after randomised_candidate_groups is created
         if len(self.wagon_randomisation_candidates) == 0:
             raise BaseException(
-                f"{model_variant.id}"
+                f"{self.id}"
                 f" did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
             )
         if len(self.wagon_randomisation_candidates) == 1:
@@ -2515,7 +2518,9 @@ class RandomisedCarMixinBase(object):
         for randomisation_candidate in self.wagon_randomisation_candidates:
             # we re-use the whole vehicle family badge here, probably fine?
             label = randomisation_candidate.vehicle_family_badge
-            name = randomisation_candidate.example_model_variant.get_name_parts(context="badge")
+            name = randomisation_candidate.example_model_variant.get_name_parts(
+                context="badge"
+            )
             result[label] = name
         return result
 
@@ -2548,6 +2553,54 @@ class RandomisedCarCabooseMixin(RandomisedCarMixinBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.badge_slug_randomised_wagon_type = "caboose"
+
+
+class RandomisedCarFormationDependentMixin(RandomisedCarMixinBase):
+    """
+    Sparse subclass for very minimal handling of different randomised behaviouers
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.badge_slug_randomised_wagon_type = "vanilla"
+
+    def validate(self):
+        super().validate()
+        for randomisation_candidate in self.wagon_randomisation_candidates:
+            if len(randomisation_candidate) != len(self.catalogue):
+                raise BaseException(
+                    f"{self.id} randomised wagon:\n"
+                    f" catalogue length doesn't match for randomisation_candidate {randomisation_candidate.model_id} \n"
+                    f" - likely caused by mismatched livery group"
+                )
+
+            if Counter(
+                randomisation_candidate.livery_names_in_catalogue_order
+            ) != Counter(self.catalogue.livery_names_in_catalogue_order):
+                raise BaseException(
+                    f"{self.id} randomised wagon:\n"
+                    f" livery group overall distribution doesn't match for randomisation_candidate {randomisation_candidate.model_id} \n"
+                    f" livery order can vary, but overall distribution cannot\n"
+                    f" {self.id}: {Counter(i.livery_name for i in randomisation_candidate.livery_defs)}\n"
+                    f" {randomisation_candidate.model_id}: {Counter(i.livery_name for i in self.catalogue.livery_defs)}\n"
+                )
+
+    @property
+    def wagon_randomisation_candidate_model_variant_ids_mapped_to_liveries(self):
+        # this assumes that all liveries in the livery_group are uniquely named
+        # uniqueness within a livery_group is not enforced by the livery spec, so it has to be done by convention
+        # pony MAIL_BY_RAIL and MAIL_BY_RAIL_ALT give examples
+        result = []
+        for randomisation_candidate in self.wagon_randomisation_candidates:
+            catalogue_entry_index = (
+                randomisation_candidate.livery_names_in_catalogue_order.index(
+                    self.catalogue_entry.livery_def.livery_name
+                )
+            )
+            result.append(
+                randomisation_candidate[catalogue_entry_index].model_variant_id
+            )
+        return result
 
 
 class AlignmentCarUnit(CarSchemaBase):
@@ -2719,20 +2772,23 @@ class AutomobileMotorailCar(AutomobileCarBase):
     livery_group_name = "default_motorail_liveries"
 
     model_id_root = "motorail_automobile_car"
+    randomised_candidate_groups = [
+        "mail_car_combos",
+    ]
 
     formation_reporting_labels = [
         "motorail_car",
-        "generic_mail_car", # allows continuation of mail sequences
-        "generic_pax_car", # allows continuation of pax sequences
+        "generic_mail_car",  # allows continuation of mail sequences
+        "generic_pax_car",  # allows continuation of pax sequences
     ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # motorail vans are faffy special case, as they transcend AutomobileCarBase by adding Mail and Express refits
         self.class_refit_groups.extend(["mail", "express_freight"])
-        self.label_refits_disallowed.extend(polar_fox.constants.disallowed_refits_by_label[
-            "legacy_disallowed_express"
-        ])
+        self.label_refits_disallowed.extend(
+            polar_fox.constants.disallowed_refits_by_label["legacy_disallowed_express"]
+        )
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # roof configuration
@@ -3677,7 +3733,7 @@ class BulkCarMineHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # deliberate, tested alternatives, this is best
             dice_colour=1,
             buy_menu_id_pairs=[["coal_hopper_car_type_1"], ["ore_hopper_car_type_1"]],
             catalogue_entry=self.catalogue_entry,
@@ -3707,7 +3763,7 @@ class BulkCarMixedCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common", # deliberate, tested alternatives, this is best
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # deliberate, tested alternatives, this is best
             dice_colour=3,
             buy_menu_id_pairs=[
                 ["coal_bulk_open_car_type_1"],
@@ -3773,9 +3829,12 @@ class BulkCarQuarryHopperCombos(RandomisedCarComboMixin, BulkOpenCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
-            random_vehicle_map_type="map_segmented_block_train", # deliberate, tested alternatives, this is best
+            random_vehicle_map_type="map_segmented_block_train",  # deliberate, tested alternatives, this is best
             dice_colour=1,
-            buy_menu_id_pairs=[["aggregate_hopper_car_type_1"], ["rock_hopper_car_type_1"]],
+            buy_menu_id_pairs=[
+                ["aggregate_hopper_car_type_1"],
+                ["rock_hopper_car_type_1"],
+            ],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3987,7 +4046,7 @@ class IntermodalCargoSprinterMiddleCar(CargoSprinterMixin, CarSchemaBase):
 
     model_id_root = "cargo_sprinter_middle_car"
 
-    liveries=["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"]
+    liveries = ["BANGER_BLUE", "LOWER_LINES", "VAPID_VOYAGER", "INDUSTRIAL_YELLOW"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5743,8 +5802,8 @@ class HopperCarAggregateBase(HopperCarBase):
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
     randomised_candidate_groups = [
         "aggregate_hopper_car_randomised",
-        #"bulk_cargo_mine_hopper_combos", # doesn't mix well with coal and ore hoppers
-        #"bulk_cargo_mixed_combos", # doesn't mix well with this combo
+        # "bulk_cargo_mine_hopper_combos", # doesn't mix well with coal and ore hoppers
+        # "bulk_cargo_mixed_combos", # doesn't mix well with this combo
         "bulk_cargo_quarry_hopper_combos",
     ]
 
@@ -5970,7 +6029,9 @@ class HopperCarOreBase(HopperCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"] # CABBAG
+        self.default_cargos = polar_fox.constants.default_cargos[
+            "dump_aggregates"
+        ]  # CABBAG
 
 
 class HopperCarOreType1(HopperCarOreBase):
@@ -6486,6 +6547,9 @@ class MailCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "mail_car"
+    randomised_candidate_groups = [
+        "mail_car_combos",
+    ]
     # mail cars treated as both pax and mail for rulesets
     formation_reporting_labels = [
         "generic_mail_car",
@@ -6522,6 +6586,34 @@ class MailCar(MailCarBase):
         if self.base_track_type == "NG":
             return "universal"
         return "express"
+
+
+class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarBase):
+    """
+    Randomised mail-capable vehicles.
+    """
+
+    livery_group_name = "default_motorail_liveries"  # CABBAGE, needs to resolve to per-generation liveries
+
+    model_id_root = "mail_car_combos"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.use_colour_randomisation_strategies = True  # CABBAGE TO MAKE COMPILE WORK
+        self.cabbage_switch_colour = True
+
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonFormationDependent(
+            random_vehicle_map_type="map_loose_mixed_train",  # CABBAGE
+            formation_ruleset="mail_cars",
+            dice_colour=3,
+            buy_menu_id_pairs=[
+                ["mail_car"],
+                ["motorail_automobile_car"],
+            ],
+            catalogue_entry=self.catalogue_entry,
+            cabbage_mail_car_combos=True, # refactoring shim
+        )
 
 
 class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):

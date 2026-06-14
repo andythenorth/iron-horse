@@ -46,6 +46,10 @@
       <tal:include metal:use-macro="load: vehicle_randomised.pynml" />
     </tal:block>
 
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised_cabbage.pynml'">
+      <tal:include metal:use-macro="load: vehicle_randomised_cabbage.pynml" />
+    </tal:block>
+
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_snowplough.pynml'">
       <tal:include metal:use-macro="load: vehicle_snowplough.pynml" />
     </tal:block>

@@ -21,6 +21,7 @@ wagon_module_name_stems = [
     "suburban_passenger_cars",
     "metro_passenger_trailer_cars",
     "mail_cars",
+    "mail_cars_randomised",
     "high_speed_mail_cars",
     "motorail_automobile_cars",
     "double_deck_automobile_cars",

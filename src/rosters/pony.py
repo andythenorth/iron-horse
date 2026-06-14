@@ -352,6 +352,7 @@ wagon_module_names_with_roster_ids = {
     "low_floor_intermodal_cars": "pony",
     "low_floor_automobile_cars": "pony",
     "mail_cars": "pony",
+    "mail_cars_randomised": "pony",
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",
     "metal_product_mixed_combos": "pony",
@@ -1162,7 +1163,8 @@ def main():
                 ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
-                ("MAIL_BY_RAIL", 3),
+                ("LOWER_LINES", 3), # CABBAGE NEEDS DRAWING
+                ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_and_6_motorail_liveries": [
                 ("FRUIT_RIPPLE", 0),

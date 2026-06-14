@@ -474,6 +474,9 @@ base = "Log Carrier"
 [STR_WAGON_NAME_MAIL_CAR]
 base = "Mail Van"
 
+[STR_WAGON_NAME_MAIL_CAR_COMBOS]
+base = "Mail Vehicle Combos"
+
 [STR_WAGON_NAME_MERCHANDISE_BOX_CAR]
 base = "Merchandise Van"
 

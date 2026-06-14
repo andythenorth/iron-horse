@@ -178,7 +178,7 @@
         return pseudo_random_value_from_deterministic_random_map_mail(32);
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_motorail_car_ruleset, [
-            switch_graphics_mail_car_ruleset_select_appropriate_map_length()
+            switch_graphics_motorail_car_ruleset_select_appropriate_map_length()
         ]) {
         0: return ${default};
         1: return ${default};

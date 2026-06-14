@@ -226,18 +226,11 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = self.colour_mapping_switch # CABBAGE TO MAKE COMPILE WORK
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
         self.buy_menu_id_pairs = kwargs.get("buy_menu_id_pairs", None)
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.render_pass_num = 2
-
-    @property
-    def nml_template(self):
-        return "vehicle_randomised.pynml"
-
-    @property
-    def variants_use_common_graphics_switch_chain(self):
-        return True
 
     def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
@@ -311,6 +304,32 @@ class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandom
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def nml_template(self):
+        return "vehicle_randomised.pynml"
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return True
+
+
+class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomisedWagonBase):
+    """
+    Base Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cabbage_mail_car_combos = kwargs.get("cabbage_mail_car_combos", False)
+
+    @property
+    def nml_template(self):
+        return "vehicle_randomised_cabbage.pynml"
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return False
 
 
 class GestaltGraphicsPrecompositedCargo(GestaltGraphics):

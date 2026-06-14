@@ -217,6 +217,10 @@ class Catalogue(list):
             f"{self.cab_producer}"
         )
 
+    @property
+    def livery_names_in_catalogue_order(self):
+        return [i.livery_name for i in self.livery_defs]
+
     @cached_property
     def model_id(self):
         # figures out where a model variant is getting a base id from
