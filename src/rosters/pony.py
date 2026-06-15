@@ -1169,10 +1169,11 @@ def main():
             "gen_5_and_6_motorail_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
-                ("STOCK_STANDARD", 2),
+                ("VINYL_VECTOR", 2), # CABBAGE - WAS STOCK_STANDARD
                 ("VAPID_VOYAGER", 3),
-                ("MAIL_BY_RAIL_ALT", 4),
-                ("MAIL_BY_RAIL", 5),
+                ("LOWER_LINES", 4), # CABBAGE
+                ("MAIL_BY_RAIL_ALT", 5),
+                ("MAIL_BY_RAIL", 6),
             ],
         },
         engine_module_names=engine_module_names,

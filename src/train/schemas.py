@@ -2754,8 +2754,10 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         # Graphics configuration
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
-        else:
+        elif self.gen == 5:
             formation_ruleset = "max_4_unit_sets"
+        else:
+            formation_ruleset = "max_1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             # layers for spritelayer cargos - this is nerfed off for enclosed cars, no visible cargo
             spritelayer_cargo_layers=[],
