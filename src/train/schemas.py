@@ -2774,23 +2774,13 @@ class AutomobileMotorailCar(AutomobileCarBase):
     livery_group_name = "default_motorail_liveries"
 
     model_id_root = "motorail_automobile_car"
-    randomised_candidate_groups = [
-        "mail_car_combos",
-    ]
 
     formation_reporting_labels = [
         "motorail_car",
-        "generic_mail_car",  # allows continuation of mail sequences
-        "generic_pax_car",  # allows continuation of pax sequences
     ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # motorail vans are faffy special case, as they transcend AutomobileCarBase by adding Mail and Express refits
-        self.class_refit_groups.extend(["mail", "express_freight"])
-        self.label_refits_disallowed.extend(
-            polar_fox.constants.disallowed_refits_by_label["legacy_disallowed_express"]
-        )
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # roof configuration

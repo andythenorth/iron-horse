@@ -352,7 +352,6 @@ wagon_module_names_with_roster_ids = {
     "low_floor_intermodal_cars": "pony",
     "low_floor_automobile_cars": "pony",
     "mail_cars": "pony",
-    "mail_cars_randomised": "pony",
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",
     "metal_product_mixed_combos": "pony",
@@ -1145,35 +1144,27 @@ def main():
                 ("RAIN_OR_SHINE", 0),
                 ("SURE_PACE", 1),
                 ("BANGER_BLUE", 2),
-                ("MAIL_BY_RAIL", 3),
             ],
             "gen_2_motorail_liveries": [
                 ("RIDEWELL", 0),
                 ("RAIN_OR_SHINE", 1),
                 ("BANGER_BLUE", 2),
-                ("MAIL_BY_RAIL", 3),
             ],
             "gen_3_motorail_liveries": [
                 ("SURE_PACE", 0),
                 ("RIDEWELL", 1),
                 ("BANGER_BLUE", 2),
-                ("MAIL_BY_RAIL", 3),
             ],
             "gen_4_motorail_liveries": [
                 ("RAIN_OR_SHINE", 0),
                 ("MARGINAL_GAINS", 1),
                 ("BANGER_BLUE", 2),
-                ("LOWER_LINES", 3), # CABBAGE NEEDS DRAWING
-                ("MAIL_BY_RAIL", 4),
             ],
             "gen_5_and_6_motorail_liveries": [
                 ("FRUIT_RIPPLE", 0),
                 ("SURE_PACE", 1),
-                ("VINYL_VECTOR", 2), # CABBAGE - WAS STOCK_STANDARD
+                ("STOCK_STANDARD", 2),
                 ("VAPID_VOYAGER", 3),
-                ("LOWER_LINES", 4), # CABBAGE
-                ("MAIL_BY_RAIL_ALT", 5),
-                ("MAIL_BY_RAIL", 6),
             ],
         },
         engine_module_names=engine_module_names,
