@@ -81,10 +81,11 @@ def main(**kwargs):
     )
 
     result.append(model_def)
+    """
 
     model_def = ModelDef(
         schema_name="MailCarRandomised",
-        base_numeric_id=28060,
+        base_numeric_id=31660,
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
@@ -111,5 +112,5 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     return result

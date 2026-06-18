@@ -807,13 +807,25 @@ class WagonQuacker:
 
     @cached_property
     def is_restaurant_car(self):
-        # predicate for wagons which act as caboose
+        # predicate for wagons which act as restaurant car
         # if it's not a wagon at all, return early
         if self._quack() == False:
             return False
         # depends on looking up class name, but should be ok
         return any(
             base.__name__ == "PassengerRestaurantCar"
+            for base in self.catalogue.schema_cls.__mro__
+        )
+
+    @cached_property
+    def is_post_office_car(self):
+        # predicate for wagons which act as post office car
+        # if it's not a wagon at all, return early
+        if self._quack() == False:
+            return False
+        # depends on looking up class name, but should be ok
+        return any(
+            base.__name__ == "MailPostOfficeCar"
             for base in self.catalogue.schema_cls.__mro__
         )
 

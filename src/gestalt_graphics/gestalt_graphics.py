@@ -25,6 +25,7 @@ formation_ruleset_reporting_label_maps = {
     "mail_cars": {"label": "generic_mail_car"},
     "pax_cars": {"label": "generic_pax_car"},
     "restaurant_cars": {"label": "generic_pax_car"},
+    "post_office_cars": {"label": "generic_mail_car"},
     "railcars_2_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
     "railcars_3_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},
     "railcars_4_unit_sets": {"label": "vehicle_family", "delegate_to_catalogue": True},

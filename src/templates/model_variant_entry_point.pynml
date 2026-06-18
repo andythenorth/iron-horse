@@ -92,9 +92,14 @@
         <tal:include metal:use-macro="load: speed.pynml" />
     </tal:lgv_capable_speed_bonus>
 
-    <tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
+    <tal:running_cost_factor_restaurant_car condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
         <tal:include metal:use-macro="load: cost.pynml" />
-    </tal:running_cost_factor>
+    </tal:running_cost_factor_restaurant_car>
+
+    <tal:running_cost_factor_post_office_car condition="getattr(model_variant, 'affected_by_post_office_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
+        // CABBAGE 555
+        <tal:include metal:use-macro="load: cost.pynml" />
+    </tal:running_cost_factor_post_office_car>
 
     <tal:articulated_parts condition="unit.is_not_trailing_part and len(model_variant.units) > 1">
         <tal:include metal:use-macro="load: articulated_parts.pynml" />

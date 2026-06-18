@@ -60,6 +60,7 @@ static_badges = {
             "caboose": {"name": "STR_BADGE_BEHAVIOUR_CABOOSE"},
             "driving_cab": {"name": "STR_BADGE_BEHAVIOUR_DRIVING_CAB"},
             "lgv_capable": {"name": "STR_BADGE_BEHAVIOUR_LGV_CAPABLE"},
+            "post_office_car": {"name": "STR_BADGE_BEHAVIOUR_POST_OFFICE_CAR"},
             "provides_easter_egg_haulage_speed_bonus": {},
             "restaurant_car": {"name": "STR_BADGE_BEHAVIOUR_RESTAURANT_CAR"},
             "random_reverse": {},

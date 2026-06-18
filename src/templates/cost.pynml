@@ -10,3 +10,15 @@
         return 0;
     }
 </tal:running_cost_factor>
+
+<!--! some vehicles vary running cost if post office car is in consist -->
+<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_post_office_car_in_consist', False) and unit.is_not_trailing_part">
+    switch (FEAT_TRAINS, PARENT, ${model_variant.model_id}_switch_running_cost_factor, count_has_badge("ih_behaviour/post_office_car")) {
+        <!--! eliminate run costs if at least 1 post office car is present (more than 1 has no additional effect)
+            not particularly tested for balance as of June 2026, 'rough is good enough'
+             value of post office car varies by number of mail cars in consist and train speed, but is generally net positive above about 4 coaches or so
+        -->
+        0: return ${model_variant.running_cost};
+        return 0;
+    }
+</tal:running_cost_factor>

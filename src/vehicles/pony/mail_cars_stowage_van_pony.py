@@ -4,103 +4,15 @@ from train.model_def import ModelDef
 def main(**kwargs):
     result = []
 
-    # --------------- narrow gauge -----------------------------------------------------------------
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=19120,
-        gen=1,
-        subtype="A",
-        base_track_type="NG",
-        livery_group_name="gen_1_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
-
-    result.append(model_def)
-
-    # no gen 2 for NG, straight to gen 3
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=19140,
-        gen=3,
-        subtype="A",
-        base_track_type="NG",
-        livery_group_name="gen_3_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=19160,
-        gen=3,
-        subtype="B",
-        base_track_type="NG",
-        livery_group_name="gen_3_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=19180,
-        gen=4,
-        subtype="A",
-        base_track_type="NG",
-        livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17450,
-        gen=4,
-        subtype="B",
-        base_track_type="NG",
-        livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=21170,
-        gen=4,
-        subtype="C",
-        base_track_type="NG",
-        livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_32px")
-
-    result.append(model_def)
-
     # --------------- standard gauge ---------------------------------------------------------------
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17470,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=29030,
         gen=1,
         subtype="A",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -110,12 +22,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17490,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=29050,
         gen=1,
         subtype="B",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -125,12 +37,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17510,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=29180,
         gen=2,
         subtype="A",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -138,14 +50,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17530,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=29030,
         gen=2,
         subtype="B",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -153,14 +65,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17550,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=31720,
         gen=3,
         subtype="A",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -168,14 +80,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17750,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=32320,
         gen=3,
         subtype="B",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -185,12 +97,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17910,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=31720,
         gen=3,
         subtype="C",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -198,14 +110,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17930,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=32320,
         gen=4,
         subtype="A",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -213,14 +125,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=17950,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=27840,
         gen=4,
         subtype="B",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -230,12 +142,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=18030,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=27890,
         gen=4,
         subtype="C",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -243,14 +155,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=18050,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=28160,
         gen=5,
         subtype="A",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -258,14 +170,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=18110,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=28100,
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(
@@ -275,12 +187,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MailCar",
-        base_numeric_id=18130,
+        schema_name="MailCarVanStowage",
+        base_numeric_id=28160,
         gen=5,
         subtype="C",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     model_def.add_unit_def(

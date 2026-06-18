@@ -326,6 +326,8 @@ class SchemaBase(object):
         result = []
         if self.catalogue.wagon_quacker.is_restaurant_car:
             result.append("ih_behaviour/restaurant_car")
+        if self.catalogue.wagon_quacker.is_post_office_car:
+            result.append("ih_behaviour/post_office_car")
         if self.tilt_bonus:
             result.append("ih_behaviour/tilt")
         if self.lgv_capable:
@@ -6531,23 +6533,26 @@ class MailRailcarTrailerCarBase(MailCarBase):
         return result
 
 
-class MailCar(MailCarBase):
+class MailCarVanBase(MailCarBase):
     """
-    Mail cars - also handle express freight, valuables.
+    Base class for generic mail vans - also handle express freight, valuables.
     """
 
     livery_group_name = "default_mail_liveries"
 
-    model_id_root = "mail_car"
     randomised_candidate_groups = [
         "mail_car_combos",
     ]
+    vehicle_family_id = "mail_car"
+    variant_group_id_root = "wagon_group_mail_cars"
     # mail cars treated as both pax and mail for rulesets
     formation_reporting_labels = [
         "generic_mail_car",
         "generic_pax_car",
         "looks_like_pax_brake_car",
     ]
+
+    affected_by_post_office_car_in_consist = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6580,14 +6585,51 @@ class MailCar(MailCarBase):
         return "express"
 
 
-class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarBase):
+class MailCarVanFullBrake(MailCarVanBase):
+    """
+    Mail vans - also handle express freight, valuables.
+    Full-brake coach type.
+    """
+
+    model_id_root = "mail_car_full_brake"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class MailCarVanGeneralUtility(MailCarVanBase):
+    """
+    Mail vans - also handle express freight, valuables.
+    General utility / parcels van type.
+    """
+
+    model_id_root = "mail_car_general_utility"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class MailCarVanStowage(MailCarVanBase):
+    """
+    Generic mail vans - also handle express freight, valuables.
+    Stowage van (TPO bag tender) type.
+    """
+
+    model_id_root = "mail_car_stowage_van"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase): # CABBAGE - base class?
     """
     Randomised mail-capable vehicles.
     """
 
-    livery_group_name = "default_motorail_liveries"  # CABBAGE, needs to resolve to per-generation liveries
-
     model_id_root = "mail_car_combos"
+
+    # clear from base class
+    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6600,11 +6642,45 @@ class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarBase):
             formation_ruleset="mail_cars",
             dice_colour=3,
             buy_menu_id_pairs=[
-                ["mail_car"],
-                ["motorail_automobile_car"],
+                ["mail_car_full_brake"],
+                ["mail_car_general_utility"],
             ],
             catalogue_entry=self.catalogue_entry,
             cabbage_mail_car_combos=True, # refactoring shim
+        )
+
+
+class MailPostOfficeCar(MailCarBase):
+    """
+    Special mail coach that modifies run costs and decay rates for other pax coaches in the consist.
+    """
+
+    livery_group_name = "default_mail_liveries"
+
+    model_id_root = "post_office_car"
+    formation_reporting_labels = ["generic_mail_car"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.buy_cost_adjustment_factor = 2.5
+        # multiple of the mail car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
+        self.floating_run_cost_multiplier = 2.33 * 3.5
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        self._joker = True
+        # Graphics configuration
+        # formation position rules do not actually do anything for post office cars, but they use the pax ruleset and sprite compositor for convenience
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 1,
+            "last": 2,
+            "special": 0,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="post_office_cars",
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6663,6 +6739,8 @@ class MailHighSpeedCar(MailCarBase):
     model_id_root = "high_speed_mail_car"
     # mail cars treated as both pax and mail for rulesets (to hide adjacent pax brake coach)
     formation_reporting_labels = ["generic_pax_car", "generic_mail_car"]
+
+    affected_by_post_office_car_in_consist = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
