@@ -11,7 +11,7 @@ def main(**kwargs):
         base_numeric_id=30380,
         gen=1,
         subtype="U",
-        livery_group_name="gen_1_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
         sprites_complete=False,
     )
 
@@ -27,7 +27,7 @@ def main(**kwargs):
         base_numeric_id=31080,
         gen=2,
         subtype="U",
-        livery_group_name="gen_2_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
         sprites_complete=False,
     )
 
@@ -42,7 +42,7 @@ def main(**kwargs):
         base_numeric_id=31310,
         gen=3,
         subtype="U",
-        livery_group_name="gen_3_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
         sprites_complete=False,
     )
 
@@ -57,7 +57,7 @@ def main(**kwargs):
         base_numeric_id=31420,
         gen=4,
         subtype="U",
-        livery_group_name="gen_4_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
         sprites_complete=False,
     )
 
@@ -78,7 +78,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_greebled_32px"
     )
 
     result.append(model_def)

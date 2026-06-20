@@ -6562,9 +6562,9 @@ class MailCarVanBase(MailCarBase):
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
-        # special (TPO) sprites only for larger types from gen 3 onwards (non-NG)
+        # additional bonus sprites only for larger types from gen 3 onwards (non-NG)
         bonus_sprites = (
-            2 if (self.subtype in ["B", "C"]) and (self.base_track_type != "NG") else 0
+            2 if (self.subtype in ["B", "C"]) and (self.gen > 3) and (self.base_track_type != "NG") else 0
         )
         formation_position_spriterow_map = {
             "default": 0,

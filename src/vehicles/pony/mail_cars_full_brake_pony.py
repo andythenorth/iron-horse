@@ -13,7 +13,7 @@ def main(**kwargs):
         subtype="A",
         base_track_type="NG",
         livery_group_name="gen_1_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
@@ -29,7 +29,7 @@ def main(**kwargs):
         subtype="A",
         base_track_type="NG",
         livery_group_name="gen_3_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
@@ -43,7 +43,7 @@ def main(**kwargs):
         subtype="B",
         base_track_type="NG",
         livery_group_name="gen_3_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
@@ -57,7 +57,7 @@ def main(**kwargs):
         subtype="A",
         base_track_type="NG",
         livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_16px")
@@ -71,7 +71,7 @@ def main(**kwargs):
         subtype="B",
         base_track_type="NG",
         livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_24px")
@@ -85,7 +85,7 @@ def main(**kwargs):
         subtype="C",
         base_track_type="NG",
         livery_group_name="gen_4_ng_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(unit_cls_name="ExpressMailCarUnit", chassis="4_axle_ng_32px")
@@ -100,7 +100,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -115,7 +115,7 @@ def main(**kwargs):
         gen=1,
         subtype="B",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -130,7 +130,7 @@ def main(**kwargs):
         gen=2,
         subtype="A",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -145,7 +145,7 @@ def main(**kwargs):
         gen=2,
         subtype="B",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -160,7 +160,7 @@ def main(**kwargs):
         gen=3,
         subtype="A",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -175,7 +175,7 @@ def main(**kwargs):
         gen=3,
         subtype="B",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -190,7 +190,7 @@ def main(**kwargs):
         gen=3,
         subtype="C",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -205,7 +205,7 @@ def main(**kwargs):
         gen=4,
         subtype="A",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -220,7 +220,7 @@ def main(**kwargs):
         gen=4,
         subtype="B",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -235,7 +235,7 @@ def main(**kwargs):
         gen=4,
         subtype="C",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -250,7 +250,7 @@ def main(**kwargs):
         gen=5,
         subtype="A",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -265,11 +265,11 @@ def main(**kwargs):
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_greebled_24px"
     )
 
     result.append(model_def)
@@ -280,11 +280,11 @@ def main(**kwargs):
         gen=5,
         subtype="C",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_greebled_32px"
     )
 
     result.append(model_def)
