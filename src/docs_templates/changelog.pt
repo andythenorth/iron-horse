@@ -3,6 +3,28 @@ Changelog
 
 
 --------------
+4.21.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.21.0.
+
+
+*Changes*
+
+
+- adjusted Mail Vans
+    - all Mail Van sprites now represent full-brake type coaches with windows
+    - changed default livery for gen 4 Mail Vans
+    - more mail van types will be added later
+- added gen 4 enclosed Car Transporters
+- improve sprites for gen 5 enclosed Car Transporter
+- removed some of the changes to Motorail Vans from 4.20.0
+    - switched refits back to match Car Transporters
+    - removed Mail by Mail liveries
+
+
+--------------
 4.20.0 Release
 --------------
 
