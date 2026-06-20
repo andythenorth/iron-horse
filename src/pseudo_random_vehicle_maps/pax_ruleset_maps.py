@@ -6,8 +6,12 @@ VALUE_STANDARD = 0
 VALUE_BRAKE_FRONT = 1
 VALUE_BRAKE_REAR = 2
 VALUE_SPECIAL = 3
-VALUE_CONDITIONAL_BRAKE_BEFORE = 4  # Shows brake if one of the previous 2 vehicles is a restaurant car
-VALUE_CONDITIONAL_BRAKE_AFTER = 5  # Shows brake if one of the following 2 vehicles is a restaurant car
+VALUE_CONDITIONAL_BRAKE_BEFORE = (
+    4  # Shows brake if one of the previous 2 vehicles is a restaurant car
+)
+VALUE_CONDITIONAL_BRAKE_AFTER = (
+    5  # Shows brake if one of the following 2 vehicles is a restaurant car
+)
 
 # 25 relates to map max length of 24 vehicles, to get wrap around on formations of 4/8, to get more brakes, without editing the generation logic
 FORMATION_CLASSES = {
@@ -15,6 +19,7 @@ FORMATION_CLASSES = {
     "brakes_inner_paired": {"count": 8, "lengths": list(range(1, 25))},
     "brakes_inner_spaced": {"count": 8, "lengths": list(range(1, 25))},
 }
+
 
 def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
     length = len(base_map)
@@ -31,8 +36,7 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
 
     # Exclude ends and any position with brakes
     candidate_indexes = [
-        i for i in range(1, length - 1)
-        if base_map[i] == VALUE_STANDARD
+        i for i in range(1, length - 1) if base_map[i] == VALUE_STANDARD
     ]
 
     rng.shuffle(candidate_indexes)
@@ -45,11 +49,15 @@ def insert_special_variants(base_map: list[int], seed: int = 0) -> list[int]:
 
     return mod_map
 
-def apply_family_offset(family: dict[int, list[int]], offset: int) -> dict[int, list[int]]:
+
+def apply_family_offset(
+    family: dict[int, list[int]], offset: int
+) -> dict[int, list[int]]:
     return {
         length: [value + offset for value in formation]
         for length, formation in family.items()
     }
+
 
 def generate_type_a(length: int) -> dict[int, list[int]]:
     if length == 1:
@@ -57,7 +65,9 @@ def generate_type_a(length: int) -> dict[int, list[int]]:
     elif length == 2:
         family = {2: [VALUE_BRAKE_FRONT, VALUE_BRAKE_REAR]}
     else:
-        base = [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
+        base = (
+            [VALUE_BRAKE_FRONT] + [VALUE_STANDARD] * (length - 2) + [VALUE_BRAKE_REAR]
+        )
 
         if length >= 6:
             base[1] = VALUE_CONDITIONAL_BRAKE_BEFORE
@@ -67,6 +77,7 @@ def generate_type_a(length: int) -> dict[int, list[int]]:
         family = {length: modified}
 
     return apply_family_offset(family, 100)
+
 
 def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
@@ -98,6 +109,7 @@ def generate_type_b_family(seed_index: int) -> dict[int, list[int]]:
         family[length] = insert_special_variants(formation, seed_index)
 
     return apply_family_offset(family, 200)
+
 
 def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
     rng = Random(seed_index)
@@ -143,6 +155,7 @@ def generate_type_c_family(seed_index: int) -> dict[int, list[int]]:
 
     return apply_family_offset(family, 300)
 
+
 def get_all_pax_maps() -> dict[str, list[dict]]:
     output = {
         "brakes_outer_ends": [],
@@ -164,6 +177,7 @@ def get_all_pax_maps() -> dict[str, list[dict]]:
                 maps.append(base)
             output[template_name].append({"chain_length": length, "maps": maps})
     return output
+
 
 # Preview and validation
 if __name__ == "__main__":

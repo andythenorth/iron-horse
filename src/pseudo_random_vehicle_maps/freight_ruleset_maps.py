@@ -43,6 +43,7 @@ RULESET_CONFIG = {
     "articulated_permanent_twin_sets": {"allow_inner": False, "fixed_run_length": 2},
 }
 
+
 def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int]:
     if run_length == 1:
         return [VALUE_SINGLE]
@@ -53,6 +54,7 @@ def generate_entropic_run(run_length: int, allow_inner: bool = True) -> list[int
             return [VALUE_FIRST] + [VALUE_INNER] * (run_length - 2) + [VALUE_LAST]
         else:
             raise ValueError("Run length > 2 is not allowed when inners are disabled")
+
 
 def generate_base_maps_for_ruleset(seed_index: int, config: dict) -> list[int]:
     rng = Random(seed_index)
@@ -85,7 +87,10 @@ def generate_base_maps_for_ruleset(seed_index: int, config: dict) -> list[int]:
 
     return formation[:DEFAULT_MAX_LENGTH]
 
-def generate_run_randomization_map(formation: list[int], max_value: int, rng: Random) -> list[int]:
+
+def generate_run_randomization_map(
+    formation: list[int], max_value: int, rng: Random
+) -> list[int]:
     if max_value < 2:
         raise ValueError("max_value must be at least 2")
 
@@ -96,7 +101,10 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
             run_len = 1
         elif formation[i] == VALUE_FIRST:
             run_len = 1
-            while i + run_len < len(formation) and formation[i + run_len] in (VALUE_INNER, VALUE_LAST):
+            while i + run_len < len(formation) and formation[i + run_len] in (
+                VALUE_INNER,
+                VALUE_LAST,
+            ):
                 if formation[i + run_len] == VALUE_LAST:
                     run_len += 1
                     break
@@ -112,6 +120,7 @@ def generate_run_randomization_map(formation: list[int], max_value: int, rng: Ra
         print(f"⚠️  All values are the same in run map: {output[0]}")
 
     return output
+
 
 def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
     # Guard: each ruleset must specify exactly one of fixed_run_length or max_run_length
@@ -131,7 +140,10 @@ def generate_map_for_ruleset() -> dict[str, list[list[int]]]:
             output[key].append(formation)
     return output
 
-def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[list[int]]]:
+
+def generate_map_for_random_choices(
+    max_random_value: int,
+) -> dict[str, list[list[int]]]:
     base_maps = generate_map_for_ruleset()
     output = {key: [] for key in RULESET_CONFIG}
     for category, formations in base_maps.items():
@@ -140,6 +152,7 @@ def generate_map_for_random_choices(max_random_value: int) -> dict[str, list[lis
             run_map = generate_run_randomization_map(formation, max_random_value, rng)
             output[category].append(run_map)
     return output
+
 
 # Preview and validation
 if __name__ == "__main__":
