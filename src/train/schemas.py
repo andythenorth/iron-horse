@@ -6621,7 +6621,7 @@ class MailCarVanStowage(MailCarVanBase):
         super().__init__(**kwargs)
 
 
-class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase): # CABBAGE - base class?
+class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase):
     """
     Randomised mail-capable vehicles.
     """
@@ -6638,7 +6638,8 @@ class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase): #
         self.cabbage_switch_colour = True
 
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonFormationDependent(
-            random_vehicle_map_type="map_loose_mixed_train",  # CABBAGE
+            # ¿ only map_loose_mixed_train really makes sense, as the mail vehicles also have their own variant maps?
+            random_vehicle_map_type="map_loose_mixed_train",
             formation_ruleset="mail_cars",
             dice_colour=3,
             buy_menu_id_pairs=[
@@ -6674,7 +6675,7 @@ class MailPostOfficeCar(MailCarBase):
         formation_position_spriterow_map = {
             "default": 0,
             "first": 1,
-            "last": 2,
+            "last": 1, # CABBAGE - restore 2
             "special": 0,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(

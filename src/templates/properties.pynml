@@ -101,7 +101,6 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         </tal:conditional_random_trigger>
         <tal:colour_mapping_cb switch="unit.requires_colour_mapping_cb">
             <tal:colour_mapping_switch_with_purchase case="'cabbage_mail_car_combos'">
-                // CABBAGE 988
                 colour_mapping:                 ${unit.id + model_variant.gestalt_graphics.colour_mapping_switch};
                 purchase_colour_mapping:        ${unit.id + model_variant.gestalt_graphics.colour_mapping_switch_purchase};
             </tal:colour_mapping_switch_with_purchase

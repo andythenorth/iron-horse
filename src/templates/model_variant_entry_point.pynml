@@ -97,7 +97,6 @@
     </tal:running_cost_factor_restaurant_car>
 
     <tal:running_cost_factor_post_office_car condition="getattr(model_variant, 'affected_by_post_office_car_in_consist', False) and model_variant.is_default_model_variant and unit.is_not_trailing_part">
-        // CABBAGE 555
         <tal:include metal:use-macro="load: cost.pynml" />
     </tal:running_cost_factor_post_office_car>
 

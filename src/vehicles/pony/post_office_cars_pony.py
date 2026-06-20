@@ -16,7 +16,6 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        # CABBAGE CLASSNAMES
         unit_cls_name="ExpressMailCarUnit", chassis="6_axle_solid_express_32px"
     )
 
