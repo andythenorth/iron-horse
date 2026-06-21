@@ -21,7 +21,7 @@ def main(**kwargs):
 
     result.append(model_def)
     """
-    """
+
     model_def = ModelDef(
         schema_name="MailCarRandomised",
         base_numeric_id=27680,
@@ -36,7 +36,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="MailCarRandomised",
         base_numeric_id=27780,

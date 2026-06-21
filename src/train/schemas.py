@@ -6644,7 +6644,7 @@ class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase):
             dice_colour=3,
             buy_menu_id_pairs=[
                 ["mail_car_full_brake"],
-                ["mail_car_general_utility"],
+                ["mail_car_general_utility", "mail_car_stowage_van"],
             ],
             catalogue_entry=self.catalogue_entry,
             cabbage_mail_car_combos=True, # refactoring shim
