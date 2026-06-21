@@ -3,6 +3,23 @@ Changelog
 
 
 --------------
+4.22.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.21.0.
+
+
+*Changes*
+
+
+- adjusted Mail Vans
+    - added Mail Van type (representing stowage vans, used in postal trains)
+    - added more sprite variants for gen 1B, 2B, 2C, 3B, 3C mail cars (full brake variant)
+    - changed default livery for gen 2 Mail Vans, to distinguish from gen 1 and gen 3 in buy menu
+
+
+--------------
 4.21.0 Release
 --------------
 
