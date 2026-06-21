@@ -61,7 +61,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="3_axle_solid_express_24px"
     )
 
     result.append(model_def)
