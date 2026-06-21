@@ -384,7 +384,7 @@ wagon_module_names_with_roster_ids = {
     "piece_goods_mixed_combos": "pony",
     "piece_goods_easiloader_combos": "pony",
     "pipe_cars": "pony",
-    "post_office_cars": "pony",
+    #"post_office_cars": "pony",
     "pressure_tank_cars": "pony",
     "product_tank_cars_randomised": "pony",
     "product_tank_cars_type_1": "pony",
