@@ -36,6 +36,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
+    """
     model_def = ModelDef(
         schema_name="MailCarVanStowage",
         base_numeric_id=31720,
@@ -50,7 +51,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="MailCarVanStowage",
         base_numeric_id=27840,
