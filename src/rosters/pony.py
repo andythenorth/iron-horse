@@ -987,10 +987,10 @@ def main():
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_2_mail_liveries": [
+                ("BANGER_BLUE", 2),
                 ("INVERSIONS", 3),
                 ("RIDEWELL", 0),
                 ("RAIN_OR_SHINE", 1),
-                ("BANGER_BLUE", 2),
                 ("MAIL_BY_RAIL", 4),
             ],
             "gen_3_mail_liveries": [
