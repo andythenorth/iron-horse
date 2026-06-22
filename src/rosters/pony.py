@@ -679,6 +679,16 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_ORANGE"),
                 ],
             },
+            "LA_POSTE": {
+                "remap_to_cc": None,
+                "proxy_livery_for_badge_display_and_filter": "STOCK_STANDARD",
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
+                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
+                ],
+            },
             "LOWER_LINES": {
                 "remap_to_cc": None,
                 "has_predrawn_badge_sprite": True,
