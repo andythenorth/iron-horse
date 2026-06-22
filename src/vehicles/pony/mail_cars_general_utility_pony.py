@@ -5,10 +5,10 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=29030,
+        base_numeric_id=31620,
         gen=1,
         subtype="A",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
@@ -20,10 +20,10 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=29050,
+        base_numeric_id=31700,
         gen=1,
         subtype="B",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
@@ -35,7 +35,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=29180,
@@ -50,7 +50,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=30540,
@@ -65,7 +65,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31720,
@@ -80,7 +80,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31800,
@@ -110,10 +110,10 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=32320,
+        base_numeric_id=31540,
         gen=4,
         subtype="A",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
@@ -125,7 +125,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=28020,
@@ -155,10 +155,10 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=28160,
+        base_numeric_id=31420,
         gen=5,
         subtype="A",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
@@ -170,7 +170,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=28330,
