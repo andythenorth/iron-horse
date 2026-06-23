@@ -3,6 +3,26 @@ Changelog
 
 
 --------------
+4.23.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.21.0.
+
+
+*Changes*
+
+
+- added additional gen 3C Mail Van (stowage van type)
+
+
+*Fixes*
+
+
+- Alizé incorrectly using Mail by Rail livery, replace with Stock Standard
+
+
+--------------
 4.22.0 Release
 --------------
 
