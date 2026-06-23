@@ -36,14 +36,13 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    """
     model_def = ModelDef(
         schema_name="MailCarVanStowage",
         base_numeric_id=31720,
         gen=3,
         subtype="C",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -51,7 +50,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanStowage",
         base_numeric_id=27840,
