@@ -68,7 +68,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=31720,
+        base_numeric_id=31660,
         gen=3,
         subtype="A",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
@@ -162,7 +162,7 @@ def main(**kwargs):
         gen=5,
         subtype="A",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
