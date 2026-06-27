@@ -353,7 +353,7 @@ wagon_module_names_with_roster_ids = {
     "low_floor_automobile_cars": "pony",
     "mail_cars_full_brake": "pony",
     "mail_cars_general_utility": "pony",
-    "mail_cars_randomised": "pony",
+    #"mail_cars_randomised": "pony",
     "mail_cars_stowage_van": "pony",
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",

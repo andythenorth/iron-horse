@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31620,
@@ -21,6 +21,7 @@ def main(**kwargs):
 
     result.append(model_def)
     """
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31700,
@@ -35,6 +36,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
+    """
     """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
@@ -110,14 +112,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31540,
         gen=4,
         subtype="A",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -132,7 +134,7 @@ def main(**kwargs):
         gen=4,
         subtype="B",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -147,7 +149,7 @@ def main(**kwargs):
         gen=4,
         subtype="C",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
