@@ -192,7 +192,7 @@ def main(**kwargs):
         gen=5,
         subtype="C",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

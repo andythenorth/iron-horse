@@ -84,7 +84,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarRandomised",
-        base_numeric_id=31660,
+        base_numeric_id=24520,
         gen=5,
         subtype="B",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
@@ -99,7 +99,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarRandomised",
-        base_numeric_id=31620,
+        base_numeric_id=24510,
         gen=5,
         subtype="C",
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
