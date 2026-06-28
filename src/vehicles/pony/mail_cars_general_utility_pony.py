@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31620,
@@ -20,8 +20,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31700,
@@ -36,8 +35,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=29180,
@@ -112,7 +110,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31540,
