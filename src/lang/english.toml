@@ -612,9 +612,6 @@ base = "Tippler Wagon"
 [STR_WAGON_NAME_TORPEDO_CAR]
 base = "Torpedo Wagon"
 
-[STR_WAGON_NAME_UTILITY_CAR]
-base = "Utility Van"
-
 [STR_WAGON_NAME_VOLATILES_TANK_CAR]
 base = "Volatiles Tanker"
 
