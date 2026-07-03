@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -27,7 +27,7 @@ def main(**kwargs):
         gen=1,
         subtype="B",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -35,14 +35,29 @@ def main(**kwargs):
     )
 
     result.append(model_def)
+    """ # CABBAGE later
+    model_def = ModelDef(
+        schema_name="MailCarVanGeneralUtility",
+        base_numeric_id=31310,
+        gen=1,
+        subtype="C",
+        livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=False,
+    )
 
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+    )
+
+    result.append(model_def)
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=29180,
         gen=2,
         subtype="A",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -57,7 +72,7 @@ def main(**kwargs):
         gen=2,
         subtype="B",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -65,14 +80,29 @@ def main(**kwargs):
     )
 
     result.append(model_def)
+    """ # CABBAGE later
+    model_def = ModelDef(
+        schema_name="MailCarVanGeneralUtility",
+        base_numeric_id=30380,
+        gen=2,
+        subtype="C",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=False,
+    )
 
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+    )
+
+    result.append(model_def)
+    """
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31660,
         gen=3,
         subtype="A",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -87,7 +117,7 @@ def main(**kwargs):
         gen=3,
         subtype="B",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -102,7 +132,7 @@ def main(**kwargs):
         gen=3,
         subtype="C",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
