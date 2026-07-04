@@ -3,6 +3,21 @@ Changelog
 
 
 --------------
+4.26.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.21.0.
+
+
+*Changes*
+
+
+- added Travelling Post Office coaches
+    - adding a Travelling Post Office to a train will provide a bonus: eliminates the running cost for all Mail Vans and High Speed Mail Vans in the train
+
+
+--------------
 4.25.0 Release
 --------------
 
@@ -14,7 +29,6 @@ Not savegame compatible with Iron Horse releases before 4.21.0.
 
 
 - added more gen 1, 2 and 3 Mail Vans (general utility van type)
-
 
 
 --------------
