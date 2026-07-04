@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="U",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -27,7 +27,7 @@ def main(**kwargs):
         gen=2,
         subtype="U",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -42,7 +42,7 @@ def main(**kwargs):
         gen=3,
         subtype="U",
         livery_group_name="gen_3_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -53,11 +53,11 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailPostOfficeCar",
-        base_numeric_id=31420,
+        base_numeric_id=27680,
         gen=4,
         subtype="U",
         livery_group_name="gen_4_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -68,12 +68,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailPostOfficeCar",
-        base_numeric_id=31540,
+        base_numeric_id=27600,
         gen=5,
         subtype="U",
         lgv_capable=True,  # for lolz
         livery_group_name="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
