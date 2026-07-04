@@ -6675,7 +6675,7 @@ class MailPostOfficeCar(MailCarBase):
         formation_position_spriterow_map = {
             "default": 0,
             "first": 1,
-            "last": 1, # CABBAGE - restore 2
+            "last": 2,
             "special": 0,
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
