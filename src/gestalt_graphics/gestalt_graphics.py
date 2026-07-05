@@ -230,6 +230,8 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
         self.colour_mapping_switch_purchase = self.colour_mapping_switch # CABBAGE TO MAKE COMPILE WORK
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
         self.buy_menu_id_pairs = kwargs.get("buy_menu_id_pairs", None)
+        # flag to generate a buy menu sprite for every livery - override in subclasses as needed
+        self.generate_buy_menu_sprite_per_livery = False
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.render_pass_num = 2
 
@@ -239,7 +241,6 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
         wagon_randomisation_candidates = (
             pipeline.example_model_variant.wagon_randomisation_candidates
         )
-
         if self.buy_menu_id_pairs is not None:
             for candidate in wagon_randomisation_candidates:
                 if candidate.model_id_root in self.buy_menu_id_pairs[0]:
@@ -274,27 +275,39 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
             ):
                 print([i.model_id_root for i in wagon_randomisation_candidates])
 
-        source_vehicles_and_input_spriterow_nums = [
-            # vehicle unit, y offset (num spriterows) to buy menu input row
-            # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
-            # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
-            (
-                candidate_2.example_model_variant.units[0],
-                0,
-            ),
-            (
-                candidate_1.example_model_variant.units[0],
-                0,
-            ),
-        ]
-        # buy menu sprite generation supports providing multiple variants (used for livery variants etc)
-        # but here we only need one, in the default buy menu position
-        result = [
-            {
-                "spriterow_num_dest": 0,
+        result = []
+
+        if self.generate_buy_menu_sprite_per_livery:
+            filtered_catalogue = pipeline.catalogue
+        else:
+            filtered_catalogue = [pipeline.catalogue[0]]
+
+        # hard-coded to handle mail car opening doors case, whilst assuming all other (single livery) cases are ok due 0 * 2 = 0
+        cabbage_row_multiplier = 2
+        for dest_spriterow_counter, catalogue_entry in enumerate(filtered_catalogue):
+            # !! this doesn't walk units, so does not support articulated vehicles as of July 2026
+            # !! the vanilla implementation of buy_menu_row_map does walk units, but would need adjusting here to account for candidates
+            source_vehicles_and_input_spriterow_nums = [
+                # vehicle unit, y offset (num spriterows) to buy menu input row
+                # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
+                # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
+                (
+                    candidate_2.example_model_variant.units[0],
+                    dest_spriterow_counter * cabbage_row_multiplier,
+                ),
+                (
+                    candidate_1.example_model_variant.units[0],
+                    dest_spriterow_counter * cabbage_row_multiplier,
+                ),
+            ]
+
+            # the spritesheet has buy menu sprites in their own descending vertical order corresponding to buyable variants
+            # the custom buy menu sprites don't align vertically with any specific vehicle spriterow and have dedicated nml templating
+            row_config = {
+                "spriterow_num_dest": dest_spriterow_counter,
                 "source_vehicles_and_input_spriterow_nums": source_vehicles_and_input_spriterow_nums,
             }
-        ]
+            result.append(row_config)
         return result
 
 
@@ -305,6 +318,7 @@ class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandom
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.generate_buy_menu_sprite_per_livery = False
 
     @property
     def nml_template(self):
@@ -323,6 +337,7 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cabbage_mail_car_combos = kwargs.get("cabbage_mail_car_combos", False)
+        self.generate_buy_menu_sprite_per_livery = True
 
     @property
     def nml_template(self):
