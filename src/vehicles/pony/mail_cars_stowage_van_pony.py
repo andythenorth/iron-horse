@@ -23,6 +23,21 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarVanStowage",
+        base_numeric_id=29590,
+        gen=2,
+        subtype="C",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MailCarVanStowage",
         base_numeric_id=32320,
         gen=3,
         subtype="B",
