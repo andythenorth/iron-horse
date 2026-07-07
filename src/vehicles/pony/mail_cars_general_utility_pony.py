@@ -35,14 +35,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """ # CABBAGE later
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=31310,
+        base_numeric_id=28740,
         gen=1,
         subtype="C",
         livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -50,7 +50,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=29180,
@@ -80,14 +80,14 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """ # CABBAGE later
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
-        base_numeric_id=30380,
+        base_numeric_id=29600,
         gen=2,
         subtype="C",
         livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -95,7 +95,7 @@ def main(**kwargs):
     )
 
     result.append(model_def)
-    """
+
     model_def = ModelDef(
         schema_name="MailCarVanGeneralUtility",
         base_numeric_id=31660,
