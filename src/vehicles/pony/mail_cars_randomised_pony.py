@@ -31,7 +31,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_24px"
     )
 
     result.append(model_def)
@@ -61,7 +61,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_24px"
     )
 
     result.append(model_def)
@@ -91,7 +91,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_24px"
     )
 
     result.append(model_def)
@@ -106,7 +106,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_32px"
     )
 
     result.append(model_def)
