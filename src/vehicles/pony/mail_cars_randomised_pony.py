@@ -38,6 +38,21 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarRandomised",
+        base_numeric_id=28770,
+        gen=1,
+        subtype="C",
+        livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_32px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MailCarRandomised",
         base_numeric_id=28930,
         gen=2,
         subtype="A",
@@ -62,6 +77,21 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="ExpressMailCarUnit", chassis="empty_24px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MailCarRandomised",
+        base_numeric_id=28780,
+        gen=2,
+        subtype="C",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="empty_32px"
     )
 
     result.append(model_def)
