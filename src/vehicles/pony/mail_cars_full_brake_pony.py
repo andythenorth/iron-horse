@@ -126,6 +126,21 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MailCarVanFullBrake",
+        base_numeric_id=28760,
+        gen=1,
+        subtype="C",
+        livery_group_name="gen_1_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MailCarVanFullBrake",
         base_numeric_id=17510,
         gen=2,
         subtype="A",
@@ -150,6 +165,21 @@ def main(**kwargs):
 
     model_def.add_unit_def(
         unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_24px"
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MailCarVanFullBrake",
+        base_numeric_id=28750,
+        gen=2,
+        subtype="C",
+        livery_group_name="gen_2_mail_liveries",  # override default liveries from gestalt
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_32px"
     )
 
     result.append(model_def)
