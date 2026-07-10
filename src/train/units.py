@@ -418,9 +418,9 @@ class BatteryHybridEngineUnit(UnitBase):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
 
 
-class CabbageDVTUnit(UnitBase):
+class CabCarDVTUnit(UnitBase):
     """
-    Unit for a DVT / Cabbage (driving cab with mail capacity)
+    Unit for a DVT / Cab car (driving cab with mail capacity)
     """
 
     def __init__(self, **kwargs):

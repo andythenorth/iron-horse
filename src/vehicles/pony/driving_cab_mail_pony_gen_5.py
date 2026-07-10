@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        schema_name="MailEngineCabbageDVT",
+        schema_name="MailEngineCabCarDVT",
         model_id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
         name="Driving Van Trailer",
@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="CabbageDVTUnit", weight=32, chassis="railcar_32px"
+        unit_cls_name="CabCarDVTUnit", weight=32, chassis="railcar_32px"
     )
 
     model_def.define_description(

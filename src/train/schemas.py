@@ -1498,9 +1498,9 @@ class MailEngineBase(EngineSchemaBase):
         return 84
 
 
-class MailEngineCabbageDVT(MailEngineBase):
+class MailEngineCabCarDVT(MailEngineBase):
     """
-    Mail DVT / Cabbage.  Implemented as Engine so it can lead a consist in-game.
+    Mail DVT / Cab car.  Implemented as Engine so it can lead a consist in-game.
     """
 
     livery_group_name = "dvt_mail_liveries"
