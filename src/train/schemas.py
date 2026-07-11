@@ -8107,8 +8107,7 @@ class PieceGoodsCombosCoveredRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            # CABBAGE SET THESE
-            # buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
+            buy_menu_id_pairs=[['box_car_type_1'], ['sliding_wall_car_type_1', 'merchandise_box_car']],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8128,7 +8127,7 @@ class PieceGoodsCombosEasiloaderRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=3,
-            buy_menu_id_pairs=[["tarpaulin_car_type_2"], ["sliding_roof_car"]],
+            buy_menu_id_pairs=[["sliding_roof_car"], ["tarpaulin_car_type_3"]],
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8166,8 +8165,7 @@ class PieceGoodsCombosManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
-            # CABBAGE SET THESE
-            # buy_menu_id_pairs=[['open_car_type_1'], ['box_car_type_1']],
+            buy_menu_id_pairs=[['curtain_side_box_car_type_1'], ['sliding_roof_hi_cube_car', 'merchandise_box_car']],
             catalogue_entry=self.catalogue_entry,
         )
 
