@@ -310,27 +310,6 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandomisedWagonBase):
-    """
-    Base Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.generate_buy_menu_sprite_per_livery = False
-        # in RandomisedWagon context, affects buy menu sprite only
-        # 1 is correct for all cases as of July 2026, switch to kwarg or subclass if other values are needed in future
-        self.num_load_state_or_similar_spriterows = 1
-
-    @property
-    def nml_template(self):
-        return "vehicle_randomised_simple_body_colour_remaps.pynml"
-
-    @property
-    def variants_use_common_graphics_switch_chain(self):
-        return True
-
-
 class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomisedWagonBase):
     """
     Base Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
@@ -338,11 +317,14 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cabbage_mail_car_combos = kwargs.get("cabbage_mail_car_combos", False)
-        self.generate_buy_menu_sprite_per_livery = True
+        self.cabbage_mail_car_combos = True
+        self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = True
         # in RandomisedWagon context, affects buy menu sprite only
         # 2 is correct for all cases as of July 2026 (vehicles with opening doors), switch to kwarg or subclass if other values are needed in future
         self.num_load_state_or_similar_spriterows = 2
+        self.generate_buy_menu_sprite_per_livery = True
 
     @property
     def nml_template(self):
@@ -351,6 +333,27 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
     @property
     def variants_use_common_graphics_switch_chain(self):
         return False
+
+
+class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandomisedWagonBase):
+    """
+    Base Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # in RandomisedWagon context, affects buy menu sprite only
+        # 1 is correct for all cases as of July 2026, switch to kwarg or subclass if other values are needed in future
+        self.num_load_state_or_similar_spriterows = 1
+        self.generate_buy_menu_sprite_per_livery = False
+
+    @property
+    def nml_template(self):
+        return "vehicle_randomised_simple_body_colour_remaps.pynml"
+
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return True
 
 
 class GestaltGraphicsPrecompositedCargo(GestaltGraphics):

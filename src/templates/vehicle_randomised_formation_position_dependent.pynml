@@ -35,17 +35,13 @@ switch (FEAT_TRAINS, SELF, ${unit.graphics_switch_entry_point_stem}_switch_graph
 </tal:buy_menu_lead_unit_only>
 
 
-<tal:cabbage condition="unit.requires_colour_mapping_cb == 'cabbage_mail_car_combos'">
-    // CABBAGE 888
-    <!--! highly specific to mail cars RN, to get compile working -->
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
-        <tal:forced_remap switch="model_variant.catalogue_entry.livery_def.remap_to_cc is not None">
-            <tal:remap case="True">
-                ${unit.numeric_id}: return base_sprite_2cc + 16 * ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
-            </tal:remap>
-            <tal:no_remap case="False">
-                ${unit.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-            </tal:no_remap>
-        </tal:forced_remap>
-    }
-</tal:cabbage>
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
+    <tal:forced_remap switch="model_variant.catalogue_entry.livery_def.remap_to_cc is not None">
+        <tal:remap case="True">
+            ${unit.numeric_id}: return base_sprite_2cc + 16 * ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${model_variant.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
+        </tal:remap>
+        <tal:no_remap case="False">
+            ${unit.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+        </tal:no_remap>
+    </tal:forced_remap>
+}

@@ -6634,9 +6634,6 @@ class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.use_colour_randomisation_strategies = True  # CABBAGE TO MAKE COMPILE WORK
-        self.cabbage_switch_colour = True
-
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonFormationDependent(
             # ¿ only map_loose_mixed_train really makes sense, as the mail vehicles also have their own variant maps?
             random_vehicle_map_type="map_loose_mixed_train",

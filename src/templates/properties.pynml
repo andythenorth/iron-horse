@@ -100,10 +100,6 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             random_trigger:                 ${unit.random_trigger_switch};
         </tal:conditional_random_trigger>
         <tal:colour_mapping_cb switch="unit.requires_colour_mapping_cb">
-            <tal:colour_mapping_switch_with_purchase case="'cabbage_mail_car_combos'">
-                colour_mapping:                 ${unit.id + model_variant.gestalt_graphics.colour_mapping_switch};
-                purchase_colour_mapping:        ${unit.id + model_variant.gestalt_graphics.colour_mapping_switch_purchase};
-            </tal:colour_mapping_switch_with_purchase
             <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
                 colour_mapping:                 switch_freight_wagon_livery_entry_point(random_bits_wagon_random_remap_livery());
                 purchase_colour_mapping:        switch_freight_wagon_livery_entry_point_purchase();

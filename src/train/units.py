@@ -277,8 +277,6 @@ class UnitBase(object):
 
     @cached_property
     def requires_colour_mapping_cb(self):
-        if getattr(self.model_variant, "cabbage_switch_colour", False):
-            return "cabbage_mail_car_combos"
         # bit weird and janky, various conditions to consider eh
         if getattr(self.model_variant, "use_colour_randomisation_strategies", False):
             return "use_colour_randomisation_strategies"
