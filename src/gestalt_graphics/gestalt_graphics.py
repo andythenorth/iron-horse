@@ -282,8 +282,6 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
         else:
             filtered_catalogue = [pipeline.catalogue[0]]
 
-        # hard-coded to handle mail car opening doors case, whilst assuming all other (single livery) cases are ok due 0 * 2 = 0
-        cabbage_row_multiplier = 2
         for dest_spriterow_counter, catalogue_entry in enumerate(filtered_catalogue):
             # !! this doesn't walk units, so does not support articulated vehicles as of July 2026
             # !! the vanilla implementation of buy_menu_row_map does walk units, but would need adjusting here to account for candidates
@@ -293,11 +291,11 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
                 # candidate 1 and 2 are reversed for the compositor, this is just an implementation detail
                 (
                     candidate_2.example_model_variant.units[0],
-                    dest_spriterow_counter * cabbage_row_multiplier,
+                    dest_spriterow_counter * self.num_load_state_or_similar_spriterows,
                 ),
                 (
                     candidate_1.example_model_variant.units[0],
-                    dest_spriterow_counter * cabbage_row_multiplier,
+                    dest_spriterow_counter * self.num_load_state_or_similar_spriterows,
                 ),
             ]
 
@@ -319,6 +317,9 @@ class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandom
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.generate_buy_menu_sprite_per_livery = False
+        # in RandomisedWagon context, affects buy menu sprite only
+        # 1 is correct for all cases as of July 2026, switch to kwarg or subclass if other values are needed in future
+        self.num_load_state_or_similar_spriterows = 1
 
     @property
     def nml_template(self):
@@ -338,6 +339,9 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
         super().__init__(**kwargs)
         self.cabbage_mail_car_combos = kwargs.get("cabbage_mail_car_combos", False)
         self.generate_buy_menu_sprite_per_livery = True
+        # in RandomisedWagon context, affects buy menu sprite only
+        # 2 is correct for all cases as of July 2026 (vehicles with opening doors), switch to kwarg or subclass if other values are needed in future
+        self.num_load_state_or_similar_spriterows = 2
 
     @property
     def nml_template(self):
