@@ -336,9 +336,9 @@ def render_docs_vehicle_images(
                 {"CC1": CC1_remap, "CC2": CC2_remap}
             )
 
-            # CABBAGE - need to support non-CC defaults via purchase_swatch_colour_set_names
-            # CABBAGE - this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
-            # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
+            # need to support non-CC defaults via purchase_swatch_colour_set_names
+            # this is only for 100% recolours of CC in game using recolour sprites, not for compile time recolours, which should already be baked in to the sprite
+            # JFDI conditional insertions for non CC recolour, could clean up the entire flow
             custom_remap_indexes = None
             if (
                 len(
@@ -358,7 +358,7 @@ def render_docs_vehicle_images(
                                 colour_set[0]
                             ][i]
                         )
-            # CABBAGE JFDI conditional insertions for non CC recolour, could clean up the entire flow
+            # JFDI conditional insertions for non CC recolour, could clean up the entire flow
             if custom_remap_indexes is not None:
                 for k, v in custom_remap_indexes.items():
                     cc_remap_indexes[k] = v
