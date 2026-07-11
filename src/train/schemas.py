@@ -6644,7 +6644,6 @@ class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase):
                 ["mail_car_general_utility", "mail_car_stowage_van"],
             ],
             catalogue_entry=self.catalogue_entry,
-            cabbage_mail_car_combos=True, # refactoring shim
         )
 
 

@@ -317,7 +317,6 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cabbage_mail_car_combos = True
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
