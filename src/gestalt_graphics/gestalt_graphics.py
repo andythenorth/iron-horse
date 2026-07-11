@@ -322,7 +322,7 @@ class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandom
 
     @property
     def nml_template(self):
-        return "vehicle_randomised.pynml"
+        return "vehicle_randomised_simple_body_colour_remaps.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):
@@ -341,7 +341,7 @@ class GestaltGraphicsRandomisedWagonFormationDependent(GestaltGraphicsRandomised
 
     @property
     def nml_template(self):
-        return "vehicle_randomised_cabbage.pynml"
+        return "vehicle_randomised_formation_position_dependent.pynml"
 
     @property
     def variants_use_common_graphics_switch_chain(self):

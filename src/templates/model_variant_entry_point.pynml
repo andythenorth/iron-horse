@@ -42,12 +42,12 @@
       <tal:include metal:use-macro="load: vehicle_intermodal.pynml" />
     </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised.pynml'">
-      <tal:include metal:use-macro="load: vehicle_randomised.pynml" />
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised_simple_body_colour_remaps.pynml'">
+      <tal:include metal:use-macro="load: vehicle_randomised_simple_body_colour_remaps.pynml" />
     </tal:block>
 
-    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised_cabbage.pynml'">
-      <tal:include metal:use-macro="load: vehicle_randomised_cabbage.pynml" />
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised_formation_position_dependent.pynml'">
+      <tal:include metal:use-macro="load: vehicle_randomised_formation_position_dependent.pynml" />
     </tal:block>
 
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_snowplough.pynml'">
