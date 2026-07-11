@@ -467,23 +467,13 @@ class Catalogue(list):
     @cached_property
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
-        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-        if (
-            getattr(self.schema_cls, "input_spritesheet_delegate_id_root", None)
-            is not None
-        ):
-            # CABBAGE - THIS MAY BE UNUSED
-            input_spritesheet_name_stem = self.get_wagon_id(
-                self.schema_cls.input_spritesheet_delegate_id_root, self.model_def
+        # handle cloned cases by referring to the original producer for the path
+        if self.model_def.cloned_from_model_def is not None:
+            input_spritesheet_name_stem = (
+                self.model_def.cloned_from_model_def.model_id
             )
         else:
-            # handle cloned cases by referring to the original producer for the path
-            if self.model_def.cloned_from_model_def is not None:
-                input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.model_id
-                )
-            else:
-                input_spritesheet_name_stem = self.model_id
+            input_spritesheet_name_stem = self.model_id
 
         # the id might have a roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id is the same as the module providing the graphics gile
