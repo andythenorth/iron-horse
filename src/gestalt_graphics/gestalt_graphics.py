@@ -227,7 +227,8 @@ class GestaltGraphicsRandomisedWagonBase(GestaltGraphics):
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_switch_purchase = self.colour_mapping_switch # CABBAGE TO MAKE COMPILE WORK
+        # JFDI for purchase colour mapping, worked for all cases needed in July 2026, may need revisited in future
+        self.colour_mapping_switch_purchase = self.colour_mapping_switch
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
         self.buy_menu_id_pairs = kwargs.get("buy_menu_id_pairs", None)
         # flag to generate a buy menu sprite for every livery - override in subclasses as needed
