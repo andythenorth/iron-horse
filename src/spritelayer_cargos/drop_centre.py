@@ -77,6 +77,8 @@ class DropCentreSpritelayerCargo(SpritelayerCargo):
             for cargo_label in cargo_list:
                 if cls.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
                     result[cargo_label] = ("stake_flatrack", cargo_label)
+        #print(result)
+        #print(polar_fox.constants.piece_sprites_to_cargo_labels_maps)
         return result
 
 
