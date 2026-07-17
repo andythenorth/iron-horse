@@ -7843,6 +7843,56 @@ class PassengerHSTMiddleCar(PassengerCarBase):
         return result
 
 
+class PassengerMetroCar(PassengerCarBase):
+    """
+    Metro pax car.
+    """
+
+    livery_group_name = "metro_pax_liveries"
+
+    model_id_root = "metro_passenger_car"
+    formation_reporting_labels = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # PassengerCarBase sets 'express' speed, but suburban coaches should override this
+        # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
+        self.speed_class = "suburban" # CABBAGE
+        # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4 # CABBAGE
+        # give it a run cost nerf due to the very high capacity
+        self.floating_run_cost_multiplier = 4.75 # CABBAGE
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
+        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1 # CABBAGE
+        self._joker = True
+        # Graphics configuration
+        # formation position rules:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * no special sprite for suburban pax coach, not worth drawing
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 0,
+            "special": 0,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="pax_cars",
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types["high_capacity"]
+
+    @property
+    def subrole(self):
+        return "pax_suburban_coach"
+
+
 class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     """
     Unpowered passenger trailer car for railbus (not railcar).

@@ -20,6 +20,7 @@ wagon_module_name_stems = [
     "restaurant_cars",
     "suburban_passenger_cars",
     "metro_passenger_trailer_cars",
+    "metro_passenger_cars",
     "mail_cars_full_brake",
     "mail_cars_general_utility",
     "mail_cars_stowage_van",

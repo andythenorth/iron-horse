@@ -358,6 +358,7 @@ wagon_module_names_with_roster_ids = {
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",
     "metal_product_mixed_combos": "pony",
+    "metro_passenger_cars": "pony",
     "metro_passenger_trailer_cars": "pony",
     "mgr_hopper_cars": "pony",
     "mgr_hopper_top_hood_cars": "pony",
@@ -507,7 +508,8 @@ def main():
                 "very_high_speed_on_lgv": [0, 0, 0, 0, 155, 186],
             },
             "METRO": {
-                "standard": [45, 55, 65]
+                "standard": [45, 55, 65],
+                "suburban": [45, 55, 65], # CABBAGE TEMP
                 # only standard for metro in Pony
             },
             "NG": {
@@ -527,6 +529,7 @@ def main():
         pax_car_capacity_per_unit_length={
             "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
             "NG": [3, 5, 5, 6],
+            "METRO": [8, 8, 8], # CABBAGE
         },
         pax_car_capacity_types={
             "default": {

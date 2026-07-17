@@ -486,6 +486,9 @@ base = "Covered Steel Wagon"
 [STR_WAGON_NAME_METAL_PRODUCT_MIXED_COMBOS]
 base = "Steel Wagon"
 
+[STR_WAGON_NAME_METRO_PASSENGER_CAR]
+base = "Metro Coach"
+
 [STR_WAGON_NAME_COAL_BULK_OPEN_CAR]
 base = "Coal Wagon"
 
