@@ -509,7 +509,6 @@ def main():
             },
             "METRO": {
                 "standard": [45, 55, 65],
-                "suburban": [45, 55, 65], # CABBAGE TEMP
                 # only standard for metro in Pony
             },
             "NG": {
@@ -529,7 +528,7 @@ def main():
         pax_car_capacity_per_unit_length={
             "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
             "NG": [3, 5, 5, 6],
-            "METRO": [8, 8, 8], # CABBAGE
+            "METRO": [15, 20, 25],
         },
         pax_car_capacity_types={
             "default": {
@@ -1149,6 +1148,9 @@ def main():
                 ("LOWER_LINES", 3),
             ],
             "metro_pax_liveries": [
+                ("METROLAND", 0),
+            ],
+            "metro_pax_unit_liveries": [
                 ("METROLAND", 0),
                 ("METROLAND", 1),
             ],

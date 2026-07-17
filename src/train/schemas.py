@@ -1977,7 +1977,7 @@ class PassengerEngineMetro(PassengerEngineBase):
     Pax metro train.  Just a sparse subclass to force the gestalt_graphics
     """
 
-    livery_group_name = "metro_pax_liveries"
+    livery_group_name = "metro_pax_unit_liveries"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7857,7 +7857,7 @@ class PassengerMetroCar(PassengerCarBase):
         super().__init__(**kwargs)
         # PassengerCarBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
-        self.speed_class = "suburban" # CABBAGE
+        self.speed_class = "standard"
         # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4 # CABBAGE
         # give it a run cost nerf due to the very high capacity
@@ -7886,7 +7886,7 @@ class PassengerMetroCar(PassengerCarBase):
 
     @property
     def pax_car_capacity_type(self):
-        return self.roster.pax_car_capacity_types["high_capacity"]
+        return self.roster.pax_car_capacity_types["default"]
 
     @property
     def subrole(self):
