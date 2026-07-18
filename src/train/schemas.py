@@ -6820,7 +6820,7 @@ class MailMetroCarBase(MailCarBase):
 
     @property
     def subrole(self):
-        return "pax_suburban_coach" # CABBAGE
+        return "mail_metro"
 
 
 class MailMetroCarTube(MailMetroCarBase):
@@ -7968,7 +7968,7 @@ class PassengerMetroCarBase(PassengerCarBase):
 
     @property
     def subrole(self):
-        return "pax_suburban_coach" # CABBAGE
+        return "pax_metro"
 
 
 class PassengerMetroCarTube(PassengerMetroCarBase):
