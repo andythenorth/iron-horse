@@ -12,7 +12,7 @@ def main(**kwargs):
         gen=1,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -29,7 +29,7 @@ def main(**kwargs):
         gen=2,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -46,7 +46,7 @@ def main(**kwargs):
         gen=3,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
