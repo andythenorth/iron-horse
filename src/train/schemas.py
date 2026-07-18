@@ -1665,7 +1665,7 @@ class MailEngineMetro(MailEngineBase):
     Mail metro train.
     """
 
-    livery_group_name = "metro_mail_liveries"
+    livery_group_name = "metro_mail_unit_liveries"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6770,6 +6770,81 @@ class MailHighSpeedCar(MailCarBase):
         return True
 
 
+class MailMetroCarBase(MailCarBase):
+    """
+    Metro pax car.
+    """
+
+    livery_group_name = "metro_mail_liveries"
+
+    vehicle_family_id = "metro_mail_car"
+    variant_group_id_root = "metro_mail_car"
+    formation_reporting_labels = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # PassengerCarBase sets 'express' speed, but suburban coaches should override this
+        # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
+        self.speed_class = "standard"
+        # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4 # CABBAGE
+        # give it a run cost nerf due to the very high capacity
+        self.floating_run_cost_multiplier = 4.75 # CABBAGE
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
+        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1 # CABBAGE
+        # trailers are allowed to lead a train driving backwards
+        self.flag_has_cab = True
+        self._joker = True
+        # Graphics configuration
+        # formation position rules:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * no special sprite for suburban pax coach, not worth drawing
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,
+            "last": 0,
+            "special": 0,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="pax_cars",
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types["default"]
+
+    @property
+    def subrole(self):
+        return "pax_suburban_coach" # CABBAGE
+
+
+class MailMetroCarTube(MailMetroCarBase):
+    """
+    Metro mail car.
+    """
+
+    model_id_root = "tube_mail_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class MailMetroCarSurface(MailMetroCarBase):
+    """
+    Metro mail car.
+    """
+
+    model_id_root = "surface_mail_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class MailHSTMiddleCar(MailCarBase):
     """
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
@@ -7843,14 +7918,15 @@ class PassengerHSTMiddleCar(PassengerCarBase):
         return result
 
 
-class PassengerMetroCar(PassengerCarBase):
+class PassengerMetroCarBase(PassengerCarBase):
     """
     Metro pax car.
     """
 
     livery_group_name = "metro_pax_liveries"
 
-    model_id_root = "metro_passenger_car"
+    vehicle_family_id = "metro_passenger_car"
+    variant_group_id_root = "metro_passenger_car"
     formation_reporting_labels = []
 
     def __init__(self, **kwargs):
@@ -7865,6 +7941,8 @@ class PassengerMetroCar(PassengerCarBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1 # CABBAGE
+        # trailers are allowed to lead a train driving backwards
+        self.flag_has_cab = True
         self._joker = True
         # Graphics configuration
         # formation position rules:
@@ -7890,7 +7968,29 @@ class PassengerMetroCar(PassengerCarBase):
 
     @property
     def subrole(self):
-        return "pax_suburban_coach"
+        return "pax_suburban_coach" # CABBAGE
+
+
+class PassengerMetroCarTube(PassengerMetroCarBase):
+    """
+    Metro pax car.
+    """
+
+    model_id_root = "tube_passenger_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class PassengerMetroCarSurface(PassengerMetroCarBase):
+    """
+    Metro pax car.
+    """
+
+    model_id_root = "surface_passenger_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):

@@ -7,12 +7,12 @@ def main(**kwargs):
     # --------------- Metro ----------------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="PassengerMetroCar",
-        base_numeric_id=32530,
+        schema_name="MailMetroCarSurface",
+        base_numeric_id=32590,
         gen=1,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -24,12 +24,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="PassengerMetroCar",
-        base_numeric_id=32540,
+        schema_name="MailMetroCarSurface",
+        base_numeric_id=32600,
         gen=2,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -41,12 +41,12 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="PassengerMetroCar",
-        base_numeric_id=32550,
+        schema_name="MailMetroCarSurface",
+        base_numeric_id=32610,
         gen=3,
         subtype="C",
         base_track_type="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

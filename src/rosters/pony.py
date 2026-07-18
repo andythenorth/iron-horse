@@ -358,7 +358,6 @@ wagon_module_names_with_roster_ids = {
     "merchandise_box_cars": "pony",
     "metal_product_covered_combos": "pony",
     "metal_product_mixed_combos": "pony",
-    "metro_passenger_cars": "pony",
     "metro_passenger_trailer_cars": "pony",
     "mgr_hopper_cars": "pony",
     "mgr_hopper_top_hood_cars": "pony",
@@ -424,6 +423,8 @@ wagon_module_names_with_roster_ids = {
     "spacer_cars_type_1": "pony",
     "spacer_cars_type_2": "pony",
     "suburban_passenger_cars": "pony",
+    "surface_metro_mail_cars": "pony",
+    "surface_metro_passenger_cars": "pony",
     "swing_roof_hopper_cars_type_1": "pony",
     "swing_roof_hopper_cars_type_2": "pony",
     "swing_roof_hopper_cars_type_3": "pony",
@@ -441,6 +442,8 @@ wagon_module_names_with_roster_ids = {
     "tippler_bulk_open_cars_type_3": "pony",
     "tippler_rotary_bulk_open_cars_type_1": "pony",
     "torpedo_cars": "pony",
+    "tube_metro_mail_cars": "pony",
+    "tube_metro_passenger_cars": "pony",
     "vehicle_parts_box_cars": "pony",
     "volatiles_tank_cars_type_1": "pony",
 }
@@ -1155,6 +1158,9 @@ def main():
                 ("METROLAND", 1),
             ],
             "metro_mail_liveries": [
+                ("METROLAND", 0),
+            ],
+            "metro_mail_unit_liveries": [
                 ("METROLAND", 0),
                 ("METROLAND", 1),
                 ("MAIL_BY_RAIL", 2),
