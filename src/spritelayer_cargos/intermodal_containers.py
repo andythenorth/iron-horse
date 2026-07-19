@@ -11,6 +11,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.cargo_sprite_provider = "polar_fox"
         # we need both reversed states for asymmetric cargo sprinter cab units; due to existing implementation it's easier to provide that for all intermodal cargos
         self.supported_reverse_states = ["unreversed", "reversed"]
         self.provide_container_shadows = True

@@ -10,6 +10,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.cargo_sprite_provider = "polar_fox"
         # automobile sprites are asymmetric
         self.cargo_sprites_are_asymmetric = True
 

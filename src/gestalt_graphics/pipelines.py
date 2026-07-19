@@ -222,11 +222,15 @@ class GenerateSpritelayerCargoSets(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all cargo sprites earlier in the loop would add unwanted complexity
             cargos_for_this_variant = []
             for cargo_item in variant:
+                provider_subpaths = {
+                    "default": ["graphics", "spritelayer_cargos"],
+                    "polar_fox": ["polar_fox", "graphics"],
+                }
+                cargo_item_provider_subpath = os.path.join(*provider_subpaths[self.spritelayer_cargo.cargo_sprite_provider])
                 cargo_item_path = os.path.join(
                     currentdir,
                     "src",
-                    "polar_fox",
-                    "graphics",
+                    cargo_item_provider_subpath,
                     self.spritelayer_cargo.base_id,
                     cargo_item + ".png",
                 )
@@ -288,6 +292,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     loc_point_y_transforms = {
                         "15": [1, 3, 1, 2, 1, 3, 1, 2],  # !! untested, may be incorrect
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
+                        "24": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
                     }
