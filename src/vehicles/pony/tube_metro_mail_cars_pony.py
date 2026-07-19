@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="MetroPaxMailCarUnit",
+        unit_cls_name="MailMetroCarUnit",
         chassis="metro_heavy_32px",
         suppress_roof_sprite=True,
     )
@@ -33,7 +33,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="MetroPaxMailCarUnit",
+        unit_cls_name="MailMetroCarUnit",
         chassis="metro_heavy_32px",
         suppress_roof_sprite=True,
     )
@@ -50,7 +50,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="MetroPaxMailCarUnit",
+        unit_cls_name="MailMetroCarUnit",
         chassis="metro_heavy_32px",
         suppress_roof_sprite=True,
     )
