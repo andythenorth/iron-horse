@@ -1115,6 +1115,34 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
         return self.unit_def.tail_light
 
 
+class MetroPaxMailCarUnit(CarUnitBase):
+    """
+    Metro pax/mail wagon.
+    """
+
+    # CABBAGE
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+
+    @cached_property
+    def capacity(self):
+        return self.get_pax_car_capacity()
+
+    @cached_property
+    def weight(self):
+        # set weight based on length * a multiplier from model_variant * roster gen factor
+        return int(
+            self.model_variant.weight_factor
+            * (8 * self.vehicle_length)
+            * self.model_variant.roster.train_car_weight_factors[
+                self.model_variant.gen - 1
+            ]
+        )
+
+
 class AutomobileCarAsymmetricUnit(ExpressCarUnit):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.

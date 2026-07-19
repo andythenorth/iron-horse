@@ -2324,7 +2324,7 @@ class CarSchemaBase(SchemaBase):
         self.speed_class = "standard"
         # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.8 if self.base_track_type == "NG" else 1
+        self.weight_factor = 0.8 if self.base_track_type in ["NG", "METRO"] else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all car model types to 'universal' offset, override in subclasses as needed
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
@@ -6783,25 +6783,15 @@ class MailMetroCarBase(MailCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # PassengerCarBase sets 'express' speed, but suburban coaches should override this
-        # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
-        self.speed_class = "standard"
-        # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
-        self.buy_cost_adjustment_factor = 1.4 # CABBAGE
+        self.buy_cost_adjustment_factor = 2
         # give it a run cost nerf due to the very high capacity
-        self.floating_run_cost_multiplier = 4.75 # CABBAGE
-        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1 # CABBAGE
-        # trailers are allowed to lead a train driving backwards
+        self.floating_run_cost_multiplier = 6.5
+        # metro cars are allowed to lead a train driving backwards
         self.flag_has_cab = True
         self._joker = True
         # Graphics configuration
         # formation position rules:
         #   * standard coach
-        #   * brake coach front
-        #   * brake coach rear
-        #   * no special sprite for suburban pax coach, not worth drawing
         formation_position_spriterow_map = {
             "default": 0,
             "first": 0,
@@ -6810,13 +6800,11 @@ class MailMetroCarBase(MailCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             formation_position_spriterow_map,
-            formation_ruleset="pax_cars",
+            formation_ruleset="mail_cars",
             catalogue_entry=self.catalogue_entry,
         )
 
-    @property
-    def pax_car_capacity_type(self):
-        return self.roster.pax_car_capacity_types["default"]
+    # CABBAGE - CAPACITY NEEDS SETTING
 
     @property
     def subrole(self):
@@ -6832,6 +6820,7 @@ class MailMetroCarTube(MailMetroCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.weight_factor = 0.66
 
 
 class MailMetroCarSurface(MailMetroCarBase):
@@ -6843,6 +6832,7 @@ class MailMetroCarSurface(MailMetroCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.weight_factor = 0.72
 
 
 class MailHSTMiddleCar(MailCarBase):
@@ -7931,25 +7921,16 @@ class PassengerMetroCarBase(PassengerCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # PassengerCarBase sets 'express' speed, but suburban coaches should override this
-        # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "standard"
-        # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
-        self.buy_cost_adjustment_factor = 1.4 # CABBAGE
+        self.buy_cost_adjustment_factor = 2
         # give it a run cost nerf due to the very high capacity
-        self.floating_run_cost_multiplier = 4.75 # CABBAGE
-        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1 # CABBAGE
-        # trailers are allowed to lead a train driving backwards
+        self.floating_run_cost_multiplier = 6.5
+        # metro cars are allowed to lead a train driving backwards
         self.flag_has_cab = True
         self._joker = True
         # Graphics configuration
         # formation position rules:
         #   * standard coach
-        #   * brake coach front
-        #   * brake coach rear
-        #   * no special sprite for suburban pax coach, not worth drawing
         formation_position_spriterow_map = {
             "default": 0,
             "first": 0,
@@ -7980,6 +7961,7 @@ class PassengerMetroCarTube(PassengerMetroCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.weight_factor = 0.66
 
 
 class PassengerMetroCarSurface(PassengerMetroCarBase):
@@ -7991,6 +7973,7 @@ class PassengerMetroCarSurface(PassengerMetroCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.weight_factor = 0.72
 
 
 class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
