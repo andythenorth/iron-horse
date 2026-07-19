@@ -6473,6 +6473,8 @@ class MailCarBase(CarSchemaBase):
         else:
             self.roof_type = "pax_mail_smooth"
 
+    # ¿¿ unclear why mail cars fetch pax capacity - is it just to get loading speed?  Or is it extraneous??
+    # there is a separate mail car capacity method on units
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["default"]
