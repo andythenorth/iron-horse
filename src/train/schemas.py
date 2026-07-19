@@ -6809,6 +6809,11 @@ class MailMetroCarBase(MailCarBase):
     # CABBAGE - CAPACITY NEEDS SETTING
 
     @property
+    def loading_speed_multiplier(self):
+        # OP bonus to mail metro loading speed
+        return 4
+
+    @property
     def subrole(self):
         return "mail_metro"
 
@@ -7948,6 +7953,11 @@ class PassengerMetroCarBase(PassengerCarBase):
     @property
     def pax_car_capacity_type(self):
         return self.roster.pax_car_capacity_types["default"]
+
+    @property
+    def loading_speed_multiplier(self):
+        # super super OP bonus to pax metro loading speed
+        return 8
 
     @property
     def subrole(self):
