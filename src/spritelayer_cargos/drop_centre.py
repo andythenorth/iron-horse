@@ -58,6 +58,9 @@ class Tarps24pxCargoSet(DropCentreCargoSetBase):
             [
                 "tarps_grey_1_20_foot",
             ],
+            [
+                "tarps_grey_2_20_foot",
+            ],
         ]
 
 
@@ -68,6 +71,9 @@ class Tarps32pxCargoSet(DropCentreCargoSetBase):
         self.variants = [
             [
                 "tarps_grey_1_24_foot",
+            ],
+            [
+                "tarps_grey_2_24_foot",
             ],
         ]
 
