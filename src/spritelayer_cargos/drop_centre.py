@@ -5,7 +5,14 @@ import polar_fox
 
 
 class DropCentreSpritelayerCargo(SpritelayerCargo):
-    """Base class for automobile spritelayer cargo - cars, trucks, tractors etc."""
+    """
+    Base class for drop centre spritelayer cargo - machinery, vehicles etc.
+    Also includes 'normal' flatbed cargos.
+    Uses spritelayers for:
+    - cargo randomisation
+    - asymmetry
+    - positioning: 'long' cargos are full length of vehicle, 'tall' or 'heavy' cargos are centred in well
+    """
 
     base_id = "drop_centre"
 
