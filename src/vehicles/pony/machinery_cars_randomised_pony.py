@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32510,
         gen=2,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32520,
         gen=2,
         subtype="C",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32530,
         gen=3,
         subtype="B",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32540,
         gen=3,
         subtype="C",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32550,
         gen=4,
         subtype="B",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32560,
         gen=4,
         subtype="C",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32570,
         gen=5,
         subtype="B",
@@ -91,7 +91,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreRandomised",
+        schema_name="MachineryCarRandomised",
         base_numeric_id=32580,
         gen=5,
         subtype="C",

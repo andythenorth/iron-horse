@@ -7,120 +7,120 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=28790,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32440,
         gen=2,
         subtype="B",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=28800,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32450,
         gen=2,
         subtype="C",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=28810,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32460,
         gen=3,
         subtype="B",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=28820,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32470,
         gen=3,
         subtype="C",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32400,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32480,
         gen=4,
         subtype="B",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32410,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32490,
         gen=4,
         subtype="C",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32420,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32500,
         gen=5,
         subtype="B",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_alt_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="FlatCarDropCentreType1",
-        base_numeric_id=32430,
+        schema_name="MachineryCarType2",
+        base_numeric_id=32510,
         gen=5,
         subtype="C",
         sprites_complete=False,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FlatCarDropCentreAsymmetricUnit",
+        unit_cls_name="MachineryCarAsymmetricUnit",
         chassis="4_axle_running_gear_only_alt_32px",
     )
 

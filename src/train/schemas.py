@@ -5390,13 +5390,13 @@ class FlatCarBulkheadRandomised(RandomisedCarVanillaMixin, FlatCarBulkheadBase):
         )
 
 
-class FlatCarDropCentreBase(FlatCarBase):
+class MachineryCarBase(FlatCarBase):
     """
     Drop-centre (depressed-centre) flat wagon.
     """
 
-    vehicle_family_id = "drop_centre_flat_car"
-    variant_group_id_root = "wagon_group_drop_centre_flat_cars"
+    vehicle_family_id = "machinery_car"
+    variant_group_id_root = "wagon_group_machinery_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5410,39 +5410,39 @@ class FlatCarDropCentreBase(FlatCarBase):
         )
 
 
-class FlatCarDropCentreType1(FlatCarDropCentreBase):
+class MachineryCarType1(MachineryCarBase):
     """
     Drop-centre (depressed-centre) flat wagon.
     """
 
     # low or high bulkhead? stakes or not?
-    model_id_root = "drop_centre_flat_car_type_1"
-    randomised_candidate_groups = ["drop_centre_flat_car_randomised"]
+    model_id_root = "machinery_car_type_1"
+    randomised_candidate_groups = ["machinery_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class FlatCarDropCentreType2(FlatCarDropCentreBase):
+class MachineryCarType2(MachineryCarBase):
     """
     Drop-centre (depressed-centre) flat wagon.
     """
 
     # low or high bulkhead? stakes or not?
-    model_id_root = "drop_centre_flat_car_type_2"
-    randomised_candidate_groups = ["drop_centre_flat_car_randomised"]
+    model_id_root = "machinery_car_type_2"
+    randomised_candidate_groups = ["machinery_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class FlatCarDropCentreRandomised(RandomisedCarVanillaMixin, FlatCarDropCentreBase):
+class MachineryCarRandomised(RandomisedCarVanillaMixin, MachineryCarBase):
     """
     Random choice of drop-centre (depressed-centre) flat wagon sprite.
     """
 
-    model_id_root = "drop_centre_flat_car_randomised"
-    variant_group_id_root = "wagon_group_drop_centre_flat_cars"
+    model_id_root = "machinery_car_randomised"
+    variant_group_id_root = "wagon_group_machinery_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

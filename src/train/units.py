@@ -1250,7 +1250,7 @@ class CoilCarAsymmetricUnit(FreightCarUnit):
         self._symmetry_type = "asymmetric"
 
 
-class FlatCarDropCentreAsymmetricUnit(FreightCarUnit):
+class MachineryCarAsymmetricUnit(FreightCarUnit):
     """
     Drop centre flat car. This subclass only exists to set the symmetry_type to asymmetric.
     """
