@@ -4004,7 +4004,9 @@ class CarbonBlackHopperCar(CarSchemaBase):
     Dedicated covered hopper car for carbon black.  No other cargos.
     """
 
-    liveries = ["COMPANY_COLOUR"]
+    liveries = [
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these
+    ]
 
     model_id_root = "carbon_black_hopper_car"
 
@@ -4023,8 +4025,7 @@ class CarbonBlackHopperCar(CarSchemaBase):
         self._joker = True
         # Graphics configuration
         weathered_states = {
-            "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_map,
-            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_map_weathered,
+            "unweathered": graphics_constants.body_recolour_CC1,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
