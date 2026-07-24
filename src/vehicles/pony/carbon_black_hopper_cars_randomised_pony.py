@@ -7,56 +7,36 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=28540,
-        gen=2,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=21870,
-        gen=3,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=21880,
+        schema_name="CarbonBlackHopperCarRandomised",
+        base_numeric_id=32740,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_16px"
+    )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=21890,
+        schema_name="CarbonBlackHopperCarRandomised",
+        base_numeric_id=32750,
         gen=4,
         subtype="B",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_24px")
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_hopper_24px"
+    )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=32650,
+        schema_name="CarbonBlackHopperCarRandomised",
+        base_numeric_id=32690,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -69,8 +49,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=21900,
+        schema_name="CarbonBlackHopperCarRandomised",
+        base_numeric_id=32700,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -83,8 +63,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCarType1",
-        base_numeric_id=21910,
+        schema_name="CarbonBlackHopperCarRandomised",
+        base_numeric_id=32710,
         gen=5,
         subtype="C",
         sprites_complete=True,

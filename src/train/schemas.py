@@ -4040,10 +4040,47 @@ class CarbonBlackHopperCarType1(CarbonBlackHopperCarBase):
     """
 
     model_id_root = "carbon_black_hopper_car_type_1"
+    randomised_candidate_groups = [
+        "carbon_black_hopper_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # no classes, use explicit labels
+
+
+class CarbonBlackHopperCarType2(CarbonBlackHopperCarBase):
+    """
+    Dedicated covered hopper car for carbon black.  No other cargos.
+    """
+
+    model_id_root = "carbon_black_hopper_car_type_2"
+    randomised_candidate_groups = [
+        "carbon_black_hopper_car_randomised",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # no classes, use explicit labels
+
+
+class CarbonBlackHopperCarRandomised(RandomisedCarVanillaMixin, CarbonBlackHopperCarBase):
+    """
+    Random choice of carbon black car.
+    """
+
+    model_id_root = "carbon_black_hopper_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=2,
+            buy_menu_id_pairs=[["carbon_black_hopper_car_type_2"], ["carbon_black_hopper_car_type_1"]],
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class IntermodalCargoSprinterMiddleCar(CargoSprinterMixin, CarSchemaBase):
