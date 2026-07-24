@@ -3999,7 +3999,7 @@ class CaneBinCar(CarSchemaBase):
         )
 
 
-class CarbonBlackHopperCar(CarSchemaBase):
+class CarbonBlackHopperCarBase(CarSchemaBase):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.
     """
@@ -4008,7 +4008,8 @@ class CarbonBlackHopperCar(CarSchemaBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these
     ]
 
-    model_id_root = "carbon_black_hopper_car"
+    vehicle_family_id = "carbon_black_hopper_car"
+    variant_group_id_root = "carbon_black_hopper_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4031,6 +4032,18 @@ class CarbonBlackHopperCar(CarSchemaBase):
             weathered_states=weathered_states,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class CarbonBlackHopperCarType1(CarbonBlackHopperCarBase):
+    """
+    Dedicated covered hopper car for carbon black.  No other cargos.
+    """
+
+    model_id_root = "carbon_black_hopper_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # no classes, use explicit labels
 
 
 class IntermodalCargoSprinterMiddleCar(CargoSprinterMixin, CarSchemaBase):

@@ -123,7 +123,7 @@ wagon_module_names_with_roster_ids = {
     "acid_tank_cars_type_1": "pony",
     "acid_tank_cars_type_2": "pony",
     "acid_tank_cars_randomised": "pony",
-    "carbon_black_hopper_cars": "pony",
+    "carbon_black_hopper_cars_type_1": "pony",
     "cement_silo_cars_type_1": "pony",
     "coil_cars_covered": "pony",
     "coil_cars_covered_asymmetric": "pony",

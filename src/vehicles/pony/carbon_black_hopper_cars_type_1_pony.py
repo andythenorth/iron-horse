@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=28540,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=21870,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=21880,
         gen=4,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=21890,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=21900,
         gen=5,
         subtype="B",
@@ -69,7 +69,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="CarbonBlackHopperCar",
+        schema_name="CarbonBlackHopperCarType1",
         base_numeric_id=21910,
         gen=5,
         subtype="C",

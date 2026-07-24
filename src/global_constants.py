@@ -208,7 +208,7 @@ wagon_module_name_stems = [
     "cement_silo_cars_type_2",
     "cement_silo_cars_type_3",
     "cement_silo_cars_randomised",
-    "carbon_black_hopper_cars",
+    "carbon_black_hopper_cars_type_1",
     "log_cars",
     "peat_cars",
     "cane_bin_cars",
