@@ -5458,6 +5458,8 @@ class MachineryCarBase(FlatCarBase):
             spritelayer_cargo_layers=["default"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
+            # machinery car well shapes need an extra masked overlay, which is handled via gestalt_graphics
+            add_masked_overlay=True,
         )
 
 

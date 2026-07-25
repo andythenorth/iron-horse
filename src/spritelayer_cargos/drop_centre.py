@@ -35,9 +35,25 @@ class DropCentreSpritelayerCargo(SpritelayerCargo):
     def get_cargo_label_mapping(cls):
         # class method so we can call it when we don't have an instance of the class in scope
         # the base class also has an @property accessor for this for consistency with other uses
-        result = {}
-        # see intermodal for example of how this mapped containers
-        # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
+
+        # returns: {cargo_label: (container_type, subtype_suffix)} for API compatibility.
+        # in this simplified implementation, subtype_suffix is always `DFLT`.
+
+        # simple manually curated list
+        result = {
+            'ALUM': ('tarps_yellow', 'DFLT'),
+            'COPR': ('tarps_yellow', 'DFLT'),
+            'ENSP': ('bulldozers', 'DFLT'),
+            'FMSP': ('tarps_yellow', 'DFLT'),
+            'POWR': ('tarps_yellow', 'DFLT'),
+            'RBAR': ('tarps_yellow', 'DFLT'),
+            'STBL': ('tarps_yellow', 'DFLT'),
+            'STIG': ('tarps_yellow', 'DFLT'),
+            'STPL': ('tarps_yellow', 'DFLT'),
+            'STPP': ('tarps_yellow', 'DFLT'),
+            'STSH': ('tarps_yellow', 'DFLT'),
+            'STSL': ('tarps_yellow', 'DFLT'),
+        }
         return result
 
 
@@ -50,7 +66,7 @@ class DropCentreCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "default"
 
 
-class Tarps24pxCargoSet(DropCentreCargoSetBase):
+class TarpsGrey24pxCargoSet(DropCentreCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
@@ -64,7 +80,7 @@ class Tarps24pxCargoSet(DropCentreCargoSetBase):
         ]
 
 
-class Tarps32pxCargoSet(DropCentreCargoSetBase):
+class TarpsGrey32pxCargoSet(DropCentreCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -78,10 +94,74 @@ class Tarps32pxCargoSet(DropCentreCargoSetBase):
         ]
 
 
+class TarpsYellow24pxCargoSet(DropCentreCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 24
+        super().__init__(**kwargs)
+        self.variants = [
+            [
+                "tarps_yellow_1_20_foot",
+            ],
+            [
+                "tarps_yellow_2_20_foot",
+            ],
+        ]
+
+
+class TarpsYellow32pxCargoSet(DropCentreCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 32
+        super().__init__(**kwargs)
+        self.variants = [
+            [
+                "tarps_yellow_1_24_foot",
+            ],
+            [
+                "tarps_yellow_2_24_foot",
+            ],
+        ]
+
+
+class Bulldozers24pxCargoSet(DropCentreCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 24
+        super().__init__(**kwargs)
+        self.variants = [
+            [
+                "bulldozers_1_20_foot",
+            ],
+            #[
+                #"bulldozers_2_20_foot",
+            #],
+        ]
+
+
+class Bulldozers32pxCargoSet(DropCentreCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 32
+        super().__init__(**kwargs)
+        self.variants = [
+            [
+                "bulldozers_1_24_foot",
+            ],
+            #[
+                #"bulldozers_2_24_foot",
+            #],
+        ]
+
+
 subtype_to_cargo_set_mapping = {
+    "bulldozers": [
+        Bulldozers24pxCargoSet,
+        Bulldozers32pxCargoSet,
+    ],
     "tarps_grey": [
-        Tarps24pxCargoSet,
-        Tarps32pxCargoSet,
+        TarpsGrey24pxCargoSet,
+        TarpsGrey32pxCargoSet,
+    ],
+    "tarps_yellow": [
+        TarpsYellow24pxCargoSet,
+        TarpsYellow32pxCargoSet,
     ],
     # "trucks": [
     #    Trucks16pxCargoSet,
