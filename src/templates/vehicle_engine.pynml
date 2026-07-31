@@ -11,7 +11,7 @@ spriteset(${unit.id}_ss_tail_lights_B_end, "${graphics_path}${model_variant.mode
 }
 
 <!--! CABBAGE -->
-switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${unit.id}, [
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_layer_tail_light, [
             STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
             switch_graphics_tail_light()
         ]) {
@@ -45,11 +45,18 @@ switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${unit.id}, [
     }
 </tal:pantographs>
 
+<!--! no-op switch, for compatibility with engine_sprite_layers_with_layer_names format -->
+<!--! could be optimised away, but TMWFTLB (maybe nmlc removes it anyway during compile?) -->
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_base, 1) {
+    return ${unit.id}_ss;
+}
+
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names[1:]">
+    <tal:extra_sprite_layers repeat="extra_sprite_layer model_variant.engine_sprite_layers_with_layer_names">
         ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_${extra_sprite_layer[1]};
     </tal:extra_sprite_layers>
-    return ${unit.id}_ss;
+    <!--! as of July 2026, we just default to tail light, don't explicitly insert it as named layer -->
+    return ${unit.id}_switch_graphics_layer_tail_light;
 }
 
 <tal:buy_menu_lead_unit_only condition="unit.is_not_trailing_part">

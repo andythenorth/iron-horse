@@ -872,6 +872,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
+        self.tail_light_cabbage = kwargs.get("tail_light_cabbage", False)
         # verify that the formation_position_spriterow_map keys are in the expected order
         if list(self.formation_position_spriterow_map.keys()) != [
             "default",
@@ -909,6 +910,12 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
             self.num_pantograph_rows = len(self.catalogue) * (
                 1 + max(self.formation_position_spriterow_map.values())
+            )
+        if self.tail_light_cabbage:
+            self.pipelines.extend(
+                pipelines.get_pipelines(
+                    ["generate_marker_lights_spritesheet"]
+                )
             )
 
     @property

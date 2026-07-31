@@ -47,15 +47,20 @@ class UnitBase(object):
         return f"{self.model_variant.catalogue.default_model_variant_from_roster.id}_unit_{self.unit_index_in_model_variant}"
 
     @property
-    def tail_light(self):
-        # optional - some engine units need to set explicit tail light spritesheets
-        # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
+    def tail_light_switch_id(self):
+        # tail lights may be
+        # - unique to the vehicle and automatically provided, if the template supports it
+        # - mapped to an explicitly defined global tail light type
+        if getattr(self.model_variant.gestalt_graphics, "tail_light_cabbage", False) and self.unit_def.tail_light is not None:
+            print(self.id, "defines both explicit tail light, and auto-tail-light")
         if self.unit_def.tail_light is not None:
-            return f"{self.unit_def.tail_light}"
+            # explicit global type
+            return f"switch_graphics_layer_tail_light_{self.unit_def.tail_light}"
         elif getattr(self.model_variant.gestalt_graphics, "tail_light_cabbage", False):
-            return f"{self.id}"
+            # automatically provisioned
+            return f"{self.id}_switch_graphics_vehicle"
         else:
-            return f"empty"
+            return f"switch_graphics_layer_tail_light_empty"
 
     @property
     def effects(self):
@@ -945,10 +950,10 @@ class CarUnitBase(UnitBase):
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
 
     @property
-    def tail_light(self):
+    def tail_light_switch_id(self):
         # all wagons use auto tail-lights based on length
         # override in subclass if needed
-        return f"{str(self.vehicle_length * 4)}px"
+        return f"switch_graphics_layer_tail_light_{str(self.vehicle_length * 4)}px"
 
     @property
     def running_cost_base(self):
@@ -1043,7 +1048,7 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
         super().__init__(**kwargs)
 
     @property
-    def tail_light(self):
+    def tail_light_switch_id(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert self.unit_def.tail_light is not None, (
             "%s model_variant has a unit without tail_light set, which is required for %s"
@@ -1052,7 +1057,7 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
                 self.__class__.__name__,
             )
         )
-        return f"{self.unit_def.tail_light}"
+        return f"switch_graphics_layer_tail_light_{self.unit_def.tail_light}"
 
 
 class PaxRestaurantCarUnit(PaxCarUnit):
@@ -1117,7 +1122,7 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
         self._symmetry_type = "asymmetric"
 
     @property
-    def tail_light(self):
+    def tail_light_switch_id(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert self.unit_def.tail_light is not None, (
             "%s model_variant has a unit without tail_light set, which is required for %s"
@@ -1126,7 +1131,7 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
                 self.__class__.__name__,
             )
         )
-        return f"{self.unit_def.tail_light}"
+        return f"switch_graphics_layer_tail_light_{self.unit_def.tail_light}"
 
 
 class AutomobileCarAsymmetricUnit(ExpressCarUnit):

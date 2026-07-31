@@ -2041,6 +2041,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
+            tail_light_cabbage=True,
         )
 
     @property
@@ -2086,6 +2087,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
+            tail_light_cabbage=True,
         )
 
     @property
