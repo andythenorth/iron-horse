@@ -177,11 +177,12 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
-            ["pass_through_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            ["pass_through_pipeline", "generate_buy_menu_sprite_vanilla_vehicle", "generate_marker_lights_spritesheet"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
+        self.tail_light_cabbage = True
         # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
             self.pipelines.extend(

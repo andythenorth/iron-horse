@@ -18,11 +18,13 @@
                     </tal:sprite>
                 }
                 spriteset(ss_tail_light_${pixel_length_as_str}_${flipped_state}, "${graphics_path}tail_lights/${pixel_length_as_str}.png") {
-                  spriteset_tail_light_${pixel_length_as_str}_${flipped_state}(10)
+                    spriteset_tail_light_${pixel_length_as_str}_${flipped_state}(10)
                 }
         </tal:block>
     </tal:auto_lengths>
+</tal:flipped_state>
 
+<tal:flipped_state repeat="flipped_state ['unflipped', 'flipped']">
     <tal:engine_models repeat="engine [('hst_32px_1', 8), ('metro_32px_1', 8), ('metro_32px_2', 8), ('metro_32px_3', 8),
                                          ('railcar_20px_1', 5), ('railcar_20px_2', 5), ('railcar_20px_3', 5), ('railcar_20px_4', 5),
                                          ('railcar_24px_1', 6),
@@ -38,7 +40,7 @@
                 </tal:sprite>
             }
             spriteset(ss_tail_light_${engine[0]}_${flipped_state}, "${graphics_path}tail_lights/${engine[0]}.png") {
-              spriteset_tail_light_${engine[0]}_${flipped_state}(10)
+                spriteset_tail_light_${engine[0]}_${flipped_state}(10)
             }
         </tal:block>
     </tal:engine_models>
@@ -51,18 +53,21 @@ spriteset(ss_tail_light_empty_flipped, "${graphics_path}tail_lights/empty.png") 
     spriteset_tail_light_32px_flipped(10)
 }
 
-<!--! procedure for figuring out whether to show tail light unflipped (0), flipped (1), or empty (2) -->
-
-switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_check_flip, vehicle_is_flipped) {
+<!--! procedure for figuring out whether to show tail lights at A end (0), B end (1), or empty (2) -->
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_check_flip_driving_forwards, vehicle_is_flipped) {
     1: return 1;
     return 0;
 }
 switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_driving_forwards, position_in_consist_from_end) {
-    0: return switch_graphics_tail_light_check_flip;
+    0: switch_graphics_tail_light_check_flip_driving_forwards;
     return 2;
 }
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_check_flip_driving_backwards, vehicle_is_flipped) {
+    1: return 0;
+    return 1;
+}
 switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_driving_backwards, position_in_consist) {
-    0: return switch_graphics_tail_light_check_flip;
+    0: switch_graphics_tail_light_check_flip_driving_backwards;
     return 2;
 }
 switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, train_is_driving_backwards) {

@@ -1152,6 +1152,51 @@ class GeneratePantographsDownSpritesheetPipeline(
         super().__init__()
 
 
+class GenerateMarkerLightsSpritesheetPipeline(Pipeline):
+    """
+    Generates a separate spritesheet containing only marker-light pixels.
+
+    Palette index 51 in the generated vehicle spritesheet becomes index 165.
+    Every other pixel becomes palette index 0.
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.graphics_output_path = graphics_output_path
+        self.processing_units = []
+
+        input_path = os.path.join(
+            self.graphics_output_path,
+            self.catalogue.model_id + ".png",
+        )
+
+        with Image.open(input_path) as input_image:
+            if input_image.mode != "P":
+                raise ValueError(
+                    f"Expected indexed spritesheet at {input_path}, "
+                    f"got image mode {input_image.mode!r}"
+                )
+
+            # PIL point lookup table:
+            # marker pixels become tail-light pixels; everything else is index 0.
+            extraction_table = [0] * 256
+            extraction_table[51] = 165
+
+            marker_lights_image = input_image.point(extraction_table)
+            marker_lights_image.putpalette(input_image.getpalette())
+
+            self.render_common(
+                marker_lights_image,
+                self.processing_units,
+                output_suffix="_tail_lights",
+            )
+
+            marker_lights_image.close()
+
+
 class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     """ "
     Extends a spritesheet with variations on vehicle graphics, liveries, cargos etc.
@@ -2040,6 +2085,7 @@ def get_pipelines(pipeline_names):
         "generate_buy_menu_sprite_vanilla_pantographs_up": GenerateBuyMenuSpriteVanillaPantographsUpPipeline,
         "generate_buy_menu_sprite_from_randomisation_candidates": GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
+        "generate_marker_lights_spritesheet": GenerateMarkerLightsSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_spritelayer_cargo_sets": GenerateSpritelayerCargoSets,

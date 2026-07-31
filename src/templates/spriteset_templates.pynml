@@ -23,6 +23,43 @@
             </tal:sprite>
         }
     </tal:symmetrical>
+
+    <!--! OpenTTD 13 added support for automatically adjusting offsets for non 8/8 vehicles that are flipped in depot,
+          but we need to explicitly provide offsets here, because the tail light needs to remains in the same place, even if the vehicle is flipped -->
+    template spriteset_template_tail_light_A_end_${vehicle_length}_8(y) {
+            //[left_x, upper_y, width, height, offset_x, offset_y]
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[0]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[0][0]}, ${utils.get_offsets(vehicle_length)[0][1]}, NOANIM]
+        </tal:sprite>
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[1]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[1][0]}, ${utils.get_offsets(vehicle_length)[1][1]}, NOANIM]
+        </tal:sprite>
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[7]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[7][0]}, ${utils.get_offsets(vehicle_length)[7][1]}, NOANIM]
+        </tal:sprite>
+    }
+    template spriteset_template_tail_light_B_end_${vehicle_length}_8(y) {
+            //[left_x, upper_y, width, height, offset_x, offset_y]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[3]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[3][0]}, ${utils.get_offsets(vehicle_length)[3][1]}, NOANIM]
+        </tal:sprite>
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[4]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[4][0]}, ${utils.get_offsets(vehicle_length)[4][1]}, NOANIM]
+        </tal:sprite>
+        <tal:sprite define="bounding_box getattr(global_constants, 'spritesheet_bounding_boxes_asymmetric_unreversed')[5]">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[5][0]}, ${utils.get_offsets(vehicle_length)[5][1]}, NOANIM]
+        </tal:sprite>
+            [0, 0, 1, 1, 0, 0, NOANIM]
+            [0, 0, 1, 1, 0, 0, NOANIM]
+    }
 </tal:lengths>
 
 <!--! reusable vehicle 'empty' spriteset -->

@@ -51,9 +51,11 @@ class UnitBase(object):
         # optional - some engine units need to set explicit tail light spritesheets
         # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
         if self.unit_def.tail_light is not None:
-            return self.unit_def.tail_light
+            return f"{self.unit_def.tail_light}"
+        elif getattr(self.model_variant.gestalt_graphics, "tail_light_cabbage", False):
+            return f"{self.id}"
         else:
-            return "empty"
+            return f"empty"
 
     @property
     def effects(self):
@@ -374,6 +376,18 @@ class UnitBase(object):
             "ANIM" if self.model_variant.suppress_animated_pixel_warnings else "NOANIM"
         )
         args = ",".join([str(y), anim_flag])
+        return template_name + "(" + args + ")"
+
+    def get_tail_light_spriteset_template_name(self, lights_position, y):
+        template_name = "_".join(
+            [
+                "spriteset_template_tail_light",
+                lights_position,
+                str(self.vehicle_length),
+                "8",
+            ]
+        )
+        args = ",".join([str(y)])
         return template_name + "(" + args + ")"
 
     def get_cargo_suffix(self):
@@ -934,7 +948,7 @@ class CarUnitBase(UnitBase):
     def tail_light(self):
         # all wagons use auto tail-lights based on length
         # override in subclass if needed
-        return str(self.vehicle_length * 4) + "px"
+        return f"{str(self.vehicle_length * 4)}px"
 
     @property
     def running_cost_base(self):
@@ -1038,7 +1052,7 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
                 self.__class__.__name__,
             )
         )
-        return self.unit_def.tail_light
+        return f"{self.unit_def.tail_light}"
 
 
 class PaxRestaurantCarUnit(PaxCarUnit):
@@ -1112,7 +1126,7 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
                 self.__class__.__name__,
             )
         )
-        return self.unit_def.tail_light
+        return f"{self.unit_def.tail_light}"
 
 
 class AutomobileCarAsymmetricUnit(ExpressCarUnit):
