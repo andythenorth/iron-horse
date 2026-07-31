@@ -23,7 +23,6 @@ def main(**kwargs):
         unit_cls_name="ElectricRailcarMailUnit",
         weight=40,
         chassis="railcar_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
 

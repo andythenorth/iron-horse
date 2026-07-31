@@ -34,7 +34,6 @@ def main(**kwargs):
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
         rel_spriterow_index=0,
-        tail_light="hst_32px_1",
     )
 
     model_def.define_description("""Power is of the essence. Faster is everything.""")

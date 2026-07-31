@@ -26,14 +26,12 @@ def main(**kwargs):
         unit_cls_name="DieselRailcarCombineUnitMail",
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_20px_1",
     )
 
     model_def.add_unit_def(
         unit_cls_name="DieselRailcarCombineUnitPax",
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_20px_1",
     )
 
     model_def.define_description(
@@ -70,7 +68,6 @@ def main(**kwargs):
         unit_cls_name="DieselRailcarPaxUnit",
         weight=22,
         chassis="railbus_swb_24px",
-        tail_light="railcar_24px_1",
     )
 
     model_def.define_description(

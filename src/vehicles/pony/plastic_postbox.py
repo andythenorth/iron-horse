@@ -26,7 +26,6 @@ def main(**kwargs):
         unit_cls_name="DieselRailcarMailUnit",
         weight=37,
         chassis="railcar_32px",
-        tail_light="railcar_32px_3",
     )
 
     model_def.define_description(

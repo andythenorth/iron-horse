@@ -29,7 +29,6 @@ def main(**kwargs):
         capacity=24,
         rel_spriterow_index=0,
         chassis="4_axle_solid_express_32px",
-        tail_light="very_high_speed_32px_2",
     )
 
     model_def.define_description("""And you shall know this velocity.""")

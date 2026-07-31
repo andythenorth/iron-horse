@@ -25,7 +25,6 @@ def main(**kwargs):
         unit_cls_name="DieselExpressRailcarPaxUnit",
         weight=50,
         chassis="railcar_32px",
-        tail_light="railcar_32px_3",
         suppress_roof_sprite=True,
         repeat=2,
     )

@@ -26,14 +26,12 @@ def main(**kwargs):
         unit_cls_name="DieselRailcarCombineUnitMail",
         weight=20,
         chassis="railbus_lwb_20px",
-        tail_light="railcar_20px_1",
     )
 
     model_def.add_unit_def(
         unit_cls_name="DieselRailcarCombineUnitPax",
         weight=20,
         chassis="railbus_lwb_20px",
-        tail_light="railcar_20px_2",
     )
 
     model_def.define_description("""Patience is the virtue of the donkeys.""")
@@ -68,7 +66,6 @@ def main(**kwargs):
         unit_cls_name="DieselRailcarPaxUnit",
         weight=24,
         chassis="railbus_lwb_24px",
-        tail_light="railcar_24px_1",
     )
 
     model_def.define_description("""Patience is the virtue of the donkeys.""")

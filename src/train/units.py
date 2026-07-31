@@ -60,6 +60,7 @@ class UnitBase(object):
             # automatically provisioned
             return f"{self.id}_switch_graphics_vehicle"
         else:
+            utils.echo_message(f"{self.id} - no tail light definition found")
             return f"switch_graphics_layer_tail_light_empty"
 
     @property
