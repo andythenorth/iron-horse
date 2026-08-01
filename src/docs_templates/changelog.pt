@@ -3,6 +3,21 @@ Changelog
 
 
 --------------
+4.29.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.21.0.
+
+
+*Changes*
+
+- improved Carbon Black Hoppers
+- added bulldozer sprites to Machinery Wagons when refitted to engineering supplies
+- trains driving backwards now show correct tail lights (driving backwards introduced in OpenTTD 16)
+
+
+--------------
 4.28.0 Release
 --------------
 
