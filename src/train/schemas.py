@@ -1692,6 +1692,7 @@ class MailEngineMetro(MailEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
+            tail_light_cabbage=True,
         )
 
     @property
@@ -2008,6 +2009,7 @@ class PassengerEngineMetro(PassengerEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
+            tail_light_cabbage=True,
         )
 
     @property

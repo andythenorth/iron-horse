@@ -24,7 +24,6 @@ def main(**kwargs):
         weight=36,
         capacity=120,
         chassis="metro_heavy_32px",
-        tail_light="metro_32px_1",
         repeat=2,
     )
 

@@ -25,7 +25,6 @@ def main(**kwargs):
         # set capacity for freight; mail will be automatically calculated
         capacity=30,
         chassis="metro_heavy_32px",
-        tail_light="metro_32px_3",
         repeat=2,
     )
 
