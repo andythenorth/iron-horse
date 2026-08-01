@@ -26,7 +26,6 @@ def main(**kwargs):
         weight=50,
         capacity=24,
         chassis="railcar_ng_32px",
-        tail_light="railcar_32px_6",
         suppress_roof_sprite=True,
         repeat=2,
     )
@@ -47,7 +46,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
-        tail_light="railcar_32px_3",
         suppress_roof_sprite=True,
         repeat=2,
     )
@@ -66,7 +64,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
 
@@ -84,7 +81,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
     result.append(model_def)
@@ -101,7 +97,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
 
@@ -119,7 +114,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
 
@@ -137,7 +131,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_pax_mail_32px",
-        tail_light="railcar_32px_3",
         repeat=2,
     )
 
@@ -156,7 +149,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="high_speed_32px",
-        tail_light="railcar_32px_5",
         suppress_roof_sprite=True,
         repeat=2,
     )
@@ -176,7 +168,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="high_speed_32px",
-        tail_light="railcar_32px_5",
         suppress_roof_sprite=True,
         repeat=2,
     )

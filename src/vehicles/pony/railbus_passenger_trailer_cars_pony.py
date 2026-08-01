@@ -20,7 +20,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_ng_24px",
-        tail_light="railcar_24px_1",
     )
 
     result.append(model_def)
@@ -39,7 +38,6 @@ def main(**kwargs):
     model_def.add_unit_def(
         unit_cls_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_ng_24px",
-        tail_light="railcar_24px_1",
     )
 
     result.append(model_def)

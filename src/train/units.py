@@ -1050,15 +1050,20 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
 
     @property
     def tail_light_switch_id(self):
-        # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
-        assert self.unit_def.tail_light is not None, (
-            "%s model_variant has a unit without tail_light set, which is required for %s"
-            % (
-                self.id,
-                self.__class__.__name__,
-            )
-        )
-        return f"switch_graphics_layer_tail_light_{self.unit_def.tail_light}"
+        # tail lights may be
+        # - unique to the vehicle and automatically provided, if the template supports it
+        # - mapped to an explicitly defined global tail light type
+        if getattr(self.model_variant.gestalt_graphics, "tail_light_cabbage", False) and self.unit_def.tail_light is not None:
+            print(self.id, "defines both explicit tail light, and auto-tail-light")
+        if self.unit_def.tail_light is not None:
+            # explicit global type
+            return f"switch_graphics_layer_tail_light_{self.unit_def.tail_light}"
+        elif getattr(self.model_variant.gestalt_graphics, "tail_light_cabbage", False):
+            # automatically provisioned
+            return f"{self.id}_switch_graphics_vehicle"
+        else:
+            utils.echo_message(f"{self.id} - no tail light definition found")
+            return f"switch_graphics_layer_tail_light_empty"
 
 
 class PaxRestaurantCarUnit(PaxCarUnit):

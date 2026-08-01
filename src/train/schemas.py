@@ -6788,6 +6788,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
             formation_ruleset="railcars_4_unit_sets",
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
+            tail_light_cabbage=True,
         )
 
 
@@ -7729,6 +7730,7 @@ class PassengeMetroTrailerCar(PassengerCarBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
+            tail_light_cabbage=True,
         )
 
     @property
@@ -7931,6 +7933,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
+            tail_light_cabbage=True,
         )
 
 
@@ -8088,6 +8091,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
+            tail_light_cabbage=True,
         )
 
 
@@ -8133,6 +8137,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
+            tail_light_cabbage=True,
         )
 
     @property
