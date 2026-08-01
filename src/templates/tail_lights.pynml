@@ -24,6 +24,8 @@
     </tal:auto_lengths>
 </tal:flipped_state>
 
+<!--! July 2025 - there are a few cases where legacy handling was left in place when switching most engines to automated tail lights.
+      These use custom nml templates for the vehicle type, and would be TMWFTLB to convert -->
 <tal:flipped_state repeat="flipped_state ['unflipped', 'flipped']">
     <tal:engine_models repeat="engine [
                                         ('autocoach_20px', 5),
