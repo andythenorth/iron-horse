@@ -31,7 +31,7 @@
             }
         </tal:automobiles>
         <tal:drop_centre case="'drop_centre'">
-            <!--! CABBAGE a no-op stub until further notice - 'crates' hard-coded -->
+            <!--! CABBAGE a no-op stub until further notice - 'tarps' hard-coded -->
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
                 return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_tarps_grey_DFLT;
             }
