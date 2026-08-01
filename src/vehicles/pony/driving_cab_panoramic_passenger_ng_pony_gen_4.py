@@ -21,7 +21,6 @@ def main(**kwargs):
         unit_cls_name="CabControlPaxCarUnit",
         weight=32,
         chassis="railcar_ng_32px",
-        tail_light="railcar_32px_6",
         suppress_roof_sprite=True,
     )
 

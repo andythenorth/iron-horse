@@ -1074,6 +1074,13 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self.colour_mapping_switch = colour_mapping_switch
         self.colour_mapping_switch_purchase = colour_mapping_switch_purchase
         self.colour_mapping_with_purchase = colour_mapping_with_purchase
+        self.tail_light_cabbage = kwargs.get("tail_light_cabbage", False)
+        if self.tail_light_cabbage:
+            self.pipelines.extend(
+                pipelines.get_pipelines(
+                    ["generate_marker_lights_spritesheet"]
+                )
+            )
 
     @property
     def generic_rows(self):

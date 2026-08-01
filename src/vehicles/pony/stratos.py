@@ -28,7 +28,6 @@ def main(**kwargs):
         weight=50,
         capacity=24,
         chassis="railcar_ng_32px",
-        tail_light="railcar_32px_6",
         suppress_roof_sprite=True,
         repeat=2,
     )
