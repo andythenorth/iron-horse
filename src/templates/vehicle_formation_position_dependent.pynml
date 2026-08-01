@@ -51,7 +51,6 @@
         ${unit.get_tail_light_spriteset_template_name('B_end', 10 + (formation_position_rule_num * model_variant.gestalt_graphics.num_spritesheet_liveries_per_formation_position * 60) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 60))}
     }
 
-    <!--! CABBAGE -->
     switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${unit.id}_${formation_position_rule_num}, [
                 STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
                 switch_graphics_tail_light()
@@ -91,7 +90,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_check_engine_and_d
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
             1: return ${unit.id}_switch_graphics_pantographs_${formation_position_rule_num};
         </tal:conditional_pantograph>
-        <tal:conditional_tail_light condition="model_variant.gestalt_graphics.tail_light_cabbage">
+        <tal:conditional_tail_light condition="model_variant.gestalt_graphics.tail_light_from_vehicle_sprites">
             <!--! as of July 2026, if there is a tail light, we just default to it, don't explicitly insert it as numbered layer -->
             return switch_graphics_layer_tail_light_${unit.id}_${formation_position_rule_num};
         </tal:conditional_tail_light>

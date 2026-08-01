@@ -182,7 +182,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        self.tail_light_cabbage = True
+        self.tail_light_from_vehicle_sprites = True
         # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
             self.pipelines.extend(
@@ -872,7 +872,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        self.tail_light_cabbage = kwargs.get("tail_light_cabbage", False)
+        self.tail_light_from_vehicle_sprites = kwargs.get("tail_light_from_vehicle_sprites", False)
         # verify that the formation_position_spriterow_map keys are in the expected order
         if list(self.formation_position_spriterow_map.keys()) != [
             "default",
@@ -911,7 +911,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             self.num_pantograph_rows = len(self.catalogue) * (
                 1 + max(self.formation_position_spriterow_map.values())
             )
-        if self.tail_light_cabbage:
+        if self.tail_light_from_vehicle_sprites:
             self.pipelines.extend(
                 pipelines.get_pipelines(
                     ["generate_marker_lights_spritesheet"]
@@ -1074,8 +1074,8 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self.colour_mapping_switch = colour_mapping_switch
         self.colour_mapping_switch_purchase = colour_mapping_switch_purchase
         self.colour_mapping_with_purchase = colour_mapping_with_purchase
-        self.tail_light_cabbage = kwargs.get("tail_light_cabbage", False)
-        if self.tail_light_cabbage:
+        self.tail_light_from_vehicle_sprites = kwargs.get("tail_light_from_vehicle_sprites", False)
+        if self.tail_light_from_vehicle_sprites:
             self.pipelines.extend(
                 pipelines.get_pipelines(
                     ["generate_marker_lights_spritesheet"]

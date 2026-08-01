@@ -1465,7 +1465,7 @@ class FixedFormationRailcarCombineEngine(EngineSchemaBase):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1531,7 +1531,7 @@ class MailEngineCabCarDVT(MailEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1692,7 +1692,7 @@ class MailEngineMetro(MailEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1752,7 +1752,7 @@ class MailEngineRailcar(MailEngineBase):
             formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1805,7 +1805,7 @@ class MailEngineExpressRailcar(MailEngineBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1876,7 +1876,7 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="driving_cab_cars",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -1964,7 +1964,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -2009,7 +2009,7 @@ class PassengerEngineMetro(PassengerEngineBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -2049,7 +2049,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -2095,7 +2095,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -2242,7 +2242,7 @@ class TGVMiddleEngineMixin(EngineSchemaBase):
             formation_ruleset="tgv_hst",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -6788,7 +6788,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
             formation_ruleset="railcars_4_unit_sets",
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
 
@@ -7730,7 +7730,7 @@ class PassengeMetroTrailerCar(PassengerCarBase):
             formation_position_spriterow_map,
             formation_ruleset="metro",
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
@@ -7933,7 +7933,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
             catalogue_entry=self.catalogue_entry,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
 
@@ -8091,7 +8091,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
 
@@ -8137,7 +8137,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset="railcars_3_unit_sets",
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
-            tail_light_cabbage=True,
+            tail_light_from_vehicle_sprites=True,
         )
 
     @property
