@@ -23,14 +23,14 @@ def main(**kwargs):
         unit_cls_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
-        tail_light="railcar_20px_4",
+        tail_light="railcar_20px_4", # as of July 2026, autocoach uses explicit tail light, not automatic, TMWFTLB to add tail light support to nml template
     )
 
     model_def.add_unit_def(
         unit_cls_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
-        tail_light="railcar_20px_4",
+        tail_light="railcar_20px_4", # as of July 2026, autocoach uses explicit tail light, not automatic, TMWFTLB to add tail light support to nml template
     )
 
     model_def.define_description(
