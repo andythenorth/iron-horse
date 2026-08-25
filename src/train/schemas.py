@@ -4026,7 +4026,7 @@ class CarbonBlackHopperCarBase(CarSchemaBase):
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
-        self.label_refits_allowed = ["CBLK"]
+        self.label_refits_allowed = ["CBLK", "INCA"]
         self.label_refits_disallowed = []
         self.default_cargos = []
         self._loading_speed_multiplier = 2
