@@ -20,8 +20,10 @@ def main(**kwargs):
         random_reverse=True,
         liveries=[
             "CONVENTIONAL_WISDOM",
+            "BANGER_BLUE",
             "FREIGHT_BLACK",
             "SHOW_PONY",
+            "INDUSTRIAL_YELLOW",
             "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,
