@@ -32,6 +32,18 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ExpressCarRandomised",
+        base_numeric_id=32520,
+        gen=3,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="ExpressCarUnit", chassis="empty_32px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="ExpressCarRandomised",
         base_numeric_id=29470,
         gen=4,
         subtype="A",

@@ -90,21 +90,21 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    #     model_def = ModelDef(
-    #         schema_name="ExpressCarType2",
-    #         base_numeric_id=25870,
-    #         gen=3,
-    #         subtype="C",
-    #         sprites_complete=True,
-    #     )
-    #
-    #     model_def.add_unit_def(
-    #         schema_name="ExpressCarUnit",
-    #         suppress_roof_sprite=True,  # non-standard roof for this wagon
-    #         chassis="4_axle_solid_express_32px",
-    #     )
-    #
-    #     result.append(model_def)
+    model_def = ModelDef(
+        schema_name="ExpressCarType2",
+        base_numeric_id=25100,
+        gen=3,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_solid_express_32px",
+    )
+
+    result.append(model_def)
 
     model_def = ModelDef(
         schema_name="ExpressCarType2",
