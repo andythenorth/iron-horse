@@ -20,6 +20,18 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="FoodExpressBoxCombos",
+        base_numeric_id=32790,
+        gen=2,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="ExpressCarUnit", chassis="empty_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="FoodExpressBoxCombos",
         base_numeric_id=30700,
         gen=3,
         subtype="A",

@@ -24,6 +24,22 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="ReeferCarType1",
+        base_numeric_id=32780,
+        gen=2,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="ExpressCarUnit",
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="3_axle_solid_express_24px",
+    )
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="ReeferCarType1",
         base_numeric_id=24190,
         gen=3,
         subtype="A",
