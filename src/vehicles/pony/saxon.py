@@ -24,6 +24,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "FREIGHT_BLACK",
             "INDUSTRIAL_YELLOW",
+            "INDUSTRIAL_YELLOW",
         ],
         sprites_complete=True,
     )
