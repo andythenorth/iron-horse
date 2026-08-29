@@ -3,6 +3,32 @@ Changelog
 
 
 --------------
+4.30.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.30.0.
+
+
+*Changes*
+
+- added wagons
+    - gen 2B Refrigerated Vans and Express Food Vans
+    - gen 3C Express Van
+    - gen 2B randomised Product Tanker
+- added or adjusted liveries for
+    - Bean Feast
+    - Cheese Bug
+    - Esk
+    - Haar
+    - Nile
+    - Saxon
+    - Thor
+    - Tyrconnell
+-  Carbon Black Hoppers now also refit to industrial carbons cargo
+
+
+--------------
 4.29.0 Release
 --------------
 
