@@ -7,7 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         schema_name="PassengerEngineExpressRailcar",
         model_id="sunshine_coast",
-        base_numeric_id=4860,
+        base_numeric_id=990,
         name="Sunshine Coast",
         subrole="express_pax_railcar",
         subrole_child_branch_num=-2,  # joker to hide them from simplified mode
