@@ -8,6 +8,30 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="MineralCoveredHopperCarSaltRandomised",
+        base_numeric_id=64970,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_16px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MineralCoveredHopperCarSaltRandomised",
+        base_numeric_id=64980,
+        gen=4,
+        subtype="B",
+        sprites_complete=True,
+    )
+
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="empty_24px")
+
+    result.append(model_def)
+
+    model_def = ModelDef(
+        schema_name="MineralCoveredHopperCarSaltRandomised",
         base_numeric_id=24310,
         gen=5,
         subtype="B",
