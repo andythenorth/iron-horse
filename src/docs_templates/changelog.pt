@@ -3,6 +3,27 @@ Changelog
 
 
 --------------
+4.31.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.30.0.
+
+
+*Changes*
+
+- added more gen 4A and 4B Salt Hoppers
+- additional livery for Wyvern
+
+
+*Fixes*
+
+- length was wrong for gen 4A randomised swing roof hopper car
+- incorrect livery for one variant of gen 2C mail van
+- extra pixels showing for some cargo sprites for gen 1A narrow gauge open cars
+
+
+--------------
 4.30.0 Release
 --------------
 
