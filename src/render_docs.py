@@ -1,5 +1,3 @@
-import codecs  # used for writing files - more unicode friendly than standard open() module
-
 import shutil
 import sys
 import os
@@ -82,10 +80,11 @@ def render_docs(
                 doc_name=doc_name,
             )
         # save the results of templating
-        doc_file = codecs.open(
+        doc_file = open(
             os.path.join(docs_output_path, doc_name + "." + file_type),
             "w",
-            "utf8",
+            encoding="utf-8",
+            newline="",
         )
         doc_file.write(doc)
         doc_file.close()
@@ -119,8 +118,11 @@ def render_docs_vehicle_details(
             doc_helper=doc_helper,
             doc_name=doc_name,
         )
-        doc_file = codecs.open(
-            os.path.join(docs_output_path, doc_name + ".html"), "w", "utf8"
+        doc_file = open(
+            os.path.join(docs_output_path, doc_name + ".html"),
+            "w",
+            encoding="utf-8",
+            newline="",
         )
         doc_file.write(doc)
         doc_file.close()

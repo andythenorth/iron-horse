@@ -1,5 +1,3 @@
-import codecs  # used for writing files - more unicode friendly than standard open() module
-
 import sys
 import os
 
@@ -53,8 +51,11 @@ def render_header_item_nml(
         )
     )
     # write the nml per item to disk, it aids debugging
-    with codecs.open(
-        os.path.join(generated_files_path, "nml", header_item + ".nml"), "w", "utf8"
+    with open(
+        os.path.join(generated_files_path, "nml", header_item + ".nml"),
+        "w",
+        encoding="utf-8",
+        newline="",
     ) as header_item_nml:
         header_item_nml.write(result)
 
@@ -65,8 +66,11 @@ def render_header_item_nml(
 def render_item_nml(item, graphics_path):
     result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
-    with codecs.open(
-        os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
+    with open(
+        os.path.join(generated_files_path, "nml", item.id + ".nml"),
+        "w",
+        encoding="utf-8",
+        newline="",
     ) as item_nml:
         item_nml.write(result)
 
@@ -88,10 +92,11 @@ def main():
     generated_nml_path = os.path.join(generated_files_path, "nml")
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_nml_path, exist_ok=True)
-    grf_nml = codecs.open(
+    grf_nml = open(
         os.path.join(generated_files_path, command_line_args.grf_name + ".nml"),
         "w",
-        "utf8",
+        encoding="utf-8",
+        newline="",
     )
 
     # expensive if repeatedly computed
