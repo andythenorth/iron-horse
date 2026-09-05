@@ -7179,7 +7179,7 @@ class MineralCoveredHopperCombos(RandomisedCarComboMixin, MineralCoveredHopperCa
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
             buy_menu_id_pairs=[
-                ["salt_covered_hopper_car"],
+                ["salt_covered_hopper_car_type_1"],
                 ["lime_covered_hopper_car_type_3", "lime_covered_hopper_car_type_1"],
             ],
             catalogue_entry=self.catalogue_entry,
@@ -7303,23 +7303,23 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         )
 
 
-class MineralCoveredHopperCarSalt(MineralCoveredHopperCarSaltBase):
+class MineralCoveredHopperCarSaltType1(MineralCoveredHopperCarSaltBase):
     """
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
-    model_id_root = "salt_covered_hopper_car"
+    model_id_root = "salt_covered_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarSaltSwingRoof(MineralCoveredHopperCarSaltBase):
+class MineralCoveredHopperCarSaltType2(MineralCoveredHopperCarSaltBase):
     """
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
-    model_id_root = "salt_swing_roof_hopper_car"
+    model_id_root = "salt_covered_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

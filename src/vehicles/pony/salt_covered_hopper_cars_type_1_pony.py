@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26840,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26780,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26860,
         gen=3,
         subtype="B",
@@ -52,7 +52,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=30330,
         gen=2,
         subtype="A",
@@ -64,7 +64,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26380,
         gen=3,
         subtype="A",
@@ -76,7 +76,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26890,
         gen=4,
         subtype="A",
@@ -88,7 +88,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=24990,
         gen=4,
         subtype="B",
@@ -100,7 +100,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=17340,
         gen=5,
         subtype="A",
@@ -114,7 +114,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=26910,
         gen=5,
         subtype="B",
@@ -128,7 +128,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="MineralCoveredHopperCarSalt",
+        schema_name="MineralCoveredHopperCarSaltType1",
         base_numeric_id=24970,
         gen=5,
         subtype="C",
