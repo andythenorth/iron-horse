@@ -143,7 +143,7 @@ wagon_module_names_with_roster_ids = {
     "low_floor_intermodal_cars": "pony",
     "merchandise_box_cars": "pony",
     "pipe_cars": "pony",
-    "pressure_tank_cars": "pony",
+    "pressure_tank_cars_type_1": "pony",
     "product_tank_cars_type_1": "pony",
     "reefer_cars_type_1": "pony",
     "reefer_cars_type_2": "pony",

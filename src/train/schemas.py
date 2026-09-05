@@ -5774,13 +5774,35 @@ class GasTankCarBase(CarSchemaBase):
         )
 
 
-class GasTankCarPressure(GasTankCarBase):
+class GasTankCarPressureBase(GasTankCarBase):
     """
     Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
     """
 
-    model_id_root = "pressure_tank_car"
+    vehicle_family_id = "pressure_tank_car"
     variant_group_id_root = "wagon_group_pressure_tank_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class GasTankCarPressureType1(GasTankCarPressureBase):
+    """
+    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    """
+
+    model_id_root = "pressure_tank_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class GasTankCarPressureType2(GasTankCarPressureBase):
+    """
+    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    """
+
+    model_id_root = "pressure_tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
