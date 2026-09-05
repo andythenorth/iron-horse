@@ -26,7 +26,7 @@ def main(**kwargs):
         weight=32,
         rel_spriterow_index=0,
         chassis="4_axle_solid_express_32px",
-        tail_light="cargo_sprinter_32px", # as of July 2026, cargo sprinter uses explicit tail light, not automatic, TMWFTLB to add tail light support to nml template
+        tail_light="cargo_sprinter_32px",  # as of July 2026, cargo sprinter uses explicit tail light, not automatic, TMWFTLB to add tail light support to nml template
     )
 
     model_def.define_description("""Runs like the wind.""")

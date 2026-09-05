@@ -21,7 +21,7 @@ def main(**kwargs):
             "BANGER_BLUE",
             "CONVENTIONAL_WISDOM",
             "SUPERGRAPHIC",
-            "RAILFREIGHT_RED_STRIPE", # no stripe
+            "RAILFREIGHT_RED_STRIPE",  # no stripe
             "RAILFREIGHT_RED_STRIPE",
             "CLASSIC_LINES",
         ],

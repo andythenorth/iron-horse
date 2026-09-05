@@ -6,7 +6,6 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
-
     model_def = ModelDef(
         schema_name="AutomobileDoubleDeckEnclosedCar",
         base_numeric_id=31270,

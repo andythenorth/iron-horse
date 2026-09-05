@@ -106,7 +106,8 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_greebled_24px"
+        unit_cls_name="ExpressMailCarUnit",
+        chassis="4_axle_solid_pax_mail_greebled_24px",
     )
 
     result.append(model_def)
@@ -121,7 +122,8 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        unit_cls_name="ExpressMailCarUnit", chassis="4_axle_solid_pax_mail_greebled_32px"
+        unit_cls_name="ExpressMailCarUnit",
+        chassis="4_axle_solid_pax_mail_greebled_32px",
     )
 
     result.append(model_def)
