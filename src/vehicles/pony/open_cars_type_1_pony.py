@@ -55,7 +55,7 @@ def main(**kwargs):
         gen=1,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=True,
+        sprites_complete=False, # piece goods placement wrong?
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
@@ -70,7 +70,7 @@ def main(**kwargs):
         gen=3,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=True,
+        sprites_complete=False, # piece goods placement wrong?
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_16px")
@@ -83,7 +83,7 @@ def main(**kwargs):
         gen=3,
         subtype="B",
         base_track_type="NG",
-        sprites_complete=True,
+        sprites_complete=False, # piece goods placement wrong?
     )
 
     model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_ng_24px")
