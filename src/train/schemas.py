@@ -5755,6 +5755,7 @@ class GasTankCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+        "COMPANY_COLOUR",
     ]
 
     def __init__(self, **kwargs):
