@@ -5824,7 +5824,6 @@ class GasTankCarCryo(GasTankCarBase):
     """
 
     model_id_root = "cryo_tank_car"
-    variant_group_id_root = "wagon_group_pressure_tank_cars"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
