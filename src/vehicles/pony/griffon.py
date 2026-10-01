@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="branch_express",
         subrole_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 1650,
+            "DIESEL": 1750,
         },
         random_reverse=True,
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine

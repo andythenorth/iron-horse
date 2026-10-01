@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="freight_railcar",
         subrole_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 825,  # matched to 50% of Griffon, Ultra Shoebox
+            "DIESEL": 875,  # matched to 50% of Griffon, Ultra Shoebox
         },
         receives_easter_egg_haulage_speed_bonus=True,
         gen=5,

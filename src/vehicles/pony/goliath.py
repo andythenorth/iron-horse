@@ -12,7 +12,7 @@ def main(**kwargs):
         subrole="branch_freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 1650,
+            "DIESEL": 1750,
         },
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,
