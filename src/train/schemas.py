@@ -3101,6 +3101,7 @@ class BoxCarMerchandise(BoxCarBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
     ]
 
     model_id_root = "merchandise_box_car"
@@ -5778,6 +5779,7 @@ class GasTankCarCryo(GasTankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
     ]
 
     model_id_root = "cryo_tank_car"
