@@ -3158,6 +3158,7 @@ class BoxCarSlidingWallBase(BoxCarBase):
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
+        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "sliding_wall_car"
@@ -5636,6 +5637,7 @@ class FlatCarMillBase(FlatCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "mill_flat_car"
@@ -6289,6 +6291,7 @@ class HopperCarRockBase(HopperCarBase):
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_MIST",
+        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "rock_hopper_car"
@@ -6362,6 +6365,7 @@ class HopperCarSideDoor(HopperCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPANY_COLOUR",
     ]
 
     model_id_root = "side_door_hopper_car"
@@ -7332,6 +7336,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         "RANDOM_LIVERIES_VARIETY_LIMEWASH_NO_WEATHERING",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "roller_roof_hopper_car"
@@ -8533,6 +8538,7 @@ class PipeCar(FlatCarBase):
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPANY_COLOUR",
     ]
 
     model_id_root = "pipe_car"
@@ -8818,6 +8824,7 @@ class SlidingRoofCar(BoxCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
     ]
 
     model_id_root = "sliding_roof_car"
@@ -9382,6 +9389,7 @@ class TarpaulinCarBase(BoxCarBase):
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
+        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "tarpaulin_car"
