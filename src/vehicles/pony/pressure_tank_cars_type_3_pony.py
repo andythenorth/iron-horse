@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63970,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63990,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -19,8 +19,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63980,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63400,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -33,8 +33,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63900,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63960,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -45,8 +45,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63950,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63850,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -59,8 +59,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63940,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63840,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -71,8 +71,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63930,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63830,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -85,8 +85,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63920,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63820,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -99,8 +99,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarPressureType2",
-        base_numeric_id=63910,
+        schema_name="GasTankCarPressureType3",
+        base_numeric_id=63810,
         gen=5,
         subtype="C",
         sprites_complete=True,

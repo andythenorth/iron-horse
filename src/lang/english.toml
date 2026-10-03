@@ -144,6 +144,9 @@ base = "Oxide"
 [STR_BADGE_LIVERY_FREIGHT_KALE]
 base = "Kale"
 
+[STR_BADGE_LIVERY_FREIGHT_GALENA]
+base = "Galena"
+
 [STR_BADGE_LIVERY_FREIGHT_RED]
 base = "Flame Red"
 
@@ -434,6 +437,9 @@ base = "Food Ingredients Hopper"
 
 [STR_WAGON_NAME_FOOD_INGREDIENTS_MIXED_COMBOS]
 base = "Food Ingredients Wagon"
+
+[STR_WAGON_NAME_GAS_TANK_CAR]
+base = "Gas Tanker"
 
 [STR_WAGON_NAME_HEAVY_DUTY_DUMP_CAR]
 base = "Heavy Duty Bulk Wagon"

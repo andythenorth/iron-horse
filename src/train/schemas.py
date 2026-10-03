@@ -5751,13 +5751,6 @@ class GasTankCarBase(CarSchemaBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = [
-        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_SILVER_PEWTER",
-        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
-        "COMPANY_COLOUR",
-    ]
-
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
@@ -5773,6 +5766,25 @@ class GasTankCarBase(CarSchemaBase):
         self._intro_date_months_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
         ]
+
+
+class GasTankCarCryo(GasTankCarBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+    ]
+
+    model_id_root = "cryo_tank_car"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
@@ -5786,8 +5798,17 @@ class GasTankCarBase(CarSchemaBase):
 
 class GasTankCarPressureBase(GasTankCarBase):
     """
-    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    High pressure tank cars for gases under pressure, e.g. Chlorine etc.
     """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OCHRE_SAND",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
+        "FREIGHT_GALENA",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
+    ]
 
     vehicle_family_id = "pressure_tank_car"
     variant_group_id_root = "wagon_group_pressure_tank_cars"
@@ -5798,36 +5819,112 @@ class GasTankCarPressureBase(GasTankCarBase):
 
 class GasTankCarPressureType1(GasTankCarPressureBase):
     """
-    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    High pressure tank cars for gases under pressure, e.g. Chlorine etc.
     """
 
     model_id_root = "pressure_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class GasTankCarPressureType2(GasTankCarPressureBase):
     """
-    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    High pressure tank cars for gases under pressure, e.g. Chlorine etc.
     """
 
     model_id_root = "pressure_tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
-class GasTankCarCryo(GasTankCarBase):
+class GasTankCarPressureType3(GasTankCarPressureBase):
     """
-    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    High pressure tank cars for gases under pressure, e.g. Chlorine etc.
     """
 
-    model_id_root = "cryo_tank_car"
+    model_id_root = "pressure_tank_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.pressure_tanker_livery_recolour_map,
+            "weathered": graphics_constants.pressure_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class GasTankCarStandardBase(GasTankCarBase):
+    """
+    Standard tank cars for gases under pressure, e.g. LPG etc.
+    """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+        "COMPANY_COLOUR",
+    ]
+
+    vehicle_family_id = "gas_tank_car"
+    variant_group_id_root = "wagon_group_gas_tank_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class GasTankCarStandardType1(GasTankCarStandardBase):
+    """
+    Standard tank cars for gases under pressure, e.g. LPG etc.
+    """
+
+    model_id_root = "gas_tank_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class GasTankCarStandardType2(GasTankCarStandardBase):
+    """
+    Standard tank cars for gases under pressure, e.g. LPG etc.
+    """
+
+    model_id_root = "gas_tank_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class HopperCarBase(CarSchemaBase):
