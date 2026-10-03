@@ -58,7 +58,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="AutomobileDoubleDeckEnclosedCar",
-        base_numeric_id=25620,
+        base_numeric_id=64040,
         gen=5,
         subtype="B",
         sprites_complete=True,

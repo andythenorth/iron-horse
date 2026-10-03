@@ -106,7 +106,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="IntermodalCar",
-        base_numeric_id=24420,
+        base_numeric_id=63410,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -34,7 +34,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCar",
-        base_numeric_id=25640,
+        base_numeric_id=64060,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         schema_name="BolsterCar",
-        base_numeric_id=24820,
+        base_numeric_id=64030,
         gen=2,
         subtype="B",
         sprites_complete=True,
