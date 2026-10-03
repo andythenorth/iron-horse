@@ -133,6 +133,7 @@ wagon_module_name_stems = [
     "product_tank_cars_randomised",
     "acid_tank_cars_type_1",
     "acid_tank_cars_type_2",
+    "acid_tank_cars_type_3",
     "acid_tank_cars_randomised",
     "chemical_cargo_tank_combos",
     "pressure_tank_cars_type_1",

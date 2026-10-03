@@ -9116,6 +9116,23 @@ class TankCarAcidType2(TankCarAcidBase):
         self.gestalt_graphics.weathered_states = weathered_states
 
 
+class TankCarAcidType3(TankCarAcidBase):
+    """
+    Visual variant of the standard tank car, same refits, different default cargos.
+    """
+
+    model_id_root = "acid_tank_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.acid_tank_car_type_3_livery_recolour_map,
+            "weathered": graphics_constants.acid_tank_car_type_3_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics.weathered_states = weathered_states
+
+
 class TankCarAcidRandomised(RandomisedCarVanillaMixin, TankCarAcidBase):
     """
     Random choice of acid tank car sprites.

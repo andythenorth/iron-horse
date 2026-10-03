@@ -656,6 +656,43 @@ acid_tank_car_type_1_livery_recolour_map_weathered = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
+acid_tank_car_type_3_livery_recolour_map = {
+    136: CC1,
+    137: CC1 + 1,
+    138: CC1 + 2,
+    139: CC1 + 3,
+    140: CC1 + 4,
+    141: CC1 + 5,
+    142: CC1 + 6,
+    143: CC1 + 7,
+    154: 104,
+    155: 2,
+    156: 25,
+    157: 17,
+    158: 18,
+    159: 19,
+    160: 20,
+    161: 10,
+}
+acid_tank_car_type_3_livery_recolour_map_weathered = {
+    # should be kept in sync with the SULP map in polar fox tanker maps
+    136: CC1,
+    137: CC1 + 1,
+    138: CC1 + 2,
+    139: CC1 + 3,
+    140: CC1 + 4,
+    141: CC1 + 5,
+    142: CC1 + 6,
+    143: CC1 + 7,
+    154: 1,
+    155: 2,
+    156: 106,
+    157: 17,
+    158: 18,
+    159: 7,
+    160: 20,
+    161: 10,
+}
 tank_car_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
