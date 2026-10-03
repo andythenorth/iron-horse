@@ -3,6 +3,21 @@ Changelog
 
 
 --------------
+4.33.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.33.0.
+
+
+*Changes*
+
+- moved Pressure Tankers from Cryo Tankers group to their own group
+- added two more types of Pressure Tanker
+- added single company colour livery option to more wagon types
+
+
+--------------
 4.32.0 Release
 --------------
 
@@ -12,8 +27,8 @@ Not savegame compatible with Iron Horse releases before 4.30.0.
 
 *Changes*
 
-- add single company colour livery option to many wagon types, as mandatory colour variation perhaps isn't always wanted
-- bump gen 6 engines with 1650hp to 1750hp for better balance
+- added single company colour livery option to many wagon types, as mandatory colour variation perhaps isn't always wanted
+- bumped gen 6 engines with 1650hp to 1750hp for better balance
 
 
 --------------
