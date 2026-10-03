@@ -9,7 +9,16 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "viking",
+    "pressure_tank_car_type_2_pony_gen_2A",
+    "pressure_tank_car_type_2_pony_gen_3A",
+    "pressure_tank_car_type_2_pony_gen_3B",
+    "pressure_tank_car_type_2_pony_gen_4A",
+    "pressure_tank_car_type_2_pony_gen_4B",
+    "pressure_tank_car_type_2_pony_gen_4C",
+    "pressure_tank_car_type_2_pony_gen_5A",
+    "pressure_tank_car_type_2_pony_gen_5B",
+    "pressure_tank_car_type_2_pony_gen_5C",
+
 ]
 
 CC1 = 198
@@ -21,6 +30,7 @@ cc_remaps = {
     "faded_oil_black": (1, 70, 106, 4, 18, 6, 20, 9),
     "nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
+    "purple": (136, 137, 138, 139, 140, 141, 142, 143),
 }
 
 cc_remaps_as_dicts = {

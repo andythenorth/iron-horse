@@ -5807,15 +5807,18 @@ class GasTankCarPressureBase(GasTankCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
-        "FREIGHT_GALENA",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "pressure_tank_car"
     variant_group_id_root = "wagon_group_pressure_tank_cars"
+
+    randomised_candidate_groups = [
+        "pressure_tank_car_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5881,6 +5884,26 @@ class GasTankCarPressureType3(GasTankCarPressureBase):
         )
 
 
+class GasTankCarPressureRandomised(RandomisedCarVanillaMixin, GasTankCarPressureBase):
+    """
+    Random choice of high pressure tank car.
+    """
+
+    model_id_root = "pressure_tank_car_randomised"
+    vehicle_family_id = "pressure_tank_car"
+    # clear randomised candidates set by base class
+    randomised_candidate_groups = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
+            random_vehicle_map_type="map_block_train_with_minor_variation",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
 class GasTankCarStandardBase(GasTankCarBase):
     """
     Standard tank cars for gases under pressure, e.g. LPG etc.
@@ -5890,6 +5913,7 @@ class GasTankCarStandardBase(GasTankCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
     ]
 
@@ -9148,6 +9172,51 @@ class TankCarAcidRandomised(RandomisedCarVanillaMixin, TankCarAcidBase):
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class TankCarCausticBase(TankCarBase):
+    """
+    Caustic tank car
+    """
+
+    liveries = [
+        "FREIGHT_GALENA",
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_BUMBLEBEE",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
+    ]
+
+    vehicle_family_id = "caustic_tank_car"
+    variant_group_id_root = "wagon_group_caustic_tank_cars"
+    randomised_candidate_groups = ["chemical_cargo_tank_combos"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["tank"]
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.tank_car_livery_recolour_map
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class TankCarCausticType1(TankCarCausticBase):
+    """
+    Caustic tank car
+    """
+
+    model_id_root = "caustic_tank_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class TankCarProductBase(TankCarBase):

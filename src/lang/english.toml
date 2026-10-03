@@ -363,6 +363,9 @@ base = "Cane Bin"
 [STR_WAGON_NAME_CARBON_BLACK_HOPPER_CAR]
 base = "Carbon Black Hopper"
 
+[STR_WAGON_NAME_CAUSTIC_TANK_CAR]
+base = "Caustic Tanker"
+
 [STR_WAGON_NAME_CEMENT_SILO_CAR]
 base = "Cement Wagon"
 

@@ -402,25 +402,26 @@ cryo_tanker_livery_recolour_map_weathered = {
     142: 14,
     143: 15,
 }
+
 pressure_tanker_livery_recolour_map = {
-    136: CC1,
-    137: CC1 + 1,
-    138: CC1 + 2,
-    139: CC1 + 3,
-    140: CC1 + 4,
-    141: CC1 + 5,
-    142: CC1 + 6,
-    143: CC1 + 7,
+    136: 4,
+    137: 5,
+    138: 6,
+    139: 19,
+    140: 20,
+    141: 21,
+    142: 22,
+    143: 13,
 }
 pressure_tanker_livery_recolour_map_weathered = {
-    136: CC1,
-    137: CC1 + 1,
-    138: CC1 + 2,
-    139: CC1 + 3,
-    140: CC1 + 4,
-    141: CC1 + 5,
-    142: CC1 + 6,
-    143: CC1 + 7,
+    136: 32,
+    137: 33,
+    138: 6,
+    139: 35,
+    140: 20,
+    141: 21,
+    142: 22,
+    143: 38,
 }
 
 curtain_side_livery_recolour_map = body_recolour_CC1
