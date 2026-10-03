@@ -7,20 +7,20 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20730,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64380,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_sparse_16px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20740,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64390,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -33,20 +33,20 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20750,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64400,
         gen=4,
         subtype="C",
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_32px")
+    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_32px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20760,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64410,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -59,29 +59,29 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20770,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64420,
         gen=5,
         subtype="B",
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="2_axle_gapped_greebled_24px"
+        unit_cls_name="FreightCarUnit", chassis="2_axle_sparse_greebled_24px"
     )
 
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="GasTankCarCryo",
-        base_numeric_id=20780,
+        schema_name="GasTankCarCryoType3",
+        base_numeric_id=64430,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
     model_def.add_unit_def(
-        unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_greebled_alt_32px"
+        unit_cls_name="FreightCarUnit", chassis="4_axle_sparse_greebled_32px"
     )
 
     result.append(model_def)

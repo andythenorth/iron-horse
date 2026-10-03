@@ -5771,7 +5771,7 @@ class GasTankCarBase(CarSchemaBase):
         ]
 
 
-class GasTankCarCryo(GasTankCarBase):
+class GasTankCarCryoBase(GasTankCarBase):
     """
     Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
     """
@@ -5784,7 +5784,23 @@ class GasTankCarCryo(GasTankCarBase):
         "COMPANY_COLOUR",
     ]
 
-    model_id_root = "cryo_tank_car"
+    vehicle_family_id = "cryo_tank_car"
+    variant_group_id_root = "wagon_group_cryo_tank_cars"
+
+    randomised_candidate_groups = [
+        "cryo_tank_car_randomised",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class GasTankCarCryoType1(GasTankCarCryoBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    model_id_root = "cryo_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5796,6 +5812,68 @@ class GasTankCarCryo(GasTankCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class GasTankCarCryoType2(GasTankCarCryoBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    model_id_root = "cryo_tank_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class GasTankCarCryoType3(GasTankCarCryoBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    model_id_root = "cryo_tank_car_type_3"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.pressure_tanker_livery_recolour_map,
+            "weathered": graphics_constants.pressure_tanker_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class GasTankCarCryoRandomised(RandomisedCarVanillaMixin, GasTankCarCryoBase):
+    """
+    Random choice of high pressure tank car.
+    """
+
+    model_id_root = "cryo_tank_car_randomised"
+    vehicle_family_id = "cryo_tank_car"
+    # clear randomised candidates set by base class
+    randomised_candidate_groups = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
+            random_vehicle_map_type="map_block_train_with_minor_variation",
+            dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
 

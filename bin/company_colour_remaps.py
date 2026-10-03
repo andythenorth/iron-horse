@@ -9,16 +9,12 @@ from polar_fox import graphics_units
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
 input_filenames = [
-    "pressure_tank_car_type_2_pony_gen_2A",
-    "pressure_tank_car_type_2_pony_gen_3A",
-    "pressure_tank_car_type_2_pony_gen_3B",
-    "pressure_tank_car_type_2_pony_gen_4A",
-    "pressure_tank_car_type_2_pony_gen_4B",
-    "pressure_tank_car_type_2_pony_gen_4C",
-    "pressure_tank_car_type_2_pony_gen_5A",
-    "pressure_tank_car_type_2_pony_gen_5B",
-    "pressure_tank_car_type_2_pony_gen_5C",
-
+    "cryo_tank_car_type_2_pony_gen_4A",
+    "cryo_tank_car_type_2_pony_gen_4B",
+    "cryo_tank_car_type_2_pony_gen_4C",
+    "cryo_tank_car_type_2_pony_gen_5A",
+    "cryo_tank_car_type_2_pony_gen_5B",
+    "cryo_tank_car_type_2_pony_gen_5C",
 ]
 
 CC1 = 198
