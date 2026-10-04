@@ -9225,6 +9225,9 @@ class TankCarAcidType3(TankCarAcidBase):
 
     model_id_root = "acid_tank_car_type_3"
 
+    # nerfed off, this variant looks bad in combos
+    randomised_candidate_groups = []
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
@@ -9258,12 +9261,10 @@ class TankCarCausticBase(TankCarBase):
     """
 
     liveries = [
-        "FREIGHT_GALENA",
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
-        "RANDOM_LIVERIES_BUMBLEBEE",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
-        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
-        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "RANDOM_LIVERIES_SILVER_PEWTER",
+        "RANDOM_LIVERIES_VARIETY_LIMEWASH",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
@@ -9271,19 +9272,14 @@ class TankCarCausticBase(TankCarBase):
 
     vehicle_family_id = "caustic_tank_car"
     variant_group_id_root = "wagon_group_caustic_tank_cars"
-    randomised_candidate_groups = ["chemical_cargo_tank_combos"]
+    randomised_candidate_groups = [
+        "caustic_tank_car_randomised",
+        "chemical_cargo_tank_combos",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
-        # Graphics configuration
-        weathered_states = {
-            "unweathered": graphics_constants.tank_car_livery_recolour_map
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_states=weathered_states,
-            catalogue_entry=self.catalogue_entry,
-        )
 
 
 class TankCarCausticType1(TankCarCausticBase):
@@ -9295,6 +9291,52 @@ class TankCarCausticType1(TankCarCausticBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.caustic_tank_car_type_1_livery_recolour_map,
+            "weathered": graphics_constants.caustic_tank_car_type_1_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class TankCarCausticType2(TankCarCausticBase):
+    """
+    Caustic tank car
+    """
+
+    model_id_root = "caustic_tank_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.caustic_tank_car_type_2_livery_recolour_map,
+            "weathered": graphics_constants.caustic_tank_car_type_2_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class TankCarCausticRandomised(RandomisedCarVanillaMixin, TankCarCausticBase):
+    """
+    Random choice of caustic tank car.
+    """
+
+    model_id_root = "caustic_tank_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
+            random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=3,
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class TankCarProductBase(TankCarBase):
@@ -9518,10 +9560,10 @@ class ChemicalCargoTankCombos(RandomisedCarComboMixin, TankCarBase):
     # - too many colours is confusing...because the sprites are also so varied
     # - too few colours looks unnatural...because the sprites are so varied
     liveries = [
-        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",  # bump to top for visual effect
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_BUMBLEBEE",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",
@@ -9533,9 +9575,9 @@ class ChemicalCargoTankCombos(RandomisedCarComboMixin, TankCarBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
-            random_vehicle_map_type="map_block_train_with_minor_variation",
+            random_vehicle_map_type="map_segmented_block_train",
             dice_colour=3,
-            buy_menu_id_pairs=[["acid_tank_car_type_1"], ["product_tank_car_type_2"]],
+            buy_menu_id_pairs=[["acid_tank_car_type_2"], ["product_tank_car_type_2"]],
             catalogue_entry=self.catalogue_entry,
         )
 

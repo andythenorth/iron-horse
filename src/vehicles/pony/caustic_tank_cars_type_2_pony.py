@@ -7,8 +7,8 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=64130,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64530,
         gen=2,
         subtype="A",
         sprites_complete=False,
@@ -19,8 +19,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63990,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64540,
         gen=3,
         subtype="A",
         sprites_complete=False,
@@ -31,8 +31,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63400,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64550,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -45,8 +45,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63960,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64560,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -57,8 +57,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63850,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64570,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -71,8 +71,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63840,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64580,
         gen=4,
         subtype="C",
         sprites_complete=False,
@@ -83,8 +83,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63830,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64590,
         gen=5,
         subtype="A",
         sprites_complete=False,
@@ -97,8 +97,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63820,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64600,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -111,8 +111,8 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        schema_name="TankCarCausticType1",
-        base_numeric_id=63810,
+        schema_name="TankCarCausticType2",
+        base_numeric_id=64610,
         gen=5,
         subtype="C",
         sprites_complete=False,

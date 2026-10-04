@@ -136,6 +136,8 @@ wagon_module_name_stems = [
     "acid_tank_cars_type_3",
     "acid_tank_cars_randomised",
     "caustic_tank_cars_type_1",
+    "caustic_tank_cars_type_2",
+    "caustic_tank_cars_randomised",
     "chemical_cargo_tank_combos",
     "pressure_tank_cars_type_1",
     "pressure_tank_cars_type_2",
@@ -508,7 +510,6 @@ custom_wagon_recolour_sprite_maps = {
     "custom_faded_cloud": (24, 25, 35, 20, 21, 22, 13, 15),
     "custom_mist": (2, 4, 18, 20, 21, 22, 13, 69),
     "custom_faded_mist": (2, 107, 7, 20, 21, 22, 13, 69),
-    "custom_slate": (2, 3, 16, 17, 18, 19, 20, 21),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -547,8 +548,6 @@ colour_sets = {
     "freight_clover": ["custom_clover", "custom_faded_clover"],
     "freight_cloud": ["custom_cloud", "custom_faded_cloud"],
     "freight_mist": ["custom_mist", "custom_faded_mist"],
-    # single set hack for specific case
-    "freight_slate": ["custom_slate", "custom_slate"],
     # this is a hack to match express intermodal to industrial yellow
     "freight_industrial_yellow": ["COLOUR_YELLOW", "COLOUR_YELLOW"],
 }
@@ -869,16 +868,6 @@ freight_wagon_liveries = {
     "FREIGHT_KALE": {
         "colour_set_names": ["freight_clover"],
         "purchase_swatch_colour_set_names": ["freight_clover"],
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "FREIGHT_GALENA": {
-        "colour_set_names": [
-            "freight_slate",
-        ],
-        "purchase_swatch_colour_set_names": ["freight_slate"],
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
