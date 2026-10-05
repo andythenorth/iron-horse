@@ -3363,8 +3363,6 @@ class BulkOpenCarAggregateRandomised(
     """
 
     model_id_root = "aggregate_bulk_open_car_randomised"
-    # needed to clear randomised set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3527,8 +3525,6 @@ class BulkOpenCarMineralRandomised(RandomisedCarVanillaMixin, BulkOpenCarMineral
 
     model_id_root = "coal_bulk_open_car_randomised"
     variant_group_id_root = "wagon_group_coal_bulk_open_cars"
-    # needed to clear randomised set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3709,8 +3705,6 @@ class BulkOpenCarTipplerRandomised(RandomisedCarVanillaMixin, BulkOpenCarTippler
 
     model_id_root = "tippler_bulk_open_car_randomised"
     variant_group_id_root = "wagon_group_tippler_bulk_open_cars"
-    # needed to clear randomised set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5865,8 +5859,6 @@ class GasTankCarCryoRandomised(RandomisedCarVanillaMixin, GasTankCarCryoBase):
 
     model_id_root = "cryo_tank_car_randomised"
     vehicle_family_id = "cryo_tank_car"
-    # clear randomised candidates set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5969,8 +5961,6 @@ class GasTankCarPressureRandomised(RandomisedCarVanillaMixin, GasTankCarPressure
 
     model_id_root = "pressure_tank_car_randomised"
     vehicle_family_id = "pressure_tank_car"
-    # clear randomised candidates set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6161,8 +6151,6 @@ class HopperCarAggregateRandomised(RandomisedCarVanillaMixin, HopperCarAggregate
 
     model_id_root = "aggregate_hopper_car_randomised"
     variant_group_id_root = "wagon_group_aggregate_hopper_cars"
-    # clear randomised candidates set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6234,8 +6222,6 @@ class HopperCarCoalRandomised(RandomisedCarVanillaMixin, HopperCarCoalBase):
     """
 
     model_id_root = "coal_hopper_car_randomised"
-    # needed to clear randomised set by base class
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7380,8 +7366,6 @@ class MineralCoveredHopperCarLimeRandomised(
     """
 
     model_id_root = "lime_covered_hopper_car_randomised"
-    # clear from randomisation groups
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7493,8 +7477,6 @@ class MineralCoveredHopperCarRollerRoofRandomised(
     """
 
     model_id_root = "roller_roof_hopper_car_randomised"
-    # clear from randomisation groups
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7575,8 +7557,6 @@ class MineralCoveredHopperCarSaltRandomised(
     """
 
     model_id_root = "salt_covered_hopper_car_randomised"
-    # clear from randomisation groups
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8903,8 +8883,6 @@ class SiloCarCementRandomised(RandomisedCarVanillaMixin, SiloCarCementBase):
     """
 
     model_id_root = "cement_silo_car_randomised"
-    # clear from randomisation groups
-    randomised_candidate_groups = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -9151,11 +9129,11 @@ class TankCarAcidBase(TankCarBase):
     """
 
     liveries = [
-        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",  # bump to top for visual effect
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_BUMBLEBEE",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "RANDOM_LIVERIES_OXIDE_RUST",
@@ -9341,7 +9319,7 @@ class TankCarCausticRandomised(RandomisedCarVanillaMixin, TankCarCausticBase):
 
 class TankCarProductBase(TankCarBase):
     """
-    Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
+    Tank car for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
     """
 
@@ -9382,7 +9360,7 @@ class TankCarProductBase(TankCarBase):
 
 class TankCarProductType1(TankCarProductBase):
     """
-    Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
+    Tank car for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
     """
 
@@ -9394,7 +9372,7 @@ class TankCarProductType1(TankCarProductBase):
 
 class TankCarProductType2(TankCarProductBase):
     """
-    Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
+    Tank car for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
     """
 
@@ -9416,6 +9394,83 @@ class TankCarProductRandomised(RandomisedCarVanillaMixin, TankCarProductBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
             random_vehicle_map_type="map_loose_mixed_train",
+            dice_colour=3,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class TankCarSolventBase(TankCarBase):
+    """
+    Solvent tank car
+    """
+
+    liveries = [
+        "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_LIVERIES_BUMBLEBEE",
+        "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
+        "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
+        "RANDOM_LIVERIES_OXIDE_RUST",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
+        "COMPANY_COLOUR",
+    ]
+
+    vehicle_family_id = "solvent_tank_car"
+    variant_group_id_root = "wagon_group_solvent_tank_cars"
+    randomised_candidate_groups = [
+        "chemical_cargo_tank_combos",
+        "solvent_tank_car_randomised",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["tank"]
+        # Graphics configuration
+        weathered_states = {
+            "unweathered": graphics_constants.tank_car_livery_recolour_map
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_states=weathered_states,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+
+class TankCarSolventType1(TankCarSolventBase):
+    """
+    Solvent tank car
+    """
+
+    model_id_root = "solvent_tank_car_type_1"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class TankCarSolventType2(TankCarSolventBase):
+    """
+    Solvent tank car
+    """
+
+    model_id_root = "solvent_tank_car_type_2"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class TankCarSolventRandomised(RandomisedCarVanillaMixin, TankCarSolventBase):
+    """
+    Random choice of solvent tank car.
+    """
+
+    model_id_root = "solvent_tank_car_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
             catalogue_entry=self.catalogue_entry,
         )
