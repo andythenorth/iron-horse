@@ -129,7 +129,7 @@ wagon_module_names_with_roster_ids = {
     "coil_cars_covered_asymmetric": "pony",
     "coil_cars_tarpaulin": "pony",
     "coil_cars_uncovered": "pony",
-    "cryo_tank_cars": "pony",
+    "cryo_tank_cars_type_1": "pony",
     "drop_end_flat_cars": "pony",
     "drop_side_flat_cars": "pony",
     "express_intermodal_cars_type_1": "pony",
