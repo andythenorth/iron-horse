@@ -5,49 +5,13 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    """
-    model_def = ModelDef(
-        schema_name="TankCarSolventType2",
-        base_numeric_id=64800,
-        gen=3,
-        subtype="A",
-        sprites_complete=False,
-    )
 
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="2_axle_filled_16px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="TankCarSolventType2",
-        base_numeric_id=64810,
-        gen=3,
-        subtype="B",
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_24px")
-
-    result.append(model_def)
-
-    model_def = ModelDef(
-        schema_name="TankCarSolventType2",
-        base_numeric_id=64820,
-        gen=3,
-        subtype="C",
-        sprites_complete=False,
-    )
-
-    model_def.add_unit_def(unit_cls_name="FreightCarUnit", chassis="4_axle_gapped_32px")
-
-    result.append(model_def)
-    """
     model_def = ModelDef(
         schema_name="TankCarSolventType2",
         base_numeric_id=64890,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -61,7 +25,7 @@ def main(**kwargs):
         base_numeric_id=64900,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -75,7 +39,7 @@ def main(**kwargs):
         base_numeric_id=64910,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -117,7 +81,7 @@ def main(**kwargs):
         base_numeric_id=64880,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
