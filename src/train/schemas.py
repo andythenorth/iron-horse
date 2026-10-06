@@ -2126,6 +2126,7 @@ class SnowploughEngine(EngineSchemaBase):
         # inserts the default liveries for docs examples
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
+            tail_light_from_vehicle_sprites=True,
             catalogue_entry=self.catalogue_entry,
         )
 

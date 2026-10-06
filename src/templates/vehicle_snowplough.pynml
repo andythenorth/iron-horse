@@ -12,9 +12,56 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_last, position_in_co
     0: ${unit.id}_ss_reversed;
     return ${unit.id}_ss_unreversed;
 }
-switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, num_vehs_in_consist) {
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_base, num_vehs_in_consist) {
     1: ${unit.id}_ss_unreversed;
     return ${unit.id}_switch_graphics_check_last;
+}
+
+
+<!--! tail lights
+      snowplough graphics use asymmetric reversed / unreversed sprite templates depending on consist position.
+      Use those same templates for the tail-light sheet so the overlay coordinates and offsets match the body
+      sprites exactly. switch_graphics_tail_light() is used as the visibility/end-of-consist gate; orientation
+      of the overlay follows the same switches as the base snowplough graphics. -->
+spriteset(${unit.id}_ss_tail_lights_unreversed, "${graphics_path}${model_variant.model_id}_tail_lights.png") {
+    ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * len(model_variant.model_def.liveries) * 30) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30))}
+}
+spriteset(${unit.id}_ss_tail_lights_reversed, "${graphics_path}${model_variant.model_id}_tail_lights.png") {
+    ${unit.get_spriteset_template_name('reversed', 10 + (unit.rel_spriterow_index * len(model_variant.model_def.liveries) * 30) + (model_variant.catalogue_entry.livery_def.relative_spriterow_num * 30))}
+}
+
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_tail_lights_unreversed, [
+            STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
+            switch_graphics_tail_light()
+        ]) {
+    0: return ${unit.id}_ss_tail_lights_unreversed;
+    1: return ${unit.id}_ss_tail_lights_unreversed;
+    return ss_tail_light_empty_unflipped;
+}
+
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_tail_lights_reversed, [
+            STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
+            switch_graphics_tail_light()
+        ]) {
+    0: return ${unit.id}_ss_tail_lights_reversed;
+    1: return ${unit.id}_ss_tail_lights_reversed;
+    return ss_tail_light_empty_unflipped;
+}
+
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_tail_lights_check_last, position_in_consist_from_end) {
+    0: return ${unit.id}_switch_graphics_tail_lights_reversed;
+    return ${unit.id}_switch_graphics_tail_lights_unreversed;
+}
+
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_layer_tail_light, num_vehs_in_consist) {
+    1: return ${unit.id}_switch_graphics_tail_lights_unreversed;
+    return ${unit.id}_switch_graphics_tail_lights_check_last;
+}
+
+<!--! layer 0 is the snowplough body; subsequent sprite callback(s) provide the tail-light overlay -->
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return ${unit.id}_switch_graphics_base;
+    return ${unit.id}_switch_graphics_layer_tail_light;
 }
 
 
@@ -26,6 +73,3 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${model_variant.model_id}.png
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
     return ${unit.id}_ss_purchase;
 }
-
-
-
