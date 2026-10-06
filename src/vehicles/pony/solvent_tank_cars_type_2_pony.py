@@ -89,7 +89,7 @@ def main(**kwargs):
         base_numeric_id=64860,
         gen=5,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
@@ -103,7 +103,7 @@ def main(**kwargs):
         base_numeric_id=64870,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(
