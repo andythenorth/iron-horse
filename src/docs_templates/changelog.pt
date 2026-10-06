@@ -3,6 +3,30 @@ Changelog
 
 
 --------------
+4.34.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.33.0.
+
+
+*Changes*
+
+- reworked tanker wagons
+    - added Solvent Tankers
+    - added Caustic Tankers
+    - improved appearance of Pressure Tankers
+    - added more Cryo Tankers
+    - added additional Acid Tank Car type and adjusted existing Acid Tankers
+- added randomised Food Product Hoppers
+- added tail lights for Snowplough
+
+*Fixes*
+
+- piece goods sprites were wrongly placed for narrow gauge Open Cars
+
+
+--------------
 4.33.0 Release
 --------------
 
