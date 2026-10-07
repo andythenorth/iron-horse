@@ -153,6 +153,10 @@ copy_docs_to_grf_farm: $(HTML_DOCS)
 release:
 	$(_V) $(MAKE) clean
 	$(_V) $(MAKE) bundle_zip
+	$(_V) for GRF_NAME in $(GRF_NAMES) ; do \
+		$(PYTHON3) src/polar_fox/bbcode_poster/render.py "$$GRF_NAME" \
+			--changelog "docs/$$GRF_NAME/changelog.txt" || exit $$? ; \
+	done
 	$(_V) $(MAKE) copy_docs_to_grf_farm
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
