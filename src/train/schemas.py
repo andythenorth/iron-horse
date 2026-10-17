@@ -4711,6 +4711,8 @@ class ExpressIntermodalCarBase(CarSchemaBase):
     vehicle_family_id = "express_intermodal_car"
     variant_group_id_root = "express_intermodal_cars"
 
+    randomised_candidate_groups = ["express_intermodal_car_randomised"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.speed_class = "express"
@@ -4732,8 +4734,6 @@ class ExpressIntermodalCarBase(CarSchemaBase):
         self._joker = True
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the formation_ruleset conditionally by checking roster
-        # intermodal container wagons can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="max_2_unit_sets",
             weathered_states={
@@ -4765,6 +4765,38 @@ class ExpressIntermodalCarType2(ExpressIntermodalCarBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+
+class ExpressIntermodalCarRandomised(RandomisedCarFormationDependentMixin, ExpressIntermodalCarBase):
+    """
+    Randomised choice of intermodal express car - preserves sets.
+    """
+
+    model_id_root = "express_intermodal_car_randomised"
+
+    # Candidate catalogue configuration is intentionally separate from this schema.
+    randomised_candidate_groups = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset="max_2_unit_sets",
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised express intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
 
 
 class FarmCargoCombosBase(RandomisedCarComboMixin, CarSchemaBase):
@@ -6615,6 +6647,25 @@ class IntermodalCar(IntermodalCarBase):
             return ["default"]
 
 
+class IntermodalLowFloorCar(IntermodalCarBase):
+    """
+    Low floor intermodal car - simple flat platform at height -1
+    """
+
+    model_id_root = "low_floor_intermodal_car"
+    vehicle_family_id = "intermodal_car"
+    variant_group_id_root = "wagon_group_intermodal_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def _spritelayer_cargo_layers(self):
+        return ["low_floor"]
+
+
 class IntermodalCarRandomised(RandomisedCarFormationDependentMixin, IntermodalCarBase):
     """
     Randomised choice of intermodal car - preserves sets.
@@ -6657,25 +6708,6 @@ class IntermodalCarRandomised(RandomisedCarFormationDependentMixin, IntermodalCa
     @property
     def _spritelayer_cargo_layers(self):
         return ["low_floor"] if self.base_track_type == "NG" else ["default"]
-
-
-class IntermodalLowFloorCar(IntermodalCarBase):
-    """
-    Low floor intermodal car - simple flat platform at height -1
-    """
-
-    model_id_root = "low_floor_intermodal_car"
-    vehicle_family_id = "intermodal_car"
-    variant_group_id_root = "wagon_group_intermodal_cars"
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._joker = True
-
-    @property
-    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
-    def _spritelayer_cargo_layers(self):
-        return ["low_floor"]
 
 
 class LivestockCarBase(CarSchemaBase):

@@ -64,6 +64,7 @@ wagon_module_name_stems = [
     "food_ingredients_mixed_combos",
     "express_intermodal_cars_type_1",
     "express_intermodal_cars_type_2",
+    "express_intermodal_cars_randomised",
     "intermodal_cars",
     "low_floor_intermodal_cars",
     "intermodal_cars_randomised",
