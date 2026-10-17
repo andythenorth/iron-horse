@@ -98,30 +98,28 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    # as of May 2025, randomised can't be used with articulated (buy menu sprite issues)
+    model_def = ModelDef(
+        schema_name="BoxCarSlidingWallRandomised",
+        base_numeric_id=1950,
+        gen=5,
+        subtype="D",
+        sprites_complete=True,
+    )
 
-    #     model_def = ModelDef(
-    #         schema_name="BoxCarSlidingWallRandomised",
-    #         base_numeric_id=1950,
-    #         gen=5,
-    #         subtype="D",
-    #         sprites_complete=True,
-    #     )
-    #
-    #     model_def.add_unit_def(
-    #         schema_name="FreightCarUnit",
-    #         chassis="empty_20px",
-    #         symmetry_type="asymmetric",
-    #         rel_spriterow_index=0,
-    #     )
-    #
-    #     model_def.add_unit_def(
-    #         schema_name="FreightCarUnit",
-    #         chassis="empty_20px",
-    #         symmetry_type="asymmetric",
-    #         rel_spriterow_index=4,
-    #     )
-    #
-    #     result.append(model_def)
-    #
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit",
+        chassis="empty_20px",
+        symmetry_type="asymmetric",
+        rel_spriterow_index=0,
+    )
+
+    model_def.add_unit_def(
+        unit_cls_name="FreightCarUnit",
+        chassis="empty_20px",
+        symmetry_type="asymmetric",
+        rel_spriterow_index=4,
+    )
+
+    result.append(model_def)
+
     return result
