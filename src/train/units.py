@@ -1330,6 +1330,21 @@ class IntermodalCarUnit(FreightCarUnit):
         self.random_trigger_switch = f"switch_spritelayer_cargos_unreversed_intermodal_containers_{self.model_variant.gestalt_graphics.spritelayer_cargo_layers[0]}_{4 * self.vehicle_length}px"
 
 
+class IntermodalCarRandomisedUnit(FreightCarUnit):
+    """
+    Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+        self.random_trigger_switch = (
+            "switch_spritelayer_cargos_unreversed_intermodal_containers_"
+            f"default_{4 * self.vehicle_length}px"
+        )
+
+
 class OreDumpCarUnit(FreightCarUnit):
     """
     Ore dump car. This subclass sets the symmetry_type to asymmetric.

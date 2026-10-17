@@ -50,6 +50,10 @@
       <tal:include metal:use-macro="load: vehicle_randomised_formation_position_dependent.pynml" />
     </tal:block>
 
+    <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_randomised_with_spritelayer_cargo.pynml'">
+      <tal:include metal:use-macro="load: vehicle_randomised_with_spritelayer_cargo.pynml" />
+    </tal:block>
+
     <tal:block tal:condition="model_variant.gestalt_graphics.nml_template == 'vehicle_snowplough.pynml'">
       <tal:include metal:use-macro="load: vehicle_snowplough.pynml" />
     </tal:block>

@@ -22,6 +22,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsEngine,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagonFormationDependent,
+    GestaltGraphicsRandomisedWagonSpritelayerCargo,
     GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps,
     GestaltGraphicsFormationDependent,
     GestaltGraphicsAutomobilesTransporter,
@@ -6563,6 +6564,8 @@ class IntermodalCarBase(CarSchemaBase):
         "COMPANY_COLOUR",
     ]
 
+    randomised_candidate_groups = ["intermodal_car_randomised"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["all_freight"]
@@ -6610,6 +6613,50 @@ class IntermodalCar(IntermodalCarBase):
             return ["low_floor"]
         else:
             return ["default"]
+
+
+class IntermodalCarRandomised(RandomisedCarFormationDependentMixin, IntermodalCarBase):
+    """
+    Randomised choice of intermodal car - preserves sets.
+    """
+
+    model_id_root = "intermodal_car_randomised"
+    vehicle_family_id = "intermodal_car"
+    variant_group_id_root = "wagon_group_intermodal_cars"
+
+    # Candidate catalogue configuration is intentionally separate from this schema.
+    randomised_candidate_groups = []
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
+        else:
+            formation_ruleset = "max_4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset=formation_ruleset,
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
+
+    @property
+    def _spritelayer_cargo_layers(self):
+        return ["low_floor"] if self.base_track_type == "NG" else ["default"]
 
 
 class IntermodalLowFloorCar(IntermodalCarBase):

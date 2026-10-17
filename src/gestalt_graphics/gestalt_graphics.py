@@ -356,6 +356,28 @@ class GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(GestaltGraphicsRandom
         return True
 
 
+class GestaltGraphicsRandomisedWagonSpritelayerCargo(GestaltGraphicsRandomisedWagonFormationDependent):
+    """
+    Base Gestalt specifically for randomised wagons that have spritelayer cargos.
+    """
+
+    def __init__(self, **kwargs):
+        # Required by RandomisedWagonBase, but not consumed by this NML template.
+        # Keep the inherited initialisation contract unchanged.
+        kwargs.setdefault("random_vehicle_map_type", "map_loose_mixed_train")
+        if kwargs.get("formation_ruleset") not in (
+            "max_1_unit_sets", "max_2_unit_sets", "max_4_unit_sets"
+        ):
+            raise ValueError(
+                "Randomised sprite-layer cargo requires an n-unit-set formation_ruleset"
+            )
+        super().__init__(**kwargs)
+
+    @property
+    def nml_template(self):
+        return "vehicle_randomised_with_spritelayer_cargo.pynml"
+
+
 class GestaltGraphicsPrecompositedCargo(GestaltGraphics):
     """
     Used for vehicle with visible cargos
