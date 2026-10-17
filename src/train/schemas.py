@@ -2542,7 +2542,7 @@ class RandomisedCarMixinBase(object):
 
 class RandomisedCarVanillaMixin(RandomisedCarMixinBase):
     """
-    Sparse subclass for very minimal handling of different randomised behaviouers
+    Sparse subclass for very minimal handling of different randomised behaviours
     """
 
     def __init__(self, **kwargs):
@@ -2552,7 +2552,7 @@ class RandomisedCarVanillaMixin(RandomisedCarMixinBase):
 
 class RandomisedCarComboMixin(RandomisedCarMixinBase):
     """
-    Sparse subclass for very minimal handling of different randomised behaviouers
+    Sparse subclass for very minimal handling of different randomised behaviours
     """
 
     def __init__(self, **kwargs):
@@ -2562,7 +2562,7 @@ class RandomisedCarComboMixin(RandomisedCarMixinBase):
 
 class RandomisedCarCabooseMixin(RandomisedCarMixinBase):
     """
-    Sparse subclass for very minimal handling of different randomised behaviouers
+    Sparse subclass for very minimal handling of different randomised behaviours
     """
 
     def __init__(self, **kwargs):
@@ -2572,7 +2572,7 @@ class RandomisedCarCabooseMixin(RandomisedCarMixinBase):
 
 class RandomisedCarFormationDependentMixin(RandomisedCarMixinBase):
     """
-    Sparse subclass for very minimal handling of different randomised behaviouers
+    Sparse subclass for very minimal handling of different randomised behaviours
     """
 
     def __init__(self, **kwargs):
@@ -2689,6 +2689,8 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
+    randomised_candidate_groups = ["single_deck_automobile_car_randomised"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
@@ -2713,6 +2715,8 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
+    randomised_candidate_groups = ["single_deck_automobile_car_randomised"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._joker = True
@@ -2733,7 +2737,7 @@ class AutomobileCarSingleDeckRandomised(RandomisedCarFormationDependentMixin, Au
     Randomised choice of automobile car - preserves sets.
     """
 
-    model_id_root = "automobile_car_randomised"
+    model_id_root = "single_deck_automobile_car_randomised"
     vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
