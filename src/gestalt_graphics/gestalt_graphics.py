@@ -366,7 +366,7 @@ class GestaltGraphicsRandomisedWagonSpritelayerCargo(GestaltGraphicsRandomisedWa
         # Keep the inherited initialisation contract unchanged.
         kwargs.setdefault("random_vehicle_map_type", "map_loose_mixed_train")
         if kwargs.get("formation_ruleset") not in (
-            "max_1_unit_sets", "max_2_unit_sets", "max_4_unit_sets"
+            "max_1_unit_sets", "max_2_unit_sets", "max_4_unit_sets", "articulated_permanent_twin_sets"
         ):
             raise ValueError(
                 "Randomised sprite-layer cargo requires an n-unit-set formation_ruleset"
