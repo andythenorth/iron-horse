@@ -2738,6 +2738,8 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
     vehicle_family_id = "double_deck_automobile_car"
     variant_group_id_root = "wagon_group_double_deck_automobile_cars"
 
+    randomised_candidate_groups = ["double_deck_automobile_car_randomised"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
@@ -2762,6 +2764,8 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
     model_id_root = "double_deck_enclosed_automobile_car"
     vehicle_family_id = "double_deck_automobile_car"
     variant_group_id_root = "wagon_group_double_deck_automobile_cars"
+
+    randomised_candidate_groups = ["double_deck_automobile_car_randomised"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2816,6 +2820,41 @@ class AutomobileMotorailCar(AutomobileCarBase):
             formation_ruleset="motorail_cars",
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class AutomobileCarDoubleDeckRandomised(RandomisedCarFormationDependentMixin, AutomobileCarBase):
+    """
+    Randomised choice of automobile car - preserves sets.
+    """
+
+    model_id_root = "double_deck_automobile_car_randomised"
+    vehicle_family_id = "double_deck_automobile_car"
+    variant_group_id_root = "wagon_group_double_deck_automobile_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "max_4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset=formation_ruleset,
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised express intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
 
 
 class BolsterCarBase(CarSchemaBase):

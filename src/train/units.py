@@ -1193,15 +1193,16 @@ class AutomobileCarSymmetricUnit(ExpressCarUnit):
 
 class AutomobileCarRandomisedUnit(ExpressCarUnit):
     """
-    Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
+    This subclass exists to set symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
+        # randomised wagons don't have spritelayer_cargo_layers on their gestalt, so use the default cargo layer
         self.random_trigger_switch = (
-            "switch_spritelayer_cargos_unreversed_intermodal_containers_"
+            "switch_spritelayer_cargos_unreversed_automobiles_"
             f"default_{4 * self.vehicle_length}px"
         )
 
@@ -1350,7 +1351,7 @@ class IngotCarUnit(FreightCarUnit):
 
 class IntermodalCarUnit(FreightCarUnit):
     """
-    Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    Intermodal Car. This subclass only exists to symmetry_type and random trigger switches.
     """
 
     def __init__(self, **kwargs):
@@ -1362,13 +1363,14 @@ class IntermodalCarUnit(FreightCarUnit):
 
 class IntermodalCarRandomisedUnit(FreightCarUnit):
     """
-    Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    Intermodal Car. This subclass only exists to symmetry_type and random trigger switches.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
+        # randomised wagons don't have spritelayer_cargo_layers on their gestalt, so use the default cargo layer
         self.random_trigger_switch = (
             "switch_spritelayer_cargos_unreversed_intermodal_containers_"
             f"default_{4 * self.vehicle_length}px"
