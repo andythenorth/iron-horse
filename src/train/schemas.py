@@ -2720,12 +2720,47 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
         else:
-            formation_ruleset = "max_1_unit_sets"
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             spritelayer_cargo_layers=["default"],
             formation_ruleset=formation_ruleset,
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class AutomobileCarSingleDeckRandomised(RandomisedCarFormationDependentMixin, AutomobileCarBase):
+    """
+    Randomised choice of automobile car - preserves sets.
+    """
+
+    model_id_root = "automobile_car_randomised"
+    vehicle_family_id = "automobile_car"
+    variant_group_id_root = "wagon_group_vehicle_transporter_cars"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "max_4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset=formation_ruleset,
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised express intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
 
 
 class AutomobileDoubleDeckCar(AutomobileCarBase):
@@ -2773,51 +2808,12 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
         # Graphics configuration
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
-        elif self.gen == 5:
-            formation_ruleset = "max_4_unit_sets"
         else:
-            formation_ruleset = "max_1_unit_sets"
+            formation_ruleset = "max_4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             # layers for spritelayer cargos - this is nerfed off for enclosed cars, no visible cargo
             spritelayer_cargo_layers=[],
             formation_ruleset=formation_ruleset,
-            catalogue_entry=self.catalogue_entry,
-        )
-
-
-class AutomobileMotorailCar(AutomobileCarBase):
-    """
-    Fully enclosed automobile transporter with, no vehicle sprites shown.
-    """
-
-    livery_group_name = "default_motorail_liveries"
-
-    model_id_root = "motorail_automobile_car"
-
-    formation_reporting_labels = [
-        "motorail_car",
-    ]
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.use_colour_randomisation_strategies = False
-        # Graphics configuration
-        # roof configuration
-        if self.gen in [1]:
-            self.roof_type = "pax_mail_clerestory"
-        elif self.gen in [2, 3]:
-            self.roof_type = "pax_mail_ridged"
-        else:
-            self.roof_type = "pax_mail_smooth"
-        formation_position_spriterow_map = {
-            "default": 0,
-            "first": 0,  # default, first, last synonymous currently for motorail cars
-            "last": 0,
-            "special": 1,
-        }
-        self.gestalt_graphics = GestaltGraphicsFormationDependent(
-            formation_position_spriterow_map,
-            formation_ruleset="motorail_cars",
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2855,6 +2851,43 @@ class AutomobileCarDoubleDeckRandomised(RandomisedCarFormationDependentMixin, Au
                 f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
             )
         return result
+
+
+class AutomobileMotorailCar(AutomobileCarBase):
+    """
+    Fully enclosed automobile transporter with, no vehicle sprites shown.
+    """
+
+    livery_group_name = "default_motorail_liveries"
+
+    model_id_root = "motorail_automobile_car"
+
+    formation_reporting_labels = [
+        "motorail_car",
+    ]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.use_colour_randomisation_strategies = False
+        # Graphics configuration
+        # roof configuration
+        if self.gen in [1]:
+            self.roof_type = "pax_mail_clerestory"
+        elif self.gen in [2, 3]:
+            self.roof_type = "pax_mail_ridged"
+        else:
+            self.roof_type = "pax_mail_smooth"
+        formation_position_spriterow_map = {
+            "default": 0,
+            "first": 0,  # default, first, last synonymous currently for motorail cars
+            "last": 0,
+            "special": 1,
+        }
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
+            formation_position_spriterow_map,
+            formation_ruleset="motorail_cars",
+            catalogue_entry=self.catalogue_entry,
+        )
 
 
 class BolsterCarBase(CarSchemaBase):
