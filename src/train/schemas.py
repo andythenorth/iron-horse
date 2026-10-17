@@ -2689,7 +2689,10 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
-    randomised_candidate_groups = ["single_deck_automobile_car_randomised"]
+    randomised_candidate_groups = [
+        "single_deck_automobile_car_randomised",
+        "automobile_car_combo_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2715,7 +2718,10 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     vehicle_family_id = "automobile_car"
     variant_group_id_root = "wagon_group_vehicle_transporter_cars"
 
-    randomised_candidate_groups = ["single_deck_automobile_car_randomised"]
+    randomised_candidate_groups = [
+        "single_deck_automobile_car_randomised",
+        "automobile_car_combo_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2777,7 +2783,10 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
     vehicle_family_id = "double_deck_automobile_car"
     variant_group_id_root = "wagon_group_double_deck_automobile_cars"
 
-    randomised_candidate_groups = ["double_deck_automobile_car_randomised"]
+    randomised_candidate_groups = [
+        "double_deck_automobile_car_randomised",
+        "automobile_car_combo_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2804,7 +2813,10 @@ class AutomobileDoubleDeckEnclosedCar(AutomobileCarBase):
     vehicle_family_id = "double_deck_automobile_car"
     variant_group_id_root = "wagon_group_double_deck_automobile_cars"
 
-    randomised_candidate_groups = ["double_deck_automobile_car_randomised"]
+    randomised_candidate_groups = [
+        "double_deck_automobile_car_randomised",
+        "automobile_car_combo_randomised",
+    ]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2892,6 +2904,39 @@ class AutomobileMotorailCar(AutomobileCarBase):
             formation_ruleset="motorail_cars",
             catalogue_entry=self.catalogue_entry,
         )
+
+
+class AutomobileCarComboRandomised(RandomisedCarFormationDependentMixin, AutomobileCarBase):
+    """
+    Randomised choice of automobile car - preserves sets.
+    """
+
+    model_id_root = "automobile_car_combo_randomised"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        if self.subtype == "D":
+            formation_ruleset = "articulated_permanent_twin_sets"
+        else:
+            formation_ruleset = "max_4_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset=formation_ruleset,
+            dice_colour=2,
+            catalogue_entry=self.catalogue_entry,
+        )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised express intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
 
 
 class BolsterCarBase(CarSchemaBase):

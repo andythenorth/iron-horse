@@ -327,6 +327,9 @@ base = "Alignment Van"
 [STR_WAGON_NAME_AUTOMOBILE_CAR]
 base = "Vehicle Transporter"
 
+[STR_WAGON_NAME_AUTOMOBILE_CAR_COMBO_RANDOMISED]
+base = "Automotive Wagon"
+
 [STR_WAGON_NAME_BOLSTER_CAR]
 base = "Bolster Wagon"
 
