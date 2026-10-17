@@ -71,7 +71,7 @@ switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_driving_backwards, positio
     0: switch_graphics_tail_light_check_flip_driving_backwards;
     return 2;
 }
-switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, train_is_driving_backwards) {
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, vehicle_is_moving_backwards) {
     1: return switch_graphics_tail_light_driving_backwards;
     return switch_graphics_tail_light_driving_forwards;
 }
