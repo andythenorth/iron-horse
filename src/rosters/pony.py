@@ -347,6 +347,7 @@ wagon_module_names_with_roster_ids = {
     "hood_open_cars_type_1": "pony",
     "ingot_cars": "pony",
     "intermodal_cars": "pony",
+    "intermodal_cars_randomised": "pony",
     "lime_covered_hopper_cars_randomised": "pony",
     "lime_covered_hopper_cars_type_1": "pony",
     "lime_covered_hopper_cars_type_2": "pony",
