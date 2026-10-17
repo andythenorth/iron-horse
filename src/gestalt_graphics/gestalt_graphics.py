@@ -377,6 +377,10 @@ class GestaltGraphicsRandomisedWagonSpritelayerCargo(GestaltGraphicsRandomisedWa
     def nml_template(self):
         return "vehicle_randomised_with_spritelayer_cargo.pynml"
 
+    @property
+    def variants_use_common_graphics_switch_chain(self):
+        return True
+
 
 class GestaltGraphicsPrecompositedCargo(GestaltGraphics):
     """
