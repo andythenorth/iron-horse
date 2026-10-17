@@ -36,6 +36,7 @@ wagon_module_name_stems = [
     "double_deck_automobile_cars_randomised",
     "automobile_cars",
     "low_floor_automobile_cars",
+    "automobile_cars_randomised",
     "express_cars_type_1",
     "express_cars_type_2",
     "express_cars_randomised",
