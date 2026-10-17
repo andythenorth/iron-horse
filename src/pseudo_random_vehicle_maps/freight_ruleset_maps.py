@@ -149,7 +149,16 @@ def generate_map_for_random_choices(
     for category, formations in base_maps.items():
         for i, formation in enumerate(formations):
             rng = Random(i)
-            run_map = generate_run_randomization_map(formation, max_random_value, rng)
+            if category == "articulated_permanent_twin_sets":
+                # keep the pairs intact, but use the same random choice for runs of 1-4 twin sets
+                run_map = []
+                while len(run_map) < len(formation):
+                    num_pairs = rng.choice([1, 2, 3, 4])
+                    value = rng.randint(0, max_random_value - 1)
+                    run_map.extend([value] * (2 * num_pairs))
+                run_map = run_map[: len(formation)]
+            else:
+                run_map = generate_run_randomization_map(formation, max_random_value, rng)
             output[category].append(run_map)
     return output
 
