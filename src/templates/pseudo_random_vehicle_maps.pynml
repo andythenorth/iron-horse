@@ -10,8 +10,10 @@
     <tal:deterministic_random_maps_by_type repeat="random_map pseudo_random_vehicle_maps.freight_entropic_maps.get_deterministic_random_vehicle_maps(random_map_type)">
         <!--! (position_in_consist -1) here because we can assume there's at least one engine ...
                ...we don't try to do anything fancier than that, but this prevents high incidence of a run of just 2 at start of wagons -->
+
         switch (FEAT_TRAINS, SELF, switch_pseudo_random_freight_entropic_map_${random_map_type}_${repeat.random_map.index}, [
-                (position_in_consist - 1) % 64
+                // Use the lead part's consist position so all articulated parts select the same random map value.
+                (position_in_consist - position_in_articulated_veh - 1) % 64
             ]) {
             <tal:map_items repeat="map_item random_map">
                 ${repeat.map_item.index}: ${map_item};

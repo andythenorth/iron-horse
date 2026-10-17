@@ -651,13 +651,10 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
             )
         )
 
-        # !! example_model_variant looks like it could be using catalogue.model_def here, but eh
-        if len(self.example_model_variant.units) > 1:
-            raise BaseException(
-                "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated vehicles - called by "
-                + self.example_model_variant.id
-            )
-        unit_length_in_pixels = 4 * self.example_model_variant.units[0].vehicle_length
+        # Use the full formation width, including articulated parts.
+        unit_length_in_pixels = 4 * sum(
+            unit.vehicle_length for unit in self.example_model_variant.units
+        )
         unit_slice_length_in_pixels = (
             int(unit_length_in_pixels / 2)
             + graphics_constants.randomised_wagon_extra_unit_width
@@ -667,64 +664,62 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         fade_image_width = 2
         fade_image_height = 16
 
-        # I tried doing fancy generic counter maths for offsets etc, but it got stupid, just hard-code everything, there are only 2 wagon parts to draw
-        slice_configuration = [
-            dict(
-                x_offset_input=0,
-                x_offset_dest=unit_slice_length_in_pixels + dice_image_width + 1,
-            ),
-            dict(
-                x_offset_input=int(unit_length_in_pixels - unit_slice_length_in_pixels),
-                x_offset_dest=0,
-            ),
-        ]
         for row_data in self.example_model_variant.gestalt_graphics.buy_menu_row_map(
             self
         ):
             for counter, (source_vehicle_unit, input_spriterow_num) in enumerate(
                 row_data["source_vehicles_and_input_spriterow_nums"]
             ):
-                # note that we want the *generated* source wagon spritesheet
+                source_model_variant = source_vehicle_unit.model_variant
+                source_units = source_model_variant.units
+                source_is_articulated = len(source_units) > 1
+                source_width = 4 * sum(unit.vehicle_length for unit in source_units)
+                # Articulated candidates already have complete buy-menu sprites at x=360.
+                source_x = 360 if source_is_articulated else 224
+                source_row = (
+                    row_data["spriterow_num_dest"]
+                    if source_is_articulated
+                    else input_spriterow_num
+                )
+                source_slice_x = (
+                    0 if counter == 0 else source_width - unit_slice_length_in_pixels
+                )
+                dest_slice_x = (
+                    unit_slice_length_in_pixels + dice_image_width + 1
+                    if counter == 0
+                    else 0
+                )
+
                 source_vehicle_input_path = os.path.join(
-                    self.graphics_output_path,
-                    source_vehicle_unit.model_variant.model_id + ".png",
+                    self.graphics_output_path, source_model_variant.model_id + ".png"
                 )
-                source_vehicle_image = Image.open(source_vehicle_input_path)
-                if (
-                    self.example_model_variant.model_id
-                    == "randomised_box_car_pony_gen_1A"
-                ):
-                    # source_vehicle_image.show()
-                    pass
-                input_spriterow_y_offset = (
-                    input_spriterow_num * graphics_constants.spriterow_height
-                )
-                y_offset_dest = (
-                    row_data["spriterow_num_dest"] * graphics_constants.spriterow_height
+                input_y = 10 + source_row * graphics_constants.spriterow_height
+                dest_y = (
+                    10
+                    + row_data["spriterow_num_dest"]
+                    * graphics_constants.spriterow_height
                 )
                 crop_box_input = (
-                    224 + slice_configuration[counter]["x_offset_input"],
-                    10 + input_spriterow_y_offset,
-                    224
-                    + slice_configuration[counter]["x_offset_input"]
-                    + unit_slice_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26 + input_spriterow_y_offset,
+                    source_x + source_slice_x,
+                    input_y,
+                    source_x + source_slice_x + unit_slice_length_in_pixels + 1,
+                    input_y + 16,
                 )
                 crop_box_dest = (
-                    360 + slice_configuration[counter]["x_offset_dest"],
-                    10 + y_offset_dest,
-                    360
-                    + slice_configuration[counter]["x_offset_dest"]
-                    + unit_slice_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26 + y_offset_dest,
+                    360 + dest_slice_x,
+                    dest_y,
+                    360 + dest_slice_x + unit_slice_length_in_pixels + 1,
+                    dest_y + 16,
                 )
-                custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_input)
+                with Image.open(source_vehicle_input_path) as source_vehicle_image:
+                    custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_input)
                 randomised_buy_menu_sprites_output_image_as_spritesheet.sprites.paste(
                     custom_buy_menu_sprite, crop_box_dest
                 )
 
+            y_offset_dest = (
+                row_data["spriterow_num_dest"] * graphics_constants.spriterow_height
+            )
             dice_image = Image.open(
                 os.path.join(
                     currentdir, "src", "graphics", "randomisation_icons", "dice.png"
