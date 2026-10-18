@@ -40,12 +40,16 @@
            <!--! check generic cargo classes
                   bulk class is explicitly not checked as there are no meaningful default bulk sprites
             -->
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID_BULK)) {
                 0: return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_box_DFLT;
                 return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_tank_DFLT;
             }
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_gas, cargo_classes & bitmask(CC_GAS_BULK)) {
                 0: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_liquid;
+                return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_cryo_tank_DFLT;
+            }
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
+                0: switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_generic_by_class_gas;
                 return switch_spritelayer_cargos_${reversed_status}_${spritelayer_cargo.id}_random_reefer_DFLT;
             }
         </tal:intermodal_containers>
