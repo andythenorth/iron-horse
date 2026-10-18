@@ -5660,7 +5660,7 @@ class MachineryCarType2(MachineryCarBase):
         super().__init__(**kwargs)
 
 
-class MachineryCarRandomised(RandomisedCarVanillaMixin, MachineryCarBase):
+class MachineryCarRandomised(RandomisedCarFormationDependentMixin, MachineryCarBase):
     """
     Random choice of drop-centre (depressed-centre) flat wagon sprite.
     """
@@ -5671,11 +5671,29 @@ class MachineryCarRandomised(RandomisedCarVanillaMixin, MachineryCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSimpleBodyColourRemaps(
-            random_vehicle_map_type="map_loose_mixed_train",
-            dice_colour=1,
+        # various rulesets are supported, per formation, (or could be extended to checks per roster)
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
+        else:
+            formation_ruleset = "max_1_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagonSpritelayerCargo(
+            formation_ruleset=formation_ruleset,
+            dice_colour=2,
             catalogue_entry=self.catalogue_entry,
         )
+
+    @property
+    def formation_ruleset_badges(self):
+        # Candidate graphics reinitialise the formation position with their own
+        # model-id predicate. Advertise those predicates on the wrapper so all
+        # randomised intermodal cars participate in the same candidate chains.
+        result = super().formation_ruleset_badges
+        for candidate in self.wagon_randomisation_candidates:
+            result.append(
+                f"_ih_formation_ruleset/vehicle_reports_as/{candidate.model_id}"
+            )
+        return result
 
 
 class FlatCarDropEnd(FlatCarBase):

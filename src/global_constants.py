@@ -233,7 +233,6 @@ wagon_module_name_stems = [
     "log_cars",
     "peat_cars",
     "cane_bin_cars",
-    # "well_cars",
     "torpedo_cars",
     "coil_buggy_cars",
     "ingot_cars",

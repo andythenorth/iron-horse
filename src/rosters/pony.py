@@ -363,7 +363,7 @@ wagon_module_names_with_roster_ids = {
     "low_floor_automobile_cars": "pony",
     "machinery_cars_type_1": "pony",
     "machinery_cars_type_2": "pony",
-    #"machinery_cars_randomised": "pony",
+    "machinery_cars_randomised": "pony",
     "mail_cars_full_brake": "pony",
     "mail_cars_general_utility": "pony",
     "mail_cars_randomised": "pony",
