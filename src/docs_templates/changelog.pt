@@ -3,6 +3,22 @@ Changelog: Iron Horse
 
 
 --------------
+4.35.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.33.0.
+
+
+*Changes*
+
+- added randomised Machinery Wagons
+- added randomised Container Wagons and Express Container Wagons
+- added randomised Car Transporters, Vehicle Transporters and Automotive Wagons
+- added randomised Gen 5D Sliding Wall Vans
+
+
+--------------
 4.34.0 Release
 --------------
 
