@@ -6667,7 +6667,7 @@ class HopperCarSkip(HopperCarBase):
 
 class IngotCarUnit(CarSchemaBase):
     """
-    Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
+    Dedicated car for steel / iron / copper ingots. A mill ingot buggy, not a standard railcar. No other refits.
     """
 
     liveries = [
@@ -6686,7 +6686,7 @@ class IngotCarUnit(CarSchemaBase):
         super().__init__(**kwargs)
         # none needed
         self.class_refit_groups = []
-        self.label_refits_allowed = ["STIG", "IRON", "CSTI", "STCB", "STST", "STAL"]
+        self.label_refits_allowed = ["STIG", "IRON", "CSTI", "STCB", "STST", "STAL", "COPR"]
         # none needed
         self.label_refits_disallowed = []
         self.default_cargos = ["IRON"]
@@ -9969,7 +9969,7 @@ class TarpaulinCarRandomised(RandomisedCarVanillaMixin, TarpaulinCarBase):
 class TorpedoCar(CarSchemaBase):
     """
     Specialist wagon for hauling molten pig iron.
-    May or may not extend to other metal cargos (probably not).
+    May or may not extend to other metal cargos.
     """
 
     liveries = [
@@ -9989,7 +9989,7 @@ class TorpedoCar(CarSchemaBase):
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
-        self.label_refits_allowed = ["IRON", "STEL"]
+        self.label_refits_allowed = ["IRON", "STEL", "COPR"]
         self.label_refits_disallowed = []
         self.default_cargos = ["IRON"]
         self._loading_speed_multiplier = 1.5
