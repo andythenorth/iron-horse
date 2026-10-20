@@ -3,6 +3,21 @@ Changelog: Iron Horse
 
 
 --------------
+4.36.0 Release
+--------------
+
+
+Not savegame compatible with Iron Horse releases before 4.33.0.
+
+
+*Changes*
+
+- improved depot sprites for Dedicated High Speed Rail Railway type
+- added copper to cargo refits for torpedo cars and ingot buggies
+- Container Wagons will show cryo tank containers for cargos that set CC_BULK_GAS class
+
+
+--------------
 4.35.0 Release
 --------------
 
