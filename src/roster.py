@@ -120,9 +120,7 @@ class Roster:
 
     @property
     def model_variants_in_buy_menu_order(self):
-        """
-        Returns a flat list of VariantGroup instances, depth-first ordered from the nested parent/child structure.
-        """
+        # returns a flat list of model variants, depth-first ordered from the nested parent/child structure.
         result = []
 
         def walk(group: VariantGroup):
