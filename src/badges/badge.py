@@ -22,6 +22,12 @@ class Badge(object):
             result.append("BADGE_FLAG_USE_COMPANY_COLOUR")
         return ",".join(set(result))
 
+    @property
+    def has_content(self):
+        """
+        Only badges with name, sprite or flags not need to be defined, just existing in the badge-table is enough.
+        """
+        return self.name is not None or self.sprite is not None or self._flags
 
 class BadgeManager(list):
     """

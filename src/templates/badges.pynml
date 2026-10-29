@@ -11,6 +11,7 @@ badgetable {
 </tal:spritesets>
 
 <tal:badges repeat="badge badge_manager.badges_in_table_order">
+    <tal:if condition="badge.has_content">
     item (FEAT_BADGES, ${utils.nml_safe_id(badge.label)}) {
         property {
             label: "${badge.label}";
@@ -25,4 +26,5 @@ badgetable {
             }
         </tal:sprite>
     }
+    </tal:if>
 </tal:badges>
