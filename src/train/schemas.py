@@ -7116,6 +7116,7 @@ class MailCarVanGeneralUtility(MailCarVanBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class MailCarVanStowage(MailCarVanBase):
@@ -7128,6 +7129,7 @@ class MailCarVanStowage(MailCarVanBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class MailCarRandomised(RandomisedCarFormationDependentMixin, MailCarVanBase):
