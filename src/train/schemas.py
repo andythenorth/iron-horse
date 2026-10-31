@@ -2652,9 +2652,9 @@ class AutomobileCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE_NO_WEATHERING",
-        "RANDOM_LIVERIES_OXIDE_RUST_NO_WEATHERING",
-        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "COMPANY_COLOUR_NO_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
+        "RANDOM_LIVERIES_OXIDE_RUST_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL_NO_WEATHERING",
     ]
 
@@ -2950,9 +2950,9 @@ class BolsterCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "bolster_car"
@@ -3035,9 +3035,9 @@ class BoxCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     def __init__(self, **kwargs):
@@ -3221,10 +3221,10 @@ class BoxCarMerchandise(BoxCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     model_id_root = "merchandise_box_car"
@@ -3278,10 +3278,10 @@ class BoxCarSlidingWallBase(BoxCarBase):
 
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "sliding_wall_car"
@@ -3541,9 +3541,9 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "coal_bulk_open_car"
@@ -3753,10 +3753,10 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "tippler_bulk_open_car"
@@ -3981,9 +3981,9 @@ class CabooseCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SILVER",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "caboose_car"
@@ -4315,9 +4315,9 @@ class CoilCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     def __init__(self, **kwargs):
@@ -4490,9 +4490,9 @@ class CoveredHopperCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
         # no teal?
     ]
 
@@ -4630,10 +4630,10 @@ class CoveredHopperCarSwingRoofBase(CoveredHopperCarBase):
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         # "RANDOM_LIVERIES_VARIETY_GEMSTONE", # tried it, don't like
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_KALE",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "swing_roof_hopper_car"
@@ -4732,8 +4732,8 @@ class ExpressCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
-        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
         "COMPANY_COLOUR_NO_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
     ]
 
     vehicle_family_id = "express_car"
@@ -5523,9 +5523,9 @@ class FlatCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     def __init__(self, **kwargs):
@@ -5802,9 +5802,9 @@ class FlatCarMillBase(FlatCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "mill_flat_car"
@@ -5947,8 +5947,8 @@ class GasTankCarCryoBase(GasTankCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
     vehicle_family_id = "cryo_tank_car"
@@ -6052,8 +6052,8 @@ class GasTankCarPressureBase(GasTankCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
     vehicle_family_id = "pressure_tank_car"
@@ -6154,8 +6154,8 @@ class GasTankCarStandardBase(GasTankCarBase):
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
-        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "COMPANY_COLOUR",
+        "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
     ]
 
     vehicle_family_id = "gas_tank_car"
@@ -6208,9 +6208,9 @@ class HopperCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     randomised_candidate_groups = [
@@ -6249,10 +6249,10 @@ class HopperCarAggregateBase(HopperCarBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SAND",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_KALE",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "aggregate_hopper_car"
@@ -6415,9 +6415,9 @@ class HopperCarMGRBase(HopperCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
     variant_group_id_root = "wagon_group_mgr_hopper_cars"
     vehicle_family_id = "mgr_hopper_car"
@@ -6549,10 +6549,10 @@ class HopperCarRockBase(HopperCarBase):
         "RANDOM_LIVERIES_OCHRE_SAND",
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_MIST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "rock_hopper_car"
@@ -6624,9 +6624,9 @@ class HopperCarSideDoor(HopperCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     model_id_root = "side_door_hopper_car"
@@ -6730,9 +6730,9 @@ class IntermodalCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER_NO_WEATHERING",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE_NO_WEATHERING",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST_NO_WEATHERING",
-        "COMPANY_COLOUR",
     ]
 
     randomised_candidate_groups = ["intermodal_car_randomised"]
@@ -6861,8 +6861,8 @@ class LivestockCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "RANDOM_LIVERIES_OXIDE_RUST",
         "COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OXIDE_RUST",
     ]
 
     def __init__(self, **kwargs):
@@ -7639,9 +7639,9 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH_NO_WEATHERING",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "roller_roof_hopper_car"
@@ -7799,8 +7799,8 @@ class OpenCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
-        "RANDOM_LIVERIES_OXIDE_RUST",
         "COMPANY_COLOUR",
+        "RANDOM_LIVERIES_OXIDE_RUST",
     ]
 
     randomised_candidate_groups = [
@@ -8837,9 +8837,9 @@ class PipeCar(FlatCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     model_id_root = "pipe_car"
@@ -8944,10 +8944,10 @@ class SiloCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_VIOLET_TEAL_OCEAN_TEAL",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "FREIGHT_MIST",
-        "COMPANY_COLOUR",
         # didn't bother with teal, marginal benefit
     ]
 
@@ -9121,9 +9121,9 @@ class SlidingRoofCar(BoxCarBase):
     # minimal set by design
     liveries = [
         "RANDOM_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     model_id_root = "sliding_roof_car"
@@ -9170,10 +9170,10 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",  # tried it, not convinced it adds anything
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     model_id_root = "sliding_roof_hi_cube_car"
@@ -9262,9 +9262,9 @@ class SpacerCarBase(CarSchemaBase):
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_GREY_RUST_NIGHTSHADE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "spacer_car"
@@ -9354,10 +9354,10 @@ class TankCarAcidBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "acid_tank_car"
@@ -9462,9 +9462,9 @@ class TankCarCausticBase(TankCarBase):
         "RANDOM_LIVERIES_SULPHUR_OCHRE",
         "RANDOM_LIVERIES_SILVER_PEWTER",
         "RANDOM_LIVERIES_VARIETY_LIMEWASH",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "caustic_tank_car"
@@ -9549,10 +9549,10 @@ class TankCarProductBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "product_tank_car"
@@ -9630,10 +9630,10 @@ class TankCarSolventBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "solvent_tank_car"
@@ -9707,10 +9707,10 @@ class TankCarStandardBase(TankCarBase):
         "RANDOM_LIVERIES_SILVER_GREY_PEWTER_NO_WEATHERING",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN",  # no nightshade for these tankers
         "RANDOM_LIVERIES_OXIDE_RUST",
         "RANDOM_LIVERIES_TEAL_OCEAN_TEAL",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "tank_car"
@@ -9867,9 +9867,9 @@ class TarpaulinCarBase(BoxCarBase):
         "RANDOM_LIVERIES_CLOVER_OCHRE_SULPHUR",
         "RANDOM_LIVERIES_TEAL_PEWTER_SILVER",
         "RANDOM_LIVERIES_VARIETY_GEMSTONE",
+        "COMPANY_COLOUR",
         "RANDOM_LIVERIES_OIL_BLACK_OBSIDIAN_NIGHTSHADE",
         "RANDOM_LIVERIES_OXIDE_RUST",
-        "COMPANY_COLOUR",
     ]
 
     vehicle_family_id = "tarpaulin_car"
