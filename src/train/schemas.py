@@ -6093,6 +6093,7 @@ class GasTankCarPressureType2(GasTankCarPressureBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
@@ -6113,6 +6114,7 @@ class GasTankCarPressureType3(GasTankCarPressureBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.pressure_tanker_livery_recolour_map,
@@ -9502,6 +9504,7 @@ class TankCarCausticType2(TankCarCausticBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
         # Graphics configuration
         weathered_states = {
             "unweathered": graphics_constants.caustic_tank_car_type_2_livery_recolour_map,
@@ -9670,6 +9673,7 @@ class TankCarSolventType2(TankCarSolventBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._joker = True
 
 
 class TankCarSolventRandomised(RandomisedCarVanillaMixin, TankCarSolventBase):
